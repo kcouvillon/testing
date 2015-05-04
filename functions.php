@@ -14,7 +14,11 @@
  
  // Useful global constants
 define( 'WS_VERSION', '0.1.0' );
- 
+define( 'WS_PATH', dirname( __FILE__ ) . '/' );
+define( 'WS_IMAGE_URL', get_template_directory_uri() . '/assets/images/' );
+
+include WS_PATH . 'includes/class-legacy-redirects.php';
+
  /**
   * Set up theme defaults and register supported WordPress features.
   *
