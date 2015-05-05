@@ -36,5 +36,13 @@ git/Sourcetree/Tower
 ### WordPress Standards
 
 Develop with WP_DEBUG turned on
+http://codex.wordpress.org/WP_DEBUG
+
 
 Coding standards
+
+https://codex.wordpress.org/WordPress_Coding_Standards
+http://make.wordpress.org/core/handbook/coding-standards/php/
+http://make.wordpress.org/core/handbook/coding-standards/html/
+http://make.wordpress.org/core/handbook/coding-standards/css/
+https://make.wordpress.org/core/handbook/coding-standards/javascript/
