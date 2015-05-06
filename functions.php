@@ -42,10 +42,6 @@ new WS_Custom_Post_Type( 'leadership' );
 
  /**
   * Set up theme defaults and register supported WordPress features.
-  *
-  * @uses load_theme_textdomain() For translation/localization support.
-  *
-  * @since 0.1.0
   */
  function ws_setup() {
 	/**
@@ -61,8 +57,6 @@ new WS_Custom_Post_Type( 'leadership' );
 
  /**
   * Enqueue scripts and styles for front-end.
-  *
-  * @since 0.1.0
   */
  function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
@@ -72,13 +66,3 @@ new WS_Custom_Post_Type( 'leadership' );
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
  }
  add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
- 
- /**
-  * Add humans.txt to the <head> element.
-  */
- function ws_header_meta() {
-	$humans = '<link type="text/plain" rel="author" href="' . get_template_directory_uri() . '/humans.txt" />';
-	
-	echo apply_filters( 'ws_humans', $humans );
- }
- add_action( 'wp_head', 'ws_header_meta' );
