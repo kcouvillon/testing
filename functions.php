@@ -18,6 +18,27 @@ define( 'WS_PATH', dirname( __FILE__ ) . '/' );
 define( 'WS_IMAGE_URL', get_template_directory_uri() . '/assets/images/' );
 
 include WS_PATH . 'includes/class-legacy-redirects.php';
+include WS_PATH . 'includes/class-custom-post-type.php';
+
+
+/**
+ * Define custom post types
+ */
+new WS_Custom_Post_Type( 'trip' );
+new WS_Custom_Post_Type( 'event' );
+new WS_Custom_Post_Type( 'collection' );
+new WS_Custom_Post_Type( 'destination' );
+new WS_Custom_Post_Type( 'interest' );
+new WS_Custom_Post_Type( 'traveler' );
+new WS_Custom_Post_Type( 'season' );
+new WS_Custom_Post_Type( 'group type' );
+new WS_Custom_Post_Type( 'press' );
+new WS_Custom_Post_Type( 'press' );
+new WS_Custom_Post_Type( 'resource' );
+new WS_Custom_Post_Type( 'review' );
+new WS_Custom_Post_Type( 'lead' );
+new WS_Custom_Post_Type( 'leadership' );
+
 
  /**
   * Set up theme defaults and register supported WordPress features.
@@ -37,7 +58,7 @@ include WS_PATH . 'includes/class-legacy-redirects.php';
 	load_theme_textdomain( 'ws', get_template_directory() . '/languages' );
  }
  add_action( 'after_setup_theme', 'ws_setup' );
- 
+
  /**
   * Enqueue scripts and styles for front-end.
   *
