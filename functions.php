@@ -21,6 +21,8 @@ define( 'WS_IMAGE_URL', get_template_directory_uri() . '/assets/images/' );
 include WS_PATH . 'includes/library-extended-cpts.php';
 include WS_PATH . 'includes/library-extended-taxos.php';
 
+include WS_PATH . 'includes/class-associated-filter.php';
+
 /**
  * Set up theme defaults and register supported WordPress features.
  */
@@ -73,3 +75,6 @@ register_extended_post_type( 'review' );
 register_extended_post_type( 'lead' );
 
 register_extended_post_type( 'leadership', array(), array( 'plural' => 'Leadership' ) );
+
+
+register_extended_taxonomy( 'filter', 'trip' );
