@@ -17,28 +17,9 @@ define( 'WS_VERSION', '0.1.0' );
 define( 'WS_PATH', dirname( __FILE__ ) . '/' );
 define( 'WS_IMAGE_URL', get_template_directory_uri() . '/assets/images/' );
 
-include WS_PATH . 'includes/class-legacy-redirects.php';
-include WS_PATH . 'includes/class-custom-post-type.php';
-
-
-/**
- * Define custom post types
- */
-new WS_Custom_Post_Type( 'trip' );
-new WS_Custom_Post_Type( 'event' );
-new WS_Custom_Post_Type( 'collection' );
-new WS_Custom_Post_Type( 'destination' );
-new WS_Custom_Post_Type( 'interest' );
-new WS_Custom_Post_Type( 'traveler' );
-new WS_Custom_Post_Type( 'season' );
-new WS_Custom_Post_Type( 'group type' );
-new WS_Custom_Post_Type( 'press' );
-new WS_Custom_Post_Type( 'press' );
-new WS_Custom_Post_Type( 'resource' );
-new WS_Custom_Post_Type( 'review' );
-new WS_Custom_Post_Type( 'lead' );
-new WS_Custom_Post_Type( 'leadership' );
-
+// Includes
+include WS_PATH . 'includes/library-extended-cpts.php';
+include WS_PATH . 'includes/library-extended-taxos.php';
 
 /**
  * Set up theme defaults and register supported WordPress features.
@@ -73,3 +54,22 @@ function ws_scripts_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
+
+/**
+ * Define trip custom post type
+ */
+register_extended_post_type( 'trip', array( 'menu_icon' => 'dashicons-location-alt' ), array( 'slug' => 'trips' ) );
+
+register_extended_post_type( 'event', array( 'menu_icon' => '' ), array( 'slug' => 'events' ) );
+register_extended_post_type( 'collection' );
+register_extended_post_type( 'destination' );
+register_extended_post_type( 'interest' );
+register_extended_post_type( 'traveler' );
+register_extended_post_type( 'season' );
+register_extended_post_type( 'group type' );
+register_extended_post_type( 'press', array(), array( 'plural' => 'Press' ) );
+register_extended_post_type( 'resource' );
+register_extended_post_type( 'review' );
+register_extended_post_type( 'lead' );
+
+register_extended_post_type( 'leadership', array(), array( 'plural' => 'Leadership' ) );
