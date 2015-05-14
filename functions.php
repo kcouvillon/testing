@@ -23,6 +23,7 @@ include WS_PATH . 'includes/library-extended-taxos.php';
 
 include WS_PATH . 'includes/class-associated-filter.php';
 include WS_PATH . 'includes/class-cpts.php';
+include WS_PATH . 'includes/class-taxos.php';
 
 /**
  * Set up theme defaults and register supported WordPress features.
@@ -57,6 +58,3 @@ function ws_scripts_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
-
-
-register_extended_taxonomy( 'filter', 'trip' );
