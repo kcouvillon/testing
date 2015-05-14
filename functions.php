@@ -22,6 +22,7 @@ include WS_PATH . 'includes/library-extended-cpts.php';
 include WS_PATH . 'includes/library-extended-taxos.php';
 
 include WS_PATH . 'includes/class-associated-filter.php';
+include WS_PATH . 'includes/class-cpts.php';
 
 /**
  * Set up theme defaults and register supported WordPress features.
@@ -56,25 +57,6 @@ function ws_scripts_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
-
-/**
- * Define trip custom post type
- */
-register_extended_post_type( 'trip', array( 'menu_icon' => 'dashicons-location-alt' ), array( 'slug' => 'trips' ) );
-
-register_extended_post_type( 'event', array( 'menu_icon' => '' ), array( 'slug' => 'events' ) );
-register_extended_post_type( 'collection' );
-register_extended_post_type( 'destination' );
-register_extended_post_type( 'interest' );
-register_extended_post_type( 'traveler' );
-register_extended_post_type( 'season' );
-register_extended_post_type( 'group type' );
-register_extended_post_type( 'press', array(), array( 'plural' => 'Press' ) );
-register_extended_post_type( 'resource' );
-register_extended_post_type( 'review' );
-register_extended_post_type( 'lead' );
-
-register_extended_post_type( 'leadership', array(), array( 'plural' => 'Leadership' ) );
 
 
 register_extended_taxonomy( 'filter', 'trip' );
