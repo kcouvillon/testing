@@ -92,8 +92,6 @@ class WS_Associated_Filter {
 		//$filters = wp_get_object_terms( $post_id, 'filter' );
 
 		$filters = get_terms( 'filter', array( 'hide_empty' => 0 ) );
-
-		var_dump( $filters );
 		?>
 		<div class="misc-pub-section">
 			<label for="ws-associated-filter"><strong>Associated Filter</strong></label>
