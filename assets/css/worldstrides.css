@@ -5,3 +5,131 @@
  * Copyright (c) 2015 WorldStrides
  * Licensed under the GPLv2+ license.
  */
+/**
+ * Override styling on Marketo forms
+ */
+.embedded-marketo-form .mktoForm {
+  width: 100% !important; }
+  .embedded-marketo-form .mktoForm, .embedded-marketo-form .mktoForm * {
+    box-sizing: border-box;
+    padding: 0px; }
+  .embedded-marketo-form .mktoForm:after {
+    content: '.';
+    clear: both;
+    visibility: hidden;
+    color: transparent; }
+  .embedded-marketo-form .mktoForm .mktoRequiredField .mktoAsterix,
+  .embedded-marketo-form .mktoForm .mktoAsterix,
+  .embedded-marketo-form .mktoForm .mktoClear,
+  .embedded-marketo-form .mktoForm .mktoGutter,
+  .embedded-marketo-form .mktoForm .mktoOffset,
+  .embedded-marketo-form .mktoForm .mktoFormRow.hidden {
+    display: none; }
+  .embedded-marketo-form .mktoForm .mktoFormCol,
+  .embedded-marketo-form .mktoForm .mktoFieldWrap {
+    width: 100%; }
+  .embedded-marketo-form .mktoForm .mktoFormCol {
+    margin: 0px !important; }
+  .embedded-marketo-form .mktoForm .mktoFormRow,
+  .embedded-marketo-form .mktoForm .mktoButtonRow {
+    clear: both;
+    width: 100%;
+    margin: 5px 0px; }
+  .embedded-marketo-form .mktoForm input[type="url"],
+  .embedded-marketo-form .mktoForm input[type="text"],
+  .embedded-marketo-form .mktoForm input[type="date"],
+  .embedded-marketo-form .mktoForm input[type="tel"],
+  .embedded-marketo-form .mktoForm input[type="email"],
+  .embedded-marketo-form .mktoForm input[type="number"],
+  .embedded-marketo-form .mktoForm textarea.mktoField,
+  .embedded-marketo-form .mktoForm select.mktoField {
+    height: auto;
+    line-height: normal;
+    font-size: inherit;
+    box-shadow: 0 0; }
+  .embedded-marketo-form .mktoForm .mktoFormRow .mktoRequiredField label.mktoLabel {
+    font-weight: normal; }
+  .embedded-marketo-form .mktoForm .mktoFormRow label,
+  .embedded-marketo-form .mktoForm .mktoFormRow input,
+  .embedded-marketo-form .mktoForm .mktoFormRow textarea,
+  .embedded-marketo-form .mktoForm .mktoFormRow select {
+    clear: both;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #969696;
+    font-weight: normal;
+    width: 100% !important;
+    margin: 0px 0px 5px 0px; }
+  .embedded-marketo-form .mktoForm .mktoFormRow label {
+    float: left;
+    text-transform: uppercase;
+    padding-left: 10px; }
+  .embedded-marketo-form .mktoForm .mktoFormRow input,
+  .embedded-marketo-form .mktoForm .mktoFormRow textarea,
+  .embedded-marketo-form .mktoForm .mktoFormRow select {
+    float: right;
+    min-height: 30px; }
+  .embedded-marketo-form .mktoForm .mktoFormRow input,
+  .embedded-marketo-form .mktoForm .mktoFormRow textarea {
+    padding: 6px 8px;
+    border: 1px solid #e1e1e1; }
+  .embedded-marketo-form .mktoForm .mktoFormRow input[type=checkbox] {
+    float: left;
+    clear: left;
+    width: 30px !important;
+    padding: 0px;
+    margin: 0px;
+    border: none; }
+  .embedded-marketo-form .mktoForm .mktoFormRow select {
+    padding: 6px 0px; }
+  .embedded-marketo-form .mktoForm .mktoFormRow textarea {
+    height: auto; }
+  .embedded-marketo-form .mktoForm .mktoFormRow.checkbox label {
+    width: 83% !important;
+    margin: 0px 0px 0px 36px;
+    text-transform: none; }
+  .embedded-marketo-form .mktoForm .mktoFormRow.checkbox input {
+    margin-top: -34px; }
+  .embedded-marketo-form .mktoForm .mktoButtonRow {
+    text-align: center;
+    margin-top: 24px; }
+    .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap {
+      margin: 0px !important; }
+      .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton {
+        font-size: 16px;
+        line-height: 16px;
+        color: #fff;
+        font-weight: bold;
+        background-color: #fa6423;
+        border-radius: 999px;
+        border: none;
+        padding: 8px 24px;
+        cursor: pointer; }
+        .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton:hover {
+          background-color: #8cbe3c; }
+
+@media only screen and (min-width: 768px) {
+  .embedded-marketo-form .mktoForm .mktoFormRow {
+    clear: none;
+    width: 210px;
+    margin-right: 10px; } }
+@media only screen and (min-width: 980px) {
+  .embedded-marketo-form .mktoForm .mktoFormRow {
+    clear: both;
+    width: 100%;
+    margin-right: 0px; }
+    .embedded-marketo-form .mktoForm .mktoFormRow label {
+      display: none;
+      padding-left: 0px; }
+    .embedded-marketo-form .mktoForm .mktoFormRow.select-dropdown label, .embedded-marketo-form .mktoForm .mktoFormRow.checkbox label {
+      display: block;
+      text-transform: none; } }
+@media only screen and (min-width: 1060px) {
+  .embedded-marketo-form .mktoForm .mktoFormRow {
+    clear: none;
+    width: 210px;
+    margin-right: 10px; }
+    .embedded-marketo-form .mktoForm .mktoFormRow.select-dropdown:nth-of-type(even) {
+      /* Intended as 'odd', but apparently there's a hidden one somewhere? So Weird. */
+      clear: left; } }

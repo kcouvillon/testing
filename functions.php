@@ -23,6 +23,7 @@ include WS_PATH . 'includes/library-extended-taxos.php';
 
 include WS_PATH . 'includes/class-associated-filter.php';
 include WS_PATH . 'includes/class-cpts.php';
+include WS_PATH . 'includes/class-marketo.php';
 include WS_PATH . 'includes/class-taxos.php';
 
 /**
