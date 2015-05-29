@@ -145,7 +145,9 @@ class WS_Associated_Filter {
 		if ( isset( $_POST['ws-associated-filter'] ) ) {
 			if (intval( $_POST['ws-associated-filter'] ) > 0 ) {
 				self::set_associated_filter_id( $post_id, $_POST['ws-associated-filter'] );
+				self::set_associated_filter_tax_id( $post_id, $_POST['ws-associated-filter'] );
 			} else {
+				self::delete_associated_filter_tax_id( $post_id );
 				self::delete_associated_filter_id( $post_id );
 			}
 		}
@@ -234,6 +236,18 @@ class WS_Associated_Filter {
 	}
 
 	/**
+	 * Set an option to associate the post id with the term (reverse)
+	 *
+	 * @param int $post_id The post ID to set associated filter for.
+	 * @param int $filter_id The filter ID to set as the associated filter on the post.
+	 *
+	 * @return mixed The result of update option.
+	 */
+	public static function set_associated_filter_tax_id( $post_id, $filter_id ) {
+		return update_option( 'filter_' . $filter_id . '_associated_post', $post_id );
+	}
+
+	/**
 	 * Deletes the associated filter relationship for the specified post.
 	 *
 	 * @param int $post_id The post ID to delete the associated filter relationship for.
@@ -242,6 +256,19 @@ class WS_Associated_Filter {
 	 */
 	public static function delete_associated_filter_id( $post_id ) {
 		return delete_post_meta( $post_id, 'ws-associated-filter-id' );
+	}
+
+	/**
+	 * Delete an option to associate the post id with the term (reverse)
+	 *
+	 * @param int $post_id The post ID to delete the associated filter relationship for.
+	 *
+	 * @return mixed The result of delete_post_meta
+	 */
+	public static function delete_associated_filter_tax_id( $post_id ) {
+		$term_id = get_post_meta( $post_id, 'ws-associated-filter-id', true );
+		return delete_option( 'filter_' . $term_id . '_associated_post' );
+
 	}
 }
 
