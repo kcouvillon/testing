@@ -1,11 +1,14 @@
 <?php
+
 /**
  * Declare the Custom Post Types
  *
  * These could be spun out into their own separate classes for each one.
- * Not really objected oriented, but trying to keep functions.php clean
+ * Not really objected oriented, but trying to keep functions.php clean.
+ *
+ * We're using a library to offer extended functionality for declaring
+ * post types, but they could be declared natively.
  */
-
 class WS_Custom_Post_Types {
 	/**
 	 * Instance of this class, if it has been created.
@@ -39,25 +42,77 @@ class WS_Custom_Post_Types {
 		add_action( 'init', array( $this, 'setup_post_types' ) );
 	}
 
+	/**
+	 * Register our custom post types
+	 */
 	public function setup_post_types() {
 		/**
-		 * Define trip custom post type
+		 * Define Itinerary custom post type
 		 */
-		register_extended_post_type( 'trip', array( 'menu_icon' => 'dashicons-location-alt' ), array( 'slug' => 'trips' ) );
+		register_extended_post_type( 'itinerary',
+			array(
+				'menu_icon' => 'dashicons-location-alt',
+				'slug'      => 'trips'
+			),
+			array(
+				'plural' => 'Itineraries'
+			)
+		);
 
-		register_extended_post_type( 'event', array( 'menu_icon' => '' ), array( 'slug' => 'events' ) );
-		register_extended_post_type( 'collection' );
-		register_extended_post_type( 'destination' );
+		/**
+		 * Define Event custom post type
+		 */
+		register_extended_post_type( 'event',
+			array(
+				'menu_icon' => 'dashicons-tickets-alt'
+			),
+			array(
+				'slug' => 'events'
+			)
+		);
+
+		/**
+		 * Define Collections post type
+		 */
+		register_extended_post_type( 'collection',
+			array(
+				'menu_icon' => 'dashicons-format-gallery'
+			)
+		);
+
+		/**
+		 * Define Destinations post type
+		 */
+		register_extended_post_type( 'destination',
+			array(
+				'menu_icon' => 'dashicons-location'
+			)
+		);
+
+
 		register_extended_post_type( 'interest' );
 		register_extended_post_type( 'traveler' );
-		register_extended_post_type( 'season' );
-		register_extended_post_type( 'group type' );
-		register_extended_post_type( 'press', array(), array( 'plural' => 'Press' ) );
 		register_extended_post_type( 'resource' );
+
+
 		register_extended_post_type( 'review' );
 		register_extended_post_type( 'campaign' );
 
-		register_extended_post_type( 'leadership', array(), array( 'plural' => 'Leadership' ) );
+		register_extended_post_type( 'press',
+			array(
+				'menu_icon' => ''
+			),
+			array(
+				'plural' => 'Press'
+			)
+		);
+
+
+		register_extended_post_type( 'bio',
+			array(
+				'menu_icon' => 'dashicons-id'
+			)
+		);
 	}
 }
 
