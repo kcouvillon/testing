@@ -63,15 +63,22 @@ class WS_Associated_Filter {
 		return $protected;
 	}
 
-	public function supports_filters() {
+	public function supports_associated_filter() {
 		global $pagenow;
 		$support = false;
 
+		$supported_post_types = array(
+			'collection',
+			'destination',
+			'interest',
+			'traveler'
+		);
+
 		if ( is_singular() || ( is_admin() && 'post.php' == $pagenow ) ) {
 			$post_id = get_the_ID();
-			$taxonomies = get_object_taxonomies( get_post_type( $post_id ) );
+			$post_type = get_post_type( $post_id );
 
-			if ( in_array( 'filter', $taxonomies ) ) {
+			if ( in_array( $post_type, $supported_post_types ) ) {
 				$support = true;
 			}
 		}
@@ -83,7 +90,7 @@ class WS_Associated_Filter {
 	 * Adds a dropdown to the submitbox to select an associated filter
 	 */
 	public function submitbox() {
-		if ( ! $this->supports_filters() ) {
+		if ( ! $this->supports_associated_filter() ) {
 			return;
 		}
 
