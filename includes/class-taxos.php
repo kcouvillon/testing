@@ -40,7 +40,17 @@ class WS_Custom_Taxonomies {
 	}
 
 	public function setup_taxonomies() {
-		register_extended_taxonomy( 'filter', 'trip' );
+		register_extended_taxonomy( 'filter',
+			array(
+				'post',
+				'itinerary',
+				'collection',
+				'destination',
+				'interest',
+				'traveler',
+				'resource'
+			)
+		);
 	}
 }
 
