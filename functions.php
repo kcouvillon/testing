@@ -17,6 +17,10 @@ define( 'WS_VERSION', '0.1.0' );
 define( 'WS_PATH', dirname( __FILE__ ) . '/' );
 define( 'WS_IMAGE_URL', get_template_directory_uri() . '/assets/images/' );
 
+// Disable file edit/mods from within WordPress
+define( 'DISALLOW_FILE_EDIT', true );
+define( 'DISALLOW_FILE_MODS', true );
+
 // Includes
 include WS_PATH . 'includes/library-extended-cpts.php';
 include WS_PATH . 'includes/library-extended-taxos.php';
