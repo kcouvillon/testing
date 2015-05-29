@@ -1,4 +1,4 @@
-.main-navigation {
+.main-navigation, .quick-access {
 	clear: both;
 	display: block;
 	float: left;
@@ -44,8 +44,9 @@
 		}
 	}
 	li {
-		float: left;
+		float: right;
 		position: relative;
+		padding-left: 10px;
 
 		&:hover > a {
 		}
