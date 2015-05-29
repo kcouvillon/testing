@@ -51,18 +51,18 @@ class WS_Marketo {
 			'id' => '',
 		), $attributes, 'marketo' );
 
-		$marketo_id = '785-UHP-775'; // this id should come from a settings page
+		$marketo_id = '593-ASZ-675'; // this id should come from a settings page
 
-		// $form_id = $atttributes['id'];
-		$form_id = (int) '1057'; // marketo sample form
+		$form_id = $attributes['id'];
+		// $form_id = (int) '1679'; // marketo sample form
 
 		ob_start() ?>
 			<div class="embedded-marketo-form">
-				<script src="//app-sjst.marketo.com/js/forms2/js/forms2.js"></script>
+				<script src="//app-sjg.marketo.com/js/forms2/js/forms2.min.js"></script>
 				<form id="mktoForm_<?php echo esc_attr( $form_id ); ?>"></form>
 
 				<script>
-					MktoForms2.loadForm( "//app-sjst.marketo.com", "<?php echo esc_js( $marketo_id ); ?>", <?php echo esc_js( $form_id ); ?> );
+					MktoForms2.loadForm( "//app-sjg.marketo.com", "<?php echo esc_js( $marketo_id ); ?>", <?php echo esc_js( $form_id ); ?> );
 				</script>
 			</div>
 
