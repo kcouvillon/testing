@@ -49,8 +49,9 @@ function ws_setup() {
 	) );
 
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'obsub' ),
-		'secondary' => __( 'Quick Access Menu', 'obsub' ),
+		'primary' => __( 'Primary Menu', 'worldstrides' ),
+		'secondary' => __( 'Quick Access Menu', 'worldstrides' ),
+		'footer' => __( 'Footer Menu', 'worldstrides' ),
 	) );
 }
 
