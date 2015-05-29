@@ -43,6 +43,11 @@ function ws_setup() {
 		'gallery',
 		'caption',
 	) );
+
+	register_nav_menus( array(
+		'primary' => __( 'Primary Menu', 'obsub' ),
+		'secondary' => __( 'Quick Access Menu', 'obsub' ),
+	) );
 }
 
 add_action( 'after_setup_theme', 'ws_setup' );
