@@ -1,0 +1,30 @@
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+	font-family: $font_heading;
+	color: $color_text_heading;
+}
+
+h1 {
+	@include h1;
+	margin-bottom: 0.5em;
+}
+h2 {
+	@include h2;
+	margin-bottom: 0.6em;
+}
+h3 {
+	@include h3;
+	margin-bottom: 0.8em;
+}
+h4 {
+	@include h4;
+	margin-bottom: 1em;
+}
+h5 {
+	@include h5;
+	margin-bottom: 1em;
+}
+h6 {
+	@include h6;
+	margin-bottom: 1em;
+}

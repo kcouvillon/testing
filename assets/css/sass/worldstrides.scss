@@ -6,4 +6,9 @@
  * Licensed under the GPLv2+ license.
  */
 
-@import "marketo.scss";
+@import "bourbon/bourbon";
+
+@import "document";
+@import "header";
+@import "content";
+@import "footer";

@@ -1,0 +1,50 @@
+// Display
+// ======================================= /
+.show { display: block; }
+.hide { display: none; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+
+// Layout
+// ======================================= /
+.width25 { width: 25%; }
+.width33 { width: 33%; }
+.width50 { width: 50%; }
+.width66 { width: 66%; }
+.width75 { width: 75%; }
+
+.center-block {
+  @include container;
+  @include clearfix;
+}
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.pull-right { float: right; }
+.pull-left { float: left; }
+
+.clearfix {
+  @include clearfix;
+}
+
+// Lists
+// ======================================= /
+.list-unstyled {
+  padding-left: 0;
+  margin-left: 0;
+  list-style: none;
+}
+
+// Style
+// ======================================= /
+a.no-decoration { text-decoration: none; }

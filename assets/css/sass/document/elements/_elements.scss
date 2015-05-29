@@ -1,0 +1,30 @@
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+hr {
+	background-color: $color_background_hr;
+	border: 0;
+	height: 2px;
+	margin: 2em 0;
+  width: 100%;
+}
+
+::-moz-selection { /* Code for Firefox */
+    // color: $color_selection_text;
+    background: $color_background_selection;
+}
+::selection {
+    // color: $color_selection_text;
+    background: $color_background_selection;
+}
+
+@import "lists";
+
+@import "tables";
