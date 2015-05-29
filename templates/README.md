@@ -1,3 +1,3 @@
 # Templates
 
-Page templates should be hidden away in this `/partials` directory.
+Page templates should be hidden away in this `/templates` directory.
