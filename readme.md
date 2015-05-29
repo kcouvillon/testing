@@ -8,6 +8,7 @@ Details of the production setup.
 
 * [WP-Help](https://wordpress.org/plugins/wp-help/)
 * [WordPress SEO by Yoast](https://wordpress.org/plugins/wordpress-seo/)
+* [Safe Redirect Manager](https://wordpress.org/plugins/safe-redirect-manager/screenshots/)
 
 ## Development
 
@@ -18,6 +19,7 @@ Recommendations for local development and the process in general.
 * [Developer](https://wordpress.org/plugins/developer/)
 * [Debug Bar](https://wordpress.org/plugins/debug-bar/)
 * [Debug Bar Extender](https://wordpress.org/plugins/debug-bar-extender/)
+* [WordPress Query Monitor](https://wordpress.org/plugins/query-monitor/)
 
 ### Version Control
 
