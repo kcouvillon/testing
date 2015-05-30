@@ -916,6 +916,9 @@ a.no-decoration {
   margin-right: auto;
   padding: 0 40px; }
 
+.site-header {
+  border: 1px dotted #cccccc; }
+
 .main-navigation, .quick-access {
   clear: both;
   display: block;
@@ -1033,3 +1036,6 @@ a.no-decoration {
 /* Search widget. */
 .widget_search .search-submit {
   display: none; }
+
+.site-footer {
+  border: 1px dotted #cccccc; }
