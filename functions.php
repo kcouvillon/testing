@@ -54,6 +54,8 @@ function ws_setup() {
 		'secondary' => __( 'Quick Access Menu', 'worldstrides' ),
 		'footer' => __( 'Footer Menu', 'worldstrides' ),
 	) );
+
+	add_post_type_support( 'page', 'excerpt' );
 }
 
 add_action( 'after_setup_theme', 'ws_setup' );
