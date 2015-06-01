@@ -51,6 +51,19 @@ class WS_Custom_Taxonomies {
 				'resource'
 			)
 		);
+
+		register_extended_taxonomy( '_collection',
+			array(
+				'itinerary',
+				'event'
+			),
+			array(
+				'rewrite'       => false,
+				'show_in_menu'  => false,
+				'show_tagcloud' => false,
+				// 'hierarchical'  => false, // shouldn't have hierarchy, but prefer list to typing 'tags'
+			)
+		);
 	}
 }
 
