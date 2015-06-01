@@ -18,7 +18,14 @@ get_header(); ?>
 		<?php
 			// @todo limit this to just leadership
 			$leadership_bios = new WP_Query( array(
-				'post_type' => 'bio'
+				'post_type' => 'bio',
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'role',
+						'field'    => 'slug',
+						'terms'    => 'leadership',
+					),
+				),
 			));
 		?>
 
@@ -29,6 +36,11 @@ get_header(); ?>
 
 					<div class="bio">
 						<?php // @todo get featured image ?>
+						<header>
+							<h2><?php the_title(); ?></h2>
+							<h3>Position</h3>
+						</header>
+
 						<?php the_content(); ?>
 					</div>
 
