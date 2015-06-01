@@ -90,27 +90,49 @@ class WS_Custom_Post_Types {
 		);
 
 
-		register_extended_post_type( 'interest' );
-		register_extended_post_type( 'traveler' );
-		register_extended_post_type( 'resource' );
+		register_extended_post_type( 'interest',
+			array(
+				'menu_icon' => 'dashicons-awards'
+			)
+		);
 
+		register_extended_post_type( 'traveler',
+			array(
+				'menu_icon' => 'dashicons-universal-access'
+			)
+		);
 
-		register_extended_post_type( 'review' );
-		register_extended_post_type( 'campaign' );
+		register_extended_post_type( 'resource',
+			array(
+				'menu_icon' => 'dashicons-portfolio'
+			)
+		);
 
 		register_extended_post_type( 'press',
 			array(
-				'menu_icon' => ''
+				'menu_icon' => 'dashicons-media-document'
 			),
 			array(
 				'plural' => 'Press'
 			)
 		);
 
-
 		register_extended_post_type( 'bio',
 			array(
 				'menu_icon' => 'dashicons-id'
+			)
+		);
+
+
+		register_extended_post_type( 'review',
+			array(
+				'menu_icon' => 'dashicons-testimonial'
+			)
+		);
+
+		register_extended_post_type( 'campaign',
+			array(
+				'menu_icon' => 'dashicons-feedback'
 			)
 		);
 	}
