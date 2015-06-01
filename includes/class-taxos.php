@@ -64,6 +64,17 @@ class WS_Custom_Taxonomies {
 				// 'hierarchical'  => false, // shouldn't have hierarchy, but prefer list to typing 'tags'
 			)
 		);
+
+		register_extended_taxonomy( 'role',
+			array(
+				'bio'
+			),
+			array(
+				'rewrite'       => false,
+				'show_in_menu'  => false,
+				'show_tagcloud' => false,
+			)
+		);
 	}
 }
 
