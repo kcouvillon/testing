@@ -71,6 +71,13 @@ function ws_scripts_styles() {
 
 add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
 
+function ws_admin_scripts_styles() {
+	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
+
+	wp_enqueue_style( 'ws-admin', get_template_directory_uri() . "/assets/css/admin{$postfix}.css", array(), WS_VERSION );
+}
+add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
+
 /**
  * Remove cruft from header
  *
