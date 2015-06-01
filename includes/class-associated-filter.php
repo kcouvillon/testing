@@ -49,6 +49,7 @@ class WS_Associated_Filter {
 		add_action( 'post_submitbox_misc_actions', array( $this, 'submitbox' ) );
 		add_action( 'save_post', array( $this, 'save_post' ) );
 		add_action( 'is_protected_meta', array( $this, 'is_protected_meta' ), 10, 2 );
+		add_action( 'filter_edit_form_fields', array( $this, 'filter_associated_post_meta_field' ) );
 	}
 
 	public function is_protected_meta( $protected, $meta_key ) {
@@ -224,6 +225,17 @@ class WS_Associated_Filter {
 	}
 
 	/**
+	 * Returns the taxonomy option for the associated filter post.
+	 *
+	 * @param int $term_id The term id to get the option for.
+	 *
+	 * @return int option for the associated filter post id.
+	 */
+	public static function get_associated_filter_tax_id( $term_id ) {
+		return (int) get_option( 'filter_' . $term_id . '_associated_post' );
+	}
+
+	/**
 	 * Sets the associated filter id for a particular post.
 	 *
 	 * @param int $post_id The post ID to set associated filter for.
@@ -269,6 +281,32 @@ class WS_Associated_Filter {
 		$term_id = get_post_meta( $post_id, 'ws-associated-filter-id', true );
 		return delete_option( 'filter_' . $term_id . '_associated_post' );
 
+	}
+
+	/**
+	 * Displays a link to the post associated with the filter
+	 *
+	 * @param $term object the current term we're looking at
+	 */
+	public function filter_associated_post_meta_field( $term ) {
+		$filter_post = get_post( $this->get_associated_filter_tax_id( $term->term_id ) );
+
+		if ( ! $filter_post ) {
+			return;
+		}
+		?>
+
+		<tr class="form-field">
+			<th scope="row" valign="top"><label for="term_meta">Associated <?php echo ucwords( $filter_post->post_type ); ?></label></th>
+			<td>
+				<p>
+					<a href="<?php echo admin_url() . 'post.php?post=' . $filter_post->ID . '&amp;action=edit'; ?>">
+						<?php echo esc_html( $filter_post->post_title ); ?>
+					</a>
+				</p>
+			</td>
+		</tr>
+	<?php
 	}
 }
 
