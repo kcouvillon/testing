@@ -66,7 +66,8 @@ module.exports = function( grunt ) {
 		sass:   {
 			all: {
 				files: {
-					'assets/css/worldstrides.css': 'assets/css/sass/worldstrides.scss'
+					'assets/css/worldstrides.css': 'assets/css/sass/worldstrides.scss',
+					'assets/css/admin.css': 'assets/css/sass/admin.scss'
 				}
 			}
 		},
@@ -83,8 +84,8 @@ module.exports = function( grunt ) {
 				expand: true,
 				
 				cwd: 'assets/css/',
-				src: ['worldstrides.css'],
-				
+				src: ['worldstrides.css', 'admin.css'],
+
 				dest: 'assets/css/',
 				ext: '.min.css'
 			}
