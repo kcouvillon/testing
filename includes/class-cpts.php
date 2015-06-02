@@ -136,6 +136,12 @@ class WS_Custom_Post_Types {
 				'menu_icon' => 'dashicons-feedback'
 			)
 		);
+
+		register_extended_post_type( 'blocks',
+			array(
+				'menu_icon' => 'dashicons-tagcloud'
+			)
+		);
 	}
 }
 
