@@ -119,7 +119,8 @@ class WS_Custom_Post_Types {
 
 		register_extended_post_type( 'bio',
 			array(
-				'menu_icon' => 'dashicons-id'
+				'menu_icon' => 'dashicons-id',
+				'public' => false
 			)
 		);
 
