@@ -35,7 +35,13 @@ get_header(); ?>
 				<?php while ( $leadership_bios->have_posts() ) : $leadership_bios->the_post(); ?>
 
 					<div class="bio">
-						<?php // @todo get featured image ?>
+						<?php if ( has_post_thumbnail() ) : ?>
+							<div class="headshot">
+								<?php // @todo replace this with specific image size when ready ?>
+								<?php the_post_thumbnail( 'medium' ); ?>
+							</div>
+						<?php endif; ?>
+
 						<header>
 							<h2><?php the_title(); ?></h2>
 							<h3>Position</h3>
