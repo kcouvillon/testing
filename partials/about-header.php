@@ -15,5 +15,5 @@ $about_page = get_page_by_path( 'about' );
 </header>
 
 <nav class="about-menu">
-	<?php // @todo create about menu ?>
+	<?php wp_nav_menu( array( 'theme_location' => 'about', 'menu_id' => 'about-menu' ) ); ?>
 </nav>

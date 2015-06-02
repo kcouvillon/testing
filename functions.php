@@ -53,6 +53,7 @@ function ws_setup() {
 		'primary' => __( 'Primary Menu', 'worldstrides' ),
 		'secondary' => __( 'Quick Access Menu', 'worldstrides' ),
 		'footer' => __( 'Footer Menu', 'worldstrides' ),
+		'about' => __( 'About Menu', 'worldstrides' ),
 	) );
 
 	add_post_type_support( 'page', 'excerpt' );
