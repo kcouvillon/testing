@@ -62,6 +62,7 @@ class WS_Custom_Taxonomies {
 				'show_in_menu'  => false,
 				'show_tagcloud' => false,
 				// 'hierarchical'  => false, // shouldn't have hierarchy, but prefer list to typing 'tags'
+				'public'        => false
 			)
 		);
 
@@ -73,6 +74,7 @@ class WS_Custom_Taxonomies {
 				'rewrite'       => false,
 				'show_in_menu'  => false,
 				'show_tagcloud' => false,
+				'public'        => false
 			)
 		);
 
@@ -84,7 +86,8 @@ class WS_Custom_Taxonomies {
 				'rewrite'       => false,
 				'show_in_menu'  => false,
 				'show_tagcloud' => false,
-				'meta_box'      => 'radio'
+				'meta_box'      => 'radio',
+				'public' => false
 			)
 		);
 	}
