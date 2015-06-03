@@ -75,6 +75,17 @@ class WS_Custom_Taxonomies {
 				'show_tagcloud' => false,
 			)
 		);
+
+		register_extended_taxonomy( 'blog-type',
+			array(
+				'post'
+			),
+			array(
+				'rewrite'       => false,
+				'show_in_menu'  => false,
+				'show_tagcloud' => false,
+			)
+		);
 	}
 }
 
