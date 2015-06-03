@@ -121,14 +121,8 @@ class WS_Custom_Post_Types {
 		register_extended_post_type( 'bio',
 			array(
 				'menu_icon' => 'dashicons-id',
-				'public' => false
-			)
-		);
-
-
-		register_extended_post_type( 'review',
-			array(
-				'menu_icon' => 'dashicons-testimonial'
+				'exclude_from_search'    => false,
+				'publicly_queryable'     => false
 			)
 		);
 
@@ -138,9 +132,18 @@ class WS_Custom_Post_Types {
 			)
 		);
 
+		register_extended_post_type( 'review',
+			array(
+				'menu_icon' => 'dashicons-testimonial'
+			)
+		);
+
 		register_extended_post_type( 'block',
 			array(
-				'menu_icon' => 'dashicons-tagcloud'
+				'menu_icon' => 'dashicons-tagcloud',
+				'exclude_from_search'    => false,
+				'publicly_queryable'   => false,
+				'show_in_nav_menus'       => false
 			)
 		);
 	}
