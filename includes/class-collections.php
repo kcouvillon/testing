@@ -66,7 +66,7 @@ class WS_Collections {
 
 		// If the collection already exists, don't create a term.
 		$term = get_term_by( 'name', $collection->post_title, '_collection' );
-		if ( false === $term ) {
+		if ( false === $term && 'Auto Draft' !== $collection->post_title ) {
 			// Create the term
 			wp_insert_term( $collection->post_title, '_collection' );
 		}
