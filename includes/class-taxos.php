@@ -84,6 +84,7 @@ class WS_Custom_Taxonomies {
 				'rewrite'       => false,
 				'show_in_menu'  => false,
 				'show_tagcloud' => false,
+				'meta_box'      => 'radio'
 			)
 		);
 	}
