@@ -9,7 +9,7 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
 
 		<H3>This is the press archive/home page</H3>
-		
+
 		<?php get_template_part( 'partials/about', 'header' ); ?>
 
 		<?php if ( have_posts() ) : ?>

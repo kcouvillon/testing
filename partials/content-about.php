@@ -8,7 +8,7 @@
 	<?php if ( ! is_page( 'about') ) : ?>
 	<header class="entry-header">
 		<h1 class="entry-title">
-			<a href="<?php esc_url( get_permalink() ); ?>" rel="bookmark">
+			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
 		</h1>
