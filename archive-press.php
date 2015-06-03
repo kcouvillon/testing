@@ -28,6 +28,8 @@ get_header(); ?>
 
 		<?php endif; ?>
 
+		<?php get_template_part( 'partials/about', 'sidebar' ); ?>
+
 	</main>
 </div>
 

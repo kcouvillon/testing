@@ -14,6 +14,9 @@ get_header(); ?>
 		<?php the_post(); ?>
 		<?php get_template_part( 'partials/content', 'about' ) ?>
 
+
+		<?php get_template_part( 'partials/about', 'sidebar' ) ?>
+
 	</main>
 </div>
 
