@@ -29,6 +29,7 @@ include WS_PATH . 'includes/class-associated-filter.php';
 include WS_PATH . 'includes/class-collections.php';
 include WS_PATH . 'includes/class-cpts.php';
 include WS_PATH . 'includes/class-marketo.php';
+include WS_PATH . 'includes/class-shortcodes.php';
 include WS_PATH . 'includes/class-taxos.php';
 
 /**
@@ -95,3 +96,8 @@ remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 remove_action( 'wp_head', 'wp_generator' );
+
+// do autop after shortcode, was necessary for timeline shortcode
+remove_filter( 'the_content', 'wpautop' );
+add_filter( 'the_content', 'wpautop' , 99);
+add_filter( 'the_content', 'shortcode_unautop',100 );
