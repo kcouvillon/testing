@@ -138,7 +138,7 @@ class WS_Custom_Post_Types {
 			)
 		);
 
-		register_extended_post_type( 'blocks',
+		register_extended_post_type( 'block',
 			array(
 				'menu_icon' => 'dashicons-tagcloud'
 			)
