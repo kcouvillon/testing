@@ -36,6 +36,20 @@ class WS_Helpers {
 	protected function _init() {
 		// add_actions and add_filters here
 	}
+
+	/**
+	 * Find the a blog post's type
+	 *
+	 * @parameter $post_id int post to retrieve blog type
+	 *
+	 * @return html content wrapped in a unordered list
+	 */
+	public static function blog_type( $post_id ) {
+		$terms = get_the_terms( $post_id, 'blog-type' );
+		$term_slug = $terms[0]->slug;
+
+		return $term_slug;
+	}
 }
 
 WS_Helpers::instance();

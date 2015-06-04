@@ -17,12 +17,11 @@
 				<?php if ( $post->post_type == 'post' ) : ?>
 
 					<?php
-						$terms = get_the_terms( $post->ID, 'blog-type' );
-						$term_slug = $terms[0]->slug;
+						$blog_type = WS_Helpers::blog_type( $post->ID );
 
-						if ( $term_slug == 'travelogue' ) {
+						if ( $blog_type == 'travelogue' ) {
 							get_template_part( 'partials/content', 'blog-travelogue' );
-						} elseif( $term_slug == 'postcard' ) {
+						} elseif( $blog_type == 'postcard' ) {
 							get_template_part( 'partials/content', 'blog-postcard' );
 						} else {
 							get_template_part( 'partials/content', 'blog' );
