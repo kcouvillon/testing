@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Declare the Custom Post Types
  *

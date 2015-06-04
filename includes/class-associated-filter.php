@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Provides associated filter functionality. Allows a post to be associated with a term in the filter taxonomy to allow for faster querying.
  *

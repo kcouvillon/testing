@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Helper functions for collections.
  *
