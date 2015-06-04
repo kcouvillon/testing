@@ -137,6 +137,18 @@ class WS_Custom_Post_Types {
 			)
 		);
 
+		register_extended_post_type( 'why-ws',
+			array(
+				'menu_icon' => 'dashicons-format-image',
+				'exclude_from_search'    => false,
+				'publicly_queryable'   => false,
+				'show_in_nav_menus'       => false
+			),
+			array(
+				'plural' => 'Why WS'
+			)
+		);
+
 		register_extended_post_type( 'block',
 			array(
 				'menu_icon' => 'dashicons-tagcloud',
