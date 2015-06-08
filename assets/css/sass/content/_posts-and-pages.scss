@@ -22,10 +22,13 @@
 
 .entry-content,
 .entry-summary {
-	margin: 0 0 1.5em;
+	// margin: 0 0 1.5em;
 }
 
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+@import "posts/post";
+@import "pages/page";

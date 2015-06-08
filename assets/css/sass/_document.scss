@@ -1,19 +1,15 @@
-@import "document/variables";
+// @import "document/normalize";
 
+@import "document/variables";
 @import "document/mixins";
 
-@import "document/normalize";
+@import "document/bootstrap/bootstrap";
 
 @import "document/elements/elements";
-
 @import "document/forms/forms";
-
 @import "document/media/media";
-
 @import "document/modules/modules";
-
 @import "document/navigation/navigation";
-
 @import "document/typography/typography";
 
 @import "document/helpers";
@@ -27,5 +23,10 @@
 }
 
 #page {
-  @include container;
+  // @include container;
+}
+
+.site-footer {
+	clear: both;
+	width: 100%;
 }

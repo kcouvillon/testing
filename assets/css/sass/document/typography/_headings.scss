@@ -1,33 +1,30 @@
-h1, h2, h3, h4, h5, h6 {
-	clear: both;
-	font-family: $font_heading;
-	color: $color_text_heading;
-}
-
 h1 {
-	@include h1;
-	margin: 0.5em 0;
-	font-weight: 300;
+	// @include h1;
+	// margin: 0.5em 0;
+	// font-weight: 300;
 }
 h2 {
-	@include h2;
-	margin: 0.6em 0;
-	font-weight: 300;
+	// @include h2;
+	// margin: 0.6em 0;
+	font-weight: 500;
 }
 h3 {
-	@include h3;
-	margin: 0.8em 0;
-	font-weight: 300;
+	// @include h3;
+	// margin: 0.8em 0;
+	font-weight: 700;
 }
 h4 {
-	@include h4;
-	margin: 1em 0;
+	// @include h4;
+	// margin: 1em 0;
+	font-weight: 700;
 }
 h5 {
-	@include h5;
-	margin: 1em 0;
+	// @include h5;
+	// margin: 1em 0;
+	font-weight: 700;
 }
 h6 {
-	@include h6;
-	margin: 1em 0;
+	// @include h6;
+	// margin: 1em 0;
+	font-weight: 700;
 }

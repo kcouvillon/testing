@@ -8,22 +8,22 @@ html {
 	box-sizing: border-box;
 }
 
-hr {
-	background-color: $color_background_hr;
-	border: 0;
-	height: 2px;
-	margin: 2em 0;
-  width: 100%;
-}
+// hr {
+// 	background-color: $color_background_hr;
+// 	border: 0;
+// 	height: 2px;
+// 	margin: 2em 0;
+//   width: 100%;
+// }
 
-::-moz-selection { /* Code for Firefox */
-    // color: $color_selection_text;
-    background: $color_background_selection;
-}
-::selection {
-    // color: $color_selection_text;
-    background: $color_background_selection;
-}
+// ::-moz-selection { /* Code for Firefox */
+//     // color: $color_selection_text;
+//     background: $color_background_selection;
+// }
+// ::selection {
+//     // color: $color_selection_text;
+//     background: $color_background_selection;
+// }
 
 @import "lists";
 

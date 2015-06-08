@@ -1,14 +1,21 @@
-// Optional Layouts
-// ============================================ /
-  //@import "content/layouts/content-sidebar";
-  //@import "content/layouts/sidebar-content";
-  @import "content/layouts/stacked";
+.content-area {
+	margin: 0;
+	width: 100%;
+}
 
+.site-main {
+	margin: 0;
+}
 
-@import "content/primary/posts-and-pages";
+.site-content .widget-area {
+	overflow: hidden;
+	width: 100%;
+}
 
-@import "content/primary/asides";
+@import "content/posts-and-pages";
 
-@import "content/primary/comments";
+@import "content/asides";
 
-@import "content/secondary/widgets";
+@import "content/comments";
+
+@import "content/widgets";

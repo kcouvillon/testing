@@ -2,69 +2,69 @@ p {
 	margin: 0 0 1.5em;
 }
 
-b, strong, .strong, .weight-700 {
-	font-weight: 700;
-}
-.weight-500 {
-	font-weight: 500;
-}
-.weight-300 {
-	font-weight: 300;
-}
+// b, strong, .strong, .weight-700 {
+// 	font-weight: 700;
+// }
+// .weight-500 {
+// 	font-weight: 500;
+// }
+// .weight-300 {
+// 	font-weight: 300;
+// }
 
-dfn, cite, em, i {
-	font-style: italic;
-}
+// dfn, cite, em, i {
+// 	font-style: italic;
+// }
 
-blockquote, q {
-	margin: 1.5em;
-	color: $color_blockquote;
-	font-size: $h2_size;
-	line-height: $h2_line_height;
+// blockquote, q {
+// 	margin: 1.5em;
+// 	color: $color_blockquote;
+// 	font-size: $h2_size;
+// 	line-height: $h2_line_height;
 
-	p {
-		margin: 0;
-	}
-}
+// 	p {
+// 		margin: 0;
+// 	}
+// }
 
-address {
-	@extend p;
-}
+// address {
+// 	@extend p;
+// }
 
-pre {
-	background: $color_background_pre;
-	font-family: $font_pre;
-	@include font-size(1);
-	line-height: $font_line_height_pre;
-	margin-bottom: 1.6em;
-	max-width: 100%;
-	overflow: auto;
-	padding: 1.6em;
-}
+// pre {
+// 	background: $color_background_pre;
+// 	font-family: $font_pre;
+// 	@include font-size(1);
+// 	line-height: $font_line_height_pre;
+// 	margin-bottom: 1.6em;
+// 	max-width: 100%;
+// 	overflow: auto;
+// 	padding: 1.6em;
+// }
 
-code, kbd, tt, var {
-	font-family: $font_code;
-	font-weight: 900;
-	font-size: 0.9em;
-	color: $color_code;
-}
+// code, kbd, tt, var {
+// 	font-family: $font_code;
+// 	font-weight: 900;
+// 	font-size: 0.9em;
+// 	color: $color_code;
+// }
 
-abbr, acronym {
-	border-bottom: 1px dotted #666;
-	cursor: help;
-}
+// abbr, acronym {
+// 	border-bottom: 1px dotted #666;
+// 	cursor: help;
+// }
 
-mark, ins {
-	background: #fff9c0;
-	text-decoration: none;
-}
+// mark, ins {
+// 	background: #fff9c0;
+// 	text-decoration: none;
+// }
 
-small,
-.small {
-	font-size: em(16);
-}
+// small,
+// .small {
+// 	font-size: em(16);
+// }
 
-big,
-.big {
-	font-size: em(24);
-}
+// big,
+// .big {
+// 	font-size: em(24);
+// }
