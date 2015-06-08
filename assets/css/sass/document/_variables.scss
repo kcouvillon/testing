@@ -15,52 +15,48 @@ $screen-lg-max: 1200px;
 
 // Colors
 // ============================================ /
-$color_text_main: #404040;
-$color_text_heading: #202020;
-$color_text_input: #666;
-$color_text_input_focus: #111;
+$color_text_main: #1a1a1a;
+$color_text_heading: #1a1a1a;
+$color_text_input: #1a1a1a;
+$color_text_input_hover: #1a1a1a;
+$color_text_input_focus: #1a1a1a;
 
-$color_link: #0071BC;
+$color_link: #fb901d;
 $color_link_visited: tint($color_link, 10%);
 $color_link_hover: darken($color_link, 10%);
 
-$color_code: #0071BC;
+$color_code: #555;
 
-$color_blockquote: #222;
+$color_blockquote: #1a1a1a;
 
 $color_background_body: #fff;
 $color_background_hr: #ccc;
-$color_background_button: #e6e6e6;
+$color_background_button: #fb901d;
 $color_background_pre: #eee;
 
-$color_border_button: #ccc #ccc #bbb;
-$color_border_button_hover: #ccc #bbb #aaa;
-$color_border_button_focus: #aaa #bbb #bbb;
+$color_border_button: #fb901d #fb901d #fb901d;
+$color_border_button_hover: #fb901d #fb901d #fb901d;
+$color_border_button_focus: #fb901d #fb901d #fb901d;
 
-$color_background_selection: lightblue;
+$color_background_selection: #bde5ff;
 
 $color_border_input: #ccc;
 $color_border_input_hover: #ccc;
 $color_border_input_focus: #ccc;
 
-$color_text_input: #404040;
-$color_text_input_hover: #111;
-$color_text_input_focus: #111;
-
-
 // Typography
 // ============================================ /
-$font_main: "Arnhem Pro", "Georgia", sans-serif;
-$font_heading: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$font_main: "Corpid C1s SCd", "Helvetica", "Arial", sans-serif;
+$font_heading: "Corpid C1s SCd", "Helvetica", "Arial", sans-serif;
 $font_code: "Menlo", monospace;
 $font_pre: "Menlo", monospace;
 $font_line_height_body: 1.5;
 $font_line_height_pre: 1.6;
 
-$h1_size: 3.5em;  $h1_line_height: 1.1em;
-$h2_size: 2.5em;  $h2_line_height: 1.2em;
-$h3_size: 1.5em;  $h3_line_height: 1.3em;
-$h4_size: 1.2em;  $h4_line_height: 1.4em;
+$h1_size: em(75);  $h1_line_height: 1.1em;
+$h2_size: em(30);  $h2_line_height: 1.2em;
+$h3_size: em(26);  $h3_line_height: 1.3em;
+$h4_size: em(22);  $h4_line_height: 1.4em;
 $h5_size: 1em;  $h5_line_height: 1.4em;
 $h6_size: 1em;  $h6_line_height: 1.4em;
 
