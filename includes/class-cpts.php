@@ -103,7 +103,8 @@ class WS_Custom_Post_Types {
 
 		register_extended_post_type( 'resource',
 			array(
-				'menu_icon' => 'dashicons-portfolio'
+				'menu_icon' => 'dashicons-portfolio',
+				'rewrite'   => array( 'slug' => 'resources/question' )
 			)
 		);
 
