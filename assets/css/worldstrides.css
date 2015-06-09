@@ -5927,6 +5927,9 @@ p {
 a.no-decoration {
   text-decoration: none; }
 
+.circular {
+  border-radius: 50%; }
+
 .entry-content:before, .entry-content:after,
 .comment-content:before,
 .comment-content:after,
@@ -6065,9 +6068,37 @@ a.no-decoration {
 .group-blog .byline {
   display: inline; }
 
+.entry-header {
+  position: relative;
+  margin-bottom: 2em; }
+  @media (min-width: 960px) {
+    .entry-header.entry-header-bg-hero {
+      position: relative;
+      height: 0;
+      padding-top: 50%;
+      overflow: hidden; } }
+
+@media (min-width: 960px) {
+  .entry-image.bg-hero {
+    position: absolute;
+    top: 0; } }
+
+@media (min-width: 960px) {
+  .overlay-text {
+    position: absolute;
+    top: 15%;
+    color: #FFF; }
+    .overlay-text a {
+      color: #bde5ff; }
+      .overlay-text a:hover {
+        color: #3076bc; } }
+
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
+
+.belt {
+  margin-bottom: 3em; }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

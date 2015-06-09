@@ -16,6 +16,46 @@
 	display: inline;
 }
 
+.entry-header {
+	position: relative;
+	margin-bottom: 2em;
+
+	&.entry-header-bg-hero {
+
+		@media (min-width: 960px) {
+			position: relative;
+			height: 0;
+			padding-top: 50%;
+			overflow: hidden;
+		}
+	}
+}
+
+.entry-image {
+	&.bg-hero {
+
+		@media (min-width: 960px) {
+			position: absolute;
+			top: 0;
+		}
+	}
+}
+
+.overlay-text {
+	@media (min-width: 960px) {
+		position: absolute;
+		top: 15%;
+		color: #FFF;
+
+		a {
+			color: $blue_light;
+			&:hover {
+				color: $blue_dark;
+			}
+		}
+	}
+}
+
 .entry-title {
 	
 }
@@ -28,6 +68,10 @@
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+.belt {
+	margin-bottom: 3em;
 }
 
 @import "posts/post";
