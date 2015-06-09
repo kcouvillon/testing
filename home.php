@@ -13,7 +13,7 @@
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'partials/content' ) ?>
+				<?php get_template_part( 'partials/content', 'blog' ) ?>
 
 			<?php endwhile; ?>
 
