@@ -15,6 +15,19 @@ $screen-lg-max: 1200px;
 
 // Colors
 // ============================================ /
+$navy: #323c53;
+$orange: #fb901d;
+$blue_light: #bde5ff;
+$blue: #4fa9e5;
+$blue_dark: #3076bc;
+
+$gray_base: $navy;
+$gray_darker: tint($gray_base, 8%);
+$gray_dark: tint($gray_base, 20%);
+$gray: tint($gray_base, 33.5%);
+$gray_light: tint($gray_base, 63%);
+$gray_lighter: tint($gray_base, 93.5%);
+
 $color_text_main: #1a1a1a;
 $color_text_heading: #1a1a1a;
 $color_text_input: #1a1a1a;

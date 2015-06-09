@@ -28,6 +28,13 @@
   @include clearfix;
 }
 
+// Colors
+// ======================================= /
+.bg-gray-base {
+	background-color: $gray_base;
+	color: $gray_lighter;
+}
+
 // Style
 // ======================================= /
 a.no-decoration { text-decoration: none; }
