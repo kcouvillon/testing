@@ -30,10 +30,16 @@
 
 // Colors
 // ======================================= /
-.bg-gray-base {
-	background-color: $gray_base;
-	color: $gray_lighter;
-}
+.bg-gray-base, .bg-gray-darker, .bg-gray-dark, .bg-gray { color: $gray_lighter; }
+.bg-gray-base { background-color: $gray_base; }
+.bg-gray-darker { background-color: $gray_darker; }
+.bg-gray-dark { background-color: $gray_dark; }
+.bg-gray { background-color: $gray; }
+.bg-gray-light, .bg-gray-lighter { color: $gray_base; }
+.bg-gray-light { background-color: $gray_light; }
+.bg-gray-lighter { background-color: $gray_lighter; }
+
+
 
 // Style
 // ======================================= /
