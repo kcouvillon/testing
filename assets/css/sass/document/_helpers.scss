@@ -7,23 +7,6 @@
 
 // Layout
 // ======================================= /
-.center-block {
-  @include container;
-  @include clearfix;
-}
-
-.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.5em;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.5em;
-}
-
 .clearfix {
   @include clearfix;
 }
@@ -39,9 +22,27 @@
 .bg-gray-light { background-color: $gray_light; }
 .bg-gray-lighter { background-color: $gray_lighter; }
 
-
-
 // Style
 // ======================================= /
 a.no-decoration { text-decoration: none; }
 .circular { border-radius: 50%; }
+
+// Screens
+// ======================================= /
+.screen {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+
+	&.screen10 { background-color: rgba(0,0,0,0.1); }
+	&.screen20 { background-color: rgba(0,0,0,0.2); }
+	&.screen30 { background-color: rgba(0,0,0,0.3); }
+	&.screen40 { background-color: rgba(0,0,0,0.4); }
+	&.screen50 { background-color: rgba(0,0,0,0.5); }
+	&.screen60 { background-color: rgba(0,0,0,0.6); }
+	&.screen70 { background-color: rgba(0,0,0,0.7); }
+	&.screen80 { background-color: rgba(0,0,0,0.8); }
+	&.screen90 { background-color: rgba(0,0,0,0.9); }
+}

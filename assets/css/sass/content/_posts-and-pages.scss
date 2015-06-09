@@ -32,6 +32,8 @@
 }
 
 .entry-image {
+	position: relative;
+
 	&.bg-hero {
 
 		@media (min-width: 960px) {

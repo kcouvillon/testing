@@ -5872,28 +5872,6 @@ p {
 .inline-block {
   display: inline-block; }
 
-.center-block {
-  display: block;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 40px; }
-  .center-block:before, .center-block:after {
-    content: "";
-    display: table; }
-  .center-block:after {
-    clear: both; }
-
-.alignleft {
-  display: inline;
-  float: left;
-  margin-right: 1.5em; }
-
-.alignright {
-  display: inline;
-  float: right;
-  margin-left: 1.5em; }
-
 .clearfix:before, .clearfix:after {
   content: "";
   display: table; }
@@ -5929,6 +5907,31 @@ a.no-decoration {
 
 .circular {
   border-radius: 50%; }
+
+.screen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0; }
+  .screen.screen10 {
+    background-color: rgba(0, 0, 0, 0.1); }
+  .screen.screen20 {
+    background-color: rgba(0, 0, 0, 0.2); }
+  .screen.screen30 {
+    background-color: rgba(0, 0, 0, 0.3); }
+  .screen.screen40 {
+    background-color: rgba(0, 0, 0, 0.4); }
+  .screen.screen50 {
+    background-color: rgba(0, 0, 0, 0.5); }
+  .screen.screen60 {
+    background-color: rgba(0, 0, 0, 0.6); }
+  .screen.screen70 {
+    background-color: rgba(0, 0, 0, 0.7); }
+  .screen.screen80 {
+    background-color: rgba(0, 0, 0, 0.8); }
+  .screen.screen90 {
+    background-color: rgba(0, 0, 0, 0.9); }
 
 .entry-content:before, .entry-content:after,
 .comment-content:before,
@@ -5980,7 +5983,12 @@ a.no-decoration {
       content: "x-large"; } }
 
 .site-header {
-  border: 1px dotted #cccccc; }
+  background: #323c53;
+  color: #b3b6bf; }
+  .site-header a {
+    color: #b3b6bf; }
+    .site-header a:hover {
+      color: #FFF; }
 
 .main-navigation, .quick-access {
   clear: both;
@@ -6078,10 +6086,12 @@ a.no-decoration {
       padding-top: 50%;
       overflow: hidden; } }
 
-@media (min-width: 960px) {
-  .entry-image.bg-hero {
-    position: absolute;
-    top: 0; } }
+.entry-image {
+  position: relative; }
+  @media (min-width: 960px) {
+    .entry-image.bg-hero {
+      position: absolute;
+      top: 0; } }
 
 @media (min-width: 960px) {
   .overlay-text {
@@ -6121,6 +6131,10 @@ a.no-decoration {
   display: none; }
 
 .site-footer {
-  border: 1px dotted #cccccc; }
+  background: #f1f2f3; }
+  .site-footer a {
+    color: #5b6375; }
+    .site-footer a:hover {
+      color: #1a1a1a; }
 
 /*# sourceMappingURL=worldstrides.css.map */

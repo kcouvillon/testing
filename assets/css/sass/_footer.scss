@@ -1,3 +1,10 @@
 .site-footer {
-	border: 1px dotted #cccccc;
+	background: $gray_lighter;
+
+	a {
+		color: $gray_dark;
+		&:hover {
+			color: $color_text_main;
+		}
+	}
 }

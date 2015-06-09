@@ -1,5 +1,13 @@
 .site-header {
-	border: 1px dotted #cccccc;
+	background: $gray_base;
+	color: $gray_light;
+
+	a {
+		color: $gray_light;
+		&:hover {
+			color: #FFF;
+		}
+	}
 }
 
 .main-navigation, .quick-access {
