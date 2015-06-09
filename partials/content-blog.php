@@ -1,6 +1,6 @@
 <?php
 /**
- * Content display for default blog pages
+ * Content display blog posts on list pages (home, category, archive)
  */
 
 $blog_type = WS_Helpers::blog_type( $post->ID );
@@ -31,7 +31,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
 						<h1 class="entry-title">
-							<?php the_title(); ?>
+							<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>
 						</h1>
 					</div>
 				</div>
