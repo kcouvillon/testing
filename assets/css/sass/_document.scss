@@ -30,3 +30,41 @@
 	clear: both;
 	width: 100%;
 }
+
+/* Media size indicator (for development purposes).
+ * ---------------------------------------------------------------- *
+ */
+.media-size {
+	position: fixed;
+	z-index: 99999;
+	bottom: 0;
+	left: 50%;
+	&:before {
+		content: "";
+		background: #FFF;
+		text-align: center;
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	@media (min-width: 600px) {
+	 	&:before {
+			content: "small";
+		}
+	}
+	@media (min-width: 780px) {
+	 	&:before {
+			content: "medium";
+		}
+	}
+	@media (min-width: 960px) {
+	 	&:before {
+			content: "large";
+		}
+	}
+	@media (min-width: 1200px) {
+		&:before {
+			content: "x-large";
+		}
+	}
+}

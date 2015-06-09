@@ -51,5 +51,9 @@
 
 <?php wp_footer(); ?>
 
+<?php if ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) : ?>
+<div class="media-size"></div>
+<?php endif; ?>
+
 </body>
 </html>
