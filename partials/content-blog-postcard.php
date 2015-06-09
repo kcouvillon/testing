@@ -2,6 +2,7 @@
 /**
  * Content display for default blog pages
  */
+$blog_type = WS_Helpers::blog_type( $post->ID );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -20,7 +21,7 @@
 						<ul class="breadcrumbs list-unstyled list-inline">
 							<li><a href="#">Stories</a></li>
 							>
-							<li><a href="#">[Blog Type]</a></li>
+							<li><a href="#"><?php echo ucwords( $blog_type ); ?></a></li>
 							>
 							<li><a href="#">[Month 12, 2015]</a></li>
 						</ul>
