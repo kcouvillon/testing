@@ -21,10 +21,12 @@ define( 'WS_IMAGE_URL', get_template_directory_uri() . '/assets/images/' );
 define( 'DISALLOW_FILE_EDIT', true );
 define( 'DISALLOW_FILE_MODS', true );
 
-// Includes
+// Helper Libraries (worth checking for updates occasionally
 include WS_PATH . 'includes/library-extended-cpts.php';
 include WS_PATH . 'includes/library-extended-taxos.php';
+include WS_PATH . 'includes/cmb2/init.php';
 
+// Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
 include WS_PATH . 'includes/class-collections.php';
 include WS_PATH . 'includes/class-cpts.php';
