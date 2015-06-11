@@ -90,6 +90,17 @@ class WS_Custom_Taxonomies {
 				'public' => false
 			)
 		);
+
+		register_extended_taxonomy( 'resource-target',
+			array(
+				'resource'
+			),
+			array(
+				'rewrite'       => array(
+					'slug' => '/resources'
+				),
+			)
+		);
 	}
 }
 
