@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for the blog categories
+ * Default terminal page, used by blog posts and another post type that doesn't have their own single
  */
 
  get_header(); ?>
