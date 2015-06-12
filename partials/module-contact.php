@@ -1,6 +1,6 @@
 <?php
 /**
- * Sidebar for the about section
+ * Module: Contact
  */
 
 // @todo this is the same content that appears on other pages, where is it coming from?

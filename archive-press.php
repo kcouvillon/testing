@@ -28,7 +28,7 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<?php get_template_part( 'partials/about', 'sidebar' ); ?>
+		<?php get_template_part( 'partials/module', 'contact' ) ?>
 
 	</main>
 </div>

@@ -15,7 +15,7 @@ get_header(); ?>
 		<?php get_template_part( 'partials/content', 'about' ) ?>
 
 
-		<?php get_template_part( 'partials/about', 'sidebar' ) ?>
+		<?php get_template_part( 'partials/module', 'contact' ) ?>
 
 	</main>
 </div>
