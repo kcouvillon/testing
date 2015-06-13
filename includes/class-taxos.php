@@ -72,9 +72,9 @@ class WS_Custom_Taxonomies {
 			),
 			array(
 				'rewrite'       => false,
-				'show_in_menu'  => false,
-				'show_tagcloud' => false,
-				'public'        => false
+				'show_in_menu'  => true,
+				'show_tagcloud' => true,
+				'public'        => true
 			)
 		);
 
