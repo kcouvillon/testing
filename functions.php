@@ -25,6 +25,7 @@ define( 'DISALLOW_FILE_MODS', true );
 include WS_PATH . 'includes/library-extended-cpts.php';
 include WS_PATH . 'includes/library-extended-taxos.php';
 include WS_PATH . 'includes/cmb2/init.php';
+include WS_PATH . 'includes/cmb2-attached-posts/cmb2-attached-posts-field.php';
 
 // Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
