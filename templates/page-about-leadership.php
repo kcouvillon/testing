@@ -15,48 +15,35 @@ get_header(); ?>
 
 		<?php get_template_part( 'partials/content', 'about' ) ?>
 
-		<?php
-			// @todo limit this to just leadership
-			$leadership_bios = new WP_Query( array(
-				'post_type' => 'bio',
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'role',
-						'field'    => 'slug',
-						'terms'    => 'leadership',
-					),
-				),
-			));
-		?>
-
 		<div class="leadership">
-			<?php if ( $leadership_bios->have_posts() ) : ?>
+			<?php $associated_bios = get_post_meta( $post->ID, 'ws_attached_leadership_bios', true ); ?>
 
-				<?php while ( $leadership_bios->have_posts() ) : $leadership_bios->the_post(); ?>
-
-					<div class="bio">
-						<?php if ( has_post_thumbnail() ) : ?>
-							<div class="headshot">
-								<?php // @todo replace this with specific image size when ready ?>
-								<?php the_post_thumbnail( 'medium' ); ?>
-							</div>
-						<?php endif; ?>
-
-						<header>
-							<h2><?php the_title(); ?></h2>
-							<h3>Position</h3>
-						</header>
-
-						<?php the_content(); ?>
-					</div>
-
-				<?php endwhile; ?>
-
-			<?php else : ?>
-
-				<p>No leadership bios found</p>
-
+			<?php if ( 0 == count( $associated_bios ) ) : ?>
+				<p>Not leadership bios found.</p>
 			<?php endif; ?>
+
+			<?php foreach ( $associated_bios as $bio ) : ?>
+
+				<?php $post = get_post( $bio ); ?>
+
+				<div class="bio">
+					<?php if ( has_post_thumbnail() ) : ?>
+						<div class="headshot">
+							<?php // @todo replace this with specific image size when ready ?>
+							<?php the_post_thumbnail( 'medium' ); ?>
+						</div>
+					<?php endif; ?>
+
+					<header>
+						<h2><?php the_title(); ?></h2>
+
+						<h3>Position will go here</h3>
+					</header>
+
+					<?php the_content(); ?>
+				</div>
+
+			<?php endforeach; ?>
 		</div>
 
 	</main>
