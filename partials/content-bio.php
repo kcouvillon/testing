@@ -23,10 +23,18 @@
 	</header>
 
 	<div class="entry-content">
-		<?php the_content(); ?>
+		<?php if ( is_singular() ) : ?>
+			<?php the_content(); ?>
+		<?php else : ?>
+			<?php the_excerpt(); ?>
+		<?php endif; ?>
 	</div>
 
 	<footer class="entry-footer">
-
+		<?php if ( is_singular() ) : ?>
+			<?php // @todo should 'back to leadership/category' link go here? ?>
+		<?php else : ?>
+			<a href="<?php the_permalink(); ?>">Read More</a>
+		<?php endif; ?>
 	</footer>
 </article>
