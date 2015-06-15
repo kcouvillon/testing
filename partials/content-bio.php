@@ -2,6 +2,8 @@
 /**
  * Content display for bio pages
  */
+
+$position = get_post_meta( $post->ID, 'ws_bio_position', true )
 ?>
 
 <article <?php post_class(); ?>>
@@ -19,7 +21,7 @@
 			</a>
 		</h1>
 
-		<h2>Position will go here</h2>
+		<h2><?php echo esc_html( $position ); ?></h2>
 	</header>
 
 	<div class="entry-content">
