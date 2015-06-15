@@ -118,11 +118,13 @@ class WS_Custom_Post_Types {
 			)
 		);
 
+		/**
+		 * Define bio post type
+		 */
 		register_extended_post_type( 'bio',
 			array(
 				'menu_icon' => 'dashicons-id',
-				'exclude_from_search'    => false,
-				'publicly_queryable'     => false
+				'rewrite'   => array( 'slug' => 'about/profile' )
 			)
 		);
 
