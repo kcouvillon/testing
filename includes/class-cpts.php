@@ -124,7 +124,8 @@ class WS_Custom_Post_Types {
 		register_extended_post_type( 'bio',
 			array(
 				'menu_icon' => 'dashicons-id',
-				'rewrite'   => array( 'slug' => 'about/profile' )
+				'rewrite'   => array( 'slug' => 'about/profile' ),
+				'has_archive' => false
 			)
 		);
 
