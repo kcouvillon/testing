@@ -21,7 +21,9 @@ $position = get_post_meta( $post->ID, 'ws_bio_position', true )
 			</a>
 		</h1>
 
-		<h2><?php echo esc_html( $position ); ?></h2>
+		<?php if ( $position ) : ?>
+			<h2><?php echo esc_html( $position ); ?></h2>
+		<?php endif; ?>
 	</header>
 
 	<div class="entry-content">
