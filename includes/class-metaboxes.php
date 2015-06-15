@@ -37,6 +37,7 @@ class WS_Metaboxes {
 	 */
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
+		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 	}
 
 	/**
@@ -78,6 +79,24 @@ class WS_Metaboxes {
 			)
 		) );
 
+	}
+
+
+	function bio_details() {
+		$bio_details = new_cmb2_box( array(
+			'id'           => 'ws_bio_details',
+			'title'        => __( 'Bio Details', 'cmb2' ),
+			'object_types' => array( 'bio' ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true, // Show field names on the left
+		) );
+
+		$bio_details->add_field( array(
+			'name' => __( 'Position', 'cmb2' ),
+			'id'   => 'ws_bio_position',
+			'type' => 'text_medium'
+		) );
 	}
 }
 
