@@ -23,16 +23,15 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">WorldStrides</a></h1>
-		</div>
+	<nav id="quick-access" class="quick-access" role="navigation">
+		<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'quick-access-menu' ) ); ?>
+	</nav>
 
-		<nav id="quick-access" class="quick-access" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'quick-access-menu' ) ); ?>
-		</nav>
+	<header id="masthead" class="site-header" role="banner">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://placehold.it/216x46" alt=""></a>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<a href="#">Explore Our Trips >></a>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav>
 	</header>

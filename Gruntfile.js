@@ -62,16 +62,19 @@ module.exports = function( grunt ) {
 		test:   {
 			files: ['assets/js/test/**/*.js']
 		},
-		
+
 		sass:   {
 			all: {
+				options: {
+					style: 'expanded'
+				},
 				files: {
 					'assets/css/worldstrides.css': 'assets/css/sass/worldstrides.scss',
 					'assets/css/admin.css': 'assets/css/sass/admin.scss'
 				}
 			}
 		},
-		
+				
 		cssmin: {
 			options: {
 				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -93,7 +96,7 @@ module.exports = function( grunt ) {
 		watch:  {
 			
 			sass: {
-				files: ['assets/css/sass/*.scss'],
+				files: ['assets/css/sass/**/*.scss'],
 				tasks: ['sass', 'cssmin'],
 				options: {
 					debounceDelay: 500

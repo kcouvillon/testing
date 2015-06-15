@@ -88,6 +88,19 @@ function ws_admin_scripts_styles() {
 add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
 
 /**
+ * Add class to body_class if there is a featured image
+ */
+function add_featured_image_body_class( $classes ) {    
+	global $post;
+	if ( isset ( $post->ID ) && get_the_post_thumbnail($post->ID)) {
+		$classes[] = 'has-featured-image';
+	}
+	return $classes;
+}
+
+add_filter( 'body_class', 'add_featured_image_body_class' );
+
+/**
  * Remove cruft from header
  *
  * @todo better location for this?
