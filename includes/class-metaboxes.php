@@ -122,7 +122,6 @@ class WS_Metaboxes {
 		$group_field_id = $cmb_group->add_field( array(
 			'id'          => $prefix . 'group',
 			'type'        => 'group',
-			'description' => __( 'Generates Why WorldStrides sections', 'cmb2' ),
 			'options'     => array(
 				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
 				'add_button'    => __( 'Add Another Section', 'cmb2' ),
