@@ -93,11 +93,23 @@ module.exports = function( grunt ) {
 				ext: '.min.css'
 			}
 		},
+
+		autoprefixer: {
+			dist: {
+				options: {
+					browsers: [ 'last 2 versions', '> 1%', 'ie 9' ]
+				},
+				files: { 
+					'assets/css/worldstrides.min.css': [ 'assets/css/worldstrides.min.css' ]
+				}
+			}
+		},
+
 		watch:  {
 			
 			sass: {
 				files: ['assets/css/sass/**/*.scss'],
-				tasks: ['sass', 'cssmin'],
+				tasks: ['sass', 'cssmin', 'autoprefixer'],
 				options: {
 					debounceDelay: 500
 				}
@@ -115,7 +127,7 @@ module.exports = function( grunt ) {
 
 	// Default task.
 	
-	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin'] );
+	grunt.registerTask( 'default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin', 'autoprefixer'] );
 	
 
 	grunt.util.linefeed = '\n';

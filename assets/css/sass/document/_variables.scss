@@ -2,7 +2,7 @@
 // ============================================ /
 $size_container_width: 1500px;
 
-$size_container_padding: 4%;
+$size_container_padding: 5%;
 
 $size_site_main: 70%;
 $size_site_sidebar: 30%;
@@ -41,6 +41,8 @@ $color_text_heading: #1a1a1a;
 $color_text_input: #1a1a1a;
 $color_text_input_hover: #1a1a1a;
 $color_text_input_focus: #1a1a1a;
+$color_text_footer: #666666;
+$color_text_footer_dark: #191919;
 
 $color_link: #fb901d;
 $color_link_visited: tint($color_link, 10%);

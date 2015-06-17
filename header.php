@@ -32,7 +32,7 @@
 		<a class="logo-sm" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://placehold.it/40x50" alt=""></a>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<a href="#">Explore Our Trips >></a>
+			<a href="#">Explore Our Trips »</a>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav>
 	</header>

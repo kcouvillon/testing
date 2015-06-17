@@ -5576,7 +5576,7 @@ img {
     max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 4%; }
+    padding: 0 5%; }
   .wp-caption .wp-caption-text {
     margin: 0.8075em 0; }
 
@@ -5833,7 +5833,7 @@ a.no-decoration {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 4%;
+  padding: 0 5%;
   background: #323c53;
   color: #fff;
   padding-top: 1em;
@@ -5946,7 +5946,7 @@ a.no-decoration {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 4%;
+  padding: 0 5%;
   display: none;
   text-align: right; }
   @media (min-width: 600px) {
@@ -6068,7 +6068,7 @@ a.no-decoration {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 4%;
+  padding: 0 5%;
   margin-bottom: 3.9215686275%; }
   .section-header:before,
   .section-header:after {
@@ -6109,7 +6109,7 @@ a.no-decoration {
       max-width: 1500px;
       margin-left: auto;
       margin-right: auto;
-      padding: 0 4%; } }
+      padding: 0 5%; } }
 
 .section-menu {
   list-style: none;
@@ -6129,7 +6129,7 @@ a.no-decoration {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 4%;
+  padding: 0 5%;
   margin-top: 1.9607843137%;
   margin-bottom: 1.9607843137%; }
   .section-content:before,
@@ -6224,8 +6224,52 @@ a.no-decoration {
       margin-right: 0; } }
 
 .site-footer {
-  background: #f2f2f4; }
+  position: relative;
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5%;
+  background: #f2f2f4;
+  padding-top: 2em;
+  padding-bottom: 3em; }
+  .site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0; }
   .site-footer a {
-    color: #5b6375; }
+    color: #191919; }
     .site-footer a:hover {
       color: #1a1a1a; }
+  @media (min-width: 960px) {
+    .site-footer .menu {
+      width: 57.5163398693%;
+      float: left;
+      margin-right: 1.9607843137%;
+      column-count: 3; } }
+  .site-footer .menu > li {
+    margin-bottom: 1em; }
+  .site-footer .sub-menu li a {
+    font-size: 0.875em;
+    color: #666666; }
+
+@media (min-width: 960px) {
+  .contact-us {
+    width: 15.0326797386%;
+    float: left;
+    margin-right: 1.9607843137%; } }
+
+@media (min-width: 960px) {
+  .site-info {
+    width: 23.5294117647%;
+    float: right;
+    margin-right: 0; } }
+
+.site-info .social-icons, .site-info .departing-from {
+  margin-bottom: 1em; }
+
+@media (min-width: 960px) {
+  .tagline {
+    position: absolute;
+    left: 5%;
+    bottom: 3em; } }

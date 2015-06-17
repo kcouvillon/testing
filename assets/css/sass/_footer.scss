@@ -1,10 +1,61 @@
 .site-footer {
+	position: relative;
+	@include container();
 	background: $gray_lighter;
+	padding-top: 2em;
+	padding-bottom: 3em;
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
 
 	a {
-		color: $gray_dark;
+		color: $color_text_footer_dark;
 		&:hover {
 			color: $color_text_main;
 		}
+	}
+
+	.menu {
+		@include susy-media($screen-md) {
+			@include span(7);
+			column-count: 3;
+		}
+
+		> li {
+			margin-bottom: 1em;
+		}
+	}
+
+	.sub-menu li a {
+		font-size: em(14);
+		color: $color_text_footer;
+	}
+}
+
+.contact-us {
+	@include susy-media($screen-md) {
+		@include span(2);
+	}
+}
+
+.site-info {
+	@include susy-media($screen-md) {
+		@include span(3 last);
+	}
+	
+	.social-icons, .departing-from {
+		margin-bottom: 1em;
+	}
+}
+
+
+.tagline {
+	@include susy-media($screen-md) {
+		position: absolute;
+		left: 5%;
+		bottom: 3em;
 	}
 }
