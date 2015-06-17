@@ -101,6 +101,15 @@ class WS_Custom_Taxonomies {
 				),
 			)
 		);
+
+		register_extended_taxonomy( 'resource-type',
+			array(
+				'resource'
+			),
+			array(
+				'rewrite'       => false,
+			)
+		);
 	}
 }
 
