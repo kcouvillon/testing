@@ -12,7 +12,7 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
 
 		<?php the_post(); ?>
-		<?php get_template_part( 'partials/content' ) ?>
+		<?php get_template_part( 'partials/content', 'why' ) ?>
 
 
 	</main>

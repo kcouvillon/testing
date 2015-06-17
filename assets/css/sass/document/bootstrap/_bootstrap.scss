@@ -464,7 +464,10 @@ h6 .small,
 }
 h1,
 .h1 {
-  font-size: 74px;
+  font-size: 40px;
+  @include susy-media($screen-xs) {
+    font-size: 74px;
+  }
 }
 h2,
 .h2 {

@@ -457,7 +457,11 @@ h6 .small,
 
 h1,
 .h1 {
-  font-size: 74px; }
+  font-size: 40px; }
+  @media (min-width: 600px) {
+    h1,
+    .h1 {
+      font-size: 74px; } }
 
 h2,
 .h2 {
@@ -5569,10 +5573,10 @@ img {
   max-width: 100%; }
   .wp-caption img[class*="wp-image-"] {
     display: block;
-    max-width: 1200px;
+    max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 40px; }
+    padding: 0 4%; }
   .wp-caption .wp-caption-text {
     margin: 0.8075em 0; }
 
@@ -5826,22 +5830,39 @@ a.no-decoration {
 
 .site-header {
   display: block;
-  max-width: 1200px;
+  max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 40px;
-  padding-top: 2.1875em;
-  padding-bottom: 2.375em;
+  padding: 0 4%;
   background: #323c53;
-  color: #fff; }
+  color: #fff;
+  padding-top: 1em;
+  padding-bottom: 1em; }
+  @media (min-width: 600px) {
+    .site-header {
+      padding-top: 2.1875em;
+      padding-bottom: 2.375em; } }
   .site-header a {
     color: #fff; }
     .site-header a:hover {
       color: #b3b7bf; }
+  .has-featured-image .site-header {
+    background: transparent; }
+
+.logo-sm {
+  display: inline-block; }
+  @media (min-width: 600px) {
+    .logo-sm {
+      display: none; } }
+
+.logo-lg {
+  display: none; }
+  @media (min-width: 600px) {
+    .logo-lg {
+      display: inline-block; } }
 
 .main-navigation, .quick-access {
   clear: both;
-  display: block;
   width: 100%; }
   .main-navigation:before,
   .main-navigation:after, .quick-access:before,
@@ -5888,19 +5909,23 @@ a.no-decoration {
   width: 100%;
   float: left;
   margin-left: 0;
-  margin-right: 0; }
+  margin-right: 0;
+  display: none; }
   .main-navigation:before,
   .main-navigation:after {
     content: "";
     display: table; }
   .main-navigation:after {
     clear: both; }
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
+    .main-navigation {
+      display: block; } }
+  @media (min-width: 600px) {
     .main-navigation {
       width: 32.0261437908%;
       float: right;
       margin-right: 0; } }
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     .main-navigation li {
       font-size: 0.875em;
       font-weight: lighter;
@@ -5918,11 +5943,15 @@ a.no-decoration {
 
 .quick-access {
   display: block;
-  max-width: 1200px;
+  max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 40px;
+  padding: 0 4%;
+  display: none;
   text-align: right; }
+  @media (min-width: 600px) {
+    .quick-access {
+      display: block; } }
   .quick-access li {
     margin-right: 20px; }
     .quick-access li:last-child {
@@ -6024,6 +6053,112 @@ a.no-decoration {
 .belt {
   margin-bottom: 3em; }
 
+#page {
+  overflow: hidden; }
+
+.section-title {
+  font-weight: lighter; }
+
+.primary-section {
+  margin-top: -158px; }
+
+.section-header {
+  background-size: cover;
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 4%;
+  margin-bottom: 3.9215686275%; }
+  .section-header:before,
+  .section-header:after {
+    content: "";
+    display: table; }
+  .section-header:after {
+    clear: both; }
+  .primary-section .section-header {
+    margin-bottom: 0; }
+
+.section-header-content {
+  color: #fff;
+  margin-top: 10%;
+  margin-bottom: 33px;
+  clear: both;
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 600px) {
+    .section-header-content {
+      width: 49.0196078431%;
+      float: left;
+      margin-right: 1.9607843137%; } }
+  .primary-section .section-header-content {
+    margin-top: 170px; }
+    @media (min-width: 600px) {
+      .primary-section .section-header-content {
+        margin-top: 258px;
+        margin-bottom: 175px; } }
+
+.section-nav {
+  display: none; }
+  @media (min-width: 600px) {
+    .section-nav {
+      background: #323c53;
+      display: block;
+      max-width: 1500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 4%; } }
+
+.section-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  .section-menu li {
+    display: inline-block;
+    margin-right: 20px; }
+  .section-menu a {
+    color: #fff;
+    line-height: 3; }
+    .section-menu a:hover {
+      color: #b3b7bf; }
+
+.section-content {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 4%;
+  margin-top: 1.9607843137%;
+  margin-bottom: 1.9607843137%; }
+  .section-content:before,
+  .section-content:after {
+    content: "";
+    display: table; }
+  .section-content:after {
+    clear: both; }
+  .section-content > div {
+    clear: both;
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.9607843137%; }
+    @media (min-width: 600px) {
+      .section-content > div {
+        width: 49.0196078431%;
+        float: left; }
+        .section-content > div:nth-child(2n + 1) {
+          margin-left: 0;
+          margin-right: -100%;
+          clear: both;
+          margin-left: 0; }
+        .section-content > div:nth-child(2n + 2) {
+          margin-left: 50.9803921569%;
+          margin-right: -100%;
+          clear: none; } }
+
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
   display: none; }
@@ -6043,6 +6178,50 @@ a.no-decoration {
 /* Search widget. */
 .widget_search .search-submit {
   display: none; }
+
+.value-prop:before,
+.value-prop:after {
+  content: "";
+  display: table; }
+
+.value-prop:after {
+  clear: both; }
+
+.value-prop-img {
+  width: 75%;
+  margin: 0 auto 1em;
+  float: none;
+  display: block; }
+  @media (min-width: 600px) {
+    .value-prop-img {
+      width: 30.6666666667%;
+      float: left;
+      margin-right: 4%; } }
+
+.value-prop-title {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 1.9607843137%; }
+  @media (min-width: 600px) {
+    .value-prop-title {
+      width: 65.3333333333%;
+      float: right;
+      margin-right: 0; } }
+
+.value-prop-desc {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 600px) {
+    .value-prop-desc {
+      width: 65.3333333333%;
+      float: right;
+      margin-right: 0; } }
 
 .site-footer {
   background: #f2f2f4; }

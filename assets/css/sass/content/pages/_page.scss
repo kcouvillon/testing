@@ -1,0 +1,45 @@
+#page {
+	overflow: hidden;
+}
+
+// These styles apply to the section heros that appear on several pages
+
+.section-title {
+	font-weight: lighter;
+}
+
+.primary-section {
+	margin-top: -158px;
+}
+
+.section-header {
+	background-size: cover;
+	@include clearfix;
+	@include container();
+	margin-bottom: gutter()*2;
+
+	.primary-section & {
+		margin-bottom: 0;
+	}
+}
+
+.section-header-content {
+	color: #fff;
+	margin-top: 10%;
+	margin-bottom: 33px;
+	@include full;
+
+	@include susy-media($screen-xs) {
+		@include span(6);
+	}
+
+	.primary-section & {
+		margin-top: 170px;
+		@include susy-media($screen-xs) {
+			margin-top: 258px;
+			margin-bottom: 175px;
+		}
+	}
+}
+
+@import 'why-worldstrides';

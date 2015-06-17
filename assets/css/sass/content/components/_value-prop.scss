@@ -1,0 +1,33 @@
+.value-prop {
+	@include clearfix;
+}
+
+.value-prop-img {
+	width: 75%;
+	margin: 0 auto 1em;
+	float: none;
+	display: block;
+
+	@include susy-media($screen-xs) {
+		@include span(2 of 6);
+	}
+}
+
+.value-prop-title {
+	@include span(full);
+	font-size: em(20);
+	font-weight: bold;
+	margin-bottom: gutter();
+
+	@include susy-media($screen-xs) {
+		@include span(4 of 6 last);
+	}
+}
+
+.value-prop-desc {
+	@include span(full);
+
+	@include susy-media($screen-xs) {
+		@include span(4 of 6 last);
+	}
+}

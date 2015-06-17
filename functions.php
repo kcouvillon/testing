@@ -97,7 +97,6 @@ function add_featured_image_body_class( $classes ) {
 	}
 	return $classes;
 }
-
 add_filter( 'body_class', 'add_featured_image_body_class' );
 
 /**

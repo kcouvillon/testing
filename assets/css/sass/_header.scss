@@ -1,9 +1,14 @@
 .site-header {
 	@include container();
-	padding-top: em(35);
-	padding-bottom: em(38);
 	background: $gray_base;
 	color: #fff;
+	padding-top: em(16);
+	padding-bottom: em(16);
+
+	@include susy-media($screen-xs) {
+		padding-top: em(35);
+		padding-bottom: em(38);
+	}
 
 	a {
 		color: #fff;
@@ -13,13 +18,28 @@
 	}
 
 	.has-featured-image & {
-		// background: transparent;
+		background: transparent;
+	}
+}
+
+.logo-sm {
+	display: inline-block;
+
+	@include susy-media($screen-xs) {
+		display: none;
+	}
+}
+
+.logo-lg {
+	display: none;
+
+	@include susy-media($screen-xs) {
+		display: inline-block;
 	}
 }
 
 .main-navigation, .quick-access {
 	clear: both;
-	display: block;
 	width: 100%;
 	@include clearfix;
 
@@ -80,12 +100,18 @@
 .main-navigation {
 	@include clearfix;
 	@include full;
+	display: none;
 
-	@include susy-media($screen-sm) {
+	@include susy-media($screen-xs) {
+		display: block;
+	}
+
+
+	@include susy-media($screen-xs) {
 		@include span(4 last);
 	}
 
-	@include susy-media($screen-sm) {
+	@include susy-media($screen-xs) {
 		li {
 			font-size: em(14);
 			font-weight: lighter;
@@ -96,7 +122,12 @@
 
 .quick-access {
 	@include container();
+	display: none;
 	text-align: right;
+
+	@include susy-media($screen-xs) {
+		display: block;
+	}
 
 	li {
 		margin-right: 20px;
