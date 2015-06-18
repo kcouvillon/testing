@@ -44,7 +44,11 @@ get_header(); ?>
 		<?php foreach ( $sections as $section ) : ?>
 			<section>
 				<a name="<?php echo sanitize_title( $section['title'] ); ?>"></a>
-				<header class="section-header" style="background-image: <?php echo esc_url( $section['image'] ); ?>;">
+				<?php
+				$image = esc_url( $section['image'] );
+				$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $image . ')';
+				?>
+				<header class="section-header" style="background-image: <?php echo $background; ?>;">
 					<div class="section-header-content">
 						<h1 class="page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h1>
 
