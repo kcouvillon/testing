@@ -71,8 +71,12 @@
 .section-header-content {
 	color: $gray_base;
 	margin-top: 10%;
-	margin-bottom: 33px;
+	margin-bottom: 4%;
 	max-width: 670px;
+
+	.has-section-image & {
+		color: #fff;
+	}
 
 
 	.primary-section & {

@@ -48,7 +48,7 @@ get_header(); ?>
 				$image = esc_url( $section['image'] );
 				$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $image . ')';
 				?>
-				<header class="section-header" style="background-image: <?php echo $background; ?>;">
+				<header class="section-header<?php echo ( !empty( $image ) ) ? ' has-section-image' : ''; ?>" style="background-image: <?php echo $background; ?>;">
 					<div class="section-header-content">
 						<h1 class="page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h1>
 
