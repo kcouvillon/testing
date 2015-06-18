@@ -137,7 +137,7 @@ class WS_Metaboxes {
 		 * The parent field's id needs to be passed as the first argument.
 		 */
 		$cmb_group->add_group_field( $group_field_id, array(
-			'name'       => __( 'Section Title', 'cmb2' ),
+			'name'       => __( 'Title', 'cmb2' ),
 			'id'         => 'title',
 			'type'       => 'text',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
