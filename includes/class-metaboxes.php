@@ -165,7 +165,7 @@ class WS_Metaboxes {
 				'show_thumbnails' => true,  // Show thumbnails on the left
 				'filter_boxes'    => true,  // Show a text box for filtering the results
 				'query_args'      => array( // override the get_posts args
-					'posts_per_page' => 10,
+					'posts_per_page' => 70,
 					'post_type' => 'why-ws',
 				),
 			)
