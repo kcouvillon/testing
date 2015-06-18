@@ -3,12 +3,56 @@
 }
 
 // These styles apply to the section heros that appear on several pages
+.section-nav {
+	display: none;
+
+	@include susy-media($screen-xs) {
+		background: $gray-base;
+		@include container();
+
+		.about & {
+			background: $gray_dark;
+		}
+	}
+}
+
+.section-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		display: inline-block;
+		margin-right: 20px;
+
+		.about &.current-menu-item a {
+			color: #fff;
+		}
+	}
+
+	a {
+		color: #fff;
+		line-height: 3;
+
+		&:hover {
+			color: $gray-light;
+		}
+
+		.about & {
+			color: $gray-light;
+
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+}
 
 .section-title {
 	font-weight: lighter;
 }
 
-.primary-section {
+.has-featured-image .primary-section {
 	margin-top: -158px;
 }
 
@@ -17,6 +61,7 @@
 	@include clearfix;
 	@include container();
 	margin-bottom: gutter()*2;
+	background-color: $color_background_header;
 
 	.primary-section & {
 		margin-bottom: 0;
@@ -24,22 +69,38 @@
 }
 
 .section-header-content {
-	color: #fff;
+	color: $gray_base;
 	margin-top: 10%;
 	margin-bottom: 33px;
-	@include full;
+	@include span(full);
 
 	@include susy-media($screen-xs) {
-		@include span(6);
+		@include span(7);
 	}
 
 	.primary-section & {
 		margin-top: 170px;
 		@include susy-media($screen-xs) {
-			margin-top: 258px;
+			margin-top: 100px;
 			margin-bottom: 175px;
+
+			.has-featured-image & {
+				margin-top: 258px;
+			}
+		}
+
+		.has-featured-image & {
+			color: #fff;
 		}
 	}
 }
 
+.section-content {
+	@include clearfix;
+	@include container();
+	margin-top: gutter();
+	margin-bottom: gutter();
+}
+
 @import 'why-worldstrides';
+@import 'about';
