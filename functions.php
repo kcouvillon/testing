@@ -18,8 +18,8 @@ define( 'WS_PATH', dirname( __FILE__ ) . '/' );
 define( 'WS_IMAGE_URL', get_template_directory_uri() . '/assets/images/' );
 
 // Disable file edit/mods from within WordPress
-define( 'DISALLOW_FILE_EDIT', true );
-define( 'DISALLOW_FILE_MODS', true );
+define( 'DISALLOW_FILE_EDIT', true ); // turn off edits
+// define( 'DISALLOW_FILE_MODS', true ); // turn off all mods (includes plugin updates)
 
 // Helper Libraries (worth checking for updates occasionally
 include WS_PATH . 'includes/library-extended-cpts.php';
