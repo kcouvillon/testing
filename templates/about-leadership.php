@@ -22,22 +22,23 @@ get_header(); ?>
 				<p>No leadership bios found.</p>
 			<?php endif; ?>
 
-			<?php foreach ( $associated_bios as $bio ) : ?>
+			<?php foreach ( $associated_bios as $bio_id ) : ?>
 
-				<?php $post = get_post( $bio ); ?>
+				<?php $bio = get_post( $bio_id ); ?>
+				<?php $position = get_post_meta( $bio_id, 'ws_bio_position', true ); ?>
 
 				<article <?php post_class(); ?>>
 					<header class="entry-header">
-						<?php if ( has_post_thumbnail() ) : ?>
+						<?php if ( has_post_thumbnail( $bio_id ) ) : ?>
 							<div class="headshot">
 								<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
-								<?php the_post_thumbnail( 'large' ); ?>
+								<?php echo get_the_post_thumbnail( $bio_id, 'large' ); ?>
 							</div>
 						<?php endif; ?>
 
 						<h3 class="entry-title">
 							<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-								<?php the_title(); ?>
+								<?php echo apply_filters( 'title', $bio->post_title ); ?>
 							</a>
 						</h3>
 
@@ -47,19 +48,17 @@ get_header(); ?>
 					</header>
 
 					<div class="entry-content">
-						<?php if ( is_page('about') ) : ?>
-							<?php the_content($bio->post_id); ?>
-						<?php else : ?>
-							<?php the_excerpt($bio->post_id); ?>
-						<?php endif; ?>
+						<?php
+						$content = $bio->post_excerpt;
+						if ( ! $content ) {
+							$content = $bio->post_content;
+						}
+						?>
+						<?php echo apply_filters( 'content', $content ); ?>
 					</div>
 
 					<footer class="entry-footer">
-						<?php if ( is_page('about') ) : ?>
-							<?php // @todo should 'back to leadership/category' link go here? ?>
-						<?php else : ?>
-							<a href="<?php the_permalink(); ?>">Read More</a>
-						<?php endif; ?>
+						<a href="<?php the_permalink(); ?>">Read More</a>
 					</footer>
 				</article>
 
