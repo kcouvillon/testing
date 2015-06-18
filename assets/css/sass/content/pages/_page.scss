@@ -72,20 +72,17 @@
 	color: $gray_base;
 	margin-top: 10%;
 	margin-bottom: 33px;
-	@include span(full);
+	max-width: 670px;
 
-	@include susy-media($screen-xs) {
-		@include span(7);
-	}
 
 	.primary-section & {
-		margin-top: 170px;
+		margin-top: 11.333333%;
 		@include susy-media($screen-xs) {
-			margin-top: 100px;
-			margin-bottom: 175px;
+			margin-top: 6.66666%;
+			margin-bottom: 11.66666%;
 
 			.has-featured-image & {
-				margin-top: 258px;
+				margin-top: 17.2%;
 			}
 		}
 

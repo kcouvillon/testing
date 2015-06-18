@@ -1,11 +1,7 @@
 .about {
 
 	.entry-content {
-		@include span(full);
-
-		@include susy-media($screen-xs) {
-			@include span(7);
-		}
+		max-width: 670px;
 	}
 }
 
