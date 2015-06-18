@@ -24,7 +24,7 @@ get_header(); ?>
 
 			<?php foreach ( $associated_bios as $bio ) : ?>
 
-				<?php $post = get_post( $bio ); print_r($bio);?>
+				<?php $post = get_post( $bio ); ?>
 
 				<article <?php post_class(); ?>>
 					<header class="entry-header">
