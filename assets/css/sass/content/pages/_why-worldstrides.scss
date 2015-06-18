@@ -4,6 +4,10 @@
 	@include susy-media($screen-xs) {
 		background: $gray-base;
 		@include container();
+
+		.about & {
+			background: $gray_dark;
+		}
 	}
 }
 

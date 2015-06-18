@@ -6059,7 +6059,7 @@ a.no-decoration {
 .section-title {
   font-weight: lighter; }
 
-.primary-section {
+.has-featured-image .primary-section {
   margin-top: -158px; }
 
 .section-header {
@@ -6069,7 +6069,8 @@ a.no-decoration {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5%;
-  margin-bottom: 3.9215686275%; }
+  margin-bottom: 3.9215686275%;
+  background-color: #badeff; }
   .section-header:before,
   .section-header:after {
     content: "";
@@ -6080,25 +6081,28 @@ a.no-decoration {
     margin-bottom: 0; }
 
 .section-header-content {
-  color: #fff;
+  color: #323c53;
   margin-top: 10%;
   margin-bottom: 33px;
-  clear: both;
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0; }
   @media (min-width: 600px) {
     .section-header-content {
-      width: 49.0196078431%;
+      width: 57.5163398693%;
       float: left;
       margin-right: 1.9607843137%; } }
   .primary-section .section-header-content {
     margin-top: 170px; }
     @media (min-width: 600px) {
       .primary-section .section-header-content {
-        margin-top: 258px;
-        margin-bottom: 175px; } }
+        margin-top: 100px;
+        margin-bottom: 175px; }
+        .has-featured-image .primary-section .section-header-content {
+          margin-top: 258px; } }
+    .has-featured-image .primary-section .section-header-content {
+      color: #fff; }
 
 .section-nav {
   display: none; }
@@ -6109,7 +6113,9 @@ a.no-decoration {
       max-width: 1500px;
       margin-left: auto;
       margin-right: auto;
-      padding: 0 5%; } }
+      padding: 0 5%; }
+      .about .section-nav {
+        background: #5b6375; } }
 
 .section-menu {
   list-style: none;
