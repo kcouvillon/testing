@@ -112,7 +112,7 @@ class WS_Custom_Taxonomies {
 		);
 
 
-		register_extended_taxonomy( 'product-lines',
+		register_extended_taxonomy( 'product-line',
 			array(
 				'post',
 				'why-ws'
