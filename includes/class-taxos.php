@@ -110,6 +110,21 @@ class WS_Custom_Taxonomies {
 				'rewrite'       => false,
 			)
 		);
+
+
+		register_extended_taxonomy( 'product-lines',
+			array(
+				'post',
+				'why-ws'
+			),
+			array(
+				'rewrite'       => false,
+				'show_in_menu'  => false,
+				'show_tagcloud' => false,
+				'meta_box'      => 'simple',
+				'public' => false
+			)
+		);
 	}
 }
 
