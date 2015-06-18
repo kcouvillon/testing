@@ -52,7 +52,7 @@ get_header(); ?>
 					</div>
 				</header>
 
-				<div class="section-content">
+				<div class="section-content why-content">
 
 					<?php $associated_why_ws = $section['attached_why_ws']; ?>
 
@@ -68,7 +68,7 @@ get_header(); ?>
 				</div>
 			</section>
 		<?php endforeach; ?>
-		
+
 	</main>
 </div>
 
