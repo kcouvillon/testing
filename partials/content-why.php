@@ -38,7 +38,7 @@ if( has_post_thumbnail( $post->ID ) ) {
 		</div>
 	</header>
 
-	<div class="section-content">
+	<div class="section-content why-content">
 		<div class="value-prop">
 			<img class="value-prop-img" src="http://placehold.it/300x300" alt="">
 			<span class="value-prop-title">We're On It.</span>
@@ -71,7 +71,7 @@ if( has_post_thumbnail( $post->ID ) ) {
 		</div>
 	</header>
 
-	<div class="section-content">
+	<div class="section-content why-content">
 		<div class="value-prop">
 			<img class="value-prop-img" src="http://placehold.it/300x300" alt="">
 			<span class="value-prop-title">We're On It.</span>
@@ -104,7 +104,7 @@ if( has_post_thumbnail( $post->ID ) ) {
 		</div>
 	</header>
 
-	<div class="section-content">
+	<div class="section-content why-content">
 		<div class="value-prop">
 			<img class="value-prop-img" src="http://placehold.it/300x300" alt="">
 			<span class="value-prop-title">We're On It.</span>
@@ -137,7 +137,7 @@ if( has_post_thumbnail( $post->ID ) ) {
 		</div>
 	</header>
 
-	<div class="section-content">
+	<div class="section-content why-content">
 		<div class="value-prop">
 			<img class="value-prop-img" src="http://placehold.it/300x300" alt="">
 			<span class="value-prop-title">We're On It.</span>

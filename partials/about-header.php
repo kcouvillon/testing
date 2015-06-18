@@ -23,4 +23,3 @@ $about_page = get_page_by_path( 'about' );
 	</nav>
 
 </section>
-

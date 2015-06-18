@@ -11,23 +11,23 @@ $position = get_post_meta( $post->ID, 'ws_bio_position', true )
 		<?php if ( has_post_thumbnail() ) : ?>
 			<div class="headshot">
 				<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
-				<?php the_post_thumbnail( 'medium' ); ?>
+				<?php the_post_thumbnail( 'large' ); ?>
 			</div>
 		<?php endif; ?>
 
-		<h1 class="entry-title">
+		<h3 class="entry-title">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
-		</h1>
+		</h3>
 
 		<?php if ( $position ) : ?>
-			<h2><?php echo esc_html( $position ); ?></h2>
+			<span class="entry-position"><?php echo esc_html( $position ); ?></span>
 		<?php endif; ?>
 	</header>
 
 	<div class="entry-content">
-		<?php if ( is_singular() ) : ?>
+		<?php if ( is_page('about') ) : ?>
 			<?php the_content(); ?>
 		<?php else : ?>
 			<?php the_excerpt(); ?>
@@ -35,7 +35,7 @@ $position = get_post_meta( $post->ID, 'ws_bio_position', true )
 	</div>
 
 	<footer class="entry-footer">
-		<?php if ( is_singular() ) : ?>
+		<?php if ( is_page('about') ) : ?>
 			<?php // @todo should 'back to leadership/category' link go here? ?>
 		<?php else : ?>
 			<a href="<?php the_permalink(); ?>">Read More</a>

@@ -15,7 +15,7 @@ get_header(); ?>
 
 		<?php get_template_part( 'partials/content', 'about' ) ?>
 
-		<div class="leadership">
+		<section class="section-content leadership">
 			<?php $associated_bios = get_post_meta( $post->ID, 'ws_attached_leadership_bios', true ); ?>
 
 			<?php if ( 0 == count( $associated_bios ) ) : ?>
@@ -24,12 +24,47 @@ get_header(); ?>
 
 			<?php foreach ( $associated_bios as $bio ) : ?>
 
-				<?php $post = get_post( $bio ); ?>
+				<?php $post = get_post( $bio ); print_r($bio);?>
 
-				<?php get_template_part( 'partials/content', 'bio' ); ?>
+				<article <?php post_class(); ?>>
+					<header class="entry-header">
+						<?php if ( has_post_thumbnail() ) : ?>
+							<div class="headshot">
+								<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
+								<?php the_post_thumbnail( 'large' ); ?>
+							</div>
+						<?php endif; ?>
+
+						<h3 class="entry-title">
+							<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+								<?php the_title(); ?>
+							</a>
+						</h3>
+
+						<?php if ( $position ) : ?>
+							<span class="entry-position"><?php echo esc_html( $position ); ?></span>
+						<?php endif; ?>
+					</header>
+
+					<div class="entry-content">
+						<?php if ( is_page('about') ) : ?>
+							<?php the_content($bio->post_id); ?>
+						<?php else : ?>
+							<?php the_excerpt($bio->post_id); ?>
+						<?php endif; ?>
+					</div>
+
+					<footer class="entry-footer">
+						<?php if ( is_page('about') ) : ?>
+							<?php // @todo should 'back to leadership/category' link go here? ?>
+						<?php else : ?>
+							<a href="<?php the_permalink(); ?>">Read More</a>
+						<?php endif; ?>
+					</footer>
+				</article>
 
 			<?php endforeach; ?>
-		</div>
+		</section>
 
 	</main>
 </div>

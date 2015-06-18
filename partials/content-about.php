@@ -4,14 +4,12 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<section id="post-<?php the_ID(); ?>" <?php post_class('about section-content'); ?>>
 	<?php if ( ! is_page( 'about') ) : ?>
 	<header class="entry-header">
-		<h1 class="entry-title">
-			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-				<?php the_title(); ?>
-			</a>
-		</h1>
+		<h2 class="entry-title">
+			<?php the_title(); ?>
+		</h2>
 	</header>
 	<?php endif; ?>
 
@@ -22,4 +20,4 @@
 	<footer class="entry-footer">
 
 	</footer>
-</article>
+</section>

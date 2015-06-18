@@ -1,0 +1,31 @@
+.about {
+
+	.entry-content {
+		@include span(full);
+
+		@include susy-media($screen-xs) {
+			@include span(7);
+		}
+	}
+}
+
+.leadership {
+	> article {
+		@include span(full);
+
+		@include susy-media($screen-xs) {
+			@include gallery(4 wide);
+		}
+	}
+
+	.headshot {
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.entry-title, .entry-position, .entry-content {
+		margin-right: 1em;
+	}
+}
