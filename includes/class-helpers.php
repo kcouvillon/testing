@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A collection of helper functions
  *
@@ -45,7 +46,7 @@ class WS_Helpers {
 	 * @return html content wrapped in a unordered list
 	 */
 	public static function blog_type( $post_id ) {
-		$terms = get_the_terms( $post_id, 'blog-type' );
+		$terms     = get_the_terms( $post_id, 'blog-type' );
 		$term_slug = $terms[0]->slug;
 
 		if ( $term_slug == '' ) {
@@ -53,6 +54,40 @@ class WS_Helpers {
 		}
 
 		return $term_slug;
+	}
+
+	/**
+	 * Helper function for retrieving and formatting value propositions
+	 *
+	 * @param $post_id
+	 *
+	 * @return string Our html output
+	 */
+	public static function get_value_proposition( $post_id ) {
+		$value_prop = get_post( $post_id );
+		ob_start();
+		{ ?>
+			<div class="value-prop">
+				<?php $icon = get_the_post_thumbnail( $post_id, array( 300, 300 ), array(
+					'class' => 'value-prop-img'
+				) ); ?>
+
+				<?php if ( $icon ) : ?>
+					<?php echo $icon; ?>
+				<?php else : ?>
+					<img class="value-prop-img" src="http://placehold.it/300x300" alt="">
+				<?php endif; ?>
+
+				<span class="value-prop-title"><?php echo $value_prop->post_title; ?></span>
+
+				<p class="value-prop-desc"><?php echo $value_prop->post_content; ?></p>
+			</div>
+			<?php
+			$html = ob_get_contents();
+			ob_get_clean();
+
+			return $html;
+		}
 	}
 }
 
