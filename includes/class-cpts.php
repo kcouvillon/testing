@@ -146,7 +146,26 @@ class WS_Custom_Post_Types {
 				'menu_icon' => 'dashicons-format-image',
 				'exclude_from_search'    => false,
 				'publicly_queryable'   => false,
-				'show_in_nav_menus'       => false
+				'show_in_nav_menus'       => false,
+
+				'admin_cols' => array(
+					// A featured image column:
+					'featured_image' => array(
+						'title'          => 'Icon',
+						'featured_image' => 'thumbnail'
+					),
+					// A taxonomy terms column:
+					'product_line' => array(
+						'taxonomy' => 'product-line'
+					),
+					// The default Title column:
+					'title',
+					// A post field column:
+					'last_modified' => array(
+						'title'      => 'Last Modified',
+						'post_field' => 'post_modified',
+					),
+				),
 			),
 			array(
 				'plural' => 'Why WS'
