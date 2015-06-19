@@ -6166,8 +6166,27 @@ a.no-decoration {
         margin-right: -100%;
         clear: none; } }
 
-.about .entry-content {
-  max-width: 670px; }
+.about .section-header {
+  background-image: url(../images/src/default-bg.png);
+  background-size: 40px 46px; }
+
+@media (min-width: 768px) {
+  .about.section-content {
+    width: 66.0130718954%;
+    float: left;
+    margin-right: 1.9607843137%;
+    padding-right: 0; } }
+
+.about-wrap {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5%; }
+  @media (min-width: 768px) {
+    .about-wrap {
+      display: flex;
+      padding: 0; } }
 
 .leadership > article {
   width: 100%;
@@ -6197,6 +6216,39 @@ a.no-decoration {
 
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-left: 90px;
+  position: relative; }
+  .timeline:before {
+    content: '';
+    position: absolute;
+    left: 57px;
+    top: 0;
+    width: 2px;
+    background: #b3b7bf;
+    height: 100%; }
+  .timeline .timeline-year {
+    position: absolute;
+    left: 0;
+    margin: 0;
+    display: block;
+    line-height: 1.8;
+    color: #4fa9e5; }
+    .timeline .timeline-year:after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border: 2px solid #4fa9e5;
+      border-radius: 50%;
+      background-color: #fff;
+      display: block;
+      position: absolute;
+      top: 36%;
+      right: -100%; }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
@@ -6259,6 +6311,15 @@ a.no-decoration {
   @media (min-width: 600px) {
     .value-prop-desc {
       width: 65.3333333333%;
+      float: right;
+      margin-right: 0; } }
+
+.contact-sidebar {
+  background: #E1EBF2;
+  padding: 1.9607843137% 2em 3em; }
+  @media (min-width: 768px) {
+    .contact-sidebar {
+      width: 32.0261437908%;
       float: right;
       margin-right: 0; } }
 

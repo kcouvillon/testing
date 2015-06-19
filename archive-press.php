@@ -8,27 +8,32 @@ get_header(); ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<H3>This is the press archive/home page</H3>
-
 		<?php get_template_part( 'partials/about', 'header' ); ?>
 
-		<?php if ( have_posts() ) : ?>
+		<div class="about-wrap">
+			<section class="about section-content">
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+				<?php if ( have_posts() ) : ?>
 
-				<?php // @todo probably want press content module ?>
-				<?php get_template_part( 'partials/content', 'about' ) ?>
+					<?php /* Start the Loop */ ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile; ?>
+						<?php // @todo probably want press content module ?>
+						<?php get_template_part( 'partials/content', 'about' ) ?>
 
-		<?php else : ?>
+					<?php endwhile; ?>
 
-			<p>Nothing found</p>
+				<?php else : ?>
 
-		<?php endif; ?>
+					<p>Nothing found</p>
 
-		<?php get_template_part( 'partials/module', 'contact' ) ?>
+				<?php endif; ?>
+
+			</section>
+
+			<?php get_template_part( 'partials/module', 'contact' ) ?>
+
+		</div>
 
 	</main>
 </div>
