@@ -111,7 +111,8 @@ class WS_Custom_Post_Types {
 		register_extended_post_type( 'press',
 			array(
 				'menu_icon' => 'dashicons-media-document',
-				'rewrite'   => array( 'slug' => 'about/press' )
+				'rewrite'   => array( 'slug' => 'about/press' ),
+				'taxonomies' => array( 'category' )
 			),
 			array(
 				'plural' => 'Press'
