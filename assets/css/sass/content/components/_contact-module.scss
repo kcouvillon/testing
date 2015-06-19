@@ -3,6 +3,6 @@
 	padding: gutter() 2em 3em;
 
 	@include susy-media($screen-sm) {
-		@include span(4 last);
+		@include span(3 last);
 	}
 }

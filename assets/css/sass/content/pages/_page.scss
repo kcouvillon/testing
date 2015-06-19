@@ -56,6 +56,10 @@
 	margin-top: -158px;
 }
 
+.archive .primary-section {
+	margin-top: 0;
+}
+
 .section-header {
 	background-size: cover;
 	@include clearfix;
@@ -88,10 +92,18 @@
 			.has-featured-image & {
 				margin-top: 17.2%;
 			}
+
+			.archive & {
+				margin-top: 6.66666%;
+			}
 		}
 
 		.has-featured-image & {
 			color: #fff;
+		}
+
+		.archive & {
+			color: $gray_base;
 		}
 	}
 }
