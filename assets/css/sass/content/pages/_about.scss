@@ -1,9 +1,32 @@
 .about {
 
+	.section-header {
+		background-image: url(../images/src/default-bg.png);
+		background-size: 40px 46px;
+	}
+
 	.entry-content {
-		max-width: 670px;
+		// max-width: 670px;
+	}
+
+	&.section-content {
+		@include susy-media($screen-sm) {
+			@include span(8);
+			padding-right: 0;
+		}
 	}
 }
+
+.about-wrap {
+	@include container();
+
+	@include susy-media($screen-sm) {
+		display: flex;
+		padding: 0;
+	}
+}
+
+// LEADERSHIP SUBPAGE
 
 .leadership {
 	> article {
@@ -23,5 +46,50 @@
 
 	.entry-title, .entry-position, .entry-content {
 		margin-right: 1em;
+	}
+}
+
+// HISTORY SUBPAGE
+
+.timeline {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	padding-left: 90px;
+	position: relative;
+
+	&:before {
+		content: '';
+		position: absolute;
+		left: 57px;
+		top: 0;
+		width: 2px;
+		background: $gray_light;
+		height: 100%;
+	}
+
+	.timeline-event {
+	}
+
+	.timeline-year {
+		position: absolute;
+		left: 0;
+		margin: 0;
+		display: block;
+		line-height: 1.8;
+		color: $blue;
+
+		&:after {
+			content: '';
+			width: 12px;
+			height: 12px;
+			border: 2px solid $blue;
+			border-radius: 50%;
+			background-color: #fff;
+			display: block;
+			position: absolute;
+			top: 36%;
+			right: -100%;
+		}
 	}
 }

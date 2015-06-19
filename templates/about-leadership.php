@@ -12,8 +12,10 @@ get_header(); ?>
 		<?php get_template_part( 'partials/about', 'header' ); ?>
 
 		<?php the_post(); ?>
-
-		<?php get_template_part( 'partials/content', 'about' ) ?>
+		
+		<section class="about section-content">
+			<?php get_template_part( 'partials/content', 'about' ) ?>
+		</section>
 
 		<section class="section-content leadership">
 			<?php $associated_bios = get_post_meta( $post->ID, 'ws_attached_leadership_bios', true ); ?>

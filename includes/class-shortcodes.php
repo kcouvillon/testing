@@ -67,10 +67,9 @@ class WS_Shortcodes {
 
 		ob_start();
 		?>
-			<li class="year">
-				<span class="icon"></span>
-				<h6><?php echo $atts['year'];?></h6>
-				<p><?php echo $content; ?>
+			<li class="timeline-event">
+				<span class="timeline-year h6"><?php echo $atts['year'];?></span>
+				<p class="timeline-content"><?php echo $content; ?>
 			</li>
 		<?php
 		$html = ob_get_contents();
