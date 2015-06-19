@@ -39,7 +39,7 @@ get_header(); ?>
 						<?php endif; ?>
 
 						<h3 class="entry-title">
-							<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+							<a href="<?php echo esc_url( get_permalink( $bio_id ) ); ?>" rel="bookmark">
 								<?php echo apply_filters( 'title', $bio->post_title ); ?>
 							</a>
 						</h3>
@@ -60,7 +60,7 @@ get_header(); ?>
 					</div>
 
 					<footer class="entry-footer">
-						<a href="<?php the_permalink(); ?>">Read More</a>
+						<a href="<?php echo esc_url( get_the_permalink( $bio_id ) ); ?>">Read More</a>
 					</footer>
 				</article>
 
