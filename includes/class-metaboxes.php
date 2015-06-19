@@ -264,7 +264,7 @@ class WS_Metaboxes {
 
 			// $group_field_id is the field id string
 			$group_field_id = $cmb_group->add_field( array(
-				'id'      => $prefix . 'partnership',
+				'id'      => $prefix . 'partners',
 				'type'    => 'group',
 				'options' => array(
 					'group_title'   => __( 'Partnership {#}', 'cmb2' ), // {#} gets replaced by row number
@@ -285,6 +285,12 @@ class WS_Metaboxes {
 				'name' => __( 'Partnership Logo', 'cmb2' ),
 				'id'   => 'image',
 				'type' => 'file',
+			) );
+
+			$cmb_group->add_field( array(
+				'name' => __( 'Notes', 'cmb2' ),
+				'id'   => $prefix . 'notes',
+				'type' => 'textarea_small',
 			) );
 		}
 	}
