@@ -10,22 +10,29 @@
 
 		<?php get_template_part( 'partials/about', 'header' ); ?>
 
-		<?php if ( have_posts() ) : ?>
+		<div class="about-wrap">
+			<section class="about section-content">
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+				<?php if ( have_posts() ) : ?>
 
-				<?php get_template_part( 'partials/content' ) ?>
+					<?php /* Start the Loop */ ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile; ?>
+						<?php get_template_part( 'partials/content' ) ?>
 
-		<?php else : ?>
+					<?php endwhile; ?>
 
-			<p>Nothing found</p>
+				<?php else : ?>
 
-		<?php endif; ?>
+					<p>Nothing found</p>
+
+				<?php endif; ?>
+
+			</section>
 
 		<?php get_template_part( 'partials/module', 'contact' ) ?>
+
+		</div>
 
 	</main>
 </div>

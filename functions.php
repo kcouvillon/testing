@@ -101,6 +101,15 @@ function add_featured_image_body_class( $classes ) {
 add_filter( 'body_class', 'add_featured_image_body_class' );
 
 /**
+ * Customize ellipsis after the_excerpt
+ */
+function new_excerpt_more( $more ) {
+	return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+
+/**
  * Remove cruft from header
  *
  * @todo better location for this?

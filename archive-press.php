@@ -13,6 +13,8 @@ get_header(); ?>
 		<div class="about-wrap">
 			<section class="about section-content">
 
+				<h2>Press Center</h2>
+
 				<?php if ( have_posts() ) : ?>
 
 					<?php /* Start the Loop */ ?>

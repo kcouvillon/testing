@@ -1,0 +1,23 @@
+.hentry {
+
+	.wp-post-image {
+		@include susy-media($screen-xs) {
+			@include span(2 of 7);
+		}
+	}
+
+	.entry-header {
+		margin-bottom: 5px;
+	}
+
+	.entry-meta {
+		font-size: em(12);
+		text-transform: uppercase;
+	}
+
+	h3.entry-title {
+		margin: 0;
+		font-size: em(30);
+	}
+
+}

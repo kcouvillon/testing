@@ -1,6 +1,6 @@
 .site-header {
 	@include container();
-	background: $gray_base;
+	background-color: $gray_base;
 	color: #fff;
 	padding-top: em(16);
 	padding-bottom: em(16);
@@ -18,7 +18,11 @@
 	}
 
 	.has-featured-image & {
-		background: transparent;
+		background-color: transparent;
+	}
+
+	.archive & {
+		background-color: $gray_base;
 	}
 }
 
