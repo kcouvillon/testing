@@ -39,6 +39,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
+		add_action( 'cmb2_init',  array( $this, 'tour_highlights_locations' ) );
 	}
 
 	/**
@@ -169,6 +170,71 @@ class WS_Metaboxes {
 					'post_type' => 'why-ws',
 				),
 			)
+		) );
+
+	}
+
+	/**
+	 * Field group for Why WorldStrides page
+	 */
+	function tour_highlights_locations() {
+
+		// Start with an underscore to hide fields from custom fields list
+		$prefix = 'tour_highlights_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Tour Highlights Locations', 'cmb2' ),
+			'object_types' => array( 'itinerary', ),
+		) );
+
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb_group->add_field( array(
+			'id'          => $prefix . 'group',
+			'type'        => 'group',
+			'options'     => array(
+				'group_title'   => __( 'Location {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Location', 'cmb2' ),
+				'remove_button' => __( 'Remove Location', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		/**
+		 * Group fields works the same, except ids only need
+		 * to be unique to the group. Prefix is not needed.
+		 *
+		 * The parent field's id needs to be passed as the first argument.
+		 */
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'       => __( 'Title', 'cmb2' ),
+			'id'         => 'title',
+			'type'       => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'        => __( 'Description', 'cmb2' ),
+			'description' => __( 'The text that appears in the section header', 'cmb2' ),
+			'id'          => 'description',
+			'type'        => 'textarea_small',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Location Image', 'cmb2' ),
+			'id'   => 'image',
+			'type' => 'file',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+				'name' => 'Location',
+				'desc' => 'Drag the marker to set the exact location',
+				'id' => $prefix . 'location',
+				'type' => 'pw_map',
+				// 'split_values' => true, // Save latitude and longitude as two separate fields
 		) );
 
 	}
