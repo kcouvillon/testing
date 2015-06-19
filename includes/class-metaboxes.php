@@ -40,6 +40,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
 		add_action( 'cmb2_init',  array( $this, 'tour_highlights_locations' ) );
+		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 	}
 
 	/**
@@ -237,6 +238,55 @@ class WS_Metaboxes {
 				// 'split_values' => true, // Save latitude and longitude as two separate fields
 		) );
 
+	}
+
+	/**
+	 * Field groupings for the About - Partnerships page
+	 */
+	function about_partnerships() {
+
+		$sections = array( 'Accreditation', 'Educational Organizations', 'Travel Associations' );
+
+		// Allows us to reuse the Parnership group
+		foreach ( $sections as $section ) {
+			// Start with an underscore to hide fields from custom fields list
+			$prefix = 'about_partnerships_' . sanitize_title( $section ) . '_';
+
+			/**
+			 * Repeatable Field Groups
+			 */
+			$cmb_group = new_cmb2_box( array(
+				'id'           => $prefix . 'metabox',
+				'title'        => __( $section, 'cmb2' ),
+				'object_types' => array( 'page' ),
+				'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-partnerships.php' ),
+			) );
+
+			// $group_field_id is the field id string
+			$group_field_id = $cmb_group->add_field( array(
+				'id'      => $prefix . 'partnership',
+				'type'    => 'group',
+				'options' => array(
+					'group_title'   => __( 'Partnership {#}', 'cmb2' ), // {#} gets replaced by row number
+					'add_button'    => __( 'Add Another Partnership', 'cmb2' ),
+					'remove_button' => __( 'Remove Partnership', 'cmb2' ),
+					'sortable'      => true, // beta
+				)
+			) );
+
+			$cmb_group->add_group_field( $group_field_id, array(
+				'name' => __( 'Title', 'cmb2' ),
+				'id'   => 'title',
+				'type' => 'text',
+				// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+			) );
+
+			$cmb_group->add_group_field( $group_field_id, array(
+				'name' => __( 'Partnership Logo', 'cmb2' ),
+				'id'   => 'image',
+				'type' => 'file',
+			) );
+		}
 	}
 }
 
