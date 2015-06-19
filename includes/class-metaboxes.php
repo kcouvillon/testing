@@ -196,7 +196,7 @@ class WS_Metaboxes {
 			'id'          => $prefix . 'group',
 			'type'        => 'group',
 			'options'     => array(
-				'group_title'   => __( 'Locations {#}', 'cmb2' ), // {#} gets replaced by row number
+				'group_title'   => __( 'Location {#}', 'cmb2' ), // {#} gets replaced by row number
 				'add_button'    => __( 'Add Another Location', 'cmb2' ),
 				'remove_button' => __( 'Remove Location', 'cmb2' ),
 				'sortable'      => true, // beta
