@@ -118,6 +118,24 @@
 }
 
 /***********************************************\
+// CAREERS SUBPAGE
+\***********************************************/
+
+.benefit {
+	@include span(full);
+
+	@include susy-media($screen-xs) {
+		@include gallery(4.5 of 9);
+	}
+}
+
+.benefit-img, .benefit-desc {
+	display: block;
+	margin-bottom: 1em;
+	line-height: 1.5;
+}
+
+/***********************************************\
 // LEADERSHIP SUBPAGE
 \***********************************************/
 

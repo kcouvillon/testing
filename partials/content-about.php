@@ -41,6 +41,10 @@
 		<?php get_template_part( 'partials/content', 'partnerships' ); ?>
 	<?php endif; ?>
 
+	<?php if ( is_page( 'careers' ) ) : ?>
+		<?php get_template_part( 'partials/content', 'careers' ); ?>
+	<?php endif; ?>
+
 	<footer class="entry-footer">
 
 	</footer>

@@ -6324,6 +6324,32 @@ a.no-decoration {
   color: #b3b7bf;
   margin-top: 2em; }
 
+/***********************************************// CAREERS SUBPAGE
+\***********************************************/
+.benefit {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 600px) {
+    .benefit {
+      width: 48.6842105263%;
+      float: left; }
+      .benefit:nth-child(2n + 1) {
+        margin-left: 0;
+        margin-right: -100%;
+        clear: both;
+        margin-left: 0; }
+      .benefit:nth-child(2n + 2) {
+        margin-left: 51.3157894737%;
+        margin-right: -100%;
+        clear: none; } }
+
+.benefit-img, .benefit-desc {
+  display: block;
+  margin-bottom: 1em;
+  line-height: 1.5; }
+
 /***********************************************// LEADERSHIP SUBPAGE
 \***********************************************/
 .leadership > article {
