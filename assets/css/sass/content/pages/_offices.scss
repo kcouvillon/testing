@@ -1,0 +1,74 @@
+.office {
+	@include clearfix;
+}
+
+.office-title {
+
+	span {
+		color: $gray_light;
+	}
+}
+
+.office-img {
+	@include span(full);
+	margin-bottom: 1em;
+
+	@include susy-media($screen-xs) {
+		@include span(4.5 of 9 last);
+	}
+
+	img {
+		width: 100%;
+	}
+}
+
+.office-content {
+	@include span(full);
+	margin-bottom: 1em;
+
+	@include susy-media($screen-xs) {
+		@include span(4.5 of 9);
+	}
+}
+
+.office-address {
+	@include span(full);
+	clear: right;
+	margin-bottom: 1em;
+
+	@include susy-media($screen-xs) {
+		@include span(4.5 of 9);
+
+		&.mailing-address {
+			@include last;
+		}
+	}
+
+	small span {
+		color: $gray_light;
+	}
+
+	p {
+		margin-bottom: 0.5em;
+	}
+}
+
+.international-programs {
+
+	.program {
+		@include span(full);
+		margin-bottom: 1em;
+
+		@include susy-media($screen-xs) {
+			@include span(3 of 9);
+
+			&:nth-child(3n+3) {
+				@include last;
+			}
+		}
+
+		p {
+			margin-bottom: 0.5em;
+		}
+	}
+}
