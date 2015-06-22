@@ -6075,6 +6075,14 @@ a.no-decoration {
 #page {
   overflow: hidden; }
 
+section:before,
+section:after {
+  content: "";
+  display: table; }
+
+section:after {
+  clear: both; }
+
 .section-nav {
   display: none; }
   @media (min-width: 600px) {
@@ -6413,6 +6421,47 @@ a.no-decoration {
       position: absolute;
       top: 36%;
       right: -100%; }
+
+.example-wrap {
+  padding-right: 1.9607843137%; }
+  .example-wrap:before,
+  .example-wrap:after {
+    content: "";
+    display: table; }
+  .example-wrap:after {
+    clear: both; }
+
+.example {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em; }
+  @media (min-width: 600px) {
+    .example {
+      width: 51.3157894737%;
+      float: left; }
+      .example:nth-child(2n + 1) {
+        margin-left: 0;
+        margin-right: -100%;
+        clear: both;
+        margin-left: 0; }
+      .example:nth-child(2n + 2) {
+        margin-left: 51.3157894737%;
+        margin-right: -100%;
+        clear: none; } }
+  .example .headshot img {
+    width: 100%; }
+  .example .entry-name {
+    margin-bottom: 0;
+    margin-top: 1em; }
+  .example .entry-desc {
+    margin-bottom: 1.5em;
+    font-size: 0.875em;
+    display: block; }
+  @media (min-width: 600px) {
+    .example .entry-content {
+      margin-right: 1em; } }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

@@ -37,10 +37,53 @@
 	<p>WorldStrides offers a variety of careers in Marketing, Sales, Account Management, Customer Service, Finance, and Human Resources. Meet some of our team members and learn what their roles entail.</p>
 
 	<div class="example-wrap">
-		<div class="example">
+		<article class="example">
 			<div class="headshot">
-				<img src="http://placehold.it/100x80" alt="">
+				<img src="http://placehold.it/385x250" alt="">
 			</div>
-		</div>
+			<header class="entry-title">
+				<h3 class="entry-name">Person Name</h3>
+				<span class="entry-desc">Person Job Description</span>
+			</header>
+			<div class="entry-content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam error iure eos. Cum, libero doloribus id temporibus ex dicta suscipit voluptatum sed quasi ratione consequuntur et, quis repellendus ipsa!</p>
+			</div>
+		</article>
+		<article class="example">
+			<div class="headshot">
+				<img src="http://placehold.it/385x250" alt="">
+			</div>
+			<header class="entry-title">
+				<h3 class="entry-name">Person Name</h3>
+				<span class="entry-desc">Person Job Description</span>
+			</header>
+			<div class="entry-content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam error iure eos. Cum, libero doloribus id temporibus ex dicta suscipit voluptatum sed quasi ratione consequuntur et, quis repellendus ipsa!</p>
+			</div>
+		</article>
+		<article class="example">
+			<div class="headshot">
+				<img src="http://placehold.it/385x250" alt="">
+			</div>
+			<header class="entry-title">
+				<h3 class="entry-name">Person Name</h3>
+				<span class="entry-desc">Person Job Description</span>
+			</header>
+			<div class="entry-content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam error iure eos. Cum, libero doloribus id temporibus ex dicta suscipit voluptatum sed quasi ratione consequuntur et, quis repellendus ipsa!</p>
+			</div>
+		</article>
+		<article class="example">
+			<div class="headshot">
+				<img src="http://placehold.it/385x250" alt="">
+			</div>
+			<header class="entry-title">
+				<h3 class="entry-name">Person Name</h3>
+				<span class="entry-desc">Person Job Description</span>
+			</header>
+			<div class="entry-content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam error iure eos. Cum, libero doloribus id temporibus ex dicta suscipit voluptatum sed quasi ratione consequuntur et, quis repellendus ipsa!</p>
+			</div>
+		</article>
 	</div>
 </section>

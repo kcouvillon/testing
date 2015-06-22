@@ -2,6 +2,10 @@
 	overflow: hidden;
 }
 
+section {
+	@include clearfix;
+}
+
 // These styles apply to the section heros that appear on several pages
 .section-nav {
 	display: none;
@@ -118,3 +122,4 @@
 @import 'why-worldstrides';
 @import 'about';
 @import 'press';
+@import 'careers';
