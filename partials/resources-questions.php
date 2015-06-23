@@ -4,20 +4,11 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'resource-question' ); ?>>
 	<header class="entry-header">
-		<h1 class="entry-title">
-			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+			<a href="#" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
-		</h1>
-
-
-		<?php if ( 'post' == get_post_type() ) : ?>
-			<div class="entry-meta">
-
-			</div>
-		<?php endif; ?>
 	</header>
 
 	<div class="entry-content">

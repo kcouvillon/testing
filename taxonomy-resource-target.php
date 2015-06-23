@@ -8,7 +8,7 @@
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<?php get_template_part( 'partials/resources', 'header' ); ?>
+		<?php get_template_part( 'partials/resources', 'tax-header' ); ?>
 
 		<?php if ( have_posts() ) : ?>
 

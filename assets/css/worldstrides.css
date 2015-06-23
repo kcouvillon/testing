@@ -6537,6 +6537,51 @@ section:after {
   .international-programs .program p {
     margin-bottom: 0.5em; }
 
+.resources-header {
+  background-image: url(../images/src/patterns/ws_w_pattern8.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .resources-header {
+      background-image: url(../images/src/patterns/ws_w_pattern8@2x.gif); } }
+  .resources-header .section-header-content {
+    color: #fff; }
+
+.section-resource-questions {
+  margin-bottom: 3em; }
+  .section-resource-questions h2 {
+    display: block;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5%;
+    margin-bottom: 38px; }
+
+.resource-question {
+  margin-bottom: 0;
+  color: #fff;
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5%; }
+  .resource-question:last-of-type .entry-header a {
+    border-bottom: 1px solid #989898; }
+  .resource-question.open {
+    background: #323c53; }
+    .resource-question.open .entry-header a {
+      color: #fff;
+      border: none; }
+    .resource-question.open + .resource-question .entry-header a {
+      border-top: none; }
+  .resource-question .entry-header {
+    margin-bottom: 0; }
+    .resource-question .entry-header a {
+      padding: 15px 0;
+      display: block;
+      border-top: 1px solid #989898; }
+  .resource-question .entry-content {
+    display: none; }
+
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
   display: none; }
@@ -6608,7 +6653,24 @@ section:after {
     .contact-sidebar {
       width: 23.5294117647%;
       float: right;
-      margin-right: 0; } }
+      margin-right: 0; }
+      .contact-sidebar.wide {
+        width: 100%;
+        float: left;
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+        max-width: 1500px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 5%; }
+        .contact-sidebar.wide > div {
+          width: 32.0261437908%;
+          float: left;
+          margin-right: 1.9607843137%; }
+          .contact-sidebar.wide > div:last-of-type {
+            float: right;
+            margin-right: 0; } }
 
 .site-footer {
   position: relative;

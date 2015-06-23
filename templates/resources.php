@@ -24,6 +24,14 @@ get_header(); ?>
 			));
 		?>
 
+		<section class="section-resource-questions">
+
+		<?php if ( is_page( 'resource-center' ) ) : ?>
+
+			<h2>Common Questions</h2>
+
+		<?php endif; ?>
+
 		<?php if ( $featured_questions->have_posts() ) : ?>
 
 			<?php while ( $featured_questions->have_posts() ) : $featured_questions->the_post(); ?>
@@ -37,6 +45,8 @@ get_header(); ?>
 			<p>No featured resources found</p>
 
 		<?php endif; ?>
+
+		</section>
 
 		<?php get_template_part( 'partials/module', 'contact' ) ?>
 	</main>

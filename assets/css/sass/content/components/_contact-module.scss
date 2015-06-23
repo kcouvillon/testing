@@ -4,5 +4,18 @@
 
 	@include susy-media($screen-sm) {
 		@include span(3 last);
+
+		&.wide {
+			@include span(full);
+			@include container;
+
+			> div {
+				@include span(4);
+
+				&:last-of-type {
+					@include last;
+				}
+			}
+		}
 	}
 }

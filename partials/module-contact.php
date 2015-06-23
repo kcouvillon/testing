@@ -5,9 +5,15 @@
 
 // @todo this is the same content that appears on other pages, where is it coming from?
 
+$classes = 'contact-sidebar';
+
+if( is_page( 'resource-center' ) || is_archive( 'resource' ) || is_singular( 'resource' ) ) {
+	$classes = 'contact-sidebar wide';
+}
+
 ?>
 
-<aside class="contact-sidebar">
+<aside class="<?php echo $classes; ?>">
 	<h2>Contact us</h2>
 
 	<div class="phone">
