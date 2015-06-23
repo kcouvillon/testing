@@ -6545,6 +6545,15 @@ section:after {
       background-image: url(../images/src/patterns/ws_w_pattern8@2x.gif); } }
   .resources-header .section-header-content {
     color: #fff; }
+    .resources-header .section-header-content nav, .resources-header .section-header-content h1 {
+      color: #fff; }
+    .resources-header .section-header-content h1 {
+      line-height: 1;
+      margin-top: 12px; }
+    .resources-header .section-header-content a {
+      color: #E1EBF2; }
+      .resources-header .section-header-content a:hover {
+        color: #fff; }
 
 .section-resource-questions {
   margin-bottom: 3em; }
@@ -6663,7 +6672,14 @@ section:after {
         max-width: 1500px;
         margin-left: auto;
         margin-right: auto;
-        padding: 0 5%; }
+        padding: 0 5%;
+        float: none; }
+        .contact-sidebar.wide:before,
+        .contact-sidebar.wide:after {
+          content: "";
+          display: table; }
+        .contact-sidebar.wide:after {
+          clear: both; }
         .contact-sidebar.wide > div {
           width: 32.0261437908%;
           float: left;

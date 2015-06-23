@@ -10,7 +10,11 @@
 
 		<?php get_template_part( 'partials/resources', 'tax-header' ); ?>
 
+		<section class="section-resource-questions">
+
 		<?php if ( have_posts() ) : ?>
+
+			<h2>{Static} Questions about Benefits</h2>
 
 			<?php /* Start the Loop */ ?>
 			<?php while ( have_posts() ) : the_post(); ?>
@@ -24,6 +28,8 @@
 			<p>Nothing found</p>
 
 		<?php endif; ?>
+
+		</section>
 
 		<?php get_template_part( 'partials/module', 'contact' ) ?>
 

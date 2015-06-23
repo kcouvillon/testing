@@ -8,6 +8,8 @@
 		&.wide {
 			@include span(full);
 			@include container;
+			@include clearfix;
+			float: none;
 
 			> div {
 				@include span(4);
