@@ -25,11 +25,14 @@
 						<h6>Related to</h6>
 						<ul>
 
-					<?php foreach ( $terms as $term ) { ?>
-							<li><?php echo $term->name; ?></li>
+						<?php foreach ( $terms as $term ) { ?>
+								<li><a href=""><?php echo $term->name; ?></a></li>
 
-						<?php
-						}
+							<?php
+							}
+						?>
+						</ul>
+					<?php	
 					}
 				?>
 			</aside>
