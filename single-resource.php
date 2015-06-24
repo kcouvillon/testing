@@ -8,22 +8,32 @@
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<?php get_template_part( 'partials/resources', 'header' ); ?>
+		<?php get_template_part( 'partials/resources', 'single-header' ); ?>
 
-		<?php if ( have_posts() ) : ?>
+		<?php the_post(); ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+		<section class="section-content">
+			<div class="resource-content">
+				<?php the_content(); ?>
+			</div>
 
-				<?php get_template_part( 'partials/resources', 'questions' ) ?>
+			<aside class="resource-related">
+				<?php
+					$terms = wp_get_post_terms( $post->ID, 'resource-target');
+					if ( !empty( $terms ) ) { ?>
 
-			<?php endwhile; ?>
+						<h6>Related to</h6>
+						<ul>
 
-		<?php else : ?>
+					<?php foreach ( $terms as $term ) { ?>
+							<li><?php echo $term->name; ?></li>
 
-			<p>Nothing found</p>
-
-		<?php endif; ?>
+						<?php
+						}
+					}
+				?>
+			</aside>
+		</section>
 
 		<?php get_template_part( 'partials/module', 'contact' ) ?>
 
