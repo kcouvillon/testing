@@ -81,6 +81,35 @@
 }
 
 /***********************************\
+// Resource Center Homepage
+\***********************************/
+
+.resource-target {
+	@include span(full);
+
+	@include susy-media($screen-xs) {
+		@include gallery(4 wide);
+		margin-right: 0;
+	}
+}
+
+.resource-target-title {
+	display: block;
+	position: relative;
+
+	img {
+		width: 100%;
+	}
+
+	h2 {
+		color: #fff;
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
+	}
+}
+
+/***********************************\
 // Single Resource
 \***********************************/
 

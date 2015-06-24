@@ -6591,6 +6591,43 @@ section:after {
   .resource-question .entry-content {
     display: none; }
 
+/***********************************// Resource Center Homepage
+\***********************************/
+.resource-target {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 600px) {
+    .resource-target {
+      width: 33.9869281046%;
+      float: left;
+      margin-right: 0; }
+      .resource-target:nth-child(3n + 1) {
+        margin-left: 0;
+        margin-right: -100%;
+        clear: both;
+        margin-left: 0; }
+      .resource-target:nth-child(3n + 2) {
+        margin-left: 33.9869281046%;
+        margin-right: -100%;
+        clear: none; }
+      .resource-target:nth-child(3n + 3) {
+        margin-left: 67.9738562092%;
+        margin-right: -100%;
+        clear: none; } }
+
+.resource-target-title {
+  display: block;
+  position: relative; }
+  .resource-target-title img {
+    width: 100%; }
+  .resource-target-title h2 {
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    left: 20px; }
+
 /***********************************// Single Resource
 \***********************************/
 .resource-content {
