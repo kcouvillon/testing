@@ -10,7 +10,7 @@
 		the_post_thumbnail( 'thumbnail' );
 	} ?>
 
-	<?php if ( ! is_page( 'about') && ! is_archive() ) : ?>
+	<?php if ( ! is_page( 'about' ) && ! is_archive() ) : ?>
 		<header class="entry-header">
 			<h2 class="entry-title">
 				<?php the_title(); ?>
@@ -29,21 +29,14 @@
 	<?php endif; ?>
 
 	<div class="entry-content">
-		<?php if( is_archive( 'press' ) ) {
+		<?php
+		if ( is_archive( 'press' ) ) {
 			the_excerpt();
 		} else {
 			the_content();
 		}
 		?>
 	</div>
-
-	<?php if ( is_page( 'partnerships' ) ) : ?>
-		<?php get_template_part( 'partials/content', 'partnerships' ); ?>
-	<?php endif; ?>
-
-	<?php if ( is_page( 'careers' ) ) : ?>
-		<?php get_template_part( 'partials/content', 'careers' ); ?>
-	<?php endif; ?>
 
 	<?php if ( is_page( 'offices' ) ) : ?>
 		<?php get_template_part( 'partials/content', 'offices' ); ?>
