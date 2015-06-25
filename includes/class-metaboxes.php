@@ -41,6 +41,8 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
 		add_action( 'cmb2_init',  array( $this, 'tour_highlights_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
+		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
+		add_action( 'cmb2_init',  array( $this, 'about_careers_examples' ) );
 	}
 
 	/**
@@ -293,6 +295,136 @@ class WS_Metaboxes {
 				'type' => 'textarea_small',
 			) );
 		}
+	}
+
+	/**
+	 * Benefits for the About - Careers page
+	 */
+	function about_careers_benefits() {
+
+		$prefix = 'about_careers_benefits_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Benefits', 'worldstrides' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-careers.php' ),
+		) );
+
+		$cmb_group->add_field( array(
+			'name' => __( 'Title', 'worldstrides' ),
+			'id'   => $prefix . 'title',
+			'type' => 'text',
+			'default' => 'Benefits of Working at WorldStrides'
+		) );
+
+		$cmb_group->add_field( array(
+			'name' => __( 'Description', 'worldstrides' ),
+			'id'   => $prefix . 'description',
+			'type' => 'textarea_small',
+			'default' => 'In addition to our fun and inspiring environment, WorldStrides offers a number of benefits for our full-time, year-round staff:'
+		) );
+
+		// $group_field_id is the field id string
+		$group_field_id = $cmb_group->add_field( array(
+			'id'      => $prefix . 'list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Benefit {#}', 'worldstrides' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Benefit', 'worldstrides' ),
+				'remove_button' => __( 'Remove Benefit', 'worldstrides' ),
+				'sortable'      => true, // beta
+			)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Icon', 'worldstrides' ),
+			'id'   => 'image',
+			'type' => 'file',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Description', 'worldstrides' ),
+			'id'   => 'description',
+			'type' => 'textarea_small',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+	}
+
+	/**
+	 * Career examples the About - Careers page
+	 */
+	function about_careers_examples() {
+
+		$prefix = 'about_careers_examples_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Career Examples', 'worldstrides' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-careers.php' ),
+		) );
+
+		$cmb_group->add_field( array(
+			'name' => __( 'Title', 'worldstrides' ),
+			'id'   => $prefix . 'title',
+			'type' => 'text',
+			'default' => 'Learn what you can do at WorldStrides'
+		) );
+
+		$cmb_group->add_field( array(
+			'name' => __( 'Description', 'worldstrides' ),
+			'id'   => $prefix . 'description',
+			'type' => 'textarea_small',
+			'default' => 'WorldStrides offers a variety of careers in Marketing, Sales, Account Management, Customer Service, Finance, and Human Resources. Meet some of our team members and learn what their roles entail.'
+		) );
+
+		// $group_field_id is the field id string
+		$group_field_id = $cmb_group->add_field( array(
+			'id'      => $prefix . 'list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Career Example {#}', 'worldstrides' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Career Example', 'worldstrides' ),
+				'remove_button' => __( 'Remove Career Example', 'worldstrides' ),
+				'sortable'      => true, // beta
+			)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Name', 'worldstrides' ),
+			'id'   => 'name',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Position', 'worldstrides' ),
+			'id'   => 'position',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Photo', 'worldstrides' ),
+			'id'   => 'image',
+			'type' => 'file',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Description', 'worldstrides' ),
+			'id'   => 'description',
+			'type' => 'textarea_small',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
 	}
 }
 

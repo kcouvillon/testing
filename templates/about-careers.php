@@ -17,41 +17,64 @@ get_header(); ?>
 
 			<section class="about section-content">
 				<?php get_template_part( 'partials/content', 'about' ) ?>
-			</section>
-
-			<section class="about section-content">
 
 				<button class="btn btn-primary">View our Current Openings</button>
 
+				<?php
+				$benefits_title = get_post_meta( $post->ID, 'about_careers_benefits_title', true );
+				$benefits_description = get_post_meta( $post->ID, 'about_careers_benefits_description', true );
+				$benefits = get_post_meta( $post->ID, 'about_careers_benefits_list', true );
+				?>
 				<section class="benefits">
-					<h3>Benefits of Working at WorldStrides</h3>
-					<p>In addition to our fun and inspiring environment, WorldStrides offers a number of benefits for our full-time, year-round staff:</p>
+					<h3><?php echo apply_filters( 'the_title', $benefits_title ); ?></h3>
+					<p><?php echo apply_filters( 'the_content', $benefits_description ); ?></p>
 
 					<div class="benefits-wrap">
+						<?php if ( is_array( $benefits ) ) : ?>
+						<?php foreach ( $benefits as $benefit ) : ?>
 						<div class="benefit">
-							<img class="benefit-img" src="http://placehold.it/80x80" alt="">
-							<span class="benefit-desc">Employee and family discounts on WorldStrides travel programs</span>
+							<?php
+							$image_url = $benefit['image'];
+							if ( ! $image_url ) { $image_url = 'http://placehold.it/80x80'; }
+							?>
+							<img class="benefit-img" src="<?php echo esc_url( $image_url ); ?>" alt="">
+							<span class="benefit-desc"><?php echo $benefit['description']; ?></span>
 						</div>
+						<?php endforeach; ?>
+						<?php endif; ?>
 					</div>
 				</section>
 
 				<section class="career-examples">
-					<h3>Learn what you can do at WorldStrides</h3>
-					<p>WorldStrides offers a variety of careers in Marketing, Sales, Account Management, Customer Service, Finance, and Human Resources. Meet some of our team members and learn what their roles entail.</p>
+					<?php
+					$examples_title = get_post_meta( $post->ID, 'about_careers_examples_title', true );
+					$examples_description = get_post_meta( $post->ID, 'about_careers_examples_description', true );
+					$examples = get_post_meta( $post->ID, 'about_careers_examples_list', true );
+					?>
+					<h3><?php echo apply_filters( 'the_title', $examples_title ); ?></h3>
+					<p><?php echo apply_filters( 'the_content', $examples_description ); ?></p>
 
 					<div class="example-wrap">
+						<?php if ( is_array( $examples ) ) : ?>
+						<?php foreach ( $examples as $example ) : ?>
 						<article class="example">
 							<div class="headshot">
-								<img src="http://placehold.it/385x250" alt="">
+								<?php
+								$image_url = $example['image'];
+								if ( ! $image_url ) { $image_url = 'http://placehold.it/385x250'; }
+								?>
+								<img src="<?php echo esc_url( $image_url ); ?>" alt="">
 							</div>
 							<header class="entry-title">
-								<h3 class="entry-name">Person Name</h3>
-								<span class="entry-desc">Person Job Description</span>
+								<h3 class="entry-name"><?php echo apply_filters( 'the_title', $example['name'] ); ?></h3>
+								<span class="entry-desc"><?php echo apply_filters( 'the_title', $example['position'] ); ?></span>
 							</header>
 							<div class="entry-content">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore quibusdam error iure eos. Cum, libero doloribus id temporibus ex dicta suscipit voluptatum sed quasi ratione consequuntur et, quis repellendus ipsa!</p>
+								<p><?php echo apply_filters( 'the_content', $example['description'] ); ?></p>
 							</div>
 						</article>
+						<?php endforeach; ?>
+						<?php endif; ?>
 					</div>
 				</section>
 
