@@ -29,7 +29,7 @@ get_header(); ?>
 					</h3>
 
 					<?php
-					if ( array_key_exists( 'image', $office ) ) {
+					if ( array_key_exists( 'image', $office ) && ! '' == $office['image'] ) {
 						$image_url = $office['image'];
 					} else {
 						$image_url = 'http://placehold.it/375x271';
