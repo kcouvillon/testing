@@ -38,10 +38,6 @@
 		?>
 	</div>
 
-	<?php if ( is_page( 'offices' ) ) : ?>
-		<?php get_template_part( 'partials/content', 'offices' ); ?>
-	<?php endif; ?>
-
 	<footer class="entry-footer">
 
 	</footer>

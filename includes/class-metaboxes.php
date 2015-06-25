@@ -43,6 +43,8 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_examples' ) );
+		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
+		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
 	}
 
 	/**
@@ -421,6 +423,130 @@ class WS_Metaboxes {
 		$cmb_group->add_group_field( $group_field_id, array(
 			'name' => __( 'Description', 'worldstrides' ),
 			'id'   => 'description',
+			'type' => 'textarea_small',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+	}
+
+	/**
+	 * Main offices for the About - Offices page
+	 */
+	function about_offices() {
+
+		$prefix = 'about_offices_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Offices', 'worldstrides' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-offices.php' ),
+		) );
+
+		// $group_field_id is the field id string
+		$group_field_id = $cmb_group->add_field( array(
+			'id'      => $prefix . 'list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Office {#}', 'worldstrides' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Office', 'worldstrides' ),
+				'remove_button' => __( 'Remove Office', 'worldstrides' ),
+				'sortable'      => true, // beta
+			)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Location', 'worldstrides' ),
+			'id'   => 'location',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Location Extra', 'worldstrides' ),
+			'id'   => 'location_extra',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Photo', 'worldstrides' ),
+			'id'   => 'image',
+			'type' => 'file',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Description', 'worldstrides' ),
+			'id'   => 'description',
+			'type' => 'textarea',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Office Address', 'worldstrides' ),
+			'id'   => 'address',
+			'type' => 'textarea_small',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Express Mail Address', 'worldstrides' ),
+			'id'   => 'mail_address',
+			'type' => 'textarea_small',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+	}
+
+	/**
+	 * Main offices for the About - Offices page
+	 */
+	function about_offices_programs() {
+
+		$prefix = 'about_offices_program_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'International Programs', 'worldstrides' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-offices.php' ),
+		) );
+
+		// $group_field_id is the field id string
+		$group_field_id = $cmb_group->add_field( array(
+			'id'      => $prefix . 'list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Program {#}', 'worldstrides' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Program', 'worldstrides' ),
+				'remove_button' => __( 'Remove Program', 'worldstrides' ),
+				'sortable'      => true, // beta
+			)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Title', 'worldstrides' ),
+			'id'   => 'title',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Phone Details', 'worldstrides' ),
+			'id'   => 'phone',
+			'type' => 'textarea_small',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Office Address', 'worldstrides' ),
+			'id'   => 'address',
 			'type' => 'textarea_small',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
