@@ -35,8 +35,9 @@ get_header(); ?>
 							<?php foreach ( $benefits as $benefit ) : ?>
 								<div class="benefit">
 									<?php
-									$image_url = $benefit['image'];
-									if ( ! $image_url ) {
+									if ( array_key_exists( 'image', $benefit ) ) {
+										$image_url = $benefit['image'];
+									} else {
 										$image_url = 'http://placehold.it/80x80';
 									}
 									?>
@@ -64,8 +65,9 @@ get_header(); ?>
 								<article class="example">
 									<div class="headshot">
 										<?php
-										$image_url = $example['image'];
-										if ( ! $image_url ) {
+										if ( array_key_exists( 'image', $example ) ) {
+											$image_url = $example['image'];
+										} else {
 											$image_url = 'http://placehold.it/385x250';
 										}
 										?>
