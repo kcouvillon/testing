@@ -20,8 +20,7 @@ $resources_page = get_page_by_path( 'resource-center' );
 
 <section class="section-content">
 
-	<span class="h2">Answers just right for &hellip;</span>
-
+	<p class="h2">Answers just right for &hellip;</p>
 
 	<nav class="resource-targets">
 		<?php
@@ -38,10 +37,12 @@ $resources_page = get_page_by_path( 'resource-center' );
 				'parent' => $top_level_term->term_id
 			) );
 			?>
-			<div class="<?php esc_attr( $top_level_term->name ); ?>">
-				<a href="<?php echo get_term_link( $top_level_term ); ?>"><h2><?php echo $top_level_term->name; ?></h2></a>
+			<div class="<?php esc_attr( $top_level_term->name ); ?> resource-target">
+				<a class="resource-target-title" href="<?php echo get_term_link( $top_level_term ); ?>">
+					<img src="http://placehold.it/390x206" alt="">
+					<h2><?php echo $top_level_term->name; ?></h2>
+				</a>
 				<div class="resource-target-list">
-					<span class="h3">Which describes you best?</span>
 					<ul>
 					<?php foreach ( $child_terms as $child_term ) : ?>
 						<li><a href="<?php echo get_term_link( $child_term ); ?>"><?php echo $child_term->name; ?></a></li>

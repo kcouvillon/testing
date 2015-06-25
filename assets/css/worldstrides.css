@@ -6591,6 +6591,83 @@ section:after {
   .resource-question .entry-content {
     display: none; }
 
+/***********************************// Resource Center Homepage
+\***********************************/
+.resource-target {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 600px) {
+    .resource-target {
+      width: 33.9869281046%;
+      float: left;
+      margin-right: 0; }
+      .resource-target:nth-child(3n + 1) {
+        margin-left: 0;
+        margin-right: -100%;
+        clear: both;
+        margin-left: 0; }
+      .resource-target:nth-child(3n + 2) {
+        margin-left: 33.9869281046%;
+        margin-right: -100%;
+        clear: none; }
+      .resource-target:nth-child(3n + 3) {
+        margin-left: 67.9738562092%;
+        margin-right: -100%;
+        clear: none; } }
+
+.resource-target-title {
+  display: block;
+  position: relative; }
+  .resource-target-title img {
+    width: 100%; }
+  .resource-target-title h2 {
+    color: #fff;
+    position: absolute;
+    bottom: 10px;
+    left: 20px; }
+
+/***********************************// Single Resource
+\***********************************/
+.resource-content {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2em; }
+  @media (min-width: 600px) {
+    .resource-content {
+      width: 57.5163398693%;
+      float: left;
+      margin-right: 1.9607843137%; } }
+  .resource-content p {
+    max-width: 670px; }
+
+.resource-related {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2em; }
+  @media (min-width: 600px) {
+    .resource-related {
+      width: 32.0261437908%;
+      float: right;
+      margin-right: 0; } }
+  .resource-related h6 {
+    text-transform: uppercase;
+    font-size: 0.75em;
+    color: #bde5ff;
+    margin: 0;
+    line-height: 1.75; }
+  .resource-related ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    .resource-related ul a {
+      line-height: 2; }
+
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
   display: none; }

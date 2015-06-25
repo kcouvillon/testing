@@ -79,3 +79,76 @@
 		display: none;
 	}
 }
+
+/***********************************\
+// Resource Center Homepage
+\***********************************/
+
+.resource-target {
+	@include span(full);
+
+	@include susy-media($screen-xs) {
+		@include gallery(4 wide);
+		margin-right: 0;
+	}
+}
+
+.resource-target-title {
+	display: block;
+	position: relative;
+
+	img {
+		width: 100%;
+	}
+
+	h2 {
+		color: #fff;
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
+	}
+}
+
+/***********************************\
+// Single Resource
+\***********************************/
+
+.resource-content {
+	@include span(full);
+	margin-bottom: 2em;
+
+	@include susy-media($screen-xs) {
+		@include span(7);
+	}
+
+	p {
+		max-width: 670px;
+	}
+}
+
+.resource-related {
+	@include span(full);
+	margin-bottom: 2em;
+
+	@include susy-media($screen-xs) {
+		@include span(4 last);
+	}
+
+	h6 {
+		text-transform: uppercase;
+		font-size: em(12);
+		color: $blue_light;
+		margin: 0;
+		line-height: 1.75;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		a {
+			line-height: 2;
+		}
+	}
+}
