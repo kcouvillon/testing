@@ -22,7 +22,7 @@ $resources_page = get_page_by_path( 'resource-center' );
 
 	<p class="h2">Answers just right for &hellip;</p>
 
-	<nav class="resource-targets">
+	<div class="resource-target-group">
 		<?php
 		$top_level_terms = get_terms( 'resource-target', array(
 			'parent' => 0
@@ -34,7 +34,8 @@ $resources_page = get_page_by_path( 'resource-center' );
 			if ( 'featured' != strtolower( $top_level_term->name ) ) :
 
 			$child_terms = get_terms( 'resource-target', array(
-				'parent' => $top_level_term->term_id
+				'parent' => $top_level_term->term_id,
+				'hide_empty' => false
 			) );
 			?>
 			<div class="<?php esc_attr( $top_level_term->name ); ?> resource-target">
@@ -42,16 +43,21 @@ $resources_page = get_page_by_path( 'resource-center' );
 					<img src="http://placehold.it/390x206" alt="">
 					<h2><?php echo $top_level_term->name; ?></h2>
 				</a>
-				<div class="resource-target-list">
-					<ul>
-					<?php foreach ( $child_terms as $child_term ) : ?>
-						<li><a href="<?php echo get_term_link( $child_term ); ?>"><?php echo $child_term->name; ?></a></li>
-					<?php endforeach; ?>
-					</ul>
+				<div class="resource-target-list-wrap">
+					<p class="h1"><?php echo $top_level_term->name; ?></p>
+					<nav class="resource-target-list" role="navigation">
+						<p class="h6">Which describes you best?</p>
+						<ul>
+						<?php foreach ( $child_terms as $child_term ) : ?>
+							<li><a href="<?php echo get_term_link( $child_term ); ?>"><?php echo $child_term->name; ?></a></li>
+						<?php endforeach; ?>
+						</ul>
+					</nav>
 				</div>
 			</div>
 			<?php endif; ?>
 		<?php endforeach; ?>
-	</nav>
+	</div>
+	<div class="resource-target-bg"></div>
 
 </section>

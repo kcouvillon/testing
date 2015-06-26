@@ -6171,7 +6171,8 @@ section:after {
   margin-right: auto;
   padding: 0 5%;
   margin-top: 1.9607843137%;
-  margin-bottom: 1.9607843137%; }
+  margin-bottom: 1.9607843137%;
+  position: relative; }
   .section-content:before,
   .section-content:after {
     content: "";
@@ -6564,6 +6565,12 @@ section:after {
     margin-right: auto;
     padding: 0 5%;
     margin-bottom: 38px; }
+  .section-resource-questions p {
+    display: block;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5%; }
 
 .resource-question {
   margin-bottom: 0;
@@ -6591,31 +6598,29 @@ section:after {
   .resource-question .entry-content {
     display: none; }
 
-/***********************************// Resource Center Homepage
-\***********************************/
+/*
+// Resource Center Homepage
+*/
+.resource-target-group {
+  position: relative; }
+  .resource-target-group:before,
+  .resource-target-group:after {
+    content: "";
+    display: table; }
+  .resource-target-group:after {
+    clear: both; }
+
 .resource-target {
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0; }
-  @media (min-width: 600px) {
+  @media (min-width: 768px) {
     .resource-target {
-      width: 33.9869281046%;
+      width: 33.33333%;
       float: left;
-      margin-right: 0; }
-      .resource-target:nth-child(3n + 1) {
-        margin-left: 0;
-        margin-right: -100%;
-        clear: both;
-        margin-left: 0; }
-      .resource-target:nth-child(3n + 2) {
-        margin-left: 33.9869281046%;
-        margin-right: -100%;
-        clear: none; }
-      .resource-target:nth-child(3n + 3) {
-        margin-left: 67.9738562092%;
-        margin-right: -100%;
-        clear: none; } }
+      margin-right: 1.9607843137%;
+      margin-right: 0; } }
 
 .resource-target-title {
   display: block;
@@ -6628,8 +6633,84 @@ section:after {
     bottom: 10px;
     left: 20px; }
 
-/***********************************// Single Resource
-\***********************************/
+.resource-target-list-wrap {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  color: #fff;
+  background-color: #323c53;
+  padding: 2% 2% 3%; }
+  @media (min-width: 768px) {
+    .resource-target-list-wrap {
+      display: block;
+      max-width: 1500px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 5%;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      height: 0;
+      padding: 0;
+      overflow: hidden; }
+      .resource-target.active .resource-target-list-wrap {
+        height: auto;
+        padding: 2% 2% 3%; } }
+  .resource-target-list-wrap p.h1 {
+    display: none;
+    margin: 0; }
+    @media (min-width: 768px) {
+      .resource-target-list-wrap p.h1 {
+        width: 32.0261437908%;
+        float: left;
+        margin-right: 1.9607843137%;
+        display: block; } }
+  .resource-target-list-wrap a {
+    color: #fff; }
+    .resource-target-list-wrap a:hover {
+      color: #b3b7bf; }
+  .resource-target-list-wrap .resource-target-list {
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    margin-right: 0; }
+    @media (min-width: 768px) {
+      .resource-target-list-wrap .resource-target-list {
+        width: 32.0261437908%;
+        float: right;
+        margin-right: 0; } }
+    .resource-target-list-wrap .resource-target-list p.h6 {
+      text-transform: uppercase;
+      font-size: 0.75em;
+      color: #bde5ff;
+      margin: 0;
+      line-height: 1.75;
+      margin-bottom: 1em; }
+    .resource-target-list-wrap .resource-target-list ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      .resource-target-list-wrap .resource-target-list ul li {
+        border-bottom: 1px solid #989898; }
+        .resource-target-list-wrap .resource-target-list ul li:first-of-type {
+          border-top: 1px solid #989898; }
+      .resource-target-list-wrap .resource-target-list ul a {
+        line-height: 3;
+        display: block; }
+
+.resource-target-bg {
+  background: #323c53;
+  display: none; }
+  @media (min-width: 768px) {
+    .resource-target-bg {
+      min-height: 355px;
+      display: block; } }
+
+/***********************************
+// Single Resource
+***********************************/
 .resource-content {
   width: 100%;
   float: left;

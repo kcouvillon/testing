@@ -117,6 +117,7 @@ section {
 	@include container();
 	margin-top: gutter();
 	margin-bottom: gutter();
+	position: relative;
 }
 
 @import 'why-worldstrides';

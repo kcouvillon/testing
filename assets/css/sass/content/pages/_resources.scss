@@ -41,6 +41,10 @@
 		@include container();
 		margin-bottom: 38px;
 	}
+
+	p {
+		@include container();
+	}
 }
 
 .resource-question {
@@ -80,15 +84,20 @@
 	}
 }
 
-/***********************************\
+/*
 // Resource Center Homepage
-\***********************************/
+*/
+
+.resource-target-group {
+	@include clearfix;
+	position: relative;
+}
 
 .resource-target {
 	@include span(full);
 
-	@include susy-media($screen-xs) {
-		@include gallery(4 wide);
+	@include susy-media($screen-sm) {
+		@include span(33.33333%);
 		margin-right: 0;
 	}
 }
@@ -109,9 +118,102 @@
 	}
 }
 
-/***********************************\
+.resource-target-list-wrap {
+	@include span(full);
+	color: #fff;
+	background-color: $gray_base;
+	padding: 2% 2% 3%;
+
+	@include susy-media($screen-sm) {
+		@include container();
+		position: absolute;
+		left: 0;
+		width: 100%;
+		z-index: 1;
+		height: 0;
+		padding: 0;
+		overflow: hidden;
+
+		// .resource-target:first-of-type & {
+		// 	height: auto;
+		// 	padding: 2% 2% 3%;
+		// }
+
+		.resource-target.active & {
+			height: auto;
+			padding: 2% 2% 3%;
+		}
+
+	}
+
+	p.h1 {
+		display: none;
+		margin: 0;
+
+		@include susy-media($screen-sm) {
+			@include span(4);
+			display: block;
+		}
+	}
+
+	a {
+		color: #fff;
+
+		&:hover {
+			color: $gray_light;
+		}
+	}
+
+	.resource-target-list {
+		@include span(full);
+
+		@include susy-media($screen-sm) {
+			@include span(4 last);
+		}
+
+		p.h6 {
+			text-transform: uppercase;
+			font-size: em(12);
+			color: $blue_light;
+			margin: 0;
+			line-height: 1.75;
+			margin-bottom: 1em;
+		}
+
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			li {
+				border-bottom: 1px solid $color_border;
+
+				&:first-of-type {
+					border-top: 1px solid $color_border;
+				}
+			}
+
+			a {
+				line-height: 3;
+				display: block;
+			}
+		}
+	}
+}
+
+.resource-target-bg {
+	background: $gray_base;
+	display: none;
+
+	@include susy-media($screen-sm) {
+		min-height: 355px;
+		display: block;
+	}
+}
+
+/***********************************
 // Single Resource
-\***********************************/
+***********************************/
 
 .resource-content {
 	@include span(full);
