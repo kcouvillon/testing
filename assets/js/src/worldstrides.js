@@ -35,7 +35,7 @@
 				e.preventDefault();
 				$(this).closest('.resource-target').addClass('active').siblings('.resource-target').removeClass('active');
 			}
-		}, "a");
+		}, "> a");
 
 	});
 
