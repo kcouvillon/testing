@@ -27,7 +27,7 @@ if ( !empty ($parent_id) ) {
 
 				<?php } ?>
 				>
-				<a href="">High School</a>
+				<?php echo $title; ?>
 			</nav>
 			<h1><?php echo $title; ?></h1>
 		</div>
