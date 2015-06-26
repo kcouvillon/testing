@@ -12,16 +12,28 @@
 
 		<section class="section-resource-questions">
 
+
 		<?php if ( have_posts() ) : ?>
 
-			<h2>{Static} Questions about Benefits</h2>
+			<?php
+			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+			
+			if( $term->parent > 0 ) : ?>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+				<h2>{Static} Questions about Benefits</h2>
 
-				<?php get_template_part( 'partials/resources', 'questions' ) ?>
+				<?php /* Start the Loop */ ?>
+				<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php endwhile; ?>
+					<?php get_template_part( 'partials/resources', 'questions' ); ?>
+
+				<?php endwhile; ?>
+
+			<?php else : ?>
+				
+				<?php get_template_part( 'partials/resources', 'child-terms-list' ); ?>
+
+			<?php endif; ?>
 
 		<?php else : ?>
 

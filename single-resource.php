@@ -17,7 +17,7 @@
 				<?php the_content(); ?>
 			</div>
 
-			<aside class="resource-related">
+			<aside class="resource-related related-terms-list">
 				<?php
 					$terms = wp_get_post_terms( $post->ID, 'resource-target');
 					if ( !empty( $terms ) ) { ?>

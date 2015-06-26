@@ -6714,6 +6714,23 @@ section:after {
       display: block; } }
 
 /***********************************
+// Resource Taxonomy
+***********************************/
+.related-terms-list h6 {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  color: #bde5ff;
+  margin: 0;
+  line-height: 1.75; }
+
+.related-terms-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .related-terms-list ul a {
+    line-height: 2; }
+
+/***********************************
 // Single Resource
 ***********************************/
 .resource-content {
@@ -6741,18 +6758,6 @@ section:after {
       width: 32.0261437908%;
       float: right;
       margin-right: 0; } }
-  .resource-related h6 {
-    text-transform: uppercase;
-    font-size: 0.75em;
-    color: #bde5ff;
-    margin: 0;
-    line-height: 1.75; }
-  .resource-related ul {
-    list-style: none;
-    margin: 0;
-    padding: 0; }
-    .resource-related ul a {
-      line-height: 2; }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

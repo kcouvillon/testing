@@ -8,9 +8,10 @@
 	<header class="section-header resources-header">
 		<div class="section-header-content">
 			<nav class="breadcrumbs">
-				<?php // @todo needs to be dynamic ?>
-				{STATIC}
-				<a href="">Resource Center</a>
+				<?php
+				$resource_page = get_page_by_path('resource-center');
+				?>
+				<a href="<?php echo home_url( '/') . get_page_uri($resource_page->ID); ?>">Resource Center</a>
 				>
 				<a href="">Question</a>
 				>

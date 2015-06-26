@@ -221,6 +221,30 @@
 }
 
 /***********************************
+// Resource Taxonomy
+***********************************/
+
+.related-terms-list {
+	h6 {
+		text-transform: uppercase;
+		font-size: em(12);
+		color: $blue_light;
+		margin: 0;
+		line-height: 1.75;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		a {
+			line-height: 2;
+		}
+	}
+}
+
+/***********************************
 // Single Resource
 ***********************************/
 
@@ -243,23 +267,5 @@
 
 	@include susy-media($screen-xs) {
 		@include span(4 last);
-	}
-
-	h6 {
-		text-transform: uppercase;
-		font-size: em(12);
-		color: $blue_light;
-		margin: 0;
-		line-height: 1.75;
-	}
-
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-
-		a {
-			line-height: 2;
-		}
 	}
 }
