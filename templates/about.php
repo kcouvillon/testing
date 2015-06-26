@@ -15,10 +15,10 @@ get_header(); ?>
 		<div class="about-wrap">
 
 			<section class="about section-content">
-				<?php get_template_part( 'partials/content', 'about' ) ?>
+				<?php get_template_part( 'partials/content', 'about' ); ?>
 			</section>
 
-			<?php get_template_part( 'partials/module', 'contact' ) ?>
+			<?php get_template_part( 'partials/module', 'contact' ); ?>
 
 		</div><!-- .about-wrap -->
 
@@ -28,7 +28,7 @@ get_header(); ?>
 				<button class="btn btn-primary">Discover Why</button>
 			</div>
 			<div class="about-footer-img">
-				
+
 			</div>
 		</footer>
 
