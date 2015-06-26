@@ -17,7 +17,7 @@
 
 			<?php foreach ( $terms as $term ) { ?>
 
-				<?php $obj = get_term_by( 'id', $term, $taxonomy ); print_r($obj); ?>
+				<?php $obj = get_term_by( 'id', $term, $taxonomy ); ?>
 
 				<li><a href="<?php echo get_term_link( $term, $taxonomy); ?>"><?php echo $obj->name; ?></a></li>
 

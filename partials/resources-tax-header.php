@@ -6,6 +6,11 @@
 
 <?php
 $title = get_queried_object()->name;
+$parent_id = get_queried_object()->parent;
+if ( !empty ($parent_id) ) {
+	$parent = get_term( $parent_id, 'resource-target' );
+	$parent_link = get_term_link( $parent, 'resource-target' );
+}
 ?>
 
 
@@ -14,10 +19,13 @@ $title = get_queried_object()->name;
 		<div class="section-header-content">
 			<nav class="breadcrumbs">
 				<?php // @todo needs to be dynamic ?>
-				{STATIC}
-				<a href="">Resource Center</a>
+				<a href="<?php echo get_permalink(); ?>">Resource Center</a>
+				<?php if( !empty ( $parent ) ) { ?>
+
 				>
-				<a href="">Educators</a>
+				<a href="<?php echo $parent_link; ?>"><?php echo $parent->name; ?></a>
+
+				<?php } ?>
 				>
 				<a href="">High School</a>
 			</nav>

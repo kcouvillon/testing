@@ -13,11 +13,9 @@
 				?>
 				<a href="<?php echo home_url( '/') . get_page_uri($resource_page->ID); ?>">Resource Center</a>
 				>
-				<a href="">Question</a>
-				>
-				<a href="">Do you book lorem ipsum dolor sit air travel?</a>
+				<?php the_title(); ?>
 			</nav>
-			<h1>{STATIC} Do you book lorem ipsum dolor sit air travel?</h1>
+			<h1><?php the_title(); ?></h1>
 		</div>
 	</header>
 </section>

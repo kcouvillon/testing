@@ -19,3 +19,15 @@
 // 		outline: 0;
 // 	}
 // }
+
+.breadcrumbs {
+	color: $blue_lighter;
+
+	a {
+		color: $blue_lighter;
+
+		&:hover {
+			color: $gray_light;
+		}
+	}
+}

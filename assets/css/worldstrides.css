@@ -5662,6 +5662,13 @@ img {
 /*--------------------------------------------------------------
 5.1 Links
 --------------------------------------------------------------*/
+.breadcrumbs {
+  color: #E1EBF2; }
+  .breadcrumbs a {
+    color: #E1EBF2; }
+    .breadcrumbs a:hover {
+      color: #b3b7bf; }
+
 /*--------------------------------------------------------------
 5.2 Navigation
 --------------------------------------------------------------*/
@@ -6546,15 +6553,11 @@ section:after {
       background-image: url(../images/src/patterns/ws_w_pattern8@2x.gif); } }
   .resources-header .section-header-content {
     color: #fff; }
-    .resources-header .section-header-content nav, .resources-header .section-header-content h1 {
+    .resources-header .section-header-content h1 {
       color: #fff; }
     .resources-header .section-header-content h1 {
       line-height: 1;
       margin-top: 12px; }
-    .resources-header .section-header-content a {
-      color: #E1EBF2; }
-      .resources-header .section-header-content a:hover {
-        color: #fff; }
 
 .section-resource-questions {
   margin-bottom: 3em; }
