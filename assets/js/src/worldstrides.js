@@ -13,6 +13,7 @@
 
 	var resourceTarget = document.querySelectorAll( '.resource-target' );
 	var resourceQuestion = document.querySelectorAll( '.resource-question a' );
+	var sectionNav = document.querySelectorAll( '.section-nav' );
 
 	$(document).ready(function() {
 
@@ -36,6 +37,8 @@
 				$(this).closest('.resource-target').addClass('active').siblings('.resource-target').removeClass('active');
 			}
 		}, "> a");
+
+		$( sectionNav ).scrollToFixed();
 
 	});
 

@@ -6091,17 +6091,16 @@ section:after {
   clear: both; }
 
 .section-nav {
-  display: none; }
-  @media (min-width: 600px) {
-    .section-nav {
-      background: #323c53;
-      display: block;
-      max-width: 1500px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 5%; }
-      .about .section-nav {
-        background: #5b6375; } }
+  background: #323c53;
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5%; }
+  .section-nav select {
+    margin: 1em 0; }
+  .about .section-nav {
+    background: #5b6375; }
 
 .section-menu {
   list-style: none;

@@ -8,15 +8,15 @@ section {
 
 // These styles apply to the section heros that appear on several pages
 .section-nav {
-	display: none;
+	background: $gray-base;
+	@include container();
 
-	@include susy-media($screen-xs) {
-		background: $gray-base;
-		@include container();
+	select {
+		margin: 1em 0;
+	}
 
-		.about & {
-			background: $gray_dark;
-		}
+	.about & {
+		background: $gray_dark;
 	}
 }
 

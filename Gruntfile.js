@@ -18,7 +18,7 @@ module.exports = function( grunt ) {
 			},
 			worldstrides: {
 				src: [
-					'assets/js/src/worldstrides.js'
+					'assets/js/src/worldstrides.js', 'assets/js/vendor/**.js'
 				],
 				dest: 'assets/js/worldstrides.js'
 			}

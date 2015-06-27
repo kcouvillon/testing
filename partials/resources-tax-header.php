@@ -38,17 +38,7 @@ if ( !empty ($parent_id) ) {
 	if( $term->parent > 0 ) : ?>
 
 	<nav class="resource-nav section-nav">
-		<ul class="section-menu">
-			<?php
-				$resource_types = get_terms( 'resource-type', array( 'hide_empty' => false ) );
-				foreach( $resource_types as $type ) : ?>
-				
-				<li>
-					<a href=""><?php echo $type->name; ?></a>
-				</li>
-
-			<?php endforeach; ?>
-		</ul>
+		<?php wp_nav_menu( array( 'theme_location' => 'resource-types', 'menu_class' => 'section-menu' ) ); ?>
 	</nav>
 
 	<?php endif; ?>
