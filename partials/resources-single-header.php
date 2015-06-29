@@ -5,7 +5,7 @@
 ?>
 
 <section class="primary-section">
-	<header class="section-header resources-header">
+	<header class="section-header resources-header pattern-<?php echo rand(1, 9); ?>">
 		<div class="section-header-content">
 			<nav class="breadcrumbs">
 				<?php

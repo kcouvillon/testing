@@ -86,6 +86,26 @@ section {
 		color: #fff;
 	}
 
+	.pattern-1 &, .pattern-2 &, .pattern-4 &, .pattern-5 &, .pattern-7 &, .pattern-8 & {
+		color: #fff;
+
+		h1 {
+			color: #fff;
+		}
+
+		.breadcrumbs {
+			color: $blue_lighter;
+
+			a {
+				color: $blue_lighter;
+
+				&:hover {
+					color: $gray_light;
+				}
+			}
+		}
+	}
+
 
 	.primary-section & {
 		margin-top: 11.333333%;
