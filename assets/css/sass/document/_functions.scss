@@ -1,0 +1,16 @@
+@for $i from 1 through 9 {
+	.section-header.pattern-#{$i} {
+		background-image: url(../images/src/patterns/ws_w_pattern#{$i}.gif);
+		background-size: 63px 54px;
+
+		@media
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) { 
+			background-image: url(../images/src/patterns/ws_w_pattern#{$i}@2x.gif);
+		}
+	}
+}

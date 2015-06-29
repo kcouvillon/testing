@@ -10,6 +10,69 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+.section-header.pattern-1 {
+  background-image: url(../images/src/patterns/ws_w_pattern1.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-1 {
+      background-image: url(../images/src/patterns/ws_w_pattern1@2x.gif); } }
+
+.section-header.pattern-2 {
+  background-image: url(../images/src/patterns/ws_w_pattern2.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-2 {
+      background-image: url(../images/src/patterns/ws_w_pattern2@2x.gif); } }
+
+.section-header.pattern-3 {
+  background-image: url(../images/src/patterns/ws_w_pattern3.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-3 {
+      background-image: url(../images/src/patterns/ws_w_pattern3@2x.gif); } }
+
+.section-header.pattern-4 {
+  background-image: url(../images/src/patterns/ws_w_pattern4.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-4 {
+      background-image: url(../images/src/patterns/ws_w_pattern4@2x.gif); } }
+
+.section-header.pattern-5 {
+  background-image: url(../images/src/patterns/ws_w_pattern5.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-5 {
+      background-image: url(../images/src/patterns/ws_w_pattern5@2x.gif); } }
+
+.section-header.pattern-6 {
+  background-image: url(../images/src/patterns/ws_w_pattern6.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-6 {
+      background-image: url(../images/src/patterns/ws_w_pattern6@2x.gif); } }
+
+.section-header.pattern-7 {
+  background-image: url(../images/src/patterns/ws_w_pattern7.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-7 {
+      background-image: url(../images/src/patterns/ws_w_pattern7@2x.gif); } }
+
+.section-header.pattern-8 {
+  background-image: url(../images/src/patterns/ws_w_pattern8.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-8 {
+      background-image: url(../images/src/patterns/ws_w_pattern8@2x.gif); } }
+
+.section-header.pattern-9 {
+  background-image: url(../images/src/patterns/ws_w_pattern9.gif);
+  background-size: 63px 54px; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .section-header.pattern-9 {
+      background-image: url(../images/src/patterns/ws_w_pattern9@2x.gif); } }
+
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5663,11 +5726,11 @@ img {
 5.1 Links
 --------------------------------------------------------------*/
 .breadcrumbs {
-  color: #E1EBF2; }
+  color: #323c53; }
   .breadcrumbs a {
-    color: #E1EBF2; }
+    color: #323c53; }
     .breadcrumbs a:hover {
-      color: #b3b7bf; }
+      color: #fff; }
 
 /*--------------------------------------------------------------
 5.2 Navigation
@@ -6155,6 +6218,16 @@ section:after {
   max-width: 670px; }
   .has-section-image .section-header-content {
     color: #fff; }
+  .pattern-1 .section-header-content, .pattern-2 .section-header-content, .pattern-4 .section-header-content, .pattern-5 .section-header-content, .pattern-7 .section-header-content, .pattern-8 .section-header-content {
+    color: #fff; }
+    .pattern-1 .section-header-content h1, .pattern-2 .section-header-content h1, .pattern-4 .section-header-content h1, .pattern-5 .section-header-content h1, .pattern-7 .section-header-content h1, .pattern-8 .section-header-content h1 {
+      color: #fff; }
+    .pattern-1 .section-header-content .breadcrumbs, .pattern-2 .section-header-content .breadcrumbs, .pattern-4 .section-header-content .breadcrumbs, .pattern-5 .section-header-content .breadcrumbs, .pattern-7 .section-header-content .breadcrumbs, .pattern-8 .section-header-content .breadcrumbs {
+      color: #E1EBF2; }
+      .pattern-1 .section-header-content .breadcrumbs a, .pattern-2 .section-header-content .breadcrumbs a, .pattern-4 .section-header-content .breadcrumbs a, .pattern-5 .section-header-content .breadcrumbs a, .pattern-7 .section-header-content .breadcrumbs a, .pattern-8 .section-header-content .breadcrumbs a {
+        color: #E1EBF2; }
+        .pattern-1 .section-header-content .breadcrumbs a:hover, .pattern-2 .section-header-content .breadcrumbs a:hover, .pattern-4 .section-header-content .breadcrumbs a:hover, .pattern-5 .section-header-content .breadcrumbs a:hover, .pattern-7 .section-header-content .breadcrumbs a:hover, .pattern-8 .section-header-content .breadcrumbs a:hover {
+          color: #b3b7bf; }
   .primary-section .section-header-content {
     margin-top: 11.333333%; }
     @media (min-width: 600px) {
@@ -6550,13 +6623,9 @@ section:after {
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .resources-header {
       background-image: url(../images/src/patterns/ws_w_pattern8@2x.gif); } }
-  .resources-header .section-header-content {
-    color: #fff; }
-    .resources-header .section-header-content h1 {
-      color: #fff; }
-    .resources-header .section-header-content h1 {
-      line-height: 1;
-      margin-top: 12px; }
+  .resources-header .section-header-content h1 {
+    line-height: 1;
+    margin-top: 12px; }
 
 .section-resource-questions {
   margin-bottom: 3em; }

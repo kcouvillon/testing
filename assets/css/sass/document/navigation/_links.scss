@@ -21,13 +21,13 @@
 // }
 
 .breadcrumbs {
-	color: $blue_lighter;
+	color: $gray_base;
 
 	a {
-		color: $blue_lighter;
+		color: $gray_base;
 
 		&:hover {
-			color: $gray_light;
+			color: #fff;
 		}
 	}
 }
