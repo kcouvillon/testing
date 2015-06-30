@@ -6188,7 +6188,7 @@ a.no-decoration {
     margin: 0;
     padding: 0;
     margin-top: 15vh; }
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
       .blog .entry-header .post-categories {
         margin-top: 35vh; } }
     .blog .entry-header .post-categories li {
@@ -6249,6 +6249,13 @@ a.no-decoration {
       width: 32.0261437908%;
       float: right;
       margin-right: 0; } }
+  .blog .sidebar .entry-header {
+    margin-left: 0;
+    padding-left: 2vw; }
+    @media (min-width: 768px) {
+      .blog .sidebar .entry-header {
+        margin-left: -9%;
+        padding-left: 5vw; } }
   .blog .sidebar .post-categories {
     margin-top: 15vh; }
   .blog .sidebar .entry-title {
