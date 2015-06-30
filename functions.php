@@ -27,6 +27,8 @@ include WS_PATH . 'includes/library-extended-taxos.php';
 include WS_PATH . 'includes/cmb2/init.php';
 include WS_PATH . 'includes/cmb2-attached-posts/cmb2-attached-posts-field.php';
 include WS_PATH . 'includes/cmb2-maps-google/cmb-field-map.php';
+include WS_PATH . 'includes/cmb2-post-search/cmb2-post-search-field.php';
+include WS_PATH . 'includes/cmb2-itinerary-item/cmb2-itinerary-item.php';
 
 // Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
@@ -35,6 +37,7 @@ include WS_PATH . 'includes/class-cpts.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
 include WS_PATH . 'includes/class-metaboxes.php';
+include WS_PATH . 'includes/class-metaboxes-itineraries.php';
 include WS_PATH . 'includes/class-shortcodes.php';
 include WS_PATH . 'includes/class-taxos.php';
 
@@ -57,10 +60,10 @@ function ws_setup() {
 	) );
 
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'worldstrides' ),
-		'secondary' => __( 'Quick Access Menu', 'worldstrides' ),
-		'footer' => __( 'Footer Menu', 'worldstrides' ),
-		'about' => __( 'About Menu', 'worldstrides' ),
+		'primary'        => __( 'Primary Menu', 'worldstrides' ),
+		'secondary'      => __( 'Quick Access Menu', 'worldstrides' ),
+		'footer'         => __( 'Footer Menu', 'worldstrides' ),
+		'about'          => __( 'About Menu', 'worldstrides' ),
 		'resource-types' => __( 'Resource Type Menu', 'worldstrides' ),
 	) );
 
@@ -84,32 +87,39 @@ function ws_scripts_styles() {
 
 add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
 
+/**
+ * Enqueue scripts in the admin area
+ */
 function ws_admin_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_style( 'ws-admin', get_template_directory_uri() . "/assets/css/admin{$postfix}.css", array(), WS_VERSION );
 }
+
 add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
 
 /**
  * Add class to body_class if there is a featured image
  */
-function add_featured_image_body_class( $classes ) {    
+function ws_add_body_classes( $classes ) {
 	global $post;
-	if ( isset ( $post->ID ) && get_the_post_thumbnail($post->ID)) {
+	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) ) {
 		$classes[] = 'has-featured-image';
 	}
+
 	return $classes;
 }
-add_filter( 'body_class', 'add_featured_image_body_class' );
+
+add_filter( 'body_class', 'ws_add_body_classes' );
 
 /**
  * Customize ellipsis after the_excerpt
  */
-function new_excerpt_more( $more ) {
+function ws_new_excerpt_more( $more ) {
 	return '...';
 }
-add_filter('excerpt_more', 'new_excerpt_more');
+
+add_filter( 'excerpt_more', 'ws_new_excerpt_more' );
 
 
 /**
@@ -129,5 +139,5 @@ remove_action( 'wp_head', 'wp_generator' );
 
 // do autop after shortcode, was necessary for timeline shortcode
 remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'wpautop' , 99);
-add_filter( 'the_content', 'shortcode_unautop',100 );
+add_filter( 'the_content', 'wpautop', 99 );
+add_filter( 'the_content', 'shortcode_unautop', 100 );
