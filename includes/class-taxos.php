@@ -62,7 +62,8 @@ class WS_Custom_Taxonomies {
 				'show_in_menu'  => false,
 				'show_tagcloud' => false,
 				// 'hierarchical'  => false, // shouldn't have hierarchy, but prefer list to typing 'tags'
-				'public'        => false
+				'public'        => true,
+				'metabox'       => 'checkbox'
 			)
 		);
 
