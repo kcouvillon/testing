@@ -15,7 +15,7 @@ if ( !empty ($parent_id) ) {
 
 
 <section class="primary-section">
-	<header class="section-header resources-header">
+	<header class="section-header resources-header pattern-8">
 		<div class="section-header-content">
 			<nav class="breadcrumbs">
 				<?php // @todo needs to be dynamic ?>

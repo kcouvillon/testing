@@ -1,7 +1,7 @@
 @for $i from 1 through 9 {
-	.section-header.pattern-#{$i} {
+	.pattern-#{$i} {
 		background-image: url(../images/src/patterns/ws_w_pattern#{$i}.gif);
-		background-size: 63px 54px;
+		background-size: 63px 54px !important;
 
 		@media
 		only screen and (-webkit-min-device-pixel-ratio: 2),
