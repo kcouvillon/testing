@@ -159,16 +159,29 @@ class WS_Metaboxes_Itineraries {
 	 */
 	function itinerary_blocks_before() {
 
-		$prefix = 'itinerary_blocks_';
+		$prefix = 'itinerary_blocks_before_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blocks', 'cmb2' ),
+			'title'        => __( 'Blocks before Itinerary Days', 'cmb2' ),
 			'object_types' => array( 'itinerary', ),
 		) );
 
 		$cmb->add_field( array(
-			'name'        => __( 'Block' ),
+			'name' => 'Section Title',
+			'id' => $prefix . 'title',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Section Slug',
+			'desc' => 'The anchor that gets linked to in the navigation bar',
+			'id' => $prefix . 'slug',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_field( array(
+			'name'        => __( 'Blocks' ),
 			'id'          => 'itinerary_block_before',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
@@ -245,14 +258,25 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blocks', 'cmb2' ),
+			'title'        => __( 'Blocks after itinerary days', 'cmb2' ),
 			'object_types' => array( 'itinerary', ),
 		) );
 
-		// Section Title/slug
+		$cmb->add_field( array(
+			'name' => 'Section Title',
+			'id' => $prefix . 'title',
+			'type' => 'text_medium'
+		) );
 
 		$cmb->add_field( array(
-			'name'        => __( 'Block' ),
+			'name' => 'Section Slug',
+			'desc' => 'The anchor that gets linked to in the navigation bar',
+			'id' => $prefix . 'slug',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_field( array(
+			'name'        => __( 'Blocks' ),
 			'id'          => 'itinerary_block_after',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
@@ -277,13 +301,13 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_field( array(
-			'name'        => __( 'Block' ),
+			'name'        => __( 'Blog post' ),
 			'id'          => 'itinerary_block_after',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
 			'post_type'   => 'post',
 			// checkbox/radio, used in the modal view to select the post type
-			'select_type' => 'checkbox'
+			'select_type' => 'radio'
 		) );
 	}
 }
