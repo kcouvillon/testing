@@ -28,6 +28,7 @@ include WS_PATH . 'includes/cmb2/init.php';
 include WS_PATH . 'includes/cmb2-attached-posts/cmb2-attached-posts-field.php';
 include WS_PATH . 'includes/cmb2-maps-google/cmb-field-map.php';
 include WS_PATH . 'includes/cmb2-post-search/cmb2-post-search-field.php';
+include WS_PATH . 'includes/cmb2-itinerary-item/cmb2-itinerary-item.php';
 
 // Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
