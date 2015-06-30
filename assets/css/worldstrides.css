@@ -6177,7 +6177,8 @@ a.no-decoration {
         margin-right: 0; } }
 
 .blog .post {
-  position: relative; }
+  position: relative;
+  margin-bottom: 3em; }
 
 .blog .entry-header {
   margin-left: -9%;
@@ -6186,7 +6187,10 @@ a.no-decoration {
     list-style: none;
     margin: 0;
     padding: 0;
-    margin-top: 35vh; }
+    margin-top: 15vh; }
+    @media (min-width: 600px) {
+      .blog .entry-header .post-categories {
+        margin-top: 35vh; } }
     .blog .entry-header .post-categories li {
       display: inline-block;
       margin-right: 10px; }
@@ -6228,20 +6232,30 @@ a.no-decoration {
     font-size: 0.75em;
     font-weight: 200; }
 
-.blog .entry-content *:first-child {
-  margin-top: 0 !important; }
+.blog .entry-content {
+  margin-top: 1em; }
+  .blog .entry-content *:first-child {
+    margin-top: 0 !important; }
 
 .blog .sidebar {
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0;
-  background: #f2f2f4; }
+  background: #f2f2f4;
+  overflow: hidden; }
   @media (min-width: 768px) {
     .blog .sidebar {
       width: 32.0261437908%;
       float: right;
       margin-right: 0; } }
+  .blog .sidebar .post-categories {
+    margin-top: 15vh; }
+  .blog .sidebar .entry-title {
+    font-size: 1.875em; }
+  .blog .sidebar .entry-content {
+    margin-left: 2vw;
+    margin-right: 3vw; }
 
 #page {
   overflow: hidden; }
@@ -7029,7 +7043,7 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  background: #f2f2f4;
+  background: #b3b7bf;
   padding-top: 2em;
   padding-bottom: 3em; }
   .site-footer ul {

@@ -42,7 +42,24 @@
 			</section>
 
 			<aside class="sidebar">
+
+				<?php // we need to find out where these posts should come from ?>
 				
+				<?php if ( have_posts() ) : ?>
+
+					<?php /* Start the Loop */ ?>
+					<?php while ( have_posts() ) : the_post(); ?>
+
+						<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
+
+					<?php endwhile; ?>
+
+				<?php else : ?>
+
+					<p>Nothing found</p>
+
+				<?php endif; ?>
+
 			</aside>
 
 		</div>
