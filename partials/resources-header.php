@@ -7,7 +7,7 @@ $resources_page = get_page_by_path( 'resource-center' );
 ?>
 
 <section class="primary-section">
-	<header class="section-header resources-header">
+	<header class="section-header resources-header pattern-8">
 		<div class="section-header-content">
 			<h1><?php echo apply_filters( 'the_title', $resources_page->post_title ) ?></h1>
 

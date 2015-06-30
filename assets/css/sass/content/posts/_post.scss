@@ -8,6 +8,7 @@
 
 	.entry-header {
 		margin-bottom: 5px;
+		background-size: cover;
 	}
 
 	.entry-meta {
@@ -21,3 +22,5 @@
 	}
 
 }
+
+@import 'blog';

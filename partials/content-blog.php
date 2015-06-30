@@ -8,91 +8,37 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php if ( ! is_page( 'about' ) ) : ?>
-		<header class="entry-header">
 
-			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="entry-image hero">
-					<?php the_post_thumbnail(); ?>
-				</div>
-			<?php endif; ?>
+			<?php
+			$background = '';
+			if ( has_post_thumbnail() ) {
+				$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+				$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+			} ?>
 
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<ul class="breadcrumbs list-unstyled list-inline">
-							<li><a href="#">Stories</a></li>
-							>
-							<li><a href="#"><?php echo ucwords( $blog_type ); ?></a></li>
-							>
-							<li><a href="#">[Month 12, 2015]</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<h1 class="entry-title">
-							<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>
-						</h1>
-					</div>
-				</div>
-			</div>
+		<header class="section-header entry-header pattern-<?php echo rand(1, 9); ?>" style="background-image: <?php echo $background; ?>;">
+
+			<?php echo get_the_category_list(); ?>
+
+			<h2 class="entry-title"><?php the_title(); ?></h2>
+
 		</header>
 	<?php endif; ?>
 
-	<div class="entry-body container-fluid">
+	<div class="entry-body">
 
-		<div class="entry-content row">
-			<div class="col-md-9 col-lg-7 col-md-offset-1">
-				<?php the_content(); ?>
-			</div>
+		<div class="entry-author">
+			<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
+			<span>Author Type<br><strong><?php the_author(); ?></strong></span>
+			
 		</div>
 
-		<div class="entry-meta row">
-			<div class="col-md-9 col-lg-7 col-md-offset-1">
+		<div class="entry-content">
+			<?php the_excerpt(); ?>
 
-				<?php $posttags = get_the_tags(); ?>
-				<?php if ( $posttags ) : ?>
-
-					<ul class="entry-tags list-unstyled list-inline">
-						<?php foreach ( $posttags as $tag ) : ?>
-							<li>
-								<a href="<?php echo get_tag_link( $tag->term_id ); ?>" class="btn btn-sm btn-default "><?php echo $tag->name; ?></a>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-
-				<?php endif; ?>
-
-			</div>
+			<a href="<?php the_permalink(); ?>" class="entry-link">Read More</a>
 		</div>
 
 	</div>
 
-	<footer class="entry-footer">
-		<div class="request-form belt bg-gray-base container-fluid">
-			<div class="row">
-				<form class="col-md-offset-1 col-md-10">
-					<h2>Learn about WorldStrides Music trips to Italy</h2>
-					<input type="text" class="form-control" placeholder="Name" />
-					<input type="text" class="form-control" placeholder="Email Address" />
-					<input type="text" class="form-control" placeholder="Phone Number" />
-					<input type="submit" value="Get Info" class="btn btn-primary" />
-				</form>
-			</div>
-		</div>
-		<div class="container-fluid">
-			<div class="row">
-				<article class="post col-md-4 col-md-offset-1">
-					<h2><a href="#">Previous Post</a></h2>
-
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna.</p>
-				</article>
-				<article class="post col-md-4 col-md-offset-2">
-					<h2><a href="#">Next Post</a></h2>
-
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna.</p>
-				</article>
-			</div>
-		</div>
-	</footer>
 </article>
