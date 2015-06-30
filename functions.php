@@ -37,6 +37,7 @@ include WS_PATH . 'includes/class-cpts.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
 include WS_PATH . 'includes/class-metaboxes.php';
+include WS_PATH . 'includes/class-metaboxes-itineraries.php';
 include WS_PATH . 'includes/class-shortcodes.php';
 include WS_PATH . 'includes/class-taxos.php';
 
