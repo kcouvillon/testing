@@ -37,6 +37,7 @@
 
 	.post {
 		position: relative;
+		margin-bottom: 3em;
 	}
 
 	.entry-header {
@@ -47,7 +48,11 @@
 			list-style: none;
 			margin: 0;
 			padding: 0;
-			margin-top: 35vh;
+			margin-top: 15vh;
+
+			@include susy-media($screen-sm) {
+				margin-top: 35vh;
+			}
 
 			li {
 				display: inline-block;
@@ -108,6 +113,8 @@
 
 
 	.entry-content {
+		margin-top: 1em;
+
 		*:first-child {
 			margin-top: 0 !important;
 		}
@@ -116,9 +123,33 @@
 	.sidebar {
 		@include span(full);
 		background: $gray_lighter;
+		overflow: hidden;
 
 		@include susy-media($screen_sm) {
 			@include span(4 last);
+		}
+
+		.entry-header {
+			margin-left: 0;
+			padding-left: 2vw;
+
+			@include susy-media($screen-sm) {
+				margin-left: -9%;
+				padding-left: 5vw;
+			}
+		}
+
+		.post-categories {
+			margin-top: 15vh;
+		}
+
+		.entry-title {
+			font-size: em(30);
+		}
+
+		.entry-content {
+			margin-left: 2vw;
+			margin-right: 3vw;
 		}
 	}
 }
