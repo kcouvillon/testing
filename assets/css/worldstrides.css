@@ -6966,6 +6966,19 @@ section:after {
 .widget_search .search-submit {
   display: none; }
 
+.sidebar .search-widget {
+  padding: 2vw; }
+  .sidebar .search-widget input {
+    border: none;
+    outline: 0;
+    padding: 5px 25px; }
+  .sidebar .search-widget .btn {
+    text-transform: uppercase;
+    font-weight: 200;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px; }
+
 .value-prop:before,
 .value-prop:after {
   content: "";

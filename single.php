@@ -8,6 +8,23 @@
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
+		<section class="section-header primary-section pattern-3">
+			<div class="section-header-content">
+
+				<nav class="breadcrumbs">
+					<?php the_time('F, j Y'); ?>
+					<?php echo get_the_category_list('&nbsp;'); ?>
+				</nav>
+				<h1><?php echo get_the_title(); ?></h1>
+
+				<?php
+				$page = get_page_by_title( 'Blog' );
+				$excerpt = $page->post_excerpt;
+				?>
+				<?php echo apply_filters( 'the_content', $excerpt ); ?>
+			</div>
+		</section>
+
 		<?php if ( have_posts() ) : ?>
 
 			<?php /* Start the Loop */ ?>
