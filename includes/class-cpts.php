@@ -50,8 +50,7 @@ class WS_Custom_Post_Types {
 		 */
 		register_extended_post_type( 'itinerary',
 			array(
-				'menu_icon' => 'dashicons-location-alt',
-				'slug'      => 'trips'
+				'menu_icon' => 'dashicons-location-alt'
 			),
 			array(
 				'plural' => 'Itineraries'
