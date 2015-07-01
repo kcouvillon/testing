@@ -42,9 +42,9 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_examples' ) );
+		add_action( 'cmb2_init',  array( $this, 'about_offices_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
-		add_action( 'cmb2_init',  array( $this, 'about_offices_locations' ) );
 	}
 
 	/**
