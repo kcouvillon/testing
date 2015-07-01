@@ -65,9 +65,16 @@ class WS_Metaboxes_Itineraries {
 
 		// Destinations / Activities
 		$cmb->add_field( array(
-			'name' => 'Destination/Activity',
+			'name' => 'Features title',
+			'desc' => 'e.g. Destinations Visited, Optional Activites, etc.',
+			'id' => $prefix . 'features_title',
+			'type' => 'text'
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Features',
 			// 'desc' => 'List of destinations/activities',
-			'id' => $prefix . 'activity',
+			'id' => $prefix . 'features',
 			'type' => 'text',
 			'repeatable' => true
 		) );
@@ -132,14 +139,14 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb_group->add_group_field( $group_field_id, array(
-			'name'        => __( 'Description', 'cmb2' ),
+			'name'        => __( 'Caption', 'cmb2' ),
 			'description' => __( 'The text that appears in the section header', 'cmb2' ),
-			'id'          => 'description',
+			'id'          => 'caption',
 			'type'        => 'textarea_small',
 		) );
 
 		$cmb_group->add_group_field( $group_field_id, array(
-			'name' => __( 'Location Image', 'cmb2' ),
+			'name' => __( 'Image', 'cmb2' ),
 			'id'   => 'image',
 			'type' => 'file',
 		) );
@@ -163,7 +170,7 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blocks before Itinerary Days', 'cmb2' ),
+			'title'        => __( 'Before Blocks', 'cmb2' ),
 			'object_types' => array( 'itinerary', ),
 		) );
 
@@ -231,15 +238,15 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_group_field( $day_group, array(
-			'name'       => __( 'Item', 'cmb2' ),
-			'id'         => 'item',
-			'type'       => 'itinerary_item',
-			'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+			'name'       => __( 'Activity', 'cmb2' ),
+			'id'         => 'activity',
+			'type'       => 'itinerary_activity',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
 
 		$cmb->add_group_field( $day_group, array(
-			'name'        => __( 'Call to Action' ),
-			'id'          => 'cta',
+			'name'        => __( 'Related Content' ),
+			'id'          => 'related_content',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
 			'post_type'   => 'block',
@@ -258,7 +265,7 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blocks after itinerary days', 'cmb2' ),
+			'title'        => __( 'After Blocks', 'cmb2' ),
 			'object_types' => array( 'itinerary', ),
 		) );
 
@@ -270,7 +277,7 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_field( array(
 			'name' => 'Section Slug',
-			'desc' => 'The anchor that gets linked to in the navigation bar',
+			'desc' => 'The text that gets linked to in the navigation bar',
 			'id' => $prefix . 'slug',
 			'type' => 'text_medium'
 		) );
