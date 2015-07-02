@@ -15,7 +15,8 @@
 			var map = L.mapbox.map('office-map', 'worldstrides.b898407f', {
 					scrollWheelZoom: false,
 					zoomControl: false,
-					center: [38.030266, -78.48363499999999]
+					center: [38.030266, -78.48363499999999],
+					zoom: 13
 				}),
 				data = JSON.parse( $('#offices-json').text() ),
 				collection = {
