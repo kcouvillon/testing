@@ -22,12 +22,18 @@
 
 .breadcrumbs {
 	color: $gray_base;
+	text-transform: uppercase;
+	font-size: em(12);
+
+	time, a {
+		margin-right: 10px;
+	}
 
 	a {
 		color: $gray_base;
 
 		&:hover {
-			color: #fff;
+			color: $gray_light;
 		}
 	}
 }

@@ -5727,11 +5727,15 @@ img {
 5.1 Links
 --------------------------------------------------------------*/
 .breadcrumbs {
-  color: #323c53; }
+  color: #323c53;
+  text-transform: uppercase;
+  font-size: 0.75em; }
+  .breadcrumbs time, .breadcrumbs a {
+    margin-right: 10px; }
   .breadcrumbs a {
     color: #323c53; }
     .breadcrumbs a:hover {
-      color: #fff; }
+      color: #b3b7bf; }
 
 /*--------------------------------------------------------------
 5.2 Navigation
@@ -6357,6 +6361,11 @@ a.no-decoration {
       padding-left: 1em; } }
 
 .blog-single-cta {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
   background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url(../images/src/blog-cta.jpg);
   background-size: cover;
   text-align: center;
@@ -6365,6 +6374,25 @@ a.no-decoration {
   color: #fff; }
   .blog-single-cta .h2 {
     font-weight: 700; }
+
+.postcard .primary-section {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  padding: 0;
+  height: 70vh; }
+
+@media (min-width: 768px) {
+  .postcard .blog-single-content {
+    width: 66.0130718954%;
+    float: left;
+    margin-right: 1.9607843137%; } }
+
+.postcard .blog-single-content h1 {
+  margin-top: 10px;
+  margin-bottom: 20px; }
 
 #page {
   overflow: hidden; }
