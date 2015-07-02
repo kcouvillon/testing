@@ -13,7 +13,7 @@
 			<div class="intro-content">
 				<h1>Travel with the World’s Leading Educational Tour Provider</h1>
 				<h4>Only WorldStrides creates immersive educational programs that uniquely meet the needs and interests of students at every stage of their development.</h4>
-				<a href="#" class="btn">Why Worldstrides?</a>
+				<a href="#" class="btn btn-primary">Why Worldstrides?</a>
 			</div>
 
 		</section>
