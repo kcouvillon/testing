@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-07-01
+/*! WorldStrides - v0.1.0 - 2015-07-02
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -15,8 +15,7 @@
 			var map = L.mapbox.map('office-map', 'worldstrides.b898407f', {
 					scrollWheelZoom: false,
 					zoomControl: false,
-					center: [38.030266, -78.48363499999999],
-					zoom: 13
+					center: [38.030266, -78.48363499999999]
 				}),
 				data = JSON.parse( $('#offices-json').text() ),
 				collection = {
