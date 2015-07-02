@@ -5793,6 +5793,13 @@ p {
 .clearfix:after {
   clear: both; }
 
+.ws-container {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+
 .bg-gray-base, .bg-gray-darker, .bg-gray-dark, .bg-gray {
   color: #f2f2f4; }
 
@@ -5918,7 +5925,9 @@ a.no-decoration {
     .site-header a:hover {
       color: #b3b7bf; }
   .has-featured-image .site-header {
-    background-color: transparent; }
+    background-color: transparent;
+    position: relative;
+    z-index: 100; }
   .archive .site-header, .blog .site-header, .single .site-header {
     background-color: #323c53; }
 
@@ -7076,6 +7085,41 @@ section:after {
       width: 32.0261437908%;
       float: right;
       margin-right: 0; } }
+
+#intro {
+  position: relative;
+  background-size: cover;
+  background-position: right bottom;
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  padding: 8em 0;
+  color: #FFF; }
+
+.home-section .tile {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
+  background-position: center center;
+  background-size: cover; }
+  @media (min-width: 768px) {
+    .home-section .tile.tile-third,
+    .home-section .tile.tile-half {
+      width: 50%;
+      float: left;
+      padding-top: 30%; } }
+  @media (min-width: 960px) {
+    .home-section .tile.tile-third {
+      width: 33.333%;
+      float: left;
+      padding-top: 21%; } }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

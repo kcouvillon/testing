@@ -4,6 +4,29 @@
 ( function( $, window, undefined ) {
 	'use strict';
 
+	// HOME PAGE STUFF
+
+	if ( $( 'body' ).hasClass('home') ) {
+
+		$(document).ready(function(){
+
+			var $intro = $('#intro'),
+				offset = $('#quick-access-menu').innerHeight(),
+				winHeight = window.innerHeight - offset;
+
+			$intro.css({
+				minHeight: winHeight + 'px'
+			});
+
+		});
+
+	}
+	
+
+ } )( jQuery, window );
+( function( $, window, undefined ) {
+	'use strict';
+
 	// MAPBOX MAPS
 
 	$(document).ready(function() {
