@@ -26,6 +26,20 @@
 	}
 }
 
+.logo {
+	display: inline-block;
+	width: 216px;
+	height: 46px;
+	margin: 0;
+
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		@include logo;
+	}
+}
+
 .logo-sm {
 	display: inline-block;
 
