@@ -60,7 +60,7 @@ section {
 	margin-top: -158px;
 }
 
-.archive .primary-section, .blog .primary-section {
+.archive .primary-section, .blog .primary-section, .single .primary-section {
 	margin-top: 0;
 }
 
@@ -71,8 +71,12 @@ section {
 	margin-bottom: gutter()*2;
 	background-color: $color_background_header;
 
-	.primary-section & {
+	.primary-section &, .single & {
 		margin-bottom: 0;
+	}
+
+	.has-featured-image & {
+		background-size: cover !important;
 	}
 }
 
@@ -117,7 +121,7 @@ section {
 				margin-top: 17.2%;
 			}
 
-			.archive &, .blog & {
+			.archive &, .blog &, .single & {
 				margin-top: 6.66666%;
 			}
 		}
@@ -126,8 +130,24 @@ section {
 			color: #fff;
 		}
 
-		.archive &, .blog & {
+		.archive &, .blog &, .single & {
 			color: $gray_base;
+		}
+
+		.has-featured-image.archive &, .has-featured-image.blog &, .has-featured-image.single & {
+			color: #fff;
+
+			.breadcrumbs {
+				color: $blue_lighter;
+
+				a {
+					color: $blue_lighter;
+
+					&:hover {
+						color: $gray_light;
+					}
+				}
+			}
 		}
 	}
 }
