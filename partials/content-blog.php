@@ -7,7 +7,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if ( ! is_page( 'about' ) ) : ?>
+	<?php if ( ! is_single() ) : ?>
 
 			<?php
 			$background = '';
@@ -27,16 +27,22 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 	<div class="entry-body">
 
-		<div class="entry-author">
-			<?php echo get_avatar( get_the_author_meta( 'ID' ) ); ?>
-			<span>Author Type<br><strong><?php the_author(); ?></strong></span>
-			
-		</div>
+		<?php if( ! is_single() ) :
+			get_template_part( 'partials/content', 'blog-author' );
+		?>
 
-		<div class="entry-content">
-			<?php the_excerpt(); ?>
-			<a href="<?php the_permalink(); ?>" class="entry-link">Keep Reading</a>
-		</div>
+			<div class="entry-content">
+				<?php the_excerpt(); ?>
+				<a href="<?php the_permalink(); ?>" class="entry-link">Keep Reading</a>
+			</div>
+
+		<?php else : ?>
+
+			<div class="entry-content">
+				<?php the_content(); ?>
+			</div>
+
+		<?php endif; ?>
 
 	</div>
 

@@ -12,4 +12,25 @@
 	display: none;
 }
 
+
+// Search sidebar widget
+.sidebar .search-widget {
+	padding: 2vw;
+
+	input {
+		border: none;
+		outline: 0;
+		padding: 5px 25px;
+	}
+
+	.btn {
+		text-transform: uppercase;
+		font-weight: 200;
+		display: inline-block;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+}
+
+
 @import 'components/components';
