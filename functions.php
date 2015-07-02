@@ -62,7 +62,10 @@ function ws_setup() {
 	register_nav_menus( array(
 		'primary'        => __( 'Primary Menu', 'worldstrides' ),
 		'secondary'      => __( 'Quick Access Menu', 'worldstrides' ),
-		'footer'         => __( 'Footer Menu', 'worldstrides' ),
+		'footer'         => __( 'Footer Menu 1', 'worldstrides' ),
+		'footer2'        => __( 'Footer Menu 2', 'worldstrides' ),
+		'footer3'        => __( 'Footer Menu 3', 'worldstrides' ),
+		'footer4'        => __( 'Footer Menu 4', 'worldstrides' ),
 		'about'          => __( 'About Menu', 'worldstrides' ),
 		'resource-types' => __( 'Resource Type Menu', 'worldstrides' ),
 	) );
