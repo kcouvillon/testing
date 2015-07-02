@@ -116,7 +116,13 @@ class WS_Custom_Taxonomies {
 		register_extended_taxonomy( 'product-line',
 			array(
 				'post',
-				'why-ws'
+				'why-ws',
+				'itinerary',
+				'collection',
+				'destination',
+				'interest',
+				'traveler',
+				'resource'
 			),
 			array(
 				'rewrite'       => false,
