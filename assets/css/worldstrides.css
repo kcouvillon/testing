@@ -7257,6 +7257,12 @@ section:after {
 .site-info .social-icons, .site-info .departing-from {
   margin-bottom: 1em; }
 
+.site-info-menu li {
+  font-size: 0.75em;
+  color: #999999; }
+  .site-info-menu li a {
+    color: #999999; }
+
 @media (min-width: 960px) {
   .tagline {
     position: absolute;

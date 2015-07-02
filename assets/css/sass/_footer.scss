@@ -71,6 +71,16 @@
 	}
 }
 
+.site-info-menu {
+	li {
+		font-size: em(12);
+		color: $color_text_footer_light;
+
+		a {
+			color: $color_text_footer_light;
+		}
+	}
+}
 
 .tagline {
 	@include susy-media($screen-md) {
