@@ -11,12 +11,12 @@
 
 	// MAPBOX MAPS
 
-	L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
-
 	$(document).ready(function() {
 
 		if ( $('#office-map').length > 0 ) {
 
+			L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
+			
 			var map = L.mapbox.map('office-map', 'worldstrides.b898407f', {
 					scrollWheelZoom: false,
 					zoomControl: false,
