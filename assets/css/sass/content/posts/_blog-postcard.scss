@@ -3,13 +3,16 @@
 	.primary-section {
 		@include container();
 		padding: 0;
-		height: 70vh;
+
+		.has-featured-image & {
+			height: 70vh;
+		}
 	}
 
 	.blog-single-content {
 
 		@include susy-media($screen-sm) {
-			@include span(8);
+			@include span(8 no-gutters);
 		}
 
 		h1 {

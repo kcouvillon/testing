@@ -89,6 +89,10 @@
 
 	.entry-body {
 		margin-right: gutter();
+
+		@include susy-media($screen-sm) {
+			margin-right: 0;
+		}
 	}
 
 	.entry-author {
