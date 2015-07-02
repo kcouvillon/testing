@@ -1,0 +1,10 @@
+.travelogue {
+
+	.blog-single-content {
+
+		@include susy-media($screen-sm) {
+			@include span(10 last);
+		}
+	}
+
+}

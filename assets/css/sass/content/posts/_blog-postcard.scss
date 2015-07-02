@@ -12,7 +12,7 @@
 	.blog-single-content {
 
 		@include susy-media($screen-sm) {
-			@include span(8 no-gutters);
+			@include span(8);
 		}
 
 		h1 {

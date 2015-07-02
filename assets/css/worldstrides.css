@@ -6416,11 +6416,18 @@ a.no-decoration {
 @media (min-width: 768px) {
   .postcard .blog-single-content {
     width: 66.0130718954%;
-    float: left; } }
+    float: left;
+    margin-right: 1.9607843137%; } }
 
 .postcard .blog-single-content h1 {
   margin-top: 10px;
   margin-bottom: 20px; }
+
+@media (min-width: 768px) {
+  .travelogue .blog-single-content {
+    width: 83.0065359477%;
+    float: right;
+    margin-right: 0; } }
 
 #page {
   overflow: hidden; }
