@@ -28,8 +28,8 @@
 	</nav>
 
 	<header id="masthead" class="site-header" role="banner">
-		<a class="logo-lg" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://placehold.it/216x46" alt=""></a>
-		<a class="logo-sm" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://placehold.it/40x50" alt=""></a>
+		<h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="hide">Worldstrides</span></a></h1>
+		<!-- <a class="logo-sm" href="<?php //echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://placehold.it/40x50" alt=""></a> -->
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<a href="#">Explore Our Trips »</a>
