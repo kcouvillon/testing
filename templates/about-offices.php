@@ -13,6 +13,11 @@ get_header(); ?>
 
 		<?php the_post(); ?>
 
+		<div id="office-map"></div>
+		<div id="offices-json" style="display: none;">
+			<?php echo json_encode( get_post_meta( $post->ID, 'about_offices_locations_list', true ) ); ?>
+		</div>
+
 		<div class="about-wrap">
 
 			<section class="about section-content">

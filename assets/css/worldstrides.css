@@ -6777,6 +6777,9 @@ section:after {
     .example .entry-content {
       margin-right: 1em; } }
 
+#office-map {
+  padding-top: 40%; }
+
 .office:before,
 .office:after {
   content: "";

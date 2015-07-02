@@ -42,6 +42,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_examples' ) );
+		add_action( 'cmb2_init',  array( $this, 'about_offices_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
 	}
@@ -360,6 +361,53 @@ class WS_Metaboxes {
 			'type' => 'textarea_small',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
+
+	}
+
+	/**
+	 * Main offices for the About - Offices page
+	 */
+	function about_offices_locations() {
+
+		$prefix = 'about_offices_locations_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Office Locations', 'worldstrides' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-offices.php' ),
+		) );
+
+		// $group_field_id is the field id string
+		$group_field_id = $cmb_group->add_field( array(
+			'id'      => $prefix . 'list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Location {#}', 'worldstrides' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Location', 'worldstrides' ),
+				'remove_button' => __( 'Remove Location', 'worldstrides' ),
+				'sortable'      => true, // beta
+			)
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Name', 'worldstrides' ),
+			'id'   => 'name',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		// Location (weather)
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => 'Location',
+			'id' => $prefix . 'coordinates',
+			'type' => 'pw_map',
+			// 'split_values' => true, // Save latitude and longitude as two separate fields
+		) );
+
 
 	}
 

@@ -28,7 +28,7 @@ include WS_PATH . 'includes/cmb2/init.php';
 include WS_PATH . 'includes/cmb2-attached-posts/cmb2-attached-posts-field.php';
 include WS_PATH . 'includes/cmb2-maps-google/cmb-field-map.php';
 include WS_PATH . 'includes/cmb2-post-search/cmb2-post-search-field.php';
-include WS_PATH . 'includes/cmb2-itinerary-item/cmb2-itinerary-item.php';
+include WS_PATH . 'includes/cmb2-itinerary-activity/cmb2-itinerary-activity.php';
 
 // Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
@@ -79,6 +79,11 @@ function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_enqueue_script( 'jquery' );
+
+	if ( is_page_template( 'templates/about-offices.php' ) ) {
+		wp_enqueue_style( 'mapbox-style', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css', array(), WS_VERSION );
+		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
+	}
 
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
 
