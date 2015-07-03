@@ -2,7 +2,52 @@
 	position: relative;
 	background-size: cover;
 	background-position: right bottom;
-	@include container();	
+	@include container();
+
+	.ws-tooltips {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		.ws-tooltip {
+			z-index: 1;
+		}
+
+		.ws-tooltip-1 {
+			top: 73%;
+			left: 77%;
+			.ws-tooltip-content {
+				left: auto;
+				right: 15px;
+				@include susy-media($screen-lg) {
+					left: 15px;
+					right: auto;
+				}
+			}
+		}
+		.ws-tooltip-2 {
+			left: 40%;
+			top: 80%;
+		}
+		.ws-tooltip-3 {
+			top: 47%;
+			left: 68%;
+			.ws-tooltip-content {
+				left: auto;
+				right: 15px;
+				@include susy-media($screen-lg) {
+					left: 15px;
+					right: auto;
+				}	
+			}
+		}
+		.ws-tooltip-4 {
+			top: 27%;
+			left: 50%;
+		}
+	}
 }
 
 .intro-content {
@@ -10,17 +55,34 @@
 	z-index: 1;
 	padding: 8em 0;
 	color: #FFF;
+	@include susy-media($screen-md) {
+		@include span(9);
+	}
+	@include susy-media($screen-lg) {
+		@include span(6);
+	}
+
+	.page-title {
+		line-height: 1em;
+		margin: 0 0 0.5em;
+	}
+	.page-subtitle {
+		font-weight: lighter;
+		margin: 0 0 1.5em;
+	}
 }
 
 .home-section {
+
+	.section-title {
+		margin: 2em 0 1em;
+	}
 
 	.tile {
 		position: relative;
 		height: 0;
 		overflow: hidden;
 		padding-top: percentage(9/16);
-		background-position: center center;
-		background-size: cover;
 
 		
 		@include susy-media($screen-sm) {
@@ -37,6 +99,86 @@
 			}
 		}
 		
+	
+		.tile-content {
+			position: absolute;
+			bottom: 1em;
+			left: 1em;
+			@include susy-media($screen-md) {
+				bottom: 1.5em;
+				left: 1.5em;
+			}
+			a {
+				color: #FFF;
+			}
+		}
+
+		.tile-title {
+			color: #FFF;
+			margin: 0;
+			a {
+				color: inherit;
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+
+		.meta {
+			li {
+				display: inline-block;
+				margin-right: 10px;
+			}
+			a {
+				color: $blue_light;
+				font-size: 75%;
+				text-transform: uppercase;
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+	}
+
+	&.learn-more {
+		margin-top: 4em;
+		padding: 2.5em 0;
+		background: $gray_base;
+		color: #FFF;
+
+		.ws-form {
+			margin-bottom: 0;
+		
+			.form-title {
+				font-size: 2em;
+			}
+		}
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

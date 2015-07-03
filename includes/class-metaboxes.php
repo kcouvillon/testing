@@ -38,6 +38,7 @@ class WS_Metaboxes {
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
+		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
@@ -105,6 +106,24 @@ class WS_Metaboxes {
 			'type' => 'text_medium'
 		) );
 	}
+
+	function blog_details() {
+		$cmb = new_cmb2_box( array(
+			'id'           => 'ws_blog_details',
+			'title'        => __( 'Blog Details', 'cmb2' ),
+			'object_types' => array( 'post' ), // Post type
+			'context'      => 'normal',
+			'priority'     => 'high',
+			'show_names'   => true, // Show field names on the left
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Old Url', 'cmb2' ),
+			'id'   => 'ws_blog_old_url',
+			'type' => 'text_url'
+		) );
+	}
+
 
 	/**
 	 * Field group for Why WorldStrides page

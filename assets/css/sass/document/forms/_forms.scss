@@ -7,3 +7,99 @@
 form {
   margin: 0 0 1.5em;
 }
+
+select {
+  background: none;
+  border: 0;
+  background-color: $gray_light;
+  background-image: url(../images/caret-down.png);
+  background-repeat: no-repeat;
+  background-position: 92% center;
+  background-size: 10px 5px;
+  @include retina('../images/caret-down@2x.png');
+  color: $gray_base;
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-appearance: none;
+  padding: 0.5em 3em 0.5em 1em;
+  &:hover, &:focus {
+  	background-color: $gray_lighter;
+  	outline: none;
+  }
+}
+
+.ws-form {
+	@include clearfix;
+
+	.form-title {
+		margin: 0 0 1em;
+		font-weight: lighter;
+	}
+
+	.left {
+		@include susy-media($screen-md) {
+			@include span(6);
+		}
+	}
+	.right {
+		@include susy-media($screen-md) {
+			@include span(6 last);
+		}
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="name"],
+	input[type="url"],
+	input[type="search"],
+	input[type="date"],
+	textarea {
+		display: block;
+		width: 100%;
+		background-color: $gray_light;
+		border: 0;
+		padding: 0.8em;
+		color: $gray_base;
+
+		&:focus {
+			background-color: $gray_lighter;
+			outline: none;
+		}
+
+		&::-webkit-input-placeholder { 
+			color: $gray_base;
+		}
+		&::-moz-placeholder { 
+			color: $gray_base;
+		}
+		&:-moz-placeholder { 
+			color: $gray_base;
+		}
+		&:-ms-input-placeholder { 
+			color: $gray_base;
+		}
+	}
+
+	.field {
+		margin-bottom: 0.8em;
+	}
+
+	.field-complex {
+		@include clearfix;
+
+		.field-left {
+			margin-bottom: 0.8em;
+			@include susy-media($screen-sm) {
+				@include span(3 of 6);	
+				margin-bottom: 0;
+			}
+		}
+		.field-right {
+			@include susy-media($screen-sm) {
+				@include span(3 of 6 last);	
+			}
+		}
+	}
+
+}

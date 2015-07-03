@@ -100,11 +100,35 @@ class WS_Metaboxes_Itineraries {
 			'object_types' => array( 'itinerary', ),
 		) );
 
+		$cmb->add_field( array(
+			'name' => 'Duration',
+			'desc' => 'Number of days',
+			'id' => $prefix . 'duration',
+			'type' => 'text_small'
+		) );
+
+		$group_field_id = $cmb->add_field( array(
+			'id'      => $prefix . 'date_list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Date Range {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Date Range', 'cmb2' ),
+				'remove_button' => __( 'Remove Date Range', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+		
 		// Date(s) / Duration
 		// @todo duration and date-range select
-		$cmb->add_field( array(
-			'name' => 'Date',
-			'id' => $prefix . 'date',
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Start Date',
+			'id' => $prefix . 'date_start',
+			'type' => 'text_date'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'End Date',
+			'id' => $prefix . 'date_end',
 			'type' => 'text_date'
 		) );
 
@@ -139,6 +163,12 @@ class WS_Metaboxes_Itineraries {
 			'id' => $prefix . 'weather_location',
 			'type' => 'pw_map',
 			// 'split_values' => true, // Save latitude and longitude as two separate fields
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Internal Trip ID', 'cmb2' ),
+			'id'   => 'ws_blog_',
+			'type' => 'text_small'
 		) );
 	}
 
@@ -239,7 +269,6 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Section Slug',
-			'desc' => 'The anchor that gets linked to in the navigation bar',
 			'id' => $prefix . 'slug',
 			'type' => 'text_medium'
 		) );
@@ -351,7 +380,6 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Section Slug',
-			'desc' => 'The anchor that gets linked to in the navigation bar',
 			'id' => $prefix . 'slug',
 			'type' => 'text_medium'
 		) );
