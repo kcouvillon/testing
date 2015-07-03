@@ -164,6 +164,12 @@ class WS_Metaboxes_Itineraries {
 			'type' => 'pw_map',
 			// 'split_values' => true, // Save latitude and longitude as two separate fields
 		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Internal Trip ID', 'cmb2' ),
+			'id'   => 'ws_blog_',
+			'type' => 'text_small'
+		) );
 	}
 
 	/**
