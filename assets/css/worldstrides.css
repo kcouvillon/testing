@@ -7514,22 +7514,28 @@ section:after {
 .site-info .social-icons, .site-info .departing-from {
   margin-bottom: 1em; }
 
+.site-info .social-icons li {
+  display: inline-block;
+  font-size: 1.3em;
+  margin-right: 10px; }
+  .site-info .social-icons li.facebook {
+    font-size: 1.7em;
+    vertical-align: -2px; }
+  .site-info .social-icons li a {
+    color: #323c53; }
+    .site-info .social-icons li a:hover {
+      color: #fb901d; }
+
 .site-info-menu li {
   font-size: 0.75em;
   color: #999999; }
   .site-info-menu li a {
     color: #999999; }
 
-@media (min-width: 960px) {
-  .tagline {
-    position: absolute;
-    left: 5%;
-    bottom: 3em; } }
-
 .footer-logo {
   width: 212px;
   height: 46px;
-  margin: 0; }
+  margin: 1.5em 0 0; }
   .footer-logo a {
     display: block;
     background-image: url(../images/logo-gray.png);
