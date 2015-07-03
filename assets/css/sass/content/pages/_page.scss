@@ -160,6 +160,48 @@ section {
 	position: relative;
 }
 
+.ws-tooltips {
+	display: none;
+	position: relative;
+	@include susy-media($screen-md) {
+		display: block;
+	}
+	
+	.ws-tooltip {
+		position: absolute;
+		cursor: pointer;
+		&:hover {
+			&:before {
+				background-color: $orange;
+				border-color: #FFF;
+			}
+			.ws-tooltip-content {
+				display: block;
+			}
+		}
+		&:before {
+		  content: "";
+		  width: 17px;
+		  height: 17px;
+		  display: block;
+		  background-color: rgba($gray_light, 0.7);
+		  border-radius: 50%;
+		  border: 2px solid rgba($gray_lighter, 0.7);
+		}
+	}
+	.ws-tooltip-content {
+		display: none;
+		position: absolute;
+		top: 15px;
+		left: 15px;
+		border-radius: 5px;
+		background-color: rgba($blue_dark, 0.8);
+		padding: 1em;
+		color: #FFF;
+		width: 300px;
+	}
+}
+
 @import 'why-worldstrides';
 @import 'about';
 @import 'press';

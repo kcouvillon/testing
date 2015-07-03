@@ -16,6 +16,33 @@
 				<a href="#" class="btn btn-primary">Explore Our Trips »</a>
 			</div>
 
+			<ul class="ws-tooltips list-unstyled">
+				<li class="ws-tooltip ws-tooltip-1">
+					<div class="ws-tooltip-content">
+						<span class="small">Siena, Italy</span><br>
+						Off the Piazza Salimbeni, many buildings show the history of the florentine princes.
+					</div>
+				</li>
+				<li class="ws-tooltip ws-tooltip-2">
+					<div class="ws-tooltip-content">
+						<span class="small">City, Country</span><br>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices augue elit, et lobortis elit pulvinar a.
+					</div>
+				</li>
+				<li class="ws-tooltip ws-tooltip-3">
+					<div class="ws-tooltip-content">
+						<span class="small">City, Country</span><br>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices augue elit, et lobortis elit pulvinar a.
+					</div>
+				</li>
+				<li class="ws-tooltip ws-tooltip-4">
+					<div class="ws-tooltip-content">
+						<span class="small">City, Country</span><br>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices augue elit, et lobortis elit pulvinar a.
+					</div>
+				</li>
+			</ul>
+
 		</section>
 
 		<section class="home-section programs">

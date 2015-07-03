@@ -6683,6 +6683,39 @@ section:after {
   .section-content:after {
     clear: both; }
 
+.ws-tooltips {
+  display: none;
+  position: relative; }
+  @media (min-width: 960px) {
+    .ws-tooltips {
+      display: block; } }
+  .ws-tooltips .ws-tooltip {
+    position: absolute;
+    cursor: pointer; }
+    .ws-tooltips .ws-tooltip:hover:before {
+      background-color: #fb901d;
+      border-color: #FFF; }
+    .ws-tooltips .ws-tooltip:hover .ws-tooltip-content {
+      display: block; }
+    .ws-tooltips .ws-tooltip:before {
+      content: "";
+      width: 17px;
+      height: 17px;
+      display: block;
+      background-color: rgba(179, 183, 191, 0.7);
+      border-radius: 50%;
+      border: 2px solid rgba(242, 242, 244, 0.7); }
+  .ws-tooltips .ws-tooltip-content {
+    display: none;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border-radius: 5px;
+    background-color: rgba(48, 118, 188, 0.8);
+    padding: 1em;
+    color: #FFF;
+    width: 300px; }
+
 .why-content > div {
   clear: both;
   width: 100%;
@@ -7260,6 +7293,39 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw; }
+  #intro .ws-tooltips {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+    #intro .ws-tooltips .ws-tooltip-1 {
+      top: 73%;
+      left: 77%; }
+      #intro .ws-tooltips .ws-tooltip-1 .ws-tooltip-content {
+        left: auto;
+        right: 15px; }
+        @media (min-width: 1200px) {
+          #intro .ws-tooltips .ws-tooltip-1 .ws-tooltip-content {
+            left: 15px;
+            right: auto; } }
+    #intro .ws-tooltips .ws-tooltip-2 {
+      left: 40%;
+      top: 80%; }
+    #intro .ws-tooltips .ws-tooltip-3 {
+      top: 47%;
+      left: 68%; }
+      #intro .ws-tooltips .ws-tooltip-3 .ws-tooltip-content {
+        left: auto;
+        right: 15px; }
+        @media (min-width: 1200px) {
+          #intro .ws-tooltips .ws-tooltip-3 .ws-tooltip-content {
+            left: 15px;
+            right: auto; } }
+    #intro .ws-tooltips .ws-tooltip-4 {
+      top: 27%;
+      left: 50%; }
 
 .intro-content {
   position: relative;
