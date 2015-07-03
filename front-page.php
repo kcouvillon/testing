@@ -24,19 +24,39 @@
 				<ul class="programs-list list-unstyled clearfix">
 					<?php 
 					$count = 0;
-					while ( $count < 5 ) : ?>
+					$data = array(
+						array(
+							"title" => "Middle School",
+							"meta" => array("Discoveries Programs")
+						),
+						array(
+							"title" => "High School",
+							"meta" => array("Passages Programs")
+						),
+						array(
+							"title" => "University",
+							"meta" => array("Capstone Programs")
+						),
+						array(
+							"title" => "Performing Arts",
+							"meta" => array("On Stage Programs")
+						),
+					);
+					foreach ( $data as $item ) : ?>
 
 					<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
 					<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
-								<li><a href="#">Discoveries Programs</a></li>
+								<?php foreach ( $item['meta'] as $meta ) : ?>
+								<li><a href="#"><?php echo $meta; ?></a></li>
+								<?php endforeach; ?>
 							</ul>
-							<h2 class="tile-title"><a href="#">Middle School</a></h2>
+							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
 						</div>
 					</li>
 					
-					<?php $count++; endwhile; ?>
+					<?php $count++; endforeach; ?>
 				</ul>
 				
 			</div>
@@ -48,27 +68,69 @@
 			</div>
 			<ul class="itineraries-list list-unstyled clearfix">
 				
-				<?php $count = 0; ?>
-				<?php while( $count < 8 ) : ?>
-				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif'; ?>
-				<?php 
-					if ( $count == 3 || $count == 4 ) {
+				<?php 	
+					$count = 0;
+					$data = array(
+						array(
+							"title" => "Itinerary Title",
+							"meta" => array("Traveler", "Destination")
+						),
+						array(
+							"title" => "Itinerary Title",
+							"meta" => array("Traveler", "Destination")
+						),
+						array(
+							"title" => "Itinerary Title",
+							"meta" => array("Traveler", "Destination")
+						),
+						array(
+							"title" => "Collection Title",
+							"meta" => array("Traveler", "Destination")
+						),
+						array(
+							"title" => "Collection Title",
+							"meta" => array("Traveler", "Destination")
+						),
+						array(
+							"title" => "Itinerary Title",
+							"meta" => array("Traveler", "Destination")
+						),
+						array(
+							"title" => "Itinerary Title",
+							"meta" => array("Traveler", "Destination")
+						),
+						array(
+							"title" => "Itinerary Title",
+							"meta" => array("Traveler", "Destination")
+						)
+					);
+
+					foreach ( $data as $item ) :
+
+					$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
+					if ( $item['title'] == 'Collection Title' ) {
 						$tileSize = 'tile-half';
 						$pattern = 'ws_w_pattern4.gif';
 					} else {
 						$tileSize = 'tile-third';
 					}
 				?>
+
 				<li class="itinerary tile <?php echo $tileSize; ?>" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
 					<div class="tile-content">
 						<ul class="meta list-unstyled">
-							<li><a href="#">High School</a></li>
-							<li><a href="#">Individual</a></li>
+							<?php foreach ( $item['meta'] as $meta ) : ?>
+							<li><a href="#"><?php echo $meta; ?></a></li>
+							<?php endforeach; ?>
 						</ul>
-						<h2 class="tile-title"><a href="#">Oxbridge Academic Programs</a></h2>
+						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
 					</div>
 				</li>
-				<?php $count++; endwhile; ?>
+
+				<?php 
+					$count++; 
+					endforeach; 
+				?>
 
 			</ul>
 		</section>
@@ -78,18 +140,42 @@
 				<h2 class="section-title">Have Questions? We Have Answers.</h2 class="section-title">
 				<ul class="resources-list list-unstyled clearfix">
 					
-					<?php $count = 0; ?>
-					<?php while( $count < 3 ) : ?>
-					<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+					<?php 
+						$count = 0;
+						$data = array(
+							array(
+								"title" => "Resource Title",
+								"meta" => array("Parents")
+							),
+							array(
+								"title" => "Resource Title",
+								"meta" => array("Educators")
+							),
+							array(
+								"title" => "Resource Title",
+								"meta" => array("Students")
+							)
+						);
+
+						foreach ( $data as $item ) :
+						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; 
+					?>
+
 					<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
-								<li><a href="#">Parents</a></li>
+								<?php foreach ( $item['meta'] as $meta ) : ?>
+								<li><a href="#"><?php echo $meta; ?></a></li>
+								<?php endforeach; ?>
 							</ul>
-							<h2 class="tile-title"><a href="#">Scholarship Opportunities</a></h2>
+							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
 						</div>
 					</li>
-					<?php $count++; endwhile; ?>
+					
+					<?php 
+						$count++; 
+						endforeach; 
+					?>
 
 				</ul>
 			</div>
