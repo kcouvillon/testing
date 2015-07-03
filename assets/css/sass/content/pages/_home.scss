@@ -10,8 +10,11 @@
 	z-index: 1;
 	padding: 8em 0;
 	color: #FFF;
+	@include susy-media($screen-md) {
+		@include span(9);
+	}
 	@include susy-media($screen-lg) {
-		@include span(8);
+		@include span(6);
 	}
 
 	.page-title {

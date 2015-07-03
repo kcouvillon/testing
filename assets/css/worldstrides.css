@@ -7266,9 +7266,14 @@ section:after {
   z-index: 1;
   padding: 8em 0;
   color: #FFF; }
+  @media (min-width: 960px) {
+    .intro-content {
+      width: 74.5098039216%;
+      float: left;
+      margin-right: 1.9607843137%; } }
   @media (min-width: 1200px) {
     .intro-content {
-      width: 66.0130718954%;
+      width: 49.0196078431%;
       float: left;
       margin-right: 1.9607843137%; } }
   .intro-content .page-title {
