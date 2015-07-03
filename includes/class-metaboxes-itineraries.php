@@ -100,24 +100,36 @@ class WS_Metaboxes_Itineraries {
 			'object_types' => array( 'itinerary', ),
 		) );
 
+		$cmb->add_field( array(
+			'name' => 'Duration',
+			'desc' => 'Number of days',
+			'id' => $prefix . 'duration',
+			'type' => 'text_small'
+		) );
+
+		$group_field_id = $cmb->add_field( array(
+			'id'      => $prefix . 'date_list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Date Range {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Date Range', 'cmb2' ),
+				'remove_button' => __( 'Remove Date Range', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+		
 		// Date(s) / Duration
 		// @todo duration and date-range select
-		$cmb->add_field( array(
+		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Start Date',
 			'id' => $prefix . 'date_start',
 			'type' => 'text_date'
 		) );
 
-		$cmb->add_field( array(
+		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'End Date',
 			'id' => $prefix . 'date_end',
 			'type' => 'text_date'
-		) );
-
-		$cmb->add_field( array(
-			'name' => 'Duration',
-			'id' => $prefix . 'duration',
-			'type' => 'text_small'
 		) );
 
 		// Destinations / Activities
