@@ -5793,6 +5793,13 @@ p {
 .clearfix:after {
   clear: both; }
 
+.ws-container {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+
 .bg-gray-base, .bg-gray-darker, .bg-gray-dark, .bg-gray {
   color: #f2f2f4; }
 
@@ -5918,7 +5925,9 @@ a.no-decoration {
     .site-header a:hover {
       color: #b3b7bf; }
   .has-featured-image .site-header {
-    background-color: transparent; }
+    background-color: transparent;
+    position: relative;
+    z-index: 100; }
   .archive .site-header, .blog .site-header, .single .site-header {
     background-color: #323c53; }
 
@@ -7077,6 +7086,41 @@ section:after {
       float: right;
       margin-right: 0; } }
 
+#intro {
+  position: relative;
+  background-size: cover;
+  background-position: right bottom;
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  padding: 8em 0;
+  color: #FFF; }
+
+.home-section .tile {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
+  background-position: center center;
+  background-size: cover; }
+  @media (min-width: 768px) {
+    .home-section .tile.tile-third,
+    .home-section .tile.tile-half {
+      width: 50%;
+      float: left;
+      padding-top: 30%; } }
+  @media (min-width: 960px) {
+    .home-section .tile.tile-third {
+      width: 33.333%;
+      float: left;
+      padding-top: 21%; } }
+
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
   display: none; }
@@ -7194,7 +7238,7 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  background: #b3b7bf;
+  background: #f2f2f4;
   padding-top: 2em;
   padding-bottom: 3em; }
   .site-footer ul {
@@ -7205,17 +7249,42 @@ section:after {
     color: #191919; }
     .site-footer a:hover {
       color: #1a1a1a; }
-  @media (min-width: 960px) {
-    .site-footer .menu {
-      width: 57.5163398693%;
-      float: left;
-      margin-right: 1.9607843137%;
-      column-count: 3; } }
   .site-footer .menu > li {
     margin-bottom: 1em; }
   .site-footer .sub-menu li a {
     font-size: 0.875em;
     color: #666666; }
+
+@media (min-width: 960px) {
+  .footer-navigation {
+    width: 74.5098039216%;
+    float: left;
+    margin-right: 1.9607843137%; } }
+
+@media (min-width: 768px) {
+  .footer-navigation .footer-menu {
+    width: 49.0196078431%;
+    float: left;
+    margin-right: 1.9607843137%; }
+    .footer-navigation .footer-menu.footer-2,
+    .footer-navigation .footer-menu.footer-4 {
+      width: 49.0196078431%;
+      float: right;
+      margin-right: 0; } }
+
+@media (min-width: 960px) {
+  .footer-navigation .footer-menu {
+    width: 23.5294117647%;
+    float: left;
+    margin-right: 1.9607843137%; }
+    .footer-navigation .footer-menu.footer-2 {
+      width: 23.5294117647%;
+      float: left;
+      margin-right: 1.9607843137%; }
+    .footer-navigation .footer-menu.footer-4 {
+      width: 23.5294117647%;
+      float: right;
+      margin-right: 0; } }
 
 @media (min-width: 960px) {
   .contact-us {
@@ -7232,8 +7301,29 @@ section:after {
 .site-info .social-icons, .site-info .departing-from {
   margin-bottom: 1em; }
 
+.site-info-menu li {
+  font-size: 0.75em;
+  color: #999999; }
+  .site-info-menu li a {
+    color: #999999; }
+
 @media (min-width: 960px) {
   .tagline {
     position: absolute;
     left: 5%;
     bottom: 3em; } }
+
+.footer-logo {
+  width: 212px;
+  height: 46px;
+  margin: 0; }
+  .footer-logo a {
+    display: block;
+    background-image: url(../images/logo-gray.png);
+    background-repeat: no-repeat;
+    background-size: 212px 46px;
+    width: 100%;
+    height: 100%; }
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+      .footer-logo a {
+        background-image: url("../images/logo-gray@2x.png"); } }

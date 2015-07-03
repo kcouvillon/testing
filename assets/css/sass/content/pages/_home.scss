@@ -1,0 +1,42 @@
+#intro { 
+	position: relative;
+	background-size: cover;
+	background-position: right bottom;
+	@include container();	
+}
+
+.intro-content {
+	position: relative;
+	z-index: 1;
+	padding: 8em 0;
+	color: #FFF;
+}
+
+.home-section {
+
+	.tile {
+		position: relative;
+		height: 0;
+		overflow: hidden;
+		padding-top: percentage(9/16);
+		background-position: center center;
+		background-size: cover;
+
+		
+		@include susy-media($screen-sm) {
+			&.tile-third,
+			&.tile-half {
+				@include span(50% no-gutters);
+				padding-top: 30%;
+			}
+		}
+		@include susy-media($screen-md) {
+			&.tile-third  {
+				@include span(33.333% no-gutters);
+				padding-top: 21%;
+			}
+		}
+		
+	}
+
+}

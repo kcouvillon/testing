@@ -11,19 +11,12 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 
-		<nav id="footer-navigation" class="footer-navigation" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'menu_id' => 'footer-menu' ) ); ?>
+		<nav id="footer-navigation" class="footer-navigation clearfix" role="navigation">
+			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'container_class' => 'footer-menu footer-1', 'menu_id' => '' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer2', 'container_class' => 'footer-menu footer-2', 'menu_id' => '' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer3', 'container_class' => 'footer-menu footer-3', 'menu_id' => '' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer4', 'container_class' => 'footer-menu footer-4', 'menu_id' => '' ) ); ?>
 		</nav>
-
-		<ul class="contact-us">
-			<li>Contact Us</li>
-			<ul class="sub-menu">
-				<li><a href="">Phone Number</a></li>
-				<li><a href="">Email Address</a></li>
-				<li><a href="">Chat Link</a></li>
-				<li><a href="">Catalogue Request Link</a></li>
-			</ul>
-		</ul>
 
 		<div class="site-info">
 			<ul class="social-icons">
@@ -52,13 +45,16 @@
 
 		</div>
 
-		<div class="site-info">
+		<!-- <div class="site-info">
 
-		</div>
+		</div> -->
 
 		<div class="tagline">
-			<?php // @todo should this come out of the WP description field? ?>
-			<h2>Explore. Discover. Become.</h2>
+			<h2 class="footer-logo">
+				<a href="<?php echo esc_url( home_url() ); ?>">
+					<span class="hide"><?php echo bloginfo('description'); ?></span>
+				</a>
+			</h2>
 		</div>
 
 	</footer>
