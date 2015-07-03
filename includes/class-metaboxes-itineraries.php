@@ -269,7 +269,6 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Section Slug',
-			'desc' => 'The anchor that gets linked to in the navigation bar',
 			'id' => $prefix . 'slug',
 			'type' => 'text_medium'
 		) );
@@ -381,7 +380,6 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Section Slug',
-			'desc' => 'The anchor that gets linked to in the navigation bar',
 			'id' => $prefix . 'slug',
 			'type' => 'text_medium'
 		) );
