@@ -10,9 +10,25 @@
 	z-index: 1;
 	padding: 8em 0;
 	color: #FFF;
+	@include susy-media($screen-lg) {
+		@include span(8);
+	}
+
+	.page-title {
+		line-height: 1em;
+		margin: 0 0 0.5em;
+	}
+	.page-subtitle {
+		font-weight: lighter;
+		margin: 0 0 1.5em;
+	}
 }
 
 .home-section {
+
+	.section-title {
+		margin: 2em 0 1em;
+	}
 
 	.tile {
 		position: relative;
@@ -37,6 +53,86 @@
 			}
 		}
 		
+	
+		.tile-content {
+			position: absolute;
+			bottom: 1em;
+			left: 1em;
+			@include susy-media($screen-md) {
+				bottom: 1.5em;
+				left: 1.5em;
+			}
+			a {
+				color: #FFF;
+			}
+		}
+
+		.tile-title {
+			color: #FFF;
+			margin: 0;
+			a {
+				color: inherit;
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+
+		.meta {
+			li {
+				display: inline-block;
+				margin-right: 10px;
+			}
+			a {
+				color: $blue_light;
+				font-size: 75%;
+				text-transform: uppercase;
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+	}
+
+	&.learn-more {
+		margin-top: 4em;
+		padding: 2.5em 0;
+		background: $gray_base;
+		color: #FFF;
+
+		.ws-form {
+			margin-bottom: 0;
+		
+			.form-title {
+				font-size: 2em;
+			}
+		}
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
