@@ -5609,6 +5609,26 @@ table th[class*="col-"] {
 form {
   margin: 0 0 1.5em; }
 
+select {
+  background: none;
+  border: 0;
+  background-color: #b3b7bf;
+  background-image: url(../images/caret-down.png);
+  background-repeat: no-repeat;
+  background-position: 92% center;
+  background-size: 10px 5px;
+  color: #323c53;
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-appearance: none;
+  padding: 0.5em 3em 0.5em 1em; }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    select {
+      background-image: url("../images/caret-down@2x.png"); } }
+  select:hover, select:focus {
+    background-color: #f2f2f4;
+    outline: none; }
+
 .ws-form:before,
 .ws-form:after {
   content: "";
