@@ -6274,6 +6274,60 @@ a.no-decoration {
     width: 50%;
     padding-left: 5%; }
 
+.blog-pager {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2em; }
+  @media (min-width: 768px) {
+    .blog-pager {
+      display: flex; } }
+
+.blog-pager-prev, .blog-pager-next {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  border-top: 1px solid #989898;
+  padding-top: 1em;
+  padding-bottom: 2em; }
+  .blog-pager-prev span, .blog-pager-next span {
+    display: block;
+    color: #bde5ff;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    margin-bottom: 0; }
+  @media (min-width: 768px) {
+    .blog-pager-prev, .blog-pager-next {
+      width: 50%; } }
+
+@media (min-width: 768px) {
+  .blog-pager-prev {
+    border-right: 1px solid #989898;
+    border-bottom: 1px solid #989898; } }
+
+.blog-pager-next {
+  border-bottom: 1px solid #989898; }
+  @media (min-width: 768px) {
+    .blog-pager-next {
+      padding-left: 1em; } }
+
+.blog-single-cta {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url(../images/src/blog-cta.jpg);
+  background-size: cover;
+  text-align: center;
+  padding-top: 15vh;
+  padding-bottom: 20vh;
+  color: #fff; }
+  .blog-single-cta .h2 {
+    font-weight: 700; }
+
 .sidebar {
   width: 100%;
   float: left;
@@ -6349,60 +6403,6 @@ a.no-decoration {
       margin-right: 1.9607843137%;
       padding-left: 0; } }
 
-.blog-pager {
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 2em; }
-  @media (min-width: 768px) {
-    .blog-pager {
-      display: flex; } }
-
-.blog-pager-prev, .blog-pager-next {
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-  border-top: 1px solid #989898;
-  padding-top: 1em;
-  padding-bottom: 2em; }
-  .blog-pager-prev span, .blog-pager-next span {
-    display: block;
-    color: #bde5ff;
-    text-transform: uppercase;
-    font-size: 0.75em;
-    margin-bottom: 0; }
-  @media (min-width: 768px) {
-    .blog-pager-prev, .blog-pager-next {
-      width: 50%; } }
-
-@media (min-width: 768px) {
-  .blog-pager-prev {
-    border-right: 1px solid #989898;
-    border-bottom: 1px solid #989898; } }
-
-.blog-pager-next {
-  border-bottom: 1px solid #989898; }
-  @media (min-width: 768px) {
-    .blog-pager-next {
-      padding-left: 1em; } }
-
-.blog-single-cta {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url(../images/src/blog-cta.jpg);
-  background-size: cover;
-  text-align: center;
-  padding-top: 15vh;
-  padding-bottom: 20vh;
-  color: #fff; }
-  .blog-single-cta .h2 {
-    font-weight: 700; }
-
 .postcard .primary-section {
   display: block;
   max-width: 1500px;
@@ -6428,6 +6428,35 @@ a.no-decoration {
     width: 83.0065359477%;
     float: right;
     margin-right: 0; } }
+
+.travelogue .entry-content > * {
+  max-width: 48.8188976378%; }
+
+.travelogue .entry-content blockquote {
+  float: right;
+  margin: 100px 0;
+  max-width: 48.8188976378%; }
+
+.travelogue .entry-content figure {
+  max-width: 100%;
+  width: 100% !important; }
+  .travelogue .entry-content figure:before,
+  .travelogue .entry-content figure:after {
+    content: "";
+    display: table; }
+  .travelogue .entry-content figure:after {
+    clear: both; }
+  .travelogue .entry-content figure img {
+    width: 69.2913385827%;
+    float: right;
+    margin-right: 0;
+    padding: 0; }
+
+.travelogue .entry-content figcaption {
+  width: 28.3464566929%;
+  float: left;
+  margin-right: 2.3622047244%;
+  font-size: 0.625em; }
 
 #page {
   overflow: hidden; }

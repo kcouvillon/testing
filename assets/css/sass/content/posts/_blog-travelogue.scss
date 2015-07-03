@@ -4,7 +4,36 @@
 
 		@include susy-media($screen-sm) {
 			@include span(10 last);
+
 		}
 	}
 
+	.entry-content {
+
+		> * {
+			max-width: span(5 of 10);
+		}
+
+		blockquote {
+			float: right;
+			margin: 100px 0;
+			max-width: span(5 of 10);
+		}
+
+		figure {
+			max-width: 100%;
+			width: 100% !important;
+			@include clearfix;
+
+			img {
+				@include span(7 of 10 last);
+				padding: 0;
+			}
+		}
+
+		figcaption {
+			@include span(3 of 10);
+			font-size: em(10);
+		}
+	}
 }
