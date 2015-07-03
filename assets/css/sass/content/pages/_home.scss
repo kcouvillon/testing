@@ -35,8 +35,6 @@
 		height: 0;
 		overflow: hidden;
 		padding-top: percentage(9/16);
-		background-position: center center;
-		background-size: cover;
 
 		
 		@include susy-media($screen-sm) {

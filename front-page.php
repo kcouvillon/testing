@@ -26,8 +26,8 @@
 					$count = 0;
 					while ( $count < 5 ) : ?>
 
-					<?php $url = ( $count % 2 == 0 ) ? 'http://placehold.it/600x337' : 'http://placehold.it/600x337/999999/BBBBBB'; ?>
-					<li class="program tile tile-third" style="background-image:url(<?php echo $url; ?>);">
+					<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+					<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
 								<li><a href="#">Discoveries Programs</a></li>
@@ -50,9 +50,16 @@
 				
 				<?php $count = 0; ?>
 				<?php while( $count < 8 ) : ?>
-				<?php $url = ( $count % 2 == 0 ) ? 'http://placehold.it/600x337' : 'http://placehold.it/600x337/999999/BBBBBB'; ?>
-				<?php $tileSize = ( $count == 3 || $count == 4 ) ? 'tile-half' : 'tile-third'; ?>
-				<li class="itinerary tile <?php echo $tileSize; ?>" style="background-image:url(<?php echo $url; ?>);">
+				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif'; ?>
+				<?php 
+					if ( $count == 3 || $count == 4 ) {
+						$tileSize = 'tile-half';
+						$pattern = 'ws_w_pattern4.gif';
+					} else {
+						$tileSize = 'tile-third';
+					}
+				?>
+				<li class="itinerary tile <?php echo $tileSize; ?>" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
 					<div class="tile-content">
 						<ul class="meta list-unstyled">
 							<li><a href="#">High School</a></li>
@@ -73,8 +80,8 @@
 					
 					<?php $count = 0; ?>
 					<?php while( $count < 3 ) : ?>
-					<?php $url = ( $count % 2 == 0 ) ? 'http://placehold.it/600x337' : 'http://placehold.it/600x337/999999/BBBBBB'; ?>
-					<li class="resource tile tile-third" style="background-image:url(<?php echo $url; ?>);">
+					<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+					<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
 								<li><a href="#">Parents</a></li>
