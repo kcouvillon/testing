@@ -103,9 +103,21 @@ class WS_Metaboxes_Itineraries {
 		// Date(s) / Duration
 		// @todo duration and date-range select
 		$cmb->add_field( array(
-			'name' => 'Date',
-			'id' => $prefix . 'date',
+			'name' => 'Start Date',
+			'id' => $prefix . 'date_start',
 			'type' => 'text_date'
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'End Date',
+			'id' => $prefix . 'date_end',
+			'type' => 'text_date'
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Duration',
+			'id' => $prefix . 'duration',
+			'type' => 'text_small'
 		) );
 
 		// Destinations / Activities
