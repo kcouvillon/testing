@@ -108,7 +108,7 @@ class WS_Metaboxes {
 	}
 
 	function blog_details() {
-		$bio_details = new_cmb2_box( array(
+		$cmb = new_cmb2_box( array(
 			'id'           => 'ws_blog_details',
 			'title'        => __( 'Blog Details', 'cmb2' ),
 			'object_types' => array( 'post' ), // Post type
@@ -117,7 +117,7 @@ class WS_Metaboxes {
 			'show_names'   => true, // Show field names on the left
 		) );
 
-		$bio_details->add_field( array(
+		$cmb->add_field( array(
 			'name' => __( 'Old Url', 'cmb2' ),
 			'id'   => 'ws_blog_old_url',
 			'type' => 'text_url'
