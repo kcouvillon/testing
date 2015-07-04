@@ -3,41 +3,41 @@
  * Default terminal page, used by blog posts and another post type that doesn't have their own single
  */
 
- get_header();
+get_header();
 
 $blog_type = WS_Helpers::blog_type( $post->ID );
- ?>
+?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main <?php echo $blog_type; ?>" role="main">
 
-			<?php
-			$background = '';
-			if ( has_post_thumbnail() ) {
-				$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-				// if it's a postcard, don't add the overlay
-				if ( $blog_type === 'postcard' ) :
-					$background = 'url(' . $featured[0] . ')';
-				// if not, include the overlay
-				else :
-					$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
-				endif;
-			} ?>
+		<?php
+		$background = '';
+		if ( has_post_thumbnail() ) {
+			$featured = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+			// if it's a postcard, don't add the overlay
+			if ( $blog_type === 'postcard' ) :
+				$background = 'url(' . $featured[0] . ')';
+			// if not, include the overlay
+			else :
+				$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+			endif;
+		} ?>
 
-			<section class="section-header primary-section pattern-3" style="background-image: <?php echo $background; ?>">
+		<section class="section-header primary-section pattern-3" style="background-image: <?php echo $background; ?>">
 
-				<?php if ( $blog_type === 'general' || $blog_type === 'travelogue' ) : ?>
-					<div class="section-header-content">
+			<?php if ( $blog_type === 'general' || $blog_type === 'travelogue' ) : ?>
+				<div class="section-header-content">
 
-						<nav class="breadcrumbs">
-							<?php the_time('F, j Y'); ?>
-							<?php echo get_the_category_list('&nbsp;'); ?>
-						</nav>
-						<h1><?php echo get_the_title(); ?></h1>
-						<?php echo wp_trim_words(get_post($post->ID)->post_content, 55); ?>
-					</div>
-				<?php endif; ?>
-			</section>
+					<nav class="breadcrumbs">
+						<?php the_time( 'F, j Y' ); ?>
+						<?php echo get_the_category_list( '&nbsp;' ); ?>
+					</nav>
+					<h1><?php echo get_the_title(); ?></h1>
+					<?php echo wp_trim_words( get_post( $post->ID )->post_content, 55 ); ?>
+				</div>
+			<?php endif; ?>
+		</section>
 
 		<div class="blog-single-wrap">
 
@@ -47,68 +47,69 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 			<div class="blog-single-content">
 
-			<?php if ( have_posts() ) : ?>
+				<?php if ( have_posts() ) : ?>
 
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+					<?php /* Start the Loop */ ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php /* Make sure it's a blog 'post' and then check type*/ ?>
-					<?php if ( $post->post_type == 'post' ) : ?>
+						<?php /* Make sure it's a blog 'post' and then check type*/ ?>
+						<?php if ( $post->post_type == 'post' ) : ?>
 
-						<?php
+							<?php
 
 							if ( $blog_type == 'travelogue' ) {
 								get_template_part( 'partials/content', 'blog-travelogue' );
-							} elseif( $blog_type == 'postcard' ) {
+							} elseif ( $blog_type == 'postcard' ) {
 								get_template_part( 'partials/content', 'blog-postcard' );
 							} else {
 								get_template_part( 'partials/content', 'blog' );
 							}
-						?>
+							?>
 
-					<?php else : ?>
+						<?php else : ?>
 
-						<?php get_template_part( 'partials/content' ) ?>
+							<?php get_template_part( 'partials/content' ) ?>
 
-					<?php endif; ?>
+						<?php endif; ?>
 
-				<?php endwhile; ?>
+					<?php endwhile; ?>
 
-				<?php
-				$categories = get_the_category();
-				$category = $categories[0];
-				?>
+					<?php
+					$categories = get_the_category();
+					$category   = $categories[0];
+					?>
 
-				<div class="blog-pager">
-					<div class="blog-pager-prev">
-						<?php if ( get_previous_post() ) { ?>
-							<span>Previous <?php echo $category->name; ?> Story</span>
-							<?php previous_post_link('%link', '%title', true); ?>
-						<?php } else { ?>
-							<span>No Older Stories</span>
-							<a href="<?php esc_url( home_url( '/blog' ) ); ?>">See all Stories</a>
-						<?php } ?>
+					<div class="blog-pager">
+						<div class="blog-pager-prev">
+							<?php if ( get_previous_post() ) { ?>
+								<span>Previous <?php echo $category->name; ?> Story</span>
+								<?php previous_post_link( '%link', '%title', true ); ?>
+							<?php } else { ?>
+								<span>No Older Stories</span>
+								<a href="<?php esc_url( home_url( '/blog' ) ); ?>">See all Stories</a>
+							<?php } ?>
+						</div>
+						<div class="blog-pager-next">
+							<?php if ( get_next_post() ) { ?>
+								<span>Next <?php echo $category->name; ?> Story</span>
+								<?php next_post_link( '%link', '%title', true ); ?>
+							<?php } else { ?>
+								<span>No Newer Stories</span>
+								<a href="<?php esc_url( home_url( '/blog' ) ); ?>">Go Back to All Stories</a>
+							<?php } ?>
+						</div>
 					</div>
-					<div class="blog-pager-next">
-						<?php if ( get_next_post() ) { ?>
-							<span>Next <?php echo $category->name; ?> Story</span>
-							<?php next_post_link('%link', '%title', true); ?>
-						<?php } else { ?>
-							<span>No Newer Stories</span>
-							<a href="<?php esc_url( home_url( '/blog' ) ); ?>">Go Back to All Stories</a>
-						<?php } ?>
-					</div>
-				</div>
 
-				FACEBOOK COMMENTS HERE
+					FACEBOOK COMMENTS HERE
 
-			<?php else : ?>
+				<?php else : ?>
 
-				<p>Nothing found</p>
+					<p>Nothing found</p>
 
-			<?php endif; ?>
+				<?php endif; ?>
 
-			</div><!-- blog-single-content -->
+			</div>
+			<!-- blog-single-content -->
 
 			<?php if ( $blog_type === 'general' ) : ?>
 
@@ -136,7 +137,8 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 			<?php endif; ?>
 
-		</div><!-- blog-single-wrap -->
+		</div>
+		<!-- blog-single-wrap -->
 
 		<div class="blog-single-cta">
 			<span class="h2">Request Information about a WorldStrides {PROGRAM TYPE} Program</span>
