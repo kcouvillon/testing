@@ -36,6 +36,7 @@ class WS_Metaboxes {
 	 * Sets up actions and filters.
 	 */
 	protected function _init() {
+		add_action( 'cmb2_init',  array( $this, 'hero_tooltips' ) );
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
@@ -46,6 +47,50 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_offices_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
+	}
+
+	/**
+	 * Field group for Why WorldStrides page
+	 */
+	function hero_tooltips() {
+
+		$prefix = 'hero_tooltips_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Hero Tooltips', 'cmb2' ),
+			'object_types' => array( 'itinerary', ),
+		) );
+
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb->add_field( array(
+			'id'      => $prefix . 'list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Tooltip {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Tooltip', 'cmb2' ),
+				'remove_button' => __( 'Remove Tooltip', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => __( 'Title', 'cmb2' ),
+			'id'   => 'title',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => __( 'Caption', 'cmb2' ),
+			'id'   => 'caption',
+			'type' => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
 	}
 
 	/**
