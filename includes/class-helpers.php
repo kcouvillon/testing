@@ -47,9 +47,10 @@ class WS_Helpers {
 	 */
 	public static function blog_type( $post_id ) {
 		$terms     = get_the_terms( $post_id, 'blog-type' );
-		$term_slug = $terms[0]->slug;
 
-		if ( $term_slug == '' ) {
+		if ( $terms ) {
+			$term_slug = $terms[0]->slug;
+		} else {
 			$term_slug = 'general';
 		}
 
