@@ -7484,6 +7484,17 @@ section:after {
     .home-section.learn-more .ws-form .form-title {
       font-size: 2em; }
 
+.learn-more {
+  margin-top: 4em;
+  padding-top: 2.5em;
+  padding-bottom: 3em;
+  background: #323c53;
+  color: #FFF; }
+  .learn-more .ws-form {
+    margin-bottom: 0; }
+    .learn-more .ws-form .form-title {
+      font-size: 2em; }
+
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
   display: none; }
