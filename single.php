@@ -26,7 +26,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 			<section class="section-header primary-section pattern-3" style="background-image: <?php echo $background; ?>">
 
-				<?php if ( ! $blog_type === 'postcard' ) : ?>
+				<?php if ( $blog_type === 'general' || $blog_type === 'travelogue' ) : ?>
 					<div class="section-header-content">
 
 						<nav class="breadcrumbs">
@@ -74,14 +74,29 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 				<?php endwhile; ?>
 
+				<?php
+				$categories = get_the_category();
+				$category = $categories[0];
+				?>
+
 				<div class="blog-pager">
 					<div class="blog-pager-prev">
-						<span>Previous {CATEGORY} Story</span>
-						<?php previous_post_link('%link', '%title', true); ?>
+						<?php if ( get_previous_post() ) { ?>
+							<span>Previous <?php echo $category->name; ?> Story</span>
+							<?php previous_post_link('%link', '%title', true); ?>
+						<?php } else { ?>
+							<span>No Older Stories</span>
+							<a href="<?php esc_url( home_url( '/blog' ) ); ?>">See all Stories</a>
+						<?php } ?>
 					</div>
 					<div class="blog-pager-next">
-						<span>Next {CATEGORY} Story</span>
-						<?php next_post_link('%link', '%title', true); ?>
+						<?php if ( get_next_post() ) { ?>
+							<span>Next <?php echo $category->name; ?> Story</span>
+							<?php next_post_link('%link', '%title', true); ?>
+						<?php } else { ?>
+							<span>No Newer Stories</span>
+							<a href="<?php esc_url( home_url( '/blog' ) ); ?>">Go Back to All Stories</a>
+						<?php } ?>
 					</div>
 				</div>
 
