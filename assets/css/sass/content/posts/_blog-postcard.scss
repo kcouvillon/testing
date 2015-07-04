@@ -1,0 +1,23 @@
+.postcard {
+
+	.primary-section {
+		@include container();
+		padding: 0;
+
+		.has-featured-image & {
+			height: 70vh;
+		}
+	}
+
+	.blog-single-content {
+
+		@include susy-media($screen-sm) {
+			@include span(8);
+		}
+
+		h1 {
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
+	}
+}

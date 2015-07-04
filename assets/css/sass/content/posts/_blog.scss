@@ -89,6 +89,10 @@
 
 	.entry-body {
 		margin-right: gutter();
+
+		@include susy-media($screen-sm) {
+			margin-right: 0;
+		}
 	}
 
 	.entry-author {
@@ -123,6 +127,65 @@
 		font-weight: 200;
 		width: 50%;
 		padding-left: 5%;
+	}
+}
+
+.blog-pager {
+	@include span(full);
+	margin-bottom: 2em;
+
+	@include susy-media($screen-sm) {
+		display: flex;
+	}
+}
+
+.blog-pager-prev, .blog-pager-next {
+	@include span(full);
+	border-top: 1px solid $color_border;
+	padding-top: 1em;
+	padding-bottom: 2em;
+
+	span {
+		display: block;
+		color: $blue_light;
+		text-transform: uppercase;
+		font-size: em(12);
+		margin-bottom: 0;
+	}
+
+	@include susy-media($screen-sm) {
+		width: 50%;
+	}
+}
+
+.blog-pager-prev {
+
+	@include susy-media($screen-sm) {
+		border-right: 1px solid $color_border;
+		border-bottom: 1px solid $color_border;
+	}
+}
+
+.blog-pager-next {
+	border-bottom: 1px solid $color_border;
+
+	@include susy-media($screen-sm) {
+		padding-left: 1em;
+	}
+}
+
+.blog-single-cta {
+	@include container();
+	background-image: linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(../images/src/blog-cta.jpg);
+	background-size: cover;
+	text-align: center;
+	padding-top: 15vh;
+	padding-bottom: 20vh;
+	color: #fff;
+
+	.h2 {
+		// color: #fff;
+		font-weight: 700;
 	}
 }
 

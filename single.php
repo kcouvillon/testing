@@ -3,38 +3,41 @@
  * Default terminal page, used by blog posts and another post type that doesn't have their own single
  */
 
- get_header(); ?>
+ get_header();
+
+$blog_type = WS_Helpers::blog_type( $post->ID );
+ ?>
 
 <div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
+	<main id="main" class="site-main <?php echo $blog_type; ?>" role="main">
 
 			<?php
-			$blog_type = WS_Helpers::blog_type( $post->ID );
 			$background = '';
 			if ( has_post_thumbnail() ) {
 				$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-				$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+				// if it's a postcard, don't add the overlay
+				if ( $blog_type === 'postcard' ) :
+					$background = 'url(' . $featured[0] . ')';
+				// if not, include the overlay
+				else :
+					$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+				endif;
 			} ?>
 
-		<?php if ( $blog_type === 'postcard' ) : ?>
-			<section class="primary-section">
-				<iframe width="100%" height="700" src="https://www.youtube.com/embed/_SzwjiuNWyo" frameborder="0" allowfullscreen></iframe>
-			</section>
-		<?php
-		else :
-		?>
 			<section class="section-header primary-section pattern-3" style="background-image: <?php echo $background; ?>">
-				<div class="section-header-content">
 
-					<nav class="breadcrumbs">
-						<?php the_time('F, j Y'); ?>
-						<?php echo get_the_category_list('&nbsp;'); ?>
-					</nav>
-					<h1><?php echo get_the_title(); ?></h1>
-					<?php echo wp_trim_words(get_post($post->ID)->post_content, 55); ?>
-				</div>
+				<?php if ( $blog_type === 'general' || $blog_type === 'travelogue' ) : ?>
+					<div class="section-header-content">
+
+						<nav class="breadcrumbs">
+							<?php the_time('F, j Y'); ?>
+							<?php echo get_the_category_list('&nbsp;'); ?>
+						</nav>
+						<h1><?php echo get_the_title(); ?></h1>
+						<?php echo wp_trim_words(get_post($post->ID)->post_content, 55); ?>
+					</div>
+				<?php endif; ?>
 			</section>
-		<?php endif; ?>
 
 		<div class="blog-single-wrap">
 
@@ -71,14 +74,29 @@
 
 				<?php endwhile; ?>
 
+				<?php
+				$categories = get_the_category();
+				$category = $categories[0];
+				?>
+
 				<div class="blog-pager">
 					<div class="blog-pager-prev">
-						<span>Previous {CATEGORY} Story</span>
-						<?php previous_post_link('%link', '%title', true); ?>
+						<?php if ( get_previous_post() ) { ?>
+							<span>Previous <?php echo $category->name; ?> Story</span>
+							<?php previous_post_link('%link', '%title', true); ?>
+						<?php } else { ?>
+							<span>No Older Stories</span>
+							<a href="<?php esc_url( home_url( '/blog' ) ); ?>">See all Stories</a>
+						<?php } ?>
 					</div>
 					<div class="blog-pager-next">
-						<span>Next {CATEGORY} Story</span>
-						<?php next_post_link('%link', '%title', true); ?>
+						<?php if ( get_next_post() ) { ?>
+							<span>Next <?php echo $category->name; ?> Story</span>
+							<?php next_post_link('%link', '%title', true); ?>
+						<?php } else { ?>
+							<span>No Newer Stories</span>
+							<a href="<?php esc_url( home_url( '/blog' ) ); ?>">Go Back to All Stories</a>
+						<?php } ?>
 					</div>
 				</div>
 
@@ -92,27 +110,31 @@
 
 			</div><!-- blog-single-content -->
 
-			<aside class="sidebar">
-				<article class="post-1 post type-post status-publish format-standard hentry category-new" id="post-1">
-					<header class="section-header entry-header pattern-8" style="background-image: ;">
-						<ul class="post-categories">
-							<li>
-								<a href="http://worldstrides.dev/category/new/" rel="category tag">New</a>
-							</li>
-						</ul>
+			<?php if ( $blog_type === 'general' ) : ?>
 
-						<h2 class="entry-title">STATIC MARKUP</h2>
-					</header>
+				<aside class="sidebar">
+					<article class="post-1 post type-post status-publish format-standard hentry category-new" id="post-1">
+						<header class="section-header entry-header pattern-8" style="background-image: ;">
+							<ul class="post-categories">
+								<li>
+									<a href="http://worldstrides.dev/category/new/" rel="category tag">New</a>
+								</li>
+							</ul>
 
-					<div class="entry-body">
-						<div class="entry-content">
-							<p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!</p>
-							<button class="btn btn-primary">STATiC BUTTON</button>
+							<h2 class="entry-title">STATIC MARKUP</h2>
+						</header>
+
+						<div class="entry-body">
+							<div class="entry-content">
+								<p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!</p>
+								<button class="btn btn-primary">STATiC BUTTON</button>
+							</div>
 						</div>
-					</div>
 
-				</article>
-			</aside>
+					</article>
+				</aside>
+
+			<?php endif; ?>
 
 		</div><!-- blog-single-wrap -->
 
