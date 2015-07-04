@@ -34,7 +34,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 						<?php echo get_the_category_list( '&nbsp;' ); ?>
 					</nav>
 					<h1><?php echo get_the_title(); ?></h1>
-					<?php echo wp_trim_words( get_post( $post->ID )->post_content, 55 ); ?>
+					<?php echo get_the_excerpt(); ?>
 				</div>
 			<?php endif; ?>
 		</section>
