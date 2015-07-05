@@ -40,6 +40,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
+		add_action( 'cmb2_init',  array( $this, 'block_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
@@ -89,6 +90,34 @@ class WS_Metaboxes {
 			'id'   => 'caption',
 			'type' => 'text',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+	}
+
+	function block_details() {
+
+		$prefix = 'block_details_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Block Details', 'cmb2' ),
+			'object_types' => array( 'block', ),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Block Type',
+			'id'               => 'block_type',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'image-right',
+			'options'          => array(
+				'image-right' => __( 'Image Right', 'cmb' ),
+				'image-left'   => __( 'Image Left', 'cmb' ),
+				'column-one'     => __( 'One Column', 'cmb' ),
+				'column-two'     => __( 'Two Column', 'cmb' ),
+				'slideshow-basic'     => __( 'Basic Image Slideshow', 'cmb' ),
+				'slideshow-tabbed'     => __( 'Tabbed Image Slideshow', 'cmb' ),
+			),
 		) );
 
 	}
