@@ -58,18 +58,6 @@ class WS_Custom_Post_Types {
 		);
 
 		/**
-		 * Define Event custom post type
-		 */
-		register_extended_post_type( 'event',
-			array(
-				'menu_icon' => 'dashicons-tickets-alt'
-			),
-			array(
-				'slug' => 'events'
-			)
-		);
-
-		/**
 		 * Define Collections post type
 		 */
 		register_extended_post_type( 'collection',
