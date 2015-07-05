@@ -207,7 +207,9 @@ class WS_Metaboxes_Collections {
 		$cmb->add_field( array(
 			'name'       => __( 'List of Itineraries', 'cmb2' ),
 			'id'         => 'title',
+			'desc'       => 'Itineraries can be added or removed on the individual itinerary page',
 			'type'       => 'associated_itineraries',
+			'show_names' => false
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
 	}
