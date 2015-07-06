@@ -41,6 +41,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'block_details' ) );
+		add_action( 'cmb2_init',  array( $this, 'contact_fields' ) );
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
