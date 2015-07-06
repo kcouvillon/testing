@@ -4,6 +4,48 @@
 ( function( $, window, undefined ) {
 	'use strict';
 
+	// Header
+
+	var $form = $('.quick-access .search-form'),
+		$input = $form.find('.search-field');
+
+	$( '[href="#search"]' ).click(function(e){
+		
+		e.preventDefault();
+
+		if ( $form.hasClass('visible') ) {
+
+			$form
+				.slideUp(300)
+				.removeClass('visible');
+
+		} else {
+
+			$form.slideDown({
+				duration: 300,
+				done: function(){
+					$form.addClass('visible');
+					$input.focus();
+				}
+			});
+
+		}
+
+	});
+	
+	$( '[href="#close-search"]' ).click(function(e){
+		
+		e.preventDefault();
+		
+		$form
+			.slideUp(300)
+			.removeClass('visible');
+	});
+
+ } )( jQuery );
+( function( $, window, undefined ) {
+	'use strict';
+
 	// HOME PAGE STUFF
 
 	if ( $( 'body' ).hasClass('home') ) {
