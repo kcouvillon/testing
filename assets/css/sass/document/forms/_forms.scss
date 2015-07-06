@@ -25,6 +25,7 @@ select {
   &:hover, &:focus {
   	background-color: $gray_lighter;
   	outline: none;
+  	box-shadow: 0 0 5px -1px;
   }
 }
 

@@ -29,11 +29,11 @@
 
 			<ul class="departing-from">
 				<li>Departing From</li>
-				<select>
-					<option selected>USA</option>
-					<option>United Kingdom</option>
-					<option>Australia</option>
-					<option>China</option>
+				<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+					<option value="" selected>USA</option>
+					<option value="http://worldstrides.co.uk/">United Kingdom</option>
+					<option value="http://trekset.com.au/">Australia</option>
+					<option value="http://worldstrides.cn/">China</option>
 				</select>
 			</ul>
 
