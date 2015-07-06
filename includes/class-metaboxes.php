@@ -122,6 +122,26 @@ class WS_Metaboxes {
 
 	}
 
+	function contact_fields() {
+
+		$prefix = 'contact_fields_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Additional Fields', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/contact.php' ),
+			'show_names'   => false, // Show field names on the left
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Second Column',
+			'id'               => 'contact_column_2',
+			'type'             => 'wysiwyg'
+		) );
+
+	}
+
 	/**
 	 * Define the metabox and field configurations.
 	 *
