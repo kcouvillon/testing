@@ -18,9 +18,17 @@ get_header(); ?>
 		</section>
 
 		<?php the_post(); ?>
-		<section class="contact section-content">
-			<?php the_content(); ?>
-		</section>
+		<div class="contact-wrap">
+		
+			<section class="contact section-content-left">
+				<?php the_content(); ?>
+			</section>
+			
+			<section class="contact section-content-right">
+				<?php echo apply_filters( 'the_content', get_post_meta( $post->ID, 'contact_column_2', true) ); ?>	
+			</section>
+		
+		</div>
 
 		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
 
