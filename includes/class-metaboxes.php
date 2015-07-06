@@ -41,6 +41,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'block_details' ) );
+		add_action( 'cmb2_init',  array( $this, 'contact_fields' ) );
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
@@ -118,6 +119,26 @@ class WS_Metaboxes {
 				'slideshow-basic'     => __( 'Basic Image Slideshow', 'cmb' ),
 				'slideshow-tabbed'     => __( 'Tabbed Image Slideshow', 'cmb' ),
 			),
+		) );
+
+	}
+
+	function contact_fields() {
+
+		$prefix = 'contact_fields_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Additional Fields', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/contact.php' ),
+			'show_names'   => false, // Show field names on the left
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Second Column',
+			'id'               => 'contact_column_2',
+			'type'             => 'wysiwyg'
 		) );
 
 	}
