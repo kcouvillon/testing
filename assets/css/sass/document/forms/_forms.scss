@@ -104,3 +104,23 @@ select {
 	}
 
 }
+
+.learn-more {
+	margin-top: 4em;
+	padding-top: 2.5em !important;
+	padding-bottom: 3em !important;
+	background: $gray_base;
+	color: #FFF;
+
+	.ws-form {
+		margin-bottom: 0;
+	
+		.form-title {
+			font-size: 2em;
+		}
+	}
+
+	.single-itinerary & {
+		margin-top: 0;
+	}
+}

@@ -239,4 +239,19 @@
 			}
 		}
 	}
+
+	.tour-related-post {
+		@include span(full);
+
+		@include susy-media($screen-sm) {
+			@include span(5 last);
+
+			.h3 {
+				margin-top: 0;
+			}
+		}
+
+		.h3 {
+		}
+	}
 }

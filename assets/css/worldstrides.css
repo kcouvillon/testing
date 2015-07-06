@@ -5741,6 +5741,19 @@ select {
     float: right;
     margin-right: 0; } }
 
+.learn-more {
+  margin-top: 4em;
+  padding-top: 2.5em !important;
+  padding-bottom: 3em !important;
+  background: #323c53;
+  color: #FFF; }
+  .learn-more .ws-form {
+    margin-bottom: 0; }
+    .learn-more .ws-form .form-title {
+      font-size: 2em; }
+  .single-itinerary .learn-more {
+    margin-top: 0; }
+
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
@@ -6886,6 +6899,19 @@ a.no-decoration {
       top: 12px;
       left: -55px; }
 
+.tour-day .tour-related-post {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 768px) {
+    .tour-day .tour-related-post {
+      width: 40.522875817%;
+      float: right;
+      margin-right: 0; }
+      .tour-day .tour-related-post .h3 {
+        margin-top: 0; } }
+
 #page {
   overflow: hidden; }
 
@@ -7730,17 +7756,6 @@ section:after {
   .home-section.itineraries .itineraries-list {
     margin-right: -5vw;
     margin-left: -5vw; } }
-
-.learn-more {
-  margin-top: 4em;
-  padding-top: 2.5em;
-  padding-bottom: 3em;
-  background: #323c53;
-  color: #FFF; }
-  .learn-more .ws-form {
-    margin-bottom: 0; }
-    .learn-more .ws-form .form-title {
-      font-size: 2em; }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

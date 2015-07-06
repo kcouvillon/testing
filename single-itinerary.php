@@ -137,13 +137,26 @@
 						<span class="h3"><?php echo $day[title]; ?></span>
 					</header>
 
-					<ul class="tour-activity-list">
-						<?php $activity = $day[activity]; print_r($activities); ?>
-							<li>
-								<strong><?php echo $activity[title]; ?></strong>
-								<span><?php echo $activity[description]; ?></span>
-							</li>
-					</ul>
+					<?php $activities = $day[activity]; ?>
+
+					<?php if( ! empty( $activities ) ) : ?>
+
+						<ul class="tour-activity-list">
+							<?php foreach ( $activities as $activity ) {
+								if( ! empty($activity[title] ) ) { ?>
+								<li>
+									<strong><?php echo $activity[title]; ?></strong>
+									<span><?php echo $activity[description]; ?></span>
+								</li>
+							<?php } } ?>
+						</ul>
+
+					<?php endif; ?>
+
+					<div class="tour-related-post">
+						<span class="h3">Related Post Title</span>
+						
+					</div>
 				</article>
 			<?php } ?>
 		</section>
