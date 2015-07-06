@@ -4,6 +4,10 @@
 		margin-bottom: 35px;
 	}
 
+	h4 a {
+		font-weight: 500;
+	}
+
 	a:not(.btn) {
 		color: $blue;
 		&:hover {

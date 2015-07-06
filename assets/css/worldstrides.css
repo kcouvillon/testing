@@ -7332,6 +7332,9 @@ section:after {
 .contact h2 {
   margin-bottom: 35px; }
 
+.contact h4 a {
+  font-weight: 500; }
+
 .contact a:not(.btn) {
   color: #4fa9e5; }
   .contact a:not(.btn):hover {
