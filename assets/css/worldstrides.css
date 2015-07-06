@@ -5911,8 +5911,8 @@ p {
 
 @font-face {
   font-family: 'worldstrides-ui';
-  src: url("../fonts/worldstrides-ui.eot?-fyhm93");
-  src: url("../fonts/worldstrides-ui.eot?#iefix-fyhm93") format("embedded-opentype"), url("../fonts/worldstrides-ui.ttf?-fyhm93") format("truetype"), url("../fonts/worldstrides-ui.woff?-fyhm93") format("woff"), url("../fonts/worldstrides-ui.svg?-fyhm93#worldstrides-ui") format("svg");
+  src: url("../fonts/worldstrides-ui.eot?-hy1ebz");
+  src: url("../fonts/worldstrides-ui.eot?#iefix-hy1ebz") format("embedded-opentype"), url("../fonts/worldstrides-ui.ttf?-hy1ebz") format("truetype"), url("../fonts/worldstrides-ui.woff?-hy1ebz") format("woff"), url("../fonts/worldstrides-ui.svg?-hy1ebz#worldstrides-ui") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -5928,8 +5928,20 @@ p {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.icon-close:before {
+  content: "\e605"; }
+
+.icon-menu:before {
+  content: "\e606"; }
+
+.icon-search:before {
+  content: "\e607"; }
+
 .icon-instagram:before {
   content: "\e600"; }
+
+.icon-facebook:before {
+  content: "\e604"; }
 
 .icon-pinterest:before {
   content: "\e601"; }
@@ -5939,9 +5951,6 @@ p {
 
 .icon-youtube:before {
   content: "\e603"; }
-
-.icon-facebook:before {
-  content: "\e604"; }
 
 .show {
   display: block; }

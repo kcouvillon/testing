@@ -41,7 +41,17 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>
 
 	<nav id="quick-access" class="quick-access" role="navigation">
-		<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'quick-access-menu' ) ); ?>
+		<?php //wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'quick-access-menu' ) ); ?>
+		<div class="menu-quick-access-container">
+			<ul id="quick-access-menu" class="menu">
+				<li class="menu-item"><a href="<?php echo site_url('/contact'); ?>">Contact</a></li>
+				<li class="menu-item"><a href="#">Request Info</a></li>
+				<li class="menu-item"><a href="#">Log In</a></li>
+				<li class="menu-item"><a href="#">Find MyTrip</a></li>
+				<li class="menu-item"><a href="#">Make a Payment</a></li>
+				<li class="menu-item"><a href="#search"><i class="icon-search"></i><span class="hide">Search</span></a></li>
+			</ul>
+		</div>
 	</nav>
 
 	<header id="masthead" class="site-header" role="banner">
