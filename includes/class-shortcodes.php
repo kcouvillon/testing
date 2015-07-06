@@ -108,9 +108,7 @@ class WS_Shortcodes {
 
 		ob_start();
 		?>
-		<a href="<?php echo $atts['url'];?>" class="btn <?php echo esc_attr( $class ); ?>"<?php echo $target; ?>>
-			<?php echo esc_html( $content ); ?>
-		</a>
+		<a href="<?php echo $atts['url'];?>" class="btn <?php echo esc_attr( $class ); ?>"<?php echo $target; ?>><?php echo esc_html( $content ); ?></a>
 		<?php
 		$html = ob_get_contents();
 		ob_get_clean();
