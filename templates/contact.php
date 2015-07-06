@@ -10,7 +10,7 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
 
 		<section class="primary-section">
-			<header class="section-header resources-header">
+			<header class="section-header contact-header">
 				<div class="section-header-content">
 					<h1><?php the_title(); ?></h1>
 				</div>
@@ -18,23 +18,11 @@ get_header(); ?>
 		</section>
 
 		<?php the_post(); ?>
-		<div class="contact-wrap">
+		<section class="contact section-content">
+			<?php the_content(); ?>
+		</section>
 
-			<section class="contact section-content">
-				<?php the_content(); ?>
-			</section>
-
-		</div><!-- .about-wrap -->
-
-		<footer class="about-footer">
-			<div class="about-footer-cta">
-				<span class="h2">Discover why 2 million travelers choose to travel with WorldStrides each year</span>
-				<button class="btn btn-primary">Discover Why</button>
-			</div>
-			<div class="about-footer-img">
-
-			</div>
-		</footer>
+		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
 
 	</main>
 </div>

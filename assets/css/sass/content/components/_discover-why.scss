@@ -1,0 +1,37 @@
+.discover-why {
+	@include container();
+	@include clearfix;
+	background: $gray_base;
+
+	@include susy-media($screen-xs) {
+		display: flex;
+		padding-right: 0;
+	}
+}
+
+.discover-why-cta {
+	@include span(full);
+	color: #fff;
+	margin-bottom: 65px;
+
+	@include susy-media($screen-xs) {
+		@include span(7);
+		padding-right: 4%;
+	}
+
+	span {
+		display: block;
+		margin-bottom: 3%;
+		line-height: 1.5;
+	}
+}
+
+.discover-why-img {
+	background-image: url(../images/src/about-cta.jpg);
+	background-size: cover;
+	@include span(full);
+
+	@include susy-media($screen-xs) {
+		@include span(5 last);
+	}
+}
