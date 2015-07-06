@@ -287,7 +287,7 @@ class WS_Metaboxes_Itineraries {
 			'name'       => __( 'Activity', 'cmb2' ),
 			'id'         => 'activity',
 			'type'       => 'itinerary_activity',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+			'repeatable' => true, // this is a bit buggy (creates phantom activities
 		) );
 
 		$cmb->add_group_field( $day_group, array(
