@@ -17,7 +17,6 @@
 		}
 		@include susy-media($screen-lg) {
 			@include span(5);
-			@include gutter(2);
 		}
 	}
 
@@ -27,6 +26,7 @@
 		}
 		@include susy-media($screen-lg) {
 			@include span(5);
+			@include push(1);
 		}
 	}
 }

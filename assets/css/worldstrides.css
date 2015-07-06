@@ -7347,8 +7347,7 @@ section:after {
   .contact.section-content-left {
     width: 40.522875817%;
     float: left;
-    margin-right: 1.9607843137%;
-    margin-right: 13.0434782609%; } }
+    margin-right: 1.9607843137%; } }
 
 @media (min-width: 768px) {
   .contact.section-content-right {
@@ -7360,7 +7359,8 @@ section:after {
   .contact.section-content-right {
     width: 40.522875817%;
     float: left;
-    margin-right: 1.9607843137%; } }
+    margin-right: 1.9607843137%;
+    margin-left: 8.4967320261%; } }
 
 .contact-wrap {
   display: block;
