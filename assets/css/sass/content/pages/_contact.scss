@@ -4,19 +4,29 @@
 		margin-bottom: 35px;
 	}
 
-	.entry-content {
-		// max-width: 670px;
+	a:not(.btn) {
+		color: $blue;
+		&:hover {
+			color: $orange;
+		}
 	}
 	
 	&.section-content-left {
 		@include susy-media($screen-sm) {
 			@include span(6);
 		}
+		@include susy-media($screen-lg) {
+			@include span(5);
+			@include gutter(2);
+		}
 	}
 
 	&.section-content-right {
 		@include susy-media($screen-sm) {
 			@include span(6 last);
+		}
+		@include susy-media($screen-lg) {
+			@include span(5);
 		}
 	}
 }
