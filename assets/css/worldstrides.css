@@ -8002,11 +8002,8 @@ section:after {
 
 .site-info .social-icons li {
   display: inline-block;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-right: 10px; }
-  .site-info .social-icons li.facebook {
-    font-size: 1.7em;
-    vertical-align: -2px; }
   .site-info .social-icons li a {
     color: #323c53; }
     .site-info .social-icons li a:hover {

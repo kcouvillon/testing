@@ -73,12 +73,8 @@
 	.social-icons {
 		li {
 			display: inline-block;
-			font-size: 1.3em;
+			font-size: 1.5em;
 			margin-right: 10px;
-			&.facebook {
-				font-size: 1.7em;
-				vertical-align: -2px;
-			}
 
 			a {
 				color: $gray_base;
