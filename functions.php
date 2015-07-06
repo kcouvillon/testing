@@ -73,6 +73,13 @@ function ws_setup() {
 	) );
 
 	add_post_type_support( 'page', 'excerpt' );
+
+	update_option( 'thumbnail_size_w', 170 );
+	update_option( 'thumbnail_size_h', 127 );
+	update_option( 'medium_size_w', 480 );
+	update_option( 'medium_size_h', 260 );
+	update_option( 'large_size_w', 1030 );
+	update_option( 'large_size_h', 500 );
 }
 
 add_action( 'after_setup_theme', 'ws_setup' );
