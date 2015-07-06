@@ -31,44 +31,6 @@
 	}
 }
 
-.about-footer {
-	@include container();
-	@include clearfix;
-	background: $gray_base;
-
-	@include susy-media($screen-xs) {
-		display: flex;
-		padding-right: 0;
-	}
-}
-
-.about-footer-cta {
-	@include span(full);
-	color: #fff;
-	margin-bottom: 65px;
-
-	@include susy-media($screen-xs) {
-		@include span(7);
-		padding-right: 4%;
-	}
-
-	span {
-		display: block;
-		margin-bottom: 3%;
-		line-height: 1.5;
-	}
-}
-
-.about-footer-img {
-	background-image: url(../images/src/about-cta.jpg);
-	background-size: cover;
-	@include span(full);
-
-	@include susy-media($screen-xs) {
-		@include span(5 last);
-	}
-}
-
 /***********************************************\
 // PARTNERSHIP SUBPAGE
 \***********************************************/

@@ -7182,55 +7182,6 @@ section:after {
       display: flex;
       padding: 0; } }
 
-.about-footer {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
-  background: #323c53; }
-  .about-footer:before,
-  .about-footer:after {
-    content: "";
-    display: table; }
-  .about-footer:after {
-    clear: both; }
-  @media (min-width: 600px) {
-    .about-footer {
-      display: flex;
-      padding-right: 0; } }
-
-.about-footer-cta {
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-  color: #fff;
-  margin-bottom: 65px; }
-  @media (min-width: 600px) {
-    .about-footer-cta {
-      width: 57.5163398693%;
-      float: left;
-      margin-right: 1.9607843137%;
-      padding-right: 4%; } }
-  .about-footer-cta span {
-    display: block;
-    margin-bottom: 3%;
-    line-height: 1.5; }
-
-.about-footer-img {
-  background-image: url(../images/src/about-cta.jpg);
-  background-size: cover;
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0; }
-  @media (min-width: 600px) {
-    .about-footer-img {
-      width: 40.522875817%;
-      float: right;
-      margin-right: 0; } }
-
 /***********************************************// PARTNERSHIP SUBPAGE
 \***********************************************/
 .partners {
@@ -7377,6 +7328,35 @@ section:after {
       position: absolute;
       top: 36%;
       right: -100%; }
+
+.contact h2 {
+  margin-bottom: 35px; }
+
+@media (min-width: 768px) {
+  .contact.section-content-left {
+    width: 49.0196078431%;
+    float: left;
+    margin-right: 1.9607843137%; } }
+
+@media (min-width: 768px) {
+  .contact.section-content-right {
+    width: 49.0196078431%;
+    float: right;
+    margin-right: 0; } }
+
+.contact-wrap {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+  @media (min-width: 768px) {
+    .contact-wrap {
+      display: flex; } }
+
+.contact-header {
+  background-image: url(../images/src/default-bg.png);
+  background-size: 40px 46px; }
 
 .example-wrap {
   padding-right: 1.9607843137%; }
@@ -7930,6 +7910,55 @@ section:after {
             float: right;
             margin-right: 0; } }
 
+.discover-why {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  background: #323c53; }
+  .discover-why:before,
+  .discover-why:after {
+    content: "";
+    display: table; }
+  .discover-why:after {
+    clear: both; }
+  @media (min-width: 600px) {
+    .discover-why {
+      display: flex;
+      padding-right: 0; } }
+
+.discover-why-cta {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  color: #fff;
+  margin-bottom: 65px; }
+  @media (min-width: 600px) {
+    .discover-why-cta {
+      width: 57.5163398693%;
+      float: left;
+      margin-right: 1.9607843137%;
+      padding-right: 4%; } }
+  .discover-why-cta span {
+    display: block;
+    margin-bottom: 3%;
+    line-height: 1.5; }
+
+.discover-why-img {
+  background-image: url(../images/src/about-cta.jpg);
+  background-size: cover;
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 600px) {
+    .discover-why-img {
+      width: 40.522875817%;
+      float: right;
+      margin-right: 0; } }
+
 .site-footer {
   position: relative;
   display: block;
@@ -8002,11 +8031,8 @@ section:after {
 
 .site-info .social-icons li {
   display: inline-block;
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin-right: 10px; }
-  .site-info .social-icons li.facebook {
-    font-size: 1.7em;
-    vertical-align: -2px; }
   .site-info .social-icons li a {
     color: #323c53; }
     .site-info .social-icons li a:hover {
