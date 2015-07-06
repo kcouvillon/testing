@@ -17,7 +17,7 @@
 		}
 	}
 
-	.has-featured-image & {
+	.has-featured-image &, .has-featured-image.single-itinerary & {
 		background-color: transparent;
 		position: relative;
 		z-index: 100;

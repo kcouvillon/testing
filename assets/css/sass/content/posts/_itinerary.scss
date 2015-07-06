@@ -1,0 +1,242 @@
+.tour-details {
+	@include container();
+	margin-bottom: 2em;
+
+	.h3 {
+		font-weight: 700;
+	}
+}
+
+.tour-duration {
+	@include span(full);
+
+	@include susy-media($screen-sm) {
+		@include span(2);
+	}
+}
+
+.tour-features {
+	@include span(full);
+
+	@include susy-media($screen-sm) {
+		@include span(6);
+	}
+}
+
+.tour-feature {
+	@include span(full);
+	font-size: em(14);
+
+	@include susy-media($screen-sm) {
+		@include gallery(3 of 6);
+	}
+}
+
+.tour-weather {
+	@include span(full);
+
+	@include susy-media($screen-sm) {
+		@include span(4 last);
+	}
+}
+
+.tour-local-time, .tour-local-weather {
+	@include span(full);
+
+	@include susy-media($screen-sm) {
+		@include span(2 of 4);
+	}
+
+	time, span:first-child {
+		display: block;
+		color: $blue;
+		font-size: em(20);
+		font-weight: 700;
+	}
+
+	span:last-child {
+		font-size: em(14);
+	}
+}
+
+.tour-local-weather {
+	@include susy-media($screen-sm) {
+		@include last;
+	}
+}
+
+.tour-highlights {
+	max-width: 1500px;
+	margin: 0 auto;
+}
+
+.tour-highlights-slider {
+	@include span(full no-gutters);
+
+	@include susy-media($screen-sm) {
+		@include span(8 no-gutters);
+	}
+
+	.cycle-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		color: #fff;
+		background-color: rgba(0, 0, 0, 0.25);
+		padding: 10px 20px 30px;
+	}
+
+	.cycle-pager {
+		position: absolute;
+		text-align: center;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 2000;
+		color: #fff;
+
+		span {
+			cursor: pointer;
+		}
+
+		.cycle-pager-active {
+			color: $gray_light;
+		}
+	}
+
+	.cycle-prev, .cycle-next {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 25%;
+		z-index: 3000;
+		color: #fff;
+		cursor: pointer;
+	}
+
+	.cycle-prev {
+		&:after {
+			content: "\25C0";
+			position: absolute;
+			top: 43%;
+			left: 20px;
+			font-size: em(40);
+		}
+	}
+
+	.cycle-next {
+		left: auto;
+		right: 0;
+
+		&:after {
+			content: "\25B6";
+			position: absolute;
+			top: 43%;
+			right: 20px;
+			font-size: em(40);
+		}
+	}
+}
+
+.tour-itinerary {
+	@include container();
+}
+
+.tour-day {
+	@include clearfix;
+
+	.tour-hero {
+		background-size: cover;
+		height: 40vh;
+		@include bleed-x(5vw);
+	}
+
+	.tour-day-marker {
+		width: span(1);
+		min-width: 60px;
+		text-align: center;
+		background: #fff;
+		height: 35px;
+		margin-top: -35px;
+		color: $blue;
+		font-size: em(20);
+		font-weight: 700;
+		display: inline-block;
+		float: left;
+	}
+
+	.tour-day-number {
+		width: span(1);
+		min-width: 60px;
+		text-align: center;
+		background: $blue;
+		color: #fff;
+		font-size: em(50);
+		line-height: 1;
+		padding-bottom: 10px;
+		font-weight: 700;
+		display: inline-block;
+		float: left;
+	}
+
+	.h3 {
+		@include span(full);
+		font-weight: 700;
+		margin-bottom: 2em;
+
+		@include susy-media($screen-sm) {
+			@include span(11 last);
+		}
+	}
+
+	.tour-activity-list {
+		@include span(full);
+		list-style: none;
+		margin: 0;
+		padding-left: 50px;
+		padding-bottom: 2em;
+		position: relative;
+
+		@include susy-media($screen-sm) {
+			@include span(7);
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 2px;
+			background: $gray_light;
+			height: 100%;
+		}
+
+		strong {
+			font-size: em(22);
+		}
+
+		strong, span {
+			display: block;
+		}
+
+		li {
+			position: relative;
+
+			&:after {
+				content: '';
+				width: 12px;
+				height: 12px;
+				border: 2px solid $blue;
+				border-radius: 50%;
+				background-color: #fff;
+				display: block;
+				position: absolute;
+				top: 12px;
+				left: -55px;
+			}
+		}
+	}
+}
