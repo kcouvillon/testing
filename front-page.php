@@ -92,74 +92,74 @@
 		<section class="home-section itineraries">
 			<div class="ws-container">
 				<h2 class="section-title">A Selection of our Tours and Programs</h2 class="section-title">
+				<ul class="itineraries-list list-unstyled clearfix">
+					
+					<?php 	
+						$count = 0;
+						$data = array(
+							array(
+								"title" => "Itinerary Title",
+								"meta" => array("Traveler", "Destination")
+							),
+							array(
+								"title" => "Itinerary Title",
+								"meta" => array("Traveler", "Destination")
+							),
+							array(
+								"title" => "Itinerary Title",
+								"meta" => array("Traveler", "Destination")
+							),
+							array(
+								"title" => "Collection Title",
+								"meta" => array("Traveler", "Destination")
+							),
+							array(
+								"title" => "Collection Title",
+								"meta" => array("Traveler", "Destination")
+							),
+							array(
+								"title" => "Itinerary Title",
+								"meta" => array("Traveler", "Destination")
+							),
+							array(
+								"title" => "Itinerary Title",
+								"meta" => array("Traveler", "Destination")
+							),
+							array(
+								"title" => "Itinerary Title",
+								"meta" => array("Traveler", "Destination")
+							)
+						);
+
+						foreach ( $data as $item ) :
+
+						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
+						if ( $item['title'] == 'Collection Title' ) {
+							$tileSize = 'tile-half';
+							$pattern = 'ws_w_pattern4.gif';
+						} else {
+							$tileSize = 'tile-third';
+						}
+					?>
+
+					<li class="itinerary tile <?php echo $tileSize; ?>" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+						<div class="tile-content">
+							<ul class="meta list-unstyled">
+								<?php foreach ( $item['meta'] as $meta ) : ?>
+								<li><a href="#"><?php echo $meta; ?></a></li>
+								<?php endforeach; ?>
+							</ul>
+							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
+						</div>
+					</li>
+
+					<?php 
+						$count++; 
+						endforeach; 
+					?>
+
+				</ul>
 			</div>
-			<ul class="itineraries-list list-unstyled clearfix">
-				
-				<?php 	
-					$count = 0;
-					$data = array(
-						array(
-							"title" => "Itinerary Title",
-							"meta" => array("Traveler", "Destination")
-						),
-						array(
-							"title" => "Itinerary Title",
-							"meta" => array("Traveler", "Destination")
-						),
-						array(
-							"title" => "Itinerary Title",
-							"meta" => array("Traveler", "Destination")
-						),
-						array(
-							"title" => "Collection Title",
-							"meta" => array("Traveler", "Destination")
-						),
-						array(
-							"title" => "Collection Title",
-							"meta" => array("Traveler", "Destination")
-						),
-						array(
-							"title" => "Itinerary Title",
-							"meta" => array("Traveler", "Destination")
-						),
-						array(
-							"title" => "Itinerary Title",
-							"meta" => array("Traveler", "Destination")
-						),
-						array(
-							"title" => "Itinerary Title",
-							"meta" => array("Traveler", "Destination")
-						)
-					);
-
-					foreach ( $data as $item ) :
-
-					$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
-					if ( $item['title'] == 'Collection Title' ) {
-						$tileSize = 'tile-half';
-						$pattern = 'ws_w_pattern4.gif';
-					} else {
-						$tileSize = 'tile-third';
-					}
-				?>
-
-				<li class="itinerary tile <?php echo $tileSize; ?>" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-					<div class="tile-content">
-						<ul class="meta list-unstyled">
-							<?php foreach ( $item['meta'] as $meta ) : ?>
-							<li><a href="#"><?php echo $meta; ?></a></li>
-							<?php endforeach; ?>
-						</ul>
-						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-					</div>
-				</li>
-
-				<?php 
-					$count++; 
-					endforeach; 
-				?>
-
-			</ul>
 		</section>
 
 		<section class="home-section resources">
@@ -208,8 +208,7 @@
 			</div>
 		</section>
 
-		<section class="home-section learn-more clearfix">
-			<div class="ws-container">
+		<section class="home-section learn-more clearfix ws-container">
 				<form action="#" class="ws-form">
 					<div class="left">
 						<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
@@ -264,7 +263,6 @@
 						<input type="submit" name="" value="Get Info" class="btn btn-primary" />
 					</div>
 				</form>
-			</div>
 		</section>
 
 		<section class="home-section blog">

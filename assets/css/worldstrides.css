@@ -6825,6 +6825,8 @@ a.no-decoration {
   background: #4fa9e5;
   color: #fff;
   font-size: 3.125em;
+  line-height: 1;
+  padding-bottom: 10px;
   font-weight: 700;
   display: inline-block;
   float: left; }
@@ -7723,15 +7725,10 @@ section:after {
     .home-section .tile .meta a:hover {
       color: #fb901d; }
 
-.home-section.learn-more {
-  margin-top: 4em;
-  padding: 2.5em 0;
-  background: #323c53;
-  color: #FFF; }
-  .home-section.learn-more .ws-form {
-    margin-bottom: 0; }
-    .home-section.learn-more .ws-form .form-title {
-      font-size: 2em; }
+@media (min-width: 768px) {
+  .home-section.itineraries .itineraries-list {
+    margin-right: -5vw;
+    margin-left: -5vw; } }
 
 .learn-more {
   margin-top: 4em;
