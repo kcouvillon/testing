@@ -6240,6 +6240,37 @@ a.no-decoration {
     color: #777d8d; }
     .quick-access a:hover {
       color: #5b6375; }
+  .quick-access .search-form {
+    margin: 0.5em 0 0;
+    position: relative; }
+    .quick-access .search-form label {
+      display: block;
+      margin: 0; }
+    .quick-access .search-form .icon-search {
+      position: absolute;
+      left: 0;
+      top: 14px;
+      font-size: 1.6em; }
+    .quick-access .search-form input[type="search"] {
+      width: 100%;
+      padding-left: 1.2em;
+      border: 0;
+      border-bottom: 1px solid #b3b7bf;
+      font-size: 2em;
+      font-weight: 300; }
+      .quick-access .search-form input[type="search"]:focus {
+        outline: none; }
+      .quick-access .search-form input[type="search"]::-webkit-input-placeholder {
+        color: #b3b7bf; }
+      .quick-access .search-form input[type="search"]::-moz-placeholder {
+        color: #b3b7bf; }
+      .quick-access .search-form input[type="search"]:-moz-placeholder {
+        color: #b3b7bf; }
+      .quick-access .search-form input[type="search"]:-ms-input-placeholder {
+        color: #b3b7bf; }
+    .quick-access .search-form input.search-submit {
+      display: none;
+      position: relative; }
 
 /* Small menu. */
 .menu-toggle {

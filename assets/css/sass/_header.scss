@@ -166,6 +166,55 @@
 			color: $gray_dark;
 		}
 	}
+
+	.search-form {
+		display: none;
+		margin: 0.5em 0 0;
+		position: relative;
+
+		label {
+			display: block;
+			margin: 0;
+		}
+
+		.icon-search {
+			position: absolute;
+			left: 0;
+			top: 14px;
+			font-size: 1.6em;
+		}
+
+		input[type="search"] {
+			width: 100%;
+			padding-left: 1.2em;
+			border: 0;
+			border-bottom: 1px solid $gray_light;
+			font-size: 2em;
+			font-weight: 300;
+
+			&:focus {
+				outline: none;
+			}
+			&::-webkit-input-placeholder { 
+				color: $gray_light;
+			}
+			&::-moz-placeholder { 
+				color: $gray_light;
+			}
+			&:-moz-placeholder { 
+				color: $gray_light;
+			}
+			&:-ms-input-placeholder { 
+				color: $gray_light;
+			}
+		}
+
+		input.search-submit {
+			display: none;
+			position: relative;
+		}
+
+	}
 }
 
 

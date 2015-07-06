@@ -41,7 +41,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>
 
 	<nav id="quick-access" class="quick-access" role="navigation">
-		<?php //wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'quick-access-menu' ) ); ?>
+		<?php get_search_form(); ?>
 		<div class="menu-quick-access-container">
 			<ul id="quick-access-menu" class="menu">
 				<li class="menu-item"><a href="<?php echo site_url('/contact'); ?>">Contact</a></li>
