@@ -47,14 +47,12 @@ class WS_Custom_Taxonomies {
 				'destination',
 				'interest',
 				'traveler',
-				'resource'
 			)
 		);
 
 		register_extended_taxonomy( '_collection',
 			array(
-				'itinerary',
-				'event'
+				'itinerary'
 			),
 			array(
 				'rewrite'       => false,

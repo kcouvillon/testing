@@ -287,7 +287,7 @@ class WS_Metaboxes_Itineraries {
 			'name'       => __( 'Activity', 'cmb2' ),
 			'id'         => 'activity',
 			'type'       => 'itinerary_activity',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+			'repeatable' => true, // this is a bit buggy (creates phantom activities
 		) );
 
 		$cmb->add_group_field( $day_group, array(
@@ -295,7 +295,7 @@ class WS_Metaboxes_Itineraries {
 			'id'          => 'related_content',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
-			'post_type'   => 'block',
+			'post_type'   => array( 'block', 'post', 'resource' ),
 			// checkbox/radio, used in the modal view to select the post type
 			'select_type' => 'radio'
 		) );

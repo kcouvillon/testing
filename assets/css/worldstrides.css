@@ -5627,7 +5627,8 @@ select {
       background-image: url("../images/caret-down@2x.png"); } }
   select:hover, select:focus {
     background-color: #f2f2f4;
-    outline: none; }
+    outline: none;
+    box-shadow: 0 0 5px -1px; }
 
 .ws-form:before,
 .ws-form:after {

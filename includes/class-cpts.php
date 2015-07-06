@@ -113,7 +113,8 @@ class WS_Custom_Post_Types {
 			array(
 				'menu_icon' => 'dashicons-id',
 				'rewrite'   => array( 'slug' => 'about/profile' ),
-				'has_archive' => false
+				'has_archive' => false,
+				'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' )
 			)
 		);
 
