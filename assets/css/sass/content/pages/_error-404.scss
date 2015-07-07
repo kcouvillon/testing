@@ -1,3 +1,21 @@
 .error-404 {
 	@include container();
 }
+
+.error-map {
+	@include container();
+	background-position: center center;
+	
+	@include susy-media($screen-lg) {
+		background-size: cover;
+	}
+}
+
+.error-content {
+	margin: 40vw 0 20vw;
+	text-align: center;
+
+	@include susy-media($screen-md) {
+		margin: 20vw 0 10vw;
+	}
+}
