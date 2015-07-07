@@ -25,12 +25,12 @@ get_header(); ?>
 
 		</div><!-- .about-wrap -->
 
-		<footer class="about-footer">
-			<div class="about-footer-cta">
+		<footer class="discover-why">
+			<div class="discover-why-cta">
 				<span class="h2">Discover why 2 million travelers choose to travel with WorldStrides each year</span>
 				<button class="btn btn-primary">Discover Why</button>
 			</div>
-			<div class="about-footer-img">
+			<div class="discover-why-img">
 
 			</div>
 		</footer>

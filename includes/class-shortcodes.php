@@ -36,6 +36,7 @@ class WS_Shortcodes {
 	protected function _init() {
 		add_shortcode( 'timeline', array( $this, 'timeline' ) );
 		add_shortcode( 'timeline-node', array( $this, 'timeline_node' ) );
+		add_shortcode( 'button', array( $this, 'button' ) );
 	}
 
 	/**
@@ -71,6 +72,43 @@ class WS_Shortcodes {
 				<span class="timeline-year h6"><?php echo $atts['year'];?></span>
 				<p class="timeline-content"><?php echo $content; ?>
 			</li>
+		<?php
+		$html = ob_get_contents();
+		ob_get_clean();
+
+		return $html;
+	}
+
+	/**
+	 * Creates a button shortcode.
+	 *
+	 * @param $atts array shortcode attributes
+	 * @param $content mixed content between shortcode
+	 *
+	 * @return string link with button classes 
+	 */
+	public static function button( $atts, $content = "" ) {
+		$atts = shortcode_atts( array(
+			'url' => '',
+			'color' => 'orange',
+			'new_window' => false
+		), $atts, 'timeline-node' );
+
+		if ( 'blue' == $atts['color'] ) {
+			$class = 'btn-info';
+		} else {
+			$class = 'btn-primary';
+		}
+
+		if ( $atts['new_window'] ) {
+			$target = 'target="_blank"';
+		} else {
+			$target = '';
+		}
+
+		ob_start();
+		?>
+		<a href="<?php echo $atts['url'];?>" class="btn <?php echo esc_attr( $class ); ?>"<?php echo $target; ?>><?php echo esc_html( $content ); ?></a>
 		<?php
 		$html = ob_get_contents();
 		ob_get_clean();

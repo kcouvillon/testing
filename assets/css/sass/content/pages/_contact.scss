@@ -1,0 +1,49 @@
+.contact {
+
+	h2 {
+		margin-bottom: 35px;
+	}
+
+	h4 a {
+		font-weight: 500;
+	}
+
+	a:not(.btn) {
+		color: $blue;
+		&:hover {
+			color: $orange;
+		}
+	}
+	
+	&.section-content-left {
+		@include susy-media($screen-sm) {
+			@include span(6);
+		}
+		@include susy-media($screen-lg) {
+			@include span(5);
+		}
+	}
+
+	&.section-content-right {
+		@include susy-media($screen-sm) {
+			@include span(6 last);
+		}
+		@include susy-media($screen-lg) {
+			@include span(5);
+			@include push(1);
+		}
+	}
+}
+
+.contact-wrap {
+	@include container();
+
+	@include susy-media($screen-sm) {
+		display: flex;
+	}
+}
+
+.contact-header {
+	background-image: url(../images/src/default-bg.png);
+	background-size: 40px 46px;
+}
