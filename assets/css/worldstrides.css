@@ -7890,17 +7890,21 @@ section:after {
   margin-right: auto;
   padding: 0 5vw;
   background-color: #323c53;
-  background-position: center center; }
+  background-position: center center;
+  padding-top: 14em; }
+  @media (min-width: 768px) {
+    .error-map {
+      padding-top: 21em; } }
   @media (min-width: 1200px) {
     .error-map {
       background-size: cover; } }
 
-.error-content {
-  margin: 10em 0 3em;
-  text-align: center; }
-  @media (min-width: 768px) {
-    .error-content {
-      margin: 15em 0 5em; } }
+.register.section-content {
+  background: #323c53;
+  color: #FFF;
+  margin: 0;
+  padding-top: 1.5em;
+  padding-bottom: 3.5em; }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

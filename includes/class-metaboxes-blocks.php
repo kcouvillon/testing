@@ -35,8 +35,10 @@ class WS_Metaboxes_Blocks {
 	 */
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'block_details' ) );
+		add_action( 'cmb2_after_post_form_block_type_metabox', array( $this, 'js_boxes_show_hidden' ), 10, 2 );
 		add_action( 'cmb2_init',  array( $this, 'block_image' ) );
 		add_action( 'cmb2_init',  array( $this, 'block_slideshow' ) );
+		add_action( 'cmb2_after_post_form_block_slideshow_metabox', array( $this, 'js_limit_group_repeat' ), 10, 2 );
 	}
 
 	function block_details() {
@@ -67,6 +69,64 @@ class WS_Metaboxes_Blocks {
 				'slideshow-tabbed'     => __( 'Tabbed Image Slideshow', 'cmb' ),
 			),
 		) );
+	}
+
+	function js_boxes_show_hidden( $post_id, $cmb ) {
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				var block_type = $('#block_type'),
+					content = $('#postdivrich'),
+					image = $('#block_image_metabox'),
+					slideshow = $('#block_slideshow_metabox'),
+					slide_title = $('.slide-title');
+
+				function toggle_metaboxes( current_type ) {
+					switch ( current_type ) {
+						case('image-right'):
+							content.removeClass('hidden');
+							image.removeClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('image-left'):
+							content.removeClass('hidden');
+							image.removeClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('column-one'):
+							content.removeClass('hidden');
+							image.addClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('column-two'):
+							content.removeClass('hidden');
+							image.addClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('slideshow-basic'):
+							content.addClass('hidden');
+							image.addClass('hidden');
+							slide_title.addClass('hidden');
+							slideshow.removeClass('hidden');
+							break;
+						case('slideshow-tabbed'):
+							content.addClass('hidden');
+							image.addClass('hidden');
+							slide_title.removeClass('hidden');
+							slideshow.removeClass('hidden');
+							break;
+					}
+				}
+
+				toggle_metaboxes( block_type.val() );
+
+				block_type.change(function () {
+					var current_type = $(this).val();
+					toggle_metaboxes( current_type );
+				});
+			});
+		</script>
+	<?php
 	}
 
 	function block_content_main() {
@@ -123,6 +183,7 @@ class WS_Metaboxes_Blocks {
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Slideshow', 'cmb2' ),
 			'object_types' => array( 'block', ),
+			'slideshow_rows_limit'   => 6, // custom attribute to use in our JS
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
@@ -141,7 +202,8 @@ class WS_Metaboxes_Blocks {
 			'name'       => __( 'Tab Title', 'cmb2' ),
 			'desc'       => 'Only used on tabbed slideshows',
 			'id'         => 'title',
-			'type'       => 'text'
+			'type'       => 'text',
+			'row_classes'=> 'slide-title'
 		) );
 
 		$cmb_group->add_group_field( $group_field_id, array(
@@ -155,6 +217,42 @@ class WS_Metaboxes_Blocks {
 			'id'   => 'image',
 			'type' => 'file',
 		) );
+	}
+
+	function js_limit_group_repeat( $post_id, $cmb ) {
+		// Grab the custom attribute to determine the limit
+		$limit = absint( $cmb->prop( 'slideshow_rows_limit' ) );
+		$limit = $limit ? $limit : 0;
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($){
+				// Only allow $limit groups
+				var limit            = <?php echo $limit; ?>;
+				var fieldGroupId     = 'block_slideshow_list';
+				var $fieldGroupTable = $( document.getElementById( fieldGroupId + '_repeat' ) );
+				var countRows = function() {
+					return $fieldGroupTable.find( '> .cmb-row.cmb-repeatable-grouping' ).length;
+				};
+				var disableAdder = function() {
+					$fieldGroupTable.find('.cmb-add-group-row.button').prop( 'disabled', true );
+				};
+				var enableAdder = function() {
+					$fieldGroupTable.find('.cmb-add-group-row.button').prop( 'disabled', false );
+				};
+				$fieldGroupTable
+					.on( 'cmb2_add_row', function() {
+						if ( countRows() >= limit ) {
+							disableAdder();
+						}
+					})
+					.on( 'cmb2_remove_row', function() {
+						if ( countRows() < limit ) {
+							enableAdder();
+						}
+					});
+			});
+		</script>
+	<?php
 	}
 }
 

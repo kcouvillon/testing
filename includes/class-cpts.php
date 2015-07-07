@@ -97,8 +97,8 @@ class WS_Custom_Post_Types {
 
 		register_extended_post_type( 'press',
 			array(
-				'menu_icon' => 'dashicons-media-document',
-				'rewrite'   => array( 'slug' => 'about/press' ),
+				'menu_icon'  => 'dashicons-media-document',
+				'rewrite'    => array( 'slug' => 'about/press' ),
 				'taxonomies' => array( 'category' )
 			),
 			array(
@@ -111,10 +111,10 @@ class WS_Custom_Post_Types {
 		 */
 		register_extended_post_type( 'bio',
 			array(
-				'menu_icon' => 'dashicons-id',
-				'rewrite'   => array( 'slug' => 'about/profile' ),
+				'menu_icon'   => 'dashicons-id',
+				'rewrite'     => array( 'slug' => 'about/profile' ),
 				'has_archive' => false,
-				'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' )
+				'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' )
 			)
 		);
 
@@ -132,25 +132,24 @@ class WS_Custom_Post_Types {
 
 		register_extended_post_type( 'why-ws',
 			array(
-				'menu_icon' => 'dashicons-format-image',
-				'exclude_from_search'    => false,
-				'publicly_queryable'   => false,
-				'show_in_nav_menus'       => false,
-
-				'admin_cols' => array(
+				'menu_icon'         => 'dashicons-format-image',
+				'public'            => false,
+				'show_in_nav_menus' => true,
+				'show_ui'           => true,
+				'admin_cols'        => array(
 					// A featured image column:
 					'featured_image' => array(
 						'title'          => 'Icon',
 						'featured_image' => 'thumbnail'
 					),
 					// A taxonomy terms column:
-					'product_line' => array(
+					'product_line'   => array(
 						'taxonomy' => 'product-line'
 					),
 					// The default Title column:
 					'title',
 					// A post field column:
-					'last_modified' => array(
+					'last_modified'  => array(
 						'title'      => 'Last Modified',
 						'post_field' => 'post_modified',
 					),
@@ -163,12 +162,11 @@ class WS_Custom_Post_Types {
 
 		register_extended_post_type( 'block',
 			array(
-				'menu_icon' => 'dashicons-tagcloud',
-				'exclude_from_search'    => false,
-				'publicly_queryable'   => false,
-				'show_in_nav_menus'       => false,
-				'supports' => array( 'title', 'editor' )
-
+				'menu_icon'         => 'dashicons-tagcloud',
+				'public'            => false,
+				'show_in_nav_menus' => true,
+				'show_ui'           => true,
+				'supports'          => array( 'title', 'editor' ),
 			)
 		);
 	}

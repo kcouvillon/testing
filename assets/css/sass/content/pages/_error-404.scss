@@ -6,17 +6,12 @@
 	@include container();
 	background-color: $gray_base;
 	background-position: center center;
-	
-	@include susy-media($screen-lg) {
-		background-size: cover;
-	}
-}
-
-.error-content {
-	margin: 10em 0 3em;
-	text-align: center;
+	padding-top: 14em;
 
 	@include susy-media($screen-sm) {
-		margin: 15em 0 5em;
+		padding-top: 21em;
+	}
+	@include susy-media($screen-lg) {
+		background-size: cover;
 	}
 }
