@@ -166,7 +166,9 @@ class WS_Custom_Post_Types {
 				'menu_icon' => 'dashicons-tagcloud',
 				'exclude_from_search'    => false,
 				'publicly_queryable'   => false,
-				'show_in_nav_menus'       => false
+				'show_in_nav_menus'       => false,
+				'supports' => array( 'title', 'editor' )
+
 			)
 		);
 	}

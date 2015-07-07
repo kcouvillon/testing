@@ -44,11 +44,7 @@
 		<?php get_search_form(); ?>
 		<div class="menu-quick-access-container">
 			<ul id="quick-access-menu" class="menu">
-				<li class="menu-item"><a href="<?php echo site_url('/contact'); ?>">Contact</a></li>
-				<li class="menu-item"><a href="#">Request Info</a></li>
-				<li class="menu-item"><a href="#">Log In</a></li>
-				<li class="menu-item"><a href="#">Find MyTrip</a></li>
-				<li class="menu-item"><a href="#">Make a Payment</a></li>
+				<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'container' => false, 'items_wrap' => '%3$s' ) ); ?>
 				<li class="menu-item"><a href="#search"><i class="icon-search"></i><span class="hide">Search</span></a></li>
 			</ul>
 		</div>
