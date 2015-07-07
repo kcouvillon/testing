@@ -35,6 +35,7 @@ class WS_Metaboxes_Blocks {
 	 */
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'block_details' ) );
+		add_action( 'cmb2_after_post_form_block_type_metabox', array( $this, 'js_boxes_show_hidden' ), 10, 2 );
 		add_action( 'cmb2_init',  array( $this, 'block_image' ) );
 		add_action( 'cmb2_init',  array( $this, 'block_slideshow' ) );
 		add_action( 'cmb2_after_post_form_block_slideshow_metabox', array( $this, 'js_limit_group_repeat' ), 10, 2 );
@@ -68,6 +69,64 @@ class WS_Metaboxes_Blocks {
 				'slideshow-tabbed'     => __( 'Tabbed Image Slideshow', 'cmb' ),
 			),
 		) );
+	}
+
+	function js_boxes_show_hidden( $post_id, $cmb ) {
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				var block_type = $('#block_type'),
+					content = $('#postdivrich'),
+					image = $('#block_image_metabox'),
+					slideshow = $('#block_slideshow_metabox'),
+					slide_title = $('.slide-title');
+
+				function toggle_metaboxes( current_type ) {
+					switch ( current_type ) {
+						case('image-right'):
+							content.removeClass('hidden');
+							image.removeClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('image-left'):
+							content.removeClass('hidden');
+							image.removeClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('column-one'):
+							content.removeClass('hidden');
+							image.addClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('column-two'):
+							content.removeClass('hidden');
+							image.addClass('hidden');
+							slideshow.addClass('hidden');
+							break;
+						case('slideshow-basic'):
+							content.addClass('hidden');
+							image.addClass('hidden');
+							slide_title.addClass('hidden');
+							slideshow.removeClass('hidden');
+							break;
+						case('slideshow-tabbed'):
+							content.addClass('hidden');
+							image.addClass('hidden');
+							slide_title.removeClass('hidden');
+							slideshow.removeClass('hidden');
+							break;
+					}
+				}
+
+				toggle_metaboxes( block_type.val() );
+
+				block_type.change(function () {
+					var current_type = $(this).val();
+					toggle_metaboxes( current_type );
+				});
+			});
+		</script>
+	<?php
 	}
 
 	function block_content_main() {
@@ -143,7 +202,8 @@ class WS_Metaboxes_Blocks {
 			'name'       => __( 'Tab Title', 'cmb2' ),
 			'desc'       => 'Only used on tabbed slideshows',
 			'id'         => 'title',
-			'type'       => 'text'
+			'type'       => 'text',
+			'row_classes'=> 'slide-title'
 		) );
 
 		$cmb_group->add_group_field( $group_field_id, array(
