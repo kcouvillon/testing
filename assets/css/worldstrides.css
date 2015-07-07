@@ -5904,6 +5904,9 @@ img {
   text-align: right;
   width: 50%; }
 
+h1 {
+  line-height: 1em; }
+
 h2 {
   font-weight: 500; }
 
@@ -7775,53 +7778,79 @@ section:after {
 .home-section .section-title {
   margin: 2em 0 1em; }
 
-.home-section .tile {
+@media (min-width: 768px) {
+  .home-section.itineraries .itineraries-list {
+    margin-right: -5vw;
+    margin-left: -5vw; } }
+
+.tile {
   position: relative;
   height: 0;
   overflow: hidden;
   padding-top: 56.25%; }
   @media (min-width: 768px) {
-    .home-section .tile.tile-third,
-    .home-section .tile.tile-half {
+    .tile.tile-third,
+    .tile.tile-half {
       width: 50%;
       float: left;
       padding-top: 30%; } }
   @media (min-width: 960px) {
-    .home-section .tile.tile-third {
+    .tile.tile-third {
       width: 33.333%;
       float: left;
       padding-top: 21%; } }
-  .home-section .tile .tile-content {
+  .tile .tile-content {
     position: absolute;
     bottom: 1em;
     left: 1em; }
     @media (min-width: 960px) {
-      .home-section .tile .tile-content {
+      .tile .tile-content {
         bottom: 1.5em;
         left: 1.5em; } }
-    .home-section .tile .tile-content a {
+    .tile .tile-content a {
       color: #FFF; }
-  .home-section .tile .tile-title {
+  .tile .tile-title {
     color: #FFF;
     margin: 0; }
-    .home-section .tile .tile-title a {
+    .tile .tile-title a {
       color: inherit; }
-      .home-section .tile .tile-title a:hover {
+      .tile .tile-title a:hover {
         color: #fb901d; }
-  .home-section .tile .meta li {
+  .tile .meta li {
     display: inline-block;
     margin-right: 10px; }
-  .home-section .tile .meta a {
+  .tile .meta a {
     color: #bde5ff;
     font-size: 75%;
     text-transform: uppercase; }
-    .home-section .tile .meta a:hover {
+    .tile .meta a:hover {
       color: #fb901d; }
 
-@media (min-width: 768px) {
-  .home-section.itineraries .itineraries-list {
-    margin-right: -5vw;
-    margin-left: -5vw; } }
+.error-404 {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+
+.error-map {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  background-color: #323c53;
+  background-position: center center; }
+  @media (min-width: 1200px) {
+    .error-map {
+      background-size: cover; } }
+
+.error-content {
+  margin: 10em 0 3em;
+  text-align: center; }
+  @media (min-width: 768px) {
+    .error-content {
+      margin: 15em 0 5em; } }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

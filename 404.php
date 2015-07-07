@@ -7,18 +7,20 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'obsub' ); ?></h1>
+			<section class="primary-section">
+				<header class="section-header error-header pattern-6">
+					<div class="section-header-content">
+						<h1 class="page-title"><?php _e( 'Oops! We don’t know where that page is.', 'obsub' ); ?></h1>
+						<h4 class="description">But we know where the Louvre is!</h4>
+					</div>
 				</header>
-
-				<div class="page-content">
-					<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'obsub' ); ?></p>
-
-					<?php get_search_form(); ?>
-
-				</div>
 			</section>
+
+			<section class="error-map" style="background-image:url(https://api.tiles.mapbox.com/v4/worldstrides.b898407f/url-http%3A%2F%2Fwsbeta.co%2Fwp-content%2Fthemes%2Fworldstrides%2Fassets%2Fimages%2Fpin-orange.png\(2.3358607292175293,48.86101631231847\)/2.3358607292175293,48.86009631231847,15/1280x450.png?access_token=pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg);">
+				<div class="error-content">
+					<a href="#" class="btn btn-primary">Explore our trips »</a>
+				</div>
+			</section><!-- .about-wrap -->
 
 		</main>
 	</div>
