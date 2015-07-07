@@ -8,7 +8,7 @@ $about_page = get_page_by_path( 'about' );
 
 
 <section class="about primary-section">
-	<header class="section-header">
+	<header class="section-header pattern-3">
 		<div class="section-header-content">
 			<h1 class="section-title"><?php echo apply_filters( 'the_title', $about_page->post_title ) ?></h1>
 
