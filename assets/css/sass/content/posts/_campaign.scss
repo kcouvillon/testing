@@ -1,0 +1,52 @@
+.single-campaign {
+	
+}
+
+.campaign-single-wrap {
+  	@include container();
+
+	@include susy-media($screen-md) {
+		display: flex;
+		padding: 0;
+	}
+}
+
+.campaign-single-content {
+
+	&.left {
+		@include susy-media($screen-md) {
+			padding-left: $size_container_padding;
+			@include span(6);
+		}
+		@include susy-media($screen-lg) {
+			@include span(5);	
+		}
+	}
+	&.right {
+		background-color: $gray_lighter;
+		margin: 0 ( $size_container_padding * -1 );
+		padding: 0 $size_container_padding;
+		@include susy-media($screen-md) {
+			padding: 1.5em;
+			padding-right: $size_container_padding;
+			margin: auto;
+			@include span(6 last);
+		}
+		@include susy-media($screen-lg) {
+			@include push(1);
+		}
+	}
+
+	.ws-form {
+		background-color: $gray_base;
+		margin: 0 ( $size_container_padding * -1 );
+		padding: 1.5em;
+		
+		@include susy-media($screen-md) {
+			margin: -1.5em -1.5em 1.5em;
+			margin-right: ( $size_container_padding * -1 );
+			padding-right: $size_container_padding;
+		}
+	}
+
+}
