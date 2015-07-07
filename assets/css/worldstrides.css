@@ -7332,9 +7332,23 @@ section:after {
 .contact h2 {
   margin-bottom: 35px; }
 
+.contact h4 a {
+  font-weight: 500; }
+
+.contact a:not(.btn) {
+  color: #4fa9e5; }
+  .contact a:not(.btn):hover {
+    color: #fb901d; }
+
 @media (min-width: 768px) {
   .contact.section-content-left {
     width: 49.0196078431%;
+    float: left;
+    margin-right: 1.9607843137%; } }
+
+@media (min-width: 1200px) {
+  .contact.section-content-left {
+    width: 40.522875817%;
     float: left;
     margin-right: 1.9607843137%; } }
 
@@ -7343,6 +7357,13 @@ section:after {
     width: 49.0196078431%;
     float: right;
     margin-right: 0; } }
+
+@media (min-width: 1200px) {
+  .contact.section-content-right {
+    width: 40.522875817%;
+    float: left;
+    margin-right: 1.9607843137%;
+    margin-left: 8.4967320261%; } }
 
 .contact-wrap {
   display: block;
