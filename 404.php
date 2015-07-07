@@ -7,11 +7,15 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'obsub' ); ?></h1>
+			<section class="primary-section">
+				<header class="section-header error-header pattern-6">
+					<div class="section-header-content">
+						<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'obsub' ); ?></h1>
+					</div>
 				</header>
+			</section>
 
+			<section class="error-404 not-found">
 				<div class="page-content">
 					<p><?php _e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'obsub' ); ?></p>
 

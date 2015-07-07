@@ -7821,6 +7821,13 @@ section:after {
     margin-right: -5vw;
     margin-left: -5vw; } }
 
+.error-404 {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
   display: none; }
