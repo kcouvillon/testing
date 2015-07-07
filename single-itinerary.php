@@ -117,13 +117,64 @@
 
 		</section>
 
-		<section class="tour-blocks-before">
+		<section class="ws-container ws-blocks tour-blocks-before">
+
+			<div class="ws-block block-image-right">
+				<div class="block-image">
+					<img src="http://placehold.it/1030x900" alt="">
+				</div>
+				<div class="block-text">
+					<span class="h3">High School and College Credit</span>
+					<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
+					<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
+					<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
+					<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
+				</div>
+			</div>
 			
+			<div class="ws-block block-image-left">
+				<div class="block-image">
+					<img src="http://placehold.it/1030x900" alt="">
+				</div>
+				<div class="block-text">
+					<span class="h3">High School and College Credit</span>
+					<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
+					<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
+					<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
+					<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
+				</div>
+			</div>
+
+			<div class="ws-block block-single-col">
+				<div class="block-text">
+					<span class="h3">High School and College Credit</span>
+					<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
+					<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
+					<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
+					<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
+				</div>
+			</div>
+
+			<div class="ws-block block-two-col">
+				<div class="block-text">
+					<h3>Two Column Text</h3>
+					<div class="block-text-columns">
+						<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
+						<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
+						<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
+						<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="ws-block block-slideshow cycle-slideshow">
+			</div>
+
 		</section>
 
 		<section class="tour-itinerary">
 
-			<span class="h3">Your Adventure, Day by Day</span>
+			<h2>Your Adventure, Day by Day</h2>
 
 			<?php
 			$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true );

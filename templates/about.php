@@ -12,10 +12,13 @@ get_header(); ?>
 		<?php get_template_part( 'partials/about', 'header' ); ?>
 
 		<?php the_post(); ?>
+
+
 		<div class="about-wrap">
 
 			<section class="about section-content">
-				<?php get_template_part( 'partials/content', 'about' ); ?>
+			<?php the_post_thumbnail( 'large' ); ?>
+			<?php get_template_part( 'partials/content', 'about' ); ?>
 			</section>
 
 			<?php get_template_part( 'partials/module', 'contact' ); ?>

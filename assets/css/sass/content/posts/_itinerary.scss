@@ -1,3 +1,13 @@
+.itinerary {
+
+	h2 {
+		font-size: em(30);
+		font-weight: 700;
+		margin-top: 80px;
+		margin-bottom: 30px;
+	}
+}
+
 .tour-details {
 	@include container();
 	margin-bottom: 2em;
