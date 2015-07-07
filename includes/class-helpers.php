@@ -1,9 +1,6 @@
 <?php
-
 /**
- * A collection of helper functions
- *
- * Class WS_Helpers
+ * A collection of helper functions.
  */
 class WS_Helpers {
 	/**
