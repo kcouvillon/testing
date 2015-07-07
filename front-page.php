@@ -47,7 +47,7 @@
 
 		<section class="home-section programs">
 			<div class="ws-container">
-				<h2 class="section-title">Our Educational Travel Opportunities</h2 class="section-title">
+				<h2 class="section-title">Our Educational Travel Opportunities</h2>
 				<ul class="programs-list list-unstyled clearfix">
 					<?php 
 					$count = 0;
@@ -91,7 +91,7 @@
 
 		<section class="home-section itineraries">
 			<div class="ws-container">
-				<h2 class="section-title">A Selection of our Tours and Programs</h2 class="section-title">
+				<h2 class="section-title">A Selection of our Tours and Programs</h2>
 				<ul class="itineraries-list list-unstyled clearfix">
 					
 					<?php 	
@@ -164,7 +164,7 @@
 
 		<section class="home-section resources">
 			<div class="ws-container">
-				<h2 class="section-title">Have Questions? We Have Answers.</h2 class="section-title">
+				<h2 class="section-title">Have Questions? We Have Answers.</h2>
 				<ul class="resources-list list-unstyled clearfix">
 					
 					<?php 
@@ -267,7 +267,7 @@
 
 		<section class="home-section blog">
 			<div class="ws-container">
-				<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2 class="section-title">
+				<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
 			</div>
 
 			<div class="blog-wrap">
