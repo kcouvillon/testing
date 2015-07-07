@@ -8,7 +8,7 @@
 		align-items: stretch;
 	}
 
-	.h3 {
+	h3, .h3 {
 		font-weight: 700;
 	}
 }
@@ -32,12 +32,65 @@
 
 	.block-text {
 		@include span(full no-gutters);
+		padding-left: 5vw;
+		padding-right: 5vw;
 
 		@include susy-media($screen-sm) {
 			@include span(5 wide no-gutters);
 			padding-left: span(1);
 			padding-right: gutter();
 			order: 1;
+		}
+	}
+}
+
+.block-image-left {
+	.block-image {
+		@include span(full no-gutters);
+
+		@include susy-media($screen-sm) {
+			@include span(7 wide no-gutters);
+			order: 1;
+		}
+	}
+
+	.block-text {
+		@include span(full no-gutters);
+		padding-left: 5vw;
+		padding-right: 5vw;
+
+		@include susy-media($screen-sm) {
+			@include span(5 wide no-gutters);
+			padding-right: span(1);
+			padding-left: gutter();
+			order: 2;
+		}
+	}
+}
+
+.block-single-col {
+
+	.block-text {
+		padding-left: 5vw;
+		padding-right: 5vw;
+
+		@include susy-media($screen-sm) {
+			@include pad(2);
+		}
+	}
+}
+
+.block-two-col {
+
+	.block-text {
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+
+	.block-text-columns {
+		@include susy-media($screen-sm) {
+			column-count: 2;
+			column-gap: 6em;
 		}
 	}
 }
