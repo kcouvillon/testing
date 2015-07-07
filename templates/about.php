@@ -22,15 +22,7 @@ get_header(); ?>
 
 		</div><!-- .about-wrap -->
 
-		<footer class="discover-why">
-			<div class="discover-why-cta">
-				<span class="h2">Discover why 2 million travelers choose to travel with WorldStrides each year</span>
-				<button class="btn btn-primary">Discover Why</button>
-			</div>
-			<div class="discover-why-img">
-
-			</div>
-		</footer>
+		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
 
 	</main>
 </div>
