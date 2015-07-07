@@ -97,8 +97,7 @@
 		<section class="tour-highlights">
 			<?php $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 			// print_r($highlights);?>
-			<div class="tour-highlights-slider cycle-slideshow"
-				>
+			<div class="tour-highlights-slider cycle-slideshow" >
 				<div class="cycle-overlay"></div>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
@@ -168,6 +167,18 @@
 			</div>
 
 			<div class="ws-block block-slideshow cycle-slideshow">
+				<div class="cycle-overlay"></div>
+				<div class="cycle-prev"></div>
+				<div class="cycle-next"></div>
+				<img src="http://placehold.it/1500x844"
+					alt=""
+					data-cycle-desc="caption text">
+				<img src="http://placehold.it/1500x844"
+					alt=""
+					data-cycle-desc="caption text">
+				<img src="http://placehold.it/1500x844"
+					alt=""
+					data-cycle-desc="caption text">
 			</div>
 
 		</section>
