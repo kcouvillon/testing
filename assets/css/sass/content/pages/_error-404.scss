@@ -4,6 +4,7 @@
 
 .error-map {
 	@include container();
+	background-color: $gray_base;
 	background-position: center center;
 	
 	@include susy-media($screen-lg) {
@@ -12,10 +13,10 @@
 }
 
 .error-content {
-	margin: 40vw 0 20vw;
+	margin: 10em 0 3em;
 	text-align: center;
 
-	@include susy-media($screen-md) {
-		margin: 20vw 0 10vw;
+	@include susy-media($screen-sm) {
+		margin: 15em 0 5em;
 	}
 }
