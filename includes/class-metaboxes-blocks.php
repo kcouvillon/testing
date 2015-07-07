@@ -35,19 +35,21 @@ class WS_Metaboxes_Blocks {
 	 */
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'block_details' ) );
-		add_action( 'cmb2_init',  array( $this, 'block_content_main' ) );
-		add_action( 'cmb2_init',  array( $this, 'block_content_secondary' ) );
+		add_action( 'cmb2_init',  array( $this, 'block_image' ) );
 		add_action( 'cmb2_init',  array( $this, 'block_slideshow' ) );
 	}
 
 	function block_details() {
 
-		$prefix = 'block_details_';
+		$prefix = 'block_type_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Block Details', 'cmb2' ),
+			'title'        => __( 'Block Type', 'cmb2' ),
 			'object_types' => array( 'block', ),
+			'context'    => 'side',
+			'priority'   => 'default',
+			'show_names' => false
 		) );
 
 		$cmb->add_field( array(
@@ -86,21 +88,22 @@ class WS_Metaboxes_Blocks {
 
 	}
 
-	function block_content_secondary() {
+	function block_image() {
 
-		$prefix = 'block_content_secondary_';
+		$prefix = 'block_image_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Block Content - Secondary', 'cmb2' ),
+			'title'        => __( 'Image', 'cmb2' ),
 			'object_types' => array( 'block', ),
+			'show_names'   => false
 		) );
 
 		$cmb->add_field( array(
-				'name'   => 'Secondary',
-				'desc'   => 'Content for the second column',
-				'id'     => 'content_secondary',
-				'type'   => 'wysiwyg'
+				'name'   => 'Image',
+				'desc'   => 'Image for Image Right/Left',
+				'id'     => 'block_image',
+				'type'   => 'file'
 			)
 		);
 
@@ -135,7 +138,7 @@ class WS_Metaboxes_Blocks {
 		) );
 
 		$cmb_group->add_group_field( $group_field_id, array(
-			'name'       => __( 'Title', 'cmb2' ),
+			'name'       => __( 'Tab Title', 'cmb2' ),
 			'desc'       => 'Only used on tabbed slideshows',
 			'id'         => 'title',
 			'type'       => 'text'

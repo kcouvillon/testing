@@ -167,7 +167,7 @@ class WS_Custom_Post_Types {
 				'exclude_from_search'    => false,
 				'publicly_queryable'   => false,
 				'show_in_nav_menus'       => false,
-				'supports' => array( 'title', 'thumbnail' )
+				'supports' => array( 'title', 'editor' )
 
 			)
 		);
