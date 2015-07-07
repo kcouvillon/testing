@@ -295,7 +295,7 @@ class WS_Metaboxes_Itineraries {
 			'id'          => 'related_content',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
-			'post_type'   => array( 'block', 'post', 'resource' ),
+			'post_type'   => 'block',
 			// checkbox/radio, used in the modal view to select the post type
 			'select_type' => 'radio'
 		) );
