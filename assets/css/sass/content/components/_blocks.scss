@@ -1,0 +1,43 @@
+.ws-blocks {
+	padding: 0;
+}
+
+.ws-block {
+	@include susy-media($screen-sm) {
+		display: flex;
+		align-items: stretch;
+	}
+
+	.h3 {
+		font-weight: 700;
+	}
+}
+
+.block-text {
+	background: $gray_lighter;
+	padding-top: 5vh;
+	padding-bottom: 10vh;
+}
+
+// IMAGE RIGHT
+.block-image-right {
+	.block-image {
+		@include span(full no-gutters);
+
+		@include susy-media($screen-sm) {
+			@include span(7 wide no-gutters);
+			order: 2;
+		}
+	}
+
+	.block-text {
+		@include span(full no-gutters);
+
+		@include susy-media($screen-sm) {
+			@include span(5 wide no-gutters);
+			padding-left: span(1);
+			padding-right: gutter();
+			order: 1;
+		}
+	}
+}
