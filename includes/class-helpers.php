@@ -43,7 +43,7 @@ class WS_Helpers {
 	 * @return html content wrapped in a unordered list
 	 */
 	public static function blog_type( $post_id ) {
-		$terms     = get_the_terms( $post_id, 'blog-type' );
+		$terms = get_the_terms( $post_id, 'blog-type' );
 
 		if ( $terms ) {
 			$term_slug = $terms[0]->slug;
@@ -86,6 +86,99 @@ class WS_Helpers {
 
 			return $html;
 		}
+	}
+
+	/**
+	 * Helper function for retrieving and formatting content blocks
+	 *
+	 * @param $post_id
+	 *
+	 * @return string Our html output
+	 */
+	public static function get_content_block( $post_id ) {
+		$block      = get_post( $post_id );
+		$block_type = get_post_meta( $post_id, 'block_type', true );
+		ob_start();
+		?>
+
+		<?php if ( 'image-left' == $block_type || 'image-right' == $block_type ) : ?>
+
+			<div class="ws-block block-<?php echo esc_attr( $block_type ); ?>">
+				<div class="block-image">
+					<?php // @todo get image; ?>
+					<img src="http://placehold.it/1030x900" alt="">
+				</div>
+				<div class="block-text">
+					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
+					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
+				</div>
+			</div>
+
+		<?php elseif ( 'column-one' == $block_type || 'column-two' == $block_type ) : ?>
+
+			<?php if ( 'column-two' == $block_type ) {
+				$classes           = 'block-two-col';
+				$classes_secondary = 'block-text-columns';
+			} else {
+				$classes           = 'block-single-col';
+				$classes_secondary = 'block-text';
+			} ?>
+			<div class="ws-block <?php esc_attr( $classes ); ?>">
+				<div class="<?php esc_attr( $classes_secondary ); ?>">
+					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
+					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
+				</div>
+			</div>
+
+		<?php elseif ( 'gallery-simple' == $block_type || 'gallery-tabbed' == $block_type ) : ?>
+
+			<?php if ( 'gallery-tabbed' == $block_type ) {
+				$classes           = 'block-slideshow-tabbed';
+				$classes_secondary = 'block-text-columns';
+				$pager             = 'data-cycle-pager="#slideshow-tabs-' . $post_id . '"';
+			} else {
+				$classes           = 'block-slideshow';
+				$classes_secondary = 'block-text';
+				$pager             = '';
+			} ?>
+			<div class="ws-block <?php esc_attr( $classes ); ?>">
+				<div class="<?php esc_attr( $classes_secondary ); ?>">
+					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
+					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
+				</div>
+			</div>
+
+			<div class="ws-block <?php esc_attr( $classes ); ?> cycle-slideshow"
+				<?php echo $pager; ?>
+				 data-cycle-auto-height="container">
+				<div class="cycle-overlay"></div>
+				<div class="cycle-prev"></div>
+				<div class="cycle-next"></div>
+
+				<?php $slides = get_post_meta( $post_id, 'block_slideshow_list', true ); ?>
+
+				<?php foreach( $slides as $slide ) : ?>
+					<img src="<?php echo $slide['image']; ?>"
+					     alt=""
+					     data-cycle-desc="<?php echo $slide['caption']; ?>"
+						 <?php if ( 'gallery-tabbed' == $block_type ) { echo  'data-cycle-pager-template="<a href=#>' . $slide['title'] . '</a>"'; } ?>
+						>
+				<?php endforeach; ?>
+
+				<?php if ( 'gallery-tabbed' == $block_type ) : ?>
+					<div id="<?php echo esc_attr( 'pager' ); ?>"></div>
+				<?php else : ?>
+					<div class="cycle-pager"></div>
+				<?php endif; ?>
+			</div>
+
+		<?php endif; ?>
+
+		<?php
+		$html = ob_get_contents();
+		ob_get_clean();
+
+		return $html;
 	}
 }
 
