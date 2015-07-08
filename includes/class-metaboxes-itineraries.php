@@ -218,13 +218,7 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Section Title',
-			'id' => $prefix . 'title',
-			'type' => 'text_medium'
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => 'Section Slug',
-			'id' => $prefix . 'slug',
+			'id' => 'title',
 			'type' => 'text_medium'
 		) );
 
