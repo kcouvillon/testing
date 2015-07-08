@@ -130,9 +130,9 @@ class WS_Helpers {
 				</div>
 			</div>
 
-		<?php elseif ( 'gallery-simple' == $block_type || 'gallery-tabbed' == $block_type ) : ?>
+		<?php elseif ( 'slideshow-basic' == $block_type || 'slideshow-tabbed' == $block_type ) : ?>
 
-			<?php if ( 'gallery-tabbed' == $block_type ) {
+			<?php if ( 'slideshow-tabbed' == $block_type ) {
 				$classes           = 'block-slideshow-tabbed';
 				$classes_secondary = 'block-text-columns';
 				$pager             = 'data-cycle-pager="#slideshow-tabs-' . $post_id . '"';
@@ -141,16 +141,16 @@ class WS_Helpers {
 				$classes_secondary = 'block-text';
 				$pager             = '';
 			} ?>
-			<div class="ws-block <?php esc_attr( $classes ); ?>">
-				<div class="<?php esc_attr( $classes_secondary ); ?>">
+			<div class="ws-block <?php echo esc_attr( $classes ); ?>">
+				<div class="<?php echo esc_attr( $classes_secondary ); ?>">
 					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
 					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
 				</div>
 			</div>
 
-			<div class="ws-block <?php esc_attr( $classes ); ?> cycle-slideshow"
-				<?php echo $pager; ?>
-				 data-cycle-auto-height="container">
+			<div class="ws-block <?php echo esc_attr( $classes ); ?> cycle-slideshow"
+				<?php echo $pager . "\n"; ?>
+				data-cycle-auto-height="container">
 				<div class="cycle-overlay"></div>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
@@ -158,19 +158,22 @@ class WS_Helpers {
 				<?php $slides = get_post_meta( $post_id, 'block_slideshow_list', true ); ?>
 
 				<?php foreach( $slides as $slide ) : ?>
+					<?php echo "\n"; ?>
 					<img src="<?php echo $slide['image']; ?>"
 					     alt=""
 					     data-cycle-desc="<?php echo $slide['caption']; ?>"
-						 <?php if ( 'slideshow-tabbed' == $block_type ) { echo  'data-cycle-pager-template="<a href=#>' . $slide['title'] . '</a>"'; } ?>
-						>
+						 <?php if ( 'slideshow-tabbed' == $block_type ) { echo 'data-cycle-pager-template="<a href="#">' . $slide['title'] . '</a>"'; } ?>>
 				<?php endforeach; ?>
 
-				<?php if ( 'slideshow-tabbed' == $block_type ) : ?>
-					<div id="<?php echo esc_attr( 'pager' ); ?>"></div>
-				<?php else : ?>
+				<?php if ( 'slideshow-simple' == $block_type ) : ?>
+					<?php echo "\n"; ?>
 					<div class="cycle-pager"></div>
 				<?php endif; ?>
 			</div>
+			<?php if ( 'slideshow-tabbed' == $block_type ) : ?>
+				<?php echo "\n"; ?>
+				<div id="<?php echo '#slideshow-tabs-' . $post_id; ?>"></div>
+			<?php endif; ?>
 
 		<?php endif; ?>
 
