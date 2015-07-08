@@ -13,7 +13,7 @@ get_header(); ?>
 		<?php
 		$background = '';
 		if ( has_post_thumbnail() ) {
-			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
 			$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
@@ -102,12 +102,18 @@ get_header(); ?>
 		<?php $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true ); ?>
 		<?php if ( ! empty( $highlights[1]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<section class="tour-highlights">
-				<div class="tour-highlights-slider cycle-slideshow">
+				<div class="tour-highlights-slider cycle-slideshow"
+					data-cycle-auto-height="container"
+					data-cycle-fx="scrollHorz">
 					<div class="cycle-overlay"></div>
 					<div class="cycle-prev"></div>
 					<div class="cycle-next"></div>
 					<?php foreach ( $highlights as $highlight ) { ?>
-						<img src="<?php echo $highlight['image']; ?>"
+						<?php
+							$image_id = $highlight['image_id'];
+							$image_src = wp_get_attachment_image_src( $image_id, 'large' );
+						?>
+						<img src="<?php echo $image_src[0]; ?>"
 						     alt=""
 						     data-cycle-title="<?php echo $highlight['title']; ?>"
 						     data-cycle-desc="<?php echo $highlight['caption']; ?>">
@@ -125,9 +131,11 @@ get_header(); ?>
 		<?php $block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
 
 		<?php if ( ! empty( $block_sections ) ) : ?>
+
+			<section class="ws-container ws-blocks tour-blocks-before">
+
 			<?php foreach ( $block_sections as $section ) : ?>
 
-				<section class="ws-container ws-blocks tour-blocks-before">
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
@@ -139,9 +147,11 @@ get_header(); ?>
 
 						<?php endforeach; ?>
 					<?php endif; ?>
-				</section>
 
 			<?php endforeach; ?>
+
+			</section>
+
 		<?php endif; ?>
 
 		<section class="tour-itinerary">

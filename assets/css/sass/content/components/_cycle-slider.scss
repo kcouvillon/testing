@@ -65,7 +65,7 @@
 	}
 }
 
-#slideshow-tabs {
+.slideshow-tabs {
 	display: none;
 
 	@include susy-media($screen-md) {

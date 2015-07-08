@@ -149,16 +149,11 @@ class WS_Helpers {
 				$classes_secondary = 'block-text';
 				$pager             = '';
 			} ?>
-			<div class="ws-block <?php echo esc_attr( $classes ); ?>">
-				<div class="<?php echo esc_attr( $classes_secondary ); ?>">
-					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
-					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
-				</div>
-			</div>
 
 			<div class="ws-block <?php echo esc_attr( $classes ); ?> cycle-slideshow"
 				<?php echo $pager . "\n"; ?>
-				data-cycle-auto-height="container">
+				data-cycle-auto-height="container"
+				data-cycle-fx="scrollHorz">
 				<div class="cycle-overlay"></div>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
@@ -170,7 +165,7 @@ class WS_Helpers {
 					<img src="<?php echo $slide['image']; ?>"
 					     alt=""
 					     data-cycle-desc="<?php echo $slide['caption']; ?>"
-						 <?php if ( 'slideshow-tabbed' == $block_type ) { echo 'data-cycle-pager-template="<a href="#">' . $slide['title'] . '</a>"'; } ?>>
+						 <?php if ( 'slideshow-tabbed' == $block_type ) { echo "data-cycle-pager-template='<a href=#>" . $slide['title'] . "</a>'"; } ?>>
 				<?php endforeach; ?>
 
 				<?php if ( 'slideshow-simple' == $block_type ) : ?>
@@ -180,7 +175,7 @@ class WS_Helpers {
 			</div>
 			<?php if ( 'slideshow-tabbed' == $block_type ) : ?>
 				<?php echo "\n"; ?>
-				<div id="<?php echo '#slideshow-tabs-' . $post_id; ?>"></div>
+				<div id="<?php echo 'slideshow-tabs-' . $post_id; ?>" class="slideshow-tabs"></div>
 			<?php endif; ?>
 
 		<?php endif; ?>
