@@ -130,7 +130,7 @@ class WS_Metaboxes_Collections {
 				'filter_boxes'    => true,  // Show a text box for filtering the results
 				'query_args'      => array( // override the get_posts args
 					'posts_per_page' => 100,
-					'post_type' => 'resources',
+					'post_type' => 'resource',
 				),
 			)
 		) );
