@@ -105,8 +105,16 @@ class WS_Helpers {
 
 			<div class="ws-block block-<?php echo esc_attr( $block_type ); ?>">
 				<div class="block-image">
-					<?php // @todo get image; ?>
-					<img src="http://placehold.it/1030x900" alt="">
+					<?php
+					$block_image = get_post_meta( $post_id, 'block_image', true );
+
+					if ( $block_image ) {
+							$img_url = $block_image;
+					} else {
+							$img_url = 'http://placehold.it/1030x900';
+					}
+					?>
+					<img src="<?php echo esc_url( $img_url ); ?>" alt="">
 				</div>
 				<div class="block-text">
 					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
