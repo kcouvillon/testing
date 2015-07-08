@@ -12,6 +12,7 @@
 }
 .ws-container {
 	@include container();
+	overflow: hidden;
 }
 
 // Colors
