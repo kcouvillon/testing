@@ -63,7 +63,7 @@ class WS_Metaboxes {
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
-			'object_types' => array( 'itinerary', ),
+			'object_types' => array( 'itinerary', 'collection', 'destination', 'interest', 'traveler' ),
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
