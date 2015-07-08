@@ -78,7 +78,7 @@ class WS_Metaboxes_Collections {
 
 		$cmb->add_field( array(
 			'name'       => __( 'Title', 'cmb2' ),
-			'id'         => 'title',
+			'id'         => $prefix . 'title',
 			'type'       => 'text',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
@@ -115,7 +115,7 @@ class WS_Metaboxes_Collections {
 
 		$cmb->add_field( array(
 			'name'       => __( 'Title', 'cmb2' ),
-			'id'         => 'title',
+			'id'         => $prefix . 'title',
 			'type'       => 'text',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
@@ -123,7 +123,7 @@ class WS_Metaboxes_Collections {
 		$cmb->add_field( array(
 			'name'    => __( 'Attached Resources', 'cmb2' ),
 			'desc'    => __( 'Drag Resources from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
-			'id'      => 'attached_why_ws',
+			'id'      => 'attached_resources',
 			'type'    => 'custom_attached_posts',
 			'options' => array(
 				'show_thumbnails' => true,  // Show thumbnails on the left
