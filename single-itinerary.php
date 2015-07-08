@@ -117,16 +117,26 @@
 
 		</section>
 
-		<?php $associated_blocks = get_post_meta( $post->ID, 'itinerary_blocks_before', true ); ?>
+		<?php $block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
 
-		<?php if ( 0 == count( $associated_blocks ) ) : ?>
+		<?php if ( ! empty( $block_sections ) ) : ?>
+			<?php foreach ( $block_sections as $section ) : ?>
+
 			<section class="ws-container ws-blocks tour-blocks-before">
-			<?php foreach ( $associated_blocks as $block_id ) : ?>
+				<?php if ( ! empty( $section['title'] ) ) : ?>
+					<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+				<?php endif; ?>
 
-				<?php WS_Helpers::get_content_block( $post->ID ); ?>
+				<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
+					<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
+
+						<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</section>
 
 			<?php endforeach; ?>
-			</section>
 		<?php endif; ?>
 
 		<section class="tour-itinerary">
@@ -136,7 +146,7 @@
 			<?php
 			$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true );
 			$i = 0;
-			foreach($itinerary as $day) { $i++; ?>
+			foreach( $itinerary as $day ) { $i++; ?>
 				<article class="tour-day">
 					<div class="tour-hero" style="background-image: url(<?php echo $day['image']; ?>);"></div>
 					<header>
@@ -169,16 +179,24 @@
 			<?php } ?>
 		</section>
 
-		<?php $associated_blocks = get_post_meta( $post->ID, 'itinerary_blocks_after', true ); ?>
+		<?php $block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
 
-		<?php if ( 0 == count( $associated_blocks ) ) : ?>
-			<section class="ws-container ws-blocks tour-blocks-after">
-				<?php foreach ( $associated_blocks as $block_id ) : ?>
+		<?php if ( ! empty( $block_sections ) ) : ?>
+			<?php foreach ( $block_sections as $section ) : ?>
 
-					<?php WS_Helpers::get_content_block( $post->ID ); ?>
+				<section class="ws-container ws-blocks tour-blocks-after">
+					<?php if ( ! empty( $section['title'] ) ) : ?>
+						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+					<?php endif; ?>
 
-				<?php endforeach; ?>
-			</section>
+					<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
+
+						<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+					<?php endforeach; ?>
+				</section>
+
+			<?php endforeach; ?>
 		<?php endif; ?>
 
 		<section class="clearfix ws-container learn-more">
