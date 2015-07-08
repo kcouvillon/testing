@@ -21,3 +21,23 @@
 	}
 
 }
+
+.info-cta {
+	@include container();
+	padding-top: 5vh;
+	padding-bottom: 7vh;
+
+	.additional-info, .email-updates {
+		@include span(full);
+
+		@include susy-media($screen-sm) {
+			@include span(6);
+		}
+	}
+
+	.email-updates {
+		@include susy-media($screen-sm) {
+			@include last;
+		}
+	}
+}

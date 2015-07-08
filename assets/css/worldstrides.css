@@ -7007,6 +7007,29 @@ a.no-decoration {
     display: block;
     text-align: center; }
 
+.info-cta {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  padding-top: 5vh;
+  padding-bottom: 7vh; }
+  .info-cta .additional-info, .info-cta .email-updates {
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    margin-right: 0; }
+    @media (min-width: 768px) {
+      .info-cta .additional-info, .info-cta .email-updates {
+        width: 49.0196078431%;
+        float: left;
+        margin-right: 1.9607843137%; } }
+  @media (min-width: 768px) {
+    .info-cta .email-updates {
+      float: right;
+      margin-right: 0; } }
+
 #page {
   overflow: hidden; }
 
