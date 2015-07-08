@@ -68,7 +68,6 @@ class WS_Associated_Filter {
 		$support = false;
 
 		$supported_post_types = array(
-			'collection',
 			'destination',
 			'interest',
 			'traveler'
