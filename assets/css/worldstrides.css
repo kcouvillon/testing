@@ -6990,6 +6990,23 @@ a.no-decoration {
       .tour-day .tour-related-post .h3 {
         margin-top: 0; } }
 
+.collection .programs {
+  padding: 0; }
+  .collection .programs .section-title {
+    padding-left: 5vw; }
+  @media (min-width: 768px) {
+    .collection .programs .programs-list {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      margin-right: -5vw;
+      margin-left: -5vw;
+      padding-right: 5vw;
+      padding-left: 5vw; } }
+  .collection .programs .program-all-link {
+    display: block;
+    text-align: center; }
+
 #page {
   overflow: hidden; }
 

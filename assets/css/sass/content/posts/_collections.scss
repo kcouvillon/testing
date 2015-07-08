@@ -1,0 +1,23 @@
+.collection {
+
+	.programs {
+		padding: 0;
+
+		.section-title {
+			padding-left: 5vw;
+		}
+
+		.programs-list {
+
+			@include susy-media($screen-sm) {
+				@include bleed-x(5vw 5vw);
+			}
+		}
+
+		.program-all-link {
+			display: block;
+			text-align: center;
+		}
+	}
+
+}
