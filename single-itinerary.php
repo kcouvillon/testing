@@ -30,6 +30,7 @@
 
 			<nav class="section-nav">
 				<ul class="section-menu">
+					<li>[TBD]</li>
 					<li><a href="#tour-highlights">Tour Highlights</a></li>
 					<li><a href="#education">Education</a></li>
 					<li><a href="#itinerary">Itinerary</a></li>
@@ -40,7 +41,7 @@
 		</section>
 
 		<section class="tour-details">
-			
+
 			<div class="tour-duration">
 
 				<?php if ( $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true ) ) : ?>
@@ -50,8 +51,8 @@
 				<?php elseif ( $date_list = get_post_meta( $post->ID, 'itinerary_details_date_list', true ) ) : ?>
 
 					<?php
-					$start = $date_list[0][itinerary_details_date_start];
-					$end = $date_list[0][itinerary_details_date_end];
+					$start = $date_list[0]['itinerary_details_date_start'];
+					$end = $date_list[0]['itinerary_details_date_end'];
 					?>
 
 					<span class="h3"><?php echo $start; ?></span>
@@ -61,7 +62,7 @@
 			</div>
 
 			<div class="tour-features">
-				
+
 				<span class="h3"><?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
 
 				<div class="tour-feature-list">
@@ -78,7 +79,7 @@
 			</div>
 
 			<div class="tour-weather">
-				
+
 				<span class="h3">Local Weather</span>
 
 				<div class="tour-local-time">
@@ -102,10 +103,10 @@
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
 				<?php foreach( $highlights as $highlight ) { ?>
-					<img src="<?php echo $highlight[image]; ?>"
+					<img src="<?php echo $highlight['image']; ?>"
 					alt=""
-					data-cycle-title="<?php echo $highlight[title]; ?>"
-					data-cycle-desc="<?php echo $highlight[caption]; ?>">
+					data-cycle-title="<?php echo $highlight['title']; ?>"
+					data-cycle-desc="<?php echo $highlight['caption']; ?>">
 				<?php } ?>
 				<div class="cycle-pager"></div>
 			</div>
@@ -116,112 +117,17 @@
 
 		</section>
 
-		<section class="ws-container ws-blocks tour-blocks-before">
+		<?php $associated_blocks = get_post_meta( $post->ID, 'itinerary_blocks_before', true ); ?>
 
-			<div class="ws-block block-image-right">
-				<div class="block-image">
-					<img src="http://placehold.it/1030x900" alt="">
-				</div>
-				<div class="block-text">
-					<span class="h3">High School and College Credit</span>
-					<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
-					<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
-					<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
-					<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
-				</div>
-			</div>
-			
-			<div class="ws-block block-image-left">
-				<div class="block-image">
-					<img src="http://placehold.it/1030x900" alt="">
-				</div>
-				<div class="block-text">
-					<span class="h3">High School and College Credit</span>
-					<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
-					<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
-					<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
-					<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
-				</div>
-			</div>
+		<?php if ( 0 == count( $associated_blocks ) ) : ?>
+			<section class="ws-container ws-blocks tour-blocks-before">
+			<?php foreach ( $associated_blocks as $block_id ) : ?>
 
-			<div class="ws-block block-single-col">
-				<div class="block-text">
-					<span class="h3">High School and College Credit</span>
-					<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
-					<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
-					<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
-					<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
-				</div>
-			</div>
+				<?php WS_Helpers::get_content_block( $post->ID ); ?>
 
-			<div class="ws-block block-two-col">
-				<div class="block-text">
-					<h3>Two Column Text</h3>
-					<div class="block-text-columns">
-						<p>Our accredited status allows WorldStrides to offer students the unique opportunity to earn free high school or college credit.</p>
-						<p>Students are challenged to assess and apply what they are learning in the classroom through firsthand experience, so they take away the most from the program.</p>
-						<p>Students can continue their educational experiences after returning from their trip with our exclusive Discovery for Credit program, which enables students to use their educational travel experience to get a head start on high school and college requirements.</p>
-						<p>Ask your WorldStrides representative if your program is eligible for school credit.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="ws-block block-slideshow cycle-slideshow"
-				data-cycle-auto-height="container">
-				<div class="cycle-overlay"></div>
-				<div class="cycle-prev"></div>
-				<div class="cycle-next"></div>
-
-				<img src="http://placehold.it/1500x844"
-					alt=""
-					data-cycle-desc="caption text">
-				<img src="http://placehold.it/1500x843"
-					alt=""
-					data-cycle-desc="caption text">
-				<img src="http://placehold.it/1500x842"
-					alt=""
-					data-cycle-desc="caption text">
-
-				<div class="cycle-pager"></div>
-			</div>
-
-			<div class="ws-block block-slideshow-tabbed cycle-slideshow"
-				data-cycle-pager="#slideshow-tabs"
-				data-cycle-auto-height="container">
-				<div class="cycle-overlay"></div>
-				<div class="cycle-prev"></div>
-				<div class="cycle-next"></div>
-
-				<img src="http://placehold.it/1500x844"
-					alt=""
-					data-cycle-desc="caption text"
-					data-cycle-pager-template="<a href=#>Tab Title 1</a>">
-				<img src="http://placehold.it/1500x843"
-					alt=""
-					data-cycle-desc="caption text"
-					data-cycle-pager-template="<a href=#>Tab Title 2</a>">
-				<img src="http://placehold.it/1500x842"
-					alt=""
-					data-cycle-desc="caption text"
-					data-cycle-pager-template="<a href=#>Tab Title 3</a>">
-				<img src="http://placehold.it/1500x844"
-					alt=""
-					data-cycle-desc="caption text"
-					data-cycle-pager-template="<a href=#>Tab Title 4</a>">
-				<img src="http://placehold.it/1500x843"
-					alt=""
-					data-cycle-desc="caption text"
-					data-cycle-pager-template="<a href=#>Tab Title 5</a>">
-				<img src="http://placehold.it/1500x842"
-					alt=""
-					data-cycle-desc="caption text"
-					data-cycle-pager-template="<a href=#>Tab Title 6</a>">
-					
-			</div>
-			<div id="slideshow-tabs"></div>
-
-
-		</section>
+			<?php endforeach; ?>
+			</section>
+		<?php endif; ?>
 
 		<section class="tour-itinerary">
 
@@ -232,23 +138,23 @@
 			$i = 0;
 			foreach($itinerary as $day) { $i++; ?>
 				<article class="tour-day">
-					<div class="tour-hero" style="background-image: url(<?php echo $day[image]; ?>);"></div>
+					<div class="tour-hero" style="background-image: url(<?php echo $day['image']; ?>);"></div>
 					<header>
 						<span class="tour-day-marker">Day</span>
 						<span class="tour-day-number"><?php echo $i; ?></span>
-						<span class="h3"><?php echo $day[title]; ?></span>
+						<span class="h3"><?php echo $day['title']; ?></span>
 					</header>
 
-					<?php $activities = $day[activity]; ?>
+					<?php $activities = $day['activity']; ?>
 
 					<?php if( ! empty( $activities ) ) : ?>
 
 						<ul class="tour-activity-list">
 							<?php foreach ( $activities as $activity ) {
-								if( ! empty($activity[title] ) ) { ?>
+								if( ! empty($activity['title'] ) ) { ?>
 								<li>
-									<strong><?php echo $activity[title]; ?></strong>
-									<span><?php echo $activity[description]; ?></span>
+									<strong><?php echo $activity['title']; ?></strong>
+									<span><?php echo $activity['description']; ?></span>
 								</li>
 							<?php } } ?>
 						</ul>
@@ -257,15 +163,23 @@
 
 					<div class="tour-related-post">
 						<span class="h3">Related Post Title</span>
-						
+
 					</div>
 				</article>
 			<?php } ?>
 		</section>
 
-		<section class="tour-blocks-after">
-			
-		</section>
+		<?php $associated_blocks = get_post_meta( $post->ID, 'itinerary_blocks_after', true ); ?>
+
+		<?php if ( 0 == count( $associated_blocks ) ) : ?>
+			<section class="ws-container ws-blocks tour-blocks-after">
+				<?php foreach ( $associated_blocks as $block_id ) : ?>
+
+					<?php WS_Helpers::get_content_block( $post->ID ); ?>
+
+				<?php endforeach; ?>
+			</section>
+		<?php endif; ?>
 
 		<section class="clearfix ws-container learn-more">
 				<form action="#" class="ws-form">
