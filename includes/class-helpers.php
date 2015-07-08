@@ -142,11 +142,9 @@ class WS_Helpers {
 
 			<?php if ( 'slideshow-tabbed' == $block_type ) {
 				$classes           = 'block-slideshow-tabbed';
-				$classes_secondary = 'block-text-columns';
 				$pager             = 'data-cycle-pager="#slideshow-tabs-' . $post_id . '"';
 			} else {
 				$classes           = 'block-slideshow';
-				$classes_secondary = 'block-text';
 				$pager             = '';
 			} ?>
 
@@ -161,8 +159,9 @@ class WS_Helpers {
 				<?php $slides = get_post_meta( $post_id, 'block_slideshow_list', true ); ?>
 
 				<?php foreach( $slides as $slide ) : ?>
+					<?php $slide_image = wp_get_attachment_image_src( $slide['image_id'], 'hero' ); ?>
 					<?php echo "\n"; ?>
-					<img src="<?php echo $slide['image']; ?>"
+					<img src="<?php echo $slide_image[0] ?>"
 					     alt=""
 					     data-cycle-desc="<?php echo $slide['caption']; ?>"
 						 <?php if ( 'slideshow-tabbed' == $block_type ) { echo "data-cycle-pager-template='<a href=#>" . $slide['title'] . "</a>'"; } ?>>
