@@ -123,8 +123,8 @@ class WS_Helpers {
 				$classes           = 'block-single-col';
 				$classes_secondary = 'block-text';
 			} ?>
-			<div class="ws-block <?php esc_attr( $classes ); ?>">
-				<div class="<?php esc_attr( $classes_secondary ); ?>">
+			<div class="ws-block <?php echo esc_attr( $classes ); ?>">
+				<div class="<?php echo esc_attr( $classes_secondary ); ?>">
 					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
 					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
 				</div>
@@ -161,11 +161,11 @@ class WS_Helpers {
 					<img src="<?php echo $slide['image']; ?>"
 					     alt=""
 					     data-cycle-desc="<?php echo $slide['caption']; ?>"
-						 <?php if ( 'gallery-tabbed' == $block_type ) { echo  'data-cycle-pager-template="<a href=#>' . $slide['title'] . '</a>"'; } ?>
+						 <?php if ( 'slideshow-tabbed' == $block_type ) { echo  'data-cycle-pager-template="<a href=#>' . $slide['title'] . '</a>"'; } ?>
 						>
 				<?php endforeach; ?>
 
-				<?php if ( 'gallery-tabbed' == $block_type ) : ?>
+				<?php if ( 'slideshow-tabbed' == $block_type ) : ?>
 					<div id="<?php echo esc_attr( 'pager' ); ?>"></div>
 				<?php else : ?>
 					<div class="cycle-pager"></div>
