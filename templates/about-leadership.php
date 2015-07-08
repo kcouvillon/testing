@@ -13,7 +13,7 @@ get_header(); ?>
 
 		<?php the_post(); ?>
 		
-		<section class="about section-content">
+		<section class="section-content">
 			<?php get_template_part( 'partials/content', 'about' ) ?>
 		</section>
 

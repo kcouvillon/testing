@@ -75,8 +75,8 @@ function ws_setup() {
 
 	add_post_type_support( 'page', 'excerpt' );
 
-	update_option( 'thumbnail_size_w', 170 );
-	update_option( 'thumbnail_size_h', 170 );
+	update_option( 'thumbnail_size_w', 270 );
+	update_option( 'thumbnail_size_h', 270 );
 	update_option( 'medium_size_w', 480 );
 	update_option( 'medium_size_h', 480 );
 	update_option( 'large_size_w', 1030 );
