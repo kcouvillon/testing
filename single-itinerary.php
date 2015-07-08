@@ -166,20 +166,60 @@
 				</div>
 			</div>
 
-			<div class="ws-block block-slideshow cycle-slideshow">
+			<div class="ws-block block-slideshow cycle-slideshow"
+				data-cycle-auto-height="container">
 				<div class="cycle-overlay"></div>
 				<div class="cycle-prev"></div>
 				<div class="cycle-next"></div>
+
 				<img src="http://placehold.it/1500x844"
 					alt=""
 					data-cycle-desc="caption text">
-				<img src="http://placehold.it/1500x844"
+				<img src="http://placehold.it/1500x843"
 					alt=""
 					data-cycle-desc="caption text">
-				<img src="http://placehold.it/1500x844"
+				<img src="http://placehold.it/1500x842"
 					alt=""
 					data-cycle-desc="caption text">
+
+				<div class="cycle-pager"></div>
 			</div>
+
+			<div class="ws-block block-slideshow-tabbed cycle-slideshow"
+				data-cycle-pager="#slideshow-tabs"
+				data-cycle-auto-height="container">
+				<div class="cycle-overlay"></div>
+				<div class="cycle-prev"></div>
+				<div class="cycle-next"></div>
+
+				<img src="http://placehold.it/1500x844"
+					alt=""
+					data-cycle-desc="caption text"
+					data-cycle-pager-template="<a href=#>Tab Title 1</a>">
+				<img src="http://placehold.it/1500x843"
+					alt=""
+					data-cycle-desc="caption text"
+					data-cycle-pager-template="<a href=#>Tab Title 2</a>">
+				<img src="http://placehold.it/1500x842"
+					alt=""
+					data-cycle-desc="caption text"
+					data-cycle-pager-template="<a href=#>Tab Title 3</a>">
+				<img src="http://placehold.it/1500x844"
+					alt=""
+					data-cycle-desc="caption text"
+					data-cycle-pager-template="<a href=#>Tab Title 4</a>">
+				<img src="http://placehold.it/1500x843"
+					alt=""
+					data-cycle-desc="caption text"
+					data-cycle-pager-template="<a href=#>Tab Title 5</a>">
+				<img src="http://placehold.it/1500x842"
+					alt=""
+					data-cycle-desc="caption text"
+					data-cycle-pager-template="<a href=#>Tab Title 6</a>">
+					
+			</div>
+			<div id="slideshow-tabs"></div>
+
 
 		</section>
 

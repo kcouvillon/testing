@@ -1,0 +1,91 @@
+.cycle-slideshow {
+	position: relative;
+}
+
+.cycle-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.25);
+	padding: 10px 20px 30px;
+}
+
+.cycle-pager {
+	position: absolute;
+	text-align: center;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2000;
+	color: #fff;
+
+	span {
+		cursor: pointer;
+	}
+
+	.cycle-pager-active {
+		color: $gray_light;
+	}
+}
+
+.cycle-prev, .cycle-next {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 25%;
+	z-index: 3000;
+	color: #fff;
+	cursor: pointer;
+}
+
+.cycle-prev {
+	&:after {
+		content: "\25C0";
+		position: absolute;
+		top: 43%;
+		left: 20px;
+		font-size: em(40);
+	}
+}
+
+.cycle-next {
+	left: auto;
+	right: 0;
+
+	&:after {
+		content: "\25B6";
+		position: absolute;
+		top: 43%;
+		right: 20px;
+		font-size: em(40);
+	}
+}
+
+#slideshow-tabs {
+	display: none;
+
+	@include susy-media($screen-md) {
+		display: flex;
+	}
+
+	a {
+		display: inline-block;
+		padding: 10px 0;
+		background: $blue_light;
+		color: $blue;
+		font-size: em(22);
+		font-weight: 700;
+		flex-grow: 1;
+		text-align: center;
+
+		&:hover, &.cycle-pager-active {
+			background: $blue_dark;
+			color: #fff;
+		}
+	}
+
+}

@@ -5,7 +5,6 @@
 .ws-block {
 	@include susy-media($screen-sm) {
 		display: flex;
-		align-items: stretch;
 	}
 
 	h3, .h3 {
