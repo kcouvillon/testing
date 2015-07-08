@@ -78,7 +78,7 @@ class WS_Metaboxes_Collections {
 
 		$cmb->add_field( array(
 			'name'       => __( 'Title', 'cmb2' ),
-			'id'         => 'title',
+			'id'         => $prefix . 'title',
 			'type'       => 'text',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
@@ -115,7 +115,7 @@ class WS_Metaboxes_Collections {
 
 		$cmb->add_field( array(
 			'name'       => __( 'Title', 'cmb2' ),
-			'id'         => 'title',
+			'id'         => $prefix . 'title',
 			'type'       => 'text',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
