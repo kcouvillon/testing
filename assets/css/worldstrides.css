@@ -5993,7 +5993,8 @@ p {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 5vw; }
+  padding: 0 5vw;
+  overflow: hidden; }
 
 .bg-gray-base, .bg-gray-darker, .bg-gray-dark, .bg-gray {
   color: #f2f2f4; }
@@ -8105,7 +8106,8 @@ section:after {
     column-gap: 6em; } }
 
 .cycle-slideshow {
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .cycle-overlay {
   position: absolute;
