@@ -14,7 +14,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 		<?php
 		$background = '';
 		if ( has_post_thumbnail() ) {
-			$featured = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+			$featured = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
 			// if it's a postcard, don't add the overlay
 			if ( $blog_type === 'postcard' ) :
 				$background = 'url(' . $featured[0] . ')';

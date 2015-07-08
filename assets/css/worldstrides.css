@@ -8157,12 +8157,12 @@ section:after {
     right: 20px;
     font-size: 2.5em; }
 
-#slideshow-tabs {
+.slideshow-tabs {
   display: none; }
   @media (min-width: 960px) {
-    #slideshow-tabs {
+    .slideshow-tabs {
       display: flex; } }
-  #slideshow-tabs a {
+  .slideshow-tabs a {
     display: inline-block;
     padding: 10px 0;
     background: #bde5ff;
@@ -8171,7 +8171,7 @@ section:after {
     font-weight: 700;
     flex-grow: 1;
     text-align: center; }
-    #slideshow-tabs a:hover, #slideshow-tabs a.cycle-pager-active {
+    .slideshow-tabs a:hover, .slideshow-tabs a.cycle-pager-active {
       background: #3076bc;
       color: #fff; }
 

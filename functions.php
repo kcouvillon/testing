@@ -81,6 +81,8 @@ function ws_setup() {
 	update_option( 'medium_size_h', 480 );
 	update_option( 'large_size_w', 1030 );
 	update_option( 'large_size_h', 1030 );
+
+	add_image_size( 'hero', 1500 );
 }
 
 add_action( 'after_setup_theme', 'ws_setup' );
