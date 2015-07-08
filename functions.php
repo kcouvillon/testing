@@ -83,6 +83,7 @@ function ws_setup() {
 	update_option( 'large_size_h', 1030 );
 
 	add_image_size( 'hero', 1500 );
+	add_image_size( 'square', 1030, 1030 );
 }
 
 add_action( 'after_setup_theme', 'ws_setup' );
