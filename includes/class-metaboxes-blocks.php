@@ -216,6 +216,9 @@ class WS_Metaboxes_Blocks {
 			'name' => __( 'Image', 'cmb2' ),
 			'id'   => 'image',
 			'type' => 'file',
+			'options' => array(
+				'url' => false,
+			)
 		) );
 	}
 
