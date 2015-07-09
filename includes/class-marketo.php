@@ -45,16 +45,19 @@ class WS_Marketo {
 	 * @return string Marketo embed
 	 */
 	public function marketo_shortcode( $attributes ) {
+
+		// Defaults can be set here
 		$attributes = shortcode_atts( array(
 			'id' => '',
 		), $attributes, 'marketo' );
 
-		$marketo_id = '593-ASZ-675'; // this id should come from a settings page
+		$marketo_id = '593-ASZ-675';
 
 		$form_id = $attributes['id'];
 		// $form_id = (int) '1679'; // marketo sample form
 
 		ob_start() ?>
+
 			<div class="embedded-marketo-form">
 				<script src="//app-sjg.marketo.com/js/forms2/js/forms2.min.js"></script>
 				<form id="mktoForm_<?php echo esc_attr( $form_id ); ?>"></form>
@@ -64,12 +67,6 @@ class WS_Marketo {
 				</script>
 			</div>
 
-			<div class="debug">
-				<pre>
-					<?php echo "<pre>Marketo ID: " . $marketo_id . '</pre>'; ?>
-					<?php echo "<pre>Form ID: " . $form_id . '</pre><br>'; ?>
-				</pre>
-			</div>
 		<?php
 		$output = ob_get_contents();
 
