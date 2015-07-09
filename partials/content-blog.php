@@ -7,7 +7,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if ( ! is_single() ) : ?>
+	<?php if ( ! is_singular( 'post' ) ) : ?>
 
 			<?php
 			$background = '';
@@ -27,7 +27,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 	<div class="entry-body">
 
-		<?php if( ! is_single() ) :
+		<?php if( ! is_singular( 'post' ) ) :
 			get_template_part( 'partials/content', 'blog-author' );
 		?>
 
