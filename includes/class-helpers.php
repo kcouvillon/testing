@@ -185,6 +185,42 @@ class WS_Helpers {
 
 		return $html;
 	}
+
+	// determine the topmost parent of a term
+	public function get_term_top_most_parent( $term_slug, $taxonomy ) {
+
+		// start from the current term
+		$parent  = get_term_by( 'slug', $term_slug, $taxonomy);
+
+		// climb up the hierarchy until we reach a term with parent = '0'
+		while ( $parent->parent != '0' ){
+			$term_id = $parent->parent;
+
+			$parent  = get_term_by( 'id', $term_id, $taxonomy);
+		}
+
+		return $parent;
+	}
+
+	/**
+	 * Helper function for retrieving a destination from the filter taxonomy
+	 *
+	 * @param $post_id
+	 *
+	 * @return string Our html output
+	 */
+	public static function get_destination( $post_id ) {
+		$destination_parent  = get_term_by( 'slug', 'destinations', 'filter' );
+		$destination_parent_id = $destination_parent->term_id;
+
+		//var_dump( $destination_parent_id );
+
+		$terms = wp_get_post_terms( $post_id, 'filter' );
+
+		// loop through terms, see if parent id equals destination id, get first term that's true
+
+		// var_dump( $terms );
+	}
 }
 
 WS_Helpers::instance();
