@@ -184,6 +184,14 @@ class WS_Metaboxes {
 		) );
 
 		$cmb->add_field( array(
+			'name'        => __( 'Related Collection/Itinerary' ),
+			'id'          => 'ws_blog_related_content',
+			'type'        => 'post_search_text',
+			'post_type'   => 'itinerary', // this gets overridden
+			'select_type' => 'radio'
+		) );
+
+		$cmb->add_field( array(
 			'name' => __( 'Old Url', 'cmb2' ),
 			'id'   => 'ws_blog_old_url',
 			'type' => 'text_url'
