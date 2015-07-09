@@ -113,27 +113,61 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 			<?php if ( $blog_type === 'general' ) : ?>
 
-				<aside class="sidebar">
-					<article class="post-1 post type-post status-publish format-standard hentry category-new" id="post-1">
-						<header class="section-header entry-header pattern-8" style="background-image: ;">
-							<ul class="post-categories">
-								<li>
-									<a href="http://worldstrides.dev/category/new/" rel="category tag">New</a>
-								</li>
-							</ul>
+				<?php
+				// Related content is a comma separated string, needs to be an integer array for post__in
+				$related_content = array_map( 'intval', explode( ',', get_post_meta( $post->ID, 'ws_blog_related_content', true ) ) );
 
-							<h2 class="entry-title">STATIC MARKUP</h2>
-						</header>
+				$related_content_posts = new WP_Query( array(
+					'post__in'               => $related_content,
+					'no_found_rows'          => true,
+					'update_post_term_cache' => false,
+					'update_post_meta_cache' => false,
+					'post_type'              => array( 'itinerary', 'collection' )
+				) );
+				?>
 
-						<div class="entry-body">
-							<div class="entry-content">
-								<p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!</p>
-								<button class="btn btn-primary">STATiC BUTTON</button>
-							</div>
-						</div>
+				<?php if ( $related_content_posts->have_posts() ) : ?>
 
-					</article>
-				</aside>
+					<aside class="sidebar">
+
+						<?php while ( $related_content_posts->have_posts() ) : ?>
+							<?php
+							$related_content_posts->the_post();
+
+							$background = '';
+
+							if ( has_post_thumbnail() ) {
+								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+								$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+							}
+							?>
+
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<header class="section-header entry-header pattern-8" style="background-image: <?php echo $background ?>;">
+									<ul class="post-categories">
+										<li>
+											<a href="http://worldstrides.dev/category/new/" rel="category tag">Term</a>
+											<?php // WS_Helpers::get_destination( $post->ID ); ?>
+										</li>
+									</ul>
+
+									<h2 class="entry-title"><?php the_title(); ?></h2>
+								</header>
+
+								<div class="entry-body">
+									<div class="entry-content">
+										<p><?php the_excerpt(); ?></p>
+										<a href="<?php the_permalink(); ?>"><button class="btn btn-primary">Learn More</button></a>
+									</div>
+								</div>
+
+							</article>
+
+						<?php endwhile; ?>
+
+					</aside>
+
+				<?php endif; ?>
 
 			<?php endif; ?>
 
