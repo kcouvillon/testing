@@ -84,6 +84,7 @@ function ws_setup() {
 
 	add_image_size( 'hero', 1500 );
 	add_image_size( 'square', 1030, 900, true );
+
 }
 
 add_action( 'after_setup_theme', 'ws_setup' );
@@ -162,3 +163,11 @@ remove_action( 'wp_head', 'wp_generator' );
 remove_filter( 'the_content', 'wpautop' );
 add_filter( 'the_content', 'wpautop', 99 );
 add_filter( 'the_content', 'shortcode_unautop', 100 );
+
+/**
+ * Remove default custom fields box
+ */
+function customize_meta_boxes() {
+	remove_meta_box( 'postcustom', 'post', 'normal' );
+}
+add_action( 'admin_init', 'customize_meta_boxes' );

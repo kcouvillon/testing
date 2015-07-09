@@ -284,7 +284,7 @@ class WS_Metaboxes_Collections {
 
 		$cmb->add_field( array(
 			'name'        => __( 'Blog post' ),
-			'id'          => 'collection_block_after',
+			'id'          => 'collection_blog_post',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
 			'post_type'   => 'post',
