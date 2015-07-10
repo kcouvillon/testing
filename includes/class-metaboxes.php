@@ -36,6 +36,7 @@ class WS_Metaboxes {
 	 * Sets up actions and filters.
 	 */
 	protected function _init() {
+		add_action( 'cmb2_init',  array( $this, 'general_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'hero_tooltips' ) );
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
@@ -48,6 +49,29 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_offices_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
+	}
+
+	/**
+	 * A general option metabox
+	 *
+	 * Currently used on Destinations, Interests, Travelers and Collections
+	 */
+	function general_options() {
+
+		$prefix = 'general_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Options', 'cmb2' ),
+			'object_types' => array( 'interest', 'destination', 'traveler', 'collection' ),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Display Title',
+			'id'               => $prefix . 'display_title',
+			'type'             => 'text'
+		) );
+
 	}
 
 	/**
