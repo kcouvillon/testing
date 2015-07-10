@@ -206,33 +206,34 @@ class WS_Helpers {
 	 * Helper function for retrieving a destination from the filter taxonomy
 	 *
 	 * @param $post_id
+	 * @param $parent
 	 *
 	 * @return string Our html output
 	 */
-	public static function get_destination( $post_id ) {
-		$destination = '';
-		$title = '';
+	public static function get_subtitle( $post_id, $parent = 'destination' ) {
+		$subtitle_term = '';
+		$subtitle = '';
 
-		$destination_parent  = get_term_by( 'slug', 'destinations', 'filter' );
-		$destination_parent_id = $destination_parent->term_id;
+		$subtitle_term_parent  = get_term_by( 'slug', $parent, 'filter' );
+		$subtitle_term_parent_id = $subtitle_term_parent->term_id;
 
 		$terms = wp_get_post_terms( $post_id, 'filter' );
 
 		foreach ( $terms as $term ) {
-			$parent = WS_Helpers::get_term_top_most_parent( $term->term_id, 'filter' );
+			$subtitle_parent = WS_Helpers::get_term_top_most_parent( $term->term_id, 'filter' );
 
 			//var_dump( $parent );
-			if ( $parent->term_id == $destination_parent_id ) {
-				$destination = $term;
+			if ( $subtitle_parent->term_id == $subtitle_term_parent_id ) {
+				$subtitle_term = $term;
 				break;
 			}
 		}
 
-		if ( ! empty( $destination) ) {
-			$title = $destination->name;
+		if ( ! empty( $subtitle_term) ) {
+			$subtitle = $subtitle_term->name;
 		}
 
-		return $title;
+		return $subtitle;
 
 		// loop through terms, see if parent id equals destination id, get first term that's true
 
