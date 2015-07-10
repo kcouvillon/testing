@@ -39,7 +39,15 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 		<?php else : ?>
 
 			<div class="entry-content">
+
 				<?php the_content(); ?>
+
+				<div class="related-postcard">
+					<img src="http://placehold.it/400x300" alt="">
+					<h3>Related Postcard</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia architecto aut quo nemo debitis vel, rem officia necessitatibus esse, numquam magni illo eligendi. Officiis, soluta dicta temporibus repellendus! A, architecto.</p>
+				</div>
+
 			</div>
 
 		<?php endif; ?>

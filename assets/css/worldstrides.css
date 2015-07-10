@@ -6681,8 +6681,11 @@ a.no-decoration {
     float: right;
     margin-right: 0; } }
 
-.travelogue .entry-content > * {
-  max-width: 48.8188976378%; }
+@media (min-width: 768px) {
+  .travelogue .entry-content > * {
+    max-width: 48.8188976378%;
+    float: left;
+    clear: left; } }
 
 .travelogue .entry-content blockquote {
   float: right;
@@ -6714,6 +6717,14 @@ a.no-decoration {
   position: absolute;
   left: 0;
   bottom: 0; }
+
+@media (min-width: 768px) {
+  .travelogue .related-postcard {
+    margin-top: -200px;
+    max-width: 48.8188976378%;
+    float: right;
+    padding: 0;
+    clear: none; } }
 
 .campaign-single-wrap {
   display: block;

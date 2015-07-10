@@ -17,7 +17,12 @@
 	.entry-content {
 
 		> * {
-			max-width: span(5 of 10);
+
+			@include susy-media($screen-sm) {
+				max-width: span(5 of 10);
+				float: left;
+				clear: left;
+			}
 		}
 
 		blockquote {
@@ -45,6 +50,17 @@
 			position: absolute;
 			left: 0;
 			bottom: 0;
+		}
+	}
+
+	.related-postcard {
+
+		@include susy-media($screen-sm) {
+			margin-top: -200px;
+			max-width: span(5 of 10);
+			float: right;
+			padding: 0;
+			clear: none;
 		}
 	}
 }
