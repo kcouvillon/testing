@@ -208,7 +208,8 @@ class WS_Metaboxes {
 		) );
 
 		$cmb->add_field( array(
-			'name'        => __( 'Related Collection/Itinerary' ),
+			'name'        => __( 'Related Content' ),
+			'desc'        => 'A collection, itinerary or blog post to appear in the sidebar',
 			'id'          => 'ws_blog_related_content',
 			'type'        => 'post_search_text',
 			'post_type'   => 'itinerary', // this gets overridden
