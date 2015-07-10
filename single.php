@@ -144,13 +144,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<header class="section-header entry-header pattern-8" style="background-image: <?php echo $background ?>;">
-									<ul class="post-categories">
-										<li>
-											<a href="http://worldstrides.dev/category/new/" rel="category tag">Term</a>
-											<?php // WS_Helpers::get_destination( $post->ID ); ?>
-										</li>
-									</ul>
-
+									<?php // @todo add subheader in blue; ?>
 									<h2 class="entry-title"><?php the_title(); ?></h2>
 								</header>
 
