@@ -144,7 +144,15 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<header class="section-header entry-header pattern-8" style="background-image: <?php echo $background ?>;">
-									<?php // @todo add subheader in blue; ?>
+									<?php $subtitle = WS_Helpers::get_subtitle( $post->ID, 'destination' ); ?>
+									<?php if ( $subtitle ) : ?>
+									<ul class="post-categories">
+										<li>
+											<?php echo $subtitle; ?>
+										</li>
+									</ul>
+									<?php endif; ?>
+
 									<h2 class="entry-title"><?php the_title(); ?></h2>
 								</header>
 
