@@ -171,3 +171,12 @@ function customize_meta_boxes() {
 	remove_meta_box( 'postcustom', 'post', 'normal' );
 }
 add_action( 'admin_init', 'customize_meta_boxes' );
+
+
+function ws_modified_queries( $query ) {
+	if ( is_tax( 'resource-target' ) && ! is_admin() ) {
+		$query->set( 'posts_per_page', '100' );
+		return;
+	}
+}
+add_action( 'pre_get_posts', 'ws_modified_queries', 1 );

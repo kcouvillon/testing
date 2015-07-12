@@ -34,12 +34,49 @@ if ( !empty ($parent_id) ) {
 	</header>
 
 	<?php
+	$shared_terms = array();
 	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+	// Only display this nav on child terms
 	if( $term->parent > 0 ) : ?>
 
-	<nav class="resource-nav section-nav">
-		<?php wp_nav_menu( array( 'theme_location' => 'resource-types', 'menu_class' => 'section-menu' ) ); ?>
-	</nav>
+		<?php while ( have_posts() ) : the_post(); ?>
+
+			<?php
+			$terms = wp_get_post_terms( $post->ID, 'resource-type' );
+
+			// Get terms from each post and add to array
+			foreach ( $terms as $term ) {
+				$shared_terms[] = $term->term_id;
+			}
+			?>
+
+		<?php endwhile; ?>
+
+		<?php
+		$shared_terms = array_unique( $shared_terms );
+
+		$resource_types = get_terms( 'resource-type', array(
+			'hide_empty' => false,
+			'include'    => $shared_terms
+		) );
+
+		// @todo we may want to store these menus in transients or some sort of cache if they proove problematic
+		?>
+
+		<nav class="resource-nav section-nav">
+			<div class="section-menu">
+				<ul>
+					<?php foreach( $resource_types as $type ) : ?>
+
+						<li>
+							<a href=""><?php echo $type->name; ?></a>
+						</li>
+
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</nav>
 
 	<?php endif; ?>
 
