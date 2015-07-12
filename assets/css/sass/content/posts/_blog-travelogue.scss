@@ -26,10 +26,12 @@
 		}
 
 		blockquote {
-			float: right;
-			margin: 100px 0;
-			max-width: span(5 of 10);
-			padding: 0;
+			@include susy-media($screen-sm) {
+				float: right;
+				margin: 100px 0;
+				max-width: span(5 of 10);
+				padding: 0;
+			}
 		}
 
 		figure {
@@ -39,17 +41,25 @@
 			position: relative;
 
 			img {
-				@include span(7 of 10 last);
+				@include span(full);
 				padding: 0;
+
+				@include susy-media($screen-sm) {
+					@include span(7 of 10 last);
+				}
 			}
 		}
 
 		figcaption {
-			@include span(3 of 10);
 			font-size: em(10);
-			position: absolute;
-			left: 0;
-			bottom: 0;
+			text-align: left;
+
+			@include susy-media($screen-sm) {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				@include span(3 of 10);
+			}
 		}
 	}
 
