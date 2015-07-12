@@ -25,8 +25,17 @@
 	text-transform: uppercase;
 	font-size: em(12);
 
-	time, a {
+	time, a, span {
 		margin-right: 10px;
+		margin-left: 10px;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 
 	a {

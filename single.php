@@ -30,8 +30,9 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 				<div class="section-header-content">
 
 					<nav class="breadcrumbs">
-						<?php the_time( 'F, j Y' ); ?>
-						<?php echo get_the_category_list( '&nbsp;' ); ?>
+						<time><?php the_time( 'F, j Y' ); ?></time>>
+						<?php echo get_the_category_list( '>' ); ?>>
+						<span><?php echo get_the_title(); ?></span>
 					</nav>
 					<h1><?php echo get_the_title(); ?></h1>
 					<?php echo get_the_excerpt(); ?>

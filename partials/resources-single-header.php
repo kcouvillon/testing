@@ -13,7 +13,7 @@
 				?>
 				<a href="<?php echo home_url( '/') . get_page_uri($resource_page->ID); ?>">Resource Center</a>
 				>
-				<?php the_title(); ?>
+				<span><?php the_title(); ?></span>
 			</nav>
 			<h1><?php the_title(); ?></h1>
 		</div>

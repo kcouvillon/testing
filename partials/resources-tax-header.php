@@ -27,7 +27,7 @@ if ( !empty ($parent_id) ) {
 
 				<?php } ?>
 				>
-				<?php echo $title; ?>
+				<span><?php echo $title; ?></span>
 			</nav>
 			<h1><?php echo $title; ?></h1>
 		</div>
