@@ -22,9 +22,9 @@ get_header(); ?>
 			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
 					<nav class="breadcrumbs">
-						<a href="">Explore</a>
-						<a href="">Interests</a>
-						<a href=""><?php the_title(); ?></a>
+						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
+						<a href="<?php echo esc_url( home_url( '/travelers' ) ); ?>">Travelers</a>>
+						<span><?php the_title(); ?></span>
 					</nav>
 					<h1><?php the_title(); ?></h1>
 

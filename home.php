@@ -33,6 +33,8 @@
 
 				<?php endwhile; ?>
 
+				<?php echo paginate_links(); ?>
+
 			<?php else : ?>
 
 				<p>Nothing found</p>

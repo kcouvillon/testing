@@ -27,7 +27,8 @@
 .blog-single-content {
 	@include span(full);
 	padding-top: 2em;
-	padding-left: 5vw;
+	padding-left: 2vw;
+	padding-right: 2vw;
 
 	@include susy-media($screen-sm) {
 		@include span(6);
