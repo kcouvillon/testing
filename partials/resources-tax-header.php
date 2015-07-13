@@ -35,6 +35,7 @@ if ( !empty ($parent_id) ) {
 
 	<?php
 	$shared_terms = array();
+	$performing_arts__terms = array();
 	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 
 	// Only display this nav on child terms
@@ -44,16 +45,25 @@ if ( !empty ($parent_id) ) {
 
 			<?php
 			$terms = wp_get_post_terms( $post->ID, 'resource-type' );
+			$performing_arts = get_term_by( 'slug', 'performing-arts', 'resource-type' );
 
 			// Get terms from each post and add to array
 			foreach ( $terms as $term ) {
-				$shared_terms[] = $term->term_id;
+				if ( $term->parent == $performing_arts->term_id ) {
+					$performing_arts_terms[] = $term->term_id;
+				} else {
+					$shared_terms[] = $term->term_id;
+				}
 			}
 			?>
 
 		<?php endwhile; ?>
 
 		<?php
+
+		if ( is_tax( 'resource-target', array( 'performing-arts-parents', 'performing-arts-educators', 'performing-arts-students' ) ) ) {
+			$shared_terms = $performing_arts_terms;
+		}
 		$shared_terms = array_unique( $shared_terms );
 
 		$resource_types = get_terms( 'resource-type', array(
@@ -70,7 +80,7 @@ if ( !empty ($parent_id) ) {
 					<?php foreach( $resource_types as $type ) : ?>
 
 						<li>
-							<a href=""><?php echo $type->name; ?></a>
+							<a href="#<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
 						</li>
 
 					<?php endforeach; ?>

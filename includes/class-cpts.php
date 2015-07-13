@@ -45,12 +45,27 @@ class WS_Custom_Post_Types {
 	 * Register our custom post types
 	 */
 	public function setup_post_types() {
+
+		$admin_cols_default = array(
+			// A taxonomy terms column:
+			'product_line'   => array(
+				'taxonomy' => 'product-line'
+			),
+			// The default Title column:
+			'title',
+			// A post field column:
+			'last_modified'  => array(
+				'title'      => 'Last Modified',
+				'post_field' => 'post_modified',
+			) );
+
 		/**
 		 * Define Itinerary custom post type
 		 */
 		register_extended_post_type( 'itinerary',
 			array(
-				'menu_icon' => 'dashicons-location-alt'
+				'menu_icon'   => 'dashicons-location-alt',
+				'admin_cols'  => $admin_cols_default
 			),
 			array(
 				'plural' => 'Itineraries'
@@ -62,7 +77,8 @@ class WS_Custom_Post_Types {
 		 */
 		register_extended_post_type( 'collection',
 			array(
-				'menu_icon' => 'dashicons-format-gallery'
+				'menu_icon' => 'dashicons-format-gallery',
+				'admin_cols'  => $admin_cols_default
 			)
 		);
 
@@ -156,7 +172,8 @@ class WS_Custom_Post_Types {
 				),
 			),
 			array(
-				'plural' => 'Why WS'
+				'plural' => 'Why WS',
+				'admin_cols'  => $admin_cols_default
 			)
 		);
 

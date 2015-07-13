@@ -176,6 +176,8 @@ add_action( 'admin_init', 'customize_meta_boxes' );
 function ws_modified_queries( $query ) {
 	if ( is_tax( 'resource-target' ) && ! is_admin() ) {
 		$query->set( 'posts_per_page', '100' );
+		$query->set( 'orderby', 'title' );
+		$query->set( 'order', 'ASC' );
 		return;
 	}
 }
