@@ -60,6 +60,10 @@ if ( !empty ($parent_id) ) {
 		<?php endwhile; ?>
 
 		<?php
+
+		if ( is_tax( 'resource-target', array( 'performing-arts-parents', 'performing-arts-educators', 'performing-arts-students' ) ) ) {
+			$shared_terms = $performing_arts_terms;
+		}
 		$shared_terms = array_unique( $shared_terms );
 
 		$resource_types = get_terms( 'resource-type', array(
