@@ -101,7 +101,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 						</div>
 					</div>
 
-					FACEBOOK COMMENTS HERE
+					<div class="fb-comments" data-href="<?php the_permalink(); ?>"></div>
 
 				<?php else : ?>
 
