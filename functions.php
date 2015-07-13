@@ -103,7 +103,7 @@ function ws_scripts_styles() {
 	}
 
 	if ( is_page_template( 'templates/resources.php' ) || is_tax( 'resource-target' ) ) {
-		wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/isotope.pkgd.min.js", array( 'jquery' ), WS_VERSION, true );
+		wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/vendor/isotope.pkgd.min.js", array( 'jquery' ), WS_VERSION, true );
 	}
 
 
