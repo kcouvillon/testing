@@ -123,16 +123,16 @@ add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
 /**
  * Add class to body_class if there is a featured image
  */
-function ws_add_body_classes( $classes ) {
-	global $post;
-	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() ) {
-		$classes[] = 'has-featured-image';
-	}
+// function ws_add_body_classes( $classes ) {
+// 	global $post;
+// 	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_page( 'about' ) ) {
+// 		$classes[] = 'has-featured-image';
+// 	}
 
-	return $classes;
-}
+// 	return $classes;
+// }
 
-add_filter( 'body_class', 'ws_add_body_classes' );
+// add_filter( 'body_class', 'ws_add_body_classes' );
 
 /**
  * Customize ellipsis after the_excerpt

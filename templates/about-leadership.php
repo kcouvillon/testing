@@ -34,7 +34,7 @@ get_header(); ?>
 						<?php if ( has_post_thumbnail( $bio_id ) ) : ?>
 							<div class="headshot">
 								<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
-								<?php echo get_the_post_thumbnail( $bio_id, 'large' ); ?>
+								<?php echo get_the_post_thumbnail( $bio_id, 'medium' ); ?>
 							</div>
 						<?php endif; ?>
 
@@ -54,6 +54,7 @@ get_header(); ?>
 						$content = $bio->post_excerpt;
 						if ( ! $content ) {
 							$content = $bio->post_content;
+							echo 'FALSE';
 						}
 						?>
 						<?php echo apply_filters( 'content', $content ); ?>
