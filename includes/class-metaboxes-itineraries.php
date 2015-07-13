@@ -122,8 +122,14 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_field( array(
 			'name' => __( 'Internal Trip ID', 'cmb2' ),
-			'id'   => 'ws_blog_',
+			'id'   => $prefix . 'trip_id',
 			'type' => 'text_small'
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Old Url', 'cmb2' ),
+			'id'   => $prefix . 'old_url',
+			'type' => 'text_url'
 		) );
 	}
 
