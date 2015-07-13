@@ -119,7 +119,8 @@ class WS_Custom_Taxonomies {
 				'destination',
 				'interest',
 				'traveler',
-				'resource'
+				'resource',
+				'block'
 			),
 			array(
 				'rewrite'       => false,
