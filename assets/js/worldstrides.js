@@ -209,8 +209,9 @@
 			$( '.active' ).removeClass('active');
 			$( this ).addClass('active');
 			var filter = $( this ).attr('data-filter');
+			var title = filter.replace( /-/g, ' ');
 
-			$( resourceTitle ).text("questions about " + filter);
+			$( resourceTitle ).text("questions about " + title);
 
 			$( '.resource-type-' + filter + '' )
 			.fadeIn('fast').siblings('.resource-question:not(.resource-type-' + filter + ')').fadeOut('fast');
