@@ -79,7 +79,7 @@ if ( !empty ($parent_id) ) {
 				<?php foreach( $resource_types as $type ) : ?>
 
 					<li>
-						<a href="#<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
+						<a href="#" data-filter="<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
 					</li>
 
 				<?php endforeach; ?>

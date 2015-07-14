@@ -14,6 +14,7 @@
 	h2 {
 		@include container();
 		margin-bottom: 38px;
+		text-transform: capitalize;
 	}
 
 	> p {

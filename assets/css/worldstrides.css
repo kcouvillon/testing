@@ -7092,9 +7092,9 @@ section:after {
     line-height: 3; }
     .section-menu a:hover {
       color: #b3b7bf; }
-    .about .section-menu a {
+    .about .section-menu a, .section-menu a.active {
       color: #b3b7bf; }
-      .about .section-menu a:hover {
+      .about .section-menu a:hover, .section-menu a.active:hover {
         color: #fff; }
 
 .section-title {
@@ -7585,7 +7585,8 @@ section:after {
     margin-left: auto;
     margin-right: auto;
     padding: 0 5vw;
-    margin-bottom: 38px; }
+    margin-bottom: 38px;
+    text-transform: capitalize; }
   .section-resource-questions > p {
     display: block;
     max-width: 1500px;

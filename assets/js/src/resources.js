@@ -11,11 +11,15 @@
 
 	// RESOURCES PAGE BEHAVIOR
 
-	var resourceTarget = document.querySelectorAll( '.resource-target' );
-	var resourceQuestion = document.querySelectorAll( '.resource-question a' );
-	var sectionNav = document.querySelectorAll( '.section-nav' );
+	var resourceTarget = document.querySelectorAll( '.resource-target' ),
+		resourceQuestion = document.querySelectorAll( '.resource-question > .entry-header > a' ),
+		sectionNav = document.querySelectorAll( '.section-nav' ),
+		resourceNav = document.querySelectorAll( '.resource-nav' ),
+		resourceTitle = document.querySelectorAll( '.section-resource-questions h2');
 
 	$(document).ready(function() {
+
+		// Resource Landing Page
 
 		$(resourceTarget).first().addClass('active');
 
@@ -38,8 +42,28 @@
 			}
 		}, "> a");
 
+		// Resource Taxonomy Pages
+
 		$( sectionNav ).scrollToFixed();
 
+		setTimeout(function() {
+			$( '.resource-nav ul > li:first-child > a').trigger("click");
+			console.log('hi');
+		}, 1);
+
+		$( resourceNav ).on( 'click', 'a', function(e) {
+			e.preventDefault();
+			$( '.active' ).removeClass('active');
+			$( this ).addClass('active');
+			var filter = $( this ).attr('data-filter');
+			var title = filter.replace( /-/g, ' ');
+
+			$( resourceTitle ).text("questions about " + title);
+
+			$( '.resource-type-' + filter + '' )
+			.fadeIn('fast').siblings('.resource-question:not(.resource-type-' + filter + ')').fadeOut('fast');
+
+		});
 	});
 
  } )( jQuery );
