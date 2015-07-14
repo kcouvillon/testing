@@ -56,6 +56,12 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_field( array(
+			'name' => __( 'Subtitle', 'cmb2' ),
+			'id'   => 'itinerary_subtitle',
+			'type' => 'text'
+		) );
+
+		$cmb->add_field( array(
 			'name' => 'Duration',
 			'desc' => 'Number of days',
 			'id' => $prefix . 'duration',
