@@ -5,7 +5,20 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	
+	<?php if ( is_singular( 'press' ) ) {
+		$background = '';
+		if ( has_post_thumbnail() ) {
+			$has_post_thumbnail = true;
+			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+		}
+	} ?>
+
+	<header class="entry-header<?php if ( $has_post_thumbnail ) echo ' press-thumbnail'; ?>" <?php if ( $has_post_thumbnail ) echo 'style="background: '. $background .'"'; ?>>
+
+		<time><?php the_time( 'F, j Y' ); ?></time>
+
 		<h1 class="entry-title">
 				<?php the_title(); ?>
 		</h1>

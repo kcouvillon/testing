@@ -9,6 +9,7 @@
 	}
 
 	&.section-content {
+		
 		@include susy-media($screen-sm) {
 			@include span(9);
 			padding-right: 0;

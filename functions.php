@@ -126,7 +126,7 @@ add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
  */
 function ws_add_body_classes( $classes ) {
 	global $post;
-	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_home() ) {
+	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_home() && ! is_singular( 'press' ) ) {
 		$classes[] = 'has-featured-image';
 	}
 
