@@ -76,10 +76,11 @@ if ( !empty ($parent_id) ) {
 
 		<nav class="resource-nav section-nav">
 			<ul class="section-menu">
+				<li><a href="#" data-filter="all">All</a></li>
 				<?php foreach( $resource_types as $type ) : ?>
 
 					<li>
-						<a href="#<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
+						<a href="#" data-filter="<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
 					</li>
 
 				<?php endforeach; ?>

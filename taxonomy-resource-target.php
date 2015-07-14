@@ -3,7 +3,10 @@
  * Template for the blog categories
  */
 
- get_header(); ?>
+ get_header();
+
+ $title = get_queried_object()->name;
+ ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
@@ -20,7 +23,7 @@
 			
 			if( $term->parent > 0 ) : ?>
 
-				<h2>{Static} Questions about Benefits</h2>
+				<h2>Questions for <?php echo $title; ?></h2>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>

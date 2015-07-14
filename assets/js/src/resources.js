@@ -11,11 +11,14 @@
 
 	// RESOURCES PAGE BEHAVIOR
 
-	var resourceTarget = document.querySelectorAll( '.resource-target' );
-	var resourceQuestion = document.querySelectorAll( '.resource-question a' );
-	var sectionNav = document.querySelectorAll( '.section-nav' );
+	var resourceTarget = document.querySelectorAll( '.resource-target' ),
+		resourceQuestion = document.querySelectorAll( '.resource-question > .entry-header > a' ),
+		sectionNav = document.querySelectorAll( '.section-nav' ),
+		resourceNav = document.querySelectorAll( '.resource-nav' );
 
 	$(document).ready(function() {
+
+		// Resource Landing Page
 
 		$(resourceTarget).first().addClass('active');
 
@@ -38,8 +41,25 @@
 			}
 		}, "> a");
 
+		// Resource Taxonomy Pages
+
 		$( sectionNav ).scrollToFixed();
 
+		$( resourceNav ).on( 'click', 'a', function(e) {
+			e.preventDefault();
+			var filter = $( this ).attr('data-filter');
+
+			if ( filter === 'all' ) {
+
+				$( '.resource-question' ).show();
+
+			} else {
+
+				$( '.resource-type-' + filter + '' )
+				.show().siblings('.resource-question:not(.resource-type-' + filter + ')').hide();
+
+			}
+		});
 	});
 
  } )( jQuery );
