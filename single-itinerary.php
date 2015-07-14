@@ -31,7 +31,13 @@ get_header(); ?>
 						<span><?php the_title(); ?></span>
 					</nav>
 					<h1><?php the_title(); ?></h1>
-					
+
+					<?php $subtitle = get_post_meta( $post->ID, 'itinerary_subtitle', true ); ?>
+
+					<?php if ( $subtitle ) : ?>
+						<p><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+					<?php endif; ?>
+
 					<?php echo get_the_excerpt(); ?>
 				</div>
 			</header>
