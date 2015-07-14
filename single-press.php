@@ -11,6 +11,7 @@
 		<?php get_template_part( 'partials/about', 'header' ); ?>
 
 		<div class="about-wrap">
+
 			<section class="about section-content">
 
 				<?php if ( have_posts() ) : ?>

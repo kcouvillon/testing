@@ -1,5 +1,40 @@
 .press {
 
+	.press-thumbnail {
+		position: relative;
+		@include clearfix;
+		margin-left: -5vw;
+		margin-right: -5vw;
+		padding-right: 5vw;
+		margin-top: -1.89%;
+
+		@include susy-media($screen-sm) {
+			margin-right: -2.79%;
+			margin-top: -2.89%;
+		}
+
+		time {
+			color: #fff;
+			padding-top: 40vh;
+			display: block;
+		}
+
+		.entry-title {
+			margin: 0;
+			margin-bottom: 1em;
+			color: #fff;
+		}
+	}
+
+	.entry-title {
+		color: $color_text_main;
+		margin: 0.5em 5vw 1em;
+
+		@include susy-media($screen-sm) {
+			margin: 0.5em 0 1em;
+		}
+	}
+
 	.entry-content {
 		max-width: 670px;
 	}
@@ -10,3 +45,14 @@
 		}
 	}
 }
+
+.press-featured-image {
+
+	img {
+		width: 100%;
+		margin: 0;
+		float: none;
+	}
+}
+
+.has-featured-image {}
