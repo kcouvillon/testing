@@ -75,17 +75,15 @@ if ( !empty ($parent_id) ) {
 		?>
 
 		<nav class="resource-nav section-nav">
-			<div class="section-menu">
-				<ul>
-					<?php foreach( $resource_types as $type ) : ?>
+			<ul class="section-menu">
+				<?php foreach( $resource_types as $type ) : ?>
 
-						<li>
-							<a href="#<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
-						</li>
+					<li>
+						<a href="#<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
+					</li>
 
-					<?php endforeach; ?>
-				</ul>
-			</div>
+				<?php endforeach; ?>
+			</ul>
 		</nav>
 
 	<?php endif; ?>
