@@ -7606,12 +7606,10 @@ section:after {
   .resource-question:last-of-type .entry-header a {
     border-bottom: 1px solid #989898; }
   .resource-question.open {
-    background: #323c53; }
+    background: #323c53;
+    margin-bottom: 1px; }
     .resource-question.open .entry-header a {
-      color: #fff;
       border: none; }
-      .resource-question.open .entry-header a:hover {
-        color: #b3b7bf; }
     .resource-question.open + .resource-question .entry-header a {
       border-top: none; }
   .resource-question .entry-header {
@@ -7621,7 +7619,8 @@ section:after {
       display: block;
       border-top: 1px solid #989898; }
   .resource-question .entry-content {
-    display: none; }
+    display: none;
+    max-width: 670px; }
     .resource-question .entry-content p {
       font-weight: 200; }
 
