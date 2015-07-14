@@ -17,7 +17,7 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 		}
 		?>
 
@@ -47,7 +47,7 @@ get_header(); ?>
 				<a name="<?php echo sanitize_title( $section['title'] ); ?>"></a>
 				<?php
 				$image = esc_url( $section['image'] );
-				$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $image . ')';
+				$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $image . ')';
 				?>
 				<header class="section-header<?php echo ( !empty( $image ) ) ? ' has-section-image' : ''; ?>" style="background-image: <?php echo $background; ?>;">
 					<div class="section-header-content">

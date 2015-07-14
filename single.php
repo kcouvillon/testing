@@ -20,7 +20,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 				$background = 'url(' . $featured[0] . ')';
 			// if not, include the overlay
 			else :
-				$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+				$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 			endif;
 		} ?>
 
@@ -139,7 +139,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 							if ( has_post_thumbnail() ) {
 								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-								$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+								$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 							}
 							?>
 

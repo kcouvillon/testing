@@ -19,7 +19,7 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
 			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
@@ -174,7 +174,7 @@ get_header(); ?>
 				<?php if ( ! empty( $day['title'] ) ) : ?>
 					<article class="tour-day">
 						<?php if ( ! empty( $day['image'] ) ) : ?>
-							<div class="tour-hero" style="background-image: url(<?php echo $day['image']; ?>);"></div>
+							<div class="tour-hero" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
 						<?php endif; ?>
 						<header>
 							<span class="tour-day-marker">Day</span>
