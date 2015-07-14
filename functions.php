@@ -34,6 +34,7 @@ include WS_PATH . 'includes/cmb2-associated-itineraries/cmb2-associated-itinerar
 // Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
 include WS_PATH . 'includes/class-collections.php';
+include WS_PATH . 'includes/class-comments.php';
 include WS_PATH . 'includes/class-cpts.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
@@ -102,6 +103,11 @@ function ws_scripts_styles() {
 		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
 	}
 
+	if ( is_page_template( 'templates/resources.php' ) || is_tax( 'resource-target' ) ) {
+		wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/vendor/isotope.pkgd.min.js", array( 'jquery' ), WS_VERSION, true );
+	}
+
+
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
 
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
@@ -123,16 +129,16 @@ add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
 /**
  * Add class to body_class if there is a featured image
  */
-// function ws_add_body_classes( $classes ) {
-// 	global $post;
-// 	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_page( 'about' ) ) {
-// 		$classes[] = 'has-featured-image';
-// 	}
+function ws_add_body_classes( $classes ) {
+	global $post;
+	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_home() ) {
+		$classes[] = 'has-featured-image';
+	}
 
-// 	return $classes;
-// }
+	return $classes;
+}
 
-// add_filter( 'body_class', 'ws_add_body_classes' );
+add_filter( 'body_class', 'ws_add_body_classes' );
 
 /**
  * Customize ellipsis after the_excerpt

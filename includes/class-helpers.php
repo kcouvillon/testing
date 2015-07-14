@@ -40,7 +40,7 @@ class WS_Helpers {
 	 *
 	 * @parameter $post_id int post to retrieve blog type
 	 *
-	 * @return html content wrapped in a unordered list
+	 * @return string the post's blog type
 	 */
 	public static function blog_type( $post_id ) {
 		$terms = get_the_terms( $post_id, 'blog-type' );
