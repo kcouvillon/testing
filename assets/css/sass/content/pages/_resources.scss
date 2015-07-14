@@ -34,14 +34,10 @@
 
 	&.open {
 		background: $gray_base;
+		margin-bottom: 1px;
 
 		.entry-header a {
-			color: #fff;
 			border: none;
-
-			&:hover {
-				color: $gray_light;
-			}
 		}
 
 		& + .resource-question .entry-header a {
@@ -61,6 +57,7 @@
 
 	.entry-content {
 		display: none;
+		max-width: 670px;
 
 		p {
 			font-weight: 200;

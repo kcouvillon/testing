@@ -1,0 +1,12 @@
+.press {
+
+	.entry-content {
+		max-width: 670px;
+	}
+
+	&.has-post-thumbnail {
+		.entry-content {
+			max-width: none;
+		}
+	}
+}

@@ -7455,6 +7455,12 @@ section:after {
   background-image: url(../images/src/default-bg.png);
   background-size: 40px 46px; }
 
+.press .entry-content {
+  max-width: 670px; }
+
+.press.has-post-thumbnail .entry-content {
+  max-width: none; }
+
 .example-wrap {
   padding-right: 1.9607843137%; }
   .example-wrap:before,
@@ -7606,12 +7612,10 @@ section:after {
   .resource-question:last-of-type .entry-header a {
     border-bottom: 1px solid #989898; }
   .resource-question.open {
-    background: #323c53; }
+    background: #323c53;
+    margin-bottom: 1px; }
     .resource-question.open .entry-header a {
-      color: #fff;
       border: none; }
-      .resource-question.open .entry-header a:hover {
-        color: #b3b7bf; }
     .resource-question.open + .resource-question .entry-header a {
       border-top: none; }
   .resource-question .entry-header {
@@ -7621,7 +7625,8 @@ section:after {
       display: block;
       border-top: 1px solid #989898; }
   .resource-question .entry-content {
-    display: none; }
+    display: none;
+    max-width: 670px; }
     .resource-question .entry-content p {
       font-weight: 200; }
 
