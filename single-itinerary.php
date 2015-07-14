@@ -31,8 +31,7 @@ get_header(); ?>
 						<span><?php the_title(); ?></span>
 					</nav>
 					<h1><?php the_title(); ?></h1>
-
-					<p><?php the_title(); ?></p>
+					
 					<?php echo get_the_excerpt(); ?>
 				</div>
 			</header>
