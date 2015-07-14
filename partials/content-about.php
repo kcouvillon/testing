@@ -22,9 +22,8 @@
 		<header class="entry-header">
 			<div class="entry-meta">
 				<time datetime=""><?php the_time( 'F j, Y' ); ?></time>
-				<span class="entry-categories"><?php echo get_the_category_list( ', ' ); ?></span>
 			</div>
-			<h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+			<h3 class="entry-title"><?php the_title(); ?></h3>
 		</header>
 	<?php endif; ?>
 
@@ -32,6 +31,7 @@
 		<?php
 		if ( is_archive( 'press' ) ) {
 			the_excerpt();
+			echo '<a href="'. get_the_permalink() .'">Keep Reading</a>';
 		} else {
 			the_content();
 		}

@@ -54,7 +54,6 @@ get_header(); ?>
 						$content = $bio->post_excerpt;
 						if ( ! $content ) {
 							$content = $bio->post_content;
-							echo 'FALSE';
 						}
 						?>
 						<?php echo apply_filters( 'content', $content ); ?>
