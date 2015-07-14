@@ -23,7 +23,7 @@
 			
 			if( $term->parent > 0 ) : ?>
 
-				<h2>Questions for <?php echo $title; ?></h2>
+				<h2>Questions About</h2>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>

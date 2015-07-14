@@ -42,7 +42,7 @@ section {
 			color: $gray-light;
 		}
 
-		.about & {
+		.about &, &.active {
 			color: $gray-light;
 
 			&:hover {

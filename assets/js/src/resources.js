@@ -14,7 +14,8 @@
 	var resourceTarget = document.querySelectorAll( '.resource-target' ),
 		resourceQuestion = document.querySelectorAll( '.resource-question > .entry-header > a' ),
 		sectionNav = document.querySelectorAll( '.section-nav' ),
-		resourceNav = document.querySelectorAll( '.resource-nav' );
+		resourceNav = document.querySelectorAll( '.resource-nav' ),
+		resourceTitle = document.querySelectorAll( '.section-resource-questions h2');
 
 	$(document).ready(function() {
 
@@ -45,20 +46,22 @@
 
 		$( sectionNav ).scrollToFixed();
 
+		setTimeout(function() {
+			$( '.resource-nav ul > li:first-child > a').trigger("click");
+			console.log('hi');
+		}, 1);
+
 		$( resourceNav ).on( 'click', 'a', function(e) {
 			e.preventDefault();
+			$( '.active' ).removeClass('active');
+			$( this ).addClass('active');
 			var filter = $( this ).attr('data-filter');
 
-			if ( filter === 'all' ) {
+			$( resourceTitle ).text("questions about " + filter);
 
-				$( '.resource-question' ).show();
+			$( '.resource-type-' + filter + '' )
+			.fadeIn('fast').siblings('.resource-question:not(.resource-type-' + filter + ')').fadeOut('fast');
 
-			} else {
-
-				$( '.resource-type-' + filter + '' )
-				.show().siblings('.resource-question:not(.resource-type-' + filter + ')').hide();
-
-			}
 		});
 	});
 

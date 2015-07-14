@@ -76,7 +76,6 @@ if ( !empty ($parent_id) ) {
 
 		<nav class="resource-nav section-nav">
 			<ul class="section-menu">
-				<li><a href="#" data-filter="all">All</a></li>
 				<?php foreach( $resource_types as $type ) : ?>
 
 					<li>
