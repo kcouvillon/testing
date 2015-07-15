@@ -122,19 +122,21 @@ class WS_Helpers {
 				</div>
 			</div>
 
-		<?php elseif ( 'column-one' == $block_type || 'column-two' == $block_type ) : ?>
+		<?php elseif ( 'column-one' == $block_type ) : ?>
 
-			<?php if ( 'column-two' == $block_type ) {
-				$classes           = 'block-two-col';
-				$classes_secondary = 'block-text-columns';
-			} else {
-				$classes           = 'block-single-col';
-				$classes_secondary = 'block-text';
-			} ?>
-			<div class="ws-block <?php echo esc_attr( $classes ); ?>">
-				<div class="<?php echo esc_attr( $classes_secondary ); ?>">
-					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
+			<div class="ws-block block-single-col">
+				<div class="block-text">
 					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
+				</div>
+			</div>
+
+		<?php elseif ( 'column-two' == $block_type ) : ?>
+
+			<div class="ws-block block-two-col">
+				<div class="block-text">
+					<div class="block-text-columns">
+						<?php echo apply_filters( 'the_content', $block->post_content ); ?>
+					</div>
 				</div>
 			</div>
 
