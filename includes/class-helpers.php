@@ -322,9 +322,12 @@ class WS_Helpers {
 	 * Get the weather data.
 	 * http://openweathermap.org/api
 	 */
-	public static function get_weather_data( $locationArray ) {
+	public static function get_weather_data( $post_id ) {
+
+		if ( ! $post_id )
+			return false;
 		
-		$weather = get_transient('weatherData');
+		$weather = get_transient( 'weatherData_' . $post_id );
 
 		if ( $weather ) {
 
@@ -332,17 +335,31 @@ class WS_Helpers {
 
 		} else {
 
-			if ( ! is_array( $locationArray ) ) { 
-				$locationArray = array( 'latitude' => '0', 'longitude' => '0' );
+			$location = get_post_meta( $post_id, 'itinerary_details_weather_location', true );
+
+			if ( is_array( $location ) ) {
+
+				$latitude = $location['latitude'];
+				$longitude = $location['longitude'];
+				$data = wp_remote_get( 'http://api.openweathermap.org/data/2.5/weather?lat=' . $latitude . '&lon=' . $longitude . '&units=imperial&APPID=c5f43ae748001fdf50e591cab7c57476' );
+				
+				if ( ! is_wp_error( $data ) ) {
+
+					$json = json_decode( $data['body'] );
+					set_transient( 'weatherData_' . $post_id, $json, 300 );
+					return $json;
+
+				} else {
+
+					return false;
+
+				}
+
+			} else {
+
+				return false;
+
 			}
-			$latitude = $locationArray['latitude'];
-			$longitude = $locationArray['longitude'];
-			$data = wp_remote_get( 'http://api.openweathermap.org/data/2.5/weather?lat=' . $latitude . '&lon=' . $longitude . '&units=imperial&APPID=c5f43ae748001fdf50e591cab7c57476' );
-			$json = json_decode( $data['body'] );
-
-			set_transient( 'weatherData', $json, 300 );
-
-			return $json;
 
 		}
 
