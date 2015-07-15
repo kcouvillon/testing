@@ -38,7 +38,7 @@ get_header(); ?>
 						<p><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
 					<?php endif; ?>
 
-					<?php echo get_the_excerpt(); ?>
+					<?php the_content(); ?>
 				</div>
 			</header>
 
