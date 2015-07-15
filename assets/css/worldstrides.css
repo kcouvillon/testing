@@ -6118,6 +6118,24 @@ a.no-decoration {
     background-color: rgba(0, 0, 0, 0.8); }
   .screen.screen90 {
     background-color: rgba(0, 0, 0, 0.9); }
+  .screen.gradient10 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.1)); }
+  .screen.gradient20 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2)); }
+  .screen.gradient30 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.3)); }
+  .screen.gradient40 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.4)); }
+  .screen.gradient50 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.5)); }
+  .screen.gradient60 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.6)); }
+  .screen.gradient70 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.7)); }
+  .screen.gradient80 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); }
+  .screen.gradient90 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); }
 
 .entry-content:before,
 .entry-content:after,

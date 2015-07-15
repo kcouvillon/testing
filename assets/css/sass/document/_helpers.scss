@@ -49,4 +49,14 @@ a.no-decoration { text-decoration: none; }
 	&.screen70 { background-color: rgba(0,0,0,0.7); }
 	&.screen80 { background-color: rgba(0,0,0,0.8); }
 	&.screen90 { background-color: rgba(0,0,0,0.9); }
+
+	&.gradient10 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.10) ); }
+	&.gradient20 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.20) ); }
+	&.gradient30 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.30) ); }
+	&.gradient40 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.40) ); }
+	&.gradient50 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.50) ); }
+	&.gradient60 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.60) ); }
+	&.gradient70 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.70) ); }
+	&.gradient80 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.80) ); }
+	&.gradient90 { background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.90) ); }
 }
