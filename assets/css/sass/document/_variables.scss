@@ -79,26 +79,11 @@ $color_border_input_focus: #ccc;
 // @include font-face( "Corpid C1s SCd", "../fonts/corpid/CorpidC1sSCd-Bold", bold, $file-formats: otf);
 // @include font-face( "Corpid C1s SCd", "../fonts/corpid/CorpidC1sSCd-Light", light, $file-formats: otf);
 
-@font-face {
-	font-family: 'corpid';
-	src: url('../fonts/corpid/CorpidC1sSCd-Regular.otf') format('opentype');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'corpid';
-	src: url('../fonts/corpid/CorpidC1sSCd-Bold.otf') format('opentype');
-	font-weight: 700;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'corpid';
-	src: url('../fonts/corpid/CorpidC1sSCd-Light.otf') format('opentype');
-	font-weight: 200;
-	font-style: normal;
-}
+@include font-face( "corpid", "../fonts/corpid/CorpidC1SCd_500_Regular/CorpidC1SCd_500_", $file_formats: eot otf svg woff);
+@include font-face( "corpid", "../fonts/corpid/CorpidC1SCd_500i_RegularItalic/CorpidC1SCd_500i", normal, italic, $file_formats: eot svg woff);
+@include font-face( "corpid", "../fonts/corpid/CorpidC1SCd_300_Light/CorpidC1SCd_300_", lighter, $file_formats: eot otf svg woff);
+@include font-face( "corpid", "../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_", bold, $file_formats: eot otf svg woff);
+@include font-face( "corpid", "../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_", bolder, $file_formats: eot otf svg woff);
 
 @include font-face( "test", "../fonts/test/2E5288_2_0");
 
