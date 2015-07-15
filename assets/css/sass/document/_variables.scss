@@ -75,6 +75,10 @@ $color_border_input_focus: #ccc;
 
 // Typography
 // ============================================ /
+@include font-face( "Corpid C1s SCd", "../fonts/corpid/CorpidC1sSCd-Regular");
+@include font-face( "Corpid C1s SCd", "../fonts/corpid/CorpidC1sSCd-Bold", bold);
+@include font-face( "Corpid C1s SCd", "../fonts/corpid/CorpidC1sSCd-Light", light);
+
 $font_main: "Corpid C1s SCd", "Helvetica", "Arial", sans-serif;
 $font_heading: "Corpid C1s SCd", "Helvetica", "Arial", sans-serif;
 $font_code: "Menlo", monospace;
