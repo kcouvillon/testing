@@ -213,11 +213,14 @@
 		}
 
 		header {
-			background-size: cover !important;
-			background-repeat: no-repeat !important;
 			@include clearfix;
 			padding: 0 2vw;
 			margin-bottom: 1em;
+
+			&.no-pattern {
+				background-size: cover !important;
+				background-repeat: no-repeat !important;
+			}
 
 			h3 {
 				color: #fff;

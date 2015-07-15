@@ -7031,8 +7031,6 @@ a.no-decoration {
         font-weight: 700;
         padding-left: 2vw; } }
   .tour-day .tour-related-post header {
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
     padding: 0 2vw;
     margin-bottom: 1em; }
     .tour-day .tour-related-post header:before,
@@ -7041,6 +7039,9 @@ a.no-decoration {
       display: table; }
     .tour-day .tour-related-post header:after {
       clear: both; }
+    .tour-day .tour-related-post header.no-pattern {
+      background-size: cover !important;
+      background-repeat: no-repeat !important; }
     .tour-day .tour-related-post header h3 {
       color: #fff;
       margin-top: 30vh; }

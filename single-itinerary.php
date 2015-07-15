@@ -214,10 +214,13 @@ get_header(); ?>
 
 							$related_post = get_post( $related );
 							$background = '';
+							$class = 'pattern-' . rand(1, 9);
 
 							if ( has_post_thumbnail( $related) ) {
 
-								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'medium' );
+								$class = 'no-pattern';
+
+								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
 								$background = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
 
 							}
@@ -225,7 +228,7 @@ get_header(); ?>
 
 						<div class="tour-related-post">
 							<span class="h3">TODO: CUSTOM TITLE</span>
-							<header class="pattern-<?php echo rand(1, 9); ?>" style="background: <?php echo $background; ?>;">
+							<header class="<?php echo $class; ?>" style="background: <?php echo $background; ?>;">
 								<h3><?php echo $related_post->post_title; ?></h3>
 							</header>
 
