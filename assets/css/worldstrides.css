@@ -10,6 +10,24 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+@font-face {
+  font-family: "Corpid C1s SCd";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/corpid/CorpidC1sSCd-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1sSCd-Regular.woff2") format("woff2"), url("../fonts/corpid/CorpidC1sSCd-Regular.woff") format("woff"), url("../fonts/corpid/CorpidC1sSCd-Regular.ttf") format("truetype"), url("../fonts/corpid/CorpidC1sSCd-Regular.svg#Corpid C1s SCd") format("svg"); }
+
+@font-face {
+  font-family: "Corpid C1s SCd";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/corpid/CorpidC1sSCd-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1sSCd-Bold.woff2") format("woff2"), url("../fonts/corpid/CorpidC1sSCd-Bold.woff") format("woff"), url("../fonts/corpid/CorpidC1sSCd-Bold.ttf") format("truetype"), url("../fonts/corpid/CorpidC1sSCd-Bold.svg#Corpid C1s SCd") format("svg"); }
+
+@font-face {
+  font-family: "Corpid C1s SCd";
+  font-style: normal;
+  font-weight: light;
+  src: url("../fonts/corpid/CorpidC1sSCd-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1sSCd-Light.woff2") format("woff2"), url("../fonts/corpid/CorpidC1sSCd-Light.woff") format("woff"), url("../fonts/corpid/CorpidC1sSCd-Light.ttf") format("truetype"), url("../fonts/corpid/CorpidC1sSCd-Light.svg#Corpid C1s SCd") format("svg"); }
+
 .pattern-1 {
   background-image: url(../images/src/patterns/ws_w_pattern1.gif);
   background-size: 63px 54px !important; }
