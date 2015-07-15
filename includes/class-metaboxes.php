@@ -88,7 +88,7 @@ class WS_Metaboxes {
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
-			'object_types' => array( 'itinerary', 'collection', 'destination', 'interest', 'traveler', 'page' ),
+			'object_types' => array( 'itinerary', 'collection', 'destination', 'interest', 'traveler' ),
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
@@ -134,10 +134,13 @@ class WS_Metaboxes {
 		 * Repeatable Field Groups
 		 */
 		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
+			'id'           => $prefix . 'home_metabox',
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
 			'object_types' => array( 'page' ),
-			'show_on'      => array( 'key' => 'page-template', 'value' => 'home.php' ),
+			'show_on'      => array(
+				'key' => 'page-template', 'value' => 'front-page.php',
+				//'key' => 'id', 'value' => array( 1107 )
+			),
 		) );
 
 		$group_field_id = $cmb->add_field( array(
