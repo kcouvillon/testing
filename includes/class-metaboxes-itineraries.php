@@ -303,6 +303,13 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_group_field( $day_group, array(
+			'name'       => __( 'Related Content Title', 'cmb2' ),
+			'id'         => 'related_content_title',
+			'type'       => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb->add_group_field( $day_group, array(
 			'name'        => __( 'Related Content' ),
 			'id'          => 'related_content',
 			'type'        => 'post_search_text', // This field type
