@@ -13,8 +13,14 @@
 @font-face {
   font-family: "corpid";
   font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/corpid/CorpidC1SCd_500_Regular/CorpidC1SCd_500_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_500_Regular/CorpidC1SCd_500_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_500_Regular/CorpidC1SCd_500_.svg#corpid") format("svg"); }
+  font-weight: bold;
+  src: url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.svg#corpid") format("svg"); }
+
+@font-face {
+  font-family: "corpid";
+  font-style: normal;
+  font-weight: bolder;
+  src: url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.svg#corpid") format("svg"); }
 
 @font-face {
   font-family: "corpid";
@@ -25,20 +31,8 @@
 @font-face {
   font-family: "corpid";
   font-style: normal;
-  font-weight: lighter;
+  font-weight: normal;
   src: url("../fonts/corpid/CorpidC1SCd_300_Light/CorpidC1SCd_300_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_300_Light/CorpidC1SCd_300_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_300_Light/CorpidC1SCd_300_.svg#corpid") format("svg"); }
-
-@font-face {
-  font-family: "corpid";
-  font-style: normal;
-  font-weight: bold;
-  src: url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.svg#corpid") format("svg"); }
-
-@font-face {
-  font-family: "corpid";
-  font-style: normal;
-  font-weight: bolder;
-  src: url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.svg#corpid") format("svg"); }
 
 @font-face {
   font-family: "test";
