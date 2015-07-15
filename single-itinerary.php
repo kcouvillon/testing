@@ -172,7 +172,7 @@ get_header(); ?>
 
 			<?php
 			$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true );
-			$count         = 0;
+			$count = 0;
 			?>
 
 			<?php foreach ( $itinerary as $day ) : ?>
@@ -187,6 +187,8 @@ get_header(); ?>
 							<span class="tour-day-number"><?php echo $count; ?></span>
 							<span class="h3"><?php echo $day['title']; ?></span>
 						</header>
+
+						<div class="day-wrap">
 
 						<?php $activities = $day['activity']; ?>
 
@@ -205,10 +207,38 @@ get_header(); ?>
 
 						<?php endif; ?>
 
-						<div class="tour-related-post">
-							<span class="h3">Related Post Title</span>
+						<?php
+						$related = $day['related_content'];
 
-						</div>
+						if ( ! empty ( $related ) ) :
+
+							$related_post = get_post( $related );
+							$background = '';
+
+							if ( has_post_thumbnail( $related) ) {
+
+								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'medium' );
+								$background = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+
+							}
+						?>
+
+						<div class="tour-related-post">
+							<span class="h3">TODO: CUSTOM TITLE</span>
+							<header class="pattern-<?php echo rand(1, 9); ?>" style="background: <?php echo $background; ?>;">
+								<h3><?php echo $related_post->post_title; ?></h3>
+							</header>
+
+							<p><?php echo get_the_excerpt( $related ); ?></p>
+
+
+						</div><!-- end .tour-related-post -->
+
+						</div><!-- end .day-wrap -->
+
+
+						<?php endif; ?>
+
 					</article>
 				<?php endif; ?>
 			<?php endforeach; ?>
