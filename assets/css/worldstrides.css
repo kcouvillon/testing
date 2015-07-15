@@ -7497,6 +7497,9 @@ section:after {
 .leadership .headshot img {
   width: 100%; }
 
+.leadership .headshot-pattern {
+  padding-top: 56.345%; }
+
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
 
