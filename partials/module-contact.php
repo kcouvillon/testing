@@ -18,16 +18,12 @@ if( is_page( 'resource-center' ) || is_page( 'register' ) || is_page( 'make-a-pa
 
 	<div class="phone">
 		<h3>Phone</h3>
-		<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+		<p>We can be reached via telephone at our toll-free number: 1-800-999-7676. To discuss particular programs, please visit our contact page for more information.</p>
 	</div>
 
 	<div class="email">
 		<h3>Email</h3>
-		<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+		<p>We're available via email at <a href="mailto:customerservice@worldstrides.org">customerservice@worldstrides.org</a>. To discuss particular programs, please visit our contact page for more information.</p>
 	</div>
 
-	<div class="chat">
-		<h3>Live Chat</h3>
-		<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-	</div>
 </aside>
