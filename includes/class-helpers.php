@@ -265,6 +265,56 @@ class WS_Helpers {
 
 		return $html;
 	}
+
+	/**
+	 * @return array ids of the most recent travelogue and postcard
+	 */
+	public static function get_blog_sidebar_posts() {
+
+		$recent_highlights = array();
+
+		$recent_travelogue = new WP_Query( array(
+			'posts_per_page' => 1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'blog-type',
+					'field'    => 'slug',
+					'terms'    => 'travelogue',
+				),
+			),
+			'no_found_rows'          => true,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+		) );
+
+		$recent_postcard = new WP_Query( array(
+			'posts_per_page' => 1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'blog-type',
+					'field'    => 'slug',
+					'terms'    => 'postcard',
+				),
+			),
+			'no_found_rows'          => true,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+		) );
+
+		if ( $recent_travelogue->have_posts() ) {
+			global $post;
+			$recent_travelogue->the_post();
+			$recent_highlights[] = $post->ID;
+		}
+
+		if ( $recent_postcard->have_posts() ) {
+			global $post;
+			$recent_postcard->the_post();
+			$recent_highlights[] = $post->ID;
+		}
+
+		return $recent_highlights;
+	}
 }
 
 WS_Helpers::instance();

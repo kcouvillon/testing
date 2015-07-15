@@ -3,48 +3,7 @@
  * This is actually the main blog page. Please see front-page.php for the traditional 'home' page
  */
 
-$recent_highlights = array();
-
-$recent_travelogue = new WP_Query( array(
-	'posts_per_page' => 1,
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'blog-type',
-			'field'    => 'slug',
-			'terms'    => 'travelogue',
-		),
-	),
-	'no_found_rows'          => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => false,
-) );
-
-$recent_postcard = new WP_Query( array(
-	'posts_per_page' => 1,
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'blog-type',
-			'field'    => 'slug',
-			'terms'    => 'postcard',
-		),
-	),
-	'no_found_rows'          => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => false,
-) );
-
-if ( $recent_travelogue->have_posts() ) {
-	$recent_travelogue->the_post();
-	$recent_highlights[] = $post->ID;
-}
-
-if ( $recent_postcard->have_posts() ) {
-	$recent_postcard->the_post();
-	$recent_highlights[] = $post->ID;
-}
-
-$recent_postcard->rewind_posts();
-$recent_travelogue->rewind_posts();
+$recent_highlights = WS_Helpers::get_blog_sidebar_posts();
 
 get_header(); ?>
 
@@ -121,24 +80,18 @@ get_header(); ?>
 					<button class="btn btn-success">sports</button>
 
 				</div>
-				
-				<?php if ( $recent_postcard->have_posts() ) : ?>
 
-					<?php while ( $recent_postcard->have_posts() ) : $recent_postcard->the_post(); ?>
+				<?php if ( ! empty( $recent_highlights ) ) : ?>
 
-						<?php get_template_part( 'partials/content', 'blog-sidebar' ); echo '!!'; ?>
+					<?php foreach( $recent_highlights as $recent_highlight ) : ?>
 
-					<?php endwhile; ?>
+						<?php $post = get_post( $recent_highlight ); ?>
 
-				<?php endif; ?>
+						<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
 
-				<?php if ( $recent_travelogue->have_posts() ) : ?>
+					<?php endforeach; ?>
 
-					<?php while ( $recent_travelogue->have_posts() ) : $recent_travelogue->the_post(); ?>
-
-						<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
-
-					<?php endwhile; ?>
+					<?php wp_reset_postdata(); ?>
 
 				<?php endif; ?>
 

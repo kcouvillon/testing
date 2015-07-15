@@ -3,7 +3,9 @@
  * This is actually the main blog page. Please see front-page.php for the traditional 'home' page
  */
 
- get_header(); ?>
+$recent_highlights = WS_Helpers::get_blog_sidebar_posts();
+
+get_header(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main blog" role="main">
@@ -24,7 +26,11 @@
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'partials/content', 'blog' ) ?>
+					<?php if ( ! in_array( $post->ID, $recent_highlights ) ) : ?>
+
+						<?php get_template_part( 'partials/content', 'blog' ) ?>
+
+					<?php endif; ?>
 
 				<?php endwhile; ?>
 
@@ -68,20 +74,17 @@
 
 				</div>
 
-				<?php // we need to find out where these posts should come from ?>
-				
-				<?php if ( have_posts() ) : ?>
+				<?php if ( ! empty( $recent_highlights ) ) : ?>
 
-					<?php /* Start the Loop */ ?>
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php foreach( $recent_highlights as $recent_highlight ) : ?>
 
-						<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
+						<?php $post = get_post( $recent_highlight ); ?>
 
-					<?php endwhile; ?>
+						<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
 
-				<?php else : ?>
+					<?php endforeach; ?>
 
-					<p>Nothing found</p>
+					<?php wp_reset_postdata(); ?>
 
 				<?php endif; ?>
 
