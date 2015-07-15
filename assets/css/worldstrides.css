@@ -7473,6 +7473,12 @@ section:after {
   width: auto;
   max-height: 80px; }
 
+.career-btn {
+  margin-bottom: 1.5em; }
+
+.career .page {
+  margin-bottom: 0; }
+
 /***********************************************// LEADERSHIP SUBPAGE
 \***********************************************/
 .leadership > article {
@@ -7501,11 +7507,11 @@ section:after {
 .leadership .headshot img {
   width: 100%; }
 
-.leadership .headshot-pattern {
-  padding-top: 56.345%; }
-
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
+
+.headshot-pattern {
+  padding-top: 56.345%; }
 
 .timeline {
   list-style: none;
