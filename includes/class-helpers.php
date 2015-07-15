@@ -317,6 +317,71 @@ class WS_Helpers {
 
 		return $recent_highlights;
 	}
+
+	/**
+	 * Get the weather data.
+	 * http://openweathermap.org/api
+	 */
+	public static function get_weather_data( $locationArray ) {
+		
+		$weather = get_transient('weatherData');
+
+		if ( $weather ) {
+
+			return $weather;
+
+		} else {
+
+			if ( ! is_array( $locationArray ) ) { 
+				$locationArray = array( 'latitude' => '0', 'longitude' => '0' );
+			}
+			$latitude = $locationArray['latitude'];
+			$longitude = $locationArray['longitude'];
+			$data = wp_remote_get( 'http://api.openweathermap.org/data/2.5/weather?lat=' . $latitude . '&lon=' . $longitude . '&units=imperial&APPID=c5f43ae748001fdf50e591cab7c57476' );
+			$json = json_decode( $data['body'] );
+
+			set_transient( 'weatherData', $json, 300 );
+
+			return $json;
+
+		}
+
+	}
+
+	/**
+	 * Get the weather icon.
+	 * Icon codes based off of http://openweathermap.org/weather-conditions.
+	 */
+	public static function get_weather_icon( $iconCode ) {
+		
+		if ( ! $iconCode )
+			return;
+
+		$icon = '';
+
+		if ( $iconCode == '01n' ) {
+			$icon = 'moon';
+		} elseif ( $iconCode == '02d' ) {
+			$icon = 'cloudy';
+		} elseif ( $iconCode == '02n' ) {
+			$icon = 'cloud2';
+		} elseif ( in_array( $iconCode, array( '03d', '03n', '04d', '04n' ) ) ) {
+			$icon = 'cloud';
+		} elseif ( in_array( $iconCode, array( '11d', '11n' ) ) ) {
+			$icon = 'lightning';
+		} elseif ( in_array( $iconCode, array( '09d', '09n', '10d', '10n' ) ) ) {
+			$icon = 'rainy';
+		} elseif ( in_array( $iconCode, array( '13d', '13n' ) ) ) {
+			$icon = 'snowy';
+		} elseif ( in_array( $iconCode, array( '50d', '50n' ) ) ) {
+			$icon = 'mist';
+		} else {
+			$icon = 'sun';
+		}
+
+		return $icon;
+
+	}
 }
 
 WS_Helpers::instance();

@@ -38,7 +38,7 @@ get_header(); ?>
 						<p><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
 					<?php endif; ?>
 
-					<?php echo get_the_excerpt(); ?>
+					<?php the_content(); ?>
 				</div>
 			</header>
 
@@ -96,7 +96,19 @@ get_header(); ?>
 
 			<div class="tour-weather">
 
-				<span class="h3">Local Weather</span>
+				<?php 
+				$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
+				$weather = WS_Helpers::get_weather_data( $location );
+				if ( is_object( $weather ) ) {
+					$temp = intval( $weather->main->temp );
+					$icon = WS_Helpers::get_weather_icon( $weather->weather[0]->icon );
+				} else {
+					$temp = '—';
+					$icon = '';
+				}
+				?>
+
+				<span class="h3">Local Conditions<i class="icon icon-<?php echo $icon; ?>"></i></span>
 
 				<div class="tour-local-time">
 					<time>2:32 pm</time>
@@ -104,7 +116,7 @@ get_header(); ?>
 				</div>
 
 				<div class="tour-local-weather">
-					<span>60&#8457;</span>
+					<span><?php echo $temp; ?>&#8457;</span>
 					<span>Current Temp</span>
 				</div>
 			</div>
