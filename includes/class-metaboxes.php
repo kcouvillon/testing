@@ -82,52 +82,46 @@ class WS_Metaboxes {
 
 		$prefix = 'hero_tooltips_';
 
-		/**
-		 * Repeatable Field Groups
-		 */
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
 			'object_types' => array( 'itinerary', 'collection', 'destination', 'interest', 'traveler' ),
 		) );
 
-		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
-		$group_field_id = $cmb->add_field( array(
-			'id'      => $prefix . 'list',
-			'type'    => 'group',
-			'options' => array(
-				'group_title'   => __( 'Tooltip {#}', 'cmb2' ), // {#} gets replaced by row number
-				'add_button'    => __( 'Add Another Tooltip', 'cmb2' ),
-				'remove_button' => __( 'Remove Tooltip', 'cmb2' ),
-				'sortable'      => true, // beta
-			),
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => __( 'Title', 'cmb2' ),
-			'id'   => 'title',
+		$cmb->add_field( array(
+			'name' => __( 'Top Right Title', 'cmb2' ),
+			'id'   => $prefix . 'title_right_top',
 			'type' => 'text',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
 
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => __( 'Caption', 'cmb2' ),
-			'id'   => 'caption',
+		$cmb->add_field( array(
+			'name' => __( 'Top Right Caption', 'cmb2' ),
+			'id'   => $prefix . 'caption_right_top',
 			'type' => 'text',
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
 
-		$cmb->add_group_field( $group_field_id, array(
-			'name'             => 'Location',
-			'id'               => 'location',
-			'type'             => 'select',
-			'show_option_none' => false,
-			'default'          => 'right-top',
-			'options'          => array(
-				'right-top' => __( 'Top Right', 'cmb' ),
-				'right-middle'   => __( 'Middle Right', 'cmb' ),
-				'right-bottom'     => __( 'Bottom Right', 'cmb' ),
-			),
+		$cmb->add_field( array(
+			'name' => __( 'Middle Right Title', 'cmb2' ),
+			'id'   => $prefix . 'title_right_middle',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Middle Right Caption', 'cmb2' ),
+			'id'   => $prefix . 'caption_right_middle',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Bottom Right Title', 'cmb2' ),
+			'id'   => $prefix . 'title_right_bottom',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Bottom Right Caption', 'cmb2' ),
+			'id'   => $prefix . 'caption_right_bottom',
+			'type' => 'text',
 		) );
 
 	}
@@ -143,9 +137,6 @@ class WS_Metaboxes {
 
 		$prefix = 'hero_tooltips_';
 
-		/**
-		 * Repeatable Field Groups
-		 */
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'home_metabox',
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
@@ -156,41 +147,60 @@ class WS_Metaboxes {
 			),
 		) );
 
-		$group_field_id = $cmb->add_field( array(
-			'id'      => $prefix . 'list',
-			'type'    => 'group',
-			'options' => array(
-				'group_title'   => __( 'Tooltip {#}', 'cmb2' ), // {#} gets replaced by row number
-				'add_button'    => __( 'Add Another Tooltip', 'cmb2' ),
-				'remove_button' => __( 'Remove Tooltip', 'cmb2' ),
-				'sortable'      => true, // beta
-			),
-		) );
+		$cmb->add_field( array(
+			'name' => 'Top Right',
+			'id'   => 'tooltip_section_title_top',
+			'type' => 'title'
+		));
 
-		$cmb->add_group_field( $group_field_id, array(
+		$cmb->add_field( array(
 			'name' => __( 'Title', 'cmb2' ),
-			'id'   => 'title',
+			'id'   => $prefix . 'title_right_top',
 			'type' => 'text',
 		) );
 
-		$cmb->add_group_field( $group_field_id, array(
+		$cmb->add_field( array(
 			'name' => __( 'Caption', 'cmb2' ),
-			'id'   => 'caption',
+			'id'   => $prefix . 'caption_right_top',
 			'type' => 'text',
 		) );
 
-		$cmb->add_group_field( $group_field_id, array(
-			'name'             => 'Location',
-			'id'               => 'location',
-			'type'             => 'select',
-			'show_option_none' => false,
-			'default'          => 'right-top',
-			'options'          => array(
-				'right-top' => __( 'Top Right', 'cmb' ),
-				'right-middle'   => __( 'Middle Right', 'cmb' ),
-				'right-bottom'     => __( 'Bottom Right', 'cmb' ),
-			),
+		$cmb->add_field( array(
+			'name' => 'Middle Right',
+			'id'   => 'tooltip_section_title_middle',
+			'type' => 'title'
+		));
+
+		$cmb->add_field( array(
+			'name' => __( 'Title', 'cmb2' ),
+			'id'   => $prefix . 'title_right_middle',
+			'type' => 'text',
 		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Caption', 'cmb2' ),
+			'id'   => $prefix . 'caption_right_middle',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Bottom Right',
+			'id'   => 'tooltip_section_title_bottom',
+			'type' => 'title'
+		));
+
+		$cmb->add_field( array(
+			'name' => __( 'Title', 'cmb2' ),
+			'id'   => $prefix . 'title_right_bottom',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Caption', 'cmb2' ),
+			'id'   => $prefix . 'caption_right_bottom',
+			'type' => 'text',
+		) );
+
 
 	}
 
