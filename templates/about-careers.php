@@ -15,10 +15,10 @@ get_header(); ?>
 
 		<div class="about-wrap">
 
-			<section class="about section-content">
+			<section class="about career section-content">
 				<?php get_template_part( 'partials/content', 'about' ) ?>
 
-				<button class="btn btn-primary">View our Current Openings</button>
+				<button class="btn btn-primary career-btn">View our Current Openings</button>
 
 				<?php
 				$benefits_title       = get_post_meta( $post->ID, 'about_careers_benefits_title', true );
@@ -64,22 +64,22 @@ get_header(); ?>
 						<?php if ( is_array( $examples ) ) : ?>
 							<?php foreach ( $examples as $example ) : ?>
 								<article class="example">
-									<div class="headshot">
-										<?php
-										if ( array_key_exists( 'image', $example ) && ! '' == $example['image'] ) {
-											$image_url = $example['image'];
-										} else {
-											$image_url = 'http://placehold.it/385x250';
-										}
+									<?php
+									if ( array_key_exists( 'image', $example ) && ! '' == $example['image'] ) {
+										$image_url = $example['image'];
 										?>
-										<img src="<?php echo esc_url( $image_url ); ?>" alt="">
-									</div>
+										<div class="headshot">
+											<img src="<?php echo esc_url( $image_url ); ?>" alt="">
+										</div>
+									<?php } else { ?>
+										<div class="headshot-pattern pattern-<?php echo rand(1,9); ?>"></div>
+									<?php } ?>
 									<header class="entry-title">
 										<h3 class="entry-name"><?php echo apply_filters( 'the_title', $example['name'] ); ?></h3>
 										<span class="entry-desc"><?php echo apply_filters( 'the_title', $example['position'] ); ?></span>
 									</header>
 									<div class="entry-content">
-										<p><?php echo apply_filters( 'the_content', $example['description'] ); ?></p>
+										<?php echo apply_filters( 'the_content', $example['description'] ); ?>
 									</div>
 								</article>
 							<?php endforeach; ?>

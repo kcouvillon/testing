@@ -93,6 +93,19 @@
 	line-height: 1.5;
 }
 
+.benefit-img {
+	width: auto;
+	max-height: 80px;
+}
+
+.career-btn {
+	margin-bottom: 1.5em;
+}
+
+.career .page {
+	margin-bottom: 0;
+}
+
 /***********************************************\
 // LEADERSHIP SUBPAGE
 \***********************************************/
@@ -117,6 +130,10 @@
 	.entry-title, .entry-position, .entry-content {
 		margin-right: 1em;
 	}
+}
+
+.headshot-pattern {
+	padding-top: 56.345%;
 }
 
 // HISTORY SUBPAGE

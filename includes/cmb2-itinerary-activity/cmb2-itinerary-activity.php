@@ -68,7 +68,11 @@ function cmb2_sanitize_itinerary_activity_field( $check, $meta_value, $object_id
 	}
 
 	foreach ( $meta_value as $key => $val ) {
-		$meta_value[ $key ] = array_map( 'sanitize_text_field', $val );
+		if ( $val['title'] == '' ) {
+			unset( $meta_value[$key] );
+		} else {
+			$meta_value[ $key ] = array_map( 'sanitize_text_field', $val );
+		}
 	}
 
 	return $meta_value;

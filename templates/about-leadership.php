@@ -36,6 +36,10 @@ get_header(); ?>
 								<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
 								<?php echo get_the_post_thumbnail( $bio_id, 'medium' ); ?>
 							</div>
+						<?php else : ?>
+							<div class="headshot-pattern pattern-<?php echo rand(1, 9); ?>">
+
+							</div>
 						<?php endif; ?>
 
 						<h3 class="entry-title">
