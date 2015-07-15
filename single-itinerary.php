@@ -56,24 +56,34 @@ get_header(); ?>
 
 		<section class="tour-details">
 
+			<?php
+			$number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true );
+			$date_list = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
+			if ( $date_list && count($date_list) >= 4 ) {
+				$column_count = 2;
+			} else {
+				$column_count = 1;
+			}
+			?>
+
 			<div class="tour-duration">
 
-				<?php if ( $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true ) ) : ?>
+				<?php if ( $number_days ) : ?>
 
 					<span class="h3"><i class="icon icon-calendar"></i> <?php echo $number_days; ?> Days</span>
 
-				<?php elseif ( $date_list = get_post_meta( $post->ID, 'itinerary_details_date_list', true ) ) : ?>
+				<?php elseif ( $date_list ) : ?>
 
 					<div class="h3"><i class="icon icon-calendar"></i> Dates</div>
 					
-					<ul class="date-list list-unstyled">
+					<ul class="date-list <?php echo 'columns-'.$column_count; ?> list-unstyled clearfix">
 						<?php foreach ( $date_list as $list ) : ?>
 							<?php
 							$start = $list['itinerary_details_date_start'];
 							$end   = $list['itinerary_details_date_end'];
 							?>
 							<li><strong>
-								<?php echo $start; ?> <span class="small">to</span><br/>
+								<?php echo $start; ?> <em class="small gray-light">to</em><br/>
 								<?php echo $end; ?>
 							</strong></li>
 						<?php endforeach; ?>
@@ -119,13 +129,17 @@ get_header(); ?>
 
 				<span class="h3"><i class="icon icon-weather icon-<?php echo $icon; ?>"></i> Local Conditions</span>
 
-				<div class="tour-local-weather">
-					<span><?php echo $temp; ?>&#8457;</span>
-					<span>Current Temp</span>
-				</div>
-				<div class="tour-local-time">
-					<time>2:32 pm</time>
-					<span>Current Time</span>
+				<div class="weather-content">
+
+					<div class="tour-local-weather">
+						<span><?php echo $temp; ?>&#8457;</span>
+						<span>Current Temp</span>
+					</div>
+					<div class="tour-local-time">
+						<time>2:32 pm</time>
+						<span>Current Time</span>
+					</div>
+
 				</div>
 				
 			</div>

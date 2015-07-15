@@ -6097,6 +6097,24 @@ p {
 .bg-gray-lighter {
   background-color: #f2f2f4; }
 
+.gray-base {
+  color: #323c53; }
+
+.gray-darker {
+  color: #424c61; }
+
+.gray-dark {
+  color: #5b6375; }
+
+.gray {
+  color: #777d8d; }
+
+.gray-light {
+  color: #b3b7bf; }
+
+.gray-lighter {
+  color: #f2f2f4; }
+
 a.no-decoration {
   text-decoration: none; }
 
@@ -6901,21 +6919,6 @@ a.no-decoration {
       display: inline-block;
       color: #3076bc;
       width: 30px; }
-    @media (min-width: 768px) {
-      .tour-details .h3 .icon-pin,
-      .tour-details .h3 .icon-weather {
-        position: absolute;
-        margin: 0;
-        left: -35px;
-        top: 3px; } }
-  .tour-details .date-list li {
-    margin-bottom: 0.75em;
-    padding-bottom: 0.75em;
-    border-bottom: 1px solid #b3b7bf; }
-    .tour-details .date-list li:last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-      border-bottom: 0; }
 
 .tour-duration {
   width: 100%;
@@ -6924,9 +6927,20 @@ a.no-decoration {
   margin-right: 0; }
   @media (min-width: 768px) {
     .tour-duration {
-      width: 15.0326797386%;
+      width: 23.5294117647%;
       float: left;
       margin-right: 1.9607843137%; } }
+  .tour-duration .date-list {
+    margin: 0 0 0 38px; }
+    @media (min-width: 960px) {
+      .tour-duration .date-list.columns-2 li {
+        width: 50%;
+        float: left;
+        font-size: 0.8em; } }
+    .tour-duration .date-list li {
+      margin-bottom: 0.75em;
+      padding-bottom: 0.75em;
+      border-bottom: 1px solid #b3b7bf; }
 
 .tour-features {
   width: 100%;
@@ -6937,8 +6951,16 @@ a.no-decoration {
     .tour-features {
       width: 40.522875817%;
       float: left;
+      margin-right: 1.9607843137%; } }
+  @media (min-width: 1200px) {
+    .tour-features {
+      width: 32.0261437908%;
+      float: left;
       margin-right: 1.9607843137%;
       margin-left: 8.4967320261%; } }
+
+.tour-feature-list {
+  margin-left: 38px; }
 
 .tour-feature {
   width: 100%;
@@ -6957,17 +6979,24 @@ a.no-decoration {
       width: 32.0261437908%;
       float: right;
       margin-right: 0; } }
+  @media (min-width: 1200px) {
+    .tour-weather {
+      width: 23.5294117647%;
+      float: right;
+      margin-right: 0;
+      margin-left: 8.4967320261%; } }
+  .tour-weather .weather-content {
+    margin-left: 38px; }
 
 .tour-local-time, .tour-local-weather {
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0; }
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     .tour-local-time, .tour-local-weather {
-      width: 46.9387755102%;
-      float: left;
-      margin-right: 6.1224489796%; } }
+      width: 50%;
+      float: left; } }
   .tour-local-time time, .tour-local-time span:first-child, .tour-local-weather time, .tour-local-weather span:first-child {
     display: block;
     color: #3076bc;
@@ -6975,11 +7004,6 @@ a.no-decoration {
     font-weight: 700; }
   .tour-local-time span:last-child, .tour-local-weather span:last-child {
     font-size: 0.875em; }
-
-@media (min-width: 768px) {
-  .tour-local-time {
-    float: right;
-    margin-right: 0; } }
 
 .tour-sharing {
   display: block;
