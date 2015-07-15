@@ -209,6 +209,7 @@ get_header(); ?>
 
 						<?php
 						$related = $day['related_content'];
+						$related_title = $day['related_content_title'];
 
 						if ( ! empty ( $related ) ) :
 
@@ -227,7 +228,9 @@ get_header(); ?>
 						?>
 
 						<div class="tour-related-post">
-							<span class="h3">TODO: CUSTOM TITLE</span>
+							<?php if ( $related_title ) : ?>
+							<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
+							<?php endif; ?>
 							<header class="<?php echo $class; ?>" style="background: <?php echo $background; ?>;">
 								<h3><?php echo $related_post->post_title; ?></h3>
 							</header>
