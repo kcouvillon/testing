@@ -10,6 +10,7 @@ section {
 .section-nav {
 	background: $gray-base;
 	@include container();
+	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
 
 	select {
 		margin: 1em 0;

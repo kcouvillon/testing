@@ -7199,7 +7199,8 @@ section:after {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 5vw; }
+  padding: 0 5vw;
+  background-image: linear-gradient(transparent 0, transparent 54px, #b3b7bf 54px, #b3b7bf 55px, transparent 55px); }
   .section-nav select {
     margin: 1em 0; }
   .about .section-nav {
@@ -8205,7 +8206,7 @@ section:after {
           width: 32.0261437908%;
           float: left;
           margin-right: 1.9607843137%; }
-          .contact-sidebar.wide > div:last-of-type {
+          .contact-sidebar.wide > div:nth-child(4) {
             float: right;
             margin-right: 0; } }
 

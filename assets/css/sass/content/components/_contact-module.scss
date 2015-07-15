@@ -14,7 +14,7 @@
 			> div {
 				@include span(4);
 
-				&:last-of-type {
+				&:nth-child(4) {
 					@include last;
 				}
 			}
