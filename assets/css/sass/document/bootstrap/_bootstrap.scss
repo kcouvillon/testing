@@ -283,7 +283,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font_main;
   font-size: 18px;
   line-height: 1.5;
   color: #181818;
@@ -383,7 +383,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font_heading;
   font-weight: 300;
   line-height: 1.2;
   color: inherit;
@@ -725,7 +725,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: $font_pre;
 }
 code {
   padding: 2px 4px;
@@ -5043,7 +5043,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font_main;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.4;
@@ -5150,7 +5150,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: $font_main;
   font-size: 18px;
   font-weight: normal;
   line-height: 1.5;
