@@ -89,41 +89,58 @@ class WS_Metaboxes {
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Top Right Title', 'cmb2' ),
+			'name' => 'Top Right',
+			'id'   => 'tooltip_section_title_top',
+			'type' => 'title'
+		));
+
+		$cmb->add_field( array(
+			'name' => __( 'Title', 'cmb2' ),
 			'id'   => $prefix . 'title_right_top',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Top Right Caption', 'cmb2' ),
+			'name' => __( 'Caption', 'cmb2' ),
 			'id'   => $prefix . 'caption_right_top',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Middle Right Title', 'cmb2' ),
+			'name' => 'Middle Right',
+			'id'   => 'tooltip_section_title_middle',
+			'type' => 'title'
+		));
+
+		$cmb->add_field( array(
+			'name' => __( 'Title', 'cmb2' ),
 			'id'   => $prefix . 'title_right_middle',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Middle Right Caption', 'cmb2' ),
+			'name' => __( 'Caption', 'cmb2' ),
 			'id'   => $prefix . 'caption_right_middle',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Bottom Right Title', 'cmb2' ),
+			'name' => 'Bottom Right',
+			'id'   => 'tooltip_section_title_bottom',
+			'type' => 'title'
+		));
+
+		$cmb->add_field( array(
+			'name' => __( 'Title', 'cmb2' ),
 			'id'   => $prefix . 'title_right_bottom',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Bottom Right Caption', 'cmb2' ),
+			'name' => __( 'Caption', 'cmb2' ),
 			'id'   => $prefix . 'caption_right_bottom',
 			'type' => 'text',
 		) );
-
 	}
 
 	/**
@@ -200,8 +217,6 @@ class WS_Metaboxes {
 			'id'   => $prefix . 'caption_right_bottom',
 			'type' => 'text',
 		) );
-
-
 	}
 
 	function contact_fields() {
