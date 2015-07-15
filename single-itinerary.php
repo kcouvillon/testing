@@ -19,7 +19,7 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
 			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
@@ -172,7 +172,7 @@ get_header(); ?>
 
 			<?php
 			$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true );
-			$count         = 0;
+			$count = 0;
 			?>
 
 			<?php foreach ( $itinerary as $day ) : ?>
@@ -180,13 +180,15 @@ get_header(); ?>
 				<?php if ( ! empty( $day['title'] ) ) : ?>
 					<article class="tour-day">
 						<?php if ( ! empty( $day['image'] ) ) : ?>
-							<div class="tour-hero" style="background-image: url(<?php echo $day['image']; ?>);"></div>
+							<div class="tour-hero" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
 						<?php endif; ?>
 						<header>
 							<span class="tour-day-marker">Day</span>
 							<span class="tour-day-number"><?php echo $count; ?></span>
 							<span class="h3"><?php echo $day['title']; ?></span>
 						</header>
+
+						<div class="day-wrap">
 
 						<?php $activities = $day['activity']; ?>
 
@@ -205,10 +207,41 @@ get_header(); ?>
 
 						<?php endif; ?>
 
-						<div class="tour-related-post">
-							<span class="h3">Related Post Title</span>
+						<?php
+						$related = $day['related_content'];
 
-						</div>
+						if ( ! empty ( $related ) ) :
+
+							$related_post = get_post( $related );
+							$background = '';
+							$class = 'pattern-' . rand(1, 9);
+
+							if ( has_post_thumbnail( $related) ) {
+
+								$class = 'no-pattern';
+
+								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
+								$background = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+
+							}
+						?>
+
+						<div class="tour-related-post">
+							<span class="h3">TODO: CUSTOM TITLE</span>
+							<header class="<?php echo $class; ?>" style="background: <?php echo $background; ?>;">
+								<h3><?php echo $related_post->post_title; ?></h3>
+							</header>
+
+							<p><?php echo get_the_excerpt( $related ); ?></p>
+
+
+						</div><!-- end .tour-related-post -->
+
+						</div><!-- end .day-wrap -->
+
+
+						<?php endif; ?>
+
 					</article>
 				<?php endif; ?>
 			<?php endforeach; ?>

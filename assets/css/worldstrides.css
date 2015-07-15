@@ -6568,7 +6568,7 @@ a.no-decoration {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url(../images/src/blog-cta.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(../images/src/blog-cta.jpg);
   background-size: cover;
   text-align: center;
   padding-top: 15vh;
@@ -6948,7 +6948,7 @@ a.no-decoration {
   display: inline-block;
   float: left; }
 
-.tour-day .h3 {
+.tour-day > header > .h3 {
   width: 100%;
   float: left;
   margin-left: 0;
@@ -6956,10 +6956,23 @@ a.no-decoration {
   font-weight: 700;
   margin-bottom: 2em; }
   @media (min-width: 768px) {
-    .tour-day .h3 {
+    .tour-day > header > .h3 {
       width: 91.5032679739%;
       float: right;
       margin-right: 0; } }
+
+.tour-day .day-wrap {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  padding: 0;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .tour-day .day-wrap {
+      display: flex;
+      padding: 0; } }
 
 .tour-day .tour-activity-list {
   width: 100%;
@@ -7013,7 +7026,29 @@ a.no-decoration {
       float: right;
       margin-right: 0; }
       .tour-day .tour-related-post .h3 {
-        margin-top: 0; } }
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-weight: 700;
+        padding-left: 2vw; } }
+  .tour-day .tour-related-post header {
+    padding: 0 2vw;
+    margin-bottom: 1em; }
+    .tour-day .tour-related-post header:before,
+    .tour-day .tour-related-post header:after {
+      content: "";
+      display: table; }
+    .tour-day .tour-related-post header:after {
+      clear: both; }
+    .tour-day .tour-related-post header.no-pattern {
+      background-size: cover !important;
+      background-repeat: no-repeat !important; }
+    .tour-day .tour-related-post header h3 {
+      color: #fff;
+      margin-top: 30vh; }
+  .tour-day .tour-related-post p {
+    font-size: 0.875em;
+    line-height: 1.5;
+    padding: 0 2vw; }
 
 .collection .programs {
   padding: 0; }

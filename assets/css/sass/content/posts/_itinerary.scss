@@ -129,13 +129,24 @@
 		float: left;
 	}
 
-	.h3 {
+	> header > .h3 {
 		@include span(full);
 		font-weight: 700;
 		margin-bottom: 2em;
 
 		@include susy-media($screen-sm) {
 			@include span(11 last);
+		}
+	}
+
+	.day-wrap {
+		@include container();
+		padding: 0;
+		width: 100%;
+
+		@include susy-media($screen-sm) {
+			display: flex;
+			padding: 0;
 		}
 	}
 
@@ -195,10 +206,32 @@
 
 			.h3 {
 				margin-top: 0;
+				margin-bottom: 10px;
+				font-weight: 700;
+				padding-left: 2vw;
 			}
 		}
 
-		.h3 {
+		header {
+			@include clearfix;
+			padding: 0 2vw;
+			margin-bottom: 1em;
+
+			&.no-pattern {
+				background-size: cover !important;
+				background-repeat: no-repeat !important;
+			}
+
+			h3 {
+				color: #fff;
+				margin-top: 30vh;
+			}
+		}
+
+		p {
+			font-size: em(14);
+			line-height: 1.5;
+			padding: 0 2vw;
 		}
 	}
 }
