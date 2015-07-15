@@ -5962,8 +5962,8 @@ p {
 
 @font-face {
   font-family: 'worldstrides-ui';
-  src: url("../fonts/worldstrides-ui.eot?-4t6gis");
-  src: url("../fonts/worldstrides-ui.eot?#iefix-4t6gis") format("embedded-opentype"), url("../fonts/worldstrides-ui.ttf?-4t6gis") format("truetype"), url("../fonts/worldstrides-ui.woff?-4t6gis") format("woff"), url("../fonts/worldstrides-ui.svg?-4t6gis#worldstrides-ui") format("svg");
+  src: url("../fonts/worldstrides-ui.eot?-49qcb8");
+  src: url("../fonts/worldstrides-ui.eot?#iefix-49qcb8") format("embedded-opentype"), url("../fonts/worldstrides-ui.ttf?-49qcb8") format("truetype"), url("../fonts/worldstrides-ui.woff?-49qcb8") format("woff"), url("../fonts/worldstrides-ui.svg?-49qcb8#worldstrides-ui") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -5978,6 +5978,15 @@ p {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icon-print:before {
+  content: "\e615"; }
+
+.icon-email:before {
+  content: "\e613"; }
+
+.icon-pdf:before {
+  content: "\e614"; }
 
 .icon-calendar:before {
   content: "\e608"; }
@@ -6883,20 +6892,30 @@ a.no-decoration {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  margin-bottom: 2em; }
+  background-color: #f2f2f4;
+  padding-bottom: 1.5em; }
   .tour-details .h3 {
     font-weight: 700;
     position: relative; }
     .tour-details .h3 .icon {
-      display: block;
-      margin: 0.5em 0 0; }
-      @media (min-width: 768px) {
-        .tour-details .h3 .icon {
-          position: absolute;
-          margin: 0;
-          left: -35px;
-          color: #4FA9E5;
-          top: 3px; } }
+      display: inline-block;
+      color: #3076bc;
+      width: 30px; }
+    @media (min-width: 768px) {
+      .tour-details .h3 .icon-pin,
+      .tour-details .h3 .icon-weather {
+        position: absolute;
+        margin: 0;
+        left: -35px;
+        top: 3px; } }
+  .tour-details .date-list li {
+    margin-bottom: 0.75em;
+    padding-bottom: 0.75em;
+    border-bottom: 1px solid #b3b7bf; }
+    .tour-details .date-list li:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0; }
 
 .tour-duration {
   width: 100%;
@@ -6916,9 +6935,10 @@ a.no-decoration {
   margin-right: 0; }
   @media (min-width: 768px) {
     .tour-features {
-      width: 49.0196078431%;
+      width: 40.522875817%;
       float: left;
-      margin-right: 1.9607843137%; } }
+      margin-right: 1.9607843137%;
+      margin-left: 8.4967320261%; } }
 
 .tour-feature {
   width: 100%;
@@ -6926,19 +6946,6 @@ a.no-decoration {
   margin-left: 0;
   margin-right: 0;
   font-size: 0.875em; }
-  @media (min-width: 768px) {
-    .tour-feature {
-      width: 48%;
-      float: left; }
-      .tour-feature:nth-child(2n + 1) {
-        margin-left: 0;
-        margin-right: -100%;
-        clear: both;
-        margin-left: 0; }
-      .tour-feature:nth-child(2n + 2) {
-        margin-left: 52%;
-        margin-right: -100%;
-        clear: none; } }
 
 .tour-weather {
   width: 100%;
@@ -6963,16 +6970,43 @@ a.no-decoration {
       margin-right: 6.1224489796%; } }
   .tour-local-time time, .tour-local-time span:first-child, .tour-local-weather time, .tour-local-weather span:first-child {
     display: block;
-    color: #4fa9e5;
+    color: #3076bc;
     font-size: 1.25em;
     font-weight: 700; }
   .tour-local-time span:last-child, .tour-local-weather span:last-child {
     font-size: 0.875em; }
 
 @media (min-width: 768px) {
-  .tour-local-weather {
+  .tour-local-time {
     float: right;
     margin-right: 0; } }
+
+.tour-sharing {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  padding: 1.5em 0; }
+  .tour-sharing .sharing-links {
+    margin: 0;
+    text-align: center; }
+    @media (min-width: 768px) {
+      .tour-sharing .sharing-links li {
+        display: inline-block;
+        margin: 0px 4vw; } }
+    .tour-sharing .sharing-links li a {
+      font-weight: 700;
+      display: block;
+      padding: 0.5em 0; }
+      @media (min-width: 768px) {
+        .tour-sharing .sharing-links li a {
+          padding: 0; } }
+      @media (min-width: 768px) {
+        .tour-sharing .sharing-links li a .icon {
+          font-size: 1.5em;
+          vertical-align: -0.1em;
+          margin-right: 0.3em; } }
 
 .tour-highlights {
   max-width: 1500px;
@@ -7021,7 +7055,7 @@ a.no-decoration {
   background: #fff;
   height: 35px;
   margin-top: -35px;
-  color: #4fa9e5;
+  color: #3076bc;
   font-size: 1.25em;
   font-weight: 700;
   display: inline-block;
@@ -7031,7 +7065,7 @@ a.no-decoration {
   width: 6.5359477124%;
   min-width: 60px;
   text-align: center;
-  background: #4fa9e5;
+  background: #3076bc;
   color: #fff;
   font-size: 3.125em;
   line-height: 1;
@@ -7099,7 +7133,7 @@ a.no-decoration {
       content: '';
       width: 12px;
       height: 12px;
-      border: 2px solid #4fa9e5;
+      border: 2px solid #3076bc;
       border-radius: 50%;
       background-color: #fff;
       display: block;

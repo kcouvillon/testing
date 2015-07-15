@@ -10,21 +10,39 @@
 
 .tour-details {
 	@include container();
-	margin-bottom: 2em;
+	background-color: $gray_lighter;
+	padding-bottom: 1.5em;
 
 	.h3 {
 		font-weight: 700;
 		position: relative;
 
 		.icon {
-			display: block;
-			margin: 0.5em 0 0;
+			display: inline-block;
+			color: $blue_dark;
+			width: 30px;
+		}
+
+		.icon-pin,
+		.icon-weather {
 			@include susy-media($screen-sm) {
 				position: absolute;
 				margin: 0;
 				left: -35px;
-				color: #4FA9E5;
 				top: 3px;
+			}
+		}
+	}
+
+	.date-list {
+		li {
+			margin-bottom: 0.75em;
+			padding-bottom: 0.75em;
+			border-bottom: 1px solid $gray_light;
+			&:last-child {
+				margin-bottom: 0;
+				padding-bottom: 0;
+				border-bottom: 0;
 			}
 		}
 	}
@@ -42,7 +60,8 @@
 	@include span(full);
 
 	@include susy-media($screen-sm) {
-		@include span(6);
+		@include span(5);
+		@include push(1);
 	}
 }
 
@@ -51,7 +70,7 @@
 	font-size: em(14);
 
 	@include susy-media($screen-sm) {
-		@include gallery(3 of 6);
+		// @include gallery(3 of 6);
 	}
 }
 
@@ -72,7 +91,7 @@
 
 	time, span:first-child {
 		display: block;
-		color: $blue;
+		color: $blue_dark;
 		font-size: em(20);
 		font-weight: 700;
 	}
@@ -82,11 +101,45 @@
 	}
 }
 
-.tour-local-weather {
+.tour-local-time {
 	@include susy-media($screen-sm) {
 		@include last;
 	}
 }
+
+.tour-sharing {
+	@include container();
+	padding: 1.5em 0;
+
+	.sharing-links {
+		margin: 0;
+		text-align: center;
+
+		li {
+			@include susy-media($screen-sm) {
+				display: inline-block;
+				margin: 0px 4vw;
+			}
+
+			a {
+				font-weight: 700;
+				display: block;
+				padding: 0.5em 0;
+				@include susy-media($screen-sm) {
+					padding: 0;
+				}
+
+				.icon {
+					@include susy-media($screen-sm) {
+						font-size: em(24);
+						vertical-align: -0.1em;
+						margin-right: 0.3em;
+					}
+				}
+			}
+		}
+	}
+}	
 
 .tour-highlights {
 	max-width: 1500px;
@@ -121,7 +174,7 @@
 		background: #fff;
 		height: 35px;
 		margin-top: -35px;
-		color: $blue;
+		color: $blue_dark;
 		font-size: em(20);
 		font-weight: 700;
 		display: inline-block;
@@ -132,7 +185,7 @@
 		width: span(1);
 		min-width: 60px;
 		text-align: center;
-		background: $blue;
+		background: $blue_dark;
 		color: #fff;
 		font-size: em(50);
 		line-height: 1;
@@ -200,7 +253,7 @@
 				content: '';
 				width: 12px;
 				height: 12px;
-				border: 2px solid $blue;
+				border: 2px solid $blue_dark;
 				border-radius: 50%;
 				background-color: #fff;
 				display: block;

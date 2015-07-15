@@ -22,7 +22,7 @@ get_header(); ?>
 			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
-			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
+			<header class="section-header pattern-<?php echo rand( 3, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
 					<nav class="breadcrumbs">
 						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
@@ -44,7 +44,7 @@ get_header(); ?>
 
 			<nav class="section-nav">
 				<ul class="section-menu">
-					<li>[TBD]</li>
+					<li><a href="#">[TBD]</a></li>
 					<li><a href="#tour-highlights">Tour Highlights</a></li>
 					<li><a href="#education">Education</a></li>
 					<li><a href="#itinerary">Itinerary</a></li>
@@ -60,24 +60,31 @@ get_header(); ?>
 
 				<?php if ( $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true ) ) : ?>
 
-					<span class="h3"><?php echo $number_days; ?> Days</span>
+					<span class="h3"><i class="icon icon-calendar"></i> <?php echo $number_days; ?> Days</span>
 
 				<?php elseif ( $date_list = get_post_meta( $post->ID, 'itinerary_details_date_list', true ) ) : ?>
 
-					<?php
-					$start = $date_list[0]['itinerary_details_date_start'];
-					$end   = $date_list[0]['itinerary_details_date_end'];
-					?>
-
-					<span class="h3"><?php echo $start; ?></span>
-					<span class="h3"><?php echo $end; ?></span>
+					<div class="h3"><i class="icon icon-calendar"></i> Dates</div>
+					
+					<ul class="date-list list-unstyled">
+						<?php foreach ( $date_list as $list ) : ?>
+							<?php
+							$start = $list['itinerary_details_date_start'];
+							$end   = $list['itinerary_details_date_end'];
+							?>
+							<li><strong>
+								<?php echo $start; ?> <span class="small">to</span><br/>
+								<?php echo $end; ?>
+							</strong></li>
+						<?php endforeach; ?>
+					</ul>
 
 				<?php endif; ?>
 			</div>
 
 			<div class="tour-features">
 
-				<span class="h3"><?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
+				<span class="h3"><i class="icon icon-pin"></i> <?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
 
 				<div class="tour-feature-list">
 
@@ -96,31 +103,41 @@ get_header(); ?>
 
 			<div class="tour-weather">
 
-				<?php 
-				$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
-				$weather = WS_Helpers::get_weather_data( $location );
+				<?php $weather = WS_Helpers::get_weather_data( $post->ID );
+
 				if ( is_object( $weather ) ) {
-					$temp = intval( $weather->main->temp );
+
+					$temp = round( $weather->main->temp, 0 );
 					$icon = WS_Helpers::get_weather_icon( $weather->weather[0]->icon );
+
 				} else {
+
 					$temp = '—';
 					$icon = '';
-				}
-				?>
 
-				<span class="h3">Local Conditions<i class="icon icon-<?php echo $icon; ?>"></i></span>
+				} ?>
 
-				<div class="tour-local-time">
-					<time>2:32 pm</time>
-					<span>Current Time</span>
-				</div>
+				<span class="h3"><i class="icon icon-weather icon-<?php echo $icon; ?>"></i> Local Conditions</span>
 
 				<div class="tour-local-weather">
 					<span><?php echo $temp; ?>&#8457;</span>
 					<span>Current Temp</span>
 				</div>
+				<div class="tour-local-time">
+					<time>2:32 pm</time>
+					<span>Current Time</span>
+				</div>
+				
 			</div>
 
+		</section>
+
+		<section class="tour-sharing">
+			<ul class="sharing-links list-unstyled">
+				<li><a href="#"><i class="icon icon-email"></i> Email this Itinerary</a></li>
+				<li><a href="#"><i class="icon icon-print"></i> Print this Itinerary</a></li>
+				<li><a href="#"><i class="icon icon-pdf"></i> Download PDF to this Itinerary</a></li>
+			</ul>
 		</section>
 
 		<?php $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true ); ?>
