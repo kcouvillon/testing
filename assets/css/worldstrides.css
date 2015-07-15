@@ -8011,6 +8011,8 @@ section:after {
   height: 0;
   overflow: hidden;
   padding-top: 56.25%; }
+  .tile.resource {
+    background-size: cover; }
   @media (min-width: 768px) {
     .tile.tile-third,
     .tile.tile-half {

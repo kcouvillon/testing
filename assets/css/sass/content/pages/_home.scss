@@ -92,6 +92,9 @@
 	height: 0;
 	overflow: hidden;
 	padding-top: percentage(9/16);
+	&.resource {
+		background-size: cover;
+	}
 
 	
 	@include susy-media($screen-sm) {
