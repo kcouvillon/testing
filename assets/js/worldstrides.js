@@ -209,7 +209,7 @@
 			$( '.active' ).removeClass('active');
 			$( this ).addClass('active');
 			var filter = $( this ).attr('data-filter');
-			var title = filter.replace( /-/g, ' ');
+			var title = $( this ).text();
 
 			$( resourceTitle ).text("questions about " + title);
 
