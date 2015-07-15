@@ -37,10 +37,21 @@ $resources_page = get_page_by_path( 'resource-center' );
 				'parent' => $top_level_term->term_id,
 				'hide_empty' => false
 			) );
+
+			if ( $top_level_term->slug == 'parents' ) {
+				$img_url = site_url('wp-content/themes/worldstrides/assets/images/placeholder/resource-parent.jpg');
+			} elseif ( $top_level_term->slug == 'educators' ) {
+				$img_url = site_url('wp-content/themes/worldstrides/assets/images/placeholder/resource-teacher.jpg');
+			} else {
+				$img_url = site_url('wp-content/themes/worldstrides/assets/images/placeholder/resource-student.jpg');
+			}
 			?>
 			<div class="<?php esc_attr( $top_level_term->name ); ?> resource-target">
 				<a class="resource-target-title" href="<?php echo get_term_link( $top_level_term ); ?>">
-					<img src="http://placehold.it/390x206" alt="">
+					<div class="resource-image">
+						<img src="<?php echo esc_url( $img_url ); ?>" alt="resource">
+						<div class="screen gradient40"></div>
+					</div>
 					<h2><?php echo $top_level_term->name; ?></h2>
 				</a>
 				<div class="resource-target-list-wrap">

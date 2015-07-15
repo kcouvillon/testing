@@ -173,15 +173,18 @@
 						$data = array(
 							array(
 								"title" => "Resource Title",
-								"meta" => array("Parents")
+								"meta" => array("Parents"),
+								"img" => get_template_directory_uri() . '/assets/images/placeholder/resource-parent.jpg'
 							),
 							array(
 								"title" => "Resource Title",
-								"meta" => array("Educators")
+								"meta" => array("Educators"),
+								"img" => get_template_directory_uri() . '/assets/images/placeholder/resource-teacher.jpg'
 							),
 							array(
 								"title" => "Resource Title",
-								"meta" => array("Students")
+								"meta" => array("Students"),
+								"img" => get_template_directory_uri() . '/assets/images/placeholder/resource-student.jpg'
 							)
 						);
 
@@ -189,7 +192,7 @@
 						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; 
 					?>
 
-					<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+					<li class="resource tile tile-third" style="background-image:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4) ), url(<?php echo esc_url( $item['img'] ); ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
 								<?php foreach ( $item['meta'] as $meta ) : ?>

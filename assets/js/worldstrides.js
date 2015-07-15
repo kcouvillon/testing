@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-07-14
+/*! WorldStrides - v0.1.0 - 2015-07-15
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -209,7 +209,7 @@
 			$( '.active' ).removeClass('active');
 			$( this ).addClass('active');
 			var filter = $( this ).attr('data-filter');
-			var title = filter.replace( /-/g, ' ');
+			var title = $( this ).text();
 
 			$( resourceTitle ).text("questions about " + title);
 

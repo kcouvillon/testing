@@ -11,22 +11,34 @@
   box-sizing: border-box; }
 
 @font-face {
-  font-family: "Corpid C1s SCd";
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/corpid/CorpidC1sSCd-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1sSCd-Regular.woff2") format("woff2"), url("../fonts/corpid/CorpidC1sSCd-Regular.woff") format("woff"), url("../fonts/corpid/CorpidC1sSCd-Regular.ttf") format("truetype"), url("../fonts/corpid/CorpidC1sSCd-Regular.svg#Corpid C1s SCd") format("svg"); }
-
-@font-face {
-  font-family: "Corpid C1s SCd";
+  font-family: "corpid";
   font-style: normal;
   font-weight: bold;
-  src: url("../fonts/corpid/CorpidC1sSCd-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1sSCd-Bold.woff2") format("woff2"), url("../fonts/corpid/CorpidC1sSCd-Bold.woff") format("woff"), url("../fonts/corpid/CorpidC1sSCd-Bold.ttf") format("truetype"), url("../fonts/corpid/CorpidC1sSCd-Bold.svg#Corpid C1s SCd") format("svg"); }
+  src: url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_700_Bold/CorpidC1SCd_700_.svg#corpid") format("svg"); }
 
 @font-face {
-  font-family: "Corpid C1s SCd";
+  font-family: "corpid";
   font-style: normal;
-  font-weight: light;
-  src: url("../fonts/corpid/CorpidC1sSCd-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1sSCd-Light.woff2") format("woff2"), url("../fonts/corpid/CorpidC1sSCd-Light.woff") format("woff"), url("../fonts/corpid/CorpidC1sSCd-Light.ttf") format("truetype"), url("../fonts/corpid/CorpidC1sSCd-Light.svg#Corpid C1s SCd") format("svg"); }
+  font-weight: bolder;
+  src: url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_800_Heavy/CorpidC1SCd_800_.svg#corpid") format("svg"); }
+
+@font-face {
+  font-family: "corpid";
+  font-style: italic;
+  font-weight: normal;
+  src: url("../fonts/corpid/CorpidC1SCd_500i_RegularItalic/CorpidC1SCd_500i.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_500i_RegularItalic/CorpidC1SCd_500i.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_500i_RegularItalic/CorpidC1SCd_500i.svg#corpid") format("svg"); }
+
+@font-face {
+  font-family: "corpid";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/corpid/CorpidC1SCd_300_Light/CorpidC1SCd_300_.eot?#iefix") format("embedded-opentype"), url("../fonts/corpid/CorpidC1SCd_300_Light/CorpidC1SCd_300_.woff") format("woff"), url("../fonts/corpid/CorpidC1SCd_300_Light/CorpidC1SCd_300_.svg#corpid") format("svg"); }
+
+@font-face {
+  font-family: "test";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/test/2E5288_2_0.eot?#iefix") format("embedded-opentype"), url("../fonts/test/2E5288_2_0.woff2") format("woff2"), url("../fonts/test/2E5288_2_0.woff") format("woff"), url("../fonts/test/2E5288_2_0.ttf") format("truetype"), url("../fonts/test/2E5288_2_0.svg#test") format("svg"); }
 
 .pattern-1 {
   background-image: url(../images/src/patterns/ws_w_pattern1.gif);
@@ -357,7 +369,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "corpid", "Helvetica", "Arial", sans-serif;
   font-size: 18px;
   line-height: 1.5;
   color: #181818;
@@ -457,7 +469,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "corpid", "Helvetica", "Arial", sans-serif;
   font-weight: 300;
   line-height: 1.2;
   color: inherit;
@@ -797,7 +809,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace; }
+  font-family: "Menlo", monospace; }
 
 code {
   padding: 2px 4px;
@@ -4862,7 +4874,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "corpid", "Helvetica", "Arial", sans-serif;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.4;
@@ -4969,7 +4981,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Corpid C1s SCd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "corpid", "Helvetica", "Arial", sans-serif;
   font-size: 18px;
   font-weight: normal;
   line-height: 1.5;
@@ -5384,7 +5396,7 @@ th {
   .table > thead > tr > th,
   .table > tbody > tr > th,
   .table > tfoot > tr > th {
-    font-family: "Corpid C1s SCd", "Helvetica", "Arial", sans-serif; }
+    font-family: "corpid", "Helvetica", "Arial", sans-serif; }
   .table > thead > tr > th,
   .table > thead > tr > td,
   .table > tbody > tr > th,
@@ -6106,6 +6118,24 @@ a.no-decoration {
     background-color: rgba(0, 0, 0, 0.8); }
   .screen.screen90 {
     background-color: rgba(0, 0, 0, 0.9); }
+  .screen.gradient10 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.1)); }
+  .screen.gradient20 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.2)); }
+  .screen.gradient30 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.3)); }
+  .screen.gradient40 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.4)); }
+  .screen.gradient50 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.5)); }
+  .screen.gradient60 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.6)); }
+  .screen.gradient70 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.7)); }
+  .screen.gradient80 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); }
+  .screen.gradient90 {
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); }
 
 .entry-content:before,
 .entry-content:after,
@@ -7169,7 +7199,8 @@ section:after {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 5vw; }
+  padding: 0 5vw;
+  background-image: linear-gradient(transparent 0, transparent 54px, #b3b7bf 54px, #b3b7bf 55px, transparent 55px); }
   .section-nav select {
     margin: 1em 0; }
   .about .section-nav {
@@ -7465,6 +7496,9 @@ section:after {
 
 .leadership .headshot img {
   width: 100%; }
+
+.leadership .headshot-pattern {
+  padding-top: 56.345%; }
 
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
@@ -7999,6 +8033,8 @@ section:after {
   height: 0;
   overflow: hidden;
   padding-top: 56.25%; }
+  .tile.resource {
+    background-size: cover; }
   @media (min-width: 768px) {
     .tile.tile-third,
     .tile.tile-half {
@@ -8173,7 +8209,7 @@ section:after {
           width: 32.0261437908%;
           float: left;
           margin-right: 1.9607843137%; }
-          .contact-sidebar.wide > div:last-of-type {
+          .contact-sidebar.wide > div:nth-child(4) {
             float: right;
             margin-right: 0; } }
 
