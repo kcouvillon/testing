@@ -117,6 +117,19 @@ class WS_Metaboxes {
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
 
+		$cmb->add_group_field( $group_field_id, array(
+			'name'             => 'Location',
+			'id'               => 'location',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'right-top',
+			'options'          => array(
+				'right-top' => __( 'Top Right', 'cmb' ),
+				'right-middle'   => __( 'Middle Right', 'cmb' ),
+				'right-bottom'     => __( 'Bottom Right', 'cmb' ),
+			),
+		) );
+
 	}
 
 	/**
@@ -164,6 +177,19 @@ class WS_Metaboxes {
 			'name' => __( 'Caption', 'cmb2' ),
 			'id'   => 'caption',
 			'type' => 'text',
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name'             => 'Location',
+			'id'               => 'location',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'right-top',
+			'options'          => array(
+				'right-top' => __( 'Top Right', 'cmb' ),
+				'right-middle'   => __( 'Middle Right', 'cmb' ),
+				'right-bottom'     => __( 'Bottom Right', 'cmb' ),
+			),
 		) );
 
 	}
