@@ -38,6 +38,7 @@ class WS_Metaboxes {
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'general_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'hero_tooltips' ) );
+		add_action( 'cmb2_init',  array( $this, 'hero_tooltips_home' ) );
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
@@ -75,7 +76,7 @@ class WS_Metaboxes {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Hero tooltips field group
 	 */
 	function hero_tooltips() {
 
@@ -87,7 +88,7 @@ class WS_Metaboxes {
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
-			'object_types' => array( 'itinerary', 'collection', 'destination', 'interest', 'traveler' ),
+			'object_types' => array( 'itinerary', 'collection', 'destination', 'interest', 'traveler', 'page' ),
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
@@ -114,6 +115,52 @@ class WS_Metaboxes {
 			'id'   => 'caption',
 			'type' => 'text',
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+	}
+
+	/**
+	 * Duplicating hero tooltips for homepage.
+	 *
+	 * Couldn't sort out how to isolate the metaboxes to both specific post types AND the home page
+	 *
+	 * @todo figure out how to avoid the duplication here
+	 */
+	function hero_tooltips_home() {
+
+		$prefix = 'hero_tooltips_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Hero Tooltips', 'cmb2' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'home.php' ),
+		) );
+
+		$group_field_id = $cmb->add_field( array(
+			'id'      => $prefix . 'list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Tooltip {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Tooltip', 'cmb2' ),
+				'remove_button' => __( 'Remove Tooltip', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => __( 'Title', 'cmb2' ),
+			'id'   => 'title',
+			'type' => 'text',
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => __( 'Caption', 'cmb2' ),
+			'id'   => 'caption',
+			'type' => 'text',
 		) );
 
 	}
