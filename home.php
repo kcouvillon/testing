@@ -3,7 +3,50 @@
  * This is actually the main blog page. Please see front-page.php for the traditional 'home' page
  */
 
- get_header(); ?>
+$recent_highlights = array();
+
+$recent_travelogue = new WP_Query( array(
+	'posts_per_page' => 1,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'blog-type',
+			'field'    => 'slug',
+			'terms'    => 'travelogue',
+		),
+	),
+	'no_found_rows'          => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => false,
+) );
+
+$recent_postcard = new WP_Query( array(
+	'posts_per_page' => 1,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'blog-type',
+			'field'    => 'slug',
+			'terms'    => 'postcard',
+		),
+	),
+	'no_found_rows'          => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => false,
+) );
+
+if ( $recent_travelogue->have_posts() ) {
+	$recent_travelogue->the_post();
+	$recent_highlights[] = $post->ID;
+}
+
+if ( $recent_postcard->have_posts() ) {
+	$recent_postcard->the_post();
+	$recent_highlights[] = $post->ID;
+}
+
+$recent_postcard->rewind_posts();
+$recent_travelogue->rewind_posts();
+
+get_header(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main blog" role="main">
@@ -29,7 +72,11 @@
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php get_template_part( 'partials/content', 'blog' ) ?>
+					<?php if ( ! in_array( $post->ID, $recent_highlights ) ) : ?>
+
+						<?php get_template_part( 'partials/content', 'blog' ) ?>
+
+					<?php endif; ?>
 
 				<?php endwhile; ?>
 
@@ -74,21 +121,24 @@
 					<button class="btn btn-success">sports</button>
 
 				</div>
-
-				<?php // we need to find out where these posts should come from ?>
 				
-				<?php if ( have_posts() ) : ?>
+				<?php if ( $recent_postcard->have_posts() ) : ?>
 
-					<?php /* Start the Loop */ ?>
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php while ( $recent_postcard->have_posts() ) : $recent_postcard->the_post(); ?>
+
+						<?php get_template_part( 'partials/content', 'blog-sidebar' ); echo '!!'; ?>
+
+					<?php endwhile; ?>
+
+				<?php endif; ?>
+
+				<?php if ( $recent_travelogue->have_posts() ) : ?>
+
+					<?php while ( $recent_travelogue->have_posts() ) : $recent_travelogue->the_post(); ?>
 
 						<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
 
 					<?php endwhile; ?>
-
-				<?php else : ?>
-
-					<p>Nothing found</p>
 
 				<?php endif; ?>
 
