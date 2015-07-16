@@ -7517,9 +7517,8 @@ section:after {
 .partner-title {
   display: block;
   font-size: 0.875em;
-  line-height: 1.25; }
-  .accreditation .partner-title {
-    font-weight: bold; }
+  line-height: 1.25;
+  font-weight: bold; }
 
 .footnote {
   clear: both;

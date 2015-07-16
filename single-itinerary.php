@@ -254,19 +254,12 @@ get_header(); ?>
 
 						<div class="day-wrap">
 
-						<?php $activities = $day['activity']; ?>
+						<?php $activities = $day['activity_list']; ?>
 
 						<?php if ( ! empty( $activities ) ) : ?>
 
 							<ul class="tour-activity-list">
-								<?php foreach ( $activities as $activity ) {
-									if ( ! empty( $activity['title'] ) ) { ?>
-										<li>
-											<strong><?php echo $activity['title']; ?></strong>
-											<span><?php echo $activity['description']; ?></span>
-										</li>
-									<?php }
-								} ?>
+								<?php echo do_shortcode( $activities ); ?>
 							</ul>
 
 						<?php endif; ?>
