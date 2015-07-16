@@ -26,33 +26,65 @@
 		.icon-pin,
 		.icon-weather {
 			@include susy-media($screen-sm) {
-				position: absolute;
-				margin: 0;
-				left: -35px;
-				top: 3px;
+				// position: absolute;
+				// margin: 0;
+				// left: -35px;
+				// top: 3px;
 			}
 		}
 	}
 
-	.date-list {
-		li {
-			margin-bottom: 0.75em;
-			padding-bottom: 0.75em;
-			border-bottom: 1px solid $gray_light;
-			&:last-child {
-				margin-bottom: 0;
-				padding-bottom: 0;
-				border-bottom: 0;
-			}
-		}
-	}
 }
 
 .tour-duration {
 	@include span(full);
 
 	@include susy-media($screen-sm) {
-		@include span(2);
+		@include span(3);
+	}
+
+	.date-list {
+		margin: 0 0 0 38px;
+		padding-top: 0.75em;
+		border-top: 1px solid $gray_light;
+		&.all-dates {
+			li .toggle-dates:before {
+				content: "Hide";
+			}
+		}
+
+		&.columns-2 {
+			li {
+				width: 50%;
+				float: left;
+				font-size: 0.8em;
+				@include susy-media($screen-sm) {
+					width: 100%;
+				}
+				@include susy-media($screen-md) {
+					width: 50%;
+				}
+			}
+		}
+
+		li {
+			margin-bottom: 0.75em;
+			padding-bottom: 0.75em;
+			border-bottom: 1px solid $gray_light;
+			&:last-child {
+				border-bottom: 0;
+			}
+			&.hidden-dates {
+				display: none;
+			}
+
+			.toggle-dates {
+				font-weight: 700;
+				&:before {
+					content: "See more";
+				}
+			}
+		}
 	}
 }
 
@@ -61,8 +93,15 @@
 
 	@include susy-media($screen-sm) {
 		@include span(5);
+	}
+	@include susy-media($screen-lg) {
+		@include span(4);
 		@include push(1);
 	}
+}
+
+.tour-feature-list {
+	margin-left: 38px;
 }
 
 .tour-feature {
@@ -80,13 +119,22 @@
 	@include susy-media($screen-sm) {
 		@include span(4 last);
 	}
+	@include susy-media($screen-lg) {
+		@include span(3 last);
+		@include push(1);
+	}
+
+	.weather-content {
+		margin-left: 38px;
+	}
 }
 
 .tour-local-time, .tour-local-weather {
 	@include span(full);
 
-	@include susy-media($screen-sm) {
-		@include span(2 of 4);
+	@include susy-media($screen-lg) {
+		width: 50%;
+		float: left;
 	}
 
 	time, span:first-child {
@@ -98,12 +146,6 @@
 
 	span:last-child {
 		font-size: em(14);
-	}
-}
-
-.tour-local-time {
-	@include susy-media($screen-sm) {
-		@include last;
 	}
 }
 

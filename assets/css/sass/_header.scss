@@ -17,14 +17,10 @@
 		}
 	}
 
-	.has-featured-image &, .has-featured-image.single-itinerary & {
+	.transparent-header & {
 		background-color: transparent;
 		position: relative;
 		z-index: 100;
-	}
-
-	.archive &, .blog &, .single & {
-		background-color: $gray_base;
 	}
 }
 

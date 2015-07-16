@@ -399,6 +399,49 @@ class WS_Helpers {
 		return $icon;
 
 	}
+
+	/**
+	 * Get the local time.
+	 */
+	public static function get_local_time( $tz_offset ) {
+
+		// code to generate time based on a numerical offset (i.e. "-4") 
+
+		// $tz_offset = floatval( $tz_offset ) * 60 * 60;
+		// $time = time() + $tz_offset;
+		// $local_time = date( 'g:i a', $time );
+		//return $local_time;
+
+		// code to generate time based on city string (i.e. "America/New_York")
+
+		date_default_timezone_set( $tz_offset );
+		$local_time = date( 'g:i a' );
+		return $local_time;
+
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 WS_Helpers::instance();
