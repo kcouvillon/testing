@@ -23,7 +23,7 @@ get_header(); ?>
 				<div class="section-header-content">
 					<nav class="breadcrumbs">
 						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
-						<a href="<?php echo esc_url( home_url( '/interests' ) ); ?>">Interests</a>>
+						<span>Interests</span>>
 						<span><?php the_title(); ?></span>
 					</nav>
 					<h1><?php the_title(); ?></h1>
