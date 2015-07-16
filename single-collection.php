@@ -3,6 +3,8 @@
  * Terminal layout for Collections
  */
 
+$associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -44,16 +46,12 @@ get_header(); ?>
 
 		</section>
 
+		<?php if ( ! empty( $associated_why_ws ) ) : ?>
+
 		<h2 class="section-content">Title</h2>
 		<a name="#anchor-<?php $anchor++; echo $anchor; ?>"></a>
 
 		<section class="section-content why-content">
-
-			<?php $associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true) ; ?>
-
-			<?php if ( 0 == count( $associated_why_ws ) ) : ?>
-				<p>Nothing found.</p>
-			<?php endif; ?>
 
 			<?php foreach ( $associated_why_ws as $why_ws ) : ?>
 
@@ -62,6 +60,8 @@ get_header(); ?>
 			<?php endforeach; ?>
 
 		</section>
+
+		<?php endif; ?>
 
 		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
 
