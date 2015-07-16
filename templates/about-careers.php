@@ -18,7 +18,7 @@ get_header(); ?>
 			<section class="about career section-content">
 				<?php get_template_part( 'partials/content', 'about' ) ?>
 
-				<button class="btn btn-primary career-btn">View our Current Openings</button>
+				<a href="<?php echo esc_url('http://chc.tbe.taleo.net/chc01/ats/careers/jobSearch.jsp?org=WORLDSTRIDES&cws=1'); ?>" class="btn btn-primary career-btn">View our Current Openings</a>
 
 				<?php
 				$benefits_title       = get_post_meta( $post->ID, 'about_careers_benefits_title', true );
