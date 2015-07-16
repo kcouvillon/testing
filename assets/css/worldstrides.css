@@ -7597,9 +7597,14 @@ section:after {
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
 
+.leadership-content p {
+  max-width: 670px; }
+
 .headshot-pattern {
   padding-top: 56.345%; }
 
+/***********************************************// HISTORY SUBPAGE
+\***********************************************/
 .timeline {
   list-style: none;
   padding: 0;
