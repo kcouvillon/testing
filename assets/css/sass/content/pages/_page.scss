@@ -6,6 +6,14 @@ section {
 	@include clearfix;
 }
 
+// Default Page styles
+
+.page-template-default {
+	.section-content {
+		max-width: 900px;
+	}
+}
+
 // These styles apply to the section heros that appear on several pages
 .section-nav {
 	background: $gray-base;
