@@ -7705,7 +7705,9 @@ section:after {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 5vw; }
+  padding: 0 5vw;
+  padding-top: 1em;
+  padding-bottom: 4em; }
   @media (min-width: 768px) {
     .contact-wrap {
       display: flex; } }
