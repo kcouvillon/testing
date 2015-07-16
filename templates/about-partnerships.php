@@ -18,8 +18,6 @@ get_header(); ?>
 
 				<?php get_template_part( 'partials/content', 'about' ); ?>
 
-				<?php the_content(); ?>
-
 				<section class="partners accreditation">
 					<?php
 					$accreditation_partners = get_post_meta( $post->ID, 'about_partnerships_accreditation_partners', true );
