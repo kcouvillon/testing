@@ -150,8 +150,8 @@ get_header(); ?>
 					<div class="tour-local-time">
 						<?php
 						$tz = get_post_meta( $post->ID, 'itinerary_details_timezone', true );
-						if ( strrpos( $tz, 'UTC') >= 0 ) {
-							$tz = substr($tz, 3); // "-5.5"
+						if ( strrpos( $tz, 'UTC') !== false ) {
+							$tz = substr($tz, 3); // "UTC-5.5" -> "-5.5"
 							$local_time = WS_Helpers::get_local_time_by_offset( $tz );
 						} else {
 							$local_time = WS_Helpers::get_local_time_by_tz( $tz );

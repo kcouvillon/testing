@@ -406,9 +406,12 @@ class WS_Helpers {
 	 */
 	public static function get_local_time_by_tz( $timezone, $format ) {
 
-		$format = ( $format ) ? $format : 'g:i a';
-		date_default_timezone_set( $timezone );
-		$local_time = date( $format );
+		$format       = ( $format ) ? $format : 'g:i a';
+
+		$userTimezone = new DateTimeZone( $timezone );
+		$myDateTime   = new DateTime();
+		$offset       = $userTimezone->getOffset( $myDateTime );
+		$local_time   = date( $format, $myDateTime->format('U') + $offset );
 
 		return $local_time;
 
