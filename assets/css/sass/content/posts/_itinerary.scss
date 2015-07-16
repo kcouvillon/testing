@@ -199,14 +199,17 @@
 }
 
 #tour-highlights-map {
-	display: none;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
+	height: 300px;
+	height: 50vw;
+	width: 100%;
 
 	@include susy-media($screen-sm) {
 		display: block;
+		position: absolute !important;
+		height: auto;
+		top: 0;
+		right: 0;
+		bottom: 0;
 		width: 34%;
 	}
 }

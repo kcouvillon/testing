@@ -101,6 +101,7 @@
 				var init_coords = $('.tour-highlights').data('location'),
 					map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
 						scrollWheelZoom: false,
+						dragging: false,
 						zoomControl: false,
 						center: [ parseFloat(init_coords.latitude), parseFloat(init_coords.longitude) ],
 						zoom: 13
@@ -167,15 +168,19 @@
 							$slideshow.cycle( 'goto', e.layer.feature.properties.id );
 						})
 				
-					map.on('ready', function( event ){
+					map
+						.on('ready', function(){
 
-						layer.setGeoJSON(collection);
-						setTimeout(function () {
-							map.fitBounds(layer.getBounds());
-							map.invalidateSize();
-						}, 500);
+							layer.setGeoJSON(collection);
+							setTimeout(function () {
+								map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ] } );
+								map.invalidateSize();
+							}, 500);
 
-					});
+						})
+						.on('resize', function() {
+							map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ] } );
+						});
 
 					$slideshow.on('cycle-after', function( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
 						var marker_id = $slideshow_images.indexOf(incomingSlideEl);
