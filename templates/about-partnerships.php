@@ -27,7 +27,7 @@ get_header(); ?>
 					<?php if ( $section_title ) : ?>
 						<section class="partners accreditation">
 
-							<h3><?php apply_filters( 'the_title', $section_title ); ?></h3>
+							<h3><?php echo apply_filters( 'the_title', $section_title ); ?></h3>
 
 							<div class="partner-wrap">
 								<?php foreach ( $section_partners as $partner ) : ?>
