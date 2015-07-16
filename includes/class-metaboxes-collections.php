@@ -40,7 +40,6 @@ class WS_Metaboxes_Collections {
 		add_action( 'cmb2_init',  array( $this, 'collection_blocks_before' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_itineraries' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_blocks_after' ) );
-		add_action( 'cmb2_init',  array( $this, 'collection_blog_post' ) );
 	}
 
 	/**
@@ -267,30 +266,6 @@ class WS_Metaboxes_Collections {
 			)
 		) );
 
-	}
-
-	/**
-	 * Field group for Why WorldStrides page
-	 */
-	function collection_blog_post() {
-
-		$prefix = 'collection_blog_post_';
-
-		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blog Post', 'cmb2' ),
-			'object_types' => array( 'collection', ),
-		) );
-
-		$cmb->add_field( array(
-			'name'        => __( 'Blog post' ),
-			'id'          => 'collection_blog_post',
-			'type'        => 'post_search_text', // This field type
-			// post type also as array
-			'post_type'   => 'post',
-			// checkbox/radio, used in the modal view to select the post type
-			'select_type' => 'radio'
-		) );
 	}
 }
 
