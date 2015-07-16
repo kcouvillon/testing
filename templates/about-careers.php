@@ -28,7 +28,7 @@ get_header(); ?>
 				<section class="benefits">
 					<h3><?php echo apply_filters( 'the_title', $benefits_title ); ?></h3>
 
-					<p><?php echo apply_filters( 'the_content', $benefits_description ); ?></p>
+					<?php echo apply_filters( 'the_content', $benefits_description ); ?>
 
 					<div class="benefits-wrap">
 						<?php if ( is_array( $benefits ) ) : ?>
@@ -58,7 +58,7 @@ get_header(); ?>
 					?>
 					<h3><?php echo apply_filters( 'the_title', $examples_title ); ?></h3>
 
-					<p><?php echo apply_filters( 'the_content', $examples_description ); ?></p>
+					<?php echo apply_filters( 'the_content', $examples_description ); ?>
 
 					<div class="example-wrap">
 						<?php if ( is_array( $examples ) ) : ?>

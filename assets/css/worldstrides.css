@@ -7563,6 +7563,9 @@ section:after {
 .career .page {
   margin-bottom: 0; }
 
+.career p {
+  max-width: 670px; }
+
 /***********************************************// LEADERSHIP SUBPAGE
 \***********************************************/
 .leadership > article {
