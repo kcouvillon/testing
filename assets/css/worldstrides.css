@@ -7052,6 +7052,7 @@ a.no-decoration {
           margin-right: 0.3em; } }
 
 .tour-highlights {
+  position: relative;
   max-width: 1500px;
   margin: 0 auto; }
 
@@ -7063,7 +7064,19 @@ a.no-decoration {
   @media (min-width: 768px) {
     .tour-highlights-slider {
       width: 66.0130718954%;
-      float: left; } }
+      float: left;
+      width: 66%; } }
+
+#tour-highlights-map {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0; }
+  @media (min-width: 768px) {
+    #tour-highlights-map {
+      display: block;
+      width: 34%; } }
 
 .tour-itinerary {
   display: block;

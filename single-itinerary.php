@@ -218,9 +218,12 @@ get_header(); ?>
 		</section>
 
 		<?php if ( ! empty( $highlights[1]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
-			<?php $section_num = 1; // set first section number ?>
+			<?php 
+			$section_num = 1; // set first section number 
+			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
+			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-			<section class="tour-highlights">
+			<section class="tour-highlights" data-location='<?php echo json_encode( $location ); ?>'>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
@@ -239,9 +242,9 @@ get_header(); ?>
 					<?php } ?>
 					<div class="cycle-pager"></div>
 				</div>
-
-				<div class="tour-highlights-map">
-					MAP
+				<div id="tour-highlights-data" data-highlights='<?php echo json_encode( get_post_meta( $post->ID, "itinerary_highlights_list", true ) ); ?>'></div>
+				<div id="tour-highlights-map">
+					<!-- MAP - check assets/js/src/itinerary.js for map code -->
 				</div>
 
 			</section>

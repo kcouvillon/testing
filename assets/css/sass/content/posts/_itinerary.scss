@@ -184,6 +184,7 @@
 }	
 
 .tour-highlights {
+	position: relative;
 	max-width: 1500px;
 	margin: 0 auto;
 }
@@ -193,6 +194,20 @@
 
 	@include susy-media($screen-sm) {
 		@include span(8 no-gutters);
+		width: 66%;
+	}
+}
+
+#tour-highlights-map {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+
+	@include susy-media($screen-sm) {
+		display: block;
+		width: 34%;
 	}
 }
 
