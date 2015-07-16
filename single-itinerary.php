@@ -186,19 +186,22 @@ get_header(); ?>
 						<span><?php echo $temp; ?>&#8457;</span>
 						<span>Current Temp</span>
 					</div>
-					<div class="tour-local-time">
-						<?php
-						$tz = get_post_meta( $post->ID, 'itinerary_details_timezone', true );
-						if ( strrpos( $tz, 'UTC') !== false ) {
-							$tz = substr($tz, 3); // "UTC-5.5" -> "-5.5"
+
+					<?php $tz = get_post_meta( $post->ID, 'itinerary_details_timezone', true ); ?>
+
+					<?php if ( $tz ) : ?>
+						<?php if ( strrpos( $tz, 'UTC') !== false ) {
+							$tz = substr( $tz, 3 ); // "UTC-5.5" -> "-5.5"
 							$local_time = WS_Helpers::get_local_time_by_offset( $tz );
 						} else {
 							$local_time = WS_Helpers::get_local_time_by_tz( $tz );
 						}
 						?>
-						<time><?php echo $local_time; ?></time>
-						<span>Current Time</span>
-					</div>
+						<div class="tour-local-time">
+							<time><?php echo $local_time; ?></time>
+							<span>Current Time</span>
+						</div>
+					<?php endif; ?>
 
 				</div>
 				

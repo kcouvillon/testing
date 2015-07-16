@@ -404,9 +404,7 @@ class WS_Helpers {
 	 * Get the local time by timezone name (i.e. "America/New_York").
 	 * http://php.net/manual/en/timezones.php
 	 */
-	public static function get_local_time_by_tz( $timezone, $format ) {
-
-		$format       = ( $format ) ? $format : 'g:i a';
+	public static function get_local_time_by_tz( $timezone, $format = 'g:i a' ) {
 
 		$userTimezone = new DateTimeZone( $timezone );
 		$myDateTime   = new DateTime();
@@ -421,9 +419,8 @@ class WS_Helpers {
 	 * Get the local time by timezone offset in hours (i.e. "-5.5").
 	 * http://php.net/manual/en/timezones.php
 	 */
-	public static function get_local_time_by_offset( $offset_hours, $format ) {
+	public static function get_local_time_by_offset( $offset_hours, $format = 'g:i a' ) {
 
-		$format = ( $format ) ? $format : 'g:i a';
 		$offset_hours = floatval( $offset_hours ) * 60 * 60;
 		$time = time() + $offset_hours;
 		$local_time = date( $format, $time );
