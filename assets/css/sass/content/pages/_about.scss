@@ -145,6 +145,35 @@
 	padding-top: 56.345%;
 }
 
+// LEADERSHIP SINGLE
+.headshot-hero {
+	@include span(full);
+	margin-bottom: 1em;
+
+	@include susy-media($screen-sm) {
+		@include span(6);
+	}
+
+	.wp-post-image {
+		width: 100%;
+	}
+}
+
+.bio {
+	.entry-content {
+		@include span(full);
+		margin-top: 0;
+
+		@include susy-media($screen-sm) {
+			@include span(6 last);
+		}
+	}
+
+	.entry-title {
+		color: $color_text_heading;
+	}
+}
+
 // HISTORY SUBPAGE
 
 .timeline {

@@ -10,18 +10,20 @@ get_header(); ?>
 
 		<?php get_template_part( 'partials/about', 'header' ); ?>
 
+
 		<?php if ( have_posts() ) : ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<article <?php post_class(); ?>>
-					<header class="entry-header">
-						<?php if ( has_post_thumbnail() ) : ?>
-							<div class="headshot">
-								<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
-								<?php the_post_thumbnail( 'large' ); ?>
-							</div>
-						<?php endif; ?>
+				<section <?php post_class( 'section-content bio' ); ?>>
+					<?php if ( has_post_thumbnail() ) : ?>
+						<div class="headshot-hero">
+							<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
+							<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+						</div>
+					<?php endif; ?>
+
+					<div class="entry-content">
 
 						<h3 class="entry-title">
 							<?php the_title(); ?>
@@ -31,16 +33,16 @@ get_header(); ?>
 						<?php if ( $position ) : ?>
 							<span class="entry-position"><?php echo esc_html( $position ); ?></span>
 						<?php endif; ?>
-					</header>
 
-					<div class="entry-content">
 						<?php the_content(); ?>
+
+						<footer class="entry-footer">
+							<a href="<?php esc_url( home_url( '/about/leadership' ) ); ?>">Back to Leadership</a>
+						</footer>
+						
 					</div>
 
-					<footer class="entry-footer">
-						<?php // @todo should 'back to leadership/category' link go here? ?>
-					</footer>
-				</article>
+				</section>
 
 			<?php endwhile; ?>
 
