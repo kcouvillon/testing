@@ -6237,6 +6237,10 @@ a.no-decoration {
     background-color: transparent;
     position: relative;
     z-index: 100; }
+  .page-template-default .site-header {
+    background-color: #323c53; }
+  .home .site-header {
+    background-color: transparent; }
 
 .logo {
   display: inline-block;
@@ -7265,6 +7269,9 @@ section:after {
 
 section:after {
   clear: both; }
+
+.page-template-default .section-content {
+  max-width: 900px; }
 
 .section-nav {
   background: #323c53;

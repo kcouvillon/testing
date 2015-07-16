@@ -22,6 +22,14 @@
 		position: relative;
 		z-index: 100;
 	}
+
+	.page-template-default & {
+		background-color: $gray_base;
+	}
+
+	.home & {
+		background-color: transparent;
+	}
 }
 
 .logo {
