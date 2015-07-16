@@ -76,13 +76,6 @@ function ws_setup() {
 
 	add_post_type_support( 'page', 'excerpt' );
 
-	update_option( 'thumbnail_size_w', 270 );
-	update_option( 'thumbnail_size_h', 270 );
-	update_option( 'medium_size_w', 480 );
-	update_option( 'medium_size_h', 480 );
-	update_option( 'large_size_w', 1030 );
-	update_option( 'large_size_h', 1030 );
-
 	add_image_size( 'hero', 1500 );
 	add_image_size( 'square', 1030, 900, true );
 
@@ -208,3 +201,17 @@ function ws_modified_queries( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'ws_modified_queries', 1 );
+
+/**
+ * Set image sizes
+ */
+function ws_image_sizes() {
+	update_option( 'thumbnail_size_w', 270 );
+	update_option( 'thumbnail_size_h', 270 );
+	update_option( 'thumbnail_crop', 1 );
+	update_option( 'medium_size_w', 480 );
+	update_option( 'medium_size_h', 480 );
+	update_option( 'large_size_w', 1030 );
+	update_option( 'large_size_h', 1030 );
+}
+add_action( 'switch_theme', 'ws_image_sizes' );
