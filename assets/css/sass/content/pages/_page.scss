@@ -84,7 +84,6 @@ section {
 	@include clearfix;
 	@include container();
 	margin-bottom: gutter()*2;
-	background-color: $color_background_header;
 
 	.primary-section &, .single & {
 		margin-bottom: 0;

@@ -27,9 +27,11 @@
 	}
 }
 
-/***********************************************\
 // PARTNERSHIP SUBPAGE
-\***********************************************/
+
+.partnerships p {
+	max-width: 670px;
+}
 
 .partners {
 	margin-bottom: 4em;
@@ -62,10 +64,11 @@
 	display: block;
 	font-size: em(14);
 	line-height: 1.25;
+	font-weight: bold;
 
-	.accreditation & {
-		font-weight: bold;
-	}
+	// .accreditation & {
+	// 	font-weight: bold;
+	// }
 }
 
 .footnote {
@@ -75,9 +78,7 @@
 	margin-top: 2em;
 }
 
-/***********************************************\
 // CAREERS SUBPAGE
-\***********************************************/
 
 .benefit {
 	@include span(full);
@@ -106,9 +107,13 @@
 	margin-bottom: 0;
 }
 
-/***********************************************\
+.career {
+	p {
+		max-width: 670px;
+	}
+}
+
 // LEADERSHIP SUBPAGE
-\***********************************************/
 
 
 .leadership {
@@ -130,6 +135,10 @@
 	.entry-title, .entry-position, .entry-content {
 		margin-right: 1em;
 	}
+}
+
+.leadership-content p {
+	max-width: 670px;
 }
 
 .headshot-pattern {
@@ -156,6 +165,7 @@
 	}
 
 	.timeline-event {
+		max-width: 670px;
 	}
 
 	.timeline-year {
@@ -165,6 +175,10 @@
 		display: block;
 		line-height: 1.8;
 		color: $blue;
+	}
+
+	.timeline-content {
+		position: relative;
 
 		&:after {
 			content: '';
@@ -175,8 +189,8 @@
 			background-color: #fff;
 			display: block;
 			position: absolute;
-			top: 36%;
-			right: -100%;
+			top: 13%;
+			left: -38px;
 		}
 	}
 }

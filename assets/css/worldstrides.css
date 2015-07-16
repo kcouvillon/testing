@@ -7325,8 +7325,7 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  margin-bottom: 3.9215686275%;
-  background-color: #badeff; }
+  margin-bottom: 3.9215686275%; }
   .section-header:before,
   .section-header:after {
     content: "";
@@ -7470,8 +7469,9 @@ section:after {
       display: flex;
       padding: 0; } }
 
-/***********************************************// PARTNERSHIP SUBPAGE
-\***********************************************/
+.partnerships p {
+  max-width: 670px; }
+
 .partners {
   margin-bottom: 4em; }
   .partners h3 {
@@ -7517,9 +7517,8 @@ section:after {
 .partner-title {
   display: block;
   font-size: 0.875em;
-  line-height: 1.25; }
-  .accreditation .partner-title {
-    font-weight: bold; }
+  line-height: 1.25;
+  font-weight: bold; }
 
 .footnote {
   clear: both;
@@ -7527,8 +7526,6 @@ section:after {
   color: #b3b7bf;
   margin-top: 2em; }
 
-/***********************************************// CAREERS SUBPAGE
-\***********************************************/
 .benefit {
   width: 100%;
   float: left;
@@ -7563,8 +7560,9 @@ section:after {
 .career .page {
   margin-bottom: 0; }
 
-/***********************************************// LEADERSHIP SUBPAGE
-\***********************************************/
+.career p {
+  max-width: 670px; }
+
 .leadership > article {
   width: 100%;
   float: left;
@@ -7594,6 +7592,9 @@ section:after {
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
 
+.leadership-content p {
+  max-width: 670px; }
+
 .headshot-pattern {
   padding-top: 56.345%; }
 
@@ -7611,6 +7612,8 @@ section:after {
     width: 2px;
     background: #b3b7bf;
     height: 100%; }
+  .timeline .timeline-event {
+    max-width: 670px; }
   .timeline .timeline-year {
     position: absolute;
     left: 0;
@@ -7618,7 +7621,9 @@ section:after {
     display: block;
     line-height: 1.8;
     color: #4fa9e5; }
-    .timeline .timeline-year:after {
+  .timeline .timeline-content {
+    position: relative; }
+    .timeline .timeline-content:after {
       content: '';
       width: 12px;
       height: 12px;
@@ -7627,8 +7632,8 @@ section:after {
       background-color: #fff;
       display: block;
       position: absolute;
-      top: 36%;
-      right: -100%; }
+      top: 13%;
+      left: -38px; }
 
 .contact h2 {
   margin-bottom: 35px; }

@@ -18,7 +18,7 @@ get_header(); ?>
 			<section class="about career section-content">
 				<?php get_template_part( 'partials/content', 'about' ) ?>
 
-				<button class="btn btn-primary career-btn">View our Current Openings</button>
+				<a href="<?php echo esc_url('http://chc.tbe.taleo.net/chc01/ats/careers/jobSearch.jsp?org=WORLDSTRIDES&cws=1'); ?>" class="btn btn-primary career-btn">View our Current Openings</a>
 
 				<?php
 				$benefits_title       = get_post_meta( $post->ID, 'about_careers_benefits_title', true );
@@ -28,7 +28,7 @@ get_header(); ?>
 				<section class="benefits">
 					<h3><?php echo apply_filters( 'the_title', $benefits_title ); ?></h3>
 
-					<p><?php echo apply_filters( 'the_content', $benefits_description ); ?></p>
+					<?php echo apply_filters( 'the_content', $benefits_description ); ?>
 
 					<div class="benefits-wrap">
 						<?php if ( is_array( $benefits ) ) : ?>
@@ -58,7 +58,7 @@ get_header(); ?>
 					?>
 					<h3><?php echo apply_filters( 'the_title', $examples_title ); ?></h3>
 
-					<p><?php echo apply_filters( 'the_content', $examples_description ); ?></p>
+					<?php echo apply_filters( 'the_content', $examples_description ); ?>
 
 					<div class="example-wrap">
 						<?php if ( is_array( $examples ) ) : ?>
