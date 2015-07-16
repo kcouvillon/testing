@@ -121,13 +121,38 @@ function ws_admin_scripts_styles() {
 
 add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
 
+function get_id_by_slug($page_slug) {
+	$page = get_page_by_path($page_slug);
+	if ($page) {
+		return $page->ID;
+	} else {
+		return null;
+	}
+}
+
 /**
  * Add class to body_class if there is a featured image
  */
 function ws_add_body_classes( $classes ) {
 	global $post;
+	$about_id = get_id_by_slug( 'about' );
+
 	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_home() && ! is_singular( 'press' ) && ! is_page( 'history' ) ) {
 		$classes[] = 'has-featured-image';
+
+		if ( is_front_page() ) {
+			$classesp[] = 'has-featured-image';
+		}
+	}
+
+	if ( is_archive() || is_home() || is_page( 'about' ) || is_page( 'contact' ) || $about_id == $post->post_parent || is_page( 'resource-center' ) || is_singular( 'resource' ) ) {
+		$classes[] = 'solid-header';
+
+		if ( is_front_page() ) {
+			$classes[] = 'transparent-header';
+		}
+	} else {
+		$classes[] = 'transparent-header';
 	}
 
 	return $classes;

@@ -57,11 +57,17 @@ section {
 	font-weight: lighter;
 }
 
-.has-featured-image .primary-section, .has-featured-image .itinerary .primary-section {
+.transparent-header .primary-section {
 	margin-top: -158px;
+	padding-top: 100px !important;
+
+	.section-header {
+		margin-top: -100px;
+		padding-top: 100px;
+	}
 }
 
-.archive .primary-section, .blog .primary-section, .single .primary-section {
+.solid-header .primary-section {
 	margin-top: 0;
 }
 
