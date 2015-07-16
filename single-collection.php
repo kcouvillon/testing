@@ -4,6 +4,7 @@
  */
 
 $associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
+$associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 
 get_header(); ?>
 
@@ -65,11 +66,13 @@ get_header(); ?>
 
 		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
 
+		<?php if ( $associated_resources ) : ?>
 		<section class="section-content resources">
 				<h2 class="section-title">Have Questions? We Have Answers.</h2>
+				<?php var_dump( $associated_resources ); ?>
 				<ul class="resources-list list-unstyled clearfix">
 					
-					<?php 
+					<?php
 						$count = 0;
 						$data = array(
 							array(
@@ -94,7 +97,7 @@ get_header(); ?>
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
 								<?php foreach ( $item['meta'] as $meta ) : ?>
-								<li><a href="#"><?php echo $meta; ?></a></li>
+								<li><a href="#">{STATIC} <?php echo $meta; ?></a></li>
 								<?php endforeach; ?>
 							</ul>
 							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
@@ -108,9 +111,10 @@ get_header(); ?>
 
 				</ul>
 		</section>
+		<?php endif; ?>
 
 		<section class="section-content programs">
-			<h2 class="section-title">Our Educational Travel Opportunities</h2>
+			<h2 class="section-title">{STATIC: FUTURE BLOCK} Our Educational Travel Opportunities</h2>
 			<ul class="programs-list list-unstyled clearfix">
 				<?php 
 				$count = 0;
@@ -206,8 +210,14 @@ get_header(); ?>
 
 				<section>
 
-				<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
-				$blogPosts = new WP_Query($args); ?>
+				<?php
+				// @todo make this one query, it does not need to be two
+
+				$args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
+				$blogPosts = new WP_Query($args);
+
+				?>
+
 				<?php if ( $blogPosts->have_posts() ) : ?>
 
 					<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
@@ -261,7 +271,7 @@ get_header(); ?>
 		</div>
 
 		<section class="info-cta">
-			
+
 			<div class="additional-info">
 				<h3>Additional Information</h3>
 				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet.</p>
