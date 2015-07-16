@@ -296,7 +296,14 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_group_field( $day_group, array(
-			'name'       => __( 'Activity', 'cmb2' ),
+			'name'       => __( 'Activity List', 'cmb2' ),
+			'id'         => 'activity_list',
+			'type'       => 'textarea',
+			'desc'       => 'Use the activity shortcode - [activity title="Title"]Description[/activity]'
+		) );
+
+		$cmb->add_group_field( $day_group, array(
+			'name'       => __( 'Activity (OLD)', 'cmb2' ),
 			'id'         => 'activity',
 			'type'       => 'itinerary_activity',
 			'repeatable' => true, // this is a bit buggy (creates phantom activities

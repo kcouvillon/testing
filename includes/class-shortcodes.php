@@ -37,6 +37,7 @@ class WS_Shortcodes {
 		add_shortcode( 'timeline', array( $this, 'timeline' ) );
 		add_shortcode( 'timeline-node', array( $this, 'timeline_node' ) );
 		add_shortcode( 'button', array( $this, 'button' ) );
+		add_shortcode( 'activity', array( $this, 'activity' ) );
 	}
 
 	/**
@@ -109,6 +110,32 @@ class WS_Shortcodes {
 		ob_start();
 		?>
 		<a href="<?php echo $atts['url'];?>" class="btn <?php echo esc_attr( $class ); ?>"<?php echo $target; ?>><?php echo esc_html( $content ); ?></a>
+		<?php
+		$html = ob_get_contents();
+		ob_get_clean();
+
+		return $html;
+	}
+
+	/**
+	 * Creates an activity shortcode
+	 *
+	 * @param $atts array shortcode attributes
+	 * @param $content mixed content between shortcode
+	 *
+	 * @return string content wrapped in a unordered list
+	 */
+	public static function activity( $atts, $content = "" ) {
+		$atts = shortcode_atts( array(
+			'title' => '',
+		), $atts, 'activity' );
+
+		ob_start();
+		?>
+		<li>
+			<strong><?php echo $atts['title'];?></strong>
+			<span><?php echo $content; ?></span>
+		</li>
 		<?php
 		$html = ob_get_contents();
 		ob_get_clean();
