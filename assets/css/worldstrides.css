@@ -7470,8 +7470,9 @@ section:after {
       display: flex;
       padding: 0; } }
 
-/***********************************************// PARTNERSHIP SUBPAGE
-\***********************************************/
+.partnerships p {
+  max-width: 670px; }
+
 .partners {
   margin-bottom: 4em; }
   .partners h3 {
@@ -7527,8 +7528,6 @@ section:after {
   color: #b3b7bf;
   margin-top: 2em; }
 
-/***********************************************// CAREERS SUBPAGE
-\***********************************************/
 .benefit {
   width: 100%;
   float: left;
@@ -7566,8 +7565,6 @@ section:after {
 .career p {
   max-width: 670px; }
 
-/***********************************************// LEADERSHIP SUBPAGE
-\***********************************************/
 .leadership > article {
   width: 100%;
   float: left;
@@ -7603,8 +7600,6 @@ section:after {
 .headshot-pattern {
   padding-top: 56.345%; }
 
-/***********************************************// HISTORY SUBPAGE
-\***********************************************/
 .timeline {
   list-style: none;
   padding: 0;

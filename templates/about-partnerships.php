@@ -14,7 +14,9 @@ get_header(); ?>
 		<?php the_post(); ?>
 		<div class="about-wrap">
 
-			<section class="about section-content">
+			<section class="about partnerships section-content">
+
+				<?php get_template_part( 'partials/content', 'about' ); ?>
 
 				<section class="partners accreditation">
 					<?php
