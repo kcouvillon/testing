@@ -7563,6 +7563,9 @@ section:after {
 .career .page {
   margin-bottom: 0; }
 
+.career p {
+  max-width: 670px; }
+
 /***********************************************// LEADERSHIP SUBPAGE
 \***********************************************/
 .leadership > article {
@@ -7594,9 +7597,14 @@ section:after {
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
 
+.leadership-content p {
+  max-width: 670px; }
+
 .headshot-pattern {
   padding-top: 56.345%; }
 
+/***********************************************// HISTORY SUBPAGE
+\***********************************************/
 .timeline {
   list-style: none;
   padding: 0;
@@ -7611,6 +7619,8 @@ section:after {
     width: 2px;
     background: #b3b7bf;
     height: 100%; }
+  .timeline .timeline-event {
+    max-width: 670px; }
   .timeline .timeline-year {
     position: absolute;
     left: 0;
@@ -7618,7 +7628,9 @@ section:after {
     display: block;
     line-height: 1.8;
     color: #4fa9e5; }
-    .timeline .timeline-year:after {
+  .timeline .timeline-content {
+    position: relative; }
+    .timeline .timeline-content:after {
       content: '';
       width: 12px;
       height: 12px;
@@ -7627,8 +7639,8 @@ section:after {
       background-color: #fff;
       display: block;
       position: absolute;
-      top: 36%;
-      right: -100%; }
+      top: 13%;
+      left: -38px; }
 
 .contact h2 {
   margin-bottom: 35px; }
