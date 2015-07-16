@@ -6233,12 +6233,10 @@ a.no-decoration {
     color: #fff; }
     .site-header a:hover {
       color: #b3b7bf; }
-  .has-featured-image .site-header, .has-featured-image.single-itinerary .site-header {
+  .transparent-header .site-header {
     background-color: transparent;
     position: relative;
     z-index: 100; }
-  .archive .site-header, .blog .site-header, .single .site-header {
-    background-color: #323c53; }
 
 .logo {
   display: inline-block;
@@ -7286,10 +7284,14 @@ section:after {
 .section-title {
   font-weight: lighter; }
 
-.has-featured-image .primary-section, .has-featured-image .itinerary .primary-section {
-  margin-top: -158px; }
+.transparent-header .primary-section {
+  margin-top: -158px;
+  padding-top: 100px !important; }
+  .transparent-header .primary-section .section-header {
+    margin-top: -100px;
+    padding-top: 100px; }
 
-.archive .primary-section, .blog .primary-section, .single .primary-section {
+.solid-header .primary-section {
   margin-top: 0; }
 
 .section-header {
