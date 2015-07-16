@@ -16,6 +16,8 @@ get_header(); ?>
 
 			<section class="about section-content">
 
+				<?php the_content(); ?>
+
 				<section class="partners accreditation">
 					<?php
 					$accreditation_partners = get_post_meta( $post->ID, 'about_partnerships_accreditation_partners', true );

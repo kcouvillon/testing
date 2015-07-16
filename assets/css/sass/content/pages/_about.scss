@@ -62,10 +62,11 @@
 	display: block;
 	font-size: em(14);
 	line-height: 1.25;
+	font-weight: bold;
 
-	.accreditation & {
-		font-weight: bold;
-	}
+	// .accreditation & {
+	// 	font-weight: bold;
+	// }
 }
 
 .footnote {
