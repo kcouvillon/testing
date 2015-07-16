@@ -401,21 +401,30 @@ class WS_Helpers {
 	}
 
 	/**
-	 * Get the local time.
+	 * Get the local time by timezone name (i.e. "America/New_York").
+	 * http://php.net/manual/en/timezones.php
 	 */
-	public static function get_local_time( $tz_offset ) {
+	public static function get_local_time_by_tz( $timezone, $format ) {
 
-		// code to generate time based on a numerical offset (i.e. "-4") 
+		$format = ( $format ) ? $format : 'g:i a';
+		date_default_timezone_set( $timezone );
+		$local_time = date( $format );
 
-		// $tz_offset = floatval( $tz_offset ) * 60 * 60;
-		// $time = time() + $tz_offset;
-		// $local_time = date( 'g:i a', $time );
-		//return $local_time;
+		return $local_time;
 
-		// code to generate time based on city string (i.e. "America/New_York")
+	}
 
-		date_default_timezone_set( $tz_offset );
-		$local_time = date( 'g:i a' );
+	/**
+	 * Get the local time by timezone offset in hours (i.e. "-5.5").
+	 * http://php.net/manual/en/timezones.php
+	 */
+	public static function get_local_time_by_offset( $offset_hours, $format ) {
+
+		$format = ( $format ) ? $format : 'g:i a';
+		$offset_hours = floatval( $offset_hours ) * 60 * 60;
+		$time = time() + $offset_hours;
+		$local_time = date( $format, $time );
+
 		return $local_time;
 
 	}
