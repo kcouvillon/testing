@@ -26,7 +26,7 @@ get_header(); ?>
 				<div class="section-header-content">
 					<nav class="breadcrumbs">
 						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
-						<a href="<?php echo esc_url( home_url( '/collections' ) ); ?>">Collections</a>>
+						<span>Collections</span>>
 						<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug ) ); ?>"><?php echo $term->name; ?></a>>
 						<span><?php the_title(); ?></span>
 					</nav>
@@ -44,12 +44,51 @@ get_header(); ?>
 
 			<nav class="section-nav">
 				<ul class="section-menu">
-					<li><a href="#">[TBD]</a></li>
-					<li><a href="#tour-highlights">Tour Highlights</a></li>
-					<li><a href="#education">Education</a></li>
-					<li><a href="#itinerary">Itinerary</a></li>
-					<li><a href="#resources">Resources</a></li>
+					<?php
+					$section_link = 1;
+
+					// Get highlights
+
+					$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
+					if ( ! empty( $highlights[1]['image'] ) ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Tour Highlights</a></li>
+					<?php endif; ?>
+
+					<?php
+					// Get Before Blocks
+					$before_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
+					
+					<?php if ( ! empty( $before_block_sections ) ) : ?>
+						<?php foreach ( $before_block_sections as $section ) : ?>
+							<?php if ( ! empty ( $section['title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+
+					<?php
+					// Get Itinerary
+					$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true ); ?>
+
+					<?php if ( ! empty( $itinerary ) ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itinerary</a></li>
+					<?php endif; ?>
+
+					<?php
+					// Get After Blocks
+					$after_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
+					
+					<?php if ( ! empty( $after_block_sections ) ) : ?>
+						<?php foreach ( $after_block_sections as $section ) : ?>
+							<?php if ( ! empty ( $section['title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+
 				</ul>
+
+				<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
 			</nav>
 
 		</section>
@@ -175,8 +214,9 @@ get_header(); ?>
 			</ul>
 		</section>
 
-		<?php $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true ); ?>
 		<?php if ( ! empty( $highlights[1]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
+			<?php $section_num = 1; // set first section number ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-highlights">
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
@@ -204,16 +244,16 @@ get_header(); ?>
 			</section>
 		<?php endif; ?>
 
-		<?php $block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
 
-		<?php if ( ! empty( $block_sections ) ) : ?>
+		<?php if ( ! empty( $before_block_sections ) ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="ws-container ws-blocks tour-blocks-before">
 
-			<?php foreach ( $block_sections as $section ) : ?>
+			<?php foreach ( $before_block_sections as $section ) : ?>
 
 					<?php if ( ! empty( $section['title'] ) ) : ?>
-						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
@@ -230,88 +270,86 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<section class="tour-itinerary">
+		<?php if ( ! empty ( $itinerary ) ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+			<section class="tour-itinerary">
 
-			<h2>Your Adventure, Day by Day</h2>
+				<h2>Your Adventure, Day by Day</h2>
 
-			<?php
-			$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true );
-			$count = 0;
-			?>
+				<?php $count = 0; ?>
 
-			<?php foreach ( $itinerary as $day ) : ?>
-				<?php $count ++; ?>
-				<?php if ( ! empty( $day['title'] ) ) : ?>
-					<article class="tour-day">
-						<?php if ( ! empty( $day['image'] ) ) : ?>
-							<div class="tour-hero" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
-						<?php endif; ?>
-						<header>
-							<span class="tour-day-marker">Day</span>
-							<span class="tour-day-number"><?php echo $count; ?></span>
-							<span class="h3"><?php echo $day['title']; ?></span>
-						</header>
-
-						<div class="day-wrap">
-
-						<?php $activities = $day['activity_list']; ?>
-
-						<?php if ( ! empty( $activities ) ) : ?>
-
-							<ul class="tour-activity-list">
-								<?php echo do_shortcode( $activities ); ?>
-							</ul>
-
-						<?php endif; ?>
-
-						<?php
-						$related = $day['related_content'];
-						$related_title = $day['related_content_title'];
-
-						if ( ! empty ( $related ) ) :
-
-							$related_post = get_post( $related );
-							$background = '';
-							$class = 'pattern-' . rand(1, 9);
-
-							if ( has_post_thumbnail( $related) ) {
-
-								$class = 'no-pattern';
-
-								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
-								$background = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
-
-							}
-						?>
-
-						<div class="tour-related-post">
-							<?php if ( $related_title ) : ?>
-							<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
+				<?php foreach ( $itinerary as $day ) : ?>
+					<?php $count ++; ?>
+					<?php if ( ! empty( $day['title'] ) ) : ?>
+						<article class="tour-day">
+							<?php if ( ! empty( $day['image'] ) ) : ?>
+								<div class="tour-hero" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
 							<?php endif; ?>
-							<header class="<?php echo $class; ?>" style="background: <?php echo $background; ?>;">
-								<h3><?php echo $related_post->post_title; ?></h3>
+							<header>
+								<span class="tour-day-marker">Day</span>
+								<span class="tour-day-number"><?php echo $count; ?></span>
+								<span class="h3"><?php echo $day['title']; ?></span>
 							</header>
 
-							<p><?php echo get_the_excerpt( $related ); ?></p>
+							<div class="day-wrap">
+
+							<?php $activities = $day['activity_list']; ?>
+
+							<?php if ( ! empty( $activities ) ) : ?>
+
+								<ul class="tour-activity-list">
+									<?php echo do_shortcode( $activities ); ?>
+								</ul>
+
+							<?php endif; ?>
+
+							<?php
+							$related = $day['related_content'];
+							$related_title = $day['related_content_title'];
+
+							if ( ! empty ( $related ) ) :
+
+								$related_post = get_post( $related );
+								$background = '';
+								$class = 'pattern-' . rand(1, 9);
+
+								if ( has_post_thumbnail( $related) ) {
+
+									$class = 'no-pattern';
+
+									$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
+									$background = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+
+								}
+							?>
+
+							<div class="tour-related-post">
+								<?php if ( $related_title ) : ?>
+								<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
+								<?php endif; ?>
+								<header class="<?php echo $class; ?>" style="background: <?php echo $background; ?>;">
+									<h3><?php echo $related_post->post_title; ?></h3>
+								</header>
+
+								<p><?php echo get_the_excerpt( $related ); ?></p>
 
 
-						</div><!-- end .tour-related-post -->
+							</div><!-- end .tour-related-post -->
 
-						</div><!-- end .day-wrap -->
+							</div><!-- end .day-wrap -->
 
 
-						<?php endif; ?>
+							<?php endif; ?>
 
-					</article>
-				<?php endif; ?>
-			<?php endforeach; ?>
-		</section>
+						</article>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</section>
+		<?php endif; ?>
 
-		<?php $block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
-
-		<?php if ( ! empty( $block_sections ) ) : ?>
-			<?php foreach ( $block_sections as $section ) : ?>
-
+		<?php if ( ! empty( $after_block_sections ) ) : ?>
+			<?php foreach ( $after_block_sections as $section ) : ?>
+				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 				<section class="ws-container ws-blocks tour-blocks-after">
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>

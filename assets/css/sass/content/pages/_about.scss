@@ -167,6 +167,10 @@
 		@include susy-media($screen-sm) {
 			@include span(6 last);
 		}
+
+		&.has-post-thumbnail {
+			
+		}
 	}
 
 	.entry-title {
