@@ -77,16 +77,27 @@ get_header(); ?>
 					<div class="h3"><i class="icon icon-calendar"></i> Dates</div>
 					
 					<ul class="date-list <?php echo 'columns-'.$column_count; ?> list-unstyled clearfix">
-						<?php foreach ( $date_list as $list ) : ?>
+						<?php 
+						$count = 0;
+						foreach ( $date_list as $list ) : ?>
+							
 							<?php
 							$start = $list['itinerary_details_date_start'];
 							$end   = $list['itinerary_details_date_end'];
+							$date_class = ( $count > 3 ) ? 'date-range hidden-dates' : 'date-range visible-dates';
 							?>
-							<li><strong>
+
+							<li class="<?php echo $date_class; ?>"><strong>
 								<?php echo $start; ?> <em class="small gray-light">to</em><br/>
 								<?php echo $end; ?>
 							</strong></li>
-						<?php endforeach; ?>
+
+						<?php $count++; endforeach; ?>
+
+						<?php if ( count( $date_list ) > 4 ) : ?>
+						<li><a href="#" class="toggle-dates"></a></li>
+						<?php endif; ?>
+
 					</ul>
 
 				<?php endif; ?>
@@ -113,7 +124,8 @@ get_header(); ?>
 
 			<div class="tour-weather">
 
-				<?php $weather = WS_Helpers::get_weather_data( $post->ID );
+				<?php 
+				$weather = WS_Helpers::get_weather_data( $post->ID );
 
 				if ( is_object( $weather ) ) {
 
@@ -136,6 +148,10 @@ get_header(); ?>
 						<span>Current Temp</span>
 					</div>
 					<div class="tour-local-time">
+						<?php
+						$tz = get_post_meta( $post->ID, 'itinerary_details_timezone', true );
+						// $tz = substr($tz, 3);
+						?>
 						<time>2:32 pm</time>
 						<span>Current Time</span>
 					</div>

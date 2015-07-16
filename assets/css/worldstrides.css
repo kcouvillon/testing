@@ -6929,16 +6929,33 @@ a.no-decoration {
       float: left;
       margin-right: 1.9607843137%; } }
   .tour-duration .date-list {
-    margin: 0 0 0 38px; }
-    @media (min-width: 960px) {
-      .tour-duration .date-list.columns-2 li {
-        width: 50%;
-        float: left;
-        font-size: 0.8em; } }
+    margin: 0 0 0 38px;
+    padding-top: 0.75em;
+    border-top: 1px solid #b3b7bf; }
+    .tour-duration .date-list.all-dates li .toggle-dates:before {
+      content: "Hide"; }
+    .tour-duration .date-list.columns-2 li {
+      width: 50%;
+      float: left;
+      font-size: 0.8em; }
+      @media (min-width: 768px) {
+        .tour-duration .date-list.columns-2 li {
+          width: 100%; } }
+      @media (min-width: 960px) {
+        .tour-duration .date-list.columns-2 li {
+          width: 50%; } }
     .tour-duration .date-list li {
       margin-bottom: 0.75em;
       padding-bottom: 0.75em;
       border-bottom: 1px solid #b3b7bf; }
+      .tour-duration .date-list li:last-child {
+        border-bottom: 0; }
+      .tour-duration .date-list li.hidden-dates {
+        display: none; }
+      .tour-duration .date-list li .toggle-dates {
+        font-weight: 700; }
+        .tour-duration .date-list li .toggle-dates:before {
+          content: "See more"; }
 
 .tour-features {
   width: 100%;

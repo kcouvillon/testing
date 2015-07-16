@@ -45,13 +45,24 @@
 
 	.date-list {
 		margin: 0 0 0 38px;
+		padding-top: 0.75em;
+		border-top: 1px solid $gray_light;
+		&.all-dates {
+			li .toggle-dates:before {
+				content: "Hide";
+			}
+		}
 
 		&.columns-2 {
 			li {
+				width: 50%;
+				float: left;
+				font-size: 0.8em;
+				@include susy-media($screen-sm) {
+					width: 100%;
+				}
 				@include susy-media($screen-md) {
 					width: 50%;
-					float: left;
-					font-size: 0.8em;
 				}
 			}
 		}
@@ -60,6 +71,19 @@
 			margin-bottom: 0.75em;
 			padding-bottom: 0.75em;
 			border-bottom: 1px solid $gray_light;
+			&:last-child {
+				border-bottom: 0;
+			}
+			&.hidden-dates {
+				display: none;
+			}
+
+			.toggle-dates {
+				font-weight: 700;
+				&:before {
+					content: "See more";
+				}
+			}
 		}
 	}
 }
