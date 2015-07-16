@@ -403,12 +403,16 @@ class WS_Metaboxes {
 	 */
 	function about_partnerships() {
 
-		$sections = array( 'Accreditation', 'Educational Organizations', 'Travel Associations' );
+		$sections = array();
 
-		// Allows us to reuse the Parnership group
+		for ( $i = 1; $i <= 8; $i++ ) {
+			$sections[] = "Section " . $i;
+		}
+
+		// Allows us to reuse the Partnership group
 		foreach ( $sections as $section ) {
 			// Start with an underscore to hide fields from custom fields list
-			$prefix = 'about_partnerships_' . sanitize_title( $section ) . '_';
+			$prefix = 'about_partnerships_' . strtolower( str_replace(' ', '_', $section ) ) . '_';
 
 			/**
 			 * Repeatable Field Groups
@@ -419,6 +423,13 @@ class WS_Metaboxes {
 				'object_types' => array( 'page' ),
 				'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-partnerships.php' ),
 			) );
+
+			$cmb_group->add_field( array(
+					'name' => 'Title',
+					'id' => $prefix . 'title',
+					'type' => 'text'
+				)
+			);
 
 			// $group_field_id is the field id string
 			$group_field_id = $cmb_group->add_field( array(

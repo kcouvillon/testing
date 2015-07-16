@@ -361,11 +361,13 @@ get_header(); ?>
 						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
 
-					<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
+					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
+						<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
 
-						<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+							<?php echo WS_Helpers::get_content_block( $block_id ); ?>
 
-					<?php endforeach; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
 				</section>
 
 			<?php endforeach; ?>
