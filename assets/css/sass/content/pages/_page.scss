@@ -16,8 +16,10 @@ section {
 
 // These styles apply to the section heros that appear on several pages
 .section-nav {
+	position: relative;
 	background: $gray-base;
 	@include container();
+	@include clearfix;
 	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
 
 	select {
@@ -27,12 +29,24 @@ section {
 	.about & {
 		background: $gray_dark;
 	}
+
+	.subnav-cta {
+		display: none;
+		float: right;
+		font-size: em(14);
+		margin-top: 8px;
+
+		@include susy-media($screen-sm) {
+			display: block;
+		}
+	}
 }
 
 .section-menu {
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	float: left;
 
 	li {
 		display: inline-block;
