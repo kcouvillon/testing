@@ -18,89 +18,38 @@ get_header(); ?>
 
 				<?php get_template_part( 'partials/content', 'about' ); ?>
 
-				<section class="partners accreditation">
+				<?php for ( $i = 1; $i < 8; $i++ ) : ?>
 					<?php
-					$accreditation_partners = get_post_meta( $post->ID, 'about_partnerships_accreditation_partners', true );
-					$accreditation_notes    = get_post_meta( $post->ID, 'about_partnerships_accreditation_notes', true );
+					$section_title = get_post_meta( $post->ID, 'about_partnerships_section_'. $i .'_title', true );
+					$section_partners = get_post_meta( $post->ID, 'about_partnerships_section_'. $i .'_partners', true );
+					$section_notes    = get_post_meta( $post->ID, 'about_partnerships_section_'. $i .'_notes', true );
 					?>
+					<?php if ( $section_title ) : ?>
+						<section class="partners accreditation">
 
-					<h3>Accreditation</h3>
+							<h3><?php apply_filters( 'the_title', $section_title ); ?></h3>
 
-					<div class="partner-wrap">
-						<?php foreach ( $accreditation_partners as $partner ) : ?>
-							<?php
-							if ( array_key_exists( 'image', $partner ) ) {
-								$partner_image = $partner['image'];
-							} else {
-								$partner_image = 'http://placehold.it/82x82';
-							}
-							?>
-							<div class="partner">
-								<img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt="">
-								<span class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></span>
+							<div class="partner-wrap">
+								<?php foreach ( $section_partners as $partner ) : ?>
+									<?php
+									if ( array_key_exists( 'image', $partner ) ) {
+										$partner_image = $partner['image'];
+									} else {
+										$partner_image = 'http://placehold.it/82x82';
+									}
+									?>
+									<div class="partner">
+										<img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt="">
+										<span class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></span>
+									</div>
+								<?php endforeach; ?>
 							</div>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( $accreditation_notes ) : ?>
-						<p class="footnote"><?php echo esc_html( $accreditation_notes ); ?></p>
+							<?php if ( $section_notes ) : ?>
+								<p class="footnote"><?php echo esc_html( $section_notes ); ?></p>
+							<?php endif; ?>
+						</section>
 					<?php endif; ?>
-				</section>
-
-				<section class="partners education">
-					<?php
-					$education_partners = get_post_meta( $post->ID, 'about_partnerships_educational-organizations_partners', true );
-					$education_notes    = get_post_meta( $post->ID, 'about_partnerships_educational-organizations_notes', true );
-					?>
-
-					<h3>Educational Organizations</h3>
-
-					<div class="partner-wrap">
-						<?php foreach ( $education_partners as $partner ) : ?>
-							<?php
-							if ( array_key_exists( 'image', $partner ) ) {
-								$partner_image = $partner['image'];
-							} else {
-								$partner_image = 'http://placehold.it/82x82';
-							}
-							?>
-							<div class="partner">
-								<img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt="">
-								<span class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></span>
-							</div>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( $education_notes ) : ?>
-						<p class="footnote"><?php echo esc_html( $education_notes ); ?></p>
-					<?php endif; ?>
-				</section>
-
-				<section class="partners travel">
-					<?php
-					$travel_partners = get_post_meta( $post->ID, 'about_partnerships_travel-associations_partners', true );
-					$travel_notes    = get_post_meta( $post->ID, 'about_partnerships_travel-associations_notes', true );
-					?>
-
-					<h3>Travel Associations</h3>
-
-					<div class="partner-wrap travel">
-						<?php foreach ( $travel_partners as $partner ) : ?>
-							<?php
-							if ( array_key_exists( 'image', $partner ) ) {
-								$partner_image = $partner['image'];
-							} else {
-								$partner_image = 'http://placehold.it/82x82';
-							}
-							?>
-							<div class="partner">
-								<img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt="">
-								<span class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></span>
-							</div>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( $travel_notes ) : ?>
-						<p class="footnote"><?php echo esc_html( $travel_notes ); ?></p>
-					<?php endif; ?>
-				</section>
+				<?php endfor; ?>
 
 			</section>
 
