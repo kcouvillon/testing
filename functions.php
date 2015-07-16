@@ -145,7 +145,7 @@ function ws_add_body_classes( $classes ) {
 		}
 	}
 
-	if ( is_archive() || is_home() || is_page( 'about' ) || is_page( 'contact' ) || $about_id == $post->post_parent ) {
+	if ( is_archive() || is_home() || is_page( 'about' ) || is_page( 'contact' ) || $about_id == $post->post_parent || is_page( 'resource-center' ) ) {
 		$classes[] = 'solid-header';
 
 		if ( is_front_page() ) {
