@@ -156,6 +156,7 @@
 	}
 
 	.timeline-event {
+		max-width: 670px;
 	}
 
 	.timeline-year {
@@ -165,6 +166,10 @@
 		display: block;
 		line-height: 1.8;
 		color: $blue;
+	}
+
+	.timeline-content {
+		position: relative;
 
 		&:after {
 			content: '';
@@ -175,8 +180,8 @@
 			background-color: #fff;
 			display: block;
 			position: absolute;
-			top: 36%;
-			right: -100%;
+			top: 13%;
+			left: -38px;
 		}
 	}
 }
