@@ -4,6 +4,22 @@
 .hide { display: none; }
 .inline { display: inline; }
 .inline-block { display: inline-block; }
+.hide-print {
+	@media print {
+		display: none !important;
+	}
+}
+.show-print {
+	@media print {
+		display: block !important;
+	}	
+}
+.print-only {
+	display: none;
+	@media print {
+		display: block !important;
+	}
+}
 
 // Layout
 // ======================================= /

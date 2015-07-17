@@ -24,7 +24,7 @@ get_header(); ?>
 		<section class="primary-section">
 			<header class="section-header pattern-<?php echo rand( 3, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
-					<nav class="breadcrumbs">
+					<nav class="breadcrumbs hide-print">
 						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
 						<span>Collections</span>>
 						<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug ) ); ?>"><?php echo $term->name; ?></a>>
@@ -43,7 +43,7 @@ get_header(); ?>
 			</header>
 
 			<nav class="section-nav">
-				<ul class="section-menu">
+				<ul class="section-menu hide-print">
 					<?php
 					$section_link = 1;
 
@@ -134,7 +134,7 @@ get_header(); ?>
 						<?php $count++; endforeach; ?>
 
 						<?php if ( count( $date_list ) > 4 ) : ?>
-						<li><a href="#" class="toggle-dates"></a></li>
+						<li><a href="#" class="toggle-dates hide-print"></a></li>
 						<?php endif; ?>
 
 					</ul>
@@ -209,7 +209,7 @@ get_header(); ?>
 
 		</section>
 
-		<section class="tour-sharing">
+		<section class="tour-sharing hide-print">
 			<ul class="sharing-links list-unstyled">
 				<li><a href="<?php echo 'mailto:?subject='.rawurlencode(get_the_title()).'&body='.urlencode(get_the_permalink()); ?>"><i class="icon icon-email"></i> Email this Itinerary</a></li>
 				<li><a href="#"><i class="icon icon-print"></i> Print this Itinerary</a></li>
@@ -223,7 +223,7 @@ get_header(); ?>
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-			<section class="tour-highlights" data-location='<?php echo json_encode( $location ); ?>'>
+			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
@@ -242,12 +242,25 @@ get_header(); ?>
 					<?php } ?>
 					<div class="cycle-pager"></div>
 				</div>
-				<div id="tour-highlights-data" data-highlights='<?php echo json_encode( get_post_meta( $post->ID, "itinerary_highlights_list", true ) ); ?>'></div>
-				<div id="tour-highlights-map">
+				<div id="tour-highlights-data" data-highlights='<?php echo json_encode( $highlights ); ?>'></div>
+				<div id="tour-highlights-map" class="hide-print">
 					<!-- MAP - check assets/js/src/itinerary.js for map code -->
 				</div>
 
 			</section>
+
+			<section class="print-only">
+				<h2>Tour Highlights</h2>
+				<ul>
+				<?php foreach ( $highlights as $highlight ) { ?>
+					<li>
+						<h4><strong><?php echo $highlight['title']; ?></strong></h4>
+						<p><?php echo $highlight['caption']; ?></p>
+					</li>
+				<?php } ?>
+				</ul>
+			</section>
+
 		<?php endif; ?>
 
 
@@ -373,7 +386,7 @@ get_header(); ?>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<section class="clearfix ws-container learn-more">
+		<section class="clearfix ws-container learn-more hide-print">
 			<form action="#" class="ws-form">
 				<div class="left">
 					<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>

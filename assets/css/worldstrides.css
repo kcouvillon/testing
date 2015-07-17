@@ -6057,6 +6057,20 @@ p {
 .inline-block {
   display: inline-block; }
 
+@media print {
+  .hide-print {
+    display: none !important; } }
+
+@media print {
+  .show-print {
+    display: block !important; } }
+
+.print-only {
+  display: none; }
+  @media print {
+    .print-only {
+      display: block !important; } }
+
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -6956,6 +6970,9 @@ a.no-decoration {
         border-bottom: 0; }
       .tour-duration .date-list li.hidden-dates {
         display: none; }
+      @media print {
+        .tour-duration .date-list li {
+          display: block !important; } }
       .tour-duration .date-list li .toggle-dates {
         font-weight: 700; }
         .tour-duration .date-list li .toggle-dates:before {
