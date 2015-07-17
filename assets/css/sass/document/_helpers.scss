@@ -20,6 +20,9 @@
 		display: block !important;
 	}
 }
+.print-page-break {
+	page-break-before: always;
+}
 
 // Layout
 // ======================================= /

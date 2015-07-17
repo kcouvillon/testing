@@ -159,7 +159,7 @@ get_header(); ?>
 
 			<?php endif; ?>
 
-			<div class="tour-weather">
+			<div class="tour-weather hide-print">
 
 				<?php 
 				$weather = WS_Helpers::get_weather_data( $post->ID );
@@ -247,17 +247,27 @@ get_header(); ?>
 
 			</section>
 
-			<section class="print-only">
+			<!-- Print-only version of tour highlights -->
+			<section class="tour-highlights-print print-only print-page-break">
 				<h2>Tour Highlights</h2>
-				<ul>
+				<ul class="list-unstyled">
 				<?php foreach ( $highlights as $highlight ) { ?>
 					<li>
+						<?php
+							$lon = $highlight['itinerary_highlights_location']['longitude'];
+							$lat = $highlight['itinerary_highlights_location']['latitude'];
+							$map_id = 'worldstrides.b898407f';
+							$pin = urlencode('http://wsbeta.co/wp-content/themes/worldstrides/assets/images/pin-orange.png');
+							$src = 'https://api.tiles.mapbox.com/v4/'.$map_id.'/url-'.$pin.'('.$lon.','.$lat.')/'.$lon.','.$lat.',14/250x120.png?access_token=pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
+						?>
+						<img src="<?php echo $src; ?>" width="250" height="120" />
 						<h4><strong><?php echo $highlight['title']; ?></strong></h4>
 						<p><?php echo $highlight['caption']; ?></p>
 					</li>
 				<?php } ?>
 				</ul>
 			</section>
+			<!-- // -->
 
 		<?php endif; ?>
 
@@ -265,7 +275,7 @@ get_header(); ?>
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
-			<section class="ws-container ws-blocks tour-blocks-before">
+			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
 			<?php foreach ( $before_block_sections as $section ) : ?>
 
@@ -289,7 +299,7 @@ get_header(); ?>
 
 		<?php if ( ! empty ( $itinerary ) ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-			<section class="tour-itinerary">
+			<section class="tour-itinerary print-page-break">
 
 				<h2>Your Adventure, Day by Day</h2>
 
@@ -300,7 +310,7 @@ get_header(); ?>
 					<?php if ( ! empty( $day['title'] ) ) : ?>
 						<article class="tour-day">
 							<?php if ( ! empty( $day['image'] ) ) : ?>
-								<div class="tour-hero" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
+								<div class="tour-hero hide-print" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
 							<?php endif; ?>
 							<header>
 								<span class="tour-day-marker">Day</span>
@@ -340,7 +350,7 @@ get_header(); ?>
 								}
 							?>
 
-							<div class="tour-related-post">
+							<div class="tour-related-post hide-print">
 								<?php if ( $related_title ) : ?>
 								<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
 								<?php endif; ?>
