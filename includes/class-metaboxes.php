@@ -38,7 +38,7 @@ class WS_Metaboxes {
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'general_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'hero_tooltips' ) );
-		add_action( 'cmb2_init',  array( $this, 'hero_tooltips_home' ) );
+		add_action( 'cmb2_init',  array( $this, 'hero_tooltips_pages' ) );
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
@@ -150,7 +150,7 @@ class WS_Metaboxes {
 	 *
 	 * @todo figure out how to avoid the duplication here
 	 */
-	function hero_tooltips_home() {
+	function hero_tooltips_pages() {
 
 		$prefix = 'hero_tooltips_';
 
@@ -159,8 +159,13 @@ class WS_Metaboxes {
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => array(
-				'key' => 'page-template', 'value' => 'front-page.php',
-				//'key' => 'id', 'value' => array( 1107 )
+				'key' => 'page-template', 'value' => array(
+					'front-page.php',
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php',
+				)
 			),
 		) );
 
