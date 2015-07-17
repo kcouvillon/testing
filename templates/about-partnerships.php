@@ -39,8 +39,8 @@ get_header(); ?>
 									}
 									?>
 									<div class="partner">
-										<img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt="">
-										<span class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></span>
+										<a href="<?php echo $partner['url']; ?>"><img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt=""></a>
+										<a href="<?php echo $partner['url']; ?>" class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></a>
 									</div>
 								<?php endforeach; ?>
 							</div>
