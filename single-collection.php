@@ -27,14 +27,21 @@ get_header(); ?>
 			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
-			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
+			<header class="section-header pattern-<?php echo rand( 3, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
-					<nav class="breadcrumbs">
+					<nav class="breadcrumbs hide-print">
 						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
-						<a href="<?php echo esc_url( home_url( '/collections' ) ); ?>">Collections</a>>
+						<span>Collections</span>>
+						<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug ) ); ?>"><?php echo $term->name; ?></a>>
 						<span><?php the_title(); ?></span>
 					</nav>
 					<h1><?php the_title(); ?></h1>
+
+					<?php $subtitle = get_post_meta( $post->ID, 'collection_subtitle', true ); ?>
+
+					<?php if ( $subtitle ) : ?>
+						<p><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+					<?php endif; ?>
 
 					<?php the_content(); ?>
 				</div>
