@@ -37,7 +37,7 @@ get_header(); ?>
 					</nav>
 					<h1><?php the_title(); ?></h1>
 
-					<?php $subtitle = get_post_meta( $post->ID, 'collection_subtitle', true ); ?>
+					<?php $subtitle = get_post_meta( $post->ID, 'collection_options_subtitle', true ); ?>
 
 					<?php if ( $subtitle ) : ?>
 						<p><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
@@ -324,4 +324,4 @@ get_header(); ?>
 			</div>
 		</section>
 
-<?php get_footer(); ?>
+<?php get_footer();
