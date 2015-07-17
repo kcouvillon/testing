@@ -34,7 +34,7 @@ class WS_Metaboxes_Collections {
 	 * Sets up actions and filters.
 	 */
 	protected function _init() {
-		// add_action( 'cmb2_init',  array( $this, 'collection_details' ) );
+		add_action( 'cmb2_init',  array( $this, 'collection_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_why_ws' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_blocks_before' ) );
@@ -43,21 +43,21 @@ class WS_Metaboxes_Collections {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Options
 	 */
-	function collection_details() {
+	function collection_options() {
 
-		$prefix = 'collection_details_';
+		$prefix = 'collection_options_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Collection Details', 'cmb2' ),
+			'title'        => __( 'Collection Options', 'cmb2' ),
 			'object_types' => array( 'collection', ),
 		) );
 
 		$cmb->add_field( array(
-			'name' => 'Misc field',
-			'id' => $prefix . 'duration',
+			'name' => 'Subtitle',
+			'id' => $prefix . 'subtitle',
 			'type' => 'text'
 		) );
 	}
