@@ -45,7 +45,6 @@ class WS_Metaboxes_Divisions {
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships_small' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blog_posts' ) );
-		// blog post picker
 	}
 
 	/**
@@ -60,7 +59,12 @@ class WS_Metaboxes_Divisions {
 			'title'        => __( 'Division Details', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array(
-				'key' => 'page-template', 'value' => 'templates/division-capstone.php'
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php'
+				)
 			),
 		) );
 
@@ -83,7 +87,12 @@ class WS_Metaboxes_Divisions {
 			'title'        => __( 'Why WorldStrides', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array(
-				'key' => 'page-template', 'value' => 'templates/division-capstone.php'
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php'
+				)
 			),
 		) );
 
@@ -123,7 +132,12 @@ class WS_Metaboxes_Divisions {
 			'title'        => __( 'Resources', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array(
-				'key' => 'page-template', 'value' => 'templates/division-capstone.php'
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php'
+				)
 			),
 		) );
 
@@ -209,7 +223,12 @@ class WS_Metaboxes_Divisions {
 			'title'        => __( 'Associated Itineraries', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array(
-				'key' => 'page-template', 'value' => 'templates/division-capstone.php'
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php'
+				)
 			),
 		) );
 
@@ -441,7 +460,14 @@ class WS_Metaboxes_Divisions {
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Blog Posts', 'cmb2' ),
 			'object_types' => array( 'page' ),
-			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/division-capstone.php' ),
+			'show_on'      => array(
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php'
+				)
+			),
 		) );
 
 		$cmb->add_field( array(
