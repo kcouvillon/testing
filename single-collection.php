@@ -3,8 +3,13 @@
  * Terminal layout for Collections
  */
 
+$section_link = 1;
+$section_num = 1;
+
 $associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
 $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
+$before_block_sections = get_post_meta( $post->ID, 'collection_blocks_before_list', true );
+$after_block_sections = get_post_meta( $post->ID, 'collection_blocks_after_list', true );
 
 get_header(); ?>
 
@@ -36,13 +41,30 @@ get_header(); ?>
 			</header>
 
 			<nav class="section-nav">
-				<ul class="section-menu">
-					<li>[TBD]</li>
-					<li><a href="#tour-highlights">Tour Highlights</a></li>
-					<li><a href="#education">Education</a></li>
-					<li><a href="#itinerary">Itinerary</a></li>
-					<li><a href="#resources">Resources</a></li>
+				<ul class="section-menu hide-print">
+					<?php // Why WS, Resources ?>
+
+					<?php if ( ! empty( $before_block_sections ) ) : ?>
+						<?php foreach ( $before_block_sections as $section ) : ?>
+							<?php if ( ! empty ( $section['title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+
+					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itineraries</a></li>
+
+					<?php if ( ! empty( $after_block_sections ) ) : ?>
+						<?php foreach ( $after_block_sections as $section ) : ?>
+							<?php if ( ! empty ( $section['title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+
 				</ul>
+
+				<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
 			</nav>
 
 		</section>
@@ -69,137 +91,144 @@ get_header(); ?>
 		<?php if ( $associated_resources ) : ?>
 		<section class="section-content resources">
 				<h2 class="section-title">Have Questions? We Have Answers.</h2>
-				<?php var_dump( $associated_resources ); ?>
+
 				<ul class="resources-list list-unstyled clearfix">
 					
-					<?php
-						$count = 0;
-						$data = array(
-							array(
-								"title" => "Resource Title",
-								"meta" => array("Parents")
-							),
-							array(
-								"title" => "Resource Title",
-								"meta" => array("Educators")
-							),
-							array(
-								"title" => "Resource Title",
-								"meta" => array("Students")
-							)
-						);
+					<?php $count = 0; ?>
 
-						foreach ( $data as $item ) :
-						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; 
-					?>
+					<?php foreach ( $associated_resources as $resource_id ) : ?>
+						<?php $resource = get_post( $resource_id ); ?>
+						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
 
-					<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-						<div class="tile-content">
-							<ul class="meta list-unstyled">
-								<?php foreach ( $item['meta'] as $meta ) : ?>
-								<li><a href="#">{STATIC} <?php echo $meta; ?></a></li>
-								<?php endforeach; ?>
-							</ul>
-							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-						</div>
-					</li>
+						<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
+									<?php $target_parents = array(); ?>
+
+									<?php foreach ( $targets as $target ) : ?>
+										<?php if ( 'Featured' != $target->name ) : ?>
+
+											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
+
+											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
+												<?php $target_parents[] = $parent->term_id; ?>
+
+												<li><?php echo $parent->name; ?></li>
+
+											<?php endif; ?>
+
+										<?php endif; ?>
+									<?php endforeach; ?>
+
+								</ul>
+								<h2 class="tile-title"><a href="#"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
+							</div>
+						</li>
 					
-					<?php 
-						$count++; 
-						endforeach; 
-					?>
+						<?php $count++; ?>
+					<?php endforeach; ?>
 
 				</ul>
 		</section>
 		<?php endif; ?>
 
-		<section class="section-content programs">
-			<h2 class="section-title">{STATIC: FUTURE BLOCK} Our Educational Travel Opportunities</h2>
-			<ul class="programs-list list-unstyled clearfix">
-				<?php 
-				$count = 0;
-				$data = array(
-					array(
-						"title" => "Middle School",
-						"meta" => array("Discoveries Programs")
-					),
-					array(
-						"title" => "High School",
-						"meta" => array("Passages Programs")
-					),
-					array(
-						"title" => "University",
-						"meta" => array("Capstone Programs")
-					),
-					array(
-						"title" => "Performing Arts",
-						"meta" => array("On Stage Programs")
-					),
-				);
-				foreach ( $data as $item ) : ?>
+		<?php if ( ! empty( $before_block_sections ) ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
-				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
-				<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-					<div class="tile-content">
-						<ul class="meta list-unstyled">
-							<?php foreach ( $item['meta'] as $meta ) : ?>
-							<li><a href="#"><?php echo $meta; ?></a></li>
-							<?php endforeach; ?>
-						</ul>
-						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-					</div>
-				</li>
-				
-				<?php $count++; endforeach; ?>
-			</ul>
+			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
-			<a class="program-all-link" href="">See All</a>
+				<?php foreach ( $before_block_sections as $section ) : ?>
 
-		</section>
+					<?php if ( ! empty( $section['title'] ) ) : ?>
+						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+					<?php endif; ?>
 
-		<section class="section-content programs">
-			<h2 class="section-title">Events</h2>
-			<ul class="programs-list list-unstyled clearfix">
-				<?php 
-				$count = 0;
-				$data = array(
-					array(
-						"title" => "Middle School",
-						"meta" => array("Discoveries Programs")
-					),
-					array(
-						"title" => "High School",
-						"meta" => array("Passages Programs")
-					),
-					array(
-						"title" => "University",
-						"meta" => array("Capstone Programs")
-					),
-					array(
-						"title" => "Performing Arts",
-						"meta" => array("On Stage Programs")
-					),
-				);
-				foreach ( $data as $item ) : ?>
+					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
+						<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
 
-				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
-				<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-					<div class="tile-content">
-						<ul class="meta list-unstyled">
-							<?php foreach ( $item['meta'] as $meta ) : ?>
-							<li><a href="#"><?php echo $meta; ?></a></li>
-							<?php endforeach; ?>
-						</ul>
-						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-					</div>
-				</li>
-				
-				<?php $count++; endforeach; ?>
-			</ul>
+							<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+						<?php endforeach; ?>
+					<?php endif; ?>
+
+				<?php endforeach; ?>
+
+			</section>
+
+		<?php endif; ?>
+
+		<?php
+		$post_obj = $wp_query->get_queried_object();
+
+		$associated_itineraries = new WP_Query( array(
+			'post_type' => 'itinerary',
+			'tax_query' => array(
+				array(
+					'taxonomy' => '_collection',
+					'field'    => 'slug',
+					'terms'    => $post_obj->post_name
+				)
+			),
+			'posts_per_page' => 75,
+			'no_found_rows' => true,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+			'order' => 'ASC',
+			'orderby' => 'title'
+		) );
+		?>
+
+		<?php if ( $associated_itineraries->have_posts() ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
+			<section class="section-content programs">
+				<h2 class="section-title">Itineraries</h2>
+				<ul class="programs-list list-unstyled clearfix">
+					<?php $count = 0; ?>
+
+					<?php while ( $associated_itineraries->have_posts() ) : ?>
+						<?php $associated_itineraries->the_post(); ?>
+
+						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+
+						<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
+								</ul>
+								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							</div>
+						</li>
+
+						<?php $count++; ?>
+					<?php endwhile; ?>
+				</ul>
 
 			<a class="program-all-link" href="">See All</a>
-				
-		</section>
+
+			</section>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $after_block_sections ) ) : ?>
+			<?php foreach ( $after_block_sections as $section ) : ?>
+				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+				<section class="ws-container ws-blocks tour-blocks-after">
+					<?php if ( ! empty( $section['title'] ) ) : ?>
+						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
+						<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
+
+							<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</section>
+
+			<?php endforeach; ?>
+		<?php endif; ?>
 
 		<section class="home-section blog">
 			<div class="ws-container">
