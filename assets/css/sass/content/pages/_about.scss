@@ -65,10 +65,10 @@
 	font-size: em(14);
 	line-height: 1.25;
 	font-weight: bold;
-
-	// .accreditation & {
-	// 	font-weight: bold;
-	// }
+	color: $color_text_main;
+	&:hover {
+		color: $color_text_main;
+	}
 }
 
 .footnote {

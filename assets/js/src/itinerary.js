@@ -122,7 +122,7 @@
 							map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ] } );
 						});
 
-					$slideshow.on('cycle-after', function( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
+					$slideshow.on('cycle-before', function( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
 						var marker_id = $slideshow_images.indexOf(incomingSlideEl);
 						
 						layer.eachLayer(function (layer) {

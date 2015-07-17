@@ -6057,6 +6057,23 @@ p {
 .inline-block {
   display: inline-block; }
 
+@media print {
+  .hide-print {
+    display: none !important; } }
+
+@media print {
+  .show-print {
+    display: block !important; } }
+
+.print-only {
+  display: none; }
+  @media print {
+    .print-only {
+      display: block !important; } }
+
+.print-page-break {
+  page-break-before: always; }
+
 .clearfix:before,
 .clearfix:after {
   content: "";
@@ -6905,6 +6922,9 @@ a.no-decoration {
   font-weight: 700;
   margin-top: 80px;
   margin-bottom: 30px; }
+  @media print {
+    .itinerary h2 {
+      margin-top: 0; } }
 
 .tour-details {
   display: block;
@@ -6956,6 +6976,9 @@ a.no-decoration {
         border-bottom: 0; }
       .tour-duration .date-list li.hidden-dates {
         display: none; }
+      @media print {
+        .tour-duration .date-list li {
+          display: block !important; } }
       .tour-duration .date-list li .toggle-dates {
         font-weight: 700; }
         .tour-duration .date-list li .toggle-dates:before {
@@ -6997,13 +7020,15 @@ a.no-decoration {
     .tour-weather {
       width: 32.0261437908%;
       float: right;
-      margin-right: 0; } }
+      margin-right: 0;
+      float: left; } }
   @media (min-width: 1200px) {
     .tour-weather {
       width: 23.5294117647%;
       float: right;
       margin-right: 0;
-      margin-left: 8.4967320261%; } }
+      margin-left: 8.4967320261%;
+      float: left; } }
   .tour-weather .weather-content {
     margin-left: 38px; }
 
@@ -7056,6 +7081,27 @@ a.no-decoration {
   max-width: 1500px;
   margin: 0 auto; }
 
+.tour-highlights-print {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw; }
+  .tour-highlights-print li {
+    margin-bottom: 1em; }
+    .tour-highlights-print li:before,
+    .tour-highlights-print li:after {
+      content: "";
+      display: table; }
+    .tour-highlights-print li:after {
+      clear: both; }
+    .tour-highlights-print li img {
+      width: 250px;
+      float: left;
+      margin-right: 1em; }
+    .tour-highlights-print li h4 {
+      margin-top: 0; }
+
 .tour-highlights-slider {
   width: 100%;
   float: left;
@@ -7096,6 +7142,10 @@ a.no-decoration {
 .tour-day:after {
   clear: both; }
 
+@media print {
+  .tour-day {
+    margin-top: 4em; } }
+
 .tour-day .tour-hero {
   background-size: cover;
   height: 40vh;
@@ -7132,6 +7182,13 @@ a.no-decoration {
   font-weight: 700;
   display: inline-block;
   float: left; }
+  @media print {
+    .tour-day .tour-day-number {
+      border: 5px solid #3076BC;
+      border-bottom-width: 13px;
+      float: left;
+      font-size: 2.5em;
+      padding: 0px 0 5px; } }
 
 .tour-day > header > .h3 {
   width: 100%;
@@ -7145,6 +7202,11 @@ a.no-decoration {
       width: 91.5032679739%;
       float: right;
       margin-right: 0; } }
+  @media print {
+    .tour-day > header > .h3 {
+      float: left;
+      width: auto;
+      margin: 0.6em 0 1em 1em; } }
 
 .tour-day .day-wrap {
   display: block;
@@ -7174,6 +7236,10 @@ a.no-decoration {
       width: 57.5163398693%;
       float: left;
       margin-right: 1.9607843137%; } }
+  @media print {
+    .tour-day .tour-activity-list {
+      margin-left: 5em;
+      padding-left: 30px; } }
   .tour-day .tour-activity-list:before {
     content: '';
     position: absolute;
@@ -7199,6 +7265,9 @@ a.no-decoration {
       position: absolute;
       top: 12px;
       left: -55px; }
+    @media print {
+      .tour-day .tour-activity-list li:after {
+        left: -30px; } }
 
 .tour-day .tour-related-post {
   width: 100%;
@@ -7396,6 +7465,9 @@ section:after {
           margin-top: 17.2%; }
         .archive .primary-section .section-header-content, .blog .primary-section .section-header-content, .single .primary-section .section-header-content {
           margin-top: 6.66666%; } }
+    @media print {
+      .primary-section .section-header-content {
+        margin-bottom: 2em; } }
     .has-featured-image .primary-section .section-header-content {
       color: #fff; }
     .archive .primary-section .section-header-content, .blog .primary-section .section-header-content, .single .primary-section .section-header-content {
@@ -7550,7 +7622,10 @@ section:after {
   display: block;
   font-size: 0.875em;
   line-height: 1.25;
-  font-weight: bold; }
+  font-weight: bold;
+  color: #1a1a1a; }
+  .partner-title:hover {
+    color: #1a1a1a; }
 
 .footnote {
   clear: both;

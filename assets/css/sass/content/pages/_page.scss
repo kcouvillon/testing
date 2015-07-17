@@ -153,6 +153,9 @@ section {
 				margin-top: 6.66666%;
 			}
 		}
+		@media print {
+			margin-bottom: 2em;
+		}
 
 		.has-featured-image & {
 			color: #fff;

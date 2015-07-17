@@ -49,7 +49,7 @@ if ( is_singular( 'post' ) ) {
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>
 
-	<nav id="quick-access" class="quick-access" role="navigation">
+	<nav id="quick-access" class="quick-access hide-print" role="navigation">
 		<?php get_search_form(); ?>
 		<div class="menu-quick-access-container">
 			<ul id="quick-access-menu" class="menu">
@@ -60,10 +60,11 @@ if ( is_singular( 'post' ) ) {
 	</nav>
 
 	<header id="masthead" class="site-header" role="banner">
-		<h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="hide">Worldstrides</span></a></h1>
+		<h1 class="logo hide-print"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="hide">Worldstrides</span></a></h1>
 		<!-- <a class="logo-sm" href="<?php //echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://placehold.it/40x50" alt=""></a> -->
+		<img src="<?php echo get_template_directory_uri() . '/assets/images/logo-gray.png'; ?>" class="print-only" width="216" height="46" />
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
+		<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
 			<a href="#">Explore Our Trips »</a>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav>
