@@ -37,12 +37,13 @@ class WS_Metaboxes_Divisions {
 		add_action( 'cmb2_init',  array( $this, 'division_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_why_ws' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_resources' ) );
+		add_action( 'cmb2_init',  array( $this, 'division_blocks_before' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_itineraries' ) );
-		add_action( 'cmb2_init',  array( $this, 'division_blocks' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_team' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships_small' ) );
+		add_action( 'cmb2_init',  array( $this, 'division_blocks_after' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blog_posts' ) );
 	}
 
@@ -164,6 +165,59 @@ class WS_Metaboxes_Divisions {
 
 	}
 
+	/**
+	 * Sections of blocks to show before itineraries
+	 */
+	function division_blocks_before() {
+
+		$prefix = 'division_blocks_before_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Before Blocks', 'cmb2' ),
+			'object_types' => array( 'collection', ),
+		) );
+
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb->add_field( array(
+			'id'          => $prefix . 'list',
+			'type'        => 'group',
+			'options'     => array(
+				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Section', 'cmb2' ),
+				'remove_button' => __( 'Remove Section', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Title',
+			'id' => $prefix . 'title',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Slug',
+			'id' => $prefix . 'slug',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name'    => __( 'Attached Blocks', 'cmb2' ),
+			'desc'    => __( 'Drag blocks from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'attached_blocks',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 150,
+					'post_type' => 'block',
+				),
+			)
+		) );
+
+	}
 
 	/**
 	 * Locations for a division landing page
@@ -239,63 +293,6 @@ class WS_Metaboxes_Divisions {
 			'show_names' => false
 			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 		) );
-	}
-
-	/**
-	 * Sections of blocks to show before itineraries
-	 */
-	function division_blocks() {
-
-		$prefix = 'division_blocks_';
-
-		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blocks', 'cmb2' ),
-			'object_types' => array( 'page', ),
-			'show_on'      => array(
-				'key' => 'page-template', 'value' => 'templates/division-capstone.php'
-			),
-		) );
-
-		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
-		$group_field_id = $cmb->add_field( array(
-			'id'          => $prefix . 'list',
-			'type'        => 'group',
-			'options'     => array(
-				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
-				'add_button'    => __( 'Add Another Section', 'cmb2' ),
-				'remove_button' => __( 'Remove Section', 'cmb2' ),
-				'sortable'      => true, // beta
-			),
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => 'Section Title',
-			'id' => $prefix . 'title',
-			'type' => 'text_medium'
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => 'Section Slug',
-			'id' => $prefix . 'slug',
-			'type' => 'text_medium'
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name'    => __( 'Attached Blocks', 'cmb2' ),
-			'desc'    => __( 'Drag blocks from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
-			'id'      => 'attached_blocks',
-			'type'    => 'custom_attached_posts',
-			'options' => array(
-				'show_thumbnails' => true,  // Show thumbnails on the left
-				'filter_boxes'    => true,  // Show a text box for filtering the results
-				'query_args'      => array( // override the get_posts args
-					'posts_per_page' => 150,
-					'post_type' => 'block',
-				),
-			)
-		) );
-
 	}
 
 	function division_team() {
@@ -446,6 +443,61 @@ class WS_Metaboxes_Divisions {
 			'id'   => 'url',
 			'type' => 'text_url',
 		) );
+	}
+
+
+	/**
+	 * Sections of Blocks to show after itineraries
+	 */
+	function division_blocks_after() {
+
+		$prefix = 'division_blocks_after_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'After Blocks', 'cmb2' ),
+			'object_types' => array( 'collection', ),
+		) );
+
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb->add_field( array(
+			'id'          => $prefix . 'list',
+			'type'        => 'group',
+			'options'     => array(
+				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Section', 'cmb2' ),
+				'remove_button' => __( 'Remove Section', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Title',
+			'id' => $prefix . 'title',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Slug',
+			'id' => $prefix . 'slug',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name'    => __( 'Attached Blocks', 'cmb2' ),
+			'desc'    => __( 'Drag blocks from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'attached_blocks',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 150,
+					'post_type' => 'block',
+				),
+			)
+		) );
+
 	}
 
 	/**
