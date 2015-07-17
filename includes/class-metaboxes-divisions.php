@@ -34,10 +34,9 @@ class WS_Metaboxes_Divisions {
 	 * Sets up actions and filters.
 	 */
 	protected function _init() {
-		// add_action( 'cmb2_init',  array( $this, 'division_details' ) );
+		add_action( 'cmb2_init',  array( $this, 'division_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_why_ws' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_resources' ) );
-		// Discovery Module
 		add_action( 'cmb2_init',  array( $this, 'division_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_itineraries' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blocks' ) );
@@ -50,13 +49,13 @@ class WS_Metaboxes_Divisions {
 	/**
 	 * Field group for Why WorldStrides page
 	 */
-	function division_details() {
+	function division_options() {
 
-		$prefix = 'division_details_';
+		$prefix = 'division_options_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Division Details', 'cmb2' ),
+			'title'        => __( 'Division Options', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
@@ -69,8 +68,8 @@ class WS_Metaboxes_Divisions {
 		) );
 
 		$cmb->add_field( array(
-			'name' => 'Misc field',
-			'id' => $prefix . 'duration',
+			'name' => 'Subtitle',
+			'id' => $prefix . 'subtitle',
 			'type' => 'text'
 		) );
 	}
