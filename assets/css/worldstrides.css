@@ -7014,13 +7014,15 @@ a.no-decoration {
     .tour-weather {
       width: 32.0261437908%;
       float: right;
-      margin-right: 0; } }
+      margin-right: 0;
+      float: left; } }
   @media (min-width: 1200px) {
     .tour-weather {
       width: 23.5294117647%;
       float: right;
       margin-right: 0;
-      margin-left: 8.4967320261%; } }
+      margin-left: 8.4967320261%;
+      float: left; } }
   .tour-weather .weather-content {
     margin-left: 38px; }
 

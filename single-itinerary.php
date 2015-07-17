@@ -142,24 +142,22 @@ get_header(); ?>
 				<?php endif; ?>
 			</div>
 
-			<div class="tour-features">
+			<?php
+			$features = get_post_meta( $post->ID, 'itinerary_details_features', true );
+			if ( ! empty( $features ) ) : ?>
 
-				<span class="h3"><i class="icon icon-pin"></i> <?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
-
-				<div class="tour-feature-list">
-
+				<div class="tour-features">
+					<span class="h3"><i class="icon icon-pin"></i> <?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
+					<div class="tour-feature-list">
 					<?php
-					$features = get_post_meta( $post->ID, 'itinerary_details_features', true );
-					if ( ! empty( $features ) ) {
 						foreach ( $features as $feature ) {
 							echo '<span class="tour-feature">' . $feature . '</span>';
 						}
-					}
 					?>
-
+					</div>
 				</div>
 
-			</div>
+			<?php endif; ?>
 
 			<div class="tour-weather">
 

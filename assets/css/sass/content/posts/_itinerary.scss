@@ -121,10 +121,12 @@
 
 	@include susy-media($screen-sm) {
 		@include span(4 last);
+		float: left;
 	}
 	@include susy-media($screen-lg) {
 		@include span(3 last);
 		@include push(1);
+		float: left;
 	}
 
 	.weather-content {
