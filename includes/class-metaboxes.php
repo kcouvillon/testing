@@ -451,6 +451,12 @@ class WS_Metaboxes {
 			) );
 
 			$cmb_group->add_group_field( $group_field_id, array(
+				'name' => __( 'URL', 'cmb2' ),
+				'id'   => 'url',
+				'type' => 'text_url',
+			) );
+
+			$cmb_group->add_group_field( $group_field_id, array(
 				'name' => __( 'Partnership Logo', 'cmb2' ),
 				'id'   => 'image',
 				'type' => 'file',
