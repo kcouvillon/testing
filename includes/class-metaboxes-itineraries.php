@@ -62,6 +62,12 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_field( array(
+			'name' => __( 'PDF', 'cmb2' ),
+			'id'   => 'itinerary_pdf',
+			'type' => 'file'
+		) );
+
+		$cmb->add_field( array(
 			'name' => 'Duration',
 			'desc' => 'Number of days',
 			'id' => $prefix . 'duration',
