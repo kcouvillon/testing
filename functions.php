@@ -216,3 +216,20 @@ function ws_image_sizes() {
 	update_option( 'large_size_h', 1030 );
 }
 add_action( 'switch_theme', 'ws_image_sizes' );
+
+/**
+ * Add author type field to Co-Authors Plus
+ */
+function ws_filter_guest_author_fields( $fields_to_return, $groups ) {
+
+	if ( in_array( 'all', $groups ) || in_array( 'name', $groups ) ) {
+		$fields_to_return[] = array(
+			'key'      => 'author_type',
+			'label'    => 'Author Type',
+			'group'    => 'name',
+		);
+	}
+
+	return $fields_to_return;
+}
+add_filter( 'coauthors_guest_author_fields', 'ws_filter_guest_author_fields', 10, 2 );
