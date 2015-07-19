@@ -73,6 +73,10 @@ $color_border_input: #ccc;
 $color_border_input_hover: #ccc;
 $color_border_input_focus: #ccc;
 
+$color_overlay_lt: rgba( 0, 0, 0, 0.2 );
+$color_overlay_med: rbga( 0, 0, 0, 0.35 );
+$color_overlay: rgba( 0, 0, 0, 0.45 );
+
 // Typography
 // ============================================ /
 // @include font-face( "Corpid C1s SCd", "../fonts/corpid/CorpidC1sSCd-Regular", $file-formats: otf);

@@ -218,13 +218,15 @@ get_header(); ?>
 			</ul>
 		</section>
 
+		<?php $section_num = 1; // set first section number ?>
+
 		<?php if ( ! empty( $highlights[1]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<?php 
-			$section_num = 1; // set first section number 
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
+				<h2 class="slideshow-header">Tour Highlights</h2>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
