@@ -316,6 +316,8 @@ get_header(); ?>
 						<article class="tour-day">
 							<?php if ( ! empty( $day['image'] ) ) : ?>
 								<div class="tour-hero hide-print" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
+							<?php else : ?>
+								<div class="tour-hero hide-print pattern-<?php echo rand(1, 9); ?>"></div>
 							<?php endif; ?>
 							<header>
 								<span class="tour-day-marker">Day</span>
