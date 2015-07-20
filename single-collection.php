@@ -11,6 +11,8 @@ $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 $before_block_sections = get_post_meta( $post->ID, 'collection_blocks_before_list', true );
 $after_block_sections = get_post_meta( $post->ID, 'collection_blocks_after_list', true );
 
+$collection_type = get_post_meta( $post->ID, 'collection_type', true );
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -44,6 +46,8 @@ get_header(); ?>
 					<?php the_content(); ?>
 				</div>
 			</header>
+
+			<?php if ( 'outlier' != $collection_type ) : ?>
 
 			<nav class="section-nav">
 				<ul class="section-menu hide-print">
@@ -325,5 +329,7 @@ get_header(); ?>
 				</form>
 			</div>
 		</section>
+
+		<?php endif; ?>
 
 <?php get_footer();
