@@ -51,7 +51,6 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
 		add_action( 'cmb2_init',  array( $this, 'taxonomy_metadata_cmb2_init' ) );
-		add_action( 'cmb2_init',  array( $this, 'attached_resources' ) );
 	}
 
 	/**
@@ -814,41 +813,6 @@ class WS_Metaboxes {
 		$cats = new Taxonomy_MetaData_CMB2( 'resource-target', $metabox_id, __( 'Resource Target Settings', 'taxonomy-metadata' ), $wlo_overrides );
 	}
 
-	/**
-	 * Resources to display
-	 */
-	function attached_resources() {
-
-		$prefix = 'attached_resources_';
-
-		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Resources', 'cmb2' ),
-			'object_types' => array( 'interest', 'destination', 'traveler', )
-		) );
-
-		$cmb->add_field( array(
-			'name'       => __( 'Title', 'cmb2' ),
-			'id'         => $prefix . 'title',
-			'type'       => 'text',
-		) );
-
-		$cmb->add_field( array(
-			'name'    => __( 'Attached Resources', 'cmb2' ),
-			'desc'    => __( 'Drag Resources from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
-			'id'      => 'attached_resources',
-			'type'    => 'custom_attached_posts',
-			'options' => array(
-				'show_thumbnails' => true,  // Show thumbnails on the left
-				'filter_boxes'    => true,  // Show a text box for filtering the results
-				'query_args'      => array( // override the get_posts args
-					'posts_per_page' => 100,
-					'post_type' => 'resource',
-				),
-			)
-		) );
-
-	}
 }
 
 WS_Metaboxes::instance();
