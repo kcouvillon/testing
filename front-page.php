@@ -192,7 +192,7 @@
 						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; 
 					?>
 
-					<li class="resource tile tile-third" style="background-image:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4) ), url(<?php echo esc_url( $item['img'] ); ?>);">
+					<li class="resource tile tile-third" style="background-image:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ), url(<?php echo esc_url( $item['img'] ); ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
 								<?php foreach ( $item['meta'] as $meta ) : ?>

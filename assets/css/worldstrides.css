@@ -7699,11 +7699,15 @@ section:after {
 .leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
 
+.entry-position {
+  margin-bottom: 1em;
+  display: block; }
+
 .leadership-content p {
   max-width: 670px; }
 
 .headshot-pattern {
-  padding-top: 56.345%; }
+  padding-top: 66.345%; }
 
 .headshot-hero {
   width: 100%;
@@ -8487,7 +8491,7 @@ section:after {
     line-height: 1.5; }
 
 .discover-why-img {
-  background-image: url(../images/src/about-cta.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/src/about-cta.jpg);
   background-size: cover;
   width: 100%;
   float: left;
@@ -8587,15 +8591,23 @@ section:after {
   position: relative;
   overflow: hidden; }
 
+.slideshow-header {
+  position: absolute;
+  z-index: 1000;
+  margin: 0;
+  top: 1em;
+  left: 5vw;
+  color: #fff; }
+
 .cycle-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 999;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.25);
-  padding: 10px 20px 30px; }
+  padding: 38% 5vw 0;
+  height: 100%; }
 
 .cycle-pager {
   position: absolute;
@@ -8654,6 +8666,9 @@ section:after {
     .slideshow-tabs a:hover, .slideshow-tabs a.cycle-pager-active {
       background: #3076bc;
       color: #fff; }
+
+.cycle-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
 
 .site-footer {
   position: relative;

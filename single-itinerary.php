@@ -218,13 +218,15 @@ get_header(); ?>
 			</ul>
 		</section>
 
+		<?php $section_num = 1; // set first section number ?>
+
 		<?php if ( ! empty( $highlights[1]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<?php 
-			$section_num = 1; // set first section number 
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
+				<h2 class="slideshow-header">Tour Highlights</h2>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
@@ -276,12 +278,12 @@ get_header(); ?>
 
 
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
-			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
 			<?php foreach ( $before_block_sections as $section ) : ?>
 
+					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
@@ -314,6 +316,8 @@ get_header(); ?>
 						<article class="tour-day">
 							<?php if ( ! empty( $day['image'] ) ) : ?>
 								<div class="tour-hero hide-print" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
+							<?php else : ?>
+								<div class="tour-hero hide-print pattern-<?php echo rand(1, 9); ?>"></div>
 							<?php endif; ?>
 							<header>
 								<span class="tour-day-marker">Day</span>
