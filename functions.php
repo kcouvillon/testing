@@ -235,3 +235,22 @@ function ws_filter_guest_author_fields( $fields_to_return, $groups ) {
 	return $fields_to_return;
 }
 add_filter( 'coauthors_guest_author_fields', 'ws_filter_guest_author_fields', 10, 2 );
+
+/**
+ * Use filter endpoint template for destinations, interests, and travelers
+ *
+ * @param $template
+ *
+ * @return mixed
+ */
+function ws_filter_endpoints( $template ) {
+	$filter_types = array( 'destination', 'interest', 'traveler' );
+	$post_type = get_post_type();
+
+	if ( ! in_array( $post_type, $filter_types ) ) {
+		return $template;
+	}
+
+	return get_stylesheet_directory() . '/single-filter-endpoint.php';
+}
+add_filter( 'template_include', 'ws_filter_endpoints' );
