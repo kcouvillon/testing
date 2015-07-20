@@ -135,7 +135,14 @@
 	.entry-title, .entry-position, .entry-content {
 		margin-right: 1em;
 	}
+
 }
+
+.entry-position {
+	margin-bottom: 1em;
+	display: block;
+}
+
 
 .leadership-content p {
 	max-width: 670px;
