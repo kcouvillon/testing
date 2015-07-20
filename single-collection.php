@@ -19,8 +19,6 @@ get_header(); ?>
 		<?php the_post(); ?>
 
 		<?php
-		$anchor = 0;
-
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
@@ -49,7 +47,14 @@ get_header(); ?>
 
 			<nav class="section-nav">
 				<ul class="section-menu hide-print">
-					<?php // Why WS, Resources ?>
+
+					<?php if ( ! empty( $associated_why_ws ) ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+					<?php endif; ?>
+
+					<?php if ( ! empty( $associated_resources ) ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+					<?php endif; ?>
 
 					<?php if ( ! empty( $before_block_sections ) ) : ?>
 						<?php foreach ( $before_block_sections as $section ) : ?>
@@ -77,10 +82,7 @@ get_header(); ?>
 		</section>
 
 		<?php if ( ! empty( $associated_why_ws ) ) : ?>
-
-		<h2 class="section-content">Title</h2>
-		<a name="#anchor-<?php $anchor++; echo $anchor; ?>"></a>
-
+		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 		<section class="section-content why-content">
 
 			<?php foreach ( $associated_why_ws as $why_ws ) : ?>
@@ -96,6 +98,7 @@ get_header(); ?>
 		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
 
 		<?php if ( $associated_resources ) : ?>
+		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 		<section class="section-content resources">
 				<h2 class="section-title">Have Questions? We Have Answers.</h2>
 
@@ -141,12 +144,11 @@ get_header(); ?>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
-			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
 				<?php foreach ( $before_block_sections as $section ) : ?>
-
+					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>

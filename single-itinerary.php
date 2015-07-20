@@ -278,12 +278,12 @@ get_header(); ?>
 
 
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
-			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
 			<?php foreach ( $before_block_sections as $section ) : ?>
 
+					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
