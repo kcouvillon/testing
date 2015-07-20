@@ -60,6 +60,18 @@ class WS_Metaboxes_Collections {
 			'id' => $prefix . 'subtitle',
 			'type' => 'text'
 		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Collection Type',
+			'id'               => 'collection_type',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'Regular',
+			'options'          => array(
+				'regular' => __( 'Regular', 'cmb' ),
+				'outlier'   => __( 'Outlier', 'cmb' ),
+			),
+		) );
 	}
 
 	/**
