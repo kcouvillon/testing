@@ -21,7 +21,7 @@ get_header(); ?>
 				}
 			?>
 
-			<section class="section-header primary-section pattern-1" style="<?php echo $background; ?>">
+			<section class="section-header primary-section pattern-1" style="background-image: <?php echo $background; ?>;">
 
 				<div class="section-header-content">
 					<h1><?php echo get_the_title(); ?></h1>
