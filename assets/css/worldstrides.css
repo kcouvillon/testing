@@ -7086,7 +7086,8 @@ a.no-decoration {
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 5vw; }
+  padding: 0 5vw;
+  display: none; }
   .tour-highlights-print li {
     margin-bottom: 1em; }
     .tour-highlights-print li:before,
@@ -7101,6 +7102,9 @@ a.no-decoration {
       margin-right: 1em; }
     .tour-highlights-print li h4 {
       margin-top: 0; }
+  @media print {
+    .tour-highlights-print {
+      display: block; } }
 
 .tour-highlights-slider {
   width: 100%;
