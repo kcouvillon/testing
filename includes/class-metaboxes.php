@@ -325,6 +325,18 @@ class WS_Metaboxes {
 		) );
 
 		$cmb->add_field( array(
+			'name' => __( 'Facebook Comments', 'cmb2' ),
+			'id'   => 'facebook_comments',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'false',
+			'options'          => array(
+				'true' => __( 'On', 'cmb' ),
+				'false'   => __( 'Off', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
 			'name' => __( 'Old Url', 'cmb2' ),
 			'id'   => 'ws_blog_old_url',
 			'type' => 'text_url'
