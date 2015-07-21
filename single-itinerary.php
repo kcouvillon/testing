@@ -215,19 +215,25 @@ get_header(); ?>
 			</ul>
 		</section>
 
-		<?php if ( ! empty( $highlights[1]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
+		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<?php 
 			$section_num = 1; // set first section number 
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
+				
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
+					
 					<div class="cycle-overlay"></div>
+					
+					<?php if ( count($highlights) > 1 ) : ?>
 					<div class="cycle-prev"></div>
 					<div class="cycle-next"></div>
+					<?php endif; ?>
+
 					<?php foreach ( $highlights as $highlight ) { ?>
 						<?php
 							$image_id = $highlight['image_id'];
@@ -238,12 +244,14 @@ get_header(); ?>
 						     data-cycle-title="<?php echo $highlight['title']; ?>"
 						     data-cycle-desc="<?php echo $highlight['caption']; ?>">
 					<?php } ?>
+					
+					<?php if ( count($highlights) > 1 ) : ?>
 					<div class="cycle-pager"></div>
+					<?php endif; ?>
 				</div>
+
 				<div id="tour-highlights-data" data-highlights='<?php echo json_encode( $highlights ); ?>'></div>
-				<div id="tour-highlights-map" class="hide-print">
-					<!-- MAP - check assets/js/src/itinerary.js for map code -->
-				</div>
+				<div id="tour-highlights-map" class="hide-print"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
 
 			</section>
 

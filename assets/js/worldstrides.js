@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-07-16
+/*! WorldStrides - v0.1.0 - 2015-07-21
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -173,13 +173,14 @@
 
 							layer.setGeoJSON(collection);
 							setTimeout(function () {
-								map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ] } );
+								map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ], maxZoom: 16 } );
 								map.invalidateSize();
 							}, 500);
 
 						})
 						.on('resize', function() {
-							map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ] } );
+							map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ], maxZoom: 16 } );
+							map.invalidateSize();
 						});
 
 					$slideshow.on('cycle-before', function( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
