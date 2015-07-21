@@ -8,7 +8,7 @@
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<section id="intro" class="home-section primary-section" style="background-image:linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<?php echo wp_get_attachment_url(219); ?>)">
+		<section id="intro" class="home-section primary-section" style="background-image:linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(<?php echo wp_get_attachment_url(219); ?>)">
 		
 			<div class="intro-content">
 				<h1 class="page-title">Educational journeys that change lives, one student at a time</h1>
