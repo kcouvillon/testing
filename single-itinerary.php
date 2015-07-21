@@ -19,14 +19,14 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
 			<header class="section-header pattern-<?php echo rand( 3, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
 					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
-						<span>Collections</span>>
+						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>
+						<span>Collections</span>
 						<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug ) ); ?>"><?php echo $term->name; ?></a>>
 						<span><?php the_title(); ?></span>
 					</nav>
@@ -208,21 +208,26 @@ get_header(); ?>
 		</section>
 
 		<section class="tour-sharing hide-print">
+			<?php $pdf = get_post_meta( $post->ID, 'itinerary_pdf' ); ?>
 			<ul class="sharing-links list-unstyled">
 				<li><a href="<?php echo 'mailto:?subject='.rawurlencode(get_the_title()).'&body='.urlencode(get_the_permalink()); ?>"><i class="icon icon-email"></i> Email this Itinerary</a></li>
 				<li><a href="#"><i class="icon icon-print"></i> Print this Itinerary</a></li>
-				<li><a href="#"><i class="icon icon-pdf"></i> Download PDF to this Itinerary</a></li>
+				<?php if ( $pdf ) : ?>
+				<li><a href="<?php echo $pdf[0]; ?>"><i class="icon icon-pdf"></i> Download PDF to this Itinerary</a></li>
+				<?php endif; ?>
 			</ul>
 		</section>
 
+		<?php $section_num = 1; // set first section number ?>
+
 		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<?php 
-			$section_num = 1; // set first section number 
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
-				
+
+				<h2 class="slideshow-header">Tour Highlights</h2>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
@@ -281,12 +286,12 @@ get_header(); ?>
 
 
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
-			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
 			<?php foreach ( $before_block_sections as $section ) : ?>
 
+					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
@@ -319,6 +324,8 @@ get_header(); ?>
 						<article class="tour-day">
 							<?php if ( ! empty( $day['image'] ) ) : ?>
 								<div class="tour-hero hide-print" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
+							<?php else : ?>
+								<div class="tour-hero hide-print pattern-<?php echo rand(1, 9); ?>"></div>
 							<?php endif; ?>
 							<header>
 								<span class="tour-day-marker">Day</span>

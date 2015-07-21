@@ -8,7 +8,7 @@
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<section id="intro" class="home-section primary-section" style="background-image:linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(<?php echo wp_get_attachment_url(219); ?>)">
+		<section id="intro" class="home-section primary-section" style="background-image:linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(<?php echo wp_get_attachment_url(219); ?>)">
 		
 			<div class="intro-content">
 				<h1 class="page-title">Educational journeys that change lives, one student at a time</h1>
@@ -192,7 +192,7 @@
 						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; 
 					?>
 
-					<li class="resource tile tile-third" style="background-image:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4) ), url(<?php echo esc_url( $item['img'] ); ?>);">
+					<li class="resource tile tile-third" style="background-image:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ), url(<?php echo esc_url( $item['img'] ); ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
 								<?php foreach ( $item['meta'] as $meta ) : ?>

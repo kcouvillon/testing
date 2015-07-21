@@ -1,38 +1,48 @@
 <?php
 /**
- * Terminal layout for Interests
+ * Template Name: Division - On Stage
+ *
  */
+
 
 $section_link = 1;
 $section_num = 1;
 
 $associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
 $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
-$before_block_sections = get_post_meta( $post->ID, 'collection_blocks_before_list', true );
-$after_block_sections = get_post_meta( $post->ID, 'collection_blocks_after_list', true );
+$before_block_sections = get_post_meta( $post->ID, 'division_blocks_before_list', true );
+$after_block_sections = get_post_meta( $post->ID, 'division_blocks_after_list', true );
 
 get_header(); ?>
 
 <div id="primary" class="content-area">
-	<main id="main" class="site-main interest" role="main">
+	<main id="main" class="site-main collection" role="main">
 
 		<?php the_post(); ?>
 
 		<?php
+		$anchor = 0;
+
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
-			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
+			<header class="section-header pattern-<?php echo rand( 3, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
-					<nav class="breadcrumbs">
+					<nav class="breadcrumbs hide-print">
 						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
-						<span>Interests</span>>
+						<span>Collections</span>>
 						<span><?php the_title(); ?></span>
 					</nav>
 					<h1><?php the_title(); ?></h1>
+
+					<?php $subtitle = get_post_meta( $post->ID, 'division_subtitle', true ); ?>
+
+					<?php if ( $subtitle ) : ?>
+						<p><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+					<?php endif; ?>
 
 					<?php the_content(); ?>
 				</div>
@@ -40,14 +50,7 @@ get_header(); ?>
 
 			<nav class="section-nav">
 				<ul class="section-menu hide-print">
-
-					<?php if ( ! empty( $associated_why_ws ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-					<?php endif; ?>
-
-					<?php if ( ! empty( $associated_resources ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-					<?php endif; ?>
+					<?php // Why WS, Resources ?>
 
 					<?php if ( ! empty( $before_block_sections ) ) : ?>
 						<?php foreach ( $before_block_sections as $section ) : ?>
@@ -68,32 +71,37 @@ get_header(); ?>
 					<?php endif; ?>
 
 				</ul>
+
+				<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
 			</nav>
 
 		</section>
 
 		<?php if ( ! empty( $associated_why_ws ) ) : ?>
-		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
-		<section class="section-content why-content">
+			<h2 class="section-content">Title</h2>
+			<a name="#anchor-<?php $anchor++; echo $anchor; ?>"></a>
 
-			<?php foreach ( $associated_why_ws as $why_ws ) : ?>
+			<section class="section-content why-content">
 
-				<?php echo WS_Helpers::get_value_proposition( $why_ws ); ?>
+				<?php foreach ( $associated_why_ws as $why_ws ) : ?>
 
-			<?php endforeach; ?>
+					<?php echo WS_Helpers::get_value_proposition( $why_ws ); ?>
 
-		</section>
+				<?php endforeach; ?>
+
+			</section>
 
 		<?php endif; ?>
 
+		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
+
 		<?php if ( $associated_resources ) : ?>
-		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-		<section class="section-content resources">
+			<section class="section-content resources">
 				<h2 class="section-title">Have Questions? We Have Answers.</h2>
 
 				<ul class="resources-list list-unstyled clearfix">
-					
+
 					<?php $count = 0; ?>
 
 					<?php foreach ( $associated_resources as $resource_id ) : ?>
@@ -125,19 +133,20 @@ get_header(); ?>
 								<h2 class="tile-title"><a href="#"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
 							</div>
 						</li>
-					
+
 						<?php $count++; ?>
 					<?php endforeach; ?>
 
 				</ul>
-		</section>
+			</section>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
 				<?php foreach ( $before_block_sections as $section ) : ?>
-					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
@@ -157,90 +166,57 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-		<section class="section-content programs">
-			<h2 class="section-title">Related Collections</h2>
-			<ul class="programs-list list-unstyled clearfix">
-				<?php 
-				$count = 0;
-				$data = array(
-					array(
-						"title" => "Middle School",
-						"meta" => array("Discoveries Programs")
-					),
-					array(
-						"title" => "High School",
-						"meta" => array("Passages Programs")
-					),
-					array(
-						"title" => "University",
-						"meta" => array("Capstone Programs")
-					),
-					array(
-						"title" => "Performing Arts",
-						"meta" => array("On Stage Programs")
-					),
-				);
-				foreach ( $data as $item ) : ?>
+		<?php
+		$post_obj = $wp_query->get_queried_object();
 
-				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
-				<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-					<div class="tile-content">
-						<ul class="meta list-unstyled">
-							<?php foreach ( $item['meta'] as $meta ) : ?>
-							<li><a href="#"><?php echo $meta; ?></a></li>
-							<?php endforeach; ?>
-						</ul>
-						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-					</div>
-				</li>
-				
-				<?php $count++; endforeach; ?>
-			</ul>
+		$associated_itineraries = new WP_Query( array(
+			'post_type' => 'itinerary',
+			'tax_query' => array(
+				array(
+					'taxonomy' => '_collection',
+					'field'    => 'slug',
+					'terms'    => $post_obj->post_name
+				)
+			),
+			'posts_per_page' => 75,
+			'no_found_rows' => true,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+			'order' => 'ASC',
+			'orderby' => 'title'
+		) );
+		?>
 
-		</section>
+		<?php if ( $associated_itineraries->have_posts() ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
-		<section class="section-content programs">
-			<h2 class="section-title">Related Programs</h2>
-			<ul class="programs-list list-unstyled clearfix">
-				<?php 
-				$count = 0;
-				$data = array(
-					array(
-						"title" => "Middle School",
-						"meta" => array("Discoveries Programs")
-					),
-					array(
-						"title" => "High School",
-						"meta" => array("Passages Programs")
-					),
-					array(
-						"title" => "University",
-						"meta" => array("Capstone Programs")
-					),
-					array(
-						"title" => "Performing Arts",
-						"meta" => array("On Stage Programs")
-					),
-				);
-				foreach ( $data as $item ) : ?>
+			<section class="section-content programs">
+				<h2 class="section-title">Itineraries</h2>
+				<ul class="programs-list list-unstyled clearfix">
+					<?php $count = 0; ?>
 
-				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
-				<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-					<div class="tile-content">
-						<ul class="meta list-unstyled">
-							<?php foreach ( $item['meta'] as $meta ) : ?>
-							<li><a href="#"><?php echo $meta; ?></a></li>
-							<?php endforeach; ?>
-						</ul>
-						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-					</div>
-				</li>
-				
-				<?php $count++; endforeach; ?>
-			</ul>
-				
-		</section>
+					<?php while ( $associated_itineraries->have_posts() ) : ?>
+						<?php $associated_itineraries->the_post(); ?>
+
+						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+
+						<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
+								</ul>
+								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							</div>
+						</li>
+
+						<?php $count++; ?>
+					<?php endwhile; ?>
+				</ul>
+
+				<a class="program-all-link" href="">See All</a>
+
+			</section>
+		<?php endif; ?>
 
 		<?php if ( ! empty( $after_block_sections ) ) : ?>
 			<?php foreach ( $after_block_sections as $section ) : ?>
@@ -271,26 +247,32 @@ get_header(); ?>
 
 				<section>
 
-				<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
-				$blogPosts = new WP_Query($args); ?>
-				<?php if ( $blogPosts->have_posts() ) : ?>
+					<?php
+					// @todo make this one query, it does not need to be two
 
-					<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
+					$args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
+					$blogPosts = new WP_Query($args);
 
-						<?php get_template_part( 'partials/content', 'blog' ) ?>
+					?>
 
-					<?php endwhile; ?>
+					<?php if ( $blogPosts->have_posts() ) : ?>
 
-				<?php else : ?>
+						<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
 
-					<p>Nothing found</p>
+							<?php get_template_part( 'partials/content', 'blog' ) ?>
 
-				<?php endif; ?>
+						<?php endwhile; ?>
+
+					<?php else : ?>
+
+						<p>Nothing found</p>
+
+					<?php endif; ?>
 
 				</section>
 
 				<aside class="sidebar">
-					
+
 					<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 2, 'offset' => 1 );
 					$blogPosts = new WP_Query($args); ?>
 					<?php if ( $blogPosts->have_posts() ) : ?>
@@ -325,4 +307,22 @@ get_header(); ?>
 			<button class="btn btn-primary">Get the Info</button>
 		</div>
 
-<?php get_footer(); ?>
+		<section class="info-cta">
+
+			<div class="additional-info">
+				<h3>Additional Information</h3>
+				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet.</p>
+				<button class="btn btn-primary">Request Catalogue</button>
+			</div>
+
+			<div class="email-updates">
+				<h3>Email Updates About These Tours</h3>
+				<p>Interested in learning more? Enter your email address and we’ll share further information, promotions, and other opportunities.</p>
+				<form action="">
+					<input type="email" placeholder="Email Address">
+					<input type="submit" class="btn btn-primary" value="Sign Up">
+				</form>
+			</div>
+		</section>
+
+<?php get_footer();

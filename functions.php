@@ -30,6 +30,8 @@ include WS_PATH . 'includes/cmb2-maps-google/cmb-field-map.php';
 include WS_PATH . 'includes/cmb2-post-search/cmb2-post-search-field.php';
 include WS_PATH . 'includes/cmb2-itinerary-activity/cmb2-itinerary-activity.php';
 include WS_PATH . 'includes/cmb2-associated-itineraries/cmb2-associated-itineraries.php';
+include WS_PATH . 'includes/taxonomy-metadata/Taxonomy_MetaData.php';
+include WS_PATH . 'includes/taxonomy-metadata/Taxonomy_MetaData_CMB2.php';
 
 // Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
@@ -41,7 +43,9 @@ include WS_PATH . 'includes/class-marketo.php';
 include WS_PATH . 'includes/class-metaboxes.php';
 include WS_PATH . 'includes/class-metaboxes-blocks.php';
 include WS_PATH . 'includes/class-metaboxes-collections.php';
+include WS_PATH . 'includes/class-metaboxes-divisions.php';
 include WS_PATH . 'includes/class-metaboxes-itineraries.php';
+include WS_PATH . 'includes/class-metaboxes-filter-endpoints.php';
 include WS_PATH . 'includes/class-shortcodes.php';
 include WS_PATH . 'includes/class-taxos.php';
 
@@ -186,10 +190,11 @@ add_filter( 'the_content', 'shortcode_unautop', 100 );
 /**
  * Remove default custom fields box
  */
-function customize_meta_boxes() {
+function customize_admin_init() {
 	remove_meta_box( 'postcustom', 'post', 'normal' );
+	remove_post_type_support( 'post', 'comments' );
 }
-add_action( 'admin_init', 'customize_meta_boxes' );
+add_action( 'admin_init', 'customize_admin_init' );
 
 
 function ws_modified_queries( $query ) {
@@ -215,3 +220,87 @@ function ws_image_sizes() {
 	update_option( 'large_size_h', 1030 );
 }
 add_action( 'switch_theme', 'ws_image_sizes' );
+
+/**
+ * Add author type field to Co-Authors Plus
+ */
+function ws_filter_guest_author_fields( $fields_to_return, $groups ) {
+
+	if ( in_array( 'all', $groups ) || in_array( 'name', $groups ) ) {
+		$fields_to_return[] = array(
+			'key'      => 'author_type',
+			'label'    => 'Author Type',
+			'group'    => 'name',
+		);
+	}
+
+	return $fields_to_return;
+}
+add_filter( 'coauthors_guest_author_fields', 'ws_filter_guest_author_fields', 10, 2 );
+
+/**
+ * Use filter endpoint template for destinations, interests, and travelers
+ *
+ * @param $template
+ *
+ * @return mixed
+ */
+function ws_filter_endpoints( $template ) {
+	$filter_types = array( 'destination', 'interest', 'traveler' );
+	$post_type = get_post_type();
+
+	if ( ! in_array( $post_type, $filter_types ) ) {
+		return $template;
+	}
+
+	return get_stylesheet_directory() . '/single-filter-endpoint.php';
+}
+add_filter( 'template_include', 'ws_filter_endpoints' );
+
+
+/**
+ * Include metabox on front page
+ *
+ * @todo find a better place for this to live.
+ *
+ * @author Ed Townend
+ * @link https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-show_on-filters
+ *
+ * @param bool $display
+ * @param array $meta_box
+ * @return bool display metabox
+ */
+function ws_metabox_include_front_page( $display, $meta_box ) {
+	if ( ! isset( $meta_box['show_on']['key'] ) ) {
+		return $display;
+	}
+
+	if ( 'front-page' !== $meta_box['show_on']['key'] ) {
+		return $display;
+	}
+
+	$post_id = 0;
+
+	// If we're showing it based on ID, get the current ID
+	if ( isset( $_GET['post'] ) ) {
+		$post_id = $_GET['post'];
+	} elseif ( isset( $_POST['post_ID'] ) ) {
+		$post_id = $_POST['post_ID'];
+	}
+
+	if ( ! $post_id ) {
+		return $display;
+	}
+
+	// Get ID of page set as front page, 0 if there isn't one
+	$front_page = get_option( 'page_on_front' );
+
+	// there is a front page set and we're on it!
+	return $post_id == $front_page;
+}
+add_filter( 'cmb2_show_on', 'ws_metabox_include_front_page', 10, 2 );
+
+function remove_admin_menu_itmes() {
+	remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'remove_admin_menu_itmes' );

@@ -1,7 +1,10 @@
 <?php
 /**
- * Terminal layout for Interests
+ * Terminal layout for Filter Endpoints
  */
+
+$post_type = get_post_type();
+echo $post_type;
 
 $section_link = 1;
 $section_num = 1;
@@ -14,7 +17,7 @@ $after_block_sections = get_post_meta( $post->ID, 'collection_blocks_after_list'
 get_header(); ?>
 
 <div id="primary" class="content-area">
-	<main id="main" class="site-main interest" role="main">
+	<main id="main" class="site-main filter-endpoint" role="main">
 
 		<?php the_post(); ?>
 
@@ -22,7 +25,7 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
 			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">

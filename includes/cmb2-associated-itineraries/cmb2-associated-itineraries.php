@@ -29,13 +29,21 @@ function cmb2_render_associated_itineraries_callback( $field, $value, $object_id
 	<div>
 		<?php
 			global $post;
+			$term = $post->post_name;
+			$template = get_post_meta( $post->ID, '_wp_page_template', true );
+
+			// if the collection slugs change, these will need to change
+			if ( 'templates/division-capstone.php' == $template ) {
+				$term = 'capstone-programs';
+			}
+
 			$associated_itineraries = new WP_Query( array(
 				'post_type' => 'itinerary',
 				'tax_query' => array(
 					array(
 						'taxonomy' => '_collection',
 						'field'    => 'slug',
-						'terms'    => $post->post_name
+						'terms'    => $term
 					)
 				),
 				'posts_per_page' => 75

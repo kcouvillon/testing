@@ -20,7 +20,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 				$background = 'url(' . $featured[0] . ')';
 			// if not, include the overlay
 			else :
-				$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+				$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 			endif;
 		} ?>
 
@@ -44,6 +44,8 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 			<div class="blog-single-meta">
 				<?php get_template_part( 'partials/content', 'blog-author' ); ?>
+				<?php get_template_part( 'partials/content', 'blog-sharing' ); ?>
+				<?php get_template_part( 'partials/content', 'blog-tags' ); ?>
 			</div>
 
 			<div class="blog-single-content">
@@ -101,7 +103,13 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 						</div>
 					</div>
 
+					<?php $comments = get_post_meta( $post->ID, 'facebook_comments'. false ); ?>
+
+					<?php if ( $comments ) : ?>
+					<a name="comments"></a>
+					<h4>Comments</h4>
 					<div class="fb-comments" data-href="<?php the_permalink(); ?>"></div>
+					<?php endif; ?>
 
 				<?php else : ?>
 

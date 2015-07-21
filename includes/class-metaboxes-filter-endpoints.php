@@ -1,10 +1,12 @@
 <?php
 /**
- * Adding Metaboxes and custom fields for Collections
+ * Adding Metaboxes and custom fields for Destinations, Interests and Travelers
  *
- * Class WS_Metaboxes_Collections
+ * There's a lot of similarity with Collections, and it could probably be reengineered to avoid duplication.
+ *
+ * Class WS_Filter_Endpoints
  */
-class WS_Metaboxes_Collections {
+class WS_Metaboxes_Filter_Endpoints {
 	/**
 	 * Instance of this class, if it has been created.
 	 *
@@ -34,57 +36,25 @@ class WS_Metaboxes_Collections {
 	 * Sets up actions and filters.
 	 */
 	protected function _init() {
-		add_action( 'cmb2_init',  array( $this, 'collection_options' ) );
-		add_action( 'cmb2_init',  array( $this, 'collection_why_ws' ) );
-		add_action( 'cmb2_init',  array( $this, 'collection_resources' ) );
-		add_action( 'cmb2_init',  array( $this, 'collection_blocks_before' ) );
-		add_action( 'cmb2_init',  array( $this, 'collection_itineraries' ) );
-		add_action( 'cmb2_init',  array( $this, 'collection_blocks_after' ) );
-	}
-
-	/**
-	 * Options
-	 */
-	function collection_options() {
-
-		$prefix = 'collection_options_';
-
-		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Collection Options', 'cmb2' ),
-			'object_types' => array( 'collection', ),
-		) );
-
-		$cmb->add_field( array(
-			'name' => 'Subtitle',
-			'id' => $prefix . 'subtitle',
-			'type' => 'text'
-		) );
-
-		$cmb->add_field( array(
-			'name'             => 'Collection Type',
-			'id'               => 'collection_type',
-			'type'             => 'select',
-			'show_option_none' => false,
-			'default'          => 'Regular',
-			'options'          => array(
-				'regular' => __( 'Regular', 'cmb' ),
-				'outlier'   => __( 'Outlier', 'cmb' ),
-			),
-		) );
+		add_action( 'cmb2_init',  array( $this, 'why_ws' ) );
+		add_action( 'cmb2_init',  array( $this, 'resources' ) );
+		add_action( 'cmb2_init',  array( $this, 'blocks_before' ) );
+		// add_action( 'cmb2_init',  array( $this, 'itineraries' ) );
+		add_action( 'cmb2_init',  array( $this, 'blocks_after' ) );
+		add_action( 'cmb2_init',  array( $this, 'related_blog_posts' ) );
 	}
 
 	/**
 	 * Field group for Why WorldStrides page
 	 */
-	function collection_why_ws() {
+	function why_ws() {
 
-		$prefix = 'collection_why_ws_';
+		$prefix = 'why_ws_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Why WorldStrides', 'cmb2' ),
-			'object_types' => array( 'collection', )
+			'object_types' => array( 'destination', 'interest', 'traveler' )
 		) );
 
 		$cmb->add_field( array(
@@ -114,14 +84,14 @@ class WS_Metaboxes_Collections {
 	/**
 	 * Resources to display
 	 */
-	function collection_resources() {
+	function resources() {
 
-		$prefix = 'collection_resources_';
+		$prefix = 'resources_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Resources', 'cmb2' ),
-			'object_types' => array( 'collection', )
+			'object_types' => array( 'destination', 'interest', 'traveler' )
 		) );
 
 		$cmb->add_field( array(
@@ -151,14 +121,14 @@ class WS_Metaboxes_Collections {
 	/**
 	 * Sections of blocks to show before itineraries
 	 */
-	function collection_blocks_before() {
+	function blocks_before() {
 
-		$prefix = 'collection_blocks_before_';
+		$prefix = 'blocks_before_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Before Blocks', 'cmb2' ),
-			'object_types' => array( 'collection', ),
+			'object_types' => array( 'destination', 'interest', 'traveler' ),
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
@@ -205,14 +175,14 @@ class WS_Metaboxes_Collections {
 	/**
 	 * Field group for Why WorldStrides page
 	 */
-	function collection_itineraries() {
+	function itineraries() {
 
-		$prefix = 'collection_itineraries_';
+		$prefix = 'itineraries_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Associated Itineraries', 'cmb2' ),
-			'object_types' => array( 'collection', ),
+			'object_types' => array( 'destination', 'interest', 'traveler' ),
 		) );
 
 		$cmb->add_field( array(
@@ -228,15 +198,15 @@ class WS_Metaboxes_Collections {
 	/**
 	 * Sections of Blocks to show after itineraries
 	 */
-	function collection_blocks_after() {
+	function blocks_after() {
 
 		// Start with an underscore to hide fields from custom fields list
-		$prefix = 'collection_blocks_after_';
+		$prefix = 'blocks_after_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'After Blocks', 'cmb2' ),
-			'object_types' => array( 'collection', ),
+			'object_types' => array( 'destination', 'interest', 'traveler' ),
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
@@ -279,6 +249,30 @@ class WS_Metaboxes_Collections {
 		) );
 
 	}
+	
+	/**
+	 * Field group for related Blog Post
+	 */
+	function related_blog_posts() {
+
+		$prefix = 'related_blog_post_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Blog Post', 'cmb2' ),
+			'object_types' => array( 'destination', 'interest', 'traveler' ),
+		) );
+
+		$cmb->add_field( array(
+			'name'        => __( 'Blog post' ),
+			'id'          => 'related_blog_post',
+			'type'        => 'post_search_text', // This field type
+			// post type also as array
+			'post_type'   => 'post',
+			// checkbox/radio, used in the modal view to select the post type
+			'select_type' => 'radio'
+		) );
+	}
 }
 
-WS_Metaboxes_Collections::instance();
+WS_Metaboxes_Filter_Endpoints::instance();

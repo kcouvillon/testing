@@ -50,6 +50,8 @@ $color_text_footer_dark: #191919;
 $color_link: #fb901d;
 $color_link_visited: tint($color_link, 10%);
 $color_link_hover: darken($color_link, 10%);
+$color_link_tag: $blue;
+$color_link_tag_hover: $blue_dark;
 
 $color_code: #555;
 
@@ -72,6 +74,11 @@ $color_background_selection: #bde5ff;
 $color_border_input: #ccc;
 $color_border_input_hover: #ccc;
 $color_border_input_focus: #ccc;
+
+$color_overlay_lt: rgba( 0, 0, 0, 0.2 );
+$color_overlay_med: rbga( 0, 0, 0, 0.35 );
+$color_overlay_dark: rgba( 0, 0, 0, 0.45 );
+$color_overlay: rgba( 0, 0, 0, 0.28 );
 
 // Typography
 // ============================================ /

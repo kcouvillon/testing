@@ -1,0 +1,7 @@
+%overlay-top-bottom {
+	background: linear-gradient( $color_overlay_dark 0%, transparent 35%, transparent 65%, $color_overlay_dark 100% ) ;
+}
+
+%overlay-bottom {
+	background: linear-gradient( transparent, $color_overlay_dark );
+}

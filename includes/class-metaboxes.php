@@ -38,7 +38,7 @@ class WS_Metaboxes {
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'general_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'hero_tooltips' ) );
-		add_action( 'cmb2_init',  array( $this, 'hero_tooltips_home' ) );
+		add_action( 'cmb2_init',  array( $this, 'hero_tooltips_pages' ) );
 		add_action( 'cmb2_init',  array( $this, 'leadership_attached_bios' ) );
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
@@ -50,6 +50,8 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_offices_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
+		add_action( 'cmb2_init',  array( $this, 'taxonomy_metadata_cmb2_init' ) );
+		add_action( 'cmb2_init',  array( $this, 'home_resources' ) );
 	}
 
 	/**
@@ -150,7 +152,7 @@ class WS_Metaboxes {
 	 *
 	 * @todo figure out how to avoid the duplication here
 	 */
-	function hero_tooltips_home() {
+	function hero_tooltips_pages() {
 
 		$prefix = 'hero_tooltips_';
 
@@ -159,8 +161,13 @@ class WS_Metaboxes {
 			'title'        => __( 'Hero Tooltips', 'cmb2' ),
 			'object_types' => array( 'page' ),
 			'show_on'      => array(
-				'key' => 'page-template', 'value' => 'front-page.php',
-				//'key' => 'id', 'value' => array( 1107 )
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php',
+				),
+				'key' => 'front-page', 'value' => ''
 			),
 		) );
 
@@ -315,6 +322,18 @@ class WS_Metaboxes {
 			'type'        => 'post_search_text',
 			'post_type'   => 'itinerary', // this gets overridden
 			'select_type' => 'radio'
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Facebook Comments', 'cmb2' ),
+			'id'   => 'facebook_comments',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'false',
+			'options'          => array(
+				'true' => __( 'On', 'cmb' ),
+				'false'   => __( 'Off', 'cmb' ),
+			),
 		) );
 
 		$cmb->add_field( array(
@@ -770,6 +789,82 @@ class WS_Metaboxes {
 		) );
 
 	}
+
+	function taxonomy_metadata_cmb2_init() {
+
+		$metabox_id = 'cat_options';
+
+		/**
+		 * Semi-standard CMB metabox/fields registration
+		 */
+		$cmb = new_cmb2_box( array(
+			'id'           => $metabox_id,
+			'object_types' => array( 'key' => 'options-page', 'value' => array( 'unknown', ), ),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Featured Image', 'taxonomy-metadata' ),
+			'id'   => 'feature_image', // no prefix needed since the options are one option array.
+			'type' => 'file',
+		) );
+
+		// (Recommended) Use wp-large-options
+		if ( ! defined( 'wlo_update_option' ) ) {
+			// require_once( 'wp-large-options/wp-large-options.php' );
+		}
+
+		// wp-large-options overrides
+		$wlo_overrides = array(
+			//'get_option'    => 'wlo_get_option',
+			//'update_option' => 'wlo_update_option',
+			//'delete_option' => 'wlo_delete_option',
+		);
+
+		/**
+		 * Instantiate our taxonomy meta class
+		 */
+		$cats = new Taxonomy_MetaData_CMB2( 'resource-target', $metabox_id, __( 'Resource Target Settings', 'taxonomy-metadata' ), $wlo_overrides );
+	}
+
+	/**
+	 * Resources to display
+	 */
+	function home_resources() {
+
+		$prefix = 'home_resources_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Resources', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array(
+				'key' => 'front-page', 'value' => ''
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'       => __( 'Title', 'cmb2' ),
+			'id'         => $prefix . 'title',
+			'type'       => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Attached Resources', 'cmb2' ),
+			'desc'    => __( 'Drag Resources from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'attached_resources',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 100,
+					'post_type' => 'resource',
+				),
+			)
+		) );
+	}
+
 }
 
 WS_Metaboxes::instance();
