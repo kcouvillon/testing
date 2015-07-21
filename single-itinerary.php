@@ -40,6 +40,9 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 				</div>
+
+				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
+				
 			</header>
 
 			<nav class="section-nav">

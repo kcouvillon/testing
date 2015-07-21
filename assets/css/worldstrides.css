@@ -7456,7 +7456,8 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  margin-bottom: 3.9215686275%; }
+  margin-bottom: 3.9215686275%;
+  position: relative; }
   .section-header:before,
   .section-header:after {
     content: "";

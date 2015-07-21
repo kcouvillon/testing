@@ -44,6 +44,9 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 				</div>
+
+				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
+				
 			</header>
 
 			<?php if ( 'outlier' != $collection_type ) : ?>
