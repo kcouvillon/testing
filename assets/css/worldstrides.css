@@ -6736,6 +6736,9 @@ a.no-decoration {
     margin-left: 2vw;
     margin-right: 3vw; }
 
+.fb-comments {
+  margin-bottom: 2em; }
+
 .blog-single-wrap {
   display: block;
   max-width: 1500px;
