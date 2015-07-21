@@ -101,7 +101,13 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 						</div>
 					</div>
 
+					<?php $comments = get_post_meta( $post->ID, 'facebook_comments'. false ); ?>
+
+					<?php if ( $comments ) : ?>
+					<a name="comments"></a>
+					<h4>Comments</h4>
 					<div class="fb-comments" data-href="<?php the_permalink(); ?>"></div>
+					<?php endif; ?>
 
 				<?php else : ?>
 
