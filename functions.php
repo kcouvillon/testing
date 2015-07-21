@@ -190,10 +190,11 @@ add_filter( 'the_content', 'shortcode_unautop', 100 );
 /**
  * Remove default custom fields box
  */
-function customize_meta_boxes() {
+function customize_admin_init() {
 	remove_meta_box( 'postcustom', 'post', 'normal' );
+	remove_post_type_support( 'post', 'comments' );
 }
-add_action( 'admin_init', 'customize_meta_boxes' );
+add_action( 'admin_init', 'customize_admin_init' );
 
 
 function ws_modified_queries( $query ) {
