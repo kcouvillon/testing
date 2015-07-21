@@ -255,7 +255,7 @@ get_header(); ?>
 					<?php endif; ?>
 				</div>
 
-				<div id="tour-highlights-data" data-highlights='<?php echo json_encode( $highlights ); ?>'></div>
+				<div id="tour-highlights-data" data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
 				<div id="tour-highlights-map" class="hide-print"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
 
 			</section>
