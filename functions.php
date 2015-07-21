@@ -298,3 +298,8 @@ function ws_metabox_include_front_page( $display, $meta_box ) {
 	return $post_id == $front_page;
 }
 add_filter( 'cmb2_show_on', 'ws_metabox_include_front_page', 10, 2 );
+
+function remove_admin_menu_itmes() {
+	remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'remove_admin_menu_itmes' );
