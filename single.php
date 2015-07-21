@@ -44,6 +44,8 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 			<div class="blog-single-meta">
 				<?php get_template_part( 'partials/content', 'blog-author' ); ?>
+				<?php get_template_part( 'partials/content', 'blog-sharing' ); ?>
+				<?php get_template_part( 'partials/content', 'blog-tags' ); ?>
 			</div>
 
 			<div class="blog-single-content">

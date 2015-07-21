@@ -50,6 +50,8 @@ $color_text_footer_dark: #191919;
 $color_link: #fb901d;
 $color_link_visited: tint($color_link, 10%);
 $color_link_hover: darken($color_link, 10%);
+$color_link_tag: $blue;
+$color_link_tag_hover: $blue_dark;
 
 $color_code: #555;
 

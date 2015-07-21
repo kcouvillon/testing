@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'worldstrides-ui';
-	src:url('../fonts/worldstrides-ui.eot?-49qcb8');
-	src:url('../fonts/worldstrides-ui.eot?#iefix-49qcb8') format('embedded-opentype'),
-		url('../fonts/worldstrides-ui.ttf?-49qcb8') format('truetype'),
-		url('../fonts/worldstrides-ui.woff?-49qcb8') format('woff'),
-		url('../fonts/worldstrides-ui.svg?-49qcb8#worldstrides-ui') format('svg');
+	src:url('../fonts/worldstrides-ui.eot?yvh9g8');
+	src:url('../fonts/worldstrides-ui.eot?#iefixyvh9g8') format('embedded-opentype'),
+		url('../fonts/worldstrides-ui.ttf?yvh9g8') format('truetype'),
+		url('../fonts/worldstrides-ui.woff?yvh9g8') format('woff'),
+		url('../fonts/worldstrides-ui.svg?yvh9g8#worldstrides-ui') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -75,17 +75,31 @@
 	content: "\e607";
 }
 .icon-instagram:before {
-	content: "\e600";
+	content: "\e601";
 }
 .icon-facebook:before {
 	content: "\e604";
 }
 .icon-pinterest:before {
-	content: "\e601";
-}
-.icon-twitter:before {
 	content: "\e602";
 }
-.icon-youtube:before {
+.icon-twitter:before {
 	content: "\e603";
+}
+.icon-youtube:before {
+	content: "\e616";
+}
+.icon-linkedin:before {
+	content: "\e600";
+}
+
+// Social Share Links
+
+.blog-social-links {
+	margin-bottom: 1em;
+
+	i {
+		display: inline-block;
+		margin-right: 10px;
+	}
 }

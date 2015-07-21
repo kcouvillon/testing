@@ -8,7 +8,7 @@ if ( class_exists( 'coauthors_plus' ) ) :
 	foreach ( $co_authors as $key => $co_author ) : ?>
 		<div class="entry-author">
 			<?php if ( has_post_thumbnail( $co_author->ID) ) {
-				echo get_the_post_thumbnail( $co_author->ID, 'thumbnail' );
+				echo get_the_post_thumbnail( $co_author->ID, 'thumbnail', array( 'class' => 'avatar' ) );
 			}; ?>
 
 			<span>
