@@ -38,8 +38,8 @@
 			</ul>
 
 			<ul class="site-info-menu">
-				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>privacy-policy">Privacy Policy</a></li>
-				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>terms-conditions/">Terms and Conditions</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></li>
+				<li><a href="<?php echo esc_url( home_url( '/terms-conditions/' ) ); ?>">Terms and Conditions</a></li>
 				<li>&copy; <?php echo date('Y'); ?> WorldStrides, Inc.</li>
 			</ul>
 
@@ -49,7 +49,7 @@
 
 		<div class="tagline">
 			<h2 class="footer-logo">
-				<a href="<?php echo esc_url( home_url() ); ?>">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<span class="hide"><?php echo bloginfo('description'); ?></span>
 				</a>
 			</h2>

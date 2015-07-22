@@ -72,7 +72,7 @@ if ( is_singular( 'post' ) ) {
 		<img src="<?php echo get_template_directory_uri() . '/assets/images/logo-gray.png'; ?>" class="print-only" width="216" height="46" />
 
 		<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
-			<a href="#">Explore Our Trips »</a>
+			<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Our Trips »</a>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav>
 	</header>

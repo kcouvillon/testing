@@ -10,7 +10,7 @@ get_header(); ?>
 	<main id="main" class="site-main" role="main">
 
 		<section class="primary-section">
-			<header class="section-header contact-header">
+			<header class="section-header pattern-3">
 				<div class="section-header-content">
 					<h1><?php the_title(); ?></h1>
 				</div>
