@@ -323,13 +323,39 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_group_field( $day_group, array(
-			'name'        => __( 'Related Content' ),
+			'name'        => __( 'Related Content Picker' ),
 			'id'          => 'related_content',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
 			'post_type'   => 'block',
 			// checkbox/radio, used in the modal view to select the post type
 			'select_type' => 'radio'
+		) );
+
+		$cmb->add_group_field( $day_group, array(
+			'name' => __( 'Custom image', 'cmb2' ),
+			'desc' => 'Override the related content',
+			'id'   => 'override_image',
+			'type' => 'file',
+		) );
+
+		$cmb->add_group_field( $day_group, array(
+			'name' => __( 'Custom image title', 'cmb2' ),
+			'id'   => 'override_image_title',
+			'type' => 'text',
+		) );
+
+		$cmb->add_group_field( $day_group, array(
+			'name' => __( 'Custom description', 'cmb2' ),
+			'id'   => 'override_description',
+			'type' => 'textarea_small',
+		) );
+
+		$cmb->add_group_field( $day_group, array(
+			'name' => __( 'Custom URL', 'cmb2' ),
+			'desc' => 'Add a url, if it should link out to something',
+			'id'   => 'override_url',
+			'type' => 'text_url',
 		) );
 	}
 
