@@ -42,7 +42,7 @@ get_header(); ?>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
-				
+
 			</header>
 
 			<nav class="section-nav">
@@ -328,7 +328,7 @@ get_header(); ?>
 							<?php if ( ! empty( $day['image'] ) ) : ?>
 								<div class="tour-hero hide-print" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
 							<?php else : ?>
-								<div class="tour-hero hide-print pattern-<?php echo rand(1, 9); ?>"></div>
+								<div class="tour-hero tour-hero-pattern hide-print pattern-3"></div>
 							<?php endif; ?>
 							<header>
 								<span class="tour-day-marker">Day</span>

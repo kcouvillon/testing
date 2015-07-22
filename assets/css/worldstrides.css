@@ -7187,6 +7187,9 @@ a.no-decoration {
   padding-right: 5vw;
   padding-left: 5vw; }
 
+.tour-day .tour-hero-pattern {
+  max-height: 100px; }
+
 .tour-day .tour-day-marker {
   width: 6.5359477124%;
   min-width: 60px;
