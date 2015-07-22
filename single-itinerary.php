@@ -352,39 +352,51 @@ get_header(); ?>
 							$related = $day['related_content'];
 							$related_title = $day['related_content_title'];
 
-							if ( ! empty ( $related ) ) :
+							$related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $day['override_image'] . ')';
+							$related_image_title = $day['override_image_title'];
+							$related_description = $day['override_description'];
+							$related_url = $day['override_url'];
 
-								$related_post = get_post( $related );
-								$background = '';
-								$class = 'pattern-' . rand(1, 9);
+							if ( ! empty ( $related ) ) {
 
-								if ( has_post_thumbnail( $related) ) {
+								$related_post  = get_post( $related );
+								$related_image = '';
+								$class         = 'pattern-' . rand( 1, 9 );
+
+								$related_image_title = $related_post->post_title;
+								$related_description = get_the_excerpt( $related );
+
+
+								if ( has_post_thumbnail( $related ) ) {
 
 									$class = 'no-pattern';
 
-									$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
-									$background = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+									$featured      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
+									$related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+
 
 								}
+							}
 							?>
 
-							<div class="tour-related-post hide-print">
-								<?php if ( $related_title ) : ?>
-								<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
-								<?php endif; ?>
-								<header class="<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-									<h3><?php echo $related_post->post_title; ?></h3>
-								</header>
+							<?php if ( $related || $related_image_title ) : ?>
 
-								<p><?php echo get_the_excerpt( $related ); ?></p>
+								<div class="tour-related-post hide-print">
+									<?php if ( $related_title ) : ?>
+									<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
+									<?php endif; ?>
+									<header class="<?php echo $class; ?>" style="background-image: <?php echo $related_image; ?>;">
+										<h3><?php echo $related_image_title; ?></h3>
+									</header>
 
+									<p><?php echo $related_description; ?></p>
 
-							</div><!-- end .tour-related-post -->
-
-							</div><!-- end .day-wrap -->
-
+	
+								</div><!-- end .tour-related-post -->
 
 							<?php endif; ?>
+
+							</div><!-- end .day-wrap -->
 
 						</article>
 					<?php endif; ?>
