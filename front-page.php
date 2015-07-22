@@ -3,7 +3,10 @@
  * The template for the home page (/) of the site
  */
 
- get_header(); the_post(); ?>
+get_header(); the_post();
+
+$associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
+?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
@@ -143,54 +146,51 @@
 			</div>
 		</section>
 
-		<section class="home-section resources">
-			<div class="ws-container">
+		<?php if ( $associated_resources ) : ?>
+			<section class="section-content resources">
 				<h2 class="section-title">Have Questions? We Have Answers.</h2>
+
 				<ul class="resources-list list-unstyled clearfix">
-					
-					<?php 
-						$count = 0;
-						$data = array(
-							array(
-								"title" => "Resource Title",
-								"meta" => array("Parents"),
-								"img" => get_template_directory_uri() . '/assets/images/placeholder/resource-parent.jpg'
-							),
-							array(
-								"title" => "Resource Title",
-								"meta" => array("Educators"),
-								"img" => get_template_directory_uri() . '/assets/images/placeholder/resource-teacher.jpg'
-							),
-							array(
-								"title" => "Resource Title",
-								"meta" => array("Students"),
-								"img" => get_template_directory_uri() . '/assets/images/placeholder/resource-student.jpg'
-							)
-						);
 
-						foreach ( $data as $item ) :
-						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; 
-					?>
+					<?php foreach ( $associated_resources as $resource_id ) : ?>
+						<?php $resource = get_post( $resource_id ); ?>
+						<?php
+						$background = '';
+						if( has_post_thumbnail( $resource_id ) ) {
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+							$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+						} ?>
 
-					<li class="resource tile tile-third" style="background-image:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ), url(<?php echo esc_url( $item['img'] ); ?>);">
-						<div class="tile-content">
-							<ul class="meta list-unstyled">
-								<?php foreach ( $item['meta'] as $meta ) : ?>
-								<li><a href="#"><?php echo $meta; ?></a></li>
-								<?php endforeach; ?>
-							</ul>
-							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-						</div>
-					</li>
-					
-					<?php 
-						$count++; 
-						endforeach; 
-					?>
+						<li class="resource tile tile-third pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
+									<?php $target_parents = array(); ?>
+
+									<?php foreach ( $targets as $target ) : ?>
+										<?php if ( 'Featured' != $target->name ) : ?>
+
+											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
+
+											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
+												<?php $target_parents[] = $parent->term_id; ?>
+
+												<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
+
+											<?php endif; ?>
+
+										<?php endif; ?>
+									<?php endforeach; ?>
+
+								</ul>
+								<h2 class="tile-title"><a href="#"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
+							</div>
+						</li>
+					<?php endforeach; ?>
 
 				</ul>
-			</div>
-		</section>
+			</section>
+		<?php endif; ?>
 
 		<section class="home-section learn-more clearfix ws-container">
 				<form action="#" class="ws-form">
