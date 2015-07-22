@@ -141,7 +141,7 @@ function ws_add_body_classes( $classes ) {
 	global $post;
 	$about_id = get_id_by_slug( 'about' );
 
-	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_home() && ! is_singular( 'press' ) && ! is_page( 'history' ) && ! is_singular( 'bio' ) ) {
+	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_home() && ! is_singular( 'press' ) && ! is_page( 'history' ) && ! is_singular( 'bio' ) && ! is_page( 'contact' ) ) {
 		$classes[] = 'has-featured-image';
 
 		if ( is_front_page() ) {
