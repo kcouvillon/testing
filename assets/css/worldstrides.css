@@ -7391,6 +7391,9 @@ section:after {
 .page-template-default .section-content {
   max-width: 900px; }
 
+.home.page-template-default .section-content {
+  max-width: 1500px; }
+
 .section-nav {
   position: relative;
   background: #323c53;
