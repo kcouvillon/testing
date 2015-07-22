@@ -6616,7 +6616,7 @@ a.no-decoration {
       text-transform: uppercase;
       font-size: 0.75em; }
       .blog .entry-header .post-categories a:hover, .single .entry-header .post-categories a:hover {
-        color: #b3b7bf; }
+        color: #fb901d; }
 
 .blog .entry-title, .single .entry-title {
   color: #fff;
@@ -6624,6 +6624,8 @@ a.no-decoration {
   margin-bottom: 5vh;
   font-size: 1.875em;
   font-weight: 200; }
+  .blog .entry-title:hover, .single .entry-title:hover {
+    color: #fb901d; }
   @media (min-width: 768px) {
     .blog .entry-title, .single .entry-title {
       font-size: 2.8125em; } }
