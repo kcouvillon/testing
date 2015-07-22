@@ -52,6 +52,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
 		add_action( 'cmb2_init',  array( $this, 'taxonomy_metadata_cmb2_init' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_resources' ) );
+		add_action( 'cmb2_init',  array( $this, 'home_select_programs' ) );
 	}
 
 	/**
@@ -860,6 +861,39 @@ class WS_Metaboxes {
 				'query_args'      => array( // override the get_posts args
 					'posts_per_page' => 100,
 					'post_type' => 'resource',
+				),
+			)
+		) );
+	}
+
+	/**
+	 * Resources to display
+	 */
+	function home_select_programs() {
+
+		$prefix = 'home_programs_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Select Programs', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array(
+				'key' => 'front-page', 'value' => ''
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Select itineraries and collections', 'cmb2' ),
+			'desc'    => __( 'Drag Collections or Itineraries from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'attached_programs',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 300,
+					'order' => 'ASC',
+					'post_type' => array( 'collection', 'itinerary' ),
 				),
 			)
 		) );
