@@ -33,6 +33,13 @@
 	<meta name="msapplication-config" content="<?php echo get_template_directory_uri() . '/assets/images/favicons/browserconfig.xml'; ?>">
 	<meta name="theme-color" content="#ffffff">
 
+	<script>
+		var wsData = {
+			themeDir: '<?php echo get_template_directory_uri(); ?>',
+			siteUrl: '<?php echo site_url(); ?>'
+		};
+	</script>
+
 	<?php wp_head(); ?>
 </head>
 

@@ -260,6 +260,10 @@
 		@include bleed-x(5vw);
 	}
 
+	.tour-hero-pattern {
+		max-height: 100px;
+	}
+
 	.tour-day-marker {
 		width: span(1);
 		min-width: 60px;

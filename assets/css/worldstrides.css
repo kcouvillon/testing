@@ -7187,6 +7187,9 @@ a.no-decoration {
   padding-right: 5vw;
   padding-left: 5vw; }
 
+.tour-day .tour-hero-pattern {
+  max-height: 100px; }
+
 .tour-day .tour-day-marker {
   width: 6.5359477124%;
   min-width: 60px;
@@ -7456,7 +7459,8 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  margin-bottom: 3.9215686275%; }
+  margin-bottom: 3.9215686275%;
+  position: relative; }
   .section-header:before,
   .section-header:after {
     content: "";
@@ -8234,40 +8238,6 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw; }
-  #intro .ws-tooltips {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; }
-    #intro .ws-tooltips .ws-tooltip {
-      z-index: 1; }
-    #intro .ws-tooltips .ws-tooltip-1 {
-      top: 73%;
-      left: 77%; }
-      #intro .ws-tooltips .ws-tooltip-1 .ws-tooltip-content {
-        left: auto;
-        right: 15px; }
-        @media (min-width: 1200px) {
-          #intro .ws-tooltips .ws-tooltip-1 .ws-tooltip-content {
-            left: 15px;
-            right: auto; } }
-    #intro .ws-tooltips .ws-tooltip-2 {
-      left: 40%;
-      top: 80%; }
-    #intro .ws-tooltips .ws-tooltip-3 {
-      top: 47%;
-      left: 68%; }
-      #intro .ws-tooltips .ws-tooltip-3 .ws-tooltip-content {
-        left: auto;
-        right: 15px; }
-        @media (min-width: 1200px) {
-          #intro .ws-tooltips .ws-tooltip-3 .ws-tooltip-content {
-            left: 15px;
-            right: auto; } }
-    #intro .ws-tooltips .ws-tooltip-4 {
-      top: 27%;
-      left: 50%; }
 
 .intro-content {
   position: relative;
@@ -8699,6 +8669,28 @@ section:after {
 
 .cycle-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
+
+.ws-tooltips {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+  .ws-tooltips .ws-tooltip {
+    z-index: 1; }
+  .ws-tooltips .ws-tooltip-content {
+    left: auto;
+    right: 15px; }
+    @media (min-width: 1200px) {
+      .ws-tooltips .ws-tooltip-content {
+        left: 15px;
+        right: auto; } }
+  .ws-tooltips .ws-tooltip-1 {
+    top: 30%; }
+  .ws-tooltips .ws-tooltip-2 {
+    top: 55%; }
+  .ws-tooltips .ws-tooltip-3 {
+    top: 80%; }
 
 .site-footer {
   position: relative;

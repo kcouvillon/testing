@@ -98,6 +98,7 @@ section {
 	@include clearfix;
 	@include container();
 	margin-bottom: gutter()*2;
+	position: relative;
 
 	.primary-section &, .single & {
 		margin-bottom: 0;

@@ -100,6 +100,13 @@ function ws_scripts_styles() {
 		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
 	}
 
+	if ( is_page_template( 'templates/explore.php' ) ) {
+		wp_enqueue_script( 'angular', get_template_directory_uri() . '/assets/js/angular.min.js', array(), WS_VERSION, true );
+		wp_enqueue_script( 'angular-route', get_template_directory_uri() . '/assets/js/angular-route.min.js', array(), WS_VERSION, true );
+		wp_enqueue_script( 'explore', get_template_directory_uri() . '/assets/js/explore/explore.js', array(), WS_VERSION, true );
+		wp_enqueue_script( 'filter', get_template_directory_uri() . '/assets/js/explore/controllers/filter.js', array(), WS_VERSION, true );
+	}
+
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
 
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );

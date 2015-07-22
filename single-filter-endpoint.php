@@ -4,7 +4,6 @@
  */
 
 $post_type = get_post_type();
-echo $post_type;
 
 $section_link = 1;
 $section_num = 1;
@@ -39,6 +38,9 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 				</div>
+
+				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
+
 			</header>
 
 			<nav class="section-nav">

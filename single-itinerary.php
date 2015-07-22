@@ -40,6 +40,9 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 				</div>
+
+				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
+
 			</header>
 
 			<nav class="section-nav">
@@ -255,7 +258,7 @@ get_header(); ?>
 					<?php endif; ?>
 				</div>
 
-				<div id="tour-highlights-data" data-highlights='<?php echo json_encode( $highlights ); ?>'></div>
+				<div id="tour-highlights-data" data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
 				<div id="tour-highlights-map" class="hide-print"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
 
 			</section>
@@ -325,7 +328,7 @@ get_header(); ?>
 							<?php if ( ! empty( $day['image'] ) ) : ?>
 								<div class="tour-hero hide-print" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
 							<?php else : ?>
-								<div class="tour-hero hide-print pattern-<?php echo rand(1, 9); ?>"></div>
+								<div class="tour-hero tour-hero-pattern hide-print pattern-3"></div>
 							<?php endif; ?>
 							<header>
 								<span class="tour-day-marker">Day</span>
@@ -369,7 +372,7 @@ get_header(); ?>
 								<?php if ( $related_title ) : ?>
 								<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
 								<?php endif; ?>
-								<header class="<?php echo $class; ?>" style="background: <?php echo $background; ?>;">
+								<header class="<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 									<h3><?php echo $related_post->post_title; ?></h3>
 								</header>
 
