@@ -357,11 +357,17 @@ get_header(); ?>
 							$related_description = $day['override_description'];
 							$related_url = $day['override_url'];
 
+							$related_type = 'other';
+
 							if ( ! empty ( $related ) ) {
 
 								$related_post  = get_post( $related );
 								$related_image = '';
 								$class         = 'pattern-' . rand( 1, 9 );
+
+								if ( in_array( $related_post->post_type, array( 'post', 'resource') ) ) {
+									$related_type = $related_post->post_type;
+								}
 
 								$related_image_title = $related_post->post_title;
 								$related_description = get_the_excerpt( $related );
@@ -391,7 +397,7 @@ get_header(); ?>
 
 									<p><?php echo $related_description; ?></p>
 
-	
+
 								</div><!-- end .tour-related-post -->
 
 							<?php endif; ?>
