@@ -20,7 +20,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 			<?php echo get_the_category_list(); ?>
 
-			<h2 class="entry-title"><?php the_title(); ?></h2>
+			<a href="<?php the_permalink(); ?>"><h2 class="entry-title"><?php the_title(); ?></h2></a>
 
 		</header>
 	<?php endif; ?>

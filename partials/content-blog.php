@@ -13,14 +13,14 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 			$background = '';
 			if ( has_post_thumbnail() ) {
 				$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-				$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+				$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 			} ?>
 
 		<header class="section-header entry-header pattern-<?php echo rand(1, 9); ?>" style="background-image: <?php echo $background; ?>;">
 
 			<?php echo get_the_category_list(); ?>
 
-			<h2 class="entry-title"><?php the_title(); ?></h2>
+			<a href="<?php the_permalink(); ?>"><h2 class="entry-title"><?php the_title(); ?></h2></a>
 
 		</header>
 	<?php endif; ?>
