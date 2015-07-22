@@ -19,10 +19,7 @@
 		<section id="intro" class="home-section primary-section" style="background-image: <?php echo $background; ?>;">
 		
 			<div class="intro-content">
-				<h1 class="page-title">Educational journeys that change lives, one student at a time</h1>
-				<h4 class="page-subtitle">Experiences define who we are. And redefine what is possible. At WorldStrides we offer students a world of travel experiences that immerse them in knowledge, culture and inspiration. Each of our custom itineraries are designed to uniquely meet travelers of every age.</h4>
-				<h4 class="page-subtitle">And while our trips take students outside their everyday world, their journey is very much within—new ideas, new friends, new possibilities.  We believe that the more we explore the more we discover.  The more we discover, the more we become.</h4>
-				<a href="#" class="btn btn-primary">Explore Our Trips »</a>
+				<?php the_content(); ?>
 			</div>
 
 			<?php get_template_part('partials/content', 'tooltips'); ?>
