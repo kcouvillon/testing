@@ -40,6 +40,9 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 				</div>
+
+				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
+				
 			</header>
 
 			<nav class="section-nav">
@@ -369,7 +372,7 @@ get_header(); ?>
 								<?php if ( $related_title ) : ?>
 								<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
 								<?php endif; ?>
-								<header class="<?php echo $class; ?>" style="background: <?php echo $background; ?>;">
+								<header class="<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 									<h3><?php echo $related_post->post_title; ?></h3>
 								</header>
 

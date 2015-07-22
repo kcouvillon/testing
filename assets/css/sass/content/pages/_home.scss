@@ -3,51 +3,6 @@
 	background-size: cover;
 	background-position: right bottom;
 	@include container();
-
-	.ws-tooltips {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-
-		.ws-tooltip {
-			z-index: 1;
-		}
-
-		.ws-tooltip-1 {
-			top: 73%;
-			left: 77%;
-			.ws-tooltip-content {
-				left: auto;
-				right: 15px;
-				@include susy-media($screen-lg) {
-					left: 15px;
-					right: auto;
-				}
-			}
-		}
-		.ws-tooltip-2 {
-			left: 40%;
-			top: 80%;
-		}
-		.ws-tooltip-3 {
-			top: 47%;
-			left: 68%;
-			.ws-tooltip-content {
-				left: auto;
-				right: 15px;
-				@include susy-media($screen-lg) {
-					left: 15px;
-					right: auto;
-				}	
-			}
-		}
-		.ws-tooltip-4 {
-			top: 27%;
-			left: 50%;
-		}
-	}
 }
 
 .intro-content {

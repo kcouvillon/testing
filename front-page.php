@@ -3,12 +3,20 @@
  * The template for the home page (/) of the site
  */
 
- get_header(); ?>
+ get_header(); the_post(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 
-		<section id="intro" class="home-section primary-section" style="background-image:linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(<?php echo wp_get_attachment_url(219); ?>)">
+		<?php
+		$background = '';
+		if ( has_post_thumbnail( $post->ID ) ) {
+			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
+			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+		}
+		?>
+
+		<section id="intro" class="home-section primary-section" style="background-image: <?php echo $background; ?>;">
 		
 			<div class="intro-content">
 				<h1 class="page-title">Educational journeys that change lives, one student at a time</h1>
@@ -17,32 +25,7 @@
 				<a href="#" class="btn btn-primary">Explore Our Trips »</a>
 			</div>
 
-			<ul class="ws-tooltips list-unstyled">
-				<li class="ws-tooltip ws-tooltip-1">
-					<div class="ws-tooltip-content">
-						<span class="small">Siena, Italy</span><br>
-						Off the Piazza Salimbeni, many buildings show the history of the florentine princes.
-					</div>
-				</li>
-				<li class="ws-tooltip ws-tooltip-2">
-					<div class="ws-tooltip-content">
-						<span class="small">City, Country</span><br>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices augue elit, et lobortis elit pulvinar a.
-					</div>
-				</li>
-				<li class="ws-tooltip ws-tooltip-3">
-					<div class="ws-tooltip-content">
-						<span class="small">City, Country</span><br>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices augue elit, et lobortis elit pulvinar a.
-					</div>
-				</li>
-				<li class="ws-tooltip ws-tooltip-4">
-					<div class="ws-tooltip-content">
-						<span class="small">City, Country</span><br>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultrices augue elit, et lobortis elit pulvinar a.
-					</div>
-				</li>
-			</ul>
+			<?php get_template_part('partials/content', 'tooltips'); ?>
 
 		</section>
 
