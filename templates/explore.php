@@ -6,7 +6,7 @@
 
 <?php get_header(); ?>
 
-<div id="primary" class="content-area">
+<div id="primary" class="content-area" ng-app="exploreApp">
 	<main id="main" class="site-main" role="main">
 
 		<?php the_post(); ?>
@@ -30,23 +30,7 @@
 			</header>
 		</section>
 
-		<section class="explore-tool" ng-app="explore-tool">
-
-			<?php get_template_part( 'partials/explore', 'filters' ); ?>
-
-			<section class="explore-results section-content">
-
-				<div class="collections">
-					<h2>Collections</h2>
-				</div>
-
-				<div class="itineraries">
-					<h2>Itineraries</h2>
-				</div>
-
-			</section>
-
-		</section>
+		<section class="explore-tool" ng-view></section>
 
 	</main>
 </div>
