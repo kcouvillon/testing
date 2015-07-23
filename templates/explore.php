@@ -30,13 +30,7 @@
 			</header>
 		</section>
 
-		<section class="explore-tool">
-			
-			<?php get_template_part('partials/explore', 'filters'); ?>
-
-			<section class="explore-results section-content" ng-view></section>
-
-		</section>
+		<section class="explore-tool" ng-view></section>
 
 	</main>
 </div>
