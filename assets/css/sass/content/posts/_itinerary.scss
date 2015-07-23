@@ -387,6 +387,7 @@
 
 	.tour-related-post {
 		@include span(full);
+		position: relative;
 
 		@include susy-media($screen-sm) {
 			@include span(5 last);
@@ -400,9 +401,24 @@
 			}
 		}
 
+		.meta {
+			li {
+				display: inline-block;
+				margin-right: 10px;
+			}
+			a {
+				color: $blue_light;
+				font-size: 75%;
+				text-transform: uppercase;
+				&:hover {
+					color: $color_link;
+				}
+			}
+		}
+
 		header {
 			@include clearfix;
-			padding: 0 2vw;
+			padding: 25vh 2vw 0;
 			margin-bottom: 1em;
 
 			&.no-pattern {
@@ -413,6 +429,8 @@
 			.entry-author {
 				margin-top: 1em;
 				color: #fff;
+				position: absolute;
+				top: 1em;
 
 				.avatar {
 					width: 33%;
@@ -421,7 +439,7 @@
 
 			h3 {
 				color: #fff;
-				margin-top: 25vh;
+				margin-top: 0;
 				margin-bottom: 2em;
 			}
 
