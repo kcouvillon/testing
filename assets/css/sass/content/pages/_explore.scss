@@ -1,0 +1,239 @@
+.explore-filters {
+	position: relative;
+	background: $navy;
+	color: $gray;
+
+	a {
+		color: #FFF;
+		font-weight: 600;
+		&:hover {
+			color: $blue;
+		}
+	}
+
+	li {
+		// @include span(2);
+	}
+
+	.hide-sm {
+		@media screen and (min-width: $screen-sm) {
+			display: none;
+		}
+	}
+
+	.toggle {
+		display: none;
+		@media screen and (min-width: $screen-sm) {
+			display: block;
+		}
+	}
+}
+
+ul.current-filters {
+	display: none;
+	margin: 0;
+	@media screen and (min-width: $screen-sm) {
+		display: block;
+	}
+	.interests-filters {
+		@media screen and (min-width: $screen-sm) {
+			width: 32.333%;
+			float: left;
+			padding-right: 1%;
+		}
+	}
+	.traveler-filters {
+		@media screen and (min-width: $screen-sm) {
+			width: 31.333%;
+			float: left;
+			padding-right: 1%;
+			padding-left: 1%;
+		}
+		@media screen and (min-width: $screen-lg) {
+			width: 15.666%;
+			float: left;
+		}
+	}
+	.destination-filters {
+		@media screen and (min-width: $screen-sm) {
+			width: 32.333%;
+			float: left;
+			padding-left: 1%;
+		}
+		@media screen and (min-width: $screen-lg) {
+			width: 49%;
+			float: left;
+		}
+	}
+
+	li {
+		padding: 1em 0;
+	}
+}
+
+.filter-menus {
+	margin: 0;
+	@media screen and (min-width: $screen-sm) {
+		display: flex;	
+	}
+}
+
+.filter-menu {
+	border-bottom: 1px solid $gray_darker;
+	@media screen and (min-width: $screen-sm) {
+		border-bottom: 0;
+	}
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	&.interests-menu {
+		@media screen and (min-width: $screen-sm) {
+			width: 32.333%;
+			float: left;
+			padding-right: 1%;
+			border-right: 1px solid $gray_darker;
+		}
+
+		ul li {
+			@media screen and (min-width: $screen-lg) {
+				@include span(2 of 4);
+				&:nth-child(2n + 2) {
+					@include span(2 of 4 last);
+				}
+			}
+		}
+	}
+
+	&.traveler-menu {
+		@media screen and (min-width: $screen-sm) {
+			width: 31.333%;
+			float: left;
+			padding-right: 1%;
+			padding-left: 1%;
+			border-right: 1px solid $gray_darker;
+		}
+		@media screen and (min-width: $screen-lg) {
+			width: 15.666%;
+			float: left;
+		}
+	}
+
+	&.destination-menu {
+		@media screen and (min-width: $screen-sm) {
+			width: 32.333%;
+			float: left;
+			padding-left: 1%;
+		}
+		@media screen and (min-width: $screen-lg) {
+			width: 49%;
+			float: left;
+		}
+
+		.destination-map {
+			color: #FFF;
+			font-weight: 700;	
+			@media screen and (min-width: $screen-lg) {
+				@include span(3 of 6);
+				padding-top: 0.5em;
+			}
+
+			.destination-graphic {
+				display: block;
+				width: 100%;
+				padding-top: 60%;
+				margin-top: 0.5em;
+				background-color: $gray_light;
+			}
+		}
+
+		& > ul {
+			@media screen and (min-width: $screen-sm) {
+				border-top: 1px solid $gray_darker;
+				border-bottom: 1px solid $gray_darker;
+			}
+		}
+
+		.terms {
+			@media screen and (min-width: $screen-lg) {
+				@include span(3 of 6 last);
+			}
+
+			a {
+				border: 0;
+			}
+		}
+	}
+
+	ul {
+		display: none;
+		margin: 0 0 1em;
+		&:last-child {
+			margin-bottom: 0.5em;
+		}
+
+		@media screen and (min-width: $screen-sm) {
+			display: block;
+		}
+
+		li {
+			a {
+				display: block;
+				padding: 1em 0;
+				border-top: 1px solid $gray_darker;
+				@media screen and (min-width: $screen-sm) {
+					padding: 0.5em 0;
+				}
+			}
+		}
+	}
+
+	.interests-filters,
+	.traveler-filters,
+	.destination-filters {
+		padding: 1em 0;
+
+		.icon {
+		    float: right;
+		    margin: 5px 1em 0 0;
+		}
+	}
+}
+
+.itinerary,
+.collection {
+
+	ul.meta {
+		margin: 0;
+	}
+
+	.tile-title {
+		font-weight: 300;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
