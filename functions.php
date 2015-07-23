@@ -82,6 +82,7 @@ function ws_setup() {
 
 	add_image_size( 'hero', 1500 );
 	add_image_size( 'square', 1030, 900, true );
+	add_image_size( 'itinerary', 1500, 400, true );
 
 }
 
