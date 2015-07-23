@@ -9,7 +9,7 @@ $tooltip_bottom_caption = get_post_meta( $post->ID, 'hero_tooltips_caption_right
 
 <ul class="ws-tooltips list-unstyled">
 	<?php if( ! empty( $tooltip_top ) ) : ?>
-		<li class="ws-tooltip ws-tooltip-1" style="left: <?php echo rand(68, 78); ?>%;">
+		<li class="ws-tooltip ws-tooltip-1" style="left: <?php echo rand(35, 50); ?>%;">
 			<div class="ws-tooltip-content">
 				<span class="small"><?php echo $tooltip_top; ?></span><br>
 				<?php echo $tooltip_top_caption; ?>
@@ -18,7 +18,7 @@ $tooltip_bottom_caption = get_post_meta( $post->ID, 'hero_tooltips_caption_right
 	<?php endif; ?>
 
 	<?php if( ! empty( $tooltip_middle ) ) : ?>
-		<li class="ws-tooltip ws-tooltip-2" style="left: <?php echo rand(68, 78); ?>%;">
+		<li class="ws-tooltip ws-tooltip-2" style="left: <?php echo rand(35, 50); ?>%;">
 			<div class="ws-tooltip-content">
 				<span class="small"><?php echo $tooltip_middle; ?></span><br>
 				<?php echo $tooltip_middle_caption; ?>
@@ -27,7 +27,7 @@ $tooltip_bottom_caption = get_post_meta( $post->ID, 'hero_tooltips_caption_right
 	<?php endif; ?>
 
 	<?php if( ! empty( $tooltip_bottom ) ) : ?>
-		<li class="ws-tooltip ws-tooltip-3" style="left: <?php echo rand(68, 78); ?>%;">
+		<li class="ws-tooltip ws-tooltip-3" style="left: <?php echo rand(35, 50); ?>%;">
 			<div class="ws-tooltip-content">
 				<span class="small"><?php echo $tooltip_bottom; ?></span><br>
 				<?php echo $tooltip_bottom_caption; ?>

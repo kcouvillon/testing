@@ -148,18 +148,12 @@ section {
 
 	.primary-section & {
 		margin-top: 11.333333%;
+
 		@include susy-media($screen-xs) {
 			margin-top: 6.66666%;
 			margin-bottom: 11.66666%;
-
-			.has-featured-image &, .has-featured-image .itinerary & {
-				margin-top: 17.2%;
-			}
-
-			.archive &, .blog &, .single & {
-				margin-top: 6.66666%;
-			}
 		}
+
 		@media print {
 			margin-bottom: 2em;
 		}
@@ -182,7 +176,7 @@ section {
 					color: $blue_lighter;
 
 					&:hover {
-						color: $gray_light;
+						color: $color_link;
 					}
 				}
 			}
