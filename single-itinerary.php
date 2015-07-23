@@ -325,8 +325,12 @@ get_header(); ?>
 					<?php $count ++; ?>
 					<?php if ( ! empty( $day['title'] ) ) : ?>
 						<article class="tour-day">
-							<?php if ( ! empty( $day['image'] ) ) : ?>
-								<div class="tour-hero hide-print" style="background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url(<?php echo $day['image']; ?>);"></div>
+							<?php if ( ! empty( $day['image_id'] ) ) : ?>
+								<?php
+								$featured = wp_get_attachment_image_src( $day['image_id'], 'itinerary' );
+								$background = 'url(' . $featured[0] . ')';
+								?>
+								<div class="tour-hero hide-print" style="background-image: <?php echo $background; ?>"></div>
 							<?php else : ?>
 								<div class="tour-hero tour-hero-pattern hide-print pattern-3"></div>
 							<?php endif; ?>
