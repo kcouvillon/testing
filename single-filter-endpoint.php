@@ -15,6 +15,8 @@ $after_block_sections = get_post_meta( $post->ID, 'collection_blocks_after_list'
 
 $display_title = get_post_meta( $post->ID, 'general_display_title', true );
 
+$associated_filter_id = WS_Associated_Filter::get_associated_filter_id( $post->ID );
+
 if ( ! $display_title ) {
 	$display_title = get_the_title();
 }
@@ -168,90 +170,92 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-		<section class="section-content programs">
-			<h2 class="section-title">Related Collections</h2>
-			<ul class="programs-list list-unstyled clearfix">
-				<?php 
-				$count = 0;
-				$data = array(
+		<?php
+			$associated_collections = new WP_Query( array(
+				'post_type' => 'collection',
+				'post_per_page' => 150,
+				'tax_query' => array(
 					array(
-						"title" => "Middle School",
-						"meta" => array("Discoveries Programs")
-					),
-					array(
-						"title" => "High School",
-						"meta" => array("Passages Programs")
-					),
-					array(
-						"title" => "University",
-						"meta" => array("Capstone Programs")
-					),
-					array(
-						"title" => "Performing Arts",
-						"meta" => array("On Stage Programs")
-					),
-				);
-				foreach ( $data as $item ) : ?>
+						'taxonomy' => 'filter',
+						'field'    => 'term_id',
+						'terms'    => $associated_filter_id
+					)
+				),
+				'no_found_rows' => true,
+				'update_post_term_cache' => false,
+				'update_post_meta_cache' => false,
+			));
+		?>
 
-				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
-				<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-					<div class="tile-content">
-						<ul class="meta list-unstyled">
-							<?php foreach ( $item['meta'] as $meta ) : ?>
-							<li><a href="#"><?php echo $meta; ?></a></li>
-							<?php endforeach; ?>
-						</ul>
-						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-					</div>
-				</li>
-				
-				<?php $count++; endforeach; ?>
-			</ul>
+		<?php if ( $associated_collections->have_posts() ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+			<section class="section-content programs">
+				<h2 class="section-title">Related Collections - <?php echo $associated_filter_id; ?></h2>
+				<ul class="programs-list list-unstyled clearfix">
+					<?php $count = 0; ?>
 
-		</section>
+					<?php while ( $associated_collections->have_posts() ) : ?>
+						<?php $associated_collections->the_post(); ?>
+						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
 
-		<section class="section-content programs">
-			<h2 class="section-title">Related Programs</h2>
-			<ul class="programs-list list-unstyled clearfix">
-				<?php 
-				$count = 0;
-				$data = array(
-					array(
-						"title" => "Middle School",
-						"meta" => array("Discoveries Programs")
-					),
-					array(
-						"title" => "High School",
-						"meta" => array("Passages Programs")
-					),
-					array(
-						"title" => "University",
-						"meta" => array("Capstone Programs")
-					),
-					array(
-						"title" => "Performing Arts",
-						"meta" => array("On Stage Programs")
-					),
-				);
-				foreach ( $data as $item ) : ?>
+						<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<li><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></li>
+								</ul>
+								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							</div>
+						</li>
 
-				<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
-				<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-					<div class="tile-content">
-						<ul class="meta list-unstyled">
-							<?php foreach ( $item['meta'] as $meta ) : ?>
-							<li><a href="#"><?php echo $meta; ?></a></li>
-							<?php endforeach; ?>
-						</ul>
-						<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-					</div>
-				</li>
-				
-				<?php $count++; endforeach; ?>
-			</ul>
-				
-		</section>
+						<?php $count++; ?>
+					<?php endwhile; ?>
+				</ul>
+
+			</section>
+		<?php endif; ?>
+
+		<?php
+		$associated_itineraries = new WP_Query( array(
+			'post_type' => 'itinerary',
+			'post_per_page' => 150,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'filter',
+					'field'    => 'term_id',
+					'terms'    => $associated_filter_id
+				)
+			),
+			'no_found_rows' => true,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+		));
+		?>
+		<?php if ( $associated_itineraries->have_posts() ) : ?>
+
+			<section class="section-content programs">
+				<h2 class="section-title">Related Programs</h2>
+				<ul class="programs-list list-unstyled clearfix">
+					<?php $count = 0; ?>
+
+					<?php while ( $associated_itineraries->have_posts() ) : ?>
+						<?php $associated_itineraries->the_post(); ?>
+						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+
+						<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<li><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></li>
+								</ul>
+								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							</div>
+						</li>
+
+						<?php $count++; ?>
+					<?php endwhile; ?>
+				</ul>
+
+			</section>
+		<?php endif; ?>
 
 		<?php if ( ! empty( $after_block_sections ) ) : ?>
 			<?php foreach ( $after_block_sections as $section ) : ?>
