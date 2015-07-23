@@ -6,7 +6,7 @@
 .slideshow-header {
 	position: absolute;
 	z-index: 1000;
-	margin: 0;
+	margin: 0 !important;
 	top: 1em;
 	left: 5vw;
 	color: #fff;
@@ -14,14 +14,19 @@
 
 .cycle-overlay {
 	position: absolute;
+	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	z-index: 999;
 	color: #fff;
-	padding: 38% 5vw 0;
+	padding: 0 5vw;
 	height: 100%;
 	@extend %overlay-top-bottom;
+
+	div:first-of-type {
+		padding-top: 58%
+	}
 }
 
 .cycle-pager {
