@@ -47,6 +47,9 @@ class WS_Custom_Taxonomies {
 				'destination',
 				'interest',
 				'traveler',
+			),
+			array(
+				'show_in_rest' => true
 			)
 		);
 
