@@ -7497,7 +7497,8 @@ section:after {
   padding-top: 100px !important; }
   .transparent-header .primary-section .section-header {
     margin-top: -100px;
-    padding-top: 100px; }
+    padding-top: 100px;
+    min-height: 75vh; }
 
 .solid-header .primary-section {
   margin-top: 0; }
