@@ -89,7 +89,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 								<?php previous_post_link( '%link', '%title', true ); ?>
 							<?php } else { ?>
 								<span>No Older Stories</span>
-								<a href="<?php esc_url( home_url( '/blog' ) ); ?>">See all Stories</a>
+								<a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">See all Stories</a>
 							<?php } ?>
 						</div>
 						<div class="blog-pager-next">
@@ -98,7 +98,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 								<?php next_post_link( '%link', '%title', true ); ?>
 							<?php } else { ?>
 								<span>No Newer Stories</span>
-								<a href="<?php esc_url( home_url( '/blog' ) ); ?>">Go Back to All Stories</a>
+								<a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">Go Back to All Stories</a>
 							<?php } ?>
 						</div>
 					</div>

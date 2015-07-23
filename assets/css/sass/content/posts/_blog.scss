@@ -113,28 +113,6 @@
 
 }
 
-.entry-author {
-	max-width: 180px;
-	margin-bottom: 1em;
-
-	.avatar {
-		border-radius: 50%;
-		display: inline-block;
-		vertical-align: middle;
-		height: auto;
-		width: 41%;
-		margin-right: 5%;
-	}
-
-	span {
-		display: inline-block;
-		vertical-align: middle;
-		font-size: em(12);
-		font-weight: 200;
-		width: 50%;
-	}
-}
-
 .blog-pager {
 	@include span(full);
 	margin-bottom: 2em;
@@ -152,7 +130,7 @@
 
 	span {
 		display: block;
-		color: $blue_light;
+		color: $color_link_tag;
 		text-transform: uppercase;
 		font-size: em(12);
 		margin-bottom: 0;
@@ -237,9 +215,37 @@
 
 // Blog Post Meta
 
+.entry-author {
+	max-width: 180px;
+	margin-bottom: 1em;
+
+	.avatar {
+		border-radius: 50%;
+		display: inline-block;
+		vertical-align: middle;
+		height: auto;
+		width: 41%;
+		margin-right: 5%;
+	}
+
+	span {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 0.875em;
+		font-weight: 200;
+		width: 50%;
+	}
+}
+
+.blog-social-links {
+	a {
+		font-size: 0.875em;
+	}
+}
+
 .blog-tags {
 	span, a {
-		font-size: em(14);
+		font-size: 0.875em;
 	}
 
 	a {
