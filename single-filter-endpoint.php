@@ -13,6 +13,12 @@ $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 $before_block_sections = get_post_meta( $post->ID, 'collection_blocks_before_list', true );
 $after_block_sections = get_post_meta( $post->ID, 'collection_blocks_after_list', true );
 
+$display_title = get_post_meta( $post->ID, 'general_display_title', true );
+
+if ( ! $display_title ) {
+	$display_title = get_the_title();
+}
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -34,7 +40,7 @@ get_header(); ?>
 						<span>Interests</span>>
 						<span><?php the_title(); ?></span>
 					</nav>
-					<h1><?php the_title(); ?></h1>
+					<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
 					<?php the_content(); ?>
 				</div>

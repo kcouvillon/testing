@@ -175,7 +175,15 @@ class WS_Metaboxes_Divisions {
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Before Blocks', 'cmb2' ),
-			'object_types' => array( 'collection', ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array(
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php'
+				)
+			),
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
@@ -456,7 +464,15 @@ class WS_Metaboxes_Divisions {
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'After Blocks', 'cmb2' ),
-			'object_types' => array( 'collection', ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array(
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-discoveries.php',
+					'templates/division-on-stage.php',
+					'templates/division-perspectives.php'
+				)
+			),
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'

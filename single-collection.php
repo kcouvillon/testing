@@ -13,6 +13,12 @@ $after_block_sections = get_post_meta( $post->ID, 'collection_blocks_after_list'
 
 $collection_type = get_post_meta( $post->ID, 'collection_type', true );
 
+$display_title = get_post_meta( $post->ID, 'general_display_title', true );
+
+if ( ! $display_title ) {
+	$display_title = get_the_title();
+}
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -34,7 +40,7 @@ get_header(); ?>
 						<span>Collections</span>>
 						<span><?php the_title(); ?></span>
 					</nav>
-					<h1><?php the_title(); ?></h1>
+					<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
 					<?php $subtitle = get_post_meta( $post->ID, 'collection_options_subtitle', true ); ?>
 
