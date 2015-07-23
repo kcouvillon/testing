@@ -6,6 +6,7 @@
 get_header(); the_post();
 
 $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
+$associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 ?>
 
 <div id="primary" class="content-area">
@@ -73,78 +74,46 @@ $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 			</div>
 		</section>
 
+		<?php if ( $associated_programs ) : ?>
+
 		<section class="home-section itineraries">
 			<div class="ws-container">
 				<h2 class="section-title">A Selection of our Tours and Programs</h2>
 				<ul class="itineraries-list list-unstyled clearfix">
 					
-					<?php 	
-						$count = 0;
-						$data = array(
-							array(
-								"title" => "Itinerary Title",
-								"meta" => array("Traveler", "Destination")
-							),
-							array(
-								"title" => "Itinerary Title",
-								"meta" => array("Traveler", "Destination")
-							),
-							array(
-								"title" => "Itinerary Title",
-								"meta" => array("Traveler", "Destination")
-							),
-							array(
-								"title" => "Collection Title",
-								"meta" => array("Traveler", "Destination")
-							),
-							array(
-								"title" => "Collection Title",
-								"meta" => array("Traveler", "Destination")
-							),
-							array(
-								"title" => "Itinerary Title",
-								"meta" => array("Traveler", "Destination")
-							),
-							array(
-								"title" => "Itinerary Title",
-								"meta" => array("Traveler", "Destination")
-							),
-							array(
-								"title" => "Itinerary Title",
-								"meta" => array("Traveler", "Destination")
-							)
-						);
+					<?php $count = 0; ?>
 
-						foreach ( $data as $item ) :
+					<?php foreach ( $associated_programs as $program_id ) : ?>
 
-						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
-						if ( $item['title'] == 'Collection Title' ) {
-							$tileSize = 'tile-half';
-							$pattern = 'ws_w_pattern4.gif';
-						} else {
-							$tileSize = 'tile-third';
-						}
-					?>
+						<?php
+							$program = get_post( $program_id );
 
-					<li class="itinerary tile <?php echo $tileSize; ?>" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-						<div class="tile-content">
-							<ul class="meta list-unstyled">
-								<?php foreach ( $item['meta'] as $meta ) : ?>
-								<li><a href="#"><?php echo $meta; ?></a></li>
-								<?php endforeach; ?>
-							</ul>
-							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-						</div>
-					</li>
+							$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
 
-					<?php 
-						$count++; 
-						endforeach; 
-					?>
+							if ( $count == 3 || $count == 4 ) {
+								$tile_size = 'tile-half';
+								$pattern = 'ws_w_pattern4.gif';
+							} else {
+								$tile_size = 'tile-third';
+							}
+						?>
+
+						<li class="itinerary tile <?php echo $tile_size; ?>" style="background-image:url(<?php echo esc_url( get_template_directory_uri() . '/assets/images/src/patterns/' . $pattern ); ?>);">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<li><?php echo WS_Helpers::get_subtitle( $program->ID ); ?></li>
+								</ul>
+								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $program->ID ); ?>"><?php echo apply_filters( 'the_title', $program->post_title ); ?></a></h2>
+							</div>
+						</li>
+
+						<?php $count++; ?>
+					<?php endforeach; ?>
 
 				</ul>
 			</div>
 		</section>
+		<?php endif; ?>
 
 		<?php if ( $associated_resources ) : ?>
 			<section class="section-content resources">

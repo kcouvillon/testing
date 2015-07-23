@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'worldstrides-ui';
-	src:url('../fonts/worldstrides-ui.eot?yvh9g8');
-	src:url('../fonts/worldstrides-ui.eot?#iefixyvh9g8') format('embedded-opentype'),
-		url('../fonts/worldstrides-ui.ttf?yvh9g8') format('truetype'),
-		url('../fonts/worldstrides-ui.woff?yvh9g8') format('woff'),
-		url('../fonts/worldstrides-ui.svg?yvh9g8#worldstrides-ui') format('svg');
+	src:url('../fonts/worldstrides-ui.eot?op27dr');
+	src:url('../fonts/worldstrides-ui.eot?#iefixop27dr') format('embedded-opentype'),
+		url('../fonts/worldstrides-ui.ttf?op27dr') format('truetype'),
+		url('../fonts/worldstrides-ui.woff?op27dr') format('woff'),
+		url('../fonts/worldstrides-ui.svg?op27dr#worldstrides-ui') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,6 +23,21 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow-down:before {
+	content: "\e617";
+}
+.icon-arrow-left:before {
+	content: "\e618";
+}
+.icon-arrow-right:before {
+	content: "\e619";
+}
+.icon-arrow-up:before {
+	content: "\e61a";
+}
+.icon-small-close:before {
+	content: "\e61b";
+}
 .icon-print:before {
 	content: "\e615";
 }
