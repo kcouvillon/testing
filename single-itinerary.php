@@ -361,16 +361,18 @@ get_header(); ?>
 
 							if ( ! empty ( $related ) ) {
 
-								$related_post  = get_post( $related );
+								$post  = get_post( $related );
+								// print_r($post);
 								$related_image = '';
 								$class         = 'pattern-' . rand( 1, 9 );
 
-								if ( in_array( $related_post->post_type, array( 'post', 'resource') ) ) {
-									$related_type = $related_post->post_type;
+								if ( in_array( $post->post_type, array( 'post', 'resource') ) ) {
+									$related_type = $post->post_type;
 								}
 
-								$related_image_title = $related_post->post_title;
-								$related_description = get_the_excerpt( $related );
+								$related_image_title = $post->post_title;
+								$related_description = esc_html( wp_trim_words( $post->post_content, 40 ) );
+								$related_url = get_permalink( $post->ID );
 
 
 								if ( has_post_thumbnail( $related ) ) {
@@ -380,6 +382,10 @@ get_header(); ?>
 									$featured      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
 									$related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
 
+									if ( $related_type === 'post' ) {
+										$related_image = 'linear-gradient( rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 35%, rgba( 0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+									}
+
 
 								}
 							}
@@ -388,14 +394,54 @@ get_header(); ?>
 							<?php if ( $related || $related_image_title ) : ?>
 
 								<div class="tour-related-post hide-print">
-									<?php if ( $related_title ) : ?>
-									<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
+									<?php if ( $related_title && $related_type != 'post' ) : ?>
+										<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
+									<?php elseif ( empty ( $related_title ) && $related_type === 'resource' ) : ?>
+										<span class="h3">Have Questions?<br>We Have Answers</span>
 									<?php endif; ?>
 									<header class="<?php echo $class; ?>" style="background-image: <?php echo $related_image; ?>;">
+										<?php if( $related_type === 'post' ) : ?>
+											<?php include( locate_template( 'partials/content-blog-author.php' ) ); ?>
+										<?php endif; ?>
+
+										<?php if( $related_type === 'resource' ) : ?>
+
+											<ul class="meta list-unstyled">
+												<?php $targets = wp_get_object_terms( $post->ID, 'resource-target' ); ?>
+												<?php $target_parents = array(); ?>
+
+												<?php foreach ( $targets as $target ) : ?>
+													<?php if ( 'Featured' != $target->name ) : ?>
+
+														<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
+
+														<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
+															<?php $target_parents[] = $parent->term_id; ?>
+
+															<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
+
+														<?php endif; ?>
+
+													<?php endif; ?>
+												<?php endforeach; ?>
+
+											</ul>
+
+										<?php endif; ?>
+
+
+										<?php if( $related_url ) echo '<a href="'. $related_url . '">'; ?>
 										<h3><?php echo $related_image_title; ?></h3>
+										<?php if( $related_url ) echo '</a>'; ?>
 									</header>
 
-									<p><?php echo $related_description; ?></p>
+									<?php if ( $related_type != 'resource' ) : ?>
+										<p><?php echo $related_description; ?></p>
+									<?php endif; ?>
+
+									<?php if( $related_url && $related_type != 'resource' ) : ?>
+										<a href="<?php echo $related_url; ?>" class="btn btn-primary">Keep Reading</a>
+									<?php endif; ?>
 
 
 								</div><!-- end .tour-related-post -->
@@ -407,6 +453,7 @@ get_header(); ?>
 						</article>
 					<?php endif; ?>
 				<?php endforeach; ?>
+				<?php wp_reset_postdata(); ?>
 			</section>
 		<?php endif; ?>
 

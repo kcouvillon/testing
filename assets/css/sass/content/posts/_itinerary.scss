@@ -390,6 +390,7 @@
 
 		@include susy-media($screen-sm) {
 			@include span(5 last);
+			margin-bottom: 4em;
 
 			.h3 {
 				margin-top: 0;
@@ -409,9 +410,23 @@
 				background-repeat: no-repeat !important;
 			}
 
+			.entry-author {
+				margin-top: 1em;
+				color: #fff;
+
+				.avatar {
+					width: 33%;
+				}
+			}
+
 			h3 {
 				color: #fff;
-				margin-top: 30vh;
+				margin-top: 25vh;
+				margin-bottom: 2em;
+			}
+
+			a h3:hover {
+				color: $color_link;
 			}
 		}
 
@@ -419,6 +434,10 @@
 			font-size: em(14);
 			line-height: 1.5;
 			padding: 0 2vw;
+		}
+
+		.btn {
+			margin: 0 2vw;
 		}
 	}
 }

@@ -6653,14 +6653,14 @@ a.no-decoration {
     display: inline-block;
     vertical-align: middle;
     height: auto;
-    width: 46%; }
+    width: 41%;
+    margin-right: 5%; }
   .entry-author span {
     display: inline-block;
     vertical-align: middle;
     font-size: 0.75em;
     font-weight: 200;
-    width: 50%;
-    padding-left: 5%; }
+    width: 50%; }
 
 .blog-pager {
   width: 100%;
@@ -7313,7 +7313,8 @@ a.no-decoration {
     .tour-day .tour-related-post {
       width: 40.522875817%;
       float: right;
-      margin-right: 0; }
+      margin-right: 0;
+      margin-bottom: 4em; }
       .tour-day .tour-related-post .h3 {
         margin-top: 0;
         margin-bottom: 10px;
@@ -7331,13 +7332,23 @@ a.no-decoration {
     .tour-day .tour-related-post header.no-pattern {
       background-size: cover !important;
       background-repeat: no-repeat !important; }
+    .tour-day .tour-related-post header .entry-author {
+      margin-top: 1em;
+      color: #fff; }
+      .tour-day .tour-related-post header .entry-author .avatar {
+        width: 33%; }
     .tour-day .tour-related-post header h3 {
       color: #fff;
-      margin-top: 30vh; }
+      margin-top: 25vh;
+      margin-bottom: 2em; }
+    .tour-day .tour-related-post header a h3:hover {
+      color: #fb901d; }
   .tour-day .tour-related-post p {
     font-size: 0.875em;
     line-height: 1.5;
     padding: 0 2vw; }
+  .tour-day .tour-related-post .btn {
+    margin: 0 2vw; }
 
 .collection .programs {
   padding: 0; }

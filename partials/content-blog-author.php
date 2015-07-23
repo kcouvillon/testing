@@ -2,7 +2,7 @@
 
 if ( class_exists( 'coauthors_plus' ) ) :
 	// Get the Co-Authors for the post
-	$co_authors = get_coauthors();
+	$co_authors = get_coauthors($post->ID);
 
 	// For each Co-Author, echo a wrapper div, their name, and their bio if they have one
 	foreach ( $co_authors as $key => $co_author ) : ?>
