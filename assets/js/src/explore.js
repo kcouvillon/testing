@@ -98,6 +98,10 @@
 			term = '.filter-' + term;
 			terms.push(term);
 		});
+
+		if ( terms.length == 0 ) {
+			terms[0] = 'all';
+		}
 		
 		return terms.join('');
 	}

@@ -47,6 +47,7 @@
 					addFilter(filterList, text, slug);
 
 					filters = getCurrentFilters();
+					console.log(filters);
 					$exploreResults.mixItUp('filter', filters);
 
 				}
@@ -60,6 +61,7 @@
 				removeFilter(slug);
 				
 				filters = getCurrentFilters();
+				console.log(filters);
 				$exploreResults.mixItUp('filter', filters);
 
 			})
@@ -93,6 +95,10 @@
 			term = '.filter-' + term;
 			terms.push(term);
 		});
+
+		if ( terms.length == 0 ) {
+			terms[0] = 'all';
+		}
 		
 		return terms.join('');
 	}
