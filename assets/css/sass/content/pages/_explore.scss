@@ -381,22 +381,71 @@
 
 	.tile {
 		display: none; // Required for 'mixItUp' JS filtering plugin
+	    height: auto;
+	    padding: 0;
+	    margin: 0 0 0.4em;
+	    padding: 0 0 0.8em;
+	    color: $color_text_main;
+	    border-bottom: 1px solid $gray_lighter;
+	    @include clearfix;
 
-		&.has-post-thumbnail {
-			background-size: cover;
+	    @media screen and ( max-width: ($screen-sm - 1) ) {
+	    	background-image: none !important;
+	    }
+	    @media screen and ( min-width: $screen-sm ) {
+	    	color: #FFF;
+	    	margin: 0;
+	    	&.has-post-thumbnail {
+				background-size: cover;
+			}
+	    }
+
+	    img {
+	    	float: left;
+	    	margin-right: 5%;
+	    	width: 25%;
+	    	@media screen and ( min-width: $screen-sm ) {
+	    		display: none;
+	    	}
+	    }
+
+		.tile-content {
+			position: static;
+			float: left;
+			width: 70%;
+
+			@media screen and ( min-width: $screen-sm ) {
+				position: absolute;
+				float: none;
+			}
+
+			a {
+				color: $navy;
+				@media screen and ( min-width: $screen-sm ) {
+					color: #FFF;
+				}
+			}
 		}
 
 		ul.meta {
 			margin: 0;
 
 			li {
-				color: #FFF;
+				color: $gray_light;
+				font-size: 14px;
+				@media screen and ( min-width: $screen-sm ) {
+					color: #FFF;
+				}
 
 			}
 		}
 
 		.tile-title {
 			font-weight: 300;
+			font-size: 1em;
+			@media screen and ( min-width: $screen-sm ) {
+				font-size: 29px;
+			}
 		}
 	}
 }
