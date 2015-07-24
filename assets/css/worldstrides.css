@@ -8316,6 +8316,54 @@ section:after {
     margin-right: -5vw;
     margin-left: -5vw; } }
 
+.tile {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%;
+  margin: 0; }
+  .tile.resource {
+    background-size: cover; }
+  @media (min-width: 768px) {
+    .tile.tile-third,
+    .tile.tile-half {
+      width: 50%;
+      float: left;
+      padding-top: 30%; } }
+  @media (min-width: 960px) {
+    .tile.tile-third {
+      width: 33.333%;
+      float: left;
+      padding-top: 21%; } }
+  .tile .tile-content {
+    position: absolute;
+    bottom: 1em;
+    left: 1em; }
+    @media (min-width: 960px) {
+      .tile .tile-content {
+        bottom: 1.5em;
+        left: 1.5em; } }
+    .tile .tile-content a {
+      color: #FFF; }
+  .tile .tile-title {
+    color: #FFF;
+    margin: 0; }
+    .tile .tile-title a {
+      color: inherit; }
+      .tile .tile-title a:hover {
+        color: #fb901d; }
+  .tile .meta li, .tile .list-tags li {
+    display: inline-block;
+    margin-right: 10px; }
+  .tile .meta a, .tile .list-tags a {
+    color: #bde5ff;
+    font-size: 75%;
+    text-transform: uppercase; }
+    .tile .meta a:hover, .tile .list-tags a:hover {
+      color: #fb901d; }
+  .tile .meta .list-tag-no-link, .tile .list-tags .list-tag-no-link {
+    color: #fff; }
+
 .home .tile.resource {
   background-size: cover; }
 
