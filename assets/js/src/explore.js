@@ -27,7 +27,7 @@
 				},
 				animation: {
 					duration: 350,
-					effects: 'fade stagger(76ms)',
+					effects: 'fade',
 					easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
 				}
 			});
