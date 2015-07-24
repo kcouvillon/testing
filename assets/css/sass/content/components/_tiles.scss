@@ -1,58 +1,10 @@
-#intro { 
-	position: relative;
-	background-size: cover;
-	background-position: right bottom;
-	@include container();
-}
-
-.intro-content {
-	position: relative;
-	z-index: 1;
-	padding: 8em 0;
-	color: #FFF;
-	@include susy-media($screen-md) {
-		@include span(9);
-	}
-	@include susy-media($screen-lg) {
-		@include span(7);
-	}
-
-	.page-title {
-		line-height: 1em;
-		margin: 0 0 0.5em;
-	}
-	.page-subtitle {
-		font-weight: lighter;
-		margin: 0 0 1.5em;
-	}
-}
-
-.home-section {
-
-	.section-title {
-		margin: 2em 0 1em;
-	}
-
-	&.itineraries .itineraries-list {
-		@include susy-media($screen-sm) {
-			margin-right: -5vw;
-			margin-left: -5vw;
-		}
-	}
-
-}
-
-<<<<<<< HEAD
 .tile {
 	position: relative;
 	height: 0;
+	width: 100%;
 	overflow: hidden;
 	padding-top: percentage(9/16);
 	margin: 0;
-	&.resource {
-		background-size: cover;
-	}
-
 	
 	@include susy-media($screen-sm) {
 		&.tile-third,
@@ -68,7 +20,6 @@
 		}
 	}
 	
-
 	.tile-content {
 		position: absolute;
 		bottom: 1em;
@@ -93,7 +44,7 @@
 		}
 	}
 
-	.meta, .list-tags {
+	.meta {
 		li {
 			display: inline-block;
 			margin-right: 10px;
@@ -106,12 +57,5 @@
 				color: $orange;
 			}
 		}
-
-		.list-tag-no-link {
-			color: #fff;
-		}
 	}
-
-.home .tile.resource {
-	background-size: cover;
 }

@@ -40,6 +40,7 @@ class WS_Metaboxes_Collections {
 		add_action( 'cmb2_init',  array( $this, 'collection_blocks_before' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_itineraries' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_blocks_after' ) );
+		add_action( 'cmb2_init',  array( $this, 'collection_additional_info' ) );
 	}
 
 	/**
@@ -70,6 +71,30 @@ class WS_Metaboxes_Collections {
 			'options'          => array(
 				'regular' => __( 'Regular', 'cmb' ),
 				'outlier'   => __( 'Outlier', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Discovery Why module',
+			'id'               => 'discovery_why',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Blog module',
+			'id'               => 'blog',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
 			),
 		) );
 	}
@@ -276,6 +301,52 @@ class WS_Metaboxes_Collections {
 					'post_type' => 'block',
 				),
 			)
+		) );
+
+	}
+
+	/**
+	 * Options
+	 */
+	function collection_additional_info() {
+
+		$prefix = 'additional_info_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Additional Info and Email', 'cmb2' ),
+			'object_types' => array( 'collection', ),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Request information module',
+			'id'               => $prefix . 'request_box',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Additional Info',
+			'id'   => $prefix . 'text',
+			'type' => 'textarea_small',
+			'desc' => 'The [button] shortcode can be used here'
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Email Title',
+			'id'   => $prefix . 'email_title',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Email Text',
+			'id'   => $prefix . 'email_text',
+			'type' => 'textarea_small',
 		) );
 
 	}

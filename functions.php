@@ -138,6 +138,11 @@ function get_id_by_slug($page_slug) {
 function ws_add_body_classes( $classes ) {
 	global $post;
 	$about_id = get_id_by_slug( 'about' );
+	$is_about_child = false;
+
+	if ( $post && $about_id == $post->post_parent ) {
+		$is_about_child = true;
+	}
 
 	if ( isset ( $post->ID ) && get_the_post_thumbnail( $post->ID ) && ! is_archive() && ! is_home() && ! is_singular( 'press' ) && ! is_page( 'history' ) && ! is_singular( 'bio' ) && ! is_page( 'contact' ) ) {
 		$classes[] = 'has-featured-image';
@@ -147,7 +152,7 @@ function ws_add_body_classes( $classes ) {
 		}
 	}
 
-	if ( is_archive() || is_home() || is_page( 'about' ) || is_page( 'contact' ) || $about_id == $post->post_parent || is_page( 'resource-center' ) || is_singular( 'resource' ) || is_singular( 'bio' ) || is_404() || is_search() ) {
+	if ( is_archive() || is_home() || is_page( 'about' ) || is_page( 'contact' ) || $is_about_child || is_page( 'resource-center' ) || is_singular( 'resource' ) || is_singular( 'bio' ) || is_404() || is_search() ) {
 		$classes[] = 'solid-header';
 
 		if ( is_front_page() ) {
