@@ -268,7 +268,8 @@ ul.current-filters {
 
 .itinerary,
 .collection {
-	display: none;
+	// This broke the Itinerary and Collection pages
+	// display: none;
 
 	ul.meta {
 		margin: 0;
