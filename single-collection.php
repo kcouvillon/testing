@@ -19,6 +19,25 @@ if ( ! $display_title ) {
 	$display_title = get_the_title();
 }
 
+$post_obj = $wp_query->get_queried_object();
+
+$associated_itineraries = new WP_Query( array(
+	'post_type' => 'itinerary',
+	'tax_query' => array(
+		array(
+			'taxonomy' => '_collection',
+			'field'    => 'slug',
+			'terms'    => $post_obj->post_name
+		)
+	),
+	'posts_per_page' => 75,
+	'no_found_rows' => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => false,
+	'order' => 'ASC',
+	'orderby' => 'title'
+) );
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -76,7 +95,9 @@ get_header(); ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
 
-					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itineraries</a></li>
+					<?php if ( $associated_itineraries->have_posts() ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itineraries</a></li>
+					<?php endif; ?>
 
 					<?php if ( ! empty( $after_block_sections ) ) : ?>
 						<?php foreach ( $after_block_sections as $section ) : ?>
@@ -178,27 +199,6 @@ get_header(); ?>
 			</section>
 
 		<?php endif; ?>
-
-		<?php
-		$post_obj = $wp_query->get_queried_object();
-
-		$associated_itineraries = new WP_Query( array(
-			'post_type' => 'itinerary',
-			'tax_query' => array(
-				array(
-					'taxonomy' => '_collection',
-					'field'    => 'slug',
-					'terms'    => $post_obj->post_name
-				)
-			),
-			'posts_per_page' => 75,
-			'no_found_rows' => true,
-			'update_post_term_cache' => false,
-			'update_post_meta_cache' => false,
-			'order' => 'ASC',
-			'orderby' => 'title'
-		) );
-		?>
 
 		<?php if ( $associated_itineraries->have_posts() ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
