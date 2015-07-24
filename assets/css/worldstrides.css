@@ -8586,16 +8586,14 @@ ul.current-filters {
     .active-filter .icon:hover {
       color: #4fa9e5; }
 
-.itinerary ul.meta,
-.collection ul.meta {
-  margin: 0; }
-  .itinerary ul.meta li,
-  .collection ul.meta li {
-    color: #FFF; }
-
-.itinerary .tile-title,
-.collection .tile-title {
-  font-weight: 300; }
+.explore-results .tile {
+  display: none; }
+  .explore-results .tile ul.meta {
+    margin: 0; }
+    .explore-results .tile ul.meta li {
+      color: #FFF; }
+  .explore-results .tile .tile-title {
+    font-weight: 300; }
 
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {

@@ -266,22 +266,23 @@ ul.current-filters {
 	}
 }
 
-.itinerary,
-.collection {
-	// This broke the Itinerary and Collection pages
-	// display: none;
+.explore-results {
+	
+	.tile {
+		display: none;
 
-	ul.meta {
-		margin: 0;
+		ul.meta {
+			margin: 0;
 
-		li {
-			color: #FFF;
+			li {
+				color: #FFF;
 
+			}
 		}
-	}
 
-	.tile-title {
-		font-weight: 300;
+		.tile-title {
+			font-weight: 300;
+		}
 	}
 }
 
