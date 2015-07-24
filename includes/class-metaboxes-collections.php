@@ -310,7 +310,7 @@ class WS_Metaboxes_Collections {
 	 */
 	function collection_additional_info() {
 
-		$prefix = 'additional_info';
+		$prefix = 'additional_info_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
@@ -320,7 +320,7 @@ class WS_Metaboxes_Collections {
 
 		$cmb->add_field( array(
 			'name'             => 'Request information module',
-			'id'               => 'request_box',
+			'id'               => $prefix . 'request_box',
 			'type'             => 'select',
 			'show_option_none' => false,
 			'default'          => 'On',
