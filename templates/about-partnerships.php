@@ -39,7 +39,7 @@ get_header(); ?>
 									}
 									?>
 									<div class="partner">
-										<?php if ( $partner_image ); ?>
+										<?php if ( $partner_image ) : ?>
 											<a href="<?php echo $partner['url']; ?>"><img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt=""></a>
 										<?php endif; ?>
 										<a href="<?php echo $partner['url']; ?>" class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></a>
