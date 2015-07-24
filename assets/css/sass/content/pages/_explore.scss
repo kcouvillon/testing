@@ -4,6 +4,7 @@
 
 .explore-tool {
 
+
 	.active-filter {
 		display: inline-block;
 		color: #FFF;
@@ -299,7 +300,11 @@
 .explore-results {
 
 	.tile {
-		display: none; // Required for mixItUp plugin
+		display: none; // Required for 'mixItUp' JS filtering plugin
+
+		&.has-post-thumbnail {
+			background-size: cover;
+		}
 
 		ul.meta {
 			margin: 0;

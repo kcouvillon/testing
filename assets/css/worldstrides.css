@@ -8316,51 +8316,8 @@ section:after {
     margin-right: -5vw;
     margin-left: -5vw; } }
 
-.tile {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-  padding-top: 56.25%;
-  margin: 0; }
-  .tile.resource {
-    background-size: cover; }
-  @media (min-width: 768px) {
-    .tile.tile-third,
-    .tile.tile-half {
-      width: 50%;
-      float: left;
-      padding-top: 30%; } }
-  @media (min-width: 960px) {
-    .tile.tile-third {
-      width: 33.333%;
-      float: left;
-      padding-top: 21%; } }
-  .tile .tile-content {
-    position: absolute;
-    bottom: 1em;
-    left: 1em; }
-    @media (min-width: 960px) {
-      .tile .tile-content {
-        bottom: 1.5em;
-        left: 1.5em; } }
-    .tile .tile-content a {
-      color: #FFF; }
-  .tile .tile-title {
-    color: #FFF;
-    margin: 0; }
-    .tile .tile-title a {
-      color: inherit; }
-      .tile .tile-title a:hover {
-        color: #fb901d; }
-  .tile .meta li {
-    display: inline-block;
-    margin-right: 10px; }
-  .tile .meta a {
-    color: #bde5ff;
-    font-size: 75%;
-    text-transform: uppercase; }
-    .tile .meta a:hover {
-      color: #fb901d; }
+.home .tile.resource {
+  background-size: cover; }
 
 .error-404 {
   display: block;
@@ -8606,6 +8563,8 @@ section:after {
  * ------------------------------------------------------------- */
 .explore-results .tile {
   display: none; }
+  .explore-results .tile.has-post-thumbnail {
+    background-size: cover; }
   .explore-results .tile ul.meta {
     margin: 0; }
     .explore-results .tile ul.meta li {
@@ -8963,6 +8922,51 @@ section:after {
     top: 55%; }
   .ws-tooltips .ws-tooltip-3 {
     top: 80%; }
+
+.tile {
+  position: relative;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%;
+  margin: 0; }
+  @media (min-width: 768px) {
+    .tile.tile-third,
+    .tile.tile-half {
+      width: 50%;
+      float: left;
+      padding-top: 30%; } }
+  @media (min-width: 960px) {
+    .tile.tile-third {
+      width: 33.333%;
+      float: left;
+      padding-top: 21%; } }
+  .tile .tile-content {
+    position: absolute;
+    bottom: 1em;
+    left: 1em; }
+    @media (min-width: 960px) {
+      .tile .tile-content {
+        bottom: 1.5em;
+        left: 1.5em; } }
+    .tile .tile-content a {
+      color: #FFF; }
+  .tile .tile-title {
+    color: #FFF;
+    margin: 0; }
+    .tile .tile-title a {
+      color: inherit; }
+      .tile .tile-title a:hover {
+        color: #fb901d; }
+  .tile .meta li {
+    display: inline-block;
+    margin-right: 10px; }
+  .tile .meta a {
+    color: #bde5ff;
+    font-size: 75%;
+    text-transform: uppercase; }
+    .tile .meta a:hover {
+      color: #fb901d; }
 
 .site-footer {
   position: relative;
