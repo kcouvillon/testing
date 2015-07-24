@@ -315,34 +315,45 @@ get_header(); ?>
 			</section>
 		<?php endif; ?>
 
-		<div class="blog-single-cta">
-			<span class="h2">Request Information about a WorldStrides {PROGRAM TYPE} Program</span>
-			<span>I am a</span>
-			<select name="" id="">
-				<option value="">Parent</option>
-				<option value="">Traveler</option>
-				<option value="">Teacher</option>
-			</select>
-			<button class="btn btn-primary">Get the Info</button>
-		</div>
+		<?php
+		$additional_info_request_box = get_post_meta( $post->ID, 'additional_info_request_box', true );
+		$additional_info_text = get_post_meta( $post->ID, 'additional_info_text', true );
+		$additional_info_email_title = get_post_meta( $post->ID, 'additional_info_email_title', true );
+		$additional_info_email_text = get_post_meta( $post->ID, 'additional_info_email_text', true );
+		?>
 
-		<section class="info-cta">
-
-			<div class="additional-info">
-				<h3>Additional Information</h3>
-				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet.</p>
-				<button class="btn btn-primary">Request Catalogue</button>
+		<?php if ( 'on' == $additional_info_request_box ) : ?>
+			<div class="blog-single-cta">
+				<span class="h2">Request Information about a WorldStrides Program</span>
+				<span>I am a</span>
+				<select name="" id="">
+					<option value="/request-info/?type=parent">Parent</option>
+					<option value="/request-info/?type=traveler">Traveler</option>
+					<option value="/request-info/?type=teacher">Teacher</option>
+				</select>
+				<button class="btn btn-primary">Get the Info</button>
 			</div>
+		<?php endif; ?>
 
-			<div class="email-updates">
-				<h3>Email Updates About These Tours</h3>
-				<p>Interested in learning more? Enter your email address and we’ll share further information, promotions, and other opportunities.</p>
-				<form action="">
-					<input type="email" placeholder="Email Address">
-					<input type="submit" class="btn btn-primary" value="Sign Up">
-				</form>
-			</div>
-		</section>
+		<?php if ( $additional_info_text && $additional_info_email_title && $additional_info_email_text ) : ?>
+			<section class="info-cta">
+
+				<div class="additional-info">
+					<h3>Additional Information</h3>
+					<?php echo apply_filters( 'the_content', $additional_info_text ); ?>
+				</div>
+
+				<div class="email-updates">
+					<h3><?php echo apply_filters( 'the_title', $additional_info_email_title ); ?></h3>
+					<p><?php echo apply_filters( 'the_content', $additional_info_email_text ); ?></p>
+
+					<form action="">
+						<input type="email" placeholder="Email Address">
+						<input type="submit" class="btn btn-primary" value="Sign Up">
+					</form>
+				</div>
+			</section>
+		<?php endif; ?>
 
 		<?php endif; ?>
 
