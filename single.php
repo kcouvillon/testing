@@ -20,7 +20,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 				$background = 'url(' . $featured[0] . ')';
 			// if not, include the overlay
 			else :
-				$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+				$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 			endif;
 		} ?>
 
