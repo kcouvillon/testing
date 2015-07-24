@@ -55,10 +55,9 @@ class WS_Marketo {
 		$marketo_id = '593-ASZ-675';
 
 		$form_id = $attributes['id'];
-		// $form_id = (int) '1679'; // marketo sample form
 
-		$include_mdrapi = ($attributes['mdrapi'] === 'true' || $attributes['mdrapi'] === 'TRUE');
-		if($include_mdrapi) {
+		$include_mdrapi = ( 'true' === strtolower( $attributes['mdrapi'] ) );
+		if( $include_mdrapi ) {
 			$mdr_include_js = "<script src='https://apis.worldstrides.com/mdrapi/js/ws_mdrapiBrowserDetection.js'></script>";
 		} else {
 			$mdr_include_js = "";
@@ -67,7 +66,7 @@ class WS_Marketo {
 		ob_start() ?>
 
 			<div class="embedded-marketo-form">
-				<?php echo esc_attr($mdr_include_js); ?>
+				<?php echo $mdr_include_js; ?>
 				<script src="//app-sjg.marketo.com/js/forms2/js/forms2.min.js"></script>
 				<form id="mktoForm_<?php echo esc_attr( $form_id ); ?>"></form>
 
