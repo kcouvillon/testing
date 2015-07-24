@@ -89,8 +89,8 @@ get_header(); ?>
 
 					<?php if ( ! empty( $before_block_sections ) ) : ?>
 						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php if ( ! empty ( $section['collection_blocks_before_title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_before_title']; ?></a></li>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
@@ -101,8 +101,8 @@ get_header(); ?>
 
 					<?php if ( ! empty( $after_block_sections ) ) : ?>
 						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php if ( ! empty ( $section['collection_blocks_after_title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_after_title']; ?></a></li>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
@@ -185,8 +185,8 @@ get_header(); ?>
 
 				<?php foreach ( $before_block_sections as $section ) : ?>
 					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-					<?php if ( ! empty( $section['title'] ) ) : ?>
-						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+					<?php if ( ! empty( $section['collection_blocks_before_title'] ) ) : ?>
+						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['collection_blocks_before_title'] ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
@@ -238,8 +238,8 @@ get_header(); ?>
 			<?php foreach ( $after_block_sections as $section ) : ?>
 				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 				<section class="ws-container ws-blocks tour-blocks-after">
-					<?php if ( ! empty( $section['title'] ) ) : ?>
-						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+					<?php if ( ! empty( $section['collection_blocks_after_title'] ) ) : ?>
+						<h2><?php echo apply_filters( 'the_title', $section['collection_blocks_after_title'] ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
