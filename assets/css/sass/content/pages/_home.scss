@@ -92,7 +92,7 @@
 		}
 	}
 
-	.meta {
+	.meta, .list-tags {
 		li {
 			display: inline-block;
 			margin-right: 10px;
@@ -104,6 +104,10 @@
 			&:hover {
 				color: $orange;
 			}
+		}
+
+		.list-tag-no-link {
+			color: #fff;
 		}
 	}
 }

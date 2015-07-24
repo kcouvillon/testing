@@ -8352,15 +8352,17 @@ section:after {
       color: inherit; }
       .tile .tile-title a:hover {
         color: #fb901d; }
-  .tile .meta li {
+  .tile .meta li, .tile .list-tags li {
     display: inline-block;
     margin-right: 10px; }
-  .tile .meta a {
+  .tile .meta a, .tile .list-tags a {
     color: #bde5ff;
     font-size: 75%;
     text-transform: uppercase; }
-    .tile .meta a:hover {
+    .tile .meta a:hover, .tile .list-tags a:hover {
       color: #fb901d; }
+  .tile .meta .list-tag-no-link, .tile .list-tags .list-tag-no-link {
+    color: #fff; }
 
 .error-404 {
   display: block;
