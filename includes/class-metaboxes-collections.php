@@ -72,6 +72,30 @@ class WS_Metaboxes_Collections {
 				'outlier'   => __( 'Outlier', 'cmb' ),
 			),
 		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Discovery Why module',
+			'id'               => 'discovery_why',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Blog module',
+			'id'               => 'blog',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
+			),
+		) );
 	}
 
 	/**

@@ -128,7 +128,10 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
+		<?php $display_discover_why = get_post_meta( $post->ID, 'collection_options_discover_why', true); ?>
+		<?php if ( 'on' == $display_discover_why ) : ?>
+			<?php get_template_part( 'partials/module', 'discover-why' ); ?>
+		<?php endif; ?>
 
 		<?php if ( $associated_resources ) : ?>
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
@@ -251,49 +254,30 @@ get_header(); ?>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<section class="home-section blog">
-			<div class="ws-container">
-				<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
-			</div>
+		<?php $display_blog = get_post_meta( $post->ID, 'collection_options_blog', true); ?>
+		<?php if ( 'on' == $display_blog ) : ?>
+			<section class="home-section blog">
+				<div class="ws-container">
+					<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
+				</div>
 
-			<div class="blog-wrap">
+				<div class="blog-wrap">
 
-				<section>
+					<section>
 
-				<?php
-				// @todo make this one query, it does not need to be two
+					<?php
+					// @todo make this one query, it does not need to be two
 
-				$args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
-				$blogPosts = new WP_Query($args);
+					$args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
+					$blogPosts = new WP_Query($args);
 
-				?>
+					?>
 
-				<?php if ( $blogPosts->have_posts() ) : ?>
-
-					<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
-
-						<?php get_template_part( 'partials/content', 'blog' ) ?>
-
-					<?php endwhile; ?>
-
-				<?php else : ?>
-
-					<p>Nothing found</p>
-
-				<?php endif; ?>
-
-				</section>
-
-				<aside class="sidebar">
-					
-					<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 2, 'offset' => 1 );
-					$blogPosts = new WP_Query($args); ?>
 					<?php if ( $blogPosts->have_posts() ) : ?>
 
-						<?php /* Start the Loop */ ?>
 						<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
 
-							<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
+							<?php get_template_part( 'partials/content', 'blog' ) ?>
 
 						<?php endwhile; ?>
 
@@ -303,11 +287,33 @@ get_header(); ?>
 
 					<?php endif; ?>
 
-				</aside>
+					</section>
 
-			</div>
+					<aside class="sidebar">
 
-		</section>
+						<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 2, 'offset' => 1 );
+						$blogPosts = new WP_Query($args); ?>
+						<?php if ( $blogPosts->have_posts() ) : ?>
+
+							<?php /* Start the Loop */ ?>
+							<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
+
+								<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
+
+							<?php endwhile; ?>
+
+						<?php else : ?>
+
+							<p>Nothing found</p>
+
+						<?php endif; ?>
+
+					</aside>
+
+				</div>
+
+			</section>
+		<?php endif; ?>
 
 		<div class="blog-single-cta">
 			<span class="h2">Request Information about a WorldStrides {PROGRAM TYPE} Program</span>
