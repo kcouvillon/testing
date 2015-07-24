@@ -35,11 +35,13 @@ get_header(); ?>
 									if ( array_key_exists( 'image', $partner ) ) {
 										$partner_image = $partner['image'];
 									} else {
-										$partner_image = 'http://placehold.it/82x82';
+										$partner_image = '';
 									}
 									?>
 									<div class="partner">
-										<a href="<?php echo $partner['url']; ?>"><img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt=""></a>
+										<?php if ( $partner_image ); ?>
+											<a href="<?php echo $partner['url']; ?>"><img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt=""></a>
+										<?php endif; ?>
 										<a href="<?php echo $partner['url']; ?>" class="partner-title"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></a>
 									</div>
 								<?php endforeach; ?>
