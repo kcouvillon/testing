@@ -17,7 +17,7 @@
 
 			<?php $interests = get_terms( 'filter', array( 'parent' => 11 ) ); ?>
 
-			<ul id="interests-parent" class="interests-parent terms-list list-unstyled clearfix">
+			<ul id="interests-parent" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
 				
 				<?php foreach ( $interests as $interest ) : ?>
 				<li><a href="#<?php echo $interest->slug; ?>" class="term-list-toggle parent-term parent-interest"><?php echo $interest->name; ?></a></li>
@@ -67,7 +67,7 @@
 			
 			<?php $continents = get_terms( 'filter', array( 'parent' => 6 ) ); ?>
 
-			<ul id="destinations-parent" class="destinations-parent terms-list list-unstyled clearfix">
+			<ul id="destinations-parent" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
 				<li class="destination-map">
 					<span class="destination-graphic"></span>
 				</li>
@@ -108,4 +108,7 @@
 		</li>
 
 	</ul>
+
 </nav>
+
+<a href="#" class="filter-menu-toggle"><i class="icon-arrow-up"></i></a>

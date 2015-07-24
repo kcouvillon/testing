@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-07-23
+/*! WorldStrides - v0.1.0 - 2015-07-24
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -22,7 +22,7 @@
 				},
 				animation: {
 					duration: 350,
-					effects: 'fade stagger(76ms)',
+					effects: 'fade',
 					easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
 				}
 			});
