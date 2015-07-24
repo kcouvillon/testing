@@ -8368,7 +8368,7 @@ section:after {
         padding-left: 1%; } }
     @media screen and (min-width: 1200px) {
       .explore-filters ul.current-filters .traveler-filters {
-        width: 15.666%;
+        width: 17.666%;
         float: left; } }
     .explore-filters ul.current-filters .destination-filters:before {
       content: "Destination";
@@ -8380,7 +8380,7 @@ section:after {
         padding-left: 1%; } }
     @media screen and (min-width: 1200px) {
       .explore-filters ul.current-filters .destination-filters {
-        width: 49%;
+        width: 50%;
         float: left; } }
   .explore-filters .interests-filters,
   .explore-filters .traveler-filters,
