@@ -19,6 +19,25 @@ if ( ! $display_title ) {
 	$display_title = get_the_title();
 }
 
+$post_obj = $wp_query->get_queried_object();
+
+$associated_itineraries = new WP_Query( array(
+	'post_type' => 'itinerary',
+	'tax_query' => array(
+		array(
+			'taxonomy' => '_collection',
+			'field'    => 'slug',
+			'terms'    => $post_obj->post_name
+		)
+	),
+	'posts_per_page' => 75,
+	'no_found_rows' => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => false,
+	'order' => 'ASC',
+	'orderby' => 'title'
+) );
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -30,7 +49,7 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
 			<header class="section-header pattern-<?php echo rand( 3, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
@@ -70,18 +89,20 @@ get_header(); ?>
 
 					<?php if ( ! empty( $before_block_sections ) ) : ?>
 						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php if ( ! empty ( $section['collection_blocks_before_title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_before_title']; ?></a></li>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
 
-					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itineraries</a></li>
+					<?php if ( $associated_itineraries->have_posts() ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itineraries</a></li>
+					<?php endif; ?>
 
 					<?php if ( ! empty( $after_block_sections ) ) : ?>
 						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+							<?php if ( ! empty ( $section['collection_blocks_after_title'] ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_after_title']; ?></a></li>
 							<?php endif; ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
@@ -107,7 +128,10 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
+		<?php $display_discover_why = get_post_meta( $post->ID, 'collection_options_discover_why', true); ?>
+		<?php if ( 'on' == $display_discover_why ) : ?>
+			<?php get_template_part( 'partials/module', 'discover-why' ); ?>
+		<?php endif; ?>
 
 		<?php if ( $associated_resources ) : ?>
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
@@ -161,8 +185,8 @@ get_header(); ?>
 
 				<?php foreach ( $before_block_sections as $section ) : ?>
 					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-					<?php if ( ! empty( $section['title'] ) ) : ?>
-						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+					<?php if ( ! empty( $section['collection_blocks_before_title'] ) ) : ?>
+						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['collection_blocks_before_title'] ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
@@ -178,27 +202,6 @@ get_header(); ?>
 			</section>
 
 		<?php endif; ?>
-
-		<?php
-		$post_obj = $wp_query->get_queried_object();
-
-		$associated_itineraries = new WP_Query( array(
-			'post_type' => 'itinerary',
-			'tax_query' => array(
-				array(
-					'taxonomy' => '_collection',
-					'field'    => 'slug',
-					'terms'    => $post_obj->post_name
-				)
-			),
-			'posts_per_page' => 75,
-			'no_found_rows' => true,
-			'update_post_term_cache' => false,
-			'update_post_meta_cache' => false,
-			'order' => 'ASC',
-			'orderby' => 'title'
-		) );
-		?>
 
 		<?php if ( $associated_itineraries->have_posts() ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
@@ -235,8 +238,8 @@ get_header(); ?>
 			<?php foreach ( $after_block_sections as $section ) : ?>
 				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 				<section class="ws-container ws-blocks tour-blocks-after">
-					<?php if ( ! empty( $section['title'] ) ) : ?>
-						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
+					<?php if ( ! empty( $section['collection_blocks_after_title'] ) ) : ?>
+						<h2><?php echo apply_filters( 'the_title', $section['collection_blocks_after_title'] ); ?></h2>
 					<?php endif; ?>
 
 					<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
@@ -251,49 +254,30 @@ get_header(); ?>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<section class="home-section blog">
-			<div class="ws-container">
-				<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
-			</div>
+		<?php $display_blog = get_post_meta( $post->ID, 'collection_options_blog', true); ?>
+		<?php if ( 'on' == $display_blog ) : ?>
+			<section class="home-section blog">
+				<div class="ws-container">
+					<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
+				</div>
 
-			<div class="blog-wrap">
+				<div class="blog-wrap">
 
-				<section>
+					<section>
 
-				<?php
-				// @todo make this one query, it does not need to be two
+					<?php
+					// @todo make this one query, it does not need to be two
 
-				$args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
-				$blogPosts = new WP_Query($args);
+					$args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
+					$blogPosts = new WP_Query($args);
 
-				?>
+					?>
 
-				<?php if ( $blogPosts->have_posts() ) : ?>
-
-					<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
-
-						<?php get_template_part( 'partials/content', 'blog' ) ?>
-
-					<?php endwhile; ?>
-
-				<?php else : ?>
-
-					<p>Nothing found</p>
-
-				<?php endif; ?>
-
-				</section>
-
-				<aside class="sidebar">
-					
-					<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 2, 'offset' => 1 );
-					$blogPosts = new WP_Query($args); ?>
 					<?php if ( $blogPosts->have_posts() ) : ?>
 
-						<?php /* Start the Loop */ ?>
 						<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
 
-							<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
+							<?php get_template_part( 'partials/content', 'blog' ) ?>
 
 						<?php endwhile; ?>
 
@@ -303,40 +287,75 @@ get_header(); ?>
 
 					<?php endif; ?>
 
-				</aside>
+					</section>
 
-			</div>
+					<aside class="sidebar">
 
-		</section>
+						<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 2, 'offset' => 1 );
+						$blogPosts = new WP_Query($args); ?>
+						<?php if ( $blogPosts->have_posts() ) : ?>
 
-		<div class="blog-single-cta">
-			<span class="h2">Request Information about a WorldStrides {PROGRAM TYPE} Program</span>
-			<span>I am a</span>
-			<select name="" id="">
-				<option value="">Parent</option>
-				<option value="">Traveler</option>
-				<option value="">Teacher</option>
-			</select>
-			<button class="btn btn-primary">Get the Info</button>
-		</div>
+							<?php /* Start the Loop */ ?>
+							<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
 
-		<section class="info-cta">
+								<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
 
-			<div class="additional-info">
-				<h3>Additional Information</h3>
-				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet.</p>
-				<button class="btn btn-primary">Request Catalogue</button>
-			</div>
+							<?php endwhile; ?>
 
-			<div class="email-updates">
-				<h3>Email Updates About These Tours</h3>
-				<p>Interested in learning more? Enter your email address and we’ll share further information, promotions, and other opportunities.</p>
-				<form action="">
-					<input type="email" placeholder="Email Address">
-					<input type="submit" class="btn btn-primary" value="Sign Up">
+						<?php else : ?>
+
+							<p>Nothing found</p>
+
+						<?php endif; ?>
+
+					</aside>
+
+				</div>
+
+			</section>
+		<?php endif; ?>
+
+		<?php
+		$additional_info_request_box = get_post_meta( $post->ID, 'additional_info_request_box', true );
+		$additional_info_text = get_post_meta( $post->ID, 'additional_info_text', true );
+		$additional_info_email_title = get_post_meta( $post->ID, 'additional_info_email_title', true );
+		$additional_info_email_text = get_post_meta( $post->ID, 'additional_info_email_text', true );
+		?>
+
+		<?php if ( 'on' == $additional_info_request_box ) : ?>
+			<div class="blog-single-cta">
+				<span class="h2">Request Information about a WorldStrides Program</span>
+				<form>
+					<span>I am a</span>
+					<select id="selectMenu">
+						<option value="/request-info/?type=parent">Parent</option>
+						<option value="/request-info/?type=traveler">Traveler</option>
+						<option value="/request-info/?type=teacher">Teacher</option>
+					</select>
+					<input type="submit" class="btn btn-primary" value="Get the Info" onclick="window.open(selectMenu.options[selectMenu.selectedIndex].value)">
 				</form>
 			</div>
-		</section>
+		<?php endif; ?>
+
+		<?php if ( $additional_info_text && $additional_info_email_title && $additional_info_email_text ) : ?>
+			<section class="info-cta">
+
+				<div class="additional-info">
+					<h3>Additional Information</h3>
+					<?php echo apply_filters( 'the_content', $additional_info_text ); ?>
+				</div>
+
+				<div class="email-updates">
+					<h3><?php echo apply_filters( 'the_title', $additional_info_email_title ); ?></h3>
+					<p><?php echo apply_filters( 'the_content', $additional_info_email_text ); ?></p>
+
+					<form action="">
+						<input type="email" placeholder="Email Address">
+						<input type="submit" class="btn btn-primary" value="Sign Up">
+					</form>
+				</div>
+			</section>
+		<?php endif; ?>
 
 		<?php endif; ?>
 

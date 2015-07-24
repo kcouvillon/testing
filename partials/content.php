@@ -11,7 +11,7 @@
 		if ( has_post_thumbnail() ) {
 			$has_post_thumbnail = true;
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
 		}
 	} ?>
 

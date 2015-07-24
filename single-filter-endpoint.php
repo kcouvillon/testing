@@ -23,6 +23,40 @@ if ( ! $display_title ) {
 
 get_header(); ?>
 
+<?php
+	$associated_collections = new WP_Query( array(
+		'post_type' => 'collection',
+		'post_per_page' => 150,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'filter',
+				'field'    => 'term_id',
+				'terms'    => $associated_filter_id
+			)
+		),
+		'no_found_rows' => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+	));
+?>
+
+<?php
+$associated_itineraries = new WP_Query( array(
+	'post_type' => 'itinerary',
+	'post_per_page' => 150,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'filter',
+			'field'    => 'term_id',
+			'terms'    => $associated_filter_id
+		)
+	),
+	'no_found_rows' => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => false,
+));
+?>
+
 <div id="primary" class="content-area">
 	<main id="main" class="site-main filter-endpoint" role="main">
 
@@ -32,7 +66,7 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 		} ?>
 		<section class="primary-section">
 			<header class="section-header pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
@@ -70,7 +104,13 @@ get_header(); ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
 
-					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itineraries</a></li>
+					<?php if ( $associated_collections->have_posts() ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+					<?php endif; ?>
+
+					<?php if ( $associated_itineraries->have_posts() ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Programs</a></li>
+					<?php endif; ?>
 
 					<?php if ( ! empty( $after_block_sections ) ) : ?>
 						<?php foreach ( $after_block_sections as $section ) : ?>
@@ -170,42 +210,45 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<?php
-			$associated_collections = new WP_Query( array(
-				'post_type' => 'collection',
-				'post_per_page' => 150,
-				'tax_query' => array(
-					array(
-						'taxonomy' => 'filter',
-						'field'    => 'term_id',
-						'terms'    => $associated_filter_id
-					)
-				),
-				'no_found_rows' => true,
-				'update_post_term_cache' => false,
-				'update_post_meta_cache' => false,
-			));
-		?>
-
 		<?php if ( $associated_collections->have_posts() ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="section-content programs">
-				<h2 class="section-title">Related Collections - <?php echo $associated_filter_id; ?></h2>
-				<ul class="programs-list list-unstyled clearfix">
+				<h2 class="section-title">Related Collections</h2>
+				<ul class="programs-list list-unstyled clearfix meta">
 					<?php $count = 0; ?>
 
 					<?php while ( $associated_collections->have_posts() ) : ?>
 						<?php $associated_collections->the_post(); ?>
-						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+						<?php
+						if ( has_post_thumbnail() ) {
+							$thumb_id = get_post_thumbnail_id();
+							$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
+							$background = $thumb_url_array[0];
+							$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+						} else {
+							$background = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '5' : '8') . '.gif';
+							$scrim = '';
+						}
+						?>
 
-						<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+						<li class="program tile tile-third" style="background-image:<?php echo $scrim . ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<li><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></li>
+								<ul class="meta list-unstyled list-tags">
+									<?php if( 'interest' === $post_type ) : ?>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'destination' ); ?></li>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'traveler' ); ?></li>
+									<?php elseif( 'destination' === $post_type ) : ?>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'interest' ); ?></li>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'traveler' ); ?></li>
+									<?php elseif( 'traveler' === $post_type ) : ?>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'destination' ); ?></li>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'interest' ); ?></li>
+									<?php endif; ?>
 								</ul>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
 						</li>
+
 
 						<?php $count++; ?>
 					<?php endwhile; ?>
@@ -214,24 +257,8 @@ get_header(); ?>
 			</section>
 		<?php endif; ?>
 
-		<?php
-		$associated_itineraries = new WP_Query( array(
-			'post_type' => 'itinerary',
-			'post_per_page' => 150,
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'filter',
-					'field'    => 'term_id',
-					'terms'    => $associated_filter_id
-				)
-			),
-			'no_found_rows' => true,
-			'update_post_term_cache' => false,
-			'update_post_meta_cache' => false,
-		));
-		?>
 		<?php if ( $associated_itineraries->have_posts() ) : ?>
-
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="section-content programs">
 				<h2 class="section-title">Related Programs</h2>
 				<ul class="programs-list list-unstyled clearfix">
@@ -239,12 +266,31 @@ get_header(); ?>
 
 					<?php while ( $associated_itineraries->have_posts() ) : ?>
 						<?php $associated_itineraries->the_post(); ?>
-						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+						<?php
+						if ( has_post_thumbnail() ) {
+							$thumb_id = get_post_thumbnail_id();
+							$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
+							$background = $thumb_url_array[0];
+							$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+						} else {
+							$background = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '5' : '8') . '.gif';
+							$scrim = '';
+						}
+						?>
 
-						<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+						<li class="program tile tile-third" style="background-image:<?php echo $scrim . ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<li><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></li>
+								<ul class="meta list-unstyled list-tags">
+									<?php if( 'interest' === $post_type ) : ?>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'destination' ); ?></li>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'traveler' ); ?></li>
+									<?php elseif( 'destination' === $post_type ) : ?>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'interest' ); ?></li>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'traveler' ); ?></li>
+									<?php elseif( 'traveler' === $post_type ) : ?>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'destination' ); ?></li>
+										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'interest' ); ?></li>
+									<?php endif; ?>
 								</ul>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
