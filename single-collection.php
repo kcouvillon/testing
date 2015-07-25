@@ -256,63 +256,57 @@ get_header(); ?>
 
 		<?php $display_blog = get_post_meta( $post->ID, 'collection_options_blog', true); ?>
 		<?php if ( 'on' == $display_blog ) : ?>
-			<section class="home-section blog">
-				<div class="ws-container">
-					<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
-				</div>
+			<?php
+			$blog_posts = new WP_Query( array(
+				'post_type' => 'post',
+				'posts_per_page' => 3,
+				'no_found_rows' => true,
+				'update_post_term_cache' => false,
+				'update_post_meta_cache' => false,
+			));
+			?>
 
-				<div class="blog-wrap">
+			<?php if ( $blog_posts->have_posts() ) : ?>
+				<section class="home-section blog">
+					<div class="ws-container">
+						<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
+					</div>
 
-					<section>
+					<?php $sidebar_open = false; ?>
 
-					<?php
-					// @todo make this one query, it does not need to be two
+					<div class="blog-wrap">
+						<?php $count = 0; ?>
+						<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
-					$args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
-					$blogPosts = new WP_Query($args);
-
-					?>
-
-					<?php if ( $blogPosts->have_posts() ) : ?>
-
-						<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
-
-							<?php get_template_part( 'partials/content', 'blog' ) ?>
-
-						<?php endwhile; ?>
-
-					<?php else : ?>
-
-						<p>Nothing found</p>
-
+					<?php if ( 0 == $count ) : ?>
+						<section class="section-one">
+							<?php get_template_part( 'partials/content', 'blog' ); ?>
+						</section>
 					<?php endif; ?>
 
-					</section>
+					<?php if ( 1 == $count ) : ?>
+						<aside class="sidebar">
+							<?php $sidebar_open = true; ?>
+							<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
+							<?php endif; ?>
 
-					<aside class="sidebar">
+							<?php if ( 2 == $count ) : ?>
 
-						<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 2, 'offset' => 1 );
-						$blogPosts = new WP_Query($args); ?>
-						<?php if ( $blogPosts->have_posts() ) : ?>
+								<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
 
-							<?php /* Start the Loop */ ?>
-							<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
+							<?php endif; ?>
 
-								<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
-
+							<?php $count++; ?>
 							<?php endwhile; ?>
 
-						<?php else : ?>
+							<?php if ( $sidebar_open ) : ?>
+						</aside>
+					<?php endif; ?>
 
-							<p>Nothing found</p>
+					</div>
 
-						<?php endif; ?>
-
-					</aside>
-
-				</div>
-
-			</section>
+				</section>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php
