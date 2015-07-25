@@ -35,8 +35,8 @@
 		});
 
 
-		// Click events for filters
-		$('.explore-filters')
+		// Click events
+		$('.explore-tool')
 			.on('click', '.filter', function(event){
 				event.preventDefault();
 
@@ -57,7 +57,6 @@
 				}
 			})
 			.on('click', '.remove-filter', function(event){
-				event.preventDefault();
 
 				var slug = $(this).parent().data('related'),
 					filters = '';
@@ -67,6 +66,8 @@
 				filters = getCurrentFilters();
 				$exploreResults.mixItUp('filter', filters);
 
+				return false;
+
 			})
 			.on('click', '.term-list-toggle', function(event){
 				event.preventDefault();
@@ -75,9 +76,26 @@
 					target = $this.attr('href'),
 					$filterMenu = $this.parents('.filter-menu');
 
-				$filterMenu.find('.terms-list').addClass('hidden');
-				$(target).removeClass('hidden');
+				$filterMenu.find('.terms-list').addClass('invisible');
+				$(target).removeClass('invisible');
 
+			})
+			.on('click', '.toggle', function(event){
+				event.preventDefault();
+
+				var target = $(this).data('target');
+
+				$(target)
+					.slideToggle()
+					.toggleClass('closed open');
+			})
+			.on('click', '.explore-filters-toggle', function(event){
+				event.preventDefault();
+
+				var $this = $(this),
+					$exploreFilters = $('.explore-filters');
+
+				$exploreFilters.toggleClass('filter-menus-closed');
 			});
 
 	}

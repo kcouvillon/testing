@@ -16,7 +16,7 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 		$background = '';
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 		}
 		?>
 

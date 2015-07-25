@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'worldstrides-ui';
-	src:url('../fonts/worldstrides-ui.eot?op27dr');
-	src:url('../fonts/worldstrides-ui.eot?#iefixop27dr') format('embedded-opentype'),
-		url('../fonts/worldstrides-ui.ttf?op27dr') format('truetype'),
-		url('../fonts/worldstrides-ui.woff?op27dr') format('woff'),
-		url('../fonts/worldstrides-ui.svg?op27dr#worldstrides-ui') format('svg');
+	src:url('../fonts/worldstrides-ui.eot?-8oae5z');
+	src:url('../fonts/worldstrides-ui.eot?#iefix-8oae5z') format('embedded-opentype'),
+		url('../fonts/worldstrides-ui.ttf?-8oae5z') format('truetype'),
+		url('../fonts/worldstrides-ui.woff?-8oae5z') format('woff'),
+		url('../fonts/worldstrides-ui.svg?-8oae5z#worldstrides-ui') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,6 +23,21 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-other:before {
+	content: "\e61c";
+}
+.icon-professional:before {
+	content: "\e61d";
+}
+.icon-science-and-technology:before {
+	content: "\e61e";
+}
+.icon-culture-and-language:before {
+	content: "\e61f";
+}
+.icon-performing:before {
+	content: "\e620";
+}
 .icon-arrow-down:before {
 	content: "\e617";
 }
@@ -107,6 +122,7 @@
 .icon-linkedin:before {
 	content: "\e600";
 }
+
 
 // Social Share Links
 

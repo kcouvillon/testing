@@ -12,13 +12,7 @@ get_header(); ?>
 
 		<section class="section-header primary-section pattern-3">
 			<div class="section-header-content">
-				<h1>Stories</h1>
-
-				<?php
-				$page = get_page_by_title( 'Blog' );
-				$excerpt = $page->post_excerpt;
-				?>
-				<?php echo apply_filters( 'the_content', $excerpt ); ?>
+				<h1>Search Results</h1>
 			</div>
 		</section>
 

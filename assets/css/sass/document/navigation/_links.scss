@@ -20,6 +20,10 @@
 // 	}
 // }
 
+a {
+	transition: all 250ms ease;
+}
+
 .breadcrumbs {
 	color: $gray_base;
 	text-transform: uppercase;
