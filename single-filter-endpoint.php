@@ -323,67 +323,69 @@ $associated_itineraries = new WP_Query( array(
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<section class="home-section blog">
-			<div class="ws-container">
-				<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
-			</div>
+		<?php
+		$blog_posts = new WP_Query( array(
+			'post_type' => 'post',
+			'posts_per_page' => 3,
+			'no_found_rows' => true,
+			'update_post_term_cache' => false,
+			'update_post_meta_cache' => false,
+		));
+		?>
 
-			<div class="blog-wrap">
+		<?php if ( $blog_posts->have_posts() ) : ?>
+			<section class="home-section blog">
+				<div class="ws-container">
+					<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
+				</div>
 
-				<section>
+				<?php $sidebar_open = false; ?>
 
-				<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 1 );
-				$blogPosts = new WP_Query($args); ?>
-				<?php if ( $blogPosts->have_posts() ) : ?>
+				<div class="blog-wrap">
+					<?php $count = 0; ?>
+					<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
-					<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
+						<?php if ( 0 == $count ) : ?>
+							<section class="section-one">
+								<?php get_template_part( 'partials/content', 'blog' ); ?>
+							</section>
+						<?php endif; ?>
 
-						<?php get_template_part( 'partials/content', 'blog' ) ?>
+						<?php if ( 1 == $count ) : ?>
+							<aside class="sidebar">
+							<?php $sidebar_open = true; ?>
+								<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
+						<?php endif; ?>
 
+						<?php if ( 2 == $count ) : ?>
+
+								<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
+
+						<?php endif; ?>
+
+						<?php $count++; ?>
 					<?php endwhile; ?>
 
-				<?php else : ?>
-
-					<p>Nothing found</p>
-
-				<?php endif; ?>
-
-				</section>
-
-				<aside class="sidebar">
-					
-					<?php $args = array( 'post_type' => 'post', 'posts_per_page' => 2, 'offset' => 1 );
-					$blogPosts = new WP_Query($args); ?>
-					<?php if ( $blogPosts->have_posts() ) : ?>
-
-						<?php /* Start the Loop */ ?>
-						<?php while ( $blogPosts->have_posts() ) : $blogPosts->the_post(); ?>
-
-							<?php get_template_part( 'partials/content', 'blog-sidebar' ) ?>
-
-						<?php endwhile; ?>
-
-					<?php else : ?>
-
-						<p>Nothing found</p>
-
+					<?php if ( $sidebar_open ) : ?>
+							</aside>
 					<?php endif; ?>
 
-				</aside>
+				</div>
 
-			</div>
-
-		</section>
+			</section>
+		<?php endif; ?>
 
 		<div class="blog-single-cta">
-			<span class="h2">Request Information about a WorldStrides {PROGRAM TYPE} Program</span>
-			<span>I am a</span>
-			<select name="" id="">
-				<option value="">Parent</option>
-				<option value="">Traveler</option>
-				<option value="">Teacher</option>
-			</select>
-			<button class="btn btn-primary">Get the Info</button>
+			<span class="h2">Request Information about a WorldStrides Program</span>
+			<form>
+				<span>I am a</span>
+				<select id="selectMenu">
+					<option value="/request-info/?type=parent">Parent</option>
+					<option value="/request-info/?type=traveler">Traveler</option>
+					<option value="/request-info/?type=teacher">Teacher</option>
+				</select>
+				<input type="submit" class="btn btn-primary" value="Get the Info" onclick="window.open(selectMenu.options[selectMenu.selectedIndex].value)">
+			</form>
 		</div>
 
 <?php get_footer(); ?>
