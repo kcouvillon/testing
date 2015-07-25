@@ -270,7 +270,7 @@ class WS_Metaboxes_Filter_Endpoints {
 			// post type also as array
 			'post_type'   => 'post',
 			// checkbox/radio, used in the modal view to select the post type
-			'select_type' => 'radio'
+			'select_type' => 'checkbox'
 		) );
 	}
 }
