@@ -323,14 +323,25 @@ $associated_itineraries = new WP_Query( array(
 			<?php endforeach; ?>
 		<?php endif; ?>
 
+		<?php $related_blog_post_ids = get_post_meta( $post->ID, 'related_blog_posts', true); ?>
+
 		<?php
-		$blog_posts = new WP_Query( array(
-			'post_type' => 'post',
-			'posts_per_page' => 3,
-			'no_found_rows' => true,
-			'update_post_term_cache' => false,
-			'update_post_meta_cache' => false,
-		));
+		if ( $related_blog_post_ids ) {
+			// string of comma separated numbers needs to be converted to array of integers
+			$related_blog_post_ids = explode( ',', $related_blog_post_ids );
+			array_walk( $related_blog_post_ids, 'intval' );
+
+			$blog_posts = new WP_Query( array(
+				'post_type'              => 'post',
+				'posts_per_page'         => 3,
+				'no_found_rows'          => true,
+				'update_post_term_cache' => false,
+				'update_post_meta_cache' => false,
+				'post__in'               => $related_blog_post_ids
+			) );
+		} else {
+			$blog_posts = '';
+		}
 		?>
 
 		<?php if ( $blog_posts->have_posts() ) : ?>
