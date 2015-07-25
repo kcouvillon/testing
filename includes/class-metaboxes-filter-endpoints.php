@@ -259,13 +259,13 @@ class WS_Metaboxes_Filter_Endpoints {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blog Post', 'cmb2' ),
+			'title'        => __( 'Related Blog Post', 'cmb2' ),
 			'object_types' => array( 'destination', 'interest', 'traveler' ),
 		) );
 
 		$cmb->add_field( array(
-			'name'        => __( 'Blog post' ),
-			'id'          => 'related_blog_post',
+			'name'        => __( 'Related blog posts' ),
+			'id'          => 'related_blog_posts',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
 			'post_type'   => 'post',
