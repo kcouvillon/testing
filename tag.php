@@ -12,8 +12,8 @@ get_header(); ?>
 
 		<section class="section-header primary-section pattern-3">
 			<div class="section-header-content">
-				<?php $category = get_category_by_slug( get_query_var('category_name') ); ?>
-				<h1><?php echo $category->name; ?> Stories</h1>
+				<?php $tag = get_term_by( 'slug', get_query_var( 'tag' ), 'post_tag' ); ?>
+				<h1><?php echo $tag->name; ?> Stories</h1>
 			</div>
 		</section>
 
