@@ -8576,6 +8576,8 @@ section:after {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 10px; }
+    .sidebar .search-widget .btn a {
+      color: white; }
 
 .value-prop:before,
 .value-prop:after {
