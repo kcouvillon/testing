@@ -3,8 +3,6 @@
  * This is actually the main blog page. Please see front-page.php for the traditional 'home' page
  */
 
-$recent_highlights = WS_Helpers::get_blog_sidebar_posts();
-
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -31,11 +29,7 @@ get_header(); ?>
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php if ( ! in_array( $post->ID, $recent_highlights ) ) : ?>
-
-						<?php get_template_part( 'partials/content', 'blog' ) ?>
-
-					<?php endif; ?>
+					<?php get_template_part( 'partials/content', 'blog' ) ?>
 
 				<?php endwhile; ?>
 
