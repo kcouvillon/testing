@@ -3,25 +3,94 @@
  * Template for the blog tags
  */
 
- get_header(); ?>
+$recent_highlights = WS_Helpers::get_blog_sidebar_posts();
+
+get_header(); ?>
 
 <div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
+	<main id="main" class="site-main blog" role="main">
 
-		<?php if ( have_posts() ) : ?>
+		<section class="section-header primary-section pattern-3">
+			<div class="section-header-content">
+				<?php $category = get_category_by_slug( get_query_var('category_name') ); ?>
+				<h1><?php echo $category->name; ?> Stories</h1>
+			</div>
+		</section>
 
-			<?php /* Start the Loop */ ?>
-			<?php while ( have_posts() ) : the_post(); ?>
+		<div class="blog-wrap">
 
-				<?php get_template_part( 'partials/content' ) ?>
+			<section>
 
-			<?php endwhile; ?>
+				<?php if ( have_posts() ) : ?>
 
-		<?php else : ?>
+					<?php /* Start the Loop */ ?>
+					<?php while ( have_posts() ) : the_post(); ?>
 
-			<p>Nothing found</p>
+						<?php if ( ! in_array( $post->ID, $recent_highlights ) ) : ?>
 
-		<?php endif; ?>
+							<?php get_template_part( 'partials/content', 'blog' ) ?>
+
+						<?php endif; ?>
+
+					<?php endwhile; ?>
+
+				<?php else : ?>
+
+					<p>Nothing found</p>
+
+				<?php endif; ?>
+
+			</section>
+
+			<aside class="sidebar">
+
+				<div class="search-widget">
+
+					<input type="search" placeholder="Search Blog">
+
+					<h3>Explore by Traveler</h3>
+
+					<button class="btn btn-success">middle school</button>
+					<button class="btn btn-success">high school</button>
+					<button class="btn btn-success">university</button>
+					<button class="btn btn-success">performing arts</button>
+					<button class="btn btn-success">sports</button>
+
+					<h3>Explore by Destination</h3>
+
+					<button class="btn btn-success">middle school</button>
+					<button class="btn btn-success">high school</button>
+					<button class="btn btn-success">university</button>
+					<button class="btn btn-success">performing arts</button>
+					<button class="btn btn-success">sports</button>
+
+					<h3>Explore by Program</h3>
+
+					<button class="btn btn-success">middle school</button>
+					<button class="btn btn-success">high school</button>
+					<button class="btn btn-success">university</button>
+					<button class="btn btn-success">performing arts</button>
+					<button class="btn btn-success">sports</button>
+
+				</div>
+
+				<?php if ( ! empty( $recent_highlights ) ) : ?>
+
+					<?php foreach( $recent_highlights as $recent_highlight ) : ?>
+
+						<?php $post = get_post( $recent_highlight ); ?>
+
+						<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
+
+					<?php endforeach; ?>
+
+					<?php wp_reset_postdata(); ?>
+
+				<?php endif; ?>
+
+			</aside>
+
+		</div>
 
 	</main>
 </div>
