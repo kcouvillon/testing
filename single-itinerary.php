@@ -245,7 +245,7 @@ get_header(); ?>
 					<?php foreach ( $highlights as $highlight ) { ?>
 						<?php
 							$image_id = $highlight['image_id'];
-							$image_src = wp_get_attachment_image_src( $image_id, 'large' );
+							$image_src = wp_get_attachment_image_src( $image_id, 'tour-highlights' );
 						?>
 						<img src="<?php echo $image_src[0]; ?>"
 						     alt=""
