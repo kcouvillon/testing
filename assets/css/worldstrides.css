@@ -6988,14 +6988,14 @@ a.no-decoration {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  padding: 1.5em 0; }
+  padding: 1.5em 0 0; }
   .tour-sharing .sharing-links {
     margin: 0;
     text-align: center; }
     @media (min-width: 768px) {
       .tour-sharing .sharing-links li {
         display: inline-block;
-        margin: 0px 4vw; } }
+        margin: 0px 2vw 1.5em; } }
     .tour-sharing .sharing-links li a {
       font-weight: 700;
       display: block;

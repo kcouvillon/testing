@@ -213,11 +213,23 @@ get_header(); ?>
 		<section class="tour-sharing hide-print">
 			<?php $pdf = get_post_meta( $post->ID, 'itinerary_pdf' ); ?>
 			<ul class="sharing-links list-unstyled">
-				<li><a href="<?php echo 'mailto:?subject='.rawurlencode(get_the_title()).'&body='.urlencode(get_the_permalink()); ?>"><i class="icon icon-email"></i> Email this Itinerary</a></li>
-				<li><a href="#"><i class="icon icon-print"></i> Print this Itinerary</a></li>
+				<li><a href="<?php echo 'mailto:?subject='.rawurlencode(get_the_title()).'&body='.urlencode(get_the_permalink()); ?>"><i class="icon icon-email"></i> Email Itinerary</a></li>
+				<li><a href="#"><i class="icon icon-print"></i> Print Itinerary</a></li>
 				<?php if ( $pdf ) : ?>
-				<li><a href="<?php echo $pdf[0]; ?>"><i class="icon icon-pdf"></i> Download PDF to this Itinerary</a></li>
+				<li><a href="<?php echo $pdf[0]; ?>"><i class="icon icon-pdf"></i> Download PDF</a></li>
 				<?php endif; ?>
+				<li>
+					<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode( get_the_permalink() ); ?>&t=<?php echo urlencode( get_the_title() ); ?>" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook">
+			   			<i class="icon-facebook"></i> Share on Facebook
+					</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/share?url=<?php echo urlencode( get_the_permalink() ); ?>&via=worldstrides&text=<?php echo urlencode( get_the_title() ); ?>"
+					   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+					   target="_blank" title="Share on Twitter">
+					   <i class="icon-twitter"></i> Share on Twitter
+				   </a>
+				</li>
 			</ul>
 		</section>
 
