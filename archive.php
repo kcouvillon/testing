@@ -51,35 +51,7 @@ get_header(); ?>
 
 			<aside class="sidebar">
 
-				<div class="search-widget">
-					
-					<input type="search" placeholder="Search Blog">
-
-					<h3>Explore by Traveler</h3>
-
-					<button class="btn btn-success">middle school</button>
-					<button class="btn btn-success">high school</button>
-					<button class="btn btn-success">university</button>
-					<button class="btn btn-success">performing arts</button>
-					<button class="btn btn-success">sports</button>
-
-					<h3>Explore by Destination</h3>
-
-					<button class="btn btn-success">middle school</button>
-					<button class="btn btn-success">high school</button>
-					<button class="btn btn-success">university</button>
-					<button class="btn btn-success">performing arts</button>
-					<button class="btn btn-success">sports</button>
-
-					<h3>Explore by Program</h3>
-
-					<button class="btn btn-success">middle school</button>
-					<button class="btn btn-success">high school</button>
-					<button class="btn btn-success">university</button>
-					<button class="btn btn-success">performing arts</button>
-					<button class="btn btn-success">sports</button>
-
-				</div>
+				<?php get_template_part( 'partials/content-blog-sidebar-search-tags' ); ?>
 
 				<?php if ( ! empty( $recent_highlights ) ) : ?>
 
