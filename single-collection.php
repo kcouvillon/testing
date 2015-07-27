@@ -278,36 +278,35 @@ get_header(); ?>
 						<?php $count = 0; ?>
 						<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
-					<?php if ( 0 == $count ) : ?>
-						<section class="section-one">
-							<?php get_template_part( 'partials/content', 'blog' ); ?>
-						</section>
-					<?php endif; ?>
+							<?php if ( 0 == $count ) : ?>
+								<section class="section-one">
+									<?php get_template_part( 'partials/content', 'blog' ); ?>
+								</section>
+							<?php endif; ?>
 
-					<?php if ( 1 == $count ) : ?>
-						<aside class="sidebar">
-							<?php $sidebar_open = true; ?>
-							<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
+							<?php if ( 1 == $count ) : ?>
+								<aside class="sidebar">
+									<?php $sidebar_open = true; ?>
+									<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
 							<?php endif; ?>
 
 							<?php if ( 2 == $count ) : ?>
-
 								<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
-
 							<?php endif; ?>
 
 							<?php $count++; ?>
-							<?php endwhile; ?>
+						<?php endwhile; ?>
 
 							<?php if ( $sidebar_open ) : ?>
-						</aside>
-					<?php endif; ?>
+								</aside>
+							<?php endif; ?>
 
 					</div>
 
 				</section>
 			<?php endif; ?>
 		<?php endif; ?>
+
 
 		<?php
 		$additional_info_request_box = get_post_meta( $post->ID, 'additional_info_request_box', true );
@@ -340,6 +339,8 @@ get_header(); ?>
 			</section>
 		<?php endif; ?>
 
+		<?php else : ?>
+			</section>
 		<?php endif; ?>
 
 	</main>
