@@ -167,12 +167,23 @@
 		&:last-child {
 			margin-right: 0;
 		}
+
+		&.primary-link {
+			a {
+				color: $gray_dark;
+				font-weight: bold;
+
+				&:hover {
+					color: $color_link;
+				}
+			}
+		}
 	}
 
 	a {
 		font-size: em(12);
 		line-height: 2;
-		font-weight: light;
+		font-weight: lighter;
 		color: $gray;
 		&:hover {
 			color: $gray_dark;

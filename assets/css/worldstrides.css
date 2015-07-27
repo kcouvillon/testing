@@ -6293,10 +6293,15 @@ a.no-decoration {
     margin-right: 20px; }
     .quick-access li:last-child {
       margin-right: 0; }
+    .quick-access li.primary-link a {
+      color: #5b6375;
+      font-weight: bold; }
+      .quick-access li.primary-link a:hover {
+        color: #fb901d; }
   .quick-access a {
     font-size: 0.75em;
     line-height: 2;
-    font-weight: light;
+    font-weight: lighter;
     color: #777d8d; }
     .quick-access a:hover {
       color: #5b6375; }
