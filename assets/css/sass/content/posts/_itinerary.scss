@@ -159,7 +159,7 @@
 
 .tour-sharing {
 	@include container();
-	padding: 1.5em 0;
+	padding: 1.5em 0 0;
 
 	.sharing-links {
 		margin: 0;
@@ -168,7 +168,7 @@
 		li {
 			@include susy-media($screen-sm) {
 				display: inline-block;
-				margin: 0px 4vw;
+				margin: 0px 2vw 1.5em;
 			}
 
 			a {

@@ -6293,10 +6293,15 @@ a.no-decoration {
     margin-right: 20px; }
     .quick-access li:last-child {
       margin-right: 0; }
+    .quick-access li.primary-link a {
+      color: #5b6375;
+      font-weight: bold; }
+      .quick-access li.primary-link a:hover {
+        color: #fb901d; }
   .quick-access a {
     font-size: 0.75em;
     line-height: 2;
-    font-weight: light;
+    font-weight: lighter;
     color: #777d8d; }
     .quick-access a:hover {
       color: #5b6375; }
@@ -6988,14 +6993,14 @@ a.no-decoration {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  padding: 1.5em 0; }
+  padding: 1.5em 0 0; }
   .tour-sharing .sharing-links {
     margin: 0;
     text-align: center; }
     @media (min-width: 768px) {
       .tour-sharing .sharing-links li {
         display: inline-block;
-        margin: 0px 4vw; } }
+        margin: 0px 2vw 1.5em; } }
     .tour-sharing .sharing-links li a {
       font-weight: 700;
       display: block;
