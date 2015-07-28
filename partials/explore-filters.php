@@ -90,15 +90,13 @@
 							<img src="<?php echo get_template_directory_uri() . '/assets/images/map-global.png'; ?>" alt="Global"/>
 						</span>
 					</li>
-					<li class="terms">
-						<ul class="list-unstyled clearfix">
-							<?php foreach ( $continents as $continent ) : ?>
+					<ul class="terms list-unstyled clearfix">
+						<?php foreach ( $continents as $continent ) : ?>
 
-							<li><a href="#<?php echo $continent->slug; ?>" class="term-list-toggle parent-term parent-destination"><?php echo $continent->name; ?></a></li>
+						<li><a href="#<?php echo $continent->slug; ?>" class="term-list-toggle parent-term parent-destination"><?php echo $continent->name; ?></a></li>
 
-							<?php endforeach; ?>
-						</ul>
-					</li>
+						<?php endforeach; ?>
+					</ul>
 				</ul>
 
 				<?php foreach ( $continents as $continent ) : ?>
@@ -110,16 +108,14 @@
 								<img src="<?php echo get_template_directory_uri() . '/assets/images/map-' . $continent->slug . '.png'; ?>" alt="<?php echo $continent->name; ?>"/>
 							</span>
 						</li>
-						<li class="terms">
-							<ul class="list-unstyled clearfix">
-								<?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id) ); 
-								foreach ( $destinations as $destination ) : ?>
+						<ul class="terms list-unstyled clearfix">
+							<?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id) ); 
+							foreach ( $destinations as $destination ) : ?>
 
-								<li><a href="#<?php echo $destination->slug; ?>" class="filter" data-filter-list=".destination-filters"><?php echo $destination->name; ?></a></li>
-								
-								<?php endforeach; ?>
-							</ul>
-						</li>
+							<li><a href="#<?php echo $destination->slug; ?>" class="filter" data-filter-list=".destination-filters"><?php echo $destination->name; ?></a></li>
+							
+							<?php endforeach; ?>
+						</ul>
 						<a href="#destinations-parent" class="term-list-toggle">« Back to Destinations</a>
 					</ul>
 

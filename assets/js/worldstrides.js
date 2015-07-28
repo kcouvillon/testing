@@ -15,7 +15,7 @@
 		// On document ready, instantiate .mixItUp()
 		$(document).ready(function(){
 
-			var results = $exploreResults.mixItUp({
+			$exploreResults.mixItUp({
 				selectors: {
 					target: '.tile',
 					filter: '.single-filter',
@@ -24,15 +24,22 @@
 					duration: 350,
 					effects: 'fade',
 					easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
+				},
+				callbacks: {
+					onMixEnd: function (state) {
+						updateAvailableFilters(state);
+					}
 				}
 			});
 
 		});
 
-
 		// Click events
 		$('.explore-tool')
 			.on('click', '.filter', function(event){
+				if ( $(this).hasClass('inactive') )
+					return false;
+
 				event.preventDefault();
 
 				var $this = $(this),
@@ -41,15 +48,11 @@
 					text = $this.text(),
 					filters = '';
 
-				if ( ! $this.hasClass('inactive') ) {
-					
-					$this.addClass('inactive');
-					addFilter(filterList, text, slug);
+				$this.addClass('inactive');
+				addFilter(filterList, text, slug);
 
-					filters = getCurrentFilters();
-					$exploreResults.mixItUp('filter', filters);
-
-				}
+				filters = getCurrentFilters();
+				$exploreResults.mixItUp('filter', filters);
 			})
 			.on('click', '.remove-filter', function(event){
 
@@ -62,9 +65,11 @@
 				$exploreResults.mixItUp('filter', filters);
 
 				return false;
-
 			})
 			.on('click', '.term-list-toggle', function(event){
+				if ( $(this).hasClass('inactive') )
+					return false;
+
 				event.preventDefault();
 
 				var $this = $(this),	
@@ -73,7 +78,6 @@
 
 				$filterMenu.find('.terms-list').addClass('invisible');
 				$(target).removeClass('invisible');
-
 			})
 			.on('click', '.toggle', function(event){
 				event.preventDefault();
@@ -119,9 +123,54 @@
 		return terms.join('');
 	}
 
+	function getFiltersFromResults( elements ) {
+		var filters = [];
 
+		$(elements).each(function(){
 
+		  var theseClasses = $(this).attr('class').split(' ');
 
+		  $(theseClasses).each(function(){
+		    if ( filters.indexOf( this.toString() ) < 0 && this.indexOf('filter') > -1 ) {
+
+		      filters.push( this.toString() );
+
+		    }
+		  });
+
+		});
+
+		return filters;
+	}
+
+	function updateAvailableFilters(state) {
+
+		var filters = getFiltersFromResults( state.activeFilter );
+
+		$('.explore-filters .filter').each(function(){
+			var $this = $(this),
+				filter = 'filter-' + $this.attr('href').substr(1);
+
+			if ( filters.indexOf(filter) < 0 ) {
+				$this.addClass('inactive');
+			} else {
+				$this.removeClass('inactive');
+			}
+		});
+
+		$('.terms-list-child').each(function(){
+			var $this = $(this),
+				parentHref = '#' + $this.attr('id'),
+				parentLink = $('.explore-filters a[href="'+parentHref+'"]');
+			
+			if ( $(parentHref + ' .filter').not('.inactive').length < 1 ) {
+				parentLink.addClass('inactive');
+			} else {
+				parentLink.removeClass('inactive');
+			}
+		});
+
+	}
 
 
 
