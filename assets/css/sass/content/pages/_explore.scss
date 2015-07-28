@@ -101,31 +101,33 @@
 			padding: 1em 0;
 		}
 
-		.interests-filters {
-			&:before {
-				content: "Interests";
-				margin-right: 1em;
-			}
-			@media screen and (min-width: $screen-sm) {
-				width: 32.333%;
-				float: left;
-				padding-right: 1%;
-			}
-		}
 		.traveler-filters {
 			&:before {
 				content: "Traveler";
 				margin-right: 1em;
 			}
 			@media screen and (min-width: $screen-sm) {
-				width: 31.333%;
+				width: 30%;
+				float: left;
+				padding-right: 1%;
+			}
+			@media screen and (min-width: $screen-lg) {
+				width: 20%;
+			}
+		}
+		.interests-filters {
+			&:before {
+				content: "Interests";
+				margin-right: 1em;
+			}
+			@media screen and (min-width: $screen-sm) {
+				width: 35%;
 				float: left;
 				padding-right: 1%;
 				padding-left: 1%;
 			}
 			@media screen and (min-width: $screen-lg) {
-				width: 17.666%;
-				float: left;
+				width: 30%;
 			}
 		}
 		.destination-filters {
@@ -134,19 +136,18 @@
 				margin-right: 1em;
 			}
 			@media screen and (min-width: $screen-sm) {
-				width: 32.333%;
+				width: 35%;
 				float: left;
 				padding-left: 1%;
 			}
 			@media screen and (min-width: $screen-lg) {
 				width: 50%;
-				float: left;
 			}
 		}
 	}
 
-	.interests-filters,
 	.traveler-filters,
+	.interests-filters,
 	.destination-filters {
 		padding: 1em 0;
 	}
@@ -258,14 +259,32 @@
 		}
 
 
+		/* Traveler Menu
+		** --------------------------------------------------- */
+		&.traveler-menu {
+			@media screen and (min-width: $screen-sm) {
+				width: 30%;
+				float: left;
+				padding-right: 1%;
+				border-right: 1px solid $gray_darker;
+			}
+			@media screen and (min-width: $screen-lg) {
+				width: 20%;
+			}
+		}
+
 		/* Filter Menu
 		** --------------------------------------------------- */
 		&.interests-menu {
 			@media screen and (min-width: $screen-sm) {
-				width: 32.333%;
+				width: 35%;
 				float: left;
 				padding-right: 1%;
+				padding-left: 1%;
 				border-right: 1px solid $gray_darker;
+			}
+			@media screen and (min-width: $screen-lg) {
+				width: 30%;
 			}
 
 			.terms-list a {
@@ -281,33 +300,16 @@
 			}
 		}
 
-		/* Traveler Menu
-		** --------------------------------------------------- */
-		&.traveler-menu {
-			@media screen and (min-width: $screen-sm) {
-				width: 31.333%;
-				float: left;
-				padding-right: 1%;
-				padding-left: 1%;
-				border-right: 1px solid $gray_darker;
-			}
-			@media screen and (min-width: $screen-lg) {
-				width: 17.666%;
-				float: left;
-			}
-		}
-
 		/* Destination Menu
 		** --------------------------------------------------- */
 		&.destination-menu {
 			@media screen and (min-width: $screen-sm) {
-				width: 32.333%;
+				width: 35%;
 				float: left;
 				padding-left: 1%;
 			}
 			@media screen and (min-width: $screen-lg) {
 				width: 50%;
-				float: left;
 			}
 
 			.terms-list {
@@ -329,11 +331,14 @@
 				position: relative;
 				z-index: 1;
 				-webkit-columns: 2;
-				   -moz-columns: 2;
-				    	columns: 2;
+				-webkit-column-width: 120px;
 				-webkit-column-gap: 0;
-				   -moz-column-gap: 0;
-				    	column-gap: 0;
+				-moz-columns: 2;
+				-moz-column-width: 120px;
+				-moz-column-gap: 0;
+				columns: 2;
+				column-width: 120px;
+				column-gap: 0;
 
 				@at-root {
 					.ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms {

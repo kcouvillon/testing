@@ -26,12 +26,29 @@ $continents = get_terms( 'filter', $continentsArgs );
 	<!-- <p class="search-by">Search by</p> -->
 	
 	<ul class="current-filters list-unstyled clearfix">
-		<li class="interests-filters"></li>
 		<li class="traveler-filters"></li>
+		<li class="interests-filters"></li>
 		<li class="destination-filters"></li>
 	</ul>
 	
 	<ul class="filter-menus open list-unstyled clearfix">
+
+		<?php ////////////////////////////////////////////////////////////////// ?>
+
+		<li class="filter-menu traveler-menu">
+			<div class="traveler-filters hide-sm"></div>
+
+			<div class="traveler-menu-container menu-container closed">
+				<ul class="terms-list list-unstyled clearfix">
+
+					<?php foreach ( $travelers as $traveler ) : ?>
+					<li><a href="#<?php echo $traveler->slug; ?>" class="filter" data-filter-list=".traveler-filters"><?php echo $traveler->name; ?></a></li>
+					<?php endforeach; ?>
+
+				</ul>
+			</div>
+			<a href="#" class="toggle filter-menu-toggle" data-target=".traveler-menu-container"><i class="icon-arrow"></i></a>
+		</li>
 
 		<?php ////////////////////////////////////////////////////////////////// ?>
 
@@ -75,25 +92,6 @@ $continents = get_terms( 'filter', $continentsArgs );
 
 			<a href="#" class="toggle filter-menu-toggle" data-target=".interests-menu-container"><i class="icon-arrow"></i></a>
 		</li>
-
-
-		<?php ////////////////////////////////////////////////////////////////// ?>
-
-		<li class="filter-menu traveler-menu">
-			<div class="traveler-filters hide-sm"></div>
-
-			<div class="traveler-menu-container menu-container closed">
-				<ul class="terms-list list-unstyled clearfix">
-
-					<?php foreach ( $travelers as $traveler ) : ?>
-					<li><a href="#<?php echo $traveler->slug; ?>" class="filter" data-filter-list=".traveler-filters"><?php echo $traveler->name; ?></a></li>
-					<?php endforeach; ?>
-
-				</ul>
-			</div>
-			<a href="#" class="toggle filter-menu-toggle" data-target=".traveler-menu-container"><i class="icon-arrow"></i></a>
-		</li>
-
 		
 		<?php ////////////////////////////////////////////////////////////////// ?>
 
