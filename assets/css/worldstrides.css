@@ -8492,6 +8492,10 @@ section:after {
 
 /* Explore Results
  * ------------------------------------------------------------- */
+.explore-results .collections,
+.explore-results .itineraries {
+  margin-bottom: 4em; }
+
 .explore-results .tile {
   display: none;
   height: auto;
