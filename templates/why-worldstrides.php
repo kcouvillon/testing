@@ -46,12 +46,12 @@ get_header(); ?>
 			<section>
 				<a name="<?php echo sanitize_title( $section['title'] ); ?>"></a>
 				<?php
-				$featured = wp_get_attachment_image_src( get_post_thumbnail_id( $section['image_id'] ), 'itinerary' );
-				$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $image . ')';
+				$featured = wp_get_attachment_image_src( $section['image_id'], 'itinerary' );
+				$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 				?>
-				<header class="section-header<?php echo ( !empty( $image ) ) ? ' has-section-image' : ''; ?>" style="background-image: <?php echo $background; ?>;">
+				<header class="section-header<?php echo ( !empty( $featured ) ) ? ' has-section-image' : ''; ?>" style="background-image: <?php echo $background; ?>;">
 					<div class="section-header-content">
-						<h1 class="page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h1>
+						<h2 class="h1 page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h1>
 
 						<p><?php echo esc_textarea( $section['description'] ); ?></p>
 					</div>
