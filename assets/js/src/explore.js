@@ -58,6 +58,8 @@
 
 				filters = getCurrentFilters();
 				$exploreResults.mixItUp('filter', filters);
+
+				checkFilters();
 			})
 			.on('click', '.remove-filter', function(event){
 
@@ -69,7 +71,18 @@
 				filters = getCurrentFilters();
 				$exploreResults.mixItUp('filter', filters);
 
+				checkFilters();
+
 				return false;
+			})
+			.on('click', 'a[href="#clear-filters"]', function(event){
+				
+				event.preventDefault();
+
+				removeFilter('all');
+				$exploreResults.mixItUp('filter', 'all');
+
+				checkFilters();
 			})
 			.on('click', '.term-list-toggle', function(event){
 				if ( $(this).hasClass('inactive') )
@@ -109,8 +122,13 @@
 	}
 
 	function removeFilter(slug){
-		$('.active-filter[data-related="' + slug + '"]').remove();
-		$('.filter[href="' + slug + '"]').removeClass('inactive');
+		if ( slug == 'all' ) {
+			$('.active-filter').remove();
+			$('.filter').removeClass('inactive');
+		} else {
+			$('.active-filter[data-related="' + slug + '"]').remove();
+			$('.filter[href="' + slug + '"]').removeClass('inactive');
+		}
 	}
 
 	function getCurrentFilters() {
@@ -174,7 +192,16 @@
 				parentLink.removeClass('inactive');
 			}
 		});
+	}
 
+	function checkFilters() {
+		var $exploreTool = $('.explore-tool');
+
+		if ( $('.explore-tool .active-filter').length > 0 ) {
+			$exploreTool.addClass('has-filter');
+		} else {
+			$exploreTool.removeClass('has-filter');
+		}
 	}
 
 

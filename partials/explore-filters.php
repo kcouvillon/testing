@@ -22,8 +22,6 @@ $continents = get_terms( 'filter', $continentsArgs );
 ?>
 
 <nav class="explore-filters ws-container">
-
-	<!-- <p class="search-by">Search by</p> -->
 	
 	<ul class="current-filters list-unstyled clearfix">
 		<li class="traveler-filters"></li>

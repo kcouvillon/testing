@@ -8245,35 +8245,67 @@ section:after {
 
 /* Explore Tool
  * ------------------------------------------------------------- */
-.explore-tool .active-filter {
-  display: inline-block;
-  color: #FFF;
-  font-weight: 700;
-  margin-right: 1em; }
-  .explore-tool .active-filter .icon {
-    margin-left: 5px;
-    vertical-align: middle;
-    cursor: pointer; }
-    .explore-tool .active-filter .icon:hover {
-      color: #4fa9e5; }
-
-.explore-tool .explore-filters-toggle {
-  display: none;
-  background-color: #323C53;
-  color: #FFF;
-  border-top: 1px solid #424c61;
-  text-align: center;
-  padding: 0.5em 0; }
-  @media screen and (min-width: 768px) {
-    .explore-tool .explore-filters-toggle {
-      display: block; } }
-  .explore-tool .explore-filters-toggle:hover {
-    background-color: #4fa9e5; }
+.explore-tool {
+  position: relative; }
+  .explore-tool .active-filter {
+    display: inline-block;
+    color: #FFF;
+    font-weight: 700;
+    margin-right: 1em; }
+    .explore-tool .active-filter .icon {
+      margin-left: 5px;
+      vertical-align: middle;
+      cursor: pointer; }
+      .explore-tool .active-filter .icon:hover {
+        color: #4fa9e5; }
+  .explore-tool .explore-filters-toggle {
+    display: none;
+    background-color: #323C53;
+    color: #FFF;
+    border-top: 1px solid #424c61;
+    text-align: center;
+    padding: 0.5em 0; }
+    @media screen and (min-width: 768px) {
+      .explore-tool .explore-filters-toggle {
+        display: block; } }
+    .explore-tool .explore-filters-toggle:hover {
+      background-color: #4fa9e5; }
+  .explore-tool .search-by {
+    position: absolute;
+    top: -30px;
+    left: 5vw;
+    color: #FFF; }
+  .explore-tool .clear-all {
+    display: block;
+    max-width: 135px;
+    text-align: center;
+    padding: 0.25em 1em 0.4em 0.5em;
+    margin: -45px auto 0;
+    background-color: #FFF;
+    color: #4fa9e5;
+    transition: all 300ms ease; }
+    @media screen and (min-width: 768px) {
+      .explore-tool .clear-all {
+        position: absolute;
+        bottom: 95%;
+        right: 5vw;
+        padding: 0.2em 1em 0.2em 0.4em; } }
+    .explore-tool.has-filter .clear-all {
+      margin-top: 0; }
+      @media screen and (min-width: 768px) {
+        .explore-tool.has-filter .clear-all {
+          bottom: 100%; } }
+    .explore-tool .clear-all:hover {
+      background-color: #fb901d;
+      color: #FFF; }
+    .explore-tool .clear-all .icon {
+      vertical-align: middle; }
 
 /* Explore Filters
  * ------------------------------------------------------------- */
 .explore-filters {
   position: relative;
+  z-index: 1;
   background: #323c53;
   color: #777d8d;
   /* Current Filters
