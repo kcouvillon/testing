@@ -1,3 +1,33 @@
+<?php
+global $post; 
+$filters = array_map( 'intval', get_terms( 'filter', array( 'fields' => 'ids' ) ) );
+$count = 0;
+$collection_args = array(
+	'post_type' => 'collection', 
+	'posts_per_page' => 200,
+	'tax_query' => array(
+        array(
+            'taxonomy' => 'filter',
+            'field'	   => 'term_id',
+			'terms'    => $filters,
+        )
+    )
+);
+$itinerary_args = array(
+	'post_type' => 'itinerary', 
+	'posts_per_page' => 200,
+	'tax_query' => array(
+        array(
+            'taxonomy' => 'filter',
+            'field'	   => 'term_id',
+			'terms'    => $filters,
+        )
+    )
+);
+$itineraries = get_posts( $itinerary_args );
+$collections = get_posts( $collection_args );
+?>
+
 <section class="explore-results section-content">
 
 	<div class="collections">
@@ -7,43 +37,38 @@
 		</header>
 		<div class="results clearfix">
 
-			<?php
-			global $post; 
-			$count = 0;
-			$collections = get_posts( array('post_type' => 'collection', 'posts_per_page' => 200) );
-			foreach ( $collections as $post ) : setup_postdata($post); ?>
+			<?php foreach ( $collections as $post ) : setup_postdata($post); ?>
 
-			<?php
-			$count++;
-			if ( has_post_thumbnail() ) {
-				$thumb_id = get_post_thumbnail_id();
-				$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
-				$image = $thumb_url_array[0];
-				$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
-			} else {
-				$image = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '5' : '8') . '.gif';
-				$scrim = '';
-			}
-			?>
-			<article <?php post_class('tile tile-third'); ?>
-					 style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
+				<?php
+				$terms = get_the_terms( get_the_ID(), 'filter' );
+				$count++;
+				if ( has_post_thumbnail() ) {
+					$thumb_id = get_post_thumbnail_id();
+					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
+					$image = $thumb_url_array[0];
+					$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+				} else {
+					$image = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '5' : '8') . '.gif';
+					$scrim = '';
+				}
+				?>
+				<article <?php post_class('tile tile-third'); ?>
+						 style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
 
-				<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm collection-image" />
+					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm collection-image" />
 
-				<div class="tile-content collection-content">
-					<ul class="meta collection-meta list-unstyled">
-						<?php 
-						$terms = get_the_terms( get_the_ID(), 'filter' );
-						foreach ( $terms as $term ) : if ( in_array( $term->term_id, get_term_children( 222, 'filter' )) ) { ?>
+					<div class="tile-content collection-content">
+						<ul class="meta collection-meta list-unstyled">
+							<?php foreach ( $terms as $term ) : if ( in_array( $term->term_id, get_term_children( 222, 'filter' )) ) { ?>
 
-							<li><?php echo $term->name; ?></li>
-						
-						<?php } endforeach; ?>
-					</ul>
-					<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-				</div>
+								<li><?php echo $term->name; ?></li>
+							
+							<?php } endforeach; ?>
+						</ul>
+						<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+					</div>
 
-			</article>
+				</article>
 
 			<?php endforeach; wp_reset_postdata(); ?>
 
@@ -60,34 +85,32 @@
 		</header>
 		<div class="results clearfix">
 			
-			<?php
-			global $post; 
+			<?php 
 			$count = 0;
-			$collections = get_posts( array('post_type' => 'itinerary', 'posts_per_page' => 200) );
-			foreach ( $collections as $post ) : setup_postdata($post); ?>
+			foreach ( $itineraries as $post ) : setup_postdata($post); ?>
 
-			<?php
-			$count++;
-			if ( has_post_thumbnail() ) {
-				$thumb_id = get_post_thumbnail_id();
-				$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
-				$image = $thumb_url_array[0];
-				$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) ),';
-			} else {
-				$image = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '1' : '4') . '.gif';
-				$scrim = '';
-			}
-			?>
-			<article <?php post_class('tile tile-third'); ?>
-					 style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
+				<?php $count++;	
 
-				<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
+				if ( has_post_thumbnail() ) {
+					$thumb_id = get_post_thumbnail_id();
+					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
+					$image = $thumb_url_array[0];
+					$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) ),';
+				} else {
+					$image = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '1' : '4') . '.gif';
+					$scrim = '';
+				}
+				?>
+				<article <?php post_class('tile tile-third'); ?>
+						 style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
 
-				<div class="tile-content itinerary-content">
-					<h2 class="tile-title itinerary-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-				</div>
+					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
 
-			</article>
+					<div class="tile-content itinerary-content">
+						<h2 class="tile-title itinerary-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+					</div>
+
+				</article>
 
 			<?php endforeach; wp_reset_postdata(); ?>
 
