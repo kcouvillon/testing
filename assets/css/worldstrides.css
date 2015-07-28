@@ -8550,6 +8550,12 @@ section:after {
       .explore-results .tile .tile-title {
         font-size: 29px; } }
 
+.explore-results .results.fail .no-results {
+  display: block; }
+
+.explore-results .results .no-results {
+  display: none; }
+
 .search-header {
   background: #f2f2f4;
   padding: 25px 5vw; }

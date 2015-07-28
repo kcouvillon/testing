@@ -448,6 +448,18 @@
 			}
 		}
 	}
+
+	.results {
+		&.fail {
+			.no-results {
+				display: block;
+			}
+		}
+		.no-results {
+			display: none;
+		}
+
+	}	
 }
 
 

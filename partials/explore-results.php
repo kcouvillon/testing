@@ -47,6 +47,10 @@
 
 			<?php endforeach; wp_reset_postdata(); ?>
 
+			<article class="no-results">
+				<h4>Sorry, there are no Collections based on your filters.</h4>
+			</article>
+
 		</div>
 	</div>
 
@@ -86,6 +90,10 @@
 			</article>
 
 			<?php endforeach; wp_reset_postdata(); ?>
+
+			<article class="no-results">
+				<h4>Sorry, there are no Itineraries based on your filters.</h4>
+			</article>
 
 		</div>
 	</div>
