@@ -42,11 +42,38 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 				<?php the_content(); ?>
 
-				<div class="related-postcard">
-					<img src="http://placehold.it/400x300" alt="">
-					<h3>Related Postcard</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia architecto aut quo nemo debitis vel, rem officia necessitatibus esse, numquam magni illo eligendi. Officiis, soluta dicta temporibus repellendus! A, architecto.</p>
-				</div>
+				<?php
+				$related_content = array_map( 'intval', explode( ',', get_post_meta( $post->ID, 'ws_blog_related_content', true ) ) );
+
+				$related_content_posts = new WP_Query( array(
+					'post__in'               => $related_content,
+					'no_found_rows'          => true,
+					'update_post_term_cache' => false,
+					'update_post_meta_cache' => false,
+					'post_type'              => array( 'itinerary', 'collection', 'post' )
+				) );
+				?>
+
+				<?php while ( $related_content_posts->have_posts() ) : ?>
+					<?php
+					$related_content_posts->the_post();
+
+					$background = '';
+					$featured = '';
+
+					if ( has_post_thumbnail() ) {
+						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+						$background = 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+					}
+					?>
+					<div class="related-postcard">
+						<?php if ( $featured ) :?>
+							<img src="<?php echo $featured[0]; ?>" alt="">
+						<?php endif; ?>
+						<h3><?php the_title(); ?></h3>
+						<p><?php the_excerpt(); ?></p>
+					</div>
+				<?php endwhile; ?>
 
 			</div>
 

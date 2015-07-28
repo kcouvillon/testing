@@ -131,7 +131,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 					'no_found_rows'          => true,
 					'update_post_term_cache' => false,
 					'update_post_meta_cache' => false,
-					'post_type'              => array( 'itinerary', 'collection' )
+					'post_type'              => array( 'itinerary', 'collection', 'post' )
 				) );
 				?>
 
