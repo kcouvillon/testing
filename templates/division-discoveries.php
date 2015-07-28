@@ -294,33 +294,9 @@ get_header(); ?>
 
 		</section>
 
-		<div class="blog-single-cta">
-			<span class="h2">Request Information about a WorldStrides {PROGRAM TYPE} Program</span>
-			<span>I am a</span>
-			<select name="" id="">
-				<option value="">Parent</option>
-				<option value="">Traveler</option>
-				<option value="">Teacher</option>
-			</select>
-			<button class="btn btn-primary">Get the Info</button>
-		</div>
+		<?php get_template_part( 'partials/request-info' ); ?>
 
-		<section class="info-cta">
-
-			<div class="additional-info">
-				<h3>Additional Information</h3>
-				<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet.</p>
-				<button class="btn btn-primary">Request Catalogue</button>
-			</div>
-
-			<div class="email-updates">
-				<h3>Email Updates About These Tours</h3>
-				<p>Interested in learning more? Enter your email address and we’ll share further information, promotions, and other opportunities.</p>
-				<form action="">
-					<input type="email" placeholder="Email Address">
-					<input type="submit" class="btn btn-primary" value="Sign Up">
-				</form>
-			</div>
-		</section>
+	</main>
+</div>
 
 <?php get_footer();

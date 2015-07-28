@@ -185,16 +185,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 		</div>
 		<!-- blog-single-wrap -->
 
-		<div class="blog-single-cta">
-			<span class="h2">Request Information about a WorldStrides {PROGRAM TYPE} Program</span>
-			<span>I am a</span>
-			<select name="" id="">
-				<option value="">Parent</option>
-				<option value="">Traveler</option>
-				<option value="">Teacher</option>
-			</select>
-			<button class="btn btn-primary">Get the Info</button>
-		</div>
+		<?php get_template_part( 'partials/request-info' ); ?>
 
 	</main>
 </div>
