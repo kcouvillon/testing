@@ -134,4 +134,4 @@
 
 </nav>
 
-<a href="#" class="explore-filters-toggle"><i class="icon-arrow-up"></i></a>
+<a href="#" class="explore-filters-toggle ws-container"><i class="icon-arrow-up"></i></a>
