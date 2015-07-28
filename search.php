@@ -10,10 +10,18 @@ get_header(); ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main blog" role="main">
 
-		<section class="section-header primary-section pattern-3">
-			<div class="section-header-content">
-				<h1>Search Results</h1>
-			</div>
+		<section class="search-header">
+			
+			<form role="search" method="get" class="search-results-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<i class="icon icon-search"></i>
+				<input type="search" class="search-field" placeholder="<?php the_search_query(); ?>" value="" name="s" title="Search for:">
+				<div class="search-options">
+					<span>All of WorldStrides</span>
+					<input type="radio" name="search-option" class="search-radio" value="all">
+					<span>Stories</span>
+					<input type="radio" name="search-option" class="search-radio" value="stories" checked="checked">
+				</div>
+			</form>
 		</section>
 
 		<div class="blog-wrap">
@@ -37,45 +45,13 @@ get_header(); ?>
 
 			<?php else : ?>
 
-				<p>Nothing found</p>
+				<span class="h3">Sorry, we couldn't find anything. Try another search term or use the Explore links.</span>
 
 			<?php endif; ?>
 
 			</section>
 
-			<aside class="sidebar">
-
-				<div class="search-widget">
-					
-					<input type="search" placeholder="Search Blog">
-
-					<h3>Explore by Traveler</h3>
-
-					<button class="btn btn-success">middle school</button>
-					<button class="btn btn-success">high school</button>
-					<button class="btn btn-success">university</button>
-					<button class="btn btn-success">performing arts</button>
-					<button class="btn btn-success">sports</button>
-
-					<h3>Explore by Destination</h3>
-
-					<button class="btn btn-success">middle school</button>
-					<button class="btn btn-success">high school</button>
-					<button class="btn btn-success">university</button>
-					<button class="btn btn-success">performing arts</button>
-					<button class="btn btn-success">sports</button>
-
-					<h3>Explore by Program</h3>
-
-					<button class="btn btn-success">middle school</button>
-					<button class="btn btn-success">high school</button>
-					<button class="btn btn-success">university</button>
-					<button class="btn btn-success">performing arts</button>
-					<button class="btn btn-success">sports</button>
-
-				</div>
-
-			</aside>
+			<?php get_sidebar( 'search' ); ?>
 
 		</div>
 

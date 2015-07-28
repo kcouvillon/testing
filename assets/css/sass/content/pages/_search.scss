@@ -1,0 +1,37 @@
+.search-header {
+	background: $gray_lighter;
+	padding: 25px 5vw;
+}
+
+.search-results-form {
+	position: relative;
+	margin-bottom: 0;
+
+	i {
+		position: absolute;
+		top: 15px;
+		left: 12px;
+	}
+
+	input[type="search"] {
+		width: 100%;
+		border: none;
+		outline: none;
+		padding: 10px 40px;
+	}
+}
+
+.search-options {
+	position: absolute;
+	top: 11px;
+	right: 12px;
+
+	span, input {
+		float: right;
+		color: $color_link;
+		margin-left: 10px;
+		font-weight: lighter;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}

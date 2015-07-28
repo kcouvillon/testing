@@ -69,6 +69,15 @@
 				}
 			}
 		}
+
+		> a:first-child {
+			display: block;
+			margin-top: 15vh;
+
+			@include susy-media($screen-sm) {
+				margin-top: 35vh;
+			}
+		}
 	}
 
 	.entry-title {

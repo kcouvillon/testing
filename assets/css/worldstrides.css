@@ -5766,8 +5766,8 @@ img {
 /*--------------------------------------------------------------
 5.1 Links
 --------------------------------------------------------------*/
-a {
-  transition: all 250ms ease; }
+a, .entry-title, button {
+  transition: color 250ms ease, background-color 250ms ease; }
 
 .breadcrumbs {
   color: #323c53;
@@ -6524,6 +6524,12 @@ a.no-decoration {
       font-size: 0.75em; }
       .blog .entry-header .post-categories a:hover, .single .entry-header .post-categories a:hover {
         color: #fb901d; }
+  .blog .entry-header > a:first-child, .single .entry-header > a:first-child {
+    display: block;
+    margin-top: 15vh; }
+    @media (min-width: 768px) {
+      .blog .entry-header > a:first-child, .single .entry-header > a:first-child {
+        margin-top: 35vh; } }
 
 .blog .entry-title, .single .entry-title {
   color: #fff;
@@ -8544,6 +8550,35 @@ section:after {
       .explore-results .tile .tile-title {
         font-size: 29px; } }
 
+.search-header {
+  background: #f2f2f4;
+  padding: 25px 5vw; }
+
+.search-results-form {
+  position: relative;
+  margin-bottom: 0; }
+  .search-results-form i {
+    position: absolute;
+    top: 15px;
+    left: 12px; }
+  .search-results-form input[type="search"] {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px 40px; }
+
+.search-options {
+  position: absolute;
+  top: 11px;
+  right: 12px; }
+  .search-options span, .search-options input {
+    float: right;
+    color: #fb901d;
+    margin-left: 10px;
+    font-weight: lighter;
+    display: inline-block;
+    vertical-align: middle; }
+
 .blog .format-aside .entry-title,
 .archive .format-aside .entry-title {
   display: none; }
@@ -8576,6 +8611,8 @@ section:after {
     display: inline-block;
     margin-right: 10px;
     margin-bottom: 10px; }
+  .search .sidebar .search-widget {
+    padding: 0 2vw 2vw; }
 
 .value-prop:before,
 .value-prop:after {

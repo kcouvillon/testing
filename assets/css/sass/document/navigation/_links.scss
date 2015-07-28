@@ -20,8 +20,8 @@
 // 	}
 // }
 
-a {
-	transition: all 250ms ease;
+a, .entry-title, button {
+	transition: color 250ms ease, background-color 250ms ease;
 }
 
 .breadcrumbs {
