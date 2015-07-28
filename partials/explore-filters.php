@@ -1,3 +1,26 @@
+<?php 
+
+$interestsArgs = array( 
+	'parent' => 11, // Interest
+	'orderby' => 'term_order', 
+	'hide_empty' => false
+	);
+$travelersArgs = array( 
+	'parent' => 222, // Traveler
+	'orderby' => 'term_order', 
+	'hide_empty' => false
+	);
+$continentsArgs = array( 
+	'parent' => 6, // Destination
+	'orderby' => 'term_order', 
+	'hide_empty' => false
+	);
+$travelers  = get_terms( 'filter', $travelersArgs );
+$interests  = get_terms( 'filter', $interestsArgs ); 
+$continents = get_terms( 'filter', $continentsArgs );
+
+?>
+
 <nav class="explore-filters ws-container">
 
 	<!-- <p class="search-by">Search by</p> -->
@@ -16,8 +39,6 @@
 			<div class="interests-filters hide-sm"></div>
 
 			<div class="interests-menu-container menu-container closed">
-
-				<?php $interests = get_terms( 'filter', array( 'parent' => 11 ) ); ?>
 
 				<ul id="interests-parent" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
 					
@@ -39,7 +60,7 @@
 						</li>
 
 						<?php 
-						$child_interests = get_terms( 'filter', array( 'parent' => $interest->term_id) ); 
+						$child_interests = get_terms( 'filter', array( 'parent' => $interest->term_id ) ); 
 						foreach ( $child_interests as $child_interest ) : ?>
 
 						<li><a href="#<?php echo $child_interest->slug; ?>" class="filter" data-filter-list=".interests-filters"><?php echo $child_interest->name; ?></a></li>
@@ -64,9 +85,8 @@
 			<div class="traveler-menu-container menu-container closed">
 				<ul class="terms-list list-unstyled clearfix">
 
-					<?php $terms = get_terms( 'filter', array( 'child_of' => 222 ) ); ?>
-					<?php foreach ( $terms as $term ) : ?>
-					<li><a href="#<?php echo $term->slug; ?>" class="filter" data-filter-list=".traveler-filters"><?php echo $term->name; ?></a></li>
+					<?php foreach ( $travelers as $traveler ) : ?>
+					<li><a href="#<?php echo $traveler->slug; ?>" class="filter" data-filter-list=".traveler-filters"><?php echo $traveler->name; ?></a></li>
 					<?php endforeach; ?>
 
 				</ul>
@@ -81,8 +101,6 @@
 			<div class="destination-filters hide-sm"></div>
 			
 			<div class="destination-menu-container menu-container closed">
-
-				<?php $continents = get_terms( 'filter', array( 'parent' => 6 ) ); ?>
 
 				<ul id="destinations-parent" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
 					<li class="destination-map">
@@ -109,7 +127,7 @@
 							</span>
 						</li>
 						<ul class="terms list-unstyled clearfix">
-							<?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id) ); 
+							<?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id ) ); 
 							foreach ( $destinations as $destination ) : ?>
 
 							<li><a href="#<?php echo $destination->slug; ?>" class="filter" data-filter-list=".destination-filters"><?php echo $destination->name; ?></a></li>
