@@ -8455,10 +8455,19 @@ section:after {
       opacity: 0; }
     .explore-filters .filter-menu.destination-menu .terms-list.invisible.destinations-parent .destination-graphic {
       transform: scale(1.2); }
-    @media screen and (min-width: 1200px) {
-      .explore-filters .filter-menu.destination-menu .destinations-child li {
-        width: 50%;
-        float: left; } }
+    .explore-filters .filter-menu.destination-menu .destinations-child .terms {
+      position: relative;
+      z-index: 1;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+      columns: 2;
+      -webkit-column-gap: 0;
+      -moz-column-gap: 0;
+      column-gap: 0; }
+      @media screen and (min-width: 1200px) {
+        .ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms li {
+          width: 50%;
+          float: left; } }
     .explore-filters .filter-menu.destination-menu .destination-map {
       color: #FFF;
       font-weight: 700;

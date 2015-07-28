@@ -325,10 +325,25 @@
 				}
 			}
 
-			.destinations-child li {
-				@media screen and (min-width: $screen-lg) {
-					width: 50%;
-					float: left;
+			.destinations-child .terms {
+				position: relative;
+				z-index: 1;
+				-webkit-columns: 2;
+				   -moz-columns: 2;
+				    	columns: 2;
+				-webkit-column-gap: 0;
+				   -moz-column-gap: 0;
+				    	column-gap: 0;
+
+				@at-root {
+					.ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms {
+						li {
+							@media screen and (min-width: $screen-lg) {
+								width: 50%;
+								float: left;
+							}
+						}
+					}
 				}
 			}
 
