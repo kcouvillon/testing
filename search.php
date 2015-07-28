@@ -10,7 +10,7 @@ get_header(); ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main blog" role="main">
 
-		<section class="search-header">
+		<section class="search-header section-header">
 			
 			<form role="search" method="get" class="search-results-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 				<i class="icon icon-search"></i>
@@ -33,11 +33,7 @@ get_header(); ?>
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<?php if ( ! in_array( $post->ID, $recent_highlights ) ) : ?>
-
-						<?php get_template_part( 'partials/content', 'blog' ) ?>
-
-					<?php endif; ?>
+						<?php get_template_part( 'partials/content', 'about' ) ?>
 
 				<?php endwhile; ?>
 
@@ -51,7 +47,11 @@ get_header(); ?>
 
 			</section>
 
-			<?php get_sidebar( 'search' ); ?>
+			<aside class="sidebar">
+
+				<?php get_template_part( 'partials/content', 'blog-sidebar-search-tags' ); ?>
+
+			</aside>
 
 		</div>
 
