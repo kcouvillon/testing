@@ -6,7 +6,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php if ( is_archive( 'press' ) && has_post_thumbnail() ) {
+	<?php if ( is_archive( 'press' ) || is_search() || is_tag() && has_post_thumbnail() ) {
 		the_post_thumbnail( 'thumbnail' );
 	} ?>
 
@@ -18,7 +18,7 @@
 		</header>
 	<?php endif; ?>
 
-	<?php if ( is_archive( 'press' ) ) : ?>
+	<?php if ( is_archive( 'press' ) || is_search() || is_tag() ) : ?>
 		<header class="entry-header">
 			<div class="entry-meta">
 				<time datetime=""><?php the_time( 'F j, Y' ); ?></time>
@@ -29,7 +29,7 @@
 
 	<div class="entry-content">
 		<?php
-		if ( is_archive( 'press' ) ) {
+		if ( is_archive( 'press' ) || is_search() || is_tag() ) {
 			the_excerpt();
 			echo '<a href="'. get_the_permalink() .'">Keep Reading</a>';
 		} else {
