@@ -5847,7 +5847,7 @@ p {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-other:before {
+.icon-faith-and-service:before {
   content: "\e61c"; }
 
 .icon-professional:before {
@@ -5856,7 +5856,7 @@ p {
 .icon-science-and-technology:before {
   content: "\e61e"; }
 
-.icon-culture-and-language:before {
+.icon-history-culture-and-language:before {
   content: "\e61f"; }
 
 .icon-performing:before {
