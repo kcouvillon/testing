@@ -8492,6 +8492,10 @@ section:after {
 
 /* Explore Results
  * ------------------------------------------------------------- */
+.explore-results .collections,
+.explore-results .itineraries {
+  margin-bottom: 4em; }
+
 .explore-results .tile {
   display: none;
   height: auto;
@@ -8549,6 +8553,12 @@ section:after {
     @media screen and (min-width: 768px) {
       .explore-results .tile .tile-title {
         font-size: 29px; } }
+
+.explore-results .results.fail .no-results {
+  display: block; }
+
+.explore-results .results .no-results {
+  display: none; }
 
 .search-header {
   background: #f2f2f4;
