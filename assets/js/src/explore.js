@@ -32,7 +32,22 @@
 				},
 				callbacks: {
 					onMixEnd: function (state) {
+						var $results = $('.results');
+
 						updateAvailableFilters(state);
+
+						$results.each(function(){
+							var $this = $(this),
+								$parent = $this.parent();
+						
+							if ( $this.hasClass('fail') ) {
+								$parent.addClass('no-results');
+							} else {
+								$parent.removeClass('no-results');
+							}
+						});
+					},
+					onMixFail: function (state) {
 					}
 				}
 			});
