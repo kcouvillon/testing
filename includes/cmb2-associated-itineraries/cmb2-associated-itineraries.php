@@ -59,6 +59,9 @@ function cmb2_render_associated_itineraries_callback( $field, $value, $object_id
 					<a href="<?php echo get_edit_post_link( $post->ID ); ?>">
 						<?php echo get_the_title(); ?>
 					</a>
+					<?php if ( 'publish' != $post->post_status ) : ?>
+					<small>&ndash; <?php echo $post->post_status; ?></small>
+					<?php endif; ?>
 				</li>
 			<?php endwhile; ?>
 			</ul>
