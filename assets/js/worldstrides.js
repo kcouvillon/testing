@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-07-28
+/*! WorldStrides - v0.1.0 - 2015-07-29
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -27,7 +27,22 @@
 				},
 				callbacks: {
 					onMixEnd: function (state) {
+						var $results = $('.results');
+
 						updateAvailableFilters(state);
+
+						$results.each(function(){
+							var $this = $(this),
+								$parent = $this.parent();
+						
+							if ( $this.hasClass('fail') ) {
+								$parent.addClass('no-results');
+							} else {
+								$parent.removeClass('no-results');
+							}
+						});
+					},
+					onMixFail: function (state) {
 					}
 				}
 			});

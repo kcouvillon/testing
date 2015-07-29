@@ -8557,7 +8557,13 @@ section:after {
  * ------------------------------------------------------------- */
 .explore-results .collections,
 .explore-results .itineraries {
-  margin-bottom: 4em; }
+  margin-bottom: 4em;
+  overflow: hidden; }
+  .explore-results .collections.no-results,
+  .explore-results .itineraries.no-results {
+    margin-bottom: 0;
+    visibility: hidden;
+    height: 0; }
 
 .explore-results .tile {
   display: none;
