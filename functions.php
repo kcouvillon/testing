@@ -315,3 +315,12 @@ function remove_admin_menu_itmes() {
 	remove_menu_page( 'edit-comments.php' );
 }
 add_action( 'admin_menu', 'remove_admin_menu_itmes' );
+
+function remove_dashboard_widgets() {
+	global $wp_meta_boxes;
+
+	unset($wp_meta_boxes['dashboard']['normal']['core']['arve_dashboard_widget']);
+
+}
+
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
