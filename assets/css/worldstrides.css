@@ -8825,7 +8825,10 @@ section:after {
   @media (min-width: 768px) {
     .block-single-col .block-text {
       padding-left: 16.9934640523%;
-      padding-right: 16.9934640523%; } }
+      padding-right: 16.9934640523%;
+      width: 100%; } }
+  .block-single-col .block-text iframe {
+    width: 100%; }
 
 .block-two-col .block-text {
   padding-left: 5vw;
