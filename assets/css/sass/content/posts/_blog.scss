@@ -7,6 +7,10 @@
 
 	}
 
+	.has-blog-image {
+		@extend %overlay-text;
+	}
+
 	.has-post-thumbnail .section-header {
 		background-size: cover !important;
 	}
@@ -114,6 +118,8 @@
 
 	.entry-content {
 		margin-top: 1em;
+		max-width: 670px;
+		margin-right: gutter();
 
 		*:first-child {
 			margin-top: 0 !important;

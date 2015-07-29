@@ -150,6 +150,10 @@
 			@include gallery(2 of 4);
 		}
 	}
+
+	.transparent-header & {
+		@extend %overlay-text;
+	}
 }
 
 .quick-access {
