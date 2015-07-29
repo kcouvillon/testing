@@ -11,18 +11,24 @@ $collection_args = array(
             'field'	   => 'term_id',
 			'terms'    => $filters,
         )
-    )
+    ),
+	'no_found_rows'          => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => false
 );
 $itinerary_args = array(
 	'post_type' => 'itinerary', 
-	'posts_per_page' => 200,
+	'posts_per_page' => 300,
 	'tax_query' => array(
         array(
             'taxonomy' => 'filter',
             'field'	   => 'term_id',
 			'terms'    => $filters,
         )
-    )
+    ),
+	'no_found_rows'          => true,
+	'update_post_term_cache' => false,
+	'update_post_meta_cache' => false,
 );
 $itineraries = get_posts( $itinerary_args );
 $collections = get_posts( $collection_args );
