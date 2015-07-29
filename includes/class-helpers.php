@@ -126,6 +126,7 @@ class WS_Helpers {
 
 			<div class="ws-block block-single-col">
 				<div class="block-text">
+					<span class="h3"><?php echo apply_filters( 'the_title', $block->post_title ); ?></span>
 					<?php echo apply_filters( 'the_content', $block->post_content ); ?>
 				</div>
 			</div>
