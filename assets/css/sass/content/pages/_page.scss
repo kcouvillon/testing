@@ -109,11 +109,18 @@ section {
 
 	.primary-section &, .single & {
 		margin-bottom: 0;
+		@extend %overlay-text;
 	}
 
 	.has-featured-image & {
 		background-size: cover !important;
 	}
+}
+
+.header-subtitle {
+	font-weight: 700;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
 }
 
 .section-header-content {

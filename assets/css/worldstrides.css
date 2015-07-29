@@ -7417,6 +7417,11 @@ section:after {
   .has-featured-image .section-header {
     background-size: cover !important; }
 
+.header-subtitle {
+  font-weight: 700;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
+
 .section-header-content {
   color: #323c53;
   margin-top: 10%;
@@ -8929,7 +8934,7 @@ section:after {
   top: 0;
   bottom: 0;
   width: 25%;
-  z-index: 3000;
+  z-index: 999;
   color: #fff;
   cursor: pointer; }
 
@@ -8970,6 +8975,9 @@ section:after {
 
 .cycle-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
+
+.primary-section .section-header, .single .section-header, .slideshow-header, .cycle-overlay {
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.65), -5px -5px 20px rgba(0, 0, 0, 0.65); }
 
 .ws-tooltips {
   position: absolute;
