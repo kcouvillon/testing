@@ -109,11 +109,11 @@ section {
 
 	.primary-section &, .single & {
 		margin-bottom: 0;
-		@extend %overlay-text;
 	}
 
 	.has-featured-image & {
 		background-size: cover !important;
+		@extend %overlay-text;
 	}
 }
 
