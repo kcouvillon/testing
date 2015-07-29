@@ -75,6 +75,11 @@
 
 		@include susy-media($screen-sm) {
 			@include pad(2);
+			width: 100%;
+		}
+
+		iframe {
+			width: 100%;
 		}
 	}
 }

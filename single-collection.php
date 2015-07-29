@@ -64,7 +64,7 @@ get_header(); ?>
 					<?php $subtitle = get_post_meta( $post->ID, 'collection_options_subtitle', true ); ?>
 
 					<?php if ( $subtitle ) : ?>
-						<p><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+						<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
 					<?php endif; ?>
 
 					<?php the_content(); ?>

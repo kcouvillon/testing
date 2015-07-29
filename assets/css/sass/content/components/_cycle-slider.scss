@@ -10,6 +10,7 @@
 	top: 1em;
 	left: 5vw;
 	color: #fff;
+	@extend %overlay-text;
 }
 
 .cycle-overlay {
@@ -23,6 +24,7 @@
 	padding: 0 5vw;
 	height: 100%;
 	@extend %overlay-top-bottom;
+	@extend %overlay-text;
 
 	div:first-of-type {
 		padding-top: 73%;
@@ -53,7 +55,7 @@
 	top: 0;
 	bottom: 0;
 	width: 25%;
-	z-index: 3000;
+	z-index: 999;
 	color: #fff;
 	cursor: pointer;
 }
