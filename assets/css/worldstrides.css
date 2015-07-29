@@ -5847,7 +5847,7 @@ p {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-other:before {
+.icon-faith-and-service:before {
   content: "\e61c"; }
 
 .icon-professional:before {
@@ -5856,7 +5856,7 @@ p {
 .icon-science-and-technology:before {
   content: "\e61e"; }
 
-.icon-culture-and-language:before {
+.icon-history-culture-and-language:before {
   content: "\e61f"; }
 
 .icon-performing:before {
@@ -8245,35 +8245,67 @@ section:after {
 
 /* Explore Tool
  * ------------------------------------------------------------- */
-.explore-tool .active-filter {
-  display: inline-block;
-  color: #FFF;
-  font-weight: 700;
-  margin-right: 1em; }
-  .explore-tool .active-filter .icon {
-    margin-left: 5px;
-    vertical-align: middle;
-    cursor: pointer; }
-    .explore-tool .active-filter .icon:hover {
-      color: #4fa9e5; }
-
-.explore-tool .explore-filters-toggle {
-  display: none;
-  background-color: #323C53;
-  color: #FFF;
-  border-top: 1px solid #424c61;
-  text-align: center;
-  padding: 0.5em 0; }
-  @media screen and (min-width: 768px) {
-    .explore-tool .explore-filters-toggle {
-      display: block; } }
-  .explore-tool .explore-filters-toggle:hover {
-    background-color: #4fa9e5; }
+.explore-tool {
+  position: relative; }
+  .explore-tool .active-filter {
+    display: inline-block;
+    color: #FFF;
+    font-weight: 700;
+    margin-right: 1em; }
+    .explore-tool .active-filter .icon {
+      margin-left: 5px;
+      vertical-align: middle;
+      cursor: pointer; }
+      .explore-tool .active-filter .icon:hover {
+        color: #4fa9e5; }
+  .explore-tool .explore-filters-toggle {
+    display: none;
+    background-color: #323C53;
+    color: #FFF;
+    border-top: 1px solid #424c61;
+    text-align: center;
+    padding: 0.5em 0; }
+    @media screen and (min-width: 768px) {
+      .explore-tool .explore-filters-toggle {
+        display: block; } }
+    .explore-tool .explore-filters-toggle:hover {
+      background-color: #4fa9e5; }
+  .explore-tool .search-by {
+    position: absolute;
+    top: -30px;
+    left: 5vw;
+    color: #FFF; }
+  .explore-tool .clear-all {
+    display: block;
+    max-width: 135px;
+    text-align: center;
+    padding: 0.25em 1em 0.4em 0.5em;
+    margin: -45px auto 0;
+    background-color: #FFF;
+    color: #4fa9e5;
+    transition: all 300ms ease; }
+    @media screen and (min-width: 768px) {
+      .explore-tool .clear-all {
+        position: absolute;
+        bottom: 95%;
+        right: 5vw;
+        padding: 0.2em 1em 0.2em 0.4em; } }
+    .explore-tool.has-filter .clear-all {
+      margin-top: 0; }
+      @media screen and (min-width: 768px) {
+        .explore-tool.has-filter .clear-all {
+          bottom: 100%; } }
+    .explore-tool .clear-all:hover {
+      background-color: #fb901d;
+      color: #FFF; }
+    .explore-tool .clear-all .icon {
+      vertical-align: middle; }
 
 /* Explore Filters
  * ------------------------------------------------------------- */
 .explore-filters {
   position: relative;
+  z-index: 1;
   background: #323c53;
   color: #777d8d;
   /* Current Filters
@@ -8312,41 +8344,42 @@ section:after {
         display: block; } }
     .explore-filters ul.current-filters li {
       padding: 1em 0; }
-    .explore-filters ul.current-filters .interests-filters:before {
-      content: "Interests";
-      margin-right: 1em; }
-    @media screen and (min-width: 768px) {
-      .explore-filters ul.current-filters .interests-filters {
-        width: 32.333%;
-        float: left;
-        padding-right: 1%; } }
     .explore-filters ul.current-filters .traveler-filters:before {
       content: "Traveler";
       margin-right: 1em; }
     @media screen and (min-width: 768px) {
       .explore-filters ul.current-filters .traveler-filters {
-        width: 31.333%;
+        width: 30%;
+        float: left;
+        padding-right: 1%; } }
+    @media screen and (min-width: 1200px) {
+      .explore-filters ul.current-filters .traveler-filters {
+        width: 20%; } }
+    .explore-filters ul.current-filters .interests-filters:before {
+      content: "Interests";
+      margin-right: 1em; }
+    @media screen and (min-width: 768px) {
+      .explore-filters ul.current-filters .interests-filters {
+        width: 35%;
         float: left;
         padding-right: 1%;
         padding-left: 1%; } }
     @media screen and (min-width: 1200px) {
-      .explore-filters ul.current-filters .traveler-filters {
-        width: 17.666%;
-        float: left; } }
+      .explore-filters ul.current-filters .interests-filters {
+        width: 30%; } }
     .explore-filters ul.current-filters .destination-filters:before {
       content: "Destination";
       margin-right: 1em; }
     @media screen and (min-width: 768px) {
       .explore-filters ul.current-filters .destination-filters {
-        width: 32.333%;
+        width: 35%;
         float: left;
         padding-left: 1%; } }
     @media screen and (min-width: 1200px) {
       .explore-filters ul.current-filters .destination-filters {
-        width: 50%;
-        float: left; } }
-  .explore-filters .interests-filters,
+        width: 50%; } }
   .explore-filters .traveler-filters,
+  .explore-filters .interests-filters,
   .explore-filters .destination-filters {
     padding: 1em 0; }
   .explore-filters .interests-filters:before {
@@ -8361,9 +8394,9 @@ section:after {
   .explore-filters .filter-menu {
     position: relative;
     border-bottom: 1px solid #424c61;
-    /* Filter Menu
-		** --------------------------------------------------- */
     /* Traveler Menu
+		** --------------------------------------------------- */
+    /* Filter Menu
 		** --------------------------------------------------- */
     /* Destination Menu
 		** --------------------------------------------------- */ }
@@ -8416,11 +8449,24 @@ section:after {
         z-index: -1;
         visibility: hidden; }
     @media screen and (min-width: 768px) {
-      .explore-filters .filter-menu.interests-menu {
-        width: 32.333%;
+      .explore-filters .filter-menu.traveler-menu {
+        width: 30%;
         float: left;
         padding-right: 1%;
         border-right: 1px solid #424c61; } }
+    @media screen and (min-width: 1200px) {
+      .explore-filters .filter-menu.traveler-menu {
+        width: 20%; } }
+    @media screen and (min-width: 768px) {
+      .explore-filters .filter-menu.interests-menu {
+        width: 35%;
+        float: left;
+        padding-right: 1%;
+        padding-left: 1%;
+        border-right: 1px solid #424c61; } }
+    @media screen and (min-width: 1200px) {
+      .explore-filters .filter-menu.interests-menu {
+        width: 30%; } }
     .explore-filters .filter-menu.interests-menu .terms-list a {
       padding: 1em 0 1em 55px; }
       .explore-filters .filter-menu.interests-menu .terms-list a .icon {
@@ -8431,34 +8477,34 @@ section:after {
         left: 0;
         top: 50%; }
     @media screen and (min-width: 768px) {
-      .explore-filters .filter-menu.traveler-menu {
-        width: 31.333%;
-        float: left;
-        padding-right: 1%;
-        padding-left: 1%;
-        border-right: 1px solid #424c61; } }
-    @media screen and (min-width: 1200px) {
-      .explore-filters .filter-menu.traveler-menu {
-        width: 17.666%;
-        float: left; } }
-    @media screen and (min-width: 768px) {
       .explore-filters .filter-menu.destination-menu {
-        width: 32.333%;
+        width: 35%;
         float: left;
         padding-left: 1%; } }
     @media screen and (min-width: 1200px) {
       .explore-filters .filter-menu.destination-menu {
-        width: 50%;
-        float: left; } }
+        width: 50%; } }
     .explore-filters .filter-menu.destination-menu .terms-list.invisible .destination-graphic {
       transform: scale(0.8);
       opacity: 0; }
     .explore-filters .filter-menu.destination-menu .terms-list.invisible.destinations-parent .destination-graphic {
       transform: scale(1.2); }
-    @media screen and (min-width: 1200px) {
-      .explore-filters .filter-menu.destination-menu .destinations-child li {
-        width: 50%;
-        float: left; } }
+    .explore-filters .filter-menu.destination-menu .destinations-child .terms {
+      position: relative;
+      z-index: 1;
+      -webkit-columns: 2;
+      -webkit-column-width: 120px;
+      -webkit-column-gap: 0;
+      -moz-columns: 2;
+      -moz-column-width: 120px;
+      -moz-column-gap: 0;
+      columns: 2;
+      column-width: 120px;
+      column-gap: 0; }
+      @media screen and (min-width: 1200px) {
+        .ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms li {
+          width: 50%;
+          float: left; } }
     .explore-filters .filter-menu.destination-menu .destination-map {
       color: #FFF;
       font-weight: 700;

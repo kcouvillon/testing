@@ -32,7 +32,11 @@
 
 		<section class="explore-tool">
 
+			<span class="search-by">Search by</span>
+
 			<?php get_template_part('partials/explore', 'filters'); ?>			
+
+			<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
 
 			<?php get_template_part('partials/explore', 'results') ?>
 
