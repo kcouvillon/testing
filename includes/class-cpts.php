@@ -146,12 +146,6 @@ class WS_Custom_Post_Types {
 			)
 		);
 
-		register_extended_post_type( 'review',
-			array(
-				'menu_icon' => 'dashicons-testimonial'
-			)
-		);
-
 		register_extended_post_type( 'why-ws',
 			array(
 				'menu_icon'         => 'dashicons-format-image',

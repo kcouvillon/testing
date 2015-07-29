@@ -125,7 +125,11 @@
 		max-height: 1000px;
 		transition: max-height 400ms ease-in;
 		@media screen and (min-width: $screen-sm) {
-			display: flex;	
+			display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+			display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+			display: -ms-flexbox;      /* TWEENER - IE 10 */
+			display: -webkit-flex;     /* NEW - Chrome */
+			display: flex; 
 		}
 	}
 
@@ -381,10 +385,16 @@
 				column-width: 120px;
 				column-gap: 0;
 
+				li {
+					-webkit-column-break-inside: avoid;
+					page-break-inside: avoid;
+					break-inside: avoid;
+				}
+
 				@at-root {
 					.ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms {
 						li {
-							@media screen and (min-width: $screen-lg) {
+							@media screen and (min-width: $screen-md) {
 								width: 50%;
 								float: left;
 							}
@@ -443,6 +453,13 @@
 	.collections,
 	.itineraries {
 		margin-bottom: 4em;
+		overflow: hidden;
+
+		&.no-results {
+			margin-bottom: 0;
+			visibility: hidden;
+			height: 0;
+		}
 	}
 
 	.tile {

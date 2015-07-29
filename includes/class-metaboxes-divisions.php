@@ -45,6 +45,7 @@ class WS_Metaboxes_Divisions {
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships_small' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blocks_after' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blog_posts' ) );
+		add_action( 'cmb2_init',  array( $this, 'division_additional_info' ) );
 	}
 
 	/**
@@ -61,9 +62,7 @@ class WS_Metaboxes_Divisions {
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
 					'templates/division-capstone.php',
-					'templates/division-discoveries.php',
-					'templates/division-on-stage.php',
-					'templates/division-perspectives.php'
+					'templates/division-general.php'
 				)
 			),
 		) );
@@ -72,6 +71,30 @@ class WS_Metaboxes_Divisions {
 			'name' => 'Subtitle',
 			'id' => $prefix . 'subtitle',
 			'type' => 'text'
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Discovery Why module',
+			'id'               => 'discovery_why',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Blog module',
+			'id'               => 'blog',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
+			),
 		) );
 	}
 
@@ -89,9 +112,7 @@ class WS_Metaboxes_Divisions {
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
 					'templates/division-capstone.php',
-					'templates/division-discoveries.php',
-					'templates/division-on-stage.php',
-					'templates/division-perspectives.php'
+					'templates/division-general.php'
 				)
 			),
 		) );
@@ -134,9 +155,7 @@ class WS_Metaboxes_Divisions {
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
 					'templates/division-capstone.php',
-					'templates/division-discoveries.php',
-					'templates/division-on-stage.php',
-					'templates/division-perspectives.php'
+					'templates/division-general.php'
 				)
 			),
 		) );
@@ -179,9 +198,7 @@ class WS_Metaboxes_Divisions {
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
 					'templates/division-capstone.php',
-					'templates/division-discoveries.php',
-					'templates/division-on-stage.php',
-					'templates/division-perspectives.php'
+					'templates/division-general.php'
 				)
 			),
 		) );
@@ -285,10 +302,7 @@ class WS_Metaboxes_Divisions {
 			'object_types' => array( 'page', ),
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
-					'templates/division-capstone.php',
-					'templates/division-discoveries.php',
-					'templates/division-on-stage.php',
-					'templates/division-perspectives.php'
+					'templates/division-capstone.php'
 				)
 			),
 		) );
@@ -468,9 +482,7 @@ class WS_Metaboxes_Divisions {
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
 					'templates/division-capstone.php',
-					'templates/division-discoveries.php',
-					'templates/division-on-stage.php',
-					'templates/division-perspectives.php'
+					'templates/division-general.php'
 				)
 			),
 		) );
@@ -530,9 +542,7 @@ class WS_Metaboxes_Divisions {
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
 					'templates/division-capstone.php',
-					'templates/division-discoveries.php',
-					'templates/division-on-stage.php',
-					'templates/division-perspectives.php'
+					'templates/division-general.php'
 				)
 			),
 		) );
@@ -546,6 +556,58 @@ class WS_Metaboxes_Divisions {
 			// checkbox/radio, used in the modal view to select the post type
 			'select_type' => 'checkbox'
 		) );
+	}
+
+	/**
+	 * Options
+	 */
+	function division_additional_info() {
+
+		$prefix = 'additional_info_x_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Additional Info and Email', 'cmb2' ),
+			'object_types' => array( 'page' ),
+			'show_on'      => array(
+				'key' => 'page-template', 'value' => array(
+					'templates/division-capstone.php',
+					'templates/division-general.php'
+				)
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'             => 'Request information module',
+			'id'               => $prefix . 'request_box',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'On',
+			'options'          => array(
+				'on' => __( 'On', 'cmb' ),
+				'off'   => __( 'Off', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Additional Info',
+			'id'   => $prefix . 'text',
+			'type' => 'textarea_small',
+			'desc' => 'The [button] shortcode can be used here'
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Email Title',
+			'id'   => $prefix . 'email_title',
+			'type' => 'text',
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Email Text',
+			'id'   => $prefix . 'email_text',
+			'type' => 'textarea_small',
+		) );
+
 	}
 }
 
