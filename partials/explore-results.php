@@ -12,9 +12,7 @@ $collection_args = array(
 			'terms'    => $filters,
         )
     ),
-	'no_found_rows'          => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => false
+	'no_found_rows'          => true
 );
 $itinerary_args = array(
 	'post_type' => 'itinerary', 
@@ -26,12 +24,10 @@ $itinerary_args = array(
 			'terms'    => $filters,
         )
     ),
-	'no_found_rows'          => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => false,
+	'no_found_rows'          => true
 );
-$itineraries = get_posts( $itinerary_args );
-$collections = get_posts( $collection_args );
+$itineraries = new WP_Query( $itinerary_args );
+$collections = new WP_Query( $collection_args );
 ?>
 
 <section class="explore-results section-content">
@@ -43,7 +39,7 @@ $collections = get_posts( $collection_args );
 		</header>
 		<div class="results clearfix">
 
-			<?php foreach ( $collections as $post ) : setup_postdata($post); ?>
+			<?php while( $collections->have_posts() ) : $collections->the_post(); ?>
 
 				<?php
 				$terms = get_the_terms( get_the_ID(), 'filter' );
@@ -76,7 +72,7 @@ $collections = get_posts( $collection_args );
 
 				</article>
 
-			<?php endforeach; wp_reset_postdata(); ?>
+			<?php endwhile; ?>
 
 			<article class="no-results">
 				<h4>Sorry, there are no Collections based on your filters.</h4>
@@ -93,7 +89,7 @@ $collections = get_posts( $collection_args );
 			
 			<?php 
 			$count = 0;
-			foreach ( $itineraries as $post ) : setup_postdata($post); ?>
+			while ( $itineraries->have_posts() ) : $itineraries->the_post(); ?>
 
 				<?php $count++;	
 
@@ -118,7 +114,7 @@ $collections = get_posts( $collection_args );
 
 				</article>
 
-			<?php endforeach; wp_reset_postdata(); ?>
+			<?php endwhile; ?>
 
 			<article class="no-results">
 				<h4>Sorry, there are no Itineraries based on your filters.</h4>
