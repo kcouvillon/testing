@@ -56,7 +56,7 @@ function cmb2_render_associated_itineraries_callback( $field, $value, $object_id
 				<?php $associated_itineraries->the_post(); ?>
 				<li>
 					<?php echo get_the_post_thumbnail( $post->ID, array( 30, 30 ) ); ?>
-					<a href="<?php get_edit_post_link( $post->ID ); ?>">
+					<a href="<?php echo get_edit_post_link( $post->ID ); ?>">
 						<?php echo get_the_title(); ?>
 					</a>
 				</li>
