@@ -25,6 +25,10 @@
 		font-weight: lighter;
 		margin: 0 0 1.5em;
 	}
+
+	.has-featured-image & {
+		@extend %overlay-text;
+	}
 }
 
 .home-section {

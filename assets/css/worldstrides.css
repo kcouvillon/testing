@@ -2105,7 +2105,8 @@ select[multiple].form-group-lg .form-control {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+  text-shadow: none !important; }
 
 .btn:focus,
 .btn:active:focus,
@@ -6554,7 +6555,9 @@ a.no-decoration {
   margin: 2em 0; }
 
 .blog .entry-content, .single .entry-content {
-  margin-top: 1em; }
+  margin-top: 1em;
+  max-width: 670px;
+  margin-right: 1.9607843137%; }
   .blog .entry-content *:first-child, .single .entry-content *:first-child {
     margin-top: 0 !important; }
 
@@ -7431,7 +7434,7 @@ section:after {
     color: #fff; }
   .pattern-1 .section-header-content, .pattern-2 .section-header-content, .pattern-4 .section-header-content, .pattern-5 .section-header-content, .pattern-7 .section-header-content, .pattern-8 .section-header-content {
     color: #fff; }
-    .pattern-1 .section-header-content h1, .pattern-1 .section-header-content p, .pattern-1 .section-header-content span, .pattern-1 .section-header-content strong, .pattern-1 .section-header-content em, .pattern-2 .section-header-content h1, .pattern-2 .section-header-content p, .pattern-2 .section-header-content span, .pattern-2 .section-header-content strong, .pattern-2 .section-header-content em, .pattern-4 .section-header-content h1, .pattern-4 .section-header-content p, .pattern-4 .section-header-content span, .pattern-4 .section-header-content strong, .pattern-4 .section-header-content em, .pattern-5 .section-header-content h1, .pattern-5 .section-header-content p, .pattern-5 .section-header-content span, .pattern-5 .section-header-content strong, .pattern-5 .section-header-content em, .pattern-7 .section-header-content h1, .pattern-7 .section-header-content p, .pattern-7 .section-header-content span, .pattern-7 .section-header-content strong, .pattern-7 .section-header-content em, .pattern-8 .section-header-content h1, .pattern-8 .section-header-content p, .pattern-8 .section-header-content span, .pattern-8 .section-header-content strong, .pattern-8 .section-header-content em {
+    .pattern-1 .section-header-content h1, .pattern-1 .section-header-content p, .pattern-1 .section-header-content strong, .pattern-1 .section-header-content em, .pattern-2 .section-header-content h1, .pattern-2 .section-header-content p, .pattern-2 .section-header-content strong, .pattern-2 .section-header-content em, .pattern-4 .section-header-content h1, .pattern-4 .section-header-content p, .pattern-4 .section-header-content strong, .pattern-4 .section-header-content em, .pattern-5 .section-header-content h1, .pattern-5 .section-header-content p, .pattern-5 .section-header-content strong, .pattern-5 .section-header-content em, .pattern-7 .section-header-content h1, .pattern-7 .section-header-content p, .pattern-7 .section-header-content strong, .pattern-7 .section-header-content em, .pattern-8 .section-header-content h1, .pattern-8 .section-header-content p, .pattern-8 .section-header-content strong, .pattern-8 .section-header-content em {
       color: #fff; }
     .pattern-1 .section-header-content .breadcrumbs, .pattern-2 .section-header-content .breadcrumbs, .pattern-4 .section-header-content .breadcrumbs, .pattern-5 .section-header-content .breadcrumbs, .pattern-7 .section-header-content .breadcrumbs, .pattern-8 .section-header-content .breadcrumbs {
       color: #E1EBF2; }
@@ -8994,8 +8997,8 @@ section:after {
 .cycle-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
 
-.has-featured-image .section-header, .slideshow-header, .cycle-overlay {
-  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.65), -5px -5px 20px rgba(0, 0, 0, 0.65); }
+.transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .has-featured-image .section-header, .has-section-image .section-header-content, .has-featured-image .intro-content, .slideshow-header, .cycle-overlay {
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45), -5px -5px 20px rgba(0, 0, 0, 0.45); }
 
 .ws-tooltips {
   position: absolute;
