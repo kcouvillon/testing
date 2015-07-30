@@ -22,9 +22,12 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 			else :
 				$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 			endif;
+			$class = '';
+		} else {
+			$class = ' pattern-3';
 		} ?>
 
-		<section class="section-header primary-section pattern-3" style="background-image: <?php echo $background; ?>">
+		<section class="section-header primary-section<?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
 
 			<?php if ( $blog_type === 'general' || $blog_type === 'travelogue' ) : ?>
 				<div class="section-header-content">
