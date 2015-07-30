@@ -82,6 +82,34 @@ class WS_Marketo {
 
 		return $output;
 	}
+
+	public static function get_marketo_form( $post_id ) {
+		$form_id = '';
+		$product_lines = get_the_terms( $post_id, 'product-line' );
+
+		// ORDER:
+		// Discoveries > Perspectives > Capstone > OnStage > Excel Sports
+
+		foreach ( $product_lines as $division ) {
+
+			if ( 'discoveries' == $division->slug ) {
+				$form_id = 1699;
+			} elseif ( 'perspectives' == $division->slug ) {
+				$form_id = 1699;
+			} elseif ( 'capstone' == $division->slug ) {
+				$form_id = 1708;
+			} elseif ( 'on-stage' == $division->slug ) {
+				$form_id = 1709;
+			} elseif ( 'excel-sports' == $division->slug ) {
+				$form_id = 1712;
+			} else {
+				$form_id = 1699;
+			}
+
+		}
+		
+		echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
+	}
 }
 
 WS_Marketo::instance();
