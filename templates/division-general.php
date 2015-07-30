@@ -38,6 +38,18 @@ $associated_collections = new WP_Query( array(
 	'orderby' => 'title'
 ) );
 
+if ( 'discoveries' == $post->post_name ) {
+	$division_target = 'Middle School';
+} elseif ( 'perspectives' == $post->post_name ) {
+	$division_target = 'High School';
+} elseif ( 'capstone' == $post->post_name ) {
+	$division_target = 'Capstone';
+} elseif ( 'on-stage' == $post->post_name ) {
+	$division_target = 'Performing Arts';
+} else {
+	$division_target = get_the_title();
+}
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">
@@ -59,8 +71,7 @@ get_header(); ?>
 					<div class="section-header-content">
 						<nav class="breadcrumbs hide-print">
 							<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
-							<span>Collections</span>>
-							<span><?php the_title(); ?></span>
+							<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
 						</nav>
 						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 

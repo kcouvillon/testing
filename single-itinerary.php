@@ -365,13 +365,15 @@ get_header(); ?>
 							<?php endif; ?>
 
 							<?php
-							$related = $day['related_content'];
-							$related_title = $day['related_content_title'];
+							$related = ( ! empty( $day['related_content'] ) ? $day['related_content'] : '' );
+							$related_title = ( ! empty ( $day['related_content_title'] ) ? $day['related_content_title'] : '' );
 
-							$related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $day['override_image'] . ')';
-							$related_image_title = $day['override_image_title'];
-							$related_description = $day['override_description'];
-							$related_url = $day['override_url'];
+							$related_image = ( ! empty( $day['override_image'] ) ? $day['override_image'] : '' );
+							$related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $related_image . ')';
+
+							$related_image_title = ( ! empty( $day['override_image_title'] ) ? $day['override_image_title'] : '' );
+							$related_description = ( ! empty( $day['override_description'] ) ? $day['override_description'] : '' );
+							$related_url = ( ! empty( $day['override_url'] ) ? $day['override_url'] : '' );
 
 							$related_type = 'other';
 
