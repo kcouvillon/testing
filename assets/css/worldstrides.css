@@ -9002,7 +9002,7 @@ section:after {
 .cycle-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
 
-.transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .has-featured-image .section-header, .has-section-image .section-header-content, .has-featured-image .intro-content, .slideshow-header, .cycle-overlay, .has-post-thumbnail .tile-content {
+.transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .has-featured-image .section-header, .has-section-image .section-header-content, .has-featured-image .intro-content, .slideshow-header, .cycle-overlay, .has-post-thumbnail .tile-content, .has-tile-image .tile-content {
   text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45), -5px -5px 20px rgba(0, 0, 0, 0.45); }
 
 .ws-tooltips {
@@ -9050,7 +9050,7 @@ section:after {
     margin-right: 10px; }
   .tile .meta a {
     color: #bde5ff;
-    font-size: 75%;
+    font-size: 0.75em;
     text-transform: uppercase; }
     .tile .meta a:hover {
       color: #fb901d; }
@@ -9073,6 +9073,10 @@ section:after {
     color: inherit; }
     .tile-title a:hover {
       color: #fb901d; }
+
+.list-tag-no-link {
+  color: #fff;
+  font-size: 0.75em; }
 
 .site-footer {
   position: relative;

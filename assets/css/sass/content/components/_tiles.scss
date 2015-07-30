@@ -27,7 +27,7 @@
 		}
 		a {
 			color: $blue_light;
-			font-size: 75%;
+			font-size: 0.75em;
 			text-transform: uppercase;
 			&:hover {
 				color: $orange;
@@ -48,7 +48,7 @@
 			color: #FFF;
 		}
 
-		.has-post-thumbnail & {
+		.has-post-thumbnail &, .has-tile-image & {
 			@extend %overlay-text;
 		}
 	}
@@ -62,4 +62,9 @@
 				color: $orange;
 			}
 		}
+	}
+
+	.list-tag-no-link {
+		color: #fff;
+		font-size: 0.75em;
 	}
