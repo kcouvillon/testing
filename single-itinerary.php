@@ -112,7 +112,7 @@ get_header(); ?>
 
 				<?php if ( $number_days ) : ?>
 
-					<span class="h3"><i class="icon icon-calendar"></i> <?php echo $number_days; ?> Days</span>
+					<span class="h3"><i class="icon icon-calendar"></i> <?php echo esc_html( $number_days ); ?></span>
 
 				<?php elseif ( $date_list ) : ?>
 
