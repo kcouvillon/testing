@@ -14,9 +14,12 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 			if ( has_post_thumbnail() ) {
 				$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
 				$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
-			} ?>
+				$class = ' has-blog-image';
+			} else {
+				$class = ' pattern-' . rand(1, 9);
+			}?>
 
-		<header class="section-header entry-header pattern-<?php echo rand(1, 9); ?>" style="background-image: <?php echo $background; ?>;">
+		<header class="section-header entry-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 
 			<?php echo get_the_category_list(); ?>
 

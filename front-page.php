@@ -105,9 +105,12 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 						if( has_post_thumbnail( $resource_id ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
 							$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+							$class = '';
+						} else {
+							$class = ' pattern-' . rand(1, 9);
 						} ?>
 
-						<li class="resource tile tile-third pattern-<?php echo rand( 1, 9 ); ?>" style="background-image: <?php echo $background; ?>">
+						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
 									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
