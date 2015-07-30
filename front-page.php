@@ -68,17 +68,19 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 
 							$background = $thumb_url_array[0];
 							$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+							$class = ' has-tile-image';
 						} else {
 							$background = get_template_directory_uri() . '/assets/images/src/patterns/ws_w_pattern' . ( ($count % 2 == 0 ) ? '5' : '8') . '.gif';
 							$scrim = '';
+							$class = ' no-tile-image';
 						}
 
 						?>
 
-						<li class="program tile <?php echo $tile_size; ?>" style="background-image:<?php echo $scrim . ' url(' . $background . ')'; ?>;">
+						<li class="program tile <?php echo $tile_size; echo $class; ?>" style="background-image:<?php echo $scrim . ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
-									<li><?php echo WS_Helpers::get_subtitle( $program->ID ); ?></li>
+									<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $program->ID ); ?></li>
 								</ul>
 								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $program->ID ); ?>"><?php echo apply_filters( 'the_title', $program->post_title ); ?></a></h2>
 							</div>

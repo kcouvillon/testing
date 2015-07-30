@@ -19,6 +19,10 @@
 			padding-top: 21%;
 		}
 	}
+
+	&.has-tile-image {
+		background-size: cover;
+	}
 	
 	.meta {
 		li {
@@ -40,16 +44,13 @@
 		position: absolute;
 		bottom: 1em;
 		left: 1em;
+		@extend %overlay-text;
 		@include susy-media($screen-md) {
 			bottom: 1.5em;
 			left: 1.5em;
 		}
 		a {
 			color: #FFF;
-		}
-
-		.has-post-thumbnail &, .has-tile-image & {
-			@extend %overlay-text;
 		}
 	}
 

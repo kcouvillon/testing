@@ -7418,7 +7418,7 @@ section:after {
   .primary-section .section-header, .single .section-header {
     margin-bottom: 0; }
   .has-featured-image .section-header {
-    background-size: cover !important; }
+    background-size: cover; }
 
 .header-subtitle {
   font-weight: 700;
@@ -9002,7 +9002,7 @@ section:after {
 .cycle-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
 
-.transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .has-featured-image .section-header, .has-section-image .section-header-content, .has-featured-image .intro-content, .slideshow-header, .cycle-overlay, .has-post-thumbnail .tile-content, .has-tile-image .tile-content {
+.transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .has-featured-image .section-header, .has-section-image .section-header-content, .has-featured-image .intro-content, .slideshow-header, .cycle-overlay, .tile-content {
   text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45), -5px -5px 20px rgba(0, 0, 0, 0.45); }
 
 .ws-tooltips {
@@ -9045,6 +9045,8 @@ section:after {
       width: 33.333%;
       float: left;
       padding-top: 21%; } }
+  .tile.has-tile-image {
+    background-size: cover; }
   .tile .meta li {
     display: inline-block;
     margin-right: 10px; }

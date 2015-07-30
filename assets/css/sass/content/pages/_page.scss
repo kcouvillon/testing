@@ -112,7 +112,7 @@ section {
 	}
 
 	.has-featured-image & {
-		background-size: cover !important;
+		background-size: cover;
 		@extend %overlay-text;
 	}
 }
