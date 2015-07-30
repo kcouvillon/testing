@@ -16,11 +16,14 @@
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
 			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			$class = '';
+		} else {
+			$class = ' pattern-1';
 		}
 		?>
 
 		<section class="explore primary-section">
-			<header class="section-header pattern-1" style="background-image: <?php echo $background; ?>;">
+			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
 
 					<h1 class="section-title"><?php the_title(); ?></h1>
