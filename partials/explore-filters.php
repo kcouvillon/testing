@@ -1,7 +1,7 @@
 <?php 
 
 $interestsArgs = array( 
-	'parent' => 12, // Interest
+	'parent' => 11, // Interest
 	'orderby' => 'term_order', 
 	'hide_empty' => false
 	);
