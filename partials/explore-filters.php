@@ -1,7 +1,7 @@
 <?php 
 
 $interestsArgs = array( 
-	'parent' => 11, // Interest
+	'parent' => 12, // Interest
 	'orderby' => 'term_order', 
 	'hide_empty' => false
 	);
@@ -60,7 +60,9 @@ $continents = get_terms( 'filter', $continentsArgs );
 					<?php foreach ( $interests as $interest ) : ?>
 					<li><a href="#<?php echo $interest->slug; ?>" class="term-list-toggle parent-term parent-interest">
 						<i class="icon icon-<?php echo $interest->slug; ?>"></i>
-						<?php echo $interest->name; ?></a></li>
+						<?php echo $interest->name; ?>
+						<i class="icon icon-arrow-right"></i>
+						</a></li>
 					<?php endforeach; ?>
 
 				</ul>

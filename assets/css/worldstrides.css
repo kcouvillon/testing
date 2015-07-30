@@ -8492,6 +8492,11 @@ section:after {
         position: absolute;
         left: 0;
         top: 50%; }
+      .explore-filters .filter-menu.interests-menu .terms-list a .icon-arrow-right {
+        position: relative;
+        font-size: 0.75em;
+        margin-bottom: 0;
+        margin-left: 1em; }
     @media screen and (min-width: 768px) {
       .explore-filters .filter-menu.destination-menu {
         width: 35%;
@@ -8997,7 +9002,7 @@ section:after {
 .cycle-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
 
-.transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .has-featured-image .section-header, .has-section-image .section-header-content, .has-featured-image .intro-content, .slideshow-header, .cycle-overlay {
+.transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .has-featured-image .section-header, .has-section-image .section-header-content, .has-featured-image .intro-content, .slideshow-header, .cycle-overlay, .has-post-thumbnail .tile-content {
   text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45), -5px -5px 20px rgba(0, 0, 0, 0.45); }
 
 .ws-tooltips {
@@ -9040,23 +9045,6 @@ section:after {
       width: 33.333%;
       float: left;
       padding-top: 21%; } }
-  .tile .tile-content {
-    position: absolute;
-    bottom: 1em;
-    left: 1em; }
-    @media (min-width: 960px) {
-      .tile .tile-content {
-        bottom: 1.5em;
-        left: 1.5em; } }
-    .tile .tile-content a {
-      color: #FFF; }
-  .tile .tile-title {
-    color: #FFF;
-    margin: 0; }
-    .tile .tile-title a {
-      color: inherit; }
-      .tile .tile-title a:hover {
-        color: #fb901d; }
   .tile .meta li {
     display: inline-block;
     margin-right: 10px; }
@@ -9065,6 +9053,25 @@ section:after {
     font-size: 75%;
     text-transform: uppercase; }
     .tile .meta a:hover {
+      color: #fb901d; }
+
+.tile-content {
+  position: absolute;
+  bottom: 1em;
+  left: 1em; }
+  @media (min-width: 960px) {
+    .tile-content {
+      bottom: 1.5em;
+      left: 1.5em; } }
+  .tile-content a {
+    color: #FFF; }
+
+.tile-title {
+  color: #FFF;
+  margin: 0; }
+  .tile-title a {
+    color: inherit; }
+    .tile-title a:hover {
       color: #fb901d; }
 
 .site-footer {

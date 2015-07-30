@@ -20,30 +20,6 @@
 		}
 	}
 	
-	.tile-content {
-		position: absolute;
-		bottom: 1em;
-		left: 1em;
-		@include susy-media($screen-md) {
-			bottom: 1.5em;
-			left: 1.5em;
-		}
-		a {
-			color: #FFF;
-		}
-	}
-
-	.tile-title {
-		color: #FFF;
-		margin: 0;
-		a {
-			color: inherit;
-			&:hover {
-				color: $orange;
-			}
-		}
-	}
-
 	.meta {
 		li {
 			display: inline-block;
@@ -59,3 +35,31 @@
 		}
 	}
 }
+
+	.tile-content {
+		position: absolute;
+		bottom: 1em;
+		left: 1em;
+		@include susy-media($screen-md) {
+			bottom: 1.5em;
+			left: 1.5em;
+		}
+		a {
+			color: #FFF;
+		}
+
+		.has-post-thumbnail & {
+			@extend %overlay-text;
+		}
+	}
+
+	.tile-title {
+		color: #FFF;
+		margin: 0;
+		a {
+			color: inherit;
+			&:hover {
+				color: $orange;
+			}
+		}
+	}
