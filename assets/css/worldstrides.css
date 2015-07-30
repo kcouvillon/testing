@@ -7455,13 +7455,13 @@ section:after {
       color: #fff; }
     .archive .primary-section .section-header-content, .blog .primary-section .section-header-content, .single .primary-section .section-header-content {
       color: #323c53; }
-    .has-featured-image.archive .primary-section .section-header-content, .has-featured-image.blog .primary-section .section-header-content, .has-featured-image.single .primary-section .section-header-content {
+    .has-featured-image.archive .primary-section .section-header-content, .has-featured-image.blog .primary-section .section-header-content, .has-featured-image.single .primary-section .section-header-content, .has-featured-image.page .primary-section .section-header-content {
       color: #fff; }
-      .has-featured-image.archive .primary-section .section-header-content .breadcrumbs, .has-featured-image.blog .primary-section .section-header-content .breadcrumbs, .has-featured-image.single .primary-section .section-header-content .breadcrumbs {
+      .has-featured-image.archive .primary-section .section-header-content .breadcrumbs, .has-featured-image.blog .primary-section .section-header-content .breadcrumbs, .has-featured-image.single .primary-section .section-header-content .breadcrumbs, .has-featured-image.page .primary-section .section-header-content .breadcrumbs {
         color: #E1EBF2; }
-        .has-featured-image.archive .primary-section .section-header-content .breadcrumbs a, .has-featured-image.blog .primary-section .section-header-content .breadcrumbs a, .has-featured-image.single .primary-section .section-header-content .breadcrumbs a {
+        .has-featured-image.archive .primary-section .section-header-content .breadcrumbs a, .has-featured-image.blog .primary-section .section-header-content .breadcrumbs a, .has-featured-image.single .primary-section .section-header-content .breadcrumbs a, .has-featured-image.page .primary-section .section-header-content .breadcrumbs a {
           color: #E1EBF2; }
-          .has-featured-image.archive .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.blog .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.single .primary-section .section-header-content .breadcrumbs a:hover {
+          .has-featured-image.archive .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.blog .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.single .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.page .primary-section .section-header-content .breadcrumbs a:hover {
             color: #fb901d; }
 
 .section-content {

@@ -175,7 +175,7 @@ section {
 			color: $gray_base;
 		}
 
-		.has-featured-image.archive &, .has-featured-image.blog &, .has-featured-image.single & {
+		.has-featured-image.archive &, .has-featured-image.blog &, .has-featured-image.single &, .has-featured-image.page & {
 			color: #fff;
 
 			.breadcrumbs {
