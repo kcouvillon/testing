@@ -20,9 +20,12 @@ get_header(); ?>
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
 			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			$class = '';
+		} else {
+			$class = ' pattern-' . rand( 3, 9 );
 		} ?>
 		<section class="primary-section">
-			<header class="section-header pattern-<?php echo rand( 3, 9 ); ?>" style="background-image: <?php echo $background; ?>;">
+			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
 					<nav class="breadcrumbs hide-print">
 						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
