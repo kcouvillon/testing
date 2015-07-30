@@ -1,4 +1,8 @@
-.press {
+.press, .search {
+
+	.hentry {
+		margin-bottom: 3em;
+	}
 
 	.press-thumbnail {
 		position: relative;
@@ -37,6 +41,7 @@
 
 	.entry-content {
 		max-width: 670px;
+		margin-right: gutter();
 	}
 
 	&.has-post-thumbnail {

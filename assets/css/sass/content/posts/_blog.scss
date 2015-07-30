@@ -28,7 +28,7 @@
 		> section {
 			@include span(full);
 			margin-top: 0;
-			padding-left: 5%;
+			padding-left: 5vw;
 
 			@include susy-media($screen-sm) {
 				@include span(8 wide);

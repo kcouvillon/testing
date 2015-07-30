@@ -8,7 +8,7 @@ $recent_highlights = WS_Helpers::get_blog_sidebar_posts();
 get_header(); ?>
 
 <div id="primary" class="content-area">
-	<main id="main" class="site-main blog" role="main">
+	<main id="main" class="site-main search" role="main">
 
 		<section class="search-header section-header">
 			
@@ -24,11 +24,13 @@ get_header(); ?>
 			</form>
 		</section>
 
-		<div class="blog-wrap">
+		<div class="search-wrap">
 
 			<section>
 
 			<?php if ( have_posts() ) : ?>
+
+				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in {Stories or All WorldStrides}</h3>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>

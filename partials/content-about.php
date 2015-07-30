@@ -10,7 +10,7 @@
 		the_post_thumbnail( 'thumbnail' );
 	} ?>
 
-	<?php if ( ! is_page( 'about' ) && ! is_archive() ) : ?>
+	<?php if ( ! is_page( 'about' ) && ! is_archive() && ! is_search() ) : ?>
 		<header class="entry-header">
 			<h2 class="entry-title"><strong>
 				<?php the_title(); ?>
@@ -22,8 +22,11 @@
 		<header class="entry-header">
 			<div class="entry-meta">
 				<time datetime=""><?php the_time( 'F j, Y' ); ?></time>
+				<?php if( is_search() ) : ?>
+					<?php echo get_the_category_list(); ?>
+				<?php endif; ?>
 			</div>
-			<h3 class="entry-title"><?php the_title(); ?></h3>
+			<h3 class="entry-title"><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></h3>
 		</header>
 	<?php endif; ?>
 
