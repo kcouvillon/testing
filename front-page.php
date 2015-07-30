@@ -30,49 +30,7 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 
 		</section>
 
-		<section class="home-section programs">
-			<div class="ws-container">
-				<h2 class="section-title">Our Educational Travel Opportunities</h2>
-				<ul class="programs-list list-unstyled clearfix">
-					<?php 
-					$count = 0;
-					$data = array(
-						array(
-							"title" => "Middle School",
-							"meta" => array("Discoveries Programs")
-						),
-						array(
-							"title" => "High School",
-							"meta" => array("Passages Programs")
-						),
-						array(
-							"title" => "University",
-							"meta" => array("Capstone Programs")
-						),
-						array(
-							"title" => "Performing Arts",
-							"meta" => array("On Stage Programs")
-						),
-					);
-					foreach ( $data as $item ) : ?>
-
-					<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
-					<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-						<div class="tile-content">
-							<ul class="meta list-unstyled">
-								<?php foreach ( $item['meta'] as $meta ) : ?>
-								<li><a href="#"><?php echo $meta; ?></a></li>
-								<?php endforeach; ?>
-							</ul>
-							<h2 class="tile-title"><a href="#"><?php echo $item['title']; ?></a></h2>
-						</div>
-					</li>
-					
-					<?php $count++; endforeach; ?>
-				</ul>
-				
-			</div>
-		</section>
+		<?php get_template_part( 'partials/divisions'); ?>
 
 		<?php if ( $associated_programs ) : ?>
 
@@ -86,19 +44,38 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 					<?php foreach ( $associated_programs as $program_id ) : ?>
 
 						<?php
-							$program = get_post( $program_id );
+						$program = get_post( $program_id );
 
-							$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
+						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
 
-							if ( $count == 3 || $count == 4 ) {
-								$tile_size = 'tile-half';
-								$pattern = 'ws_w_pattern4.gif';
+						if ( $count == 3 || $count == 4 ) {
+							$tile_size = 'tile-half';
+							$pattern = 'ws_w_pattern4.gif';
+						} else {
+							$tile_size = 'tile-third';
+						}
+
+						if ( has_post_thumbnail( $program_id ) ) {
+							$thumb_id = get_post_thumbnail_id( $program_id );
+
+							if ( 'tile-half' == $tile_size ) {
+								$thumb_url_array = wp_get_attachment_image_src( $thumb_id, 'large', true );
+
 							} else {
-								$tile_size = 'tile-third';
+								// had this at medium, but was pretty bad looking
+								$thumb_url_array = wp_get_attachment_image_src( $thumb_id, 'large', true );
 							}
+
+							$background = $thumb_url_array[0];
+							$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+						} else {
+							$background = get_template_directory_uri() . '/assets/images/src/patterns/ws_w_pattern' . ( ($count % 2 == 0 ) ? '5' : '8') . '.gif';
+							$scrim = '';
+						}
+
 						?>
 
-						<li class="itinerary tile <?php echo $tile_size; ?>" style="background-image:url(<?php echo esc_url( get_template_directory_uri() . '/assets/images/src/patterns/' . $pattern ); ?>);">
+						<li class="program tile <?php echo $tile_size; ?>" style="background-image:<?php echo $scrim . ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
 									<li><?php echo WS_Helpers::get_subtitle( $program->ID ); ?></li>
