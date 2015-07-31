@@ -229,20 +229,14 @@ get_header(); ?>
 			<section class="section-content programs">
 				<h2 class="section-title">Collections</h2>
 				<ul class="programs-list list-unstyled clearfix">
+					<?php $count = 0; ?>
+
 					<?php while ( $associated_collections->have_posts() ) : ?>
 						<?php $associated_collections->the_post(); ?>
-						<?php
-						$background = '';
-						if( has_post_thumbnail( $post->ID ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-							$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
-							$class = ' has-tile-image';
-						} else {
-							$class = ' pattern-' . rand(1, 9);
-						}
-						?>
 
-						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
+						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+
+						<li class="program tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
 									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
@@ -251,6 +245,7 @@ get_header(); ?>
 							</div>
 						</li>
 
+						<?php $count++; ?>
 					<?php endwhile; ?>
 				</ul>
 
