@@ -229,8 +229,8 @@ get_header(); ?>
 			<section class="section-content programs">
 				<h2 class="section-title">Collections</h2>
 				<ul class="programs-list list-unstyled clearfix">
-					<?php while ( $associated_itineraries->have_posts() ) : ?>
-						<?php $associated_itineraries->the_post(); ?>
+					<?php while ( $associated_collections->have_posts() ) : ?>
+						<?php $associated_collections->the_post(); ?>
 						<?php
 						$background = '';
 						if( has_post_thumbnail( $post->ID ) ) {
