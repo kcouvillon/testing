@@ -160,7 +160,7 @@ get_header(); ?>
 					$background = '';
 					if( has_post_thumbnail( $resource_id ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
-						$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+						$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 						$class = ' has-tile-image';
 					} else {
 						$class = ' pattern-' . rand(1, 9);
@@ -236,7 +236,7 @@ get_header(); ?>
 					$background = '';
 					if( has_post_thumbnail( $post->ID ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-						$background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+						$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 						$class = ' has-tile-image';
 					} else {
 						$class = ' pattern-' . rand(1, 9);
