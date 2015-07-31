@@ -35,6 +35,7 @@ include WS_PATH . 'includes/taxonomy-metadata/Taxonomy_MetaData_CMB2.php';
 
 // Theme Includes
 include WS_PATH . 'includes/class-associated-filter.php';
+include WS_PATH . 'includes/class-admin-options.php';
 include WS_PATH . 'includes/class-collections.php';
 include WS_PATH . 'includes/class-comments.php';
 include WS_PATH . 'includes/class-cpts.php';
