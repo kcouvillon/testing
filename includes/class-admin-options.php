@@ -95,6 +95,13 @@ class WS_Admin {
 			'id'      => 'discovery_why_image',
 			'type'    => 'file',
 		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Request Info Image', 'ws' ),
+			// 'desc'    => __( 'field description (optional)', 'ws' ),
+			'id'      => 'request_info_image',
+			'type'    => 'file',
+		) );
 	}
 
 	/**
