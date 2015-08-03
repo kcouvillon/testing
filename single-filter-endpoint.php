@@ -389,6 +389,6 @@ $associated_itineraries = new WP_Query( array(
 			</section>
 		<?php endif; ?>
 
-		<?php get_template_part( 'partials/request-info' ); ?>
+		<?php get_template_part( 'partials/module', 'request-info' ); ?>
 
-<?php get_footer(); ?>
+		<?php get_footer(); ?>

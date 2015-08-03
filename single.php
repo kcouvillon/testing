@@ -188,7 +188,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 		</div>
 		<!-- blog-single-wrap -->
 
-		<?php get_template_part( 'partials/request-info' ); ?>
+		<?php get_template_part( 'partials/module', 'request-info' ); ?>
 
 	</main>
 </div>
