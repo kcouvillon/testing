@@ -102,6 +102,22 @@ class WS_Admin {
 			'id'      => 'request_info_image',
 			'type'    => 'file',
 		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Contact: Phone Info', 'ws' ),
+			'default' => 'We can be reached via telephone at our toll-free number: 1-800-999-7676. To discuss particular programs, please visit our contact page for more information.',
+			// 'desc'    => __( 'field description (optional)', 'ws' ),
+			'id'      => 'contact_phone_info',
+			'type'    => 'textarea_small',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Contact: Email Info', 'ws' ),
+			'default' => 'We\'re available via email at <a href="mailto:customerservice@worldstrides.org">customerservice@worldstrides.org</a>. To discuss particular programs, please visit our contact page for more information.',
+			// 'desc'    => __( 'field description (optional)', 'ws' ),
+			'id'      => 'contact_email_info',
+			'type'    => 'textarea_small',
+		) );
 	}
 
 	/**
