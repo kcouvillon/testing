@@ -347,7 +347,7 @@ $associated_itineraries = new WP_Query( array(
 		}
 		?>
 
-		<?php if ( $blog_posts->have_posts() ) : ?>
+		<?php if ( is_object( $blog_posts ) && $blog_posts->have_posts() ) : ?>
 			<section class="home-section blog">
 				<div class="ws-container">
 					<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
