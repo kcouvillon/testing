@@ -142,7 +142,7 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<?php $display_discover_why = get_post_meta( $post->ID, 'division_options_discover_why', true); ?>
+		<?php $display_discover_why = get_post_meta( $post->ID, 'discover_why', true); ?>
 		<?php if ( 'on' == $display_discover_why ) : ?>
 		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
 		<?php endif; ?>
