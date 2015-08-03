@@ -8186,7 +8186,6 @@ section:after {
 #intro {
   position: relative;
   background-size: cover;
-  background-position: right bottom;
   display: block;
   max-width: 1500px;
   margin-left: auto;
@@ -8196,8 +8195,11 @@ section:after {
 .intro-content {
   position: relative;
   z-index: 1;
-  padding: 8em 0;
-  color: #FFF; }
+  color: #FFF;
+  padding: 3em 0; }
+  @media (min-width: 768px) {
+    .intro-content {
+      padding: 8em 0; } }
   @media (min-width: 960px) {
     .intro-content {
       width: 74.5098039216%;

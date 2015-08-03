@@ -134,7 +134,7 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 									<?php endforeach; ?>
 
 								</ul>
-								<h2 class="tile-title"><a href="#"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
+								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
 							</div>
 						</li>
 					<?php endforeach; ?>

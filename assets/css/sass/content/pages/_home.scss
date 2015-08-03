@@ -1,15 +1,18 @@
 #intro { 
 	position: relative;
 	background-size: cover;
-	background-position: right bottom;
 	@include container();
 }
 
 .intro-content {
 	position: relative;
 	z-index: 1;
-	padding: 8em 0;
 	color: #FFF;
+	padding: 3em 0;
+
+	@include susy-media($screen-sm) {
+		padding: 8em 0;
+	}
 	@include susy-media($screen-md) {
 		@include span(9);
 	}
