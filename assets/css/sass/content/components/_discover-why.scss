@@ -27,7 +27,6 @@
 }
 
 .discover-why-img {
-	background-image: linear-gradient( $color_overlay_lt, $color_overlay_lt ), url(../images/src/about-cta.jpg);
 	background-size: cover;
 	@include span(full);
 

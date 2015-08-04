@@ -75,8 +75,8 @@ class WS_Metaboxes_Collections {
 		) );
 
 		$cmb->add_field( array(
-			'name'             => 'Discovery Why module',
-			'id'               => 'discovery_why',
+			'name'             => 'Discover Why module',
+			'id'               => 'discover_why',
 			'type'             => 'select',
 			'show_option_none' => false,
 			'default'          => 'On',
