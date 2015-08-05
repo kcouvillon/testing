@@ -87,25 +87,29 @@ class WS_Marketo {
 		$form_id = '';
 		$product_lines = get_the_terms( $post_id, 'product-line' );
 
-		// ORDER:
-		// Discoveries > Perspectives > Capstone > OnStage > Excel Sports
-
 		foreach ( $product_lines as $division ) {
 
 			if ( 'discoveries' == $division->slug ) {
-				$form_id = 1699;
+				$current_id = 1699;
 			} elseif ( 'perspectives' == $division->slug ) {
-				$form_id = 1699;
+				$current_id = 1699;
 			} elseif ( 'capstone' == $division->slug ) {
-				$form_id = 1708;
+				$current_id = 1708;
 			} elseif ( 'on-stage' == $division->slug ) {
-				$form_id = 1709;
+				$current_id = 1709;
 			} elseif ( 'excel-sports' == $division->slug ) {
-				$form_id = 1712;
+				$current_id = 1712;
 			} else {
-				$form_id = 1699;
+				$current_id = 1699;
 			}
 
+			// ORDER: Discoveries > Perspectives > Capstone > OnStage > Excel Sports
+			// Works because of current form numbers, may need to be worked if changed
+			if ( ! $form_id ) {
+				$form_id = $current_id;
+			} elseif ( $current_id < $form_id ) {
+				$form_id = $current_id;
+			}
 		}
 		
 		echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
