@@ -5,18 +5,31 @@
  * with some tweaks.
  */
 
+.embedded-marketo-form {
+	background: $gray_base;
+	padding: 0.5em 2em 1em;
+}
+
 .embedded-marketo-form .mktoForm {
 	width: 100% !important;
-	&, * {
-		box-sizing: border-box;
-		padding:    0px;
+	font-family: $font_main !important;
+	font-size: em(16);
+	@include clearfix;
+
+	> div {
+		@include susy-media($screen-sm) {
+			width: 48%;
+			display: inline-block;
+			margin-right: 2%;
+		}
 	}
-	&:after {
-		content:    '.';
-		clear:      both;
-		visibility: hidden;
-		color:      transparent;
-	}
+
+	// &:after {
+	// 	content:    '.';
+	// 	clear:      both;
+	// 	visibility: hidden;
+	// 	color:      transparent;
+	// }
 	.mktoRequiredField .mktoAsterix,
 	.mktoAsterix,
 	.mktoClear,
@@ -25,7 +38,9 @@
 	.mktoFormRow.hidden {
 		display: none;
 	}
-	.mktoFormCol,
+	.mktoFormCol {
+		width: 100%;
+	}
 	.mktoFieldWrap {
 		width: 100%;
 	}
@@ -34,10 +49,8 @@
 	}
 	.mktoFormRow,
 	.mktoButtonRow {
-		// float:  left;
-		clear:  both;
-		width:  100%;
 		margin: 5px 0px;
+		@include clearfix;
 	}
 	input[type="url"],
 	input[type="text"],
@@ -51,8 +64,17 @@
 		line-height: normal;
 		font-size:   inherit;
 		box-shadow: 0 0;
-	}
+		display: block;
+	    width: 100%;
+	    background-color: #b3b7bf;
+	    border: 0;
+	    padding: .8em;
+	    color: #323c53;
+    }
 	.mktoFormRow {
+		margin-bottom: 0.8em;
+		margin-right: 2%;
+
 		.mktoRequiredField label.mktoLabel {
 			font-weight: normal;
 		}
@@ -60,41 +82,29 @@
 		input,
 		textarea,
 		select {
-			clear:       both;
 			box-sizing:  border-box;
-			font-size:   1rem;
-			line-height: 1rem;
-			color:       #969696;
+			font-size:   18px;
+			line-height: 1.5;
+			color:       $color_text_main !important;
 			font-weight: normal;
 			width:       100% !important;
 			margin:      0px 0px 5px 0px;
 		}
 		label {
-			float:          left;
-			text-transform: uppercase;
-			padding-left:   10px;
+			@extend .visuallyhidden;
 		}
 		input,
 		textarea,
 		select {
-			float:      right;
 			min-height: 30px;
 		}
-		input,
-		textarea {
-			padding: 6px 8px;
-			border:  1px solid #e1e1e1;
-		}
 		input[type=checkbox] {
-			float:   left;
-			clear:   left;
 			width:   30px !important;
 			padding: 0px;
 			margin:  0px;
 			border:  none;
 		}
 		select {
-			padding: 6px 0px;
 		}
 		textarea {
 			height: auto;
@@ -109,76 +119,68 @@
 				margin-top: -34px;
 			}
 		}
+
+		// media queries for mktoFormRow
+		@include susy-media($screen-sm) {
+		}
 	}
 	.mktoButtonRow {
-		text-align: center;
-		margin-top: 24px;
 		.mktoButtonWrap {
 			margin: 0px !important;
 			button.mktoButton {
-				font-size:        16px;
-				line-height:      16px;
-				color:            #fff;
-				font-weight:      bold;
-				background-color: #fa6423;
-				border-radius:    999px;
-				border:           none;
-				padding:          8px 24px;
-				cursor:           pointer;
-				&:hover {
-					background-color: #8cbe3c;
-				}
+				@extend .btn;
+				@extend .btn-primary;
+				font-family: $font_main !important;
 			}
 		}
 	}
 }
 
-@media only screen and (min-width: 768px) {
+// @media only screen and (min-width: 768px) {
 
-	.embedded-marketo-form .mktoForm {
-		.mktoFormRow {
-			clear:        none;
-			width:        210px;
-			margin-right: 10px;
-		}
-	}
-}
+// 	.embedded-marketo-form .mktoForm {
+// 		.mktoFormRow {
+// 			clear:        none;
+// 			margin-right: 10px;
+// 			column-count: 2;
+// 		}
+// 	}
+// }
 
-@media only screen and (min-width: 980px) {
+// @media only screen and (min-width: 980px) {
 
-	.embedded-marketo-form .mktoForm {
-		.mktoFormRow {
-			clear:        both;
-			width:        100%;
-			margin-right: 0px;
-			label {
-				display:      none;
-				padding-left: 0px;
-			}
-			&.select-dropdown,
-			&.checkbox {
-				label {
-					display:        block;
-					text-transform: none;
-				}
-			}
-		}
-	}
-}
+// 	.embedded-marketo-form .mktoForm {
+// 		.mktoFormRow {
+// 			clear:        both;
+// 			width:        100%;
+// 			margin-right: 0px;
+// 			label {
+// 				display:      none;
+// 				padding-left: 0px;
+// 			}
+// 			&.select-dropdown,
+// 			&.checkbox {
+// 				label {
+// 					display:        block;
+// 					text-transform: none;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
-@media only screen and (min-width: 1060px) {
+// @media only screen and (min-width: 1060px) {
 
-	.embedded-marketo-form .mktoForm {
-		.mktoFormRow {
-			clear:        none;
-			width:        210px;
-			margin-right: 10px;
-			&.select-dropdown:nth-of-type(even) {
-				/* Intended as 'odd', but apparently there's a hidden one somewhere? So Weird. */
-				clear: left;
-			}
-		}
-	}
-}
+// 	.embedded-marketo-form .mktoForm {
+// 		.mktoFormRow {
+// 			clear:        none;
+// 			margin-right: 10px;
+// 			&.select-dropdown:nth-of-type(even) {
+// 				/* Intended as 'odd', but apparently there's a hidden one somewhere? So Weird. */
+// 				clear: left;
+// 			}
+// 		}
+// 	}
+// }
 
 
