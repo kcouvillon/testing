@@ -309,13 +309,6 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_group_field( $day_group, array(
-			'name'       => __( 'Activity (OLD)', 'cmb2' ),
-			'id'         => 'activity',
-			'type'       => 'itinerary_activity',
-			'repeatable' => true, // this is a bit buggy (creates phantom activities
-		) );
-
-		$cmb->add_group_field( $day_group, array(
 			'name'       => __( 'Related Content Title', 'cmb2' ),
 			'id'         => 'related_content_title',
 			'type'       => 'text',
