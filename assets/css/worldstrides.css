@@ -6564,6 +6564,21 @@ a.no-decoration {
 .hentry {
   margin: 0 0 1.5em; }
 
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em; }
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em; }
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
 .byline,
 .updated:not(.published) {
   display: none; }

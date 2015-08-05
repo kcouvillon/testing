@@ -133,10 +133,13 @@ class WS_Helpers {
 
 		<?php elseif ( 'column-two' == $block_type ) : ?>
 
+			<?php $content_secondary = get_post_meta( $post_id, 'content_secondary', true ); ?>
+
 			<div class="ws-block block-two-col">
 				<div class="block-text">
 					<div class="block-text-columns">
 						<?php echo apply_filters( 'the_content', $block->post_content ); ?>
+						<?php echo apply_filters( 'the_content', $content_secondary ); ?>
 					</div>
 				</div>
 			</div>

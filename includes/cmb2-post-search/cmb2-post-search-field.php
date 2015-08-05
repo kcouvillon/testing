@@ -16,8 +16,41 @@ function cmb2_post_search_render_field( $field, $escaped_value, $object_id, $obj
 		'data-posttype'   => $field->args( 'post_type' ),
 		'data-selecttype' => 'radio' == $select_type ? 'radio' : 'checkbox',
 	) );
+
+	if ( $escaped_value ) {
+		echo cmb2_post_search_posts( $escaped_value );
+	}
 }
 add_action( 'cmb2_render_post_search_text', 'cmb2_post_search_render_field', 10, 5 );
+
+function cmb2_post_search_posts( $ids ) {
+	$html = '';
+	$related_posts = array_filter( array_map( 'intval', explode( ',', $ids ) ) );
+
+	if ( $related_posts ) {
+		ob_start();
+		?>
+		<ul style="margin-top: 20px;">
+			<li><h4>Related Items</h4></li>
+			<?php foreach ( $related_posts as $related_post_id ) : ?>
+				<?php $related_post = get_post( $related_post_id ); ?>
+				<li>
+					<?php echo get_the_post_thumbnail( $related_post_id, array( 25, 25 ) ); ?>
+					<a href="<?php echo get_edit_post_link( $related_post_id ); ?>">
+						<?php echo apply_filters( 'the_title', $related_post->post_title ); ?>
+					</a>
+					&nbsp; (<?php echo $related_post->post_type; ?>
+					&ndash; id: <?php echo $related_post_id; ?>)
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<?php
+
+		$html = ob_get_clean();
+	}
+
+	return $html;
+}
 
 function cmb2_post_search_render_js(  $cmb_id, $object_id, $object_type, $cmb ) {
 	static $rendered;

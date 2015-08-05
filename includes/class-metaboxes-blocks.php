@@ -35,6 +35,7 @@ class WS_Metaboxes_Blocks {
 	 */
 	protected function _init() {
 		add_action( 'cmb2_init',  array( $this, 'block_details' ) );
+		add_action( 'cmb2_init',  array( $this, 'block_content_secondary' ) );
 		add_action( 'cmb2_after_post_form_block_type_metabox', array( $this, 'js_boxes_show_hidden' ), 10, 2 );
 		add_action( 'cmb2_init',  array( $this, 'block_image' ) );
 		add_action( 'cmb2_init',  array( $this, 'block_slideshow' ) );
@@ -77,6 +78,7 @@ class WS_Metaboxes_Blocks {
 			jQuery(document).ready(function($) {
 				var block_type = $('#block_type'),
 					content = $('#postdivrich'),
+					content_secondary = $('#block_content_secondary_metabox'),
 					image = $('#block_image_metabox'),
 					slideshow = $('#block_slideshow_metabox'),
 					slide_title = $('.slide-title');
@@ -85,32 +87,38 @@ class WS_Metaboxes_Blocks {
 					switch ( current_type ) {
 						case('image-right'):
 							content.removeClass('hidden');
+							content_secondary.addClass('hidden');
 							image.removeClass('hidden');
 							slideshow.addClass('hidden');
 							break;
 						case('image-left'):
 							content.removeClass('hidden');
+							content_secondary.addClass('hidden');
 							image.removeClass('hidden');
 							slideshow.addClass('hidden');
 							break;
 						case('column-one'):
 							content.removeClass('hidden');
+							content_secondary.addClass('hidden');
 							image.addClass('hidden');
 							slideshow.addClass('hidden');
 							break;
 						case('column-two'):
 							content.removeClass('hidden');
+							content_secondary.removeClass('hidden');
 							image.addClass('hidden');
 							slideshow.addClass('hidden');
 							break;
 						case('slideshow-basic'):
 							content.addClass('hidden');
+							content_secondary.addClass('hidden');
 							image.addClass('hidden');
 							slide_title.addClass('hidden');
 							slideshow.removeClass('hidden');
 							break;
 						case('slideshow-tabbed'):
 							content.addClass('hidden');
+							content_secondary.addClass('hidden');
 							image.addClass('hidden');
 							slide_title.removeClass('hidden');
 							slideshow.removeClass('hidden');
@@ -142,6 +150,26 @@ class WS_Metaboxes_Blocks {
 		$cmb->add_field( array(
 				'name'   => 'Main',
 				'id'     => 'content_main',
+				'type'   => 'wysiwyg'
+			)
+		);
+
+	}
+
+	function block_content_secondary() {
+
+		$prefix = 'block_content_secondary_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Block Content - Second Column', 'cmb2' ),
+			'object_types' => array( 'block', ),
+		) );
+
+		$cmb->add_field( array(
+				'name'   => 'Secondary',
+				'id'     => 'content_secondary',
+				'show_names' => false,
 				'type'   => 'wysiwyg'
 			)
 		);
