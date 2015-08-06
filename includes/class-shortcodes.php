@@ -38,6 +38,7 @@ class WS_Shortcodes {
 		add_shortcode( 'timeline-node', array( $this, 'timeline_node' ) );
 		add_shortcode( 'button', array( $this, 'button' ) );
 		add_shortcode( 'activity', array( $this, 'activity' ) );
+		add_shortcode( 'formstack', array( $this, 'formstack' ) );
 	}
 
 	/**
@@ -136,6 +137,31 @@ class WS_Shortcodes {
 			<strong><?php echo $atts['title'];?></strong>
 			<span><?php echo $content; ?></span>
 		</li>
+		<?php
+		$html = ob_get_contents();
+		ob_get_clean();
+
+		return $html;
+	}
+
+	/**
+	 * Creates a Formstack shortcode
+	 *
+	 * @param $atts array shortcode attributes
+	 * @param $content mixed content between shortcode
+	 *
+	 * @return string content wrapped in a unordered list
+	 */
+	public static function formstack( $atts ) {
+		$atts = shortcode_atts( array(
+			'slug' => '',
+			'title' => '',
+		), $atts, 'formstack' );
+
+		ob_start();
+		?>
+		<script type="text/javascript" src="https://wsforms.formstack.com/forms/js.php/<?php echo $atts['slug'];?>"></script>
+		<noscript><a href="https://wsforms.formstack.com/forms/<?php echo $atts['slug'];?>" title="<?php echo $atts['title'];?>"><?php echo $atts['title'];?></a></noscript>
 		<?php
 		$html = ob_get_contents();
 		ob_get_clean();
