@@ -102,11 +102,18 @@ class WS_Helpers {
 		?>
 
 		<?php if ( 'image-left' == $block_type || 'image-right' == $block_type ) : ?>
+			<?php
+			// Size will be small, medium or large
+			$block_image_size = get_post_meta( $post_id, 'block_image_size', true );
 
-			<div class="ws-block block-<?php echo esc_attr( $block_type ); ?>">
+			if ( ! $block_image_size ) {
+				$block_image_size = 'large';
+			}
+			?>
+			<div class="ws-block block-<?php echo esc_attr( $block_type ); ?> <?php echo esc_attr( $block_image_size ); ?>">
 				<div class="block-image">
 					<?php
-					$block_image_id = get_post_meta( $post_id, 'block_image_id', true );
+					$block_image_id   = get_post_meta( $post_id, 'block_image_id', true );
 
 					if ( $block_image_id ) {
 						$image = wp_get_attachment_image( $block_image_id, 'square' );
