@@ -7,7 +7,7 @@
 
 .embedded-marketo-form {
 	background: $gray_base;
-	padding: 0.5em 2em 1em;
+	padding: 0.5em 7.5% 1em;
 }
 
 .embedded-marketo-form .mktoForm {
@@ -40,12 +40,17 @@
 	}
 	.mktoFormCol {
 		width: 100%;
+
+		@include susy-media($screen-sm) {
+			max-width: 500px;
+		}
 	}
 	.mktoFieldWrap {
 		width: 100%;
 	}
 	.mktoFormCol {
-		margin: 0px !important;
+		margin: 0 auto !important;
+		float: none !important;
 	}
 	.mktoFormRow,
 	.mktoButtonRow {
@@ -93,6 +98,7 @@
 		label {
 			color: #fff !important;
 			font-size: 18px;
+			padding-left: 0.8em;
 		}
 		input,
 		textarea,
@@ -127,7 +133,10 @@
 	}
 	.mktoButtonRow {
 		.mktoButtonWrap {
-			margin: 0px !important;
+			margin: 0 auto !important;
+			display: block;
+			width: 100%;
+			max-width: 500px;
 			button.mktoButton {
 				@extend .btn;
 				@extend .btn-primary;

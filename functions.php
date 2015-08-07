@@ -153,7 +153,7 @@ function ws_add_body_classes( $classes ) {
 		}
 	}
 
-	if ( is_archive() || is_home() || is_page( 'about' ) || is_page( 'contact' ) || $is_about_child || is_page( 'resource-center' ) || is_singular( 'resource' ) || is_singular( 'bio' ) || is_404() || is_search() ) {
+	if ( is_archive() || is_home() || is_page( 'about' ) || is_page( 'contact' ) || $is_about_child || is_page( 'resource-center' ) || is_singular( 'resource' ) || is_singular( 'bio' ) || is_404() || is_search() || is_page_template( 'form-page.php' ) ) {
 		$classes[] = 'solid-header';
 
 		if ( is_front_page() ) {
