@@ -4,7 +4,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'resource-question' . $filters ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'resource-question' ); ?>>
 	<header class="entry-header">
 			<a href="#" rel="bookmark">
 				<?php the_title(); ?>
