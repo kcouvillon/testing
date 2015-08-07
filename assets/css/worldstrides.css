@@ -5589,8 +5589,9 @@ table th[class*="col-"] {
     @media (min-width: 768px) {
       .embedded-marketo-form .mktoForm .mktoFormCol {
         max-width: 500px; } }
-  .embedded-marketo-form .mktoForm .mktoFieldWrap {
-    width: 100%; }
+  .embedded-marketo-form .mktoForm .mktoFieldWrap,
+  .embedded-marketo-form .mktoForm .mktoHtmlText {
+    width: 100% !important; }
   .embedded-marketo-form .mktoForm .mktoFormCol {
     margin: 0 auto !important;
     float: none !important; }
@@ -5632,7 +5633,8 @@ table th[class*="col-"] {
     .embedded-marketo-form .mktoForm .mktoFormRow label,
     .embedded-marketo-form .mktoForm .mktoFormRow input,
     .embedded-marketo-form .mktoForm .mktoFormRow textarea,
-    .embedded-marketo-form .mktoForm .mktoFormRow select {
+    .embedded-marketo-form .mktoForm .mktoFormRow select,
+    .embedded-marketo-form .mktoForm .mktoFormRow p {
       box-sizing: border-box;
       font-size: 18px;
       line-height: 1.5;
@@ -5640,10 +5642,11 @@ table th[class*="col-"] {
       font-weight: normal;
       width: 100% !important;
       margin: 0px 0px 5px 0px; }
-    .embedded-marketo-form .mktoForm .mktoFormRow label {
+    .embedded-marketo-form .mktoForm .mktoFormRow label,
+    .embedded-marketo-form .mktoForm .mktoFormRow p {
       color: #fff !important;
-      font-size: 18px;
-      padding-left: 0.8em; }
+      padding-left: 0.8em;
+      max-width: 500px !important; }
     .embedded-marketo-form .mktoForm .mktoFormRow input,
     .embedded-marketo-form .mktoForm .mktoFormRow textarea,
     .embedded-marketo-form .mktoForm .mktoFormRow select {
