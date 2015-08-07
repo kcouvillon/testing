@@ -38,13 +38,14 @@ $resources_page = get_page_by_path( 'resource-center' );
 				'hide_empty' => false
 			) );
 
-			if ( $top_level_term->slug == 'parents' ) {
-				$img_url = site_url('wp-content/themes/worldstrides/assets/images/placeholder/resource-parent.jpg');
-			} elseif ( $top_level_term->slug == 'educators' ) {
-				$img_url = site_url('wp-content/themes/worldstrides/assets/images/placeholder/resource-teacher.jpg');
+			$term_options = get_option( 'taxonomy_metadata_resource-target_' . $top_level_term->term_id );
+
+			if ( ! empty( $term_options['feature_image'] ) ) {
+				$img_url = $term_options['feature_image']; // could also use feature_image_id
 			} else {
-				$img_url = site_url('wp-content/themes/worldstrides/assets/images/placeholder/resource-student.jpg');
+				$img_url = 'http://placehold.it/445x297';
 			}
+
 			?>
 			<div class="<?php esc_attr( $top_level_term->name ); ?> resource-target">
 				<a class="resource-target-title" href="<?php echo get_term_link( $top_level_term ); ?>">
