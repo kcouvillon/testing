@@ -30,7 +30,9 @@ get_header(); ?>
 					<nav class="breadcrumbs hide-print">
 						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
 						<span>Collections</span>>
-						<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
+						<?php if( ! empty( $term ) ) : ?>
+							<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
+						<?php endif; ?>
 						<span><?php the_title(); ?></span>
 					</nav>
 					<h1><?php the_title(); ?></h1>
@@ -94,7 +96,7 @@ get_header(); ?>
 
 				</ul>
 
-				<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
+				<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
 			</nav>
 
 		</section>

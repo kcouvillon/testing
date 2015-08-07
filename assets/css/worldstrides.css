@@ -9162,9 +9162,18 @@ section:after {
   padding-right: 5vw; }
 
 @media (min-width: 768px) {
-  .block-two-col .block-text-columns {
-    column-count: 2;
-    column-gap: 6em; } }
+  .block-two-col .block-text-column {
+    width: 49.0196078431%;
+    float: left; }
+    .block-two-col .block-text-column:nth-child(2n + 1) {
+      margin-left: 0;
+      margin-right: -100%;
+      clear: both;
+      margin-left: 0; }
+    .block-two-col .block-text-column:nth-child(2n + 2) {
+      margin-left: 50.9803921569%;
+      margin-right: -100%;
+      clear: none; } }
 
 .cycle-slideshow {
   position: relative;

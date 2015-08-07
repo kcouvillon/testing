@@ -144,8 +144,10 @@ class WS_Helpers {
 
 			<div class="ws-block block-two-col">
 				<div class="block-text">
-					<div class="block-text-columns">
+					<div class="block-text-column">
 						<?php echo apply_filters( 'the_content', $block->post_content ); ?>
+					</div>
+					<div class="block-text-column">
 						<?php echo apply_filters( 'the_content', $content_secondary ); ?>
 					</div>
 				</div>
