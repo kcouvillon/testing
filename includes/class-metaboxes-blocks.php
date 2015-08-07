@@ -195,6 +195,19 @@ class WS_Metaboxes_Blocks {
 			)
 		);
 
+		$cmb->add_field( array(
+			'name' => __( 'Image size', 'cmb2' ),
+			'id'   => 'block_image_size',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'large',
+			'options'          => array(
+				'small' => __( 'Small', 'cmb' ),
+				'medium'   => __( 'Medium', 'cmb' ),
+				'large'   => __( 'Large', 'cmb' ),
+			),
+		) );
+
 	}
 
 	/**
