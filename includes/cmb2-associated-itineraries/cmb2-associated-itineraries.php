@@ -29,6 +29,7 @@ function cmb2_render_associated_itineraries_callback( $field, $value, $object_id
 	<div>
 		<?php
 			global $post;
+			$original = $post;
 			$term = $post->post_name;
 			$template = get_post_meta( $post->ID, '_wp_page_template', true );
 
@@ -60,7 +61,7 @@ function cmb2_render_associated_itineraries_callback( $field, $value, $object_id
 						<?php echo get_the_title(); ?>
 					</a>
 					<?php if ( 'publish' != $post->post_status ) : ?>
-					<small>&ndash; <?php echo $post->post_status; ?></small>
+						<small>&ndash; <?php echo $post->post_status; ?></small>
 					<?php endif; ?>
 				</li>
 			<?php endwhile; ?>
@@ -70,6 +71,7 @@ function cmb2_render_associated_itineraries_callback( $field, $value, $object_id
 	</div>
 
 	<?php
+	$post = $original; // not entirely sure why reset_post_data didn't work here
 	echo $field_type_object->_desc( true );
 }
 add_filter( 'cmb2_render_associated_itineraries', 'cmb2_render_associated_itineraries_callback', 10, 5 );

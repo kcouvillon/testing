@@ -10,8 +10,9 @@ $associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
 $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 $before_block_sections = get_post_meta( $post->ID, 'division_blocks_before_list', true );
 $after_block_sections = get_post_meta( $post->ID, 'division_blocks_after_list', true );
-
-$division_type = get_post_meta( $post->ID, 'division_type', true );
+$associated_bios = get_post_meta( $post->ID, 'attached_bios', true );
+$partnerships = get_post_meta( $post->ID, 'division_partnerships_partners', true );
+$partnerships_small = get_post_meta( $post->ID, 'division_partnerships_small_partners', true );
 
 $display_title = get_post_meta( $post->ID, 'general_display_title', true );
 
@@ -88,8 +89,6 @@ get_header(); ?>
 
 			</header>
 
-			<?php if ( 'outlier' != $division_type ) : ?>
-
 			<nav class="section-nav">
 				<ul class="section-menu hide-print">
 
@@ -111,6 +110,15 @@ get_header(); ?>
 
 					<?php if ( $associated_itineraries->have_posts() ) : ?>
 						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+					<?php endif; ?>
+
+					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Global Reach</a></li>
+
+					<?php if ( ! empty( $associated_bios ) ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Team</a></li>
+					<?php endif; ?>
+					<?php if ( ! empty( $partnerships ) ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Partners</a></li>
 					<?php endif; ?>
 
 					<?php if ( ! empty( $after_block_sections ) ) : ?>
@@ -257,6 +265,70 @@ get_header(); ?>
 			</ul>
 
 		</section>
+		<?php wp_reset_postdata(); ?>
+		<?php endif; ?>
+
+		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+		<section class="section-content global-reach">
+
+			<h2>Global Reach</h2>
+
+			{MAP GOES HERE}
+
+			<ul>
+				<li>North America</li>
+				<li>South &amp; Central America</li>
+				<li>Europe</li>
+				<li>Asia</li>
+				<li>Africa</li>
+				<li>Oceania</li>
+			</ul>
+
+		</section>
+
+		<?php if ( ! empty( $associated_bios ) ) : ?>
+		<section class="section-content global-reach">
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+			<h2>University Team</h2>
+
+			<?php foreach ( $associated_bios as $bio_id ) : ?>
+
+				<?php $bio = get_post( $bio_id ); ?>
+				<?php $position = get_post_meta( $bio_id, 'ws_bio_position', true ); ?>
+
+				<?php if ( has_post_thumbnail( $bio_id ) ) : ?>
+					<div class="headshot">
+						<?php echo get_the_post_thumbnail( $bio_id, 'thumbnail' ); ?>
+					</div>
+				<?php endif; ?>
+
+				<h3>
+					<?php echo apply_filters( 'title', $bio->post_title ); ?>
+				</h3>
+
+				<?php if ( $position ) : ?>
+					<span class="entry-position"><?php echo esc_html( $position ); ?></span>
+				<?php endif; ?>
+
+			<?php endforeach; ?>
+		</section>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $partnerships ) ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+			<section class="ws-container ws-blocks tour-blocks-after">
+				<h2><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_title', true ) ); ?></h2>
+				<?php foreach ( $partnerships as $partnership ) : ?>
+					<h3><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
+					<img src="<?php echo $partnership['image']; // image_id ?>">
+					<p><?php echo $partnership['description']; ?></p>
+				<?php endforeach;?>
+
+				<h2><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_small_title', true ) ); ?></h2>
+				<?php foreach ( $partnerships_small as $partnership ) : ?>
+					<h3><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
+				<?php endforeach;?>
+			</section>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $after_block_sections ) ) : ?>
@@ -361,10 +433,6 @@ get_header(); ?>
 					<input type="submit" class="btn btn-primary" value="Sign Up">
 				</form>
 			</div>
-		</section>
-		<?php endif; ?>
-
-		<?php else : ?>
 		</section>
 		<?php endif; ?>
 
