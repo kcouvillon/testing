@@ -91,10 +91,9 @@
 		padding-right: 5vw;
 	}
 
-	.block-text-columns {
+	.block-text-column {
 		@include susy-media($screen-sm) {
-			column-count: 2;
-			column-gap: 6em;
+			@include gallery(6 of 12);
 		}
 	}
 }
