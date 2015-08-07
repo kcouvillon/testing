@@ -48,7 +48,6 @@
 
 		setTimeout(function() {
 			$( '.resource-nav ul > li:first-child > a').trigger("click");
-			console.log('hi');
 		}, 1);
 
 		$( resourceNav ).on( 'click', 'a', function(e) {
