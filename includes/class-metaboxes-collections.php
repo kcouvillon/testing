@@ -219,7 +219,7 @@ class WS_Metaboxes_Collections {
 				'show_thumbnails' => true,  // Show thumbnails on the left
 				'filter_boxes'    => true,  // Show a text box for filtering the results
 				'query_args'      => array( // override the get_posts args
-					'posts_per_page' => 150,
+					'posts_per_page' => -1,
 					'post_type' => 'block',
 				),
 			)
@@ -297,7 +297,7 @@ class WS_Metaboxes_Collections {
 				'show_thumbnails' => true,  // Show thumbnails on the left
 				'filter_boxes'    => true,  // Show a text box for filtering the results
 				'query_args'      => array( // override the get_posts args
-					'posts_per_page' => 150,
+					'posts_per_page' => -1,
 					'post_type' => 'block',
 				),
 			)
