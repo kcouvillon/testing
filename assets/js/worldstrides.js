@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-08-06
+/*! WorldStrides - v0.1.0 - 2015-08-10
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -457,7 +457,26 @@
 				}
 			}
 
+			$('#tour-pricing-form').submit(function(){
+
+				getTourPricing();
+
+				return false;
+			});
+
 		});
+
+		function getTourPricing() {
+			var query = $('#tour-pricing-form').serialize,
+				ajax = $.ajax({
+					url: 'http://www.educationaltravel.com/PricingHandler',
+					data: query,
+				});
+
+			ajax.done(function(data){
+				console.log(data);
+			});
+		}
 
 	}
 	
