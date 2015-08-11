@@ -5731,6 +5731,7 @@ select {
 .ws-form input[type="url"],
 .ws-form input[type="search"],
 .ws-form input[type="date"],
+.ws-form input[type="number"],
 .ws-form textarea {
   display: block;
   width: 100%;
@@ -5745,6 +5746,7 @@ select {
   .ws-form input[type="url"]:focus,
   .ws-form input[type="search"]:focus,
   .ws-form input[type="date"]:focus,
+  .ws-form input[type="number"]:focus,
   .ws-form textarea:focus {
     background-color: #f2f2f4;
     outline: none; }
@@ -5755,6 +5757,7 @@ select {
   .ws-form input[type="url"]::-webkit-input-placeholder,
   .ws-form input[type="search"]::-webkit-input-placeholder,
   .ws-form input[type="date"]::-webkit-input-placeholder,
+  .ws-form input[type="number"]::-webkit-input-placeholder,
   .ws-form textarea::-webkit-input-placeholder {
     color: #323c53; }
   .ws-form input[type="text"]::-moz-placeholder,
@@ -5764,6 +5767,7 @@ select {
   .ws-form input[type="url"]::-moz-placeholder,
   .ws-form input[type="search"]::-moz-placeholder,
   .ws-form input[type="date"]::-moz-placeholder,
+  .ws-form input[type="number"]::-moz-placeholder,
   .ws-form textarea::-moz-placeholder {
     color: #323c53; }
   .ws-form input[type="text"]:-moz-placeholder,
@@ -5773,6 +5777,7 @@ select {
   .ws-form input[type="url"]:-moz-placeholder,
   .ws-form input[type="search"]:-moz-placeholder,
   .ws-form input[type="date"]:-moz-placeholder,
+  .ws-form input[type="number"]:-moz-placeholder,
   .ws-form textarea:-moz-placeholder {
     color: #323c53; }
   .ws-form input[type="text"]:-ms-input-placeholder,
@@ -5782,6 +5787,7 @@ select {
   .ws-form input[type="url"]:-ms-input-placeholder,
   .ws-form input[type="search"]:-ms-input-placeholder,
   .ws-form input[type="date"]:-ms-input-placeholder,
+  .ws-form input[type="number"]:-ms-input-placeholder,
   .ws-form textarea:-ms-input-placeholder {
     color: #323c53; }
 
@@ -9338,6 +9344,63 @@ section:after {
 .list-tag-no-link {
   color: #fff;
   font-size: 0.75em; }
+
+.itinerary-pricing {
+  background-color: #323c53;
+  color: #FFF;
+  font-size: 16px; }
+  .itinerary-pricing li {
+    margin-bottom: 1em; }
+    .itinerary-pricing li > ul,
+    .itinerary-pricing li > ol {
+      margin-left: 0; }
+      .itinerary-pricing li > ul li,
+      .itinerary-pricing li > ol li {
+        margin-bottom: 0; }
+  .itinerary-pricing p {
+    margin: 0; }
+
+.tour-pricing-form {
+  clear: both; }
+  @media screen and (min-width: 960px) {
+    .tour-pricing-form {
+      clear: none;
+      width: 32.0261437908%;
+      float: left;
+      margin-right: 1.9607843137%; } }
+
+@media screen and (min-width: 768px) {
+  .tour-options {
+    width: 49.0196078431%;
+    float: left;
+    margin-right: 1.9607843137%; } }
+
+@media screen and (min-width: 960px) {
+  .tour-options {
+    width: 32.0261437908%;
+    float: left;
+    margin-right: 1.9607843137%; } }
+
+.tour-quote {
+  background-color: #283043;
+  padding: 5px 5vw;
+  margin: 0 -5vw; }
+  @media screen and (min-width: 960px) {
+    .tour-quote {
+      width: 49.0196078431%;
+      float: right;
+      margin-right: 0; } }
+  @media screen and (min-width: 960px) {
+    .tour-quote {
+      width: 32.0261437908%;
+      float: right;
+      margin-right: 0; } }
+  .tour-quote .ways-to-save li .item-title {
+    background-color: #3076bc;
+    margin: 0 -5vw;
+    padding: 0.5em 0; }
+  .tour-quote .ways-to-save li.odd .item-title {
+    background-color: #265c93; }
 
 .site-footer {
   position: relative;

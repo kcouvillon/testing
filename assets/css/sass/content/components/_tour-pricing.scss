@@ -1,0 +1,66 @@
+.itinerary-pricing {
+	background-color: $navy;
+	color: #FFF;
+	font-size: 16px;
+
+	li {
+		margin-bottom: 1em;
+
+		& > ul,
+		& > ol {
+			margin-left: 0;
+
+			li { margin-bottom: 0; }
+		}
+	}
+
+	p {
+		margin: 0;
+	}
+}
+
+.tour-pricing-form {
+	clear: both;
+
+	@media screen and (min-width: $screen-md) {
+		clear: none;
+		@include span(4);
+	}
+}
+.tour-options {
+
+	@media screen and (min-width: $screen-sm) {
+		@include span(6);
+	}
+	@media screen and (min-width: $screen-md) {
+		@include span(4);
+	}
+}
+.tour-quote {
+	background-color: darken($navy, 5%);
+	padding: 5px 5vw;
+    margin: 0 -5vw;
+
+	@media screen and (min-width: $screen-md) {
+		@include span(6 last);
+	}
+	@media screen and (min-width: $screen-md) {
+		@include span(4 last);
+	}
+
+	.ways-to-save {
+
+		li {
+			.item-title {
+				background-color: $blue_dark;
+				margin: 0 -5vw;
+				padding: 0.5em 0;
+			}
+			&.odd {
+				.item-title {
+					background-color: darken($blue_dark, 10%);	
+				}
+			}
+		}
+	}
+}
