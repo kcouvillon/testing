@@ -13,21 +13,37 @@
 
 	if ( $( 'body' ).hasClass('single-itinerary') ) {
 
+		var templateTourPricing = $('#tour-pricing-template').html();
+		Mustache.parse(templateTourPricing);
+
 		$(document).ready(function(){
 
 			$('body')
 				.on('click', '.toggle-dates', function(e){
 
 					if ( $( '.date-list' ).hasClass( 'all-dates' ) ) {
-						
 						$( '.date-range.hidden-dates' ).slideUp();
 						$( '.date-list' ).removeClass( 'all-dates' );
-					
 					} else {
-				
 						$( '.date-range.hidden-dates' ).slideDown();
 						$( '.date-list' ).addClass('all-dates');
-				
+					}
+
+					return false;
+				})
+				.on('click', 'a.slide-toggle', function(e){
+					var $this = $( this ),
+						target = $( $this.attr('href') ),
+						$target = $( target );
+
+					if ( $this.hasClass('active') ) {
+						$this.removeClass('active');
+						$target.slideUp(300);
+						$this.text('Details');
+					} else {
+						$this.addClass('active');
+						$target.slideDown(300);
+						$this.text('Close');
 					}
 
 					return false;
@@ -140,24 +156,63 @@
 				}
 			}
 
-			$('#tour-pricing-form').submit(function(){
-
-				getTourPricing();
-
-				return false;
-			});
+			$('#tour-pricing-form').submit(getTourPricing);
 
 		});
 
 		function getTourPricing() {
-			var query = $('#tour-pricing-form').serialize,
+			var query = getQueryString(),
 				ajax = $.ajax({
-					url: 'http://www.educationaltravel.com/PricingHandler',
-					data: query,
+					url: 'http://ws.local/itinerary-pricing.json',
+					// url: 'http://www.educationaltravel.com/PricingHandler',
+					// data: query,
+					beforeSend: function(){
+						$('.itinerary-pricing')
+							.addClass('loading')
+							.removeClass('has-data error');
+					}
 				});
 
 			ajax.done(function(data){
-				console.log(data);
+				$('.itinerary-pricing')
+					.addClass('has-data')
+					.removeClass('loading error');
+
+				renderQuote(data, query);
+			});
+			ajax.fail(function(){
+				$('.itinerary-pricing')
+					.addClass('error')
+					.removeClass('has-data loading');
+			});
+
+			return false;
+		}
+
+		function getQueryString() {
+			var string1 = $('#tour-pricing-form').serialize(),
+				string2 = $('#tour-options-form').serialize(),
+				query 	= [string1, string2]
+				query 	= ( query[1] !== "" ) ? query.join('&') : query[0];
+
+			return query;
+		}
+
+		function renderQuote(data, query) {
+			var tourPricing;
+
+			$.extend(data, {
+				optionKey: function(){
+					return data.options.indexOf(this);
+				}
+			});
+			tourPricing = Mustache.render(templateTourPricing, data);
+			$('.tour-pricing-content').html(tourPricing);
+
+			$('.tour-options input[type="checkbox"]').each(function(i){
+				if ( query.indexOf('option_form'+i) > -1 ) {
+					$(this).prop('checked', true);
+				}
 			});
 		}
 

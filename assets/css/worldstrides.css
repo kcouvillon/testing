@@ -5691,7 +5691,7 @@ select {
   cursor: pointer;
   border-radius: 0;
   -webkit-appearance: none;
-  padding: 0.5em 3em 0.5em 1em; }
+  padding: 0.8em 3em 0.8em 0.8em; }
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     select {
       background-image: url("../images/caret-down@2x.png"); } }
@@ -5738,6 +5738,7 @@ select {
   background-color: #b3b7bf;
   border: 0;
   padding: 0.8em;
+  max-height: 50px;
   color: #323c53; }
   .ws-form input[type="text"]:focus,
   .ws-form input[type="email"]:focus,
@@ -5759,7 +5760,7 @@ select {
   .ws-form input[type="date"]::-webkit-input-placeholder,
   .ws-form input[type="number"]::-webkit-input-placeholder,
   .ws-form textarea::-webkit-input-placeholder {
-    color: #323c53; }
+    color: #777d8d; }
   .ws-form input[type="text"]::-moz-placeholder,
   .ws-form input[type="email"]::-moz-placeholder,
   .ws-form input[type="tel"]::-moz-placeholder,
@@ -5769,7 +5770,7 @@ select {
   .ws-form input[type="date"]::-moz-placeholder,
   .ws-form input[type="number"]::-moz-placeholder,
   .ws-form textarea::-moz-placeholder {
-    color: #323c53; }
+    color: #777d8d; }
   .ws-form input[type="text"]:-moz-placeholder,
   .ws-form input[type="email"]:-moz-placeholder,
   .ws-form input[type="tel"]:-moz-placeholder,
@@ -5779,7 +5780,7 @@ select {
   .ws-form input[type="date"]:-moz-placeholder,
   .ws-form input[type="number"]:-moz-placeholder,
   .ws-form textarea:-moz-placeholder {
-    color: #323c53; }
+    color: #777d8d; }
   .ws-form input[type="text"]:-ms-input-placeholder,
   .ws-form input[type="email"]:-ms-input-placeholder,
   .ws-form input[type="tel"]:-ms-input-placeholder,
@@ -5789,7 +5790,7 @@ select {
   .ws-form input[type="date"]:-ms-input-placeholder,
   .ws-form input[type="number"]:-ms-input-placeholder,
   .ws-form textarea:-ms-input-placeholder {
-    color: #323c53; }
+    color: #777d8d; }
 
 .ws-form .field {
   margin-bottom: 0.8em; }
@@ -7540,7 +7541,8 @@ section:after {
   margin-left: auto;
   margin-right: auto;
   padding: 0 5vw;
-  background-image: linear-gradient(transparent 0, transparent 54px, #b3b7bf 54px, #b3b7bf 55px, transparent 55px); }
+  background-image: linear-gradient(transparent 0, transparent 54px, #b3b7bf 54px, #b3b7bf 55px, transparent 55px);
+  border-bottom: 1px solid #707787; }
   .section-nav:before,
   .section-nav:after {
     content: "";
@@ -9349,6 +9351,9 @@ section:after {
   background-color: #323c53;
   color: #FFF;
   font-size: 16px; }
+  @media screen and (min-width: 1200px) {
+    .itinerary-pricing {
+      font-size: 18px; } }
   .itinerary-pricing li {
     margin-bottom: 1em; }
     .itinerary-pricing li > ul,
@@ -9359,48 +9364,166 @@ section:after {
         margin-bottom: 0; }
   .itinerary-pricing p {
     margin: 0; }
+  .itinerary-pricing .error-message {
+    display: none;
+    background-color: #283043;
+    padding: 1em;
+    border: 1px solid #FFA500; }
+    @media screen and (min-width: 960px) {
+      .itinerary-pricing .error-message {
+        width: 66.0130718954%;
+        float: right;
+        margin-right: 0;
+        max-width: 500px;
+        margin-top: 1.8em; } }
+  .itinerary-pricing.error .error-message {
+    display: block; }
 
 .tour-pricing-form {
-  clear: both; }
+  clear: both;
+  font-weight: 700; }
   @media screen and (min-width: 960px) {
     .tour-pricing-form {
       clear: none;
       width: 32.0261437908%;
       float: left;
+      margin-right: 1.9607843137%;
+      margin-bottom: 0; } }
+  .tour-pricing-form > ul {
+    margin-bottom: 0; }
+  @media screen and (min-width: 768px) {
+    .tour-pricing-form li {
+      width: 49.0196078431%;
+      float: left;
+      margin-right: 1.9607843137%; }
+      .tour-pricing-form li:nth-child(2),
+      .tour-pricing-form li:nth-child(4) {
+        width: 49.0196078431%;
+        float: right;
+        margin-right: 0; } }
+  @media screen and (min-width: 960px) {
+    .tour-pricing-form li {
+      width: 100%;
+      float: none; }
+      .tour-pricing-form li:nth-child(2),
+      .tour-pricing-form li:nth-child(4) {
+        width: 100%;
+        float: none; } }
+  .tour-pricing-form select {
+    width: 100%; }
+  .tour-pricing-form input[type="submit"] {
+    width: 100%; }
+    @media screen and (min-width: 768px) {
+      .tour-pricing-form input[type="submit"] {
+        width: auto; } }
+
+.tour-pricing-content {
+  position: relative;
+  min-height: 50px;
+  transition: opacity 300ms ease; }
+  @media screen and (min-width: 960px) {
+    .tour-pricing-content {
+      width: 66.0130718954%;
+      float: right;
+      margin-right: 0;
+      min-height: 400px; } }
+  .tour-pricing-content .loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px; }
+  .itinerary-pricing.loading .tour-pricing-content .loader {
+    display: block; }
+
+.tour-options {
+  display: none;
+  opacity: 1;
+  transition: opacity 300ms ease; }
+  .itinerary-pricing.loading .tour-options {
+    display: block;
+    opacity: 0.2; }
+  .itinerary-pricing.has-data .tour-options {
+    display: block;
+    opacity: 1; }
+  @media screen and (min-width: 768px) {
+    .tour-options {
+      width: 49.0196078431%;
+      float: left;
       margin-right: 1.9607843137%; } }
-
-@media screen and (min-width: 768px) {
-  .tour-options {
-    width: 49.0196078431%;
-    float: left;
-    margin-right: 1.9607843137%; } }
-
-@media screen and (min-width: 960px) {
-  .tour-options {
-    width: 32.0261437908%;
-    float: left;
-    margin-right: 1.9607843137%; } }
+  @media screen and (min-width: 960px) {
+    .tour-options {
+      width: 48.5148514851%;
+      float: left;
+      margin-right: 2.9702970297%;
+      margin-top: 1em; } }
 
 .tour-quote {
+  display: none;
+  opacity: 1;
   background-color: #283043;
-  padding: 5px 5vw;
-  margin: 0 -5vw; }
-  @media screen and (min-width: 960px) {
+  padding: 5px 5vw 0;
+  margin: 0 -5vw;
+  transition: opacity 300ms ease; }
+  .itinerary-pricing.loading .tour-quote {
+    display: block;
+    opacity: 0.2; }
+  .itinerary-pricing.has-data .tour-quote {
+    display: block;
+    opacity: 1; }
+  @media screen and (min-width: 768px) {
     .tour-quote {
       width: 49.0196078431%;
       float: right;
-      margin-right: 0; } }
+      margin-right: 0;
+      padding: 5px 15px 0;
+      margin: 0; } }
   @media screen and (min-width: 960px) {
     .tour-quote {
-      width: 32.0261437908%;
+      width: 48.5148514851%;
       float: right;
-      margin-right: 0; } }
-  .tour-quote .ways-to-save li .item-title {
-    background-color: #3076bc;
-    margin: 0 -5vw;
-    padding: 0.5em 0; }
-  .tour-quote .ways-to-save li.odd .item-title {
-    background-color: #265c93; }
+      margin-right: 0;
+      padding: 5px 25px 0; } }
+  .tour-quote > ul {
+    margin-bottom: 0; }
+  .tour-quote .highlight {
+    color: #76a9dc; }
+  .tour-quote .total-cost .ez-pay .pull-left,
+  .tour-quote .total-cost .ez-pay .pull-right {
+    width: 47.5%;
+    line-height: 1.3em; }
+  .tour-quote .total-cost .ez-pay .pull-right {
+    margin-left: 5%;
+    text-align: right; }
+  .tour-quote .total-cost .text-muted {
+    color: #707787;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    display: inline-block; }
+  .tour-quote .ways-to-save {
+    margin-bottom: 0; }
+    .tour-quote .ways-to-save .item-title a {
+      color: #83add7; }
+      .tour-quote .ways-to-save .item-title a:hover {
+        color: #d6e4f2; }
+    .tour-quote .ways-to-save > .item-title {
+      margin-bottom: 1em; }
+    .tour-quote .ways-to-save li {
+      background-color: #3076bc;
+      margin: 0 -5vw;
+      padding: 1em 5vw; }
+      .tour-quote .ways-to-save li.odd {
+        background-color: #265c93; }
+      @media screen and (min-width: 768px) {
+        .tour-quote .ways-to-save li {
+          margin: 0 -15px;
+          padding: 1em 15px; } }
+      @media screen and (min-width: 960px) {
+        .tour-quote .ways-to-save li {
+          margin: 0 -25px;
+          padding: 1em 25px; } }
+      .tour-quote .ways-to-save li .details {
+        padding-top: 1em; }
 
 .site-footer {
   position: relative;

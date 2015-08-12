@@ -2,6 +2,9 @@
 	background-color: $navy;
 	color: #FFF;
 	font-size: 16px;
+	@media screen and (min-width: $screen-lg) {
+		font-size: 18px;
+	}
 
 	li {
 		margin-bottom: 1em;
@@ -17,49 +20,198 @@
 	p {
 		margin: 0;
 	}
+
+	.error-message {
+		display: none;
+		background-color: darken($navy, 5%);
+	    padding: 1em;
+	    border: 1px solid #FFA500;
+	    @media screen and (min-width: $screen-md) {
+			@include span(8 last);
+			max-width: 500px;
+			margin-top: 1.8em;
+	    }
+	}
+	&.error {
+		.error-message {
+			display: block;
+		}
+	}
 }
 
 .tour-pricing-form {
 	clear: both;
+	font-weight: 700;
 
 	@media screen and (min-width: $screen-md) {
 		clear: none;
 		@include span(4);
+		margin-bottom: 0;
+	}
+
+	& > ul {
+		margin-bottom: 0;
+	}
+
+	li {
+		@media screen and (min-width: $screen-sm) {
+			@include span(6);
+			&:nth-child(2),
+			&:nth-child(4) {
+				@include span(6 last);
+			}
+		}
+		@media screen and (min-width: $screen-md) {
+			width: 100%;
+			float: none;
+			&:nth-child(2),
+			&:nth-child(4) {
+				width: 100%;
+				float: none;
+			}
+		}
+	}
+
+	select {
+		width: 100%;
+	}
+
+	input[type="submit"] {
+		width: 100%;
+		@media screen and (min-width: $screen-sm) {
+			width: auto; }
 	}
 }
+
+.tour-pricing-content {
+	position: relative;
+	min-height: 50px;
+	transition: opacity 300ms ease;
+	@media screen and (min-width: $screen-md) {
+		@include span(8 last);
+		min-height: 400px; }
+
+	.loader {
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -25px 0 0 -25px;
+	}
+	.itinerary-pricing.loading & {
+		.loader {
+			display: block;
+		}
+	}
+}
+
 .tour-options {
+	display: none;
+	opacity: 1;
+	transition: opacity 300ms ease;
+	.itinerary-pricing.loading & {
+		display: block;
+		opacity: 0.2;
+		 }
+	.itinerary-pricing.has-data & {
+	 	display: block;
+	 	opacity: 1; }
+	.itinerary-pricing.error & {
+		 }
 
 	@media screen and (min-width: $screen-sm) {
 		@include span(6);
 	}
 	@media screen and (min-width: $screen-md) {
-		@include span(4);
+		@include span(4 of 8);
+		margin-top: 1em;
 	}
 }
-.tour-quote {
-	background-color: darken($navy, 5%);
-	padding: 5px 5vw;
-    margin: 0 -5vw;
 
-	@media screen and (min-width: $screen-md) {
+.tour-quote {
+	display: none;
+	opacity: 1;
+	background-color: darken($navy, 5%);
+	padding: 5px 5vw 0;
+    margin: 0 -5vw;
+    transition: opacity 300ms ease;
+    .itinerary-pricing.loading & {
+    	display: block;
+    	opacity: 0.2;
+		 }
+	.itinerary-pricing.has-data & {
+	 	display: block;
+	 	opacity: 1; }
+	.itinerary-pricing.error & {
+		 }
+	@media screen and (min-width: $screen-sm) {
 		@include span(6 last);
-	}
+		padding: 5px 15px 0;
+	    margin: 0; }
 	@media screen and (min-width: $screen-md) {
-		@include span(4 last);
+		@include span(4 of 8 last);
+		padding: 5px 25px 0; }
+	
+
+	& > ul {
+		margin-bottom: 0;
+	}
+
+	.highlight {
+		color: lighten($blue_dark, 20%);
+	}
+
+	.total-cost {
+
+		.ez-pay {
+			.pull-left,
+			.pull-right {
+				width: 47.5%;
+				line-height: 1.3em;
+			}
+			.pull-right {
+				margin-left: 5%;
+				text-align: right;
+			}
+		}
+
+		.text-muted {
+			color: tint($gray_base, 30%);
+			font-size: 0.9em;
+		    line-height: 1.2em;
+		    display: inline-block;
+		}
 	}
 
 	.ways-to-save {
+		margin-bottom: 0;
 
-		li {
-			.item-title {
-				background-color: $blue_dark;
-				margin: 0 -5vw;
-				padding: 0.5em 0;
-			}
-			&.odd {
-				.item-title {
-					background-color: darken($blue_dark, 10%);	
+		.item-title {
+			a {
+				color: tint($blue_dark, 40%);
+				&:hover {
+					color: tint($blue_dark, 80%);
 				}
+			}
+		}
+		& > .item-title {
+			margin-bottom: 1em;
+		}
+		li {
+			background-color: $blue_dark;
+			margin: 0 -5vw;
+			padding: 1em 5vw;
+			&.odd { 
+			background-color: darken($blue_dark, 10%); }
+			@media screen and (min-width: $screen-sm) {
+				margin: 0 -15px;
+				padding: 1em 15px; }
+			@media screen and (min-width: $screen-md) {
+				margin: 0 -25px;
+				padding: 1em 25px; }
+
+			.details {
+				padding-top: 1em;
 			}
 		}
 	}

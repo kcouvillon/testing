@@ -21,7 +21,7 @@ select {
   cursor: pointer;
   border-radius: 0;
   -webkit-appearance: none;
-  padding: 0.5em 3em 0.5em 1em;
+  padding: 0.8em 3em 0.8em 0.8em;
   &:hover, &:focus {
   	background-color: $gray_lighter;
   	outline: none;
@@ -62,6 +62,7 @@ select {
 		background-color: $gray_light;
 		border: 0;
 		padding: 0.8em;
+		max-height: 50px;
 		color: $gray_base;
 
 		&:focus {
@@ -70,16 +71,16 @@ select {
 		}
 
 		&::-webkit-input-placeholder { 
-			color: $gray_base;
+			color: $gray;
 		}
 		&::-moz-placeholder { 
-			color: $gray_base;
+			color: $gray;
 		}
 		&:-moz-placeholder { 
-			color: $gray_base;
+			color: $gray;
 		}
 		&:-ms-input-placeholder { 
-			color: $gray_base;
+			color: $gray;
 		}
 	}
 

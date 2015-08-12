@@ -27,6 +27,7 @@ section {
 	@include container();
 	@include clearfix;
 	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
+	border-bottom: 1px solid tint($gray_base, 30%);
 
 	select {
 		margin: 1em 0;
