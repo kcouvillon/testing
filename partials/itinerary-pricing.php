@@ -228,6 +228,8 @@
 						<div class="item-title"><strong>Cancellation Protection</strong></div>
 						<p>Cancellatio Protection Plus<br/>(Recommended) <span class="pull-right">${{cpp}}</span></p>
 					</li>
+
+					{{#ifOptions}}
 					<li>
 						<div class="item-title"><strong>Optional Activities and Excursions</strong></div>
 						<ul class="list-unstyled">
@@ -240,6 +242,8 @@
 							{{/options}}
 						</ul>
 					</li>
+					{{/ifOptions}}
+
 					<li>
 						<div class="item-title"><strong>Twin Room Supplement</strong></div>
 						<p>For Passengers over 24 years of age <span class="pull-right">$50/n</span></p>
@@ -257,7 +261,7 @@
 								<span class="text-muted">Based on enrollment today with deposit of ${{ezpDisclaimer}}</span>
 							</span>
 							<span class="pull-right">
-								{{ezPay}} payments of ${{ezPayAmount}}
+								{{ezPay}} payments of ${{#round}}{{ezPayAmount}}{{/round}}
 							</span>
 						</div>
 					</li>
@@ -292,9 +296,10 @@
 				</ul>
 			</div>
 
-			<div class="error-message">We&apos;re sorry but there has been an error retrieving your quote. <a href="<?php echo esc_url( site_url('/request-info') ); ?>">Click here</a> to get more information about this tour.</div>
-			<img src="<?php echo get_template_directory_uri() . '/assets/images/loader.svg'; ?>" width="50" heigh="50" alt="loader" class="loader">
 		</script>
+
+		<div class="error-message">We&apos;re sorry but there has been an error retrieving your quote. <a href="<?php echo esc_url( site_url('/request-info') ); ?>">Click here</a> to get more information about this tour.</div>
+		<img src="<?php echo get_template_directory_uri() . '/assets/images/loader.svg'; ?>" width="50" heigh="50" alt="loader" class="loader">
 
 	</div>
 

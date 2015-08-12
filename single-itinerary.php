@@ -500,7 +500,11 @@ get_header(); ?>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<?php echo get_template_part('partials/itinerary', 'pricing'); ?>
+		<?php 
+			if ( has_term('perspectives', 'product-line') ) {
+				echo get_template_part('partials/itinerary', 'pricing');
+			}
+		?>
 
 		<section class="clearfix ws-container learn-more hide-print">
 			<section class="clearfix ws-container learn-more">

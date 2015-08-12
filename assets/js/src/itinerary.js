@@ -202,8 +202,20 @@
 			var tourPricing;
 
 			$.extend(data, {
-				optionKey: function(){
+				optionKey: function () {
 					return data.options.indexOf(this);
+				},
+				round: function () {
+					return function(text, render){
+						return Math.round( render(text) );
+					};
+				},
+				ifOptions: function () {
+					if ( data.options.length > 0 ) {
+						return true;
+					} else {
+						return false;
+					}
 				}
 			});
 			tourPricing = Mustache.render(templateTourPricing, data);
