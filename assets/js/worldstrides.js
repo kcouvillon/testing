@@ -91,7 +91,8 @@
 
 				removeFilter('all');
 				$exploreResults.mixItUp('filter', 'all');
-
+				$('.terms-list-child').addClass('invisible');
+				$('.terms-list-parent').removeClass('invisible');
 				checkFilters();
 			})
 			.on('click', '.term-list-toggle', function(event){
