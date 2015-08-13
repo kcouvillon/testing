@@ -31,9 +31,52 @@
 					easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
 				},
 				callbacks: {
+					onMixLoad: function(state){
+						var filters = getQueryFilters();
+
+						if ( filters ) {
+							$exploreResults.mixItUp('filter', filters.filterString);
+							
+							// console.log('filters', filters);
+
+							if ( filters.travelers ) {
+								
+								$(filters.travelers).each(function(){
+									var $node = $( 'a.filter[href="#'+this+'"]' );
+									if ( $node ) {
+										addFilter( '.traveler-filters', $node.text(), '#'+this );
+									}
+								});
+
+							}
+
+							if ( filters.interests ) {
+
+								$(filters.interests).each(function(){
+									var $node = $( 'a.filter[href="#'+this+'"]' );
+									if ( $node ) {
+										addFilter( '.interests-filters', $node.text(), '#'+this );
+									}
+								});
+
+							}
+
+							if ( filters.destinations ) {
+
+								$(filters.destinations).each(function(){
+									var $node = $( 'a.filter[href="#'+this+'"]' );
+									if ( $node ) {
+										addFilter( '.destination-filters', $node.text(), '#'+this );
+									}
+								});
+
+							}
+						}
+					},
 					onMixEnd: function (state) {
 						var $results = $('.results');
 
+						// console.log(state);
 						updateAvailableFilters(state);
 
 						$results.each(function(){
@@ -68,27 +111,20 @@
 					text = $this.text(),
 					filters = '';
 
-				$this.addClass('inactive');
 				addFilter(filterList, text, slug);
-
 				filters = getCurrentFilters();
 				$exploreResults.mixItUp('filter', filters);
-
-				checkFilters();
 			})
 			.on('click', '.remove-filter', function(event){
+
+				event.preventDefault();
 
 				var slug = $(this).parent().data('related'),
 					filters = '';
 
 				removeFilter(slug);
-				
 				filters = getCurrentFilters();
 				$exploreResults.mixItUp('filter', filters);
-
-				checkFilters();
-
-				return false;
 			})
 			.on('click', 'a[href="#clear-filters"]', function(event){
 				
@@ -133,11 +169,17 @@
 
 	}
 
-	function addFilter(list, text, slug){
-		$(list).append('<span class="active-filter" data-related="' + slug + '">' + text + '<i class="icon icon-small-close remove-filter"></i></span>');
+	function addFilter (list, text, slug) {
+		if ( ! $('.active-filter[data-related="'+slug+'"]').length > 0 ) {
+
+			$(list).append('<span class="active-filter" data-related="' + slug + '">' + text + '<i class="icon icon-small-close remove-filter"></i></span>');
+			$('a.filter[href="'+slug+'"]').addClass('inactive');
+			checkFilters();
+			updateQueryString();
+		}
 	}
 
-	function removeFilter(slug){
+	function removeFilter (slug) {
 		if ( slug == 'all' ) {
 			$('.active-filter').remove();
 			$('.filter').removeClass('inactive');
@@ -145,9 +187,66 @@
 			$('.active-filter[data-related="' + slug + '"]').remove();
 			$('.filter[href="' + slug + '"]').removeClass('inactive');
 		}
+		checkFilters();
+		updateQueryString();
 	}
 
-	function getCurrentFilters() {
+	function getQueryFilters () {
+		if ( !location.search )
+			return false;
+
+		var query 	 = location.search.substr(1).split('&'),
+			queryObj = {
+				filterString: ''
+			};
+
+		$(query).each(function(){
+			var keyValue = this.split('=');
+			queryObj[keyValue[0]] = keyValue[1].split(',');
+			for ( var i=0; i < queryObj[keyValue[0]].length; i++ ) {
+				queryObj.filterString += '.filter-' + queryObj[keyValue[0]][i];
+			}
+		});
+
+		return queryObj;
+	}
+
+	function updateQueryString() {
+		var queryObj = {
+				travelers: [],
+				interests: [],
+				destinations: []
+			},
+			query = [];
+
+		$('.current-filters .traveler-filters .active-filter').each(function(){
+			queryObj.travelers.push( $(this).data('related').substr(1) );
+		});
+		$('.current-filters .interests-filters .active-filter').each(function(){
+			queryObj.interests.push( $(this).data('related').substr(1) );
+		});
+		$('.current-filters .destination-filters .active-filter').each(function(){
+			queryObj.destinations.push( $(this).data('related').substr(1) );
+		});
+
+		if ( queryObj.travelers.length > 0 ) {
+			query.push( 'travelers=' + queryObj.travelers.join(',') );
+		}
+		if ( queryObj.interests.length > 0 ) {
+			query.push( 'interests=' + queryObj.interests.join(',') );
+		}
+		if ( queryObj.destinations.length > 0 ) {
+			query.push( 'destinations=' + queryObj.destinations.join(',') );
+		}
+
+		if ( Modernizr.history ) {
+			query = '?' + query.join('&');
+			history.pushState(null, null, query);
+		}
+
+	}
+
+	function getCurrentFilters () {
 		var terms = [];
 		$('.current-filters .active-filter').each(function(){
 			var term = $(this).data('related').substr(1);
