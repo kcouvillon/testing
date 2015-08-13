@@ -35,11 +35,14 @@
 
 		<section class="explore-tool">
 
-			<span class="search-by">Search by</span>
+			<div class="explore-utility ws-container">
+				<span class="search-by">Search by</span>
+				<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
+			</div>
 
-			<?php get_template_part('partials/explore', 'filters'); ?>			
+			<?php get_template_part('partials/explore', 'filters'); ?>		
 
-			<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
+			<a href="#clear-filters" class="clear-all mobile-only"><i class="icon icon-small-close"></i> Clear filters</a>	
 
 			<?php get_template_part('partials/explore', 'results') ?>
 

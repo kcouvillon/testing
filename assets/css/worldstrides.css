@@ -8469,6 +8469,11 @@ section:after {
       cursor: pointer; }
       .explore-tool .active-filter .icon:hover {
         color: #4fa9e5; }
+  .explore-tool .explore-utility {
+    position: relative;
+    z-index: 0;
+    height: 0;
+    overflow: visible; }
   .explore-tool .explore-filters-toggle {
     display: none;
     background-color: #323C53;
@@ -8484,33 +8489,39 @@ section:after {
   .explore-tool .search-by {
     position: absolute;
     top: -30px;
-    left: 5vw;
     color: #FFF; }
   .explore-tool .clear-all {
-    display: block;
-    max-width: 135px;
-    text-align: center;
-    padding: 0.25em 1em 0.4em 0.5em;
-    margin: -45px auto 0;
+    display: none;
+    max-width: 150px;
+    padding: 0.5em 0;
+    margin: 0 5vw;
     background-color: #FFF;
     color: #4fa9e5;
-    transition: all 300ms ease; }
-    @media screen and (min-width: 768px) {
-      .explore-tool .clear-all {
-        position: absolute;
-        bottom: 95%;
-        right: 5vw;
-        padding: 0.2em 1em 0.2em 0.4em; } }
-    .explore-tool.has-filter .clear-all {
-      margin-top: 0; }
-      @media screen and (min-width: 768px) {
-        .explore-tool.has-filter .clear-all {
-          bottom: 100%; } }
+    transition: all 300ms ease;
+    transform: translateY(105%); }
     .explore-tool .clear-all:hover {
       background-color: #fb901d;
       color: #FFF; }
+    @media screen and (min-width: 768px) {
+      .explore-tool .clear-all {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 5vw;
+        padding: 0.2em 1em 0.2em 0.4em; } }
+    .explore-tool .clear-all.mobile-only {
+      display: block;
+      transform: translateY(-105%); }
+      .explore-tool .clear-all.mobile-only:hover {
+        background-color: none;
+        color: #fb901d; }
+      @media screen and (min-width: 768px) {
+        .explore-tool .clear-all.mobile-only {
+          display: none; } }
     .explore-tool .clear-all .icon {
       vertical-align: middle; }
+  .explore-tool.has-filter .clear-all {
+    transform: translateY(0); }
 
 /* Explore Filters
  * ------------------------------------------------------------- */
