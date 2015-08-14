@@ -438,17 +438,50 @@
 /* Explore Results
  * ------------------------------------------------------------- */
 .explore-results {
+	@media screen and ( min-width: $screen-sm ) {
+		padding: 0;
+	}
 
 	.collections,
 	.itineraries {
 		margin-bottom: 4em;
 		overflow: hidden;
-
 		&.no-results {
-			margin-bottom: 0;
-			visibility: hidden;
-			height: 0;
+		margin-bottom: 0;
+		visibility: hidden;
+		height: 0; }
+		
+		&.show-previews {
+			.tile:not(.preview-tile) {
+				position: absolute;
+				top: 0;
+				z-index: -1;
+				visibility: hidden;
+			}
 		}
+		&.show-all {
+			.tile:not(.preview-tile) {
+				
+			}	
+		}
+
+		.results {
+			@media screen and ( min-width: $screen-sm ) {
+				background-image: url(/wp-content/themes/worldstrides/assets/images/src/patterns/ws_w_pattern6.gif)
+			}
+		}
+	}
+
+	.results-header {
+		@media screen and ( min-width: $screen-sm ) {
+			padding: 0 5vw;
+		}
+	}
+
+	.toggle-results {
+		display: block;
+		margin: 1em 0 0;
+		text-align: center;
 	}
 
 	.tile {
@@ -467,6 +500,7 @@
 	    @media screen and ( min-width: $screen-sm ) {
 	    	color: #FFF;
 	    	margin: 0;
+	    	border-bottom: 0;
 	    	&.has-post-thumbnail {
 				background-size: cover;
 			}
@@ -518,6 +552,7 @@
 		.tile-title {
 			font-weight: 300;
 			font-size: 1em;
+			margin: 0;
 			@media screen and ( min-width: $screen-sm ) {
 				font-size: 29px;
 			}

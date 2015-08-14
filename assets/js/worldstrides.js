@@ -9,16 +9,21 @@
 
 	if ( $('body').hasClass('page-template-explore') ) {
 
-		var $exploreResults = $('.explore-results .results');
-
+		var $exploreResults = $('.explore-results .results'),
+			showAllResults = true;
 
 		// On document ready, instantiate .mixItUp()
 		$(document).ready(function(){
+			var filters = getQueryFilters(),
+				filterString = ( filters ) ? filters.filterString : 'all';
 
 			$exploreResults.mixItUp({
 				selectors: {
 					target: '.tile',
 					filter: '.single-filter',
+				},
+				load: {
+					filter: filterString
 				},
 				animation: {
 					duration: 350,
@@ -27,12 +32,7 @@
 				},
 				callbacks: {
 					onMixLoad: function(state){
-						var filters = getQueryFilters();
-
 						if ( filters ) {
-							$exploreResults.mixItUp('filter', filters.filterString);
-							
-							// console.log('filters', filters);
 
 							if ( filters.travelers ) {
 								
@@ -71,8 +71,19 @@
 					onMixEnd: function (state) {
 						var $results = $('.results');
 
-						// console.log(state);
 						updateAvailableFilters(state);
+						
+						state.$targets.removeClass('preview-tile');
+
+						state.$show.each(function(i){
+							var $this = $(this);
+							if ( $this.hasClass('type-collection') && i < 3 ) {
+								$this.addClass('preview-tile');
+							}
+							if ( $this.hasClass('type-itinerary') && i < 9 ) {
+								$this.addClass('preview-tile');
+							}
+						});
 
 						$results.each(function(){
 							var $this = $(this),
@@ -84,8 +95,20 @@
 								$parent.removeClass('no-results');
 							}
 						});
-					},
-					onMixFail: function (state) {
+
+						if ( $(state.$show[0]).hasClass('type-collection') ) {
+							if ( state.$show.length <= 3 ) {
+								$('.collections .toggle-results').hide();
+							} else {
+								$('.collections .toggle-results').show();
+							}
+						} else if ( $(state.$show[0]).hasClass('type-itinerary') ) {
+							if ( state.$show.length <= 9 ) {
+								$('.itineraries .toggle-results').hide();
+							} else {
+								$('.itineraries .toggle-results').show();
+							}
+						}
 					}
 				}
 			});
@@ -157,6 +180,22 @@
 				event.preventDefault();
 
 				$('.explore-filters').toggleClass('filter-menus-closed');
+			})
+			.on('click', '.toggle-results', function(event){
+				event.preventDefault();
+				
+				var $this = $(this),
+					$parent = $this.parent(),
+					offsetTop = $parent.offset().top;
+
+				if ( $parent.hasClass( 'show-previews' ) ) {
+					$this.text('Hide');
+					$parent.addClass('show-all').removeClass('show-previews');
+				} else {
+					$this.text('See All');
+					$parent.addClass('show-previews').removeClass('show-all');
+					$('html, body').animate({scrollTop: offsetTop+'px'});
+				}
 			});
 
 	}
@@ -185,7 +224,7 @@
 
 	function getQueryFilters () {
 		if ( !location.search )
-			return false;
+			return '';
 
 		var query 	 = location.search.substr(1).split('&'),
 			queryObj = {

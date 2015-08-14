@@ -1,7 +1,6 @@
 <?php
 global $post; 
 $filters = array_map( 'intval', get_terms( 'filter', array( 'fields' => 'ids' ) ) );
-$count = 0;
 $collection_args = array(
 	'post_type' => 'collection', 
 	'posts_per_page' => 200,
@@ -34,18 +33,21 @@ $collections = new WP_Query( $collection_args );
 
 <section class="explore-results section-content">
 
-	<div class="collections">
+	<div class="collections show-previews">
 		<header class="results-header">
 			<h2>Collections</h2>
-			<a href="#" class="see-more">See more</a>
 		</header>
 		<div class="results clearfix">
 
-			<?php while( $collections->have_posts() ) : $collections->the_post(); ?>
+
+			<?php 
+			$count = 0;
+			while( $collections->have_posts() ) : $collections->the_post(); ?>
 
 				<?php
 				$terms = get_the_terms( get_the_ID(), 'filter' );
 				$count++;
+				$post_class = ( $count <= 3 ) ? 'tile tile-third' : 'tile tile-third';
 				if ( has_post_thumbnail() ) {
 					$thumb_id = get_post_thumbnail_id();
 					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
@@ -56,7 +58,7 @@ $collections = new WP_Query( $collection_args );
 					$scrim = '';
 				}
 				?>
-				<article <?php post_class('tile tile-third'); ?>
+				<article <?php post_class( $post_class ); ?>
 						 style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
 
 					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm collection-image" />
@@ -76,14 +78,11 @@ $collections = new WP_Query( $collection_args );
 
 			<?php endwhile; ?>
 
-			<article class="no-results">
-				<h4>Sorry, there are no Collections based on your filters.</h4>
-			</article>
-
 		</div>
+		<a href="#toggle-results" class="toggle-results">See All</a>
 	</div>
 
-	<div class="itineraries">
+	<div class="itineraries show-previews">
 		<header class="results-header">
 			<h2>Itineraries</h2>
 		</header>
@@ -93,8 +92,9 @@ $collections = new WP_Query( $collection_args );
 			$count = 0;
 			while ( $itineraries->have_posts() ) : $itineraries->the_post(); ?>
 
-				<?php $count++;	
-
+				<?php 
+				$count++;	
+				$post_class = ( $count <= 9 ) ? 'tile tile-third' : 'tile tile-third';
 				if ( has_post_thumbnail() ) {
 					$thumb_id = get_post_thumbnail_id();
 					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
@@ -105,8 +105,7 @@ $collections = new WP_Query( $collection_args );
 					$scrim = '';
 				}
 				?>
-				<article <?php post_class('tile tile-third'); ?>
-						 style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
+				<article <?php post_class( $post_class ); ?> style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
 
 					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
 
@@ -117,12 +116,9 @@ $collections = new WP_Query( $collection_args );
 				</article>
 
 			<?php endwhile; ?>
-
-			<article class="no-results">
-				<h4>Sorry, there are no Itineraries based on your filters.</h4>
-			</article>
-
+		
 		</div>
+		<a href="#toggle-results" class="toggle-results">See All</a>
 	</div>
 
 </section>
