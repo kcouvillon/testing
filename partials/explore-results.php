@@ -4,8 +4,8 @@ $filters = array_map( 'intval', get_terms( 'filter', array( 'fields' => 'ids' ) 
 $count = 0;
 $collection_args = array(
 	'post_type' => 'collection', 
-	// 'posts_per_page' => 200,
-	'posts_per_page' => 20,
+	'posts_per_page' => 200,
+	// 'posts_per_page' => 20,
 	'tax_query' => array(
         array(
             'taxonomy' => 'filter',
@@ -17,8 +17,8 @@ $collection_args = array(
 );
 $itinerary_args = array(
 	'post_type' => 'itinerary', 
-	// 'posts_per_page' => 300,
-	'posts_per_page' => 30,
+	'posts_per_page' => 300,
+	// 'posts_per_page' => 30,
 	'tax_query' => array(
         array(
             'taxonomy' => 'filter',
