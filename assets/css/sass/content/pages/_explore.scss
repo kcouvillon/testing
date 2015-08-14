@@ -128,14 +128,8 @@
 		margin: 0;
 		height: auto;
 		max-height: 1000px;
+		overflow: hidden;
 		transition: max-height 400ms ease-in;
-		// @media screen and (min-width: $screen-sm) {
-		// 	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-		// 	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-		// 	display: -ms-flexbox;      /* TWEENER - IE 10 */
-		// 	display: -webkit-flex;     /* NEW - Chrome */
-		// 	display: flex; 
-		// }
 	}
 
 	/* Filters (mobile and desktop)

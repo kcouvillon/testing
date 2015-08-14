@@ -156,10 +156,7 @@
 			.on('click', '.explore-filters-toggle', function(event){
 				event.preventDefault();
 
-				var $this = $(this),
-					$exploreFilters = $('.explore-filters');
-
-				$exploreFilters.toggleClass('filter-menus-closed');
+				$('.explore-filters').toggleClass('filter-menus-closed');
 			});
 
 	}

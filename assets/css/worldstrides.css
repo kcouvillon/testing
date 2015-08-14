@@ -8561,6 +8561,7 @@ section:after {
     margin: 0;
     height: auto;
     max-height: 1000px;
+    overflow: hidden;
     transition: max-height 400ms ease-in; }
   .explore-filters .traveler-filters,
   .explore-filters .interests-filters,
