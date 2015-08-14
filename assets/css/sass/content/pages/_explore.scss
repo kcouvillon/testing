@@ -138,23 +138,23 @@
 	.interests-filters,
 	.destination-filters {
 		padding: 1em 0;
+		&:before {
+			display: block;
+		}
 	}
 	.interests-filters {
 		&:before {
 			content: "Interests";
-			margin-right: 1em;
 		}
 	}
 	.traveler-filters {
 		&:before {
 			content: "Traveler";
-			margin-right: 1em;
 		}
 	}
 	.destination-filters {
 		&:before {
 			content: "Destination";
-			margin-right: 1em;
 		}
 	}
 

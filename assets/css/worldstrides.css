@@ -8567,15 +8567,16 @@ section:after {
   .explore-filters .interests-filters,
   .explore-filters .destination-filters {
     padding: 1em 0; }
+    .explore-filters .traveler-filters:before,
+    .explore-filters .interests-filters:before,
+    .explore-filters .destination-filters:before {
+      display: block; }
   .explore-filters .interests-filters:before {
-    content: "Interests";
-    margin-right: 1em; }
+    content: "Interests"; }
   .explore-filters .traveler-filters:before {
-    content: "Traveler";
-    margin-right: 1em; }
+    content: "Traveler"; }
   .explore-filters .destination-filters:before {
-    content: "Destination";
-    margin-right: 1em; }
+    content: "Destination"; }
   .explore-filters ul.current-filters {
     display: none;
     margin: 0; }
