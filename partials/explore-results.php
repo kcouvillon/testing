@@ -31,7 +31,7 @@ $itineraries = new WP_Query( $itinerary_args );
 $collections = new WP_Query( $collection_args );
 ?>
 
-<section class="explore-results section-content">
+<section id="explore-results" class="explore-results section-content">
 
 	<div class="collections show-previews">
 		<header class="results-header">

@@ -8475,21 +8475,20 @@ section:after {
     height: 0;
     overflow: visible; }
   .explore-tool .explore-filters-toggle {
-    display: none;
     background-color: #323C53;
     color: #FFF;
     border-top: 1px solid #424c61;
     text-align: center;
     padding: 0.5em 0; }
-    @media screen and (min-width: 768px) {
-      .explore-tool .explore-filters-toggle {
-        display: block; } }
-    .explore-tool .explore-filters-toggle:hover {
-      background-color: #4fa9e5; }
+    .explore-tool .explore-filters-toggle a:hover {
+      color: #4fa9e5; }
   .explore-tool .search-by {
     position: absolute;
-    top: -30px;
-    color: #FFF; }
+    bottom: 100%;
+    color: #FFF;
+    background-color: #283146;
+    padding: 0.5em 0.5em;
+    font-size: 0.9em; }
   .explore-tool .clear-all {
     display: none;
     max-width: 150px;

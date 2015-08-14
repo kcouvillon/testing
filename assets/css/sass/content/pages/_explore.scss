@@ -28,22 +28,22 @@
 	}
 
 	.explore-filters-toggle {
-		display: none;
 		background-color: #323C53;
 	    color: #FFF;
 	    border-top: 1px solid $gray_darker;
 	    text-align: center;
 	    padding: 0.5em 0;
-		@media screen and ( min-width: $screen-sm ) {
-		display: block; }
-		&:hover {
-		background-color: $blue; }
+		
+		a:hover { color: $blue; }
 	}
 
 	.search-by {
 	    position: absolute;
-	    top: -30px;
-	    color: #FFF; }
+	    bottom: 100%;
+		color: #FFF;
+		background-color: #283146;
+		padding: 0.5em 0.5em;
+		font-size: 0.9em; }
 
 	.clear-all {
 		display: none;

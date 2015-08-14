@@ -102,12 +102,15 @@
 							} else {
 								$('.collections .toggle-results').show();
 							}
+							// $('.collections-count').text( getResultsCountText(state, 'Collection', 'Collections') );
+
 						} else if ( $(state.$show[0]).hasClass('type-itinerary') ) {
 							if ( state.$show.length <= 9 ) {
 								$('.itineraries .toggle-results').hide();
 							} else {
 								$('.itineraries .toggle-results').show();
 							}
+							// $('.itineraries-count').text( getResultsCountText(state, 'Itinerary', 'Itineraries') );
 						}
 					}
 				}
@@ -176,10 +179,15 @@
 					.slideToggle()
 					.toggleClass('closed open');
 			})
-			.on('click', '.explore-filters-toggle', function(event){
-				event.preventDefault();
+			// .on('click', '.explore-filters-toggle', function(event){
+			// 	event.preventDefault();
 
-				$('.explore-filters').toggleClass('filter-menus-closed');
+			// 	$('.explore-filters').toggleClass('filter-menus-closed');
+			// })
+			.on('click', 'a[href="#explore-results"]', function(event){
+				event.preventDefault();
+				var offsetTop = $('#explore-results').offset().top;
+				$('html, body').animate({scrollTop: offsetTop+'px'});
 			})
 			.on('click', '.toggle-results', function(event){
 				event.preventDefault();
@@ -350,7 +358,16 @@
 		}
 	}
 
-
+	// function getResultsCountText (state, singular, plural) {
+	// 	var count = state.$show.length;
+	// 	if ( count > 1 ) {
+	// 		return count + ' ' + plural + ' and ';
+	// 	} else if ( count == 1 ) {
+	// 		return count + ' ' + singluar + ' and ';
+	// 	} else {
+	// 		return '';
+	// 	}
+	// }
 
 
 
