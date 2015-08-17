@@ -5,7 +5,17 @@
 
 $recent_highlights = WS_Helpers::get_blog_sidebar_posts();
 
-get_header(); ?>
+get_header();
+
+$post_type = get_query_var( 'post_type' );
+if ( 'post' == $post_type ) {
+	$stories = true;
+	$search_title = 'Stories';
+} else {
+	$stories = false;
+	$search_title = 'All WorldStrides';
+}
+?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main search" role="main">
@@ -17,9 +27,9 @@ get_header(); ?>
 				<input type="search" class="search-field" placeholder="<?php the_search_query(); ?>" value="" name="s" title="Search for:">
 				<div class="search-options">
 					<span>All of WorldStrides</span>
-					<input type="radio" name="search-option" class="search-radio" value="all">
+					<input type="radio" name="post_type" class="search-radio" value="all"<?php if ( ! $stories ) { echo ' checked="checked" '; } ?>>
 					<span>Stories</span>
-					<input type="radio" name="search-option" class="search-radio" value="stories" checked="checked">
+					<input type="radio" name="post_type" class="search-radio" value="post" <?php if ( $stories ) { echo ' checked="checked" '; } ?>>
 				</div>
 			</form>
 		</section>
@@ -30,7 +40,7 @@ get_header(); ?>
 
 			<?php if ( have_posts() ) : ?>
 
-				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in {Stories or All WorldStrides}</h3>
+				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in <?php echo $search_title; ?></h3>
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
