@@ -68,7 +68,7 @@ if ( is_singular( 'post' ) ) {
 
 	<header id="masthead" class="site-header" role="banner">
 		<h1 class="logo hide-print"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="hide">Worldstrides</span></a></h1>
-		<!-- <a class="logo-sm" href="<?php //echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="http://placehold.it/40x50" alt=""></a> -->
+		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-menu"></i></a>
 		<img src="<?php echo get_template_directory_uri() . '/assets/images/logo-gray.png'; ?>" class="print-only" width="216" height="46" />
 
 		<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
@@ -76,5 +76,26 @@ if ( is_singular( 'post' ) ) {
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav>
 	</header>
+
+	<nav id="mobile-nav" class="mobile-nav hide-print" role="navigation">
+		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-close"></i></a>
+		<ul class="primary-nav menu list-unstyled">
+			<li class="menu-item menu-item-explore">
+				<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Our Trips »</a>
+			</li>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'items_wrap' => '%3$s' ) ); ?>
+		</ul>
+		<form role="search" method="get" class="ws-form search-form" action="<?php echo site_url(); ?>">
+			<label>
+				<span class="screen-reader-text">Search for:</span>
+				<i class="icon icon-search"></i>
+				<input type="search" class="search-field" placeholder="Search …" value="" name="s" title="Search for:">
+			</label>
+			<input type="submit" class="search-submit" value="Search">
+		</form>
+		<ul class="secondary-nav menu list-unstyled">
+			<?php wp_nav_menu( array( 'theme_location' => 'secondary', 'container' => false, 'items_wrap' => '%3$s' ) ); ?>
+		</ul>
+	</nav>
 
 	<div id="content" class="site-content">

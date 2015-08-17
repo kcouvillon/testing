@@ -5,7 +5,7 @@
 	padding-top: em(16);
 	padding-bottom: em(16);
 
-	@include susy-media($screen-xs) {
+	@include susy-media($screen-sm) {
 		padding-top: em(35);
 		padding-bottom: em(38);
 	}
@@ -38,35 +38,41 @@
 	.home & {
 		background-color: transparent;
 	}
+
+	/* Small menu. */
+	.menu-toggle {
+	    position: absolute;
+	    right: 5vw;
+	    top: 50%;
+	    margin-top: -26px;
+	    font-size: 32px;
+	    @media screen and (min-width: $screen-sm) {
+	    	display: none;
+	    }
+	}
 }
 
 .logo {
 	display: inline-block;
-	width: 216px;
-	height: 46px;
+	width: 40px;
+	height: 64px;
 	margin: 0;
+	@media screen and (min-width: $screen-sm) {
+		width: 216px;
+		height: 46px;
+	}
 
 	a {
 		display: block;
 		width: 100%;
 		height: 100%;
-		@include logo;
-	}
-}
+		@include monogram;
+		background-position: center center;
 
-.logo-sm {
-	display: inline-block;
-
-	@include susy-media($screen-xs) {
-		display: none;
-	}
-}
-
-.logo-lg {
-	display: none;
-
-	@include susy-media($screen-xs) {
-		display: inline-block;
+		@media screen and (min-width: $screen-sm) {
+			@include logo;
+			background-position: left center;
+		}
 	}
 }
 
@@ -134,16 +140,16 @@
 	@include full;
 	display: none;
 
-	@include susy-media($screen-xs) {
+	@include susy-media($screen-sm) {
 		display: block;
 	}
 
 
-	@include susy-media($screen-xs) {
+	@include susy-media($screen-sm) {
 		@include span(4 last);
 	}
 
-	@include susy-media($screen-xs) {
+	@include susy-media($screen-sm) {
 		li {
 			font-size: em(14);
 			font-weight: lighter;
@@ -161,7 +167,7 @@
 	display: none;
 	text-align: right;
 
-	@include susy-media($screen-xs) {
+	@include susy-media($screen-sm) {
 		display: block;
 	}
 
@@ -269,24 +275,9 @@
 		}
 
 	}
+
 }
 
-
-/* Small menu. */
-.menu-toggle {
-	display: none;
-}
-
-@media screen and (max-width: 600px) {
-	.menu-toggle,
-	.main-navigation.toggled .nav-menu {
-		display: block;
-	}
-
-	.main-navigation ul {
-		display: none;
-	}
-}
 
 .comment-navigation,
 .posts-navigation,

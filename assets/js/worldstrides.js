@@ -411,48 +411,6 @@
 ( function( $, window, undefined ) {
 	'use strict';
 
-	// Header
-
-	var $form = $('.quick-access .search-form'),
-		$input = $form.find('.search-field');
-
-	$( '[href="#search"]' ).click(function(e){
-		
-		e.preventDefault();
-
-		if ( $form.hasClass('visible') ) {
-
-			$form
-				.slideUp(300)
-				.removeClass('visible');
-
-		} else {
-
-			$form.slideDown({
-				duration: 300,
-				done: function(){
-					$form.addClass('visible');
-					$input.focus();
-				}
-			});
-
-		}
-
-	});
-	
-	$( '[href="#close-search"]' ).click(function(e){
-		
-		e.preventDefault();
-		
-		$form
-			.slideUp(300)
-			.removeClass('visible');
-	});
-
- } )( jQuery );
-( function( $, window, undefined ) {
-	'use strict';
-
 	// HOME PAGE STUFF
 
 	if ( $( 'body' ).hasClass('home') ) {
@@ -809,6 +767,22 @@
 ( function( $, window, undefined ) {
 	'use strict';
 
+	// MOBILE NAV
+
+	$('body')
+		.on('click', '.menu-toggle', function(event){
+			event.preventDefault();
+
+			var target = $(this).attr('href');
+
+			$(target).toggleClass('open');
+		});
+	
+
+ } )( jQuery, window );
+( function( $, window, undefined ) {
+	'use strict';
+
 	// RESOURCES PAGE BEHAVIOR
 
 	var resourceTarget = document.querySelectorAll( '.resource-target' ),
@@ -863,6 +837,48 @@
 			.fadeIn('fast').siblings('.resource-question:not(.resource-type-' + filter + ')').fadeOut('fast');
 
 		});
+	});
+
+ } )( jQuery );
+( function( $, window, undefined ) {
+	'use strict';
+
+	// Header
+
+	var $form = $('.quick-access .search-form'),
+		$input = $form.find('.search-field');
+
+	$( '[href="#search"]' ).click(function(e){
+		
+		e.preventDefault();
+
+		if ( $form.hasClass('visible') ) {
+
+			$form
+				.slideUp(300)
+				.removeClass('visible');
+
+		} else {
+
+			$form.slideDown({
+				duration: 300,
+				done: function(){
+					$form.addClass('visible');
+					$input.focus();
+				}
+			});
+
+		}
+
+	});
+	
+	$( '[href="#close-search"]' ).click(function(e){
+		
+		e.preventDefault();
+		
+		$form
+			.slideUp(300)
+			.removeClass('visible');
 	});
 
  } )( jQuery );
