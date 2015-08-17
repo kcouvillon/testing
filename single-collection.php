@@ -15,6 +15,14 @@ $collection_type = get_post_meta( $post->ID, 'collection_type', true );
 
 $display_title = get_post_meta( $post->ID, 'general_display_title', true );
 
+// Different title for Capstone itineraries
+$is_capstone = has_term( 'capstone', 'product-line' );
+if ( $is_capstone ) {
+	$itinerary_title = 'Tour Destinations';
+} else {
+	$itinerary_title = 'Itinerary';
+}
+
 if ( ! $display_title ) {
 	$display_title = get_the_title();
 }
@@ -99,7 +107,7 @@ get_header(); ?>
 					<?php endif; ?>
 
 					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itineraries</a></li>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
 					<?php endif; ?>
 
 					<?php if ( ! empty( $after_block_sections ) ) : ?>
@@ -215,7 +223,7 @@ get_header(); ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="section-content programs">
-				<h2 class="section-title">Itineraries</h2>
+				<h2 class="section-title"><?php echo $itinerary_title; ?></h2>
 				<ul class="programs-list list-unstyled clearfix">
 
 					<?php while ( $associated_itineraries->have_posts() ) : ?>
