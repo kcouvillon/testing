@@ -109,7 +109,7 @@ $continents = get_terms( 'filter', $continentsArgs );
 					<ul class="terms list-unstyled clearfix">
 						<?php foreach ( $continents as $continent ) : ?>
 
-						<li><a href="#<?php echo $continent->slug; ?>" class="term-list-toggle parent-term parent-destination"><?php echo $continent->name; ?></a></li>
+						<li><a href="#<?php echo $continent->slug; ?>" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters"><?php echo $continent->name; ?></a></li>
 
 						<?php endforeach; ?>
 					</ul>
@@ -148,7 +148,7 @@ $continents = get_terms( 'filter', $continentsArgs );
 
 <div class="explore-filters-toggle ws-container">
 	<a href="#explore-results"><i class="icon-arrow-down"></i>	See <span class="collections-count">Collections and</span> <span class="itineraries-count">Itineraries</span>.</a>
-	<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
+	<!-- <a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a> -->
 </div>
 
 

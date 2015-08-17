@@ -163,9 +163,6 @@
 				checkFilters();
 			})
 			.on('click', '.term-list-toggle', function(event){
-				if ( $(this).hasClass('inactive') )
-					return false;
-
 				event.preventDefault();
 
 				var $this = $(this),	
