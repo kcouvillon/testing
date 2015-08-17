@@ -9580,6 +9580,11 @@ section:after {
     @media screen and (min-width: 768px) {
       .ws-csstransforms #mobile-nav.open {
         transform: translateX(0); } }
+  .ws-no-csstransforms #mobile-nav.open {
+    left: 0; }
+    @media screen and (min-width: 768px) {
+      .ws-no-csstransforms #mobile-nav.open {
+        left: 100%; } }
   #mobile-nav a {
     color: #FFF; }
   #mobile-nav .primary-nav {

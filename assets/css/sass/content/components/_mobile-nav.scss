@@ -22,6 +22,14 @@
     		}
     	}
     }
+    .ws-no-csstransforms & {
+    	&.open {
+    		left: 0;
+    		@media screen and (min-width: $screen-sm) {
+    			left: 100%;
+    		}
+    	}
+    }
 
     a {
     	color: #FFF;
