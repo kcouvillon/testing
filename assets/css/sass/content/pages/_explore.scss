@@ -65,11 +65,13 @@
 		    margin: 0;
 		    padding: 0.2em 1em 0.2em 0.4em; }
 		&.mobile-only {
-			display: block;
-			transform: translateY(-105%);
+			display: none;
+			transform: none;
+			background: none;
+			max-width: none;
 			&:hover {
-				background: none;
-				color: $orange; }
+				color: $orange; 
+			}
 			@media screen and ( min-width: $screen-sm ) {
 				display: none; }
 		}
@@ -79,6 +81,12 @@
 	}
 	&.has-filter .clear-all {
 		transform: translateY(0);
+		&.mobile-only {
+			display: block;
+			@media screen and ( min-width: $screen-sm ) {
+				display: none; 
+			}
+		}
 	}
 }
 

@@ -8508,10 +8508,11 @@ section:after {
         margin: 0;
         padding: 0.2em 1em 0.2em 0.4em; } }
     .explore-tool .clear-all.mobile-only {
-      display: block;
-      transform: translateY(-105%); }
+      display: none;
+      transform: none;
+      background: none;
+      max-width: none; }
       .explore-tool .clear-all.mobile-only:hover {
-        background: none;
         color: #fb901d; }
       @media screen and (min-width: 768px) {
         .explore-tool .clear-all.mobile-only {
@@ -8520,6 +8521,11 @@ section:after {
       vertical-align: middle; }
   .explore-tool.has-filter .clear-all {
     transform: translateY(0); }
+    .explore-tool.has-filter .clear-all.mobile-only {
+      display: block; }
+      @media screen and (min-width: 768px) {
+        .explore-tool.has-filter .clear-all.mobile-only {
+          display: none; } }
 
 /* Explore Filters
  * ------------------------------------------------------------- */
