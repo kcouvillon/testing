@@ -59,7 +59,7 @@ get_header(); ?>
 
 					$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 					if ( ! empty( $highlights[1]['image'] ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Tour Highlights</a></li>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
 					<?php endif; ?>
 
 					<?php
@@ -247,7 +247,7 @@ get_header(); ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
 
-				<h2 class="slideshow-header">Tour Highlights</h2>
+				<h2 class="slideshow-header">Highlights</h2>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
@@ -383,7 +383,6 @@ get_header(); ?>
 							$related_type = 'other';
 
 							if ( ! empty ( $related ) ) {
-
 								$post  = get_post( $related );
 								// print_r($post);
 								$related_image = '';
@@ -412,6 +411,11 @@ get_header(); ?>
 
 								}
 							}
+
+							if ( $related_image ) {
+								$class = 'no-pattern';
+							}
+
 							?>
 
 							<?php if ( $related || $related_image_title ) : ?>

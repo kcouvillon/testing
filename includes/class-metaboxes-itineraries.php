@@ -157,7 +157,7 @@ class WS_Metaboxes_Itineraries {
 		 */
 		$cmb_group = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Tour Highlights', 'cmb2' ),
+			'title'        => __( 'Highlights', 'cmb2' ),
 			'object_types' => array( 'itinerary', ),
 		) );
 
