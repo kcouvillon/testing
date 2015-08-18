@@ -16,19 +16,25 @@
 		}
 
 		.content {
-			color: $gray_base;
+			color: #FFF;
 
 			@media screen and (min-width: $screen-md) {
 				position: absolute;
 			    bottom: 100%;
-			    background-color: #FFF;
-			    padding: 1em 1em 0;
+			    background: $blue_dark;
+			    padding: 1em 1.3em 1em;
 			    right: 5vw;
 			}
 
 			h3 { margin: 0 0 0.5em; }
-			p { margin: 0; }
-			a { font-weight: bold; }
+			p { margin: 0; line-height: 1em; color: $color_text_main; }
+			a { 
+				font-weight: bold; 
+				color: #FFF;
+				&:hover {
+					color: $orange;
+				}
+			}
 		}
 	}
 }
@@ -39,18 +45,17 @@
 }
 
 .contact-section {
-	&.emergency,
-	&.other {
 
-		.section-content{
-			color: $color_text_main;
-		}
+	h2 {
+		margin: 0 auto;
+		padding: 1em 5vw;
+		color: #FFF;
 	}
 	
 	.section-content {
 		padding-top: 1em;
 		padding-bottom: 2em;
-		color: #FFF;
+		margin: 0 auto;
 
 		@media screen and (min-width: $screen-md) {
 			padding-top: 2em;

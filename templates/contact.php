@@ -20,7 +20,7 @@ get_header(); ?>
 		<?php the_post(); ?>
 		<div class="contact-wrap">
 
-			<section class="do-you-have-a-question">
+			<section class="do-you-have-a-question pattern-1">
 				<div class="content">
 					<h3>Do you have a question?</h3>
 					<p>Many common questions are listed in our <a href="http://ws.local/resource-center/">Resource Center&nbsp;»</a></p>
@@ -28,8 +28,8 @@ get_header(); ?>
 			</section>
 		
 			<section class="customer-support contact-section">
-				<h2 class="ws-container">Customer Support</h2>
-				<div class="section-content pattern-1 ws-container">
+				<h2 class="ws-container pattern-1">Customer Support</h2>
+				<div class="section-content ws-container">
 					<p>For assistance for registration, payments, scholarships, and more.&nbsp;Please note it may take up to 2 business days to respond to your inquiry.</p>
 					<div class="columns clearfix">
 						<div class="column">
@@ -62,8 +62,8 @@ get_header(); ?>
 			</section>
 
 			<section class="lead-a-program contact-section">
-				<h2 class="ws-container">Interested in Leading a Travel Program?</h2>
-				<div class="section-content pattern-8 ws-container">
+				<h2 class="ws-container pattern-8">Interested in Leading a Travel Program?</h2>
+				<div class="section-content ws-container">
 					<p>For educators interested in leading a travel program or current program leaders.</p>
 					<div class="columns clearfix">
 						<div class="column">
@@ -90,8 +90,8 @@ get_header(); ?>
 			</section>
 
 			<section class="emergency contact-section">
-				<h2 class="ws-container">Emergency?</h2>
-				<div class="section-content pattern-3 ws-container">
+				<h2 class="ws-container pattern-2">Emergency?</h2>
+				<div class="section-content ws-container">
 					<p>Our Tour Central offices can be reached 24 hours a day. Please call this number only in regard to an emergency on a program currently traveling.</p>
 					<div class="columns clearfix">
 						<div class="column">
@@ -111,10 +111,10 @@ get_header(); ?>
 			</section>
 
 			<section class="other contact-section">
-				<div class="section-content pattern-6 ws-container">
-					<h2>Press Inquiries?</h2>
+				<div class="section-content ws-container">
+					<h3>Press Inquiries?</h3>
 					<p><a href="http://ws.local/about/press/" class="btn btn-info">Press Center</a></p>
-					<h2>Interested in a Career with WorldStrides?</h2>
+					<h3>Interested in a Career with WorldStrides?</h3>
 					<p><a href="http://ws.local/about/careers/" class="btn btn-info">Career Opportunities</a></p>
 				</div>
 			</section>

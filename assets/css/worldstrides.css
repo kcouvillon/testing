@@ -7928,33 +7928,39 @@ section:after {
       .contact-wrap .do-you-have-a-question {
         margin: 0 auto; } }
     .contact-wrap .do-you-have-a-question .content {
-      color: #323c53; }
+      color: #FFF; }
       @media screen and (min-width: 960px) {
         .contact-wrap .do-you-have-a-question .content {
           position: absolute;
           bottom: 100%;
-          background-color: #FFF;
-          padding: 1em 1em 0;
+          background: #3076bc;
+          padding: 1em 1.3em 1em;
           right: 5vw; } }
       .contact-wrap .do-you-have-a-question .content h3 {
         margin: 0 0 0.5em; }
       .contact-wrap .do-you-have-a-question .content p {
-        margin: 0; }
+        margin: 0;
+        line-height: 1em;
+        color: #1a1a1a; }
       .contact-wrap .do-you-have-a-question .content a {
-        font-weight: bold; }
+        font-weight: bold;
+        color: #FFF; }
+        .contact-wrap .do-you-have-a-question .content a:hover {
+          color: #fb901d; }
 
 .contact-header {
   background-image: url(../images/src/default-bg.png);
   background-size: 40px 46px; }
 
-.contact-section.emergency .section-content,
-.contact-section.other .section-content {
-  color: #1a1a1a; }
+.contact-section h2 {
+  margin: 0 auto;
+  padding: 1em 5vw;
+  color: #FFF; }
 
 .contact-section .section-content {
   padding-top: 1em;
   padding-bottom: 2em;
-  color: #FFF; }
+  margin: 0 auto; }
   @media screen and (min-width: 960px) {
     .contact-section .section-content {
       padding-top: 2em; } }
