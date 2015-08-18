@@ -501,9 +501,9 @@ get_header(); ?>
 		<?php endif; ?>
 
 		<?php 
-			if ( has_term('perspectives', 'product-line') ) {
-				echo get_template_part('partials/itinerary', 'pricing');
-			}
+			// if ( has_term('perspectives', 'product-line') ) {
+			// 	echo get_template_part('partials/itinerary', 'pricing');
+			// }
 		?>
 
 		<section class="clearfix ws-container learn-more hide-print">
