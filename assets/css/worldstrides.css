@@ -7667,39 +7667,6 @@ section:after {
   .section-content:after {
     clear: both; }
 
-.ws-tooltips {
-  display: none;
-  position: relative; }
-  @media (min-width: 960px) {
-    .ws-tooltips {
-      display: block; } }
-  .ws-tooltips .ws-tooltip {
-    position: absolute;
-    cursor: pointer; }
-    .ws-tooltips .ws-tooltip:hover:before {
-      background-color: #fb901d;
-      border-color: #FFF; }
-    .ws-tooltips .ws-tooltip:hover .ws-tooltip-content {
-      display: block; }
-    .ws-tooltips .ws-tooltip:before {
-      content: "";
-      width: 17px;
-      height: 17px;
-      display: block;
-      background-color: rgba(179, 183, 191, 0.7);
-      border-radius: 50%;
-      border: 2px solid rgba(242, 242, 244, 0.7); }
-  .ws-tooltips .ws-tooltip-content {
-    display: none;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    border-radius: 5px;
-    background-color: rgba(48, 118, 188, 0.8);
-    padding: 1em;
-    color: #FFF;
-    width: 300px; }
-
 .why-content > div {
   clear: both;
   width: 100%;
@@ -9307,16 +9274,43 @@ section:after {
   text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45), -5px -5px 20px rgba(0, 0, 0, 0.45); }
 
 .ws-tooltips {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 50%; }
+  @media (min-width: 960px) {
+    .ws-tooltips {
+      display: block; } }
   .ws-tooltips .ws-tooltip {
-    z-index: 1; }
+    position: absolute;
+    z-index: 1;
+    cursor: pointer; }
+    .ws-tooltips .ws-tooltip:hover:before {
+      background-color: #fb901d;
+      border-color: #FFF; }
+    .ws-tooltips .ws-tooltip:hover .ws-tooltip-content {
+      display: block; }
+    .ws-tooltips .ws-tooltip:before {
+      content: "";
+      width: 17px;
+      height: 17px;
+      display: block;
+      background-color: rgba(179, 183, 191, 0.7);
+      border-radius: 50%;
+      border: 2px solid rgba(242, 242, 244, 0.7); }
   .ws-tooltips .ws-tooltip-content {
+    display: none;
+    position: absolute;
+    top: 15px;
     left: auto;
-    right: 15px; }
+    right: 15px;
+    border-radius: 5px;
+    background-color: rgba(48, 118, 188, 0.8);
+    padding: 1em;
+    color: #FFF;
+    width: 300px; }
     @media (min-width: 1200px) {
       .ws-tooltips .ws-tooltip-content {
         left: 15px;
