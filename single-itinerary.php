@@ -383,7 +383,6 @@ get_header(); ?>
 							$related_type = 'other';
 
 							if ( ! empty ( $related ) ) {
-
 								$post  = get_post( $related );
 								// print_r($post);
 								$related_image = '';
@@ -412,6 +411,11 @@ get_header(); ?>
 
 								}
 							}
+
+							if ( $related_image ) {
+								$class = 'no-pattern';
+							}
+
 							?>
 
 							<?php if ( $related || $related_image_title ) : ?>
