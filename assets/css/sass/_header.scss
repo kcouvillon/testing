@@ -44,8 +44,8 @@
 	    position: absolute;
 	    right: 5vw;
 	    top: 50%;
-	    margin-top: -26px;
-	    font-size: 32px;
+	    margin-top: -21px;
+	    font-size: 26px;
 	    @media screen and (min-width: $screen-sm) {
 	    	display: none;
 	    }
@@ -54,8 +54,8 @@
 
 .logo {
 	display: inline-block;
-	width: 40px;
-	height: 64px;
+	width: 216px;
+    height: 46px;
 	margin: 0;
 	@media screen and (min-width: $screen-sm) {
 		width: 216px;
@@ -66,13 +66,7 @@
 		display: block;
 		width: 100%;
 		height: 100%;
-		@include monogram;
-		background-position: center center;
-
-		@media screen and (min-width: $screen-sm) {
-			@include logo;
-			background-position: left center;
-		}
+		@include logo;
 	}
 }
 
