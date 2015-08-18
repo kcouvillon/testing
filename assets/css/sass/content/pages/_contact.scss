@@ -10,13 +10,12 @@
 		position: relative;
 	    overflow: visible;
 		margin-top: 2em;
-		margin-bottom: 0.5em;
+		margin-bottom: 2em;
 		@media screen and (min-width: $screen-md) {
 			margin: 0 auto;
 		}
 
 		.content {
-			color: #FFF;
 
 			@media screen and (min-width: $screen-md) {
 				position: absolute;
@@ -24,15 +23,18 @@
 			    background: $blue_dark;
 			    padding: 1em 1.3em 1em;
 			    right: 5vw;
+			    color: #FFF;
 			}
 
 			h3 { margin: 0 0 0.5em; }
 			p { margin: 0; line-height: 1em; color: $color_text_main; }
 			a { 
 				font-weight: bold; 
-				color: #FFF;
-				&:hover {
-					color: $orange;
+				@media screen and (min-width: $screen-md) {
+					color: #FFF;
+					&:hover {
+						color: $orange;
+					}
 				}
 			}
 		}

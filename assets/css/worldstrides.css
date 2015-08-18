@@ -7923,30 +7923,31 @@ section:after {
     position: relative;
     overflow: visible;
     margin-top: 2em;
-    margin-bottom: 0.5em; }
+    margin-bottom: 2em; }
     @media screen and (min-width: 960px) {
       .contact-wrap .do-you-have-a-question {
         margin: 0 auto; } }
-    .contact-wrap .do-you-have-a-question .content {
-      color: #FFF; }
+    @media screen and (min-width: 960px) {
+      .contact-wrap .do-you-have-a-question .content {
+        position: absolute;
+        bottom: 100%;
+        background: #3076bc;
+        padding: 1em 1.3em 1em;
+        right: 5vw;
+        color: #FFF; } }
+    .contact-wrap .do-you-have-a-question .content h3 {
+      margin: 0 0 0.5em; }
+    .contact-wrap .do-you-have-a-question .content p {
+      margin: 0;
+      line-height: 1em;
+      color: #1a1a1a; }
+    .contact-wrap .do-you-have-a-question .content a {
+      font-weight: bold; }
       @media screen and (min-width: 960px) {
-        .contact-wrap .do-you-have-a-question .content {
-          position: absolute;
-          bottom: 100%;
-          background: #3076bc;
-          padding: 1em 1.3em 1em;
-          right: 5vw; } }
-      .contact-wrap .do-you-have-a-question .content h3 {
-        margin: 0 0 0.5em; }
-      .contact-wrap .do-you-have-a-question .content p {
-        margin: 0;
-        line-height: 1em;
-        color: #1a1a1a; }
-      .contact-wrap .do-you-have-a-question .content a {
-        font-weight: bold;
-        color: #FFF; }
-        .contact-wrap .do-you-have-a-question .content a:hover {
-          color: #fb901d; }
+        .contact-wrap .do-you-have-a-question .content a {
+          color: #FFF; }
+          .contact-wrap .do-you-have-a-question .content a:hover {
+            color: #fb901d; } }
 
 .contact-header {
   background-image: url(../images/src/default-bg.png);
