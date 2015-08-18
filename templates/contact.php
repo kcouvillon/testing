@@ -20,7 +20,7 @@ get_header(); ?>
 		<?php the_post(); ?>
 		<div class="contact-wrap">
 
-			<section class="do-you-have-a-question pattern-1">
+			<section class="do-you-have-a-question">
 				<div class="content">
 					<h3>Do you have a question?</h3>
 					<p>Many common questions are listed in our <a href="http://ws.local/resource-center/">Resource Center&nbsp;»</a></p>
