@@ -1,51 +1,91 @@
 .contact {
-
-	h2 {
-		margin-bottom: 35px;
-	}
-
-	h4 a {
-		font-weight: 500;
-	}
-
-	a:not(.btn) {
-		color: $blue;
-		&:hover {
-			color: $orange;
-		}
-	}
 	
-	&.section-content-left {
-		@include susy-media($screen-sm) {
-			@include span(6);
-		}
-		@include susy-media($screen-lg) {
-			@include span(5);
-		}
-	}
-
-	&.section-content-right {
-		@include susy-media($screen-sm) {
-			@include span(6 last);
-		}
-		@include susy-media($screen-lg) {
-			@include span(5);
-			@include push(1);
-		}
-	}
 }
 
 .contact-wrap {
-	@include container();
-	padding-top: 1em;
-	padding-bottom: 4em;
+	position: relative;
 
-	@include susy-media($screen-sm) {
-		display: flex;
+	.do-you-have-a-question {
+		@include container();
+		position: relative;
+	    overflow: visible;
+		margin-top: 2em;
+		margin-bottom: 0.5em;
+		@media screen and (min-width: $screen-md) {
+			margin: 0 auto;
+		}
+
+		.content {
+			color: $gray_base;
+
+			@media screen and (min-width: $screen-md) {
+				position: absolute;
+			    bottom: 100%;
+			    background-color: #FFF;
+			    padding: 1em 1em 0;
+			    right: 5vw;
+			}
+
+			h3 { margin: 0 0 0.5em; }
+			p { margin: 0; }
+			a { font-weight: bold; }
+		}
 	}
 }
 
 .contact-header {
 	background-image: url(../images/src/default-bg.png);
 	background-size: 40px 46px;
+}
+
+.contact-section {
+	&.emergency,
+	&.other {
+
+		.section-content{
+			color: $color_text_main;
+		}
+	}
+	
+	.section-content {
+		padding-top: 1em;
+		padding-bottom: 2em;
+		color: #FFF;
+
+		@media screen and (min-width: $screen-md) {
+			padding-top: 2em;
+		}
+
+		p {
+			max-width: 600px;
+		}
+
+		a {
+			font-weight: bold;
+		}
+	}
+
+	.column {
+		@media screen and (min-width: $screen-sm) {
+			@include span(6);
+			&:nth-child(2n+2) {
+				@include span(6 last);
+			}
+		}
+		@media screen and (min-width: $screen-md) {
+			@include span(4);
+			&:nth-child(2n+2) {
+				@include span(4);
+			}
+			&:nth-child(3n+3) {
+				@include span(4 last);
+			}
+		}
+
+		h5 {
+			@media screen and (min-width: $screen-md) {
+				font-size: 1.3em;
+			}
+		}
+	}
 }

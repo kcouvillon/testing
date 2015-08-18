@@ -19,14 +19,106 @@ get_header(); ?>
 
 		<?php the_post(); ?>
 		<div class="contact-wrap">
+
+			<section class="do-you-have-a-question">
+				<div class="content">
+					<h3>Do you have a question?</h3>
+					<p>Many common questions are listed in our <a href="http://ws.local/resource-center/">Resource Center&nbsp;»</a></p>
+				</div>
+			</section>
 		
-			<section class="contact section-content-left">
-				<?php the_content(); ?>
+			<section class="customer-support contact-section">
+				<h2 class="ws-container">Customer Support</h2>
+				<div class="section-content pattern-1 ws-container">
+					<p>For assistance for registration, payments, scholarships, and more.&nbsp;Please note it may take up to 2 business days to respond to your inquiry.</p>
+					<div class="columns clearfix">
+						<div class="column">
+							<h5>Middle &amp; High School Programs</h5>
+							<p>
+								<a href="tel:800-468-5899">800-468-5899</a><br>
+								<a href="mailto:Customerservice@worldstrides.org">Customerservice@worldstrides.org</a>
+							</p>
+							<p><a href="#" class="btn btn-primary">Register</a></p>
+						</div>
+						<div class="column">
+							<h5>University Programs</h5>
+							<p>
+								<a href="tel:800-422-2368">800-422-2368</a><br>
+								<a href="mailto:capstone@worldstrides.org">capstone@worldstrides.org</a>
+							</p>
+							<p><a href="" class="btn btn-primary">Register</a></p>
+						</div>
+						<div class="column">
+							<h5>Performing Programs</h5>
+							<p><a href="tel:800-651-0468">800-651-0468</a></p>
+							<p><a href="" class="btn btn-primary">Register</a></p>
+						</div>
+					</div>
+					<p>
+						To register by fax, send your completed form to 434-982-8748.<br>
+						To register by mail, send your completed registration form to P.O. Box 9033, Charlottesville, VA 22911.
+					</p>
+				</div>
 			</section>
-			
-			<section class="contact section-content-right">
-				<?php echo apply_filters( 'the_content', get_post_meta( $post->ID, 'contact_column_2', true) ); ?>	
+
+			<section class="lead-a-program contact-section">
+				<h2 class="ws-container">Interested in Leading a Travel Program?</h2>
+				<div class="section-content pattern-8 ws-container">
+					<p>For educators interested in leading a travel program or current program leaders.</p>
+					<div class="columns clearfix">
+						<div class="column">
+							<h5>Middle School Programs</h5>
+							<p><a href="tel:800-999-7676">800-999-7676</a></p>
+							<h5>High School Programs</h5>
+							<p>
+								<a href="tel:800-999-7676">800-522-2398 (Staunton)</a><br>
+								<a href="tel:800-999-7676">800-771-2323 (Boston)</a>
+							</p>
+						</div>
+						<div class="column">
+							<h5>University Programs</h5>
+							<p>
+								<a href="tel:800-999-7676">800-422-2368</a><br>
+								<a href="mailto:university@worldstrides.org">university@worldstrides.org</a>
+							</p>
+							<h5>Performing Arts Programs</h5>
+							<p><a href="tel:800-223-4367">800-223-4367</a></p>
+						</div>
+					</div>
+					<p><a href="" class="btn btn-primary">Lead a Travel Program</a></p>
+				</div>
 			</section>
+
+			<section class="emergency contact-section">
+				<h2 class="ws-container">Emergency?</h2>
+				<div class="section-content pattern-3 ws-container">
+					<p>Our Tour Central offices can be reached 24 hours a day. Please call this number only in regard to an emergency on a program currently traveling.</p>
+					<div class="columns clearfix">
+						<div class="column">
+							<h5>D.C. Tour Central headquarters</h5>
+							<p><a href="tel:800-999-4542">800-999-4542</a></p>
+						</div>
+						<div class="column">
+							<h5>If calling internationally</h5>
+							<p><a href="tel:703-933-6143">703-933-6143</a></p>
+						</div>
+						<div class="column">
+							<h5>New York City Tour Central office</h5>
+							<p><a href="tel:800-727-8692">800-727-8692</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="other contact-section">
+				<div class="section-content pattern-6 ws-container">
+					<h2>Press Inquiries?</h2>
+					<p><a href="http://ws.local/about/press/" class="btn btn-info">Press Center</a></p>
+					<h2>Interested in a Career with WorldStrides?</h2>
+					<p><a href="http://ws.local/about/careers/" class="btn btn-info">Career Opportunities</a></p>
+				</div>
+			</section>
+					
 		
 		</div>
 
