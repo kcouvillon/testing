@@ -1,17 +1,100 @@
 .ws-tooltips {
+	display: none;
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 50%;
+	@include susy-media($screen-md) {
+		display: block;
+	}
 
 	.ws-tooltip {
+		position: absolute;
 		z-index: 1;
+		cursor: pointer;
+		.ws-svg & {
+			width: 32px;
+			height: 32px;
+			overflow: hidden;
+		}
+		&:hover {
+			.ws-svg & {
+				overflow: visible;
+			}
+			&:before {
+				-webkit-transition: all 500ms ease;
+				-moz-transition: all 500ms ease;
+				-o-transition: all 500ms ease;
+				transition: all 500ms ease;
+				.ws-no-svg & {
+				background-color: $orange;
+				border-color: #FFF;
+				}
+				.ws-svg & {
+					background-color: rgba($orange, 0.5);
+				}
+			}
+			.ws-tooltip-content {
+				display: block;
+				-webkit-transform: translateX(0);
+				-moz-transform: translateX(0);
+				-o-transform: translateX(0);
+				transform: translateX(0);
+				-webkit-transition: all 250ms ease-out;
+				-moz-transition: all 250ms ease-out;
+				-o-transition: all 250ms ease-out;
+				transition: all 250ms ease-out;
+				.ws-opacity & {
+					opacity: 1;
+				}
+			}
+		}
+		&:before {
+			content: "";
+			position: relative;
+			z-index: 1;
+			pointer-events: none;
+			display: block;
+			border-radius: 50%;
+			-webkit-transition: all 500ms ease 500ms;
+			-moz-transition: all 500ms ease 500ms;
+			-o-transition: all 500ms ease 500ms;
+			transition: all 500ms ease 500ms;
+			.ws-no-svg & {
+			width: 17px;
+			height: 17px;
+			background-color: rgba($gray_light, 0.7);
+			border: 2px solid rgba($gray_lighter, 0.7);
+			}
+			.ws-svg & {
+				width: 32px;
+				height: 32px;
+				background: url(../images/ripple.svg) center center no-repeat;
+			}
+		}
 	}
 
 	.ws-tooltip-content {
+		display: none;
+		.ws-opacity & {
+			display: block;
+			opacity: 0;
+		}
+		position: absolute;
+		z-index: 0;
+		top: 15px;
 		left: auto;
 		right: 15px;
+		border-radius: 5px;
+		background-color: rgba($blue_dark, 0.8);
+		padding: 1em;
+		color: #FFF;
+		width: 300px;
+		-webkit-transform: translateX(20px);
+		-moz-transform: translateX(20px);
+		-o-transform: translateX(20px);
+		transform: translateX(20px);
 		@include susy-media($screen-lg) {
 			left: 15px;
 			right: auto;
