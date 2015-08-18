@@ -18,7 +18,7 @@ $display_title = get_post_meta( $post->ID, 'general_display_title', true );
 // Different title for Capstone itineraries
 $is_capstone = has_term( 'capstone', 'product-line' );
 if ( $is_capstone ) {
-	$itinerary_title = 'Tour Destinations';
+	$itinerary_title = 'Featured Destinations';
 } else {
 	$itinerary_title = 'Itinerary';
 }
