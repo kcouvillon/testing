@@ -9287,22 +9287,58 @@ section:after {
     position: absolute;
     z-index: 1;
     cursor: pointer; }
+    .ws-svg .ws-tooltips .ws-tooltip {
+      width: 32px;
+      height: 32px;
+      overflow: hidden; }
+    .ws-svg .ws-tooltips .ws-tooltip:hover {
+      overflow: visible; }
     .ws-tooltips .ws-tooltip:hover:before {
-      background-color: #fb901d;
-      border-color: #FFF; }
+      -webkit-transition: all 500ms ease;
+      -moz-transition: all 500ms ease;
+      -o-transition: all 500ms ease;
+      transition: all 500ms ease; }
+      .ws-no-svg .ws-tooltips .ws-tooltip:hover:before {
+        background-color: #fb901d;
+        border-color: #FFF; }
+      .ws-svg .ws-tooltips .ws-tooltip:hover:before {
+        background-color: rgba(251, 144, 29, 0.5); }
     .ws-tooltips .ws-tooltip:hover .ws-tooltip-content {
-      display: block; }
+      display: block;
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(0);
+      -o-transform: translateX(0);
+      transform: translateX(0);
+      -webkit-transition: all 250ms ease-out;
+      -moz-transition: all 250ms ease-out;
+      -o-transition: all 250ms ease-out;
+      transition: all 250ms ease-out; }
+      .ws-opacity .ws-tooltips .ws-tooltip:hover .ws-tooltip-content {
+        opacity: 1; }
     .ws-tooltips .ws-tooltip:before {
       content: "";
-      width: 17px;
-      height: 17px;
+      position: relative;
+      z-index: 1;
+      pointer-events: none;
       display: block;
-      background-color: rgba(179, 183, 191, 0.7);
       border-radius: 50%;
-      border: 2px solid rgba(242, 242, 244, 0.7); }
+      -webkit-transition: all 500ms ease 500ms;
+      -moz-transition: all 500ms ease 500ms;
+      -o-transition: all 500ms ease 500ms;
+      transition: all 500ms ease 500ms; }
+      .ws-no-svg .ws-tooltips .ws-tooltip:before {
+        width: 17px;
+        height: 17px;
+        background-color: rgba(179, 183, 191, 0.7);
+        border: 2px solid rgba(242, 242, 244, 0.7); }
+      .ws-svg .ws-tooltips .ws-tooltip:before {
+        width: 32px;
+        height: 32px;
+        background: url(../images/ripple.svg) center center no-repeat; }
   .ws-tooltips .ws-tooltip-content {
     display: none;
     position: absolute;
+    z-index: 0;
     top: 15px;
     left: auto;
     right: 15px;
@@ -9310,7 +9346,14 @@ section:after {
     background-color: rgba(48, 118, 188, 0.8);
     padding: 1em;
     color: #FFF;
-    width: 300px; }
+    width: 300px;
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    -o-transform: translateX(20px);
+    transform: translateX(20px); }
+    .ws-opacity .ws-tooltips .ws-tooltip-content {
+      display: block;
+      opacity: 0; }
     @media (min-width: 1200px) {
       .ws-tooltips .ws-tooltip-content {
         left: 15px;
