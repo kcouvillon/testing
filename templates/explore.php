@@ -15,7 +15,9 @@
 		$background = '';
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			// scrim
+			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
 			$class = ' pattern-1';

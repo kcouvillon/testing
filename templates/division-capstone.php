@@ -62,7 +62,9 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			// scrim
+			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
 			$class = ' pattern-' . rand( 3, 9 );
@@ -109,7 +111,7 @@ get_header(); ?>
 					<?php endif; ?>
 
 					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Featured Destinations</a></li>
 					<?php endif; ?>
 
 					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Global Reach</a></li>
@@ -168,7 +170,9 @@ get_header(); ?>
 					$background = '';
 					if( has_post_thumbnail( $resource_id ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
-						$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+						// scrim
+						// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+						$background = 'url(' . $featured[0] . ')';
 						$class = ' has-tile-image';
 					} else {
 						$class = ' pattern-' . rand(1, 9);
@@ -235,7 +239,7 @@ get_header(); ?>
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 		<section class="section-content programs">
-			<h2 class="section-title">Collections</h2>
+			<h2 class="section-title">Featured Destinations</h2>
 			<ul class="programs-list list-unstyled clearfix">
 
 				<?php while ( $associated_itineraries->have_posts() ) : ?>
@@ -244,7 +248,9 @@ get_header(); ?>
 					$background = '';
 					if( has_post_thumbnail( $post->ID ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-						$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+						// scrim
+						// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+						$background = 'url(' . $featured[0] . ')';
 						$class = ' has-tile-image';
 					} else {
 						$class = ' pattern-' . rand(1, 9);
