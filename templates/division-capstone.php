@@ -111,7 +111,7 @@ get_header(); ?>
 					<?php endif; ?>
 
 					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Featured Destinations</a></li>
 					<?php endif; ?>
 
 					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Global Reach</a></li>
@@ -239,7 +239,7 @@ get_header(); ?>
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 		<section class="section-content programs">
-			<h2 class="section-title">Collections</h2>
+			<h2 class="section-title">Featured Destinations</h2>
 			<ul class="programs-list list-unstyled clearfix">
 
 				<?php while ( $associated_itineraries->have_posts() ) : ?>
