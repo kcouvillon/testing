@@ -3,7 +3,7 @@ global $post;
 $filters = array_map( 'intval', get_terms( 'filter', array( 'fields' => 'ids' ) ) );
 $collection_args = array(
 	'post_type' => 'collection', 
-	'posts_per_page' => 200,
+	'posts_per_page' => 500,
 	// 'posts_per_page' => 20,
 	'tax_query' => array(
         array(
@@ -16,7 +16,7 @@ $collection_args = array(
 );
 $itinerary_args = array(
 	'post_type' => 'itinerary', 
-	'posts_per_page' => 300,
+	'posts_per_page' => 500,
 	// 'posts_per_page' => 30,
 	'tax_query' => array(
         array(
