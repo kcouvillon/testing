@@ -16,7 +16,9 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 		$background = '';
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			// scrim
+			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			$background = 'url(' . $featured[0] . ')';
 		}
 		?>
 
@@ -67,7 +69,8 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 							}
 
 							$background = $thumb_url_array[0];
-							$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+							// $scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+							$scrim = '';
 							$class = ' has-tile-image';
 						} else {
 							$background = get_template_directory_uri() . '/assets/images/src/patterns/ws_w_pattern' . ( ($count % 2 == 0 ) ? '5' : '8') . '.gif';
