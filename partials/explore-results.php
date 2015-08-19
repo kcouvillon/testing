@@ -45,7 +45,7 @@ $collections = new WP_Query( $collection_args );
 			while( $collections->have_posts() ) : $collections->the_post(); ?>
 
 				<?php
-				$terms = get_the_terms( get_the_ID(), 'product-line' );
+				$terms = get_the_terms( get_the_ID(), 'filter' );
 				$count++;
 				$post_class = ( $count <= 3 ) ? 'tile tile-third' : 'tile tile-third';
 				if ( has_post_thumbnail() ) {
@@ -65,9 +65,9 @@ $collections = new WP_Query( $collection_args );
 
 					<div class="tile-content collection-content">
 						<ul class="meta collection-meta list-unstyled">
-							<?php foreach ( $terms as $term ) : ?>
+							<?php foreach ( $terms as $term ) : if ( in_array( $term->term_id, get_term_children( 222, 'filter' )) ) { ?>
 								<li><?php echo $term->name; ?></li>
-							<?php endforeach; ?>
+							<?php } endforeach; ?>
 						</ul>
 						<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					</div>
@@ -91,7 +91,7 @@ $collections = new WP_Query( $collection_args );
 			while ( $itineraries->have_posts() ) : $itineraries->the_post(); ?>
 
 				<?php 
-				$terms = get_the_terms( get_the_ID(), 'product-line' );
+				$terms = get_the_terms( get_the_ID(), 'filter' );
 				$count++;	
 				$post_class = ( $count <= 9 ) ? 'tile tile-third' : 'tile tile-third';
 				if ( has_post_thumbnail() ) {
@@ -110,9 +110,9 @@ $collections = new WP_Query( $collection_args );
 
 					<div class="tile-content itinerary-content">
 						<ul class="meta itinerary-meta list-unstyled">
-							<?php foreach ( $terms as $term ) : ?>
+							<?php foreach ( $terms as $term ) : if ( in_array( $term->term_id, get_term_children( 222, 'filter' )) ) { ?>
 								<li><?php echo $term->name; ?></li>
-							<?php endforeach; ?>
+							<?php } endforeach; ?>
 						</ul>
 						<h2 class="tile-title itinerary-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					</div>
