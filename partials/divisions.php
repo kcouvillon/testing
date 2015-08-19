@@ -35,7 +35,8 @@ $data = array(
 					$thumb_id = get_post_thumbnail_id( $division_page->ID );
 					$thumb_url_array = wp_get_attachment_image_src( $thumb_id, 'medium', true );
 					$background = $thumb_url_array[0];
-					$scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+					// $scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
+					$scrim = '';
 					$class = ' has-tile-image';
 				} else {
 					$background = get_template_directory_uri() . '/assets/images/src/patterns/ws_w_pattern' . ( ($count % 2 == 0 ) ? '5' : '8') . '.gif';

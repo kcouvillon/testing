@@ -13,7 +13,9 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 			$background = '';
 			if ( has_post_thumbnail() ) {
 				$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-				$background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+				// scrim
+				// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ), url(' . $featured[0] . ')';
+				$background = 'url(' . $featured[0] . ')';
 				$class = ' has-blog-image';
 			} else {
 				$class = ' pattern-' . rand(1, 9);

@@ -17,7 +17,9 @@ get_header(); ?>
 				$background = '';
 				if ( has_post_thumbnail() ) {
 					$featured = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-					$background = 'background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' . $featured[0] . ')';
+					// scrim
+					// $background = 'background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(' . $featured[0] . ')';
+					$background = 'url(' . $featured[0] . ')';
 					$class = '';
 				} else {
 					$class = ' pattern-1';

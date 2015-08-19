@@ -2,9 +2,10 @@
 $options = get_option( 'ws_options' );
 
 $background = ( isset( $options['request_info_image'] ) ? $options['request_info_image'] : '' ); // can use image_id to get id
-
+// $scrim = linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ),
+$scrim = '';
 ?>
-<div class="blog-single-cta" style="background-image:<?php echo 'linear-gradient( rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45) ), url(' . $background . ')'; ?>;">
+<div class="blog-single-cta" style="background-image:<?php echo $scrim . 'url(' . $background . ')'; ?>;">
 	<span class="h2">Request Information about a WorldStrides Program</span>
 	<form>
 		<span>I am a</span>

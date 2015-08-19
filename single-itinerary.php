@@ -19,7 +19,9 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			// scrim
+			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
+			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
 			$class = ' pattern-' . rand( 3, 9 );
@@ -374,7 +376,8 @@ get_header(); ?>
 							$related_title = ( ! empty ( $day['related_content_title'] ) ? $day['related_content_title'] : '' );
 
 							$related_image = ( ! empty( $day['override_image'] ) ? $day['override_image'] : '' );
-							$related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $related_image . ')';
+							// scrim
+							// $related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $related_image . ')';
 
 							$related_image_title = ( ! empty( $day['override_image_title'] ) ? $day['override_image_title'] : '' );
 							$related_description = ( ! empty( $day['override_description'] ) ? $day['override_description'] : '' );
@@ -402,10 +405,14 @@ get_header(); ?>
 									$class = 'no-pattern';
 
 									$featured      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
-									$related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+									// scrim
+									// $related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+									$related_image = 'url(' . $featured[0] . ')';
 
 									if ( $related_type === 'post' ) {
-										$related_image = 'linear-gradient( rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 35%, rgba( 0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+										// scrim
+										// $related_image = 'linear-gradient( rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 35%, rgba( 0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
+										$related_image = 'url(' . $featured[0] . ')';
 									}
 
 
