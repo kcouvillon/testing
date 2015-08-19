@@ -3,7 +3,8 @@
 $interestsArgs = array( 
 	'parent' => 11, // Interest
 	'orderby' => 'term_order', 
-	'hide_empty' => false
+	'hide_empty' => false,
+	'exclude' => 384 // Faith Based & Service
 	);
 $travelersArgs = array( 
 	'parent' => 222, // Traveler
@@ -64,6 +65,20 @@ $continents = get_terms( 'filter', $continentsArgs );
 						<i class="icon icon-arrow-right"></i>
 						</a></li>
 					<?php endforeach; ?>
+
+					<li>
+						<a href="#faith-based" class="filter" data-filter-list=".interests-filters">
+							<i class="icon icon-faith-and-service"></i>
+							Faith-based
+						</a>
+					</li>
+
+					<li>
+						<a href="#service" class="filter" data-filter-list=".interests-filters">
+							<i class="icon icon-faith-and-service"></i>
+							Service
+						</a>
+					</li>
 
 				</ul>
 
