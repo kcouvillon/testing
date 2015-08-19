@@ -61,6 +61,27 @@ get_header(); ?>
 				</div>
 			</section>
 
+			<section class="emergency contact-section">
+				<h2 class="ws-container pattern-2">Emergency?</h2>
+				<div class="section-content ws-container">
+					<p>Our Tour Central offices can be reached 24 hours a day. Please call this number only in regard to an emergency on a program currently traveling.</p>
+					<div class="columns clearfix">
+						<div class="column">
+							<h5>D.C. Tour Central headquarters</h5>
+							<p><a href="tel:800-999-4542">800-999-4542</a></p>
+						</div>
+						<div class="column">
+							<h5>If calling internationally</h5>
+							<p><a href="tel:703-933-6143">703-933-6143</a></p>
+						</div>
+						<div class="column">
+							<h5>New York City Tour Central office</h5>
+							<p><a href="tel:800-727-8692">800-727-8692</a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section class="lead-a-program contact-section">
 				<h2 class="ws-container pattern-8">Interested in Leading a Travel Program?</h2>
 				<div class="section-content ws-container">
@@ -86,27 +107,6 @@ get_header(); ?>
 						</div>
 					</div>
 					<p><a href="" class="btn btn-primary">Lead a Travel Program</a></p>
-				</div>
-			</section>
-
-			<section class="emergency contact-section">
-				<h2 class="ws-container pattern-2">Emergency?</h2>
-				<div class="section-content ws-container">
-					<p>Our Tour Central offices can be reached 24 hours a day. Please call this number only in regard to an emergency on a program currently traveling.</p>
-					<div class="columns clearfix">
-						<div class="column">
-							<h5>D.C. Tour Central headquarters</h5>
-							<p><a href="tel:800-999-4542">800-999-4542</a></p>
-						</div>
-						<div class="column">
-							<h5>If calling internationally</h5>
-							<p><a href="tel:703-933-6143">703-933-6143</a></p>
-						</div>
-						<div class="column">
-							<h5>New York City Tour Central office</h5>
-							<p><a href="tel:800-727-8692">800-727-8692</a></p>
-						</div>
-					</div>
 				</div>
 			</section>
 
