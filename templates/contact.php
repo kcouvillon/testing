@@ -34,30 +34,29 @@ get_header(); ?>
 					<div class="columns clearfix">
 						<div class="column">
 							<h5>Middle &amp; High School Programs</h5>
+							<p><a href="#" class="btn btn-primary">Register</a></p>
 							<p>
 								<a href="tel:800-468-5899">800-468-5899</a><br>
 								<a href="mailto:Customerservice@worldstrides.org">Customerservice@worldstrides.org</a>
 							</p>
-							<p><a href="#" class="btn btn-primary">Register</a></p>
+							<p style="max-width: 330px;"><small>
+								<strong>To register by fax</strong>, send your completed form to 434-982-8748. <strong>To register by mail</strong>, send your completed registration form to P.O. Box 9033, Charlottesville, VA 22911.
+							</small></p>
 						</div>
 						<div class="column">
 							<h5>University Programs</h5>
+							<p><a href="" class="btn btn-primary">Register</a></p>
 							<p>
 								<a href="tel:800-422-2368">800-422-2368</a><br>
 								<a href="mailto:capstone@worldstrides.org">capstone@worldstrides.org</a>
 							</p>
-							<p><a href="" class="btn btn-primary">Register</a></p>
 						</div>
 						<div class="column">
 							<h5>Performing Programs</h5>
-							<p><a href="tel:800-651-0468">800-651-0468</a></p>
 							<p><a href="" class="btn btn-primary">Register</a></p>
+							<p><a href="tel:800-651-0468">800-651-0468</a></p>
 						</div>
 					</div>
-					<p>
-						To register by fax, send your completed form to 434-982-8748.<br>
-						To register by mail, send your completed registration form to P.O. Box 9033, Charlottesville, VA 22911.
-					</p>
 				</div>
 			</section>
 
@@ -85,27 +84,7 @@ get_header(); ?>
 			<section class="lead-a-program contact-section">
 				<h2 class="ws-container pattern-8">Interested in Leading a Travel Program?</h2>
 				<div class="section-content ws-container">
-					<p>For educators interested in leading a travel program or current program leaders.</p>
-					<div class="columns clearfix">
-						<div class="column">
-							<h5>Middle School Programs</h5>
-							<p><a href="tel:800-999-7676">800-999-7676</a></p>
-							<h5>High School Programs</h5>
-							<p>
-								<a href="tel:800-999-7676">800-522-2398 (Staunton)</a><br>
-								<a href="tel:800-999-7676">800-771-2323 (Boston)</a>
-							</p>
-						</div>
-						<div class="column">
-							<h5>University Programs</h5>
-							<p>
-								<a href="tel:800-999-7676">800-422-2368</a><br>
-								<a href="mailto:university@worldstrides.org">university@worldstrides.org</a>
-							</p>
-							<h5>Performing Arts Programs</h5>
-							<p><a href="tel:800-223-4367">800-223-4367</a></p>
-						</div>
-					</div>
+					<h5>Submit your information, and a representative will reach out directly.</h5>
 					<p><a href="" class="btn btn-primary">Lead a Travel Program</a></p>
 				</div>
 			</section>

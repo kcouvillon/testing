@@ -65,10 +65,18 @@
 
 		p {
 			max-width: 600px;
+			margin: 1em 0;
+			line-height: 1.3em;
 		}
 
 		a {
 			font-weight: bold;
+		}
+
+		h5 {
+			@media screen and (min-width: $screen-md) {
+				font-size: 1.3em;
+			}
 		}
 	}
 
@@ -86,12 +94,6 @@
 			}
 			&:nth-child(3n+3) {
 				@include span(4 last);
-			}
-		}
-
-		h5 {
-			@media screen and (min-width: $screen-md) {
-				font-size: 1.3em;
 			}
 		}
 	}
