@@ -44,8 +44,6 @@
 
 			<?php get_template_part('partials/explore', 'filters'); ?>		
 
-			<a href="#clear-filters" class="clear-all mobile-only"><i class="icon icon-small-close"></i> Clear filters</a>	
-
 			<?php get_template_part('partials/explore', 'results') ?>
 
 		</section>
