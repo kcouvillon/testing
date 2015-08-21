@@ -7608,9 +7608,10 @@ section:after {
     background-size: cover; }
 
 .header-subtitle {
-  font-weight: 700;
   margin-top: 0.5em;
-  margin-bottom: 0.5em; }
+  margin-bottom: 0.5em;
+  font-size: 1.8em;
+  line-height: 1em; }
 
 .section-header-content {
   color: #323c53;
@@ -7650,6 +7651,10 @@ section:after {
           color: #E1EBF2; }
           .has-featured-image.archive .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.blog .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.single .primary-section .section-header-content .breadcrumbs a:hover, .has-featured-image.page .primary-section .section-header-content .breadcrumbs a:hover {
             color: #fb901d; }
+    .primary-section .section-header-content p {
+      font-weight: 700; }
+    .primary-section .section-header-content .header-subtitle {
+      font-weight: 400; }
 
 .section-content {
   display: block;
