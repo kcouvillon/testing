@@ -119,9 +119,10 @@ section {
 }
 
 .header-subtitle {
-	font-weight: 700;
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+	font-size: 1.8em;
+    line-height: 1em;
 }
 
 .section-header-content {
@@ -190,6 +191,13 @@ section {
 					}
 				}
 			}
+		}
+
+		p {
+			font-weight: 700;
+		}
+		.header-subtitle {
+			font-weight: 400;
 		}
 	}
 }
