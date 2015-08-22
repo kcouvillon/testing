@@ -2,7 +2,7 @@
 
 ## WordPress setup
 
-Details of the production setup.
+Details of the production setup. TEST
 
 ### Plugins
 
