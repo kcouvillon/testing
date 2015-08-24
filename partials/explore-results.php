@@ -12,7 +12,9 @@ $collection_args = array(
 			'terms'    => $filters,
         )
     ),
-	'no_found_rows'          => true
+	'no_found_rows'          => true,
+	'orderby' => 'title',
+	'order' => 'ASC'
 );
 $itinerary_args = array(
 	'post_type' => 'itinerary', 
@@ -25,7 +27,9 @@ $itinerary_args = array(
 			'terms'    => $filters,
         )
     ),
-	'no_found_rows'          => true
+	'no_found_rows'          => true,
+	'orderby' => 'title',
+	'order' => 'ASC'
 );
 $itineraries = new WP_Query( $itinerary_args );
 $collections = new WP_Query( $collection_args );
