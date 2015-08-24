@@ -7865,19 +7865,22 @@ section:after {
   .headshot-hero .wp-post-image {
     width: 100%; }
 
-.bio .entry-content {
+.leadership-content .bio .entry-content,
+.single-bio .bio .entry-content {
   width: 100%;
   float: left;
   margin-left: 0;
   margin-right: 0;
   margin-top: 0; }
   @media (min-width: 768px) {
-    .bio .entry-content {
+    .leadership-content .bio .entry-content,
+    .single-bio .bio .entry-content {
       width: 49.0196078431%;
       float: right;
       margin-right: 0; } }
 
-.bio .entry-title {
+.leadership-content .bio .entry-title,
+.single-bio .bio .entry-title {
   color: #1a1a1a; }
 
 .timeline {
@@ -8518,7 +8521,7 @@ section:after {
         display: block;
         position: absolute;
         bottom: 0;
-        margin: 0 0 0 293px;
+        margin: 0 0 0 292px;
         background-color: #323c53;
         padding: 0.5em 1em 0.5em 0.5em;
         border: 0;
