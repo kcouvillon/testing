@@ -97,10 +97,24 @@ class WS_Admin {
 		) );
 
 		$cmb->add_field( array(
+			'name'    => __( 'Discover Why Text', 'ws' ),
+			// 'desc'    => __( 'field description (optional)', 'ws' ),
+			'id'      => 'discovery_why_text',
+			'type'    => 'textarea_small',
+		) );
+
+		$cmb->add_field( array(
 			'name'    => __( 'Request Info Image', 'ws' ),
 			// 'desc'    => __( 'field description (optional)', 'ws' ),
 			'id'      => 'request_info_image',
 			'type'    => 'file',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Request Info Text', 'ws' ),
+			// 'desc'    => __( 'field description (optional)', 'ws' ),
+			'id'      => 'request_info_text',
+			'type'    => 'textarea_small',
 		) );
 
 		$cmb->add_field( array(
