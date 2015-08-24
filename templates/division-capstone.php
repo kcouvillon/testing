@@ -22,22 +22,39 @@ if ( ! $display_title ) {
 
 $post_obj = $wp_query->get_queried_object();
 
-$associated_itineraries = new WP_Query( array(
-	'post_type' => 'itinerary',
-	'tax_query' => array(
-		array(
-			'taxonomy' => '_collection',
-			'field'    => 'slug',
-			'terms'    => 'capstone-programs'
-		)
-	),
-	'posts_per_page' => 75,
-	'no_found_rows' => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => false,
-	'order' => 'ASC',
-	'orderby' => 'title'
-) );
+$associated_collections_override = get_post_meta( $post->ID, 'associated_collections', true );
+
+if ( $associated_collections_override ) {
+	$associated_collections = new WP_Query( array(
+		'post_type'              => 'collection',
+		'posts_per_page'         => 75,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'order'                  => 'ASC',
+		'orderby'                => 'title',
+		'post__in'               => $associated_collections_override
+	) );
+} else {
+	$post_obj = $wp_query->get_queried_object();
+
+	$associated_collections = new WP_Query( array(
+		'post_type'              => 'collection',
+		'tax_query'              => array(
+			array(
+				'taxonomy' => 'product-line',
+				'field'    => 'slug',
+				'terms'    => $post_obj->post_name
+			)
+		),
+		'posts_per_page'         => 75,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'order'                  => 'ASC',
+		'orderby'                => 'title'
+	) );
+}
 
 if ( 'discoveries' == $post->post_name ) {
 	$division_target = 'Middle School';
@@ -110,8 +127,8 @@ get_header(); ?>
 						<?php endforeach; ?>
 					<?php endif; ?>
 
-					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Featured Destinations</a></li>
+					<?php if ( $associated_collections->have_posts() ) : ?>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
 					<?php endif; ?>
 
 					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Global Reach</a></li>
@@ -235,42 +252,40 @@ get_header(); ?>
 
 		<?php endif; ?>
 
-		<?php if ( $associated_itineraries->have_posts() ) : ?>
-		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+		<?php if ( $associated_collections->have_posts() ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
-		<section class="section-content programs">
-			<h2 class="section-title">Featured Destinations</h2>
-			<ul class="programs-list list-unstyled clearfix">
+			<section class="section-content programs">
+				<h2 class="section-title">Collections</h2>
+				<ul class="programs-list list-unstyled clearfix">
+					<?php while ( $associated_collections->have_posts() ) : ?>
+						<?php $associated_collections->the_post(); ?>
+						<?php
+						$background = '';
+						if( has_post_thumbnail( $post->ID ) ) {
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+							// scrim
+							// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
+							$background = 'url(' . $featured[0] . ')';
+							$class = ' has-tile-image';
+						} else {
+							$class = ' pattern-' . rand(1, 9);
+						}
+						?>
 
-				<?php while ( $associated_itineraries->have_posts() ) : ?>
-					<?php $associated_itineraries->the_post(); ?>
-					<?php
-					$background = '';
-					if( has_post_thumbnail( $post->ID ) ) {
-						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-						// scrim
-						// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
-						$background = 'url(' . $featured[0] . ')';
-						$class = ' has-tile-image';
-					} else {
-						$class = ' pattern-' . rand(1, 9);
-					}
-					?>
+						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
+								</ul>
+								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							</div>
+						</li>
 
-					<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-						<div class="tile-content">
-							<ul class="meta list-unstyled">
-								<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
-							</ul>
-							<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						</div>
-					</li>
+					<?php endwhile; ?>
+				</ul>
 
-				<?php endwhile; ?>
-				
-			</ul>
-
-		</section>
+			</section>
 		<?php wp_reset_postdata(); ?>
 		<?php endif; ?>
 
