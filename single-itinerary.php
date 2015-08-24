@@ -374,13 +374,14 @@ get_header(); ?>
 							<?php
 							$related = ( ! empty( $day['related_content'] ) ? $day['related_content'] : '' );
 							$related_title = ( ! empty ( $day['related_content_title'] ) ? $day['related_content_title'] : '' );
+							$related_image = '';
+							$related_image_title = '';
 
 							$related_type = 'other';
 
 							if ( ! empty ( $related ) ) {
 								$post  = get_post( $related );
 								// print_r($post);
-								$related_image = '';
 								$class         = 'pattern-' . rand( 1, 9 );
 
 								if ( in_array( $post->post_type, array( 'post', 'resource', 'block' ) ) ) {
@@ -397,22 +398,19 @@ get_header(); ?>
 
 								$related_url = get_permalink( $post->ID );
 
+								$block_image_id = get_post_meta( $post->ID, 'block_image_id', true );
 
-								if ( has_post_thumbnail( $related ) ) {
+								if ( has_post_thumbnail( $related ) || $block_image_id ) {
 
 									$class = 'no-pattern';
 
-									$featured      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
-									// scrim
-									// $related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
-									$related_image = 'url(' . $featured[0] . ')';
-
-									if ( $related_type === 'post' ) {
-										// scrim
-										// $related_image = 'linear-gradient( rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 35%, rgba( 0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
-										$related_image = 'url(' . $featured[0] . ')';
+									if ( $block_image_id ) {
+										$image = wp_get_attachment_image_src( $block_image_id, 'large' );
+									} else {
+										$image      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
 									}
 
+									$related_image = 'url(' . $image[0] . ')';
 
 								}
 							}
