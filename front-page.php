@@ -5,6 +5,7 @@
 
 get_header(); the_post();
 
+$associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
 $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 ?>
@@ -29,6 +30,18 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 			<?php get_template_part('partials/content', 'tooltips'); ?>
 
 		</section>
+
+		<?php if ( ! empty( $associated_why_ws ) ) : ?>
+			<section class="section-content why-content">
+
+				<?php foreach ( $associated_why_ws as $why_ws ) : ?>
+
+					<?php echo WS_Helpers::get_value_proposition( $why_ws ); ?>
+
+				<?php endforeach; ?>
+
+			</section>
+		<?php endif; ?>
 
 		<?php get_template_part( 'partials/divisions'); ?>
 
