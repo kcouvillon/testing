@@ -166,7 +166,8 @@
 	}
 }
 
-.bio {
+.leadership-content .bio,
+.single-bio .bio {
 	.entry-content {
 		@include span(full);
 		margin-top: 0;
