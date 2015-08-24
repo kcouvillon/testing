@@ -46,6 +46,55 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 		<?php get_template_part( 'partials/divisions'); ?>
 
+		<?php if ( $associated_resources ) : ?>
+			<section class="section-content resources">
+				<h2 class="section-title">Have Questions? We Have Answers.</h2>
+
+				<ul class="resources-list list-unstyled clearfix">
+
+					<?php foreach ( $associated_resources as $resource_id ) : ?>
+						<?php $resource = get_post( $resource_id ); ?>
+						<?php
+						$background = '';
+						if( has_post_thumbnail( $resource_id ) ) {
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+							$background = 'url(' . $featured[0] . ')';
+							$class = '';
+						} else {
+							$class = ' pattern-' . rand(1, 9);
+						} ?>
+
+						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
+									<?php $target_parents = array(); ?>
+
+									<?php foreach ( $targets as $target ) : ?>
+										<?php if ( 'Featured' != $target->name ) : ?>
+
+											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
+
+											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
+												<?php $target_parents[] = $parent->term_id; ?>
+
+												<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
+
+											<?php endif; ?>
+
+										<?php endif; ?>
+									<?php endforeach; ?>
+
+								</ul>
+								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
+							</div>
+						</li>
+					<?php endforeach; ?>
+
+				</ul>
+			</section>
+		<?php endif; ?>
+
 		<?php if ( $associated_programs ) : ?>
 
 		<section class="home-section itineraries">
@@ -127,55 +176,6 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 		</section>
 
-		<?php endif; ?>
-
-		<?php if ( $associated_resources ) : ?>
-			<section class="section-content resources">
-				<h2 class="section-title">Have Questions? We Have Answers.</h2>
-
-				<ul class="resources-list list-unstyled clearfix">
-
-					<?php foreach ( $associated_resources as $resource_id ) : ?>
-						<?php $resource = get_post( $resource_id ); ?>
-						<?php
-						$background = '';
-						if( has_post_thumbnail( $resource_id ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-							$background = 'url(' . $featured[0] . ')';
-							$class = '';
-						} else {
-							$class = ' pattern-' . rand(1, 9);
-						} ?>
-
-						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-									<?php $target_parents = array(); ?>
-
-									<?php foreach ( $targets as $target ) : ?>
-										<?php if ( 'Featured' != $target->name ) : ?>
-
-											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-												<?php $target_parents[] = $parent->term_id; ?>
-
-												<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
-
-											<?php endif; ?>
-
-										<?php endif; ?>
-									<?php endforeach; ?>
-
-								</ul>
-								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-							</div>
-						</li>
-					<?php endforeach; ?>
-
-				</ul>
-			</section>
 		<?php endif; ?>
 
 		<section class="home-section learn-more clearfix ws-container">
