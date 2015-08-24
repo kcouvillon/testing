@@ -8,6 +8,7 @@ get_header(); the_post();
 $associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
 $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
+$block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 ?>
 
 <div id="primary" class="content-area">
@@ -103,6 +104,29 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 				</ul>
 			</div>
 		</section>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $block_sections ) ) : ?>
+		<section class="ws-container ws-blocks tour-blocks-before print-page-break">
+
+			<?php foreach ( $block_sections as $section ) : ?>
+				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+				<?php if ( ! empty( $section['collection_blocks_before_title'] ) ) : ?>
+					<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['collection_blocks_before_title'] ); ?></h2>
+				<?php endif; ?>
+
+				<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
+					<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
+
+						<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+					<?php endforeach; ?>
+				<?php endif; ?>
+
+			<?php endforeach; ?>
+
+		</section>
+
 		<?php endif; ?>
 
 		<?php if ( $associated_resources ) : ?>
