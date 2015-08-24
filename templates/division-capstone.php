@@ -79,8 +79,6 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			// scrim
-			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
@@ -187,8 +185,6 @@ get_header(); ?>
 					$background = '';
 					if( has_post_thumbnail( $resource_id ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
-						// scrim
-						// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 						$background = 'url(' . $featured[0] . ')';
 						$class = ' has-tile-image';
 					} else {
@@ -264,8 +260,6 @@ get_header(); ?>
 						$background = '';
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-							// scrim
-							// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
