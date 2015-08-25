@@ -12,7 +12,9 @@ $collection_args = array(
 			'terms'    => $filters,
         )
     ),
-	'no_found_rows'          => true
+	'no_found_rows'          => true,
+	'orderby' => 'title',
+	'order' => 'ASC'
 );
 $itinerary_args = array(
 	'post_type' => 'itinerary', 
@@ -25,7 +27,9 @@ $itinerary_args = array(
 			'terms'    => $filters,
         )
     ),
-	'no_found_rows'          => true
+	'no_found_rows'          => true,
+	'orderby' => 'title',
+	'order' => 'ASC'
 );
 $itineraries = new WP_Query( $itinerary_args );
 $collections = new WP_Query( $collection_args );
@@ -52,15 +56,12 @@ $collections = new WP_Query( $collection_args );
 					$thumb_id = get_post_thumbnail_id();
 					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
 					$image = $thumb_url_array[0];
-					// $scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
-					$scrim = '';
 				} else {
 					$image = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '5' : '8') . '.gif';
-					$scrim = '';
 				}
 				?>
 				<article <?php post_class( $post_class ); ?>
-						 style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
+						 style="background-image:<?php echo ' url(' . $image . ')'; ?>;" >
 
 					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm collection-image" />
 
@@ -99,14 +100,11 @@ $collections = new WP_Query( $collection_args );
 					$thumb_id = get_post_thumbnail_id();
 					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
 					$image = $thumb_url_array[0];
-					// $scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) ),';
-					$scrim = '';
 				} else {
 					$image = get_template_directory_uri().'/assets/images/src/patterns/ws_w_pattern' . (($count % 2 == 0) ? '1' : '4') . '.gif';
-					$scrim = '';
 				}
 				?>
-				<article <?php post_class( $post_class ); ?> style="background-image:<?php echo $scrim . ' url(' . $image . ')'; ?>;" >
+				<article <?php post_class( $post_class ); ?> style="background-image:<?php echo ' url(' . $image . ')'; ?>;" >
 
 					<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
 

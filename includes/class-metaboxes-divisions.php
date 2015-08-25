@@ -39,7 +39,7 @@ class WS_Metaboxes_Divisions {
 		add_action( 'cmb2_init',  array( $this, 'division_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blocks_before' ) );
 		// add_action( 'cmb2_init',  array( $this, 'division_locations' ) );
-		add_action( 'cmb2_init',  array( $this, 'division_itineraries' ) );
+		add_action( 'cmb2_init',  array( $this, 'division_collections' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_team' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships_small' ) );
@@ -292,28 +292,35 @@ class WS_Metaboxes_Divisions {
 	/**
 	 * Show associated itineraries
 	 */
-	function division_itineraries() {
+	function division_collections() {
 
-		$prefix = 'division_itineraries_';
+		$prefix = 'division_collections_';
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Associated Itineraries', 'cmb2' ),
+			'title'        => __( 'Collections', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array(
 				'key' => 'page-template', 'value' => array(
-					'templates/division-capstone.php'
+					'templates/division-capstone.php',
+					'templates/division-general.php'
 				)
 			),
 		) );
 
 		$cmb->add_field( array(
-			'name'       => __( 'List of Itineraries', 'cmb2' ),
-			'id'         => 'division_title',
-			'desc'       => 'Itineraries can be added or removed on the individual itinerary page',
-			'type'       => 'associated_itineraries',
-			'show_names' => false
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+			'name'    => __( 'Attached Collections', 'cmb2' ),
+			'desc'    => __( 'Drag itineraries from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'associated_collections',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => -1,
+					'post_type' => 'collection',
+				),
+			)
 		) );
 	}
 

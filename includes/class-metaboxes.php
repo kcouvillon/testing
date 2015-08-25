@@ -51,8 +51,10 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
 		add_action( 'cmb2_init',  array( $this, 'taxonomy_metadata_cmb2_init' ) );
+		add_action( 'cmb2_init',  array( $this, 'home_why_ws' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_select_programs' ) );
+		add_action( 'cmb2_init',  array( $this, 'home_blocks' ) );
 	}
 
 	/**
@@ -845,6 +847,46 @@ class WS_Metaboxes {
 	}
 
 	/**
+	 * Field group for Why WorldStrides page
+	 */
+	function home_why_ws() {
+
+		$prefix = 'home_why_ws_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Why WorldStrides', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array(
+				'key' => 'front-page', 'value' => ''
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'       => __( 'Title', 'cmb2' ),
+			'id'         => $prefix . 'title',
+			'type'       => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Attached Why WS', 'cmb2' ),
+			'desc'    => __( 'Drag Why WS from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'attached_why_ws',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 70,
+					'post_type' => 'why-ws',
+				),
+			)
+		) );
+
+	}
+
+	/**
 	 * Resources to display
 	 */
 	function home_resources() {
@@ -914,6 +956,64 @@ class WS_Metaboxes {
 				),
 			)
 		) );
+	}
+
+
+	/**
+	 * Sections of blocks to show on home page
+	 */
+	function home_blocks() {
+
+		$prefix = 'home_blocks_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Blocks', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array(
+				'key' => 'front-page', 'value' => ''
+			),
+		) );
+
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb->add_field( array(
+			'id'          => $prefix . 'list',
+			'type'        => 'group',
+			'options'     => array(
+				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Section', 'cmb2' ),
+				'remove_button' => __( 'Remove Section', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Title',
+			'id' => $prefix . 'title',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Slug',
+			'id' => $prefix . 'slug',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name'    => __( 'Attached Blocks', 'cmb2' ),
+			'desc'    => __( 'Drag blocks from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'attached_blocks',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => -1,
+					'post_type' => 'block',
+				),
+			)
+		) );
+
 	}
 
 }

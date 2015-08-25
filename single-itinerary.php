@@ -19,8 +19,6 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			// scrim
-			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
@@ -374,47 +372,43 @@ get_header(); ?>
 							<?php
 							$related = ( ! empty( $day['related_content'] ) ? $day['related_content'] : '' );
 							$related_title = ( ! empty ( $day['related_content_title'] ) ? $day['related_content_title'] : '' );
-
-							$related_image = ( ! empty( $day['override_image'] ) ? $day['override_image'] : '' );
-							// scrim
-							// $related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $related_image . ')';
-
-							$related_image_title = ( ! empty( $day['override_image_title'] ) ? $day['override_image_title'] : '' );
-							$related_description = ( ! empty( $day['override_description'] ) ? $day['override_description'] : '' );
-							$related_url = ( ! empty( $day['override_url'] ) ? $day['override_url'] : '' );
+							$related_image = '';
+							$related_image_title = '';
 
 							$related_type = 'other';
 
 							if ( ! empty ( $related ) ) {
 								$post  = get_post( $related );
 								// print_r($post);
-								$related_image = '';
 								$class         = 'pattern-' . rand( 1, 9 );
 
-								if ( in_array( $post->post_type, array( 'post', 'resource') ) ) {
+								if ( in_array( $post->post_type, array( 'post', 'resource', 'block' ) ) ) {
 									$related_type = $post->post_type;
 								}
 
 								$related_image_title = $post->post_title;
-								$related_description = esc_html( wp_trim_words( $post->post_content, 40 ) );
+
+								if ( $related_type === 'block' ) {
+									$related_description = apply_filters( 'the_content', $post->post_content );
+								} else {
+									$related_description = esc_html( wp_trim_words( $post->post_content, 40 ) );
+								}
+
 								$related_url = get_permalink( $post->ID );
 
+								$block_image_id = get_post_meta( $post->ID, 'block_image_id', true );
 
-								if ( has_post_thumbnail( $related ) ) {
+								if ( has_post_thumbnail( $related ) || $block_image_id ) {
 
 									$class = 'no-pattern';
 
-									$featured      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
-									// scrim
-									// $related_image = 'linear-gradient( rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
-									$related_image = 'url(' . $featured[0] . ')';
-
-									if ( $related_type === 'post' ) {
-										// scrim
-										// $related_image = 'linear-gradient( rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 35%, rgba( 0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.45) 100% ), url(' . $featured[0] . ')';
-										$related_image = 'url(' . $featured[0] . ')';
+									if ( $block_image_id ) {
+										$image = wp_get_attachment_image_src( $block_image_id, 'large' );
+									} else {
+										$image      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
 									}
 
+									$related_image = 'url(' . $image[0] . ')';
 
 								}
 							}
@@ -464,16 +458,16 @@ get_header(); ?>
 										<?php endif; ?>
 
 
-										<?php if( $related_url ) echo '<a href="'. $related_url . '">'; ?>
+										<?php if( $related_url && $related_type == 'post' ) echo '<a href="'. $related_url . '">'; ?>
 										<h3><?php echo $related_image_title; ?></h3>
-										<?php if( $related_url ) echo '</a>'; ?>
+										<?php if( $related_url && $related_type == 'post' ) echo '</a>'; ?>
 									</header>
 
 									<?php if ( $related_type != 'resource' ) : ?>
 										<p><?php echo $related_description; ?></p>
 									<?php endif; ?>
 
-									<?php if( $related_url && $related_type != 'resource' ) : ?>
+									<?php if( $related_url && $related_type == 'post' ) : ?>
 										<a href="<?php echo $related_url; ?>" class="btn btn-primary">Keep Reading</a>
 									<?php endif; ?>
 

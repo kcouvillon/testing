@@ -27,24 +27,39 @@ if ( ! $display_title ) {
 	$display_title = get_the_title();
 }
 
-$post_obj = $wp_query->get_queried_object();
+$associated_itineraries_override = get_post_meta( $post->ID, 'associated_itineraries', true );
 
-$associated_itineraries = new WP_Query( array(
-	'post_type' => 'itinerary',
-	'tax_query' => array(
-		array(
-			'taxonomy' => '_collection',
-			'field'    => 'slug',
-			'terms'    => $post_obj->post_name
-		)
-	),
-	'posts_per_page' => 75,
-	'no_found_rows' => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => false,
-	'order' => 'ASC',
-	'orderby' => 'title'
-) );
+if ( $associated_itineraries_override ) {
+	$associated_itineraries = new WP_Query( array(
+		'post_type'              => 'itinerary',
+		'posts_per_page'         => 75,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'order'                  => 'ASC',
+		'orderby'                => 'title',
+		'post__in'               => $associated_itineraries_override
+	) );
+} else {
+	$post_obj = $wp_query->get_queried_object();
+
+	$associated_itineraries = new WP_Query( array(
+		'post_type' => 'itinerary',
+		'tax_query' => array(
+			array(
+				'taxonomy' => '_collection',
+				'field'    => 'slug',
+				'terms'    => $post_obj->post_name
+			)
+		),
+		'posts_per_page' => 75,
+		'no_found_rows' => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'order' => 'ASC',
+		'orderby' => 'title'
+	) );
+}
 
 get_header(); ?>
 
@@ -57,8 +72,6 @@ get_header(); ?>
 		$background = '';
 		if ( has_post_thumbnail() ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			// scrim
-			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
@@ -159,8 +172,6 @@ get_header(); ?>
 						$background = '';
 						if( has_post_thumbnail( $resource_id ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-							// scrim
-							// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 							$background = 'url(' . $featured[0] . ')';
 							$class = '';
 						} else {
@@ -236,8 +247,6 @@ get_header(); ?>
 						$background = '';
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-							// scrim
-							// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {

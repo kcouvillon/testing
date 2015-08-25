@@ -5,8 +5,10 @@
 
 get_header(); the_post();
 
+$associated_why_ws = get_post_meta( $post->ID, 'attached_why_ws', true);
 $associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
 $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
+$block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 ?>
 
 <div id="primary" class="content-area">
@@ -16,8 +18,6 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 		$background = '';
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			// scrim
-			// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 			$background = 'url(' . $featured[0] . ')';
 		}
 		?>
@@ -32,7 +32,68 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 
 		</section>
 
+		<?php if ( ! empty( $associated_why_ws ) ) : ?>
+			<section class="section-content why-content">
+
+				<?php foreach ( $associated_why_ws as $why_ws ) : ?>
+
+					<?php echo WS_Helpers::get_value_proposition( $why_ws ); ?>
+
+				<?php endforeach; ?>
+
+			</section>
+		<?php endif; ?>
+
 		<?php get_template_part( 'partials/divisions'); ?>
+
+		<?php if ( $associated_resources ) : ?>
+			<section class="section-content resources">
+				<h2 class="section-title">Have Questions? We Have Answers.</h2>
+
+				<ul class="resources-list list-unstyled clearfix">
+
+					<?php foreach ( $associated_resources as $resource_id ) : ?>
+						<?php $resource = get_post( $resource_id ); ?>
+						<?php
+						$background = '';
+						if( has_post_thumbnail( $resource_id ) ) {
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+							$background = 'url(' . $featured[0] . ')';
+							$class = '';
+						} else {
+							$class = ' pattern-' . rand(1, 9);
+						} ?>
+
+						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
+							<div class="tile-content">
+								<ul class="meta list-unstyled">
+									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
+									<?php $target_parents = array(); ?>
+
+									<?php foreach ( $targets as $target ) : ?>
+										<?php if ( 'Featured' != $target->name ) : ?>
+
+											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
+
+											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
+												<?php $target_parents[] = $parent->term_id; ?>
+
+												<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
+
+											<?php endif; ?>
+
+										<?php endif; ?>
+									<?php endforeach; ?>
+
+								</ul>
+								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
+							</div>
+						</li>
+					<?php endforeach; ?>
+
+				</ul>
+			</section>
+		<?php endif; ?>
 
 		<?php if ( $associated_programs ) : ?>
 
@@ -69,18 +130,15 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 							}
 
 							$background = $thumb_url_array[0];
-							// $scrim = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),';
-							$scrim = '';
 							$class = ' has-tile-image';
 						} else {
 							$background = get_template_directory_uri() . '/assets/images/src/patterns/ws_w_pattern' . ( ($count % 2 == 0 ) ? '5' : '8') . '.gif';
-							$scrim = '';
 							$class = ' no-tile-image';
 						}
 
 						?>
 
-						<li class="program tile <?php echo $tile_size; echo $class; ?>" style="background-image:<?php echo $scrim . ' url(' . $background . ')'; ?>;">
+						<li class="program tile <?php echo $tile_size; echo $class; ?>" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
 									<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $program->ID ); ?></li>
@@ -97,55 +155,27 @@ $associated_programs = get_post_meta( $post->ID, 'attached_programs', true);
 		</section>
 		<?php endif; ?>
 
-		<?php if ( $associated_resources ) : ?>
-			<section class="section-content resources">
-				<h2 class="section-title">Have Questions? We Have Answers.</h2>
+		<?php if ( ! empty( $block_sections ) ) : ?>
+		<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
-				<ul class="resources-list list-unstyled clearfix">
+			<?php foreach ( $block_sections as $section ) : ?>
+				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+				<?php if ( ! empty( $section['collection_blocks_before_title'] ) ) : ?>
+					<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['collection_blocks_before_title'] ); ?></h2>
+				<?php endif; ?>
 
-					<?php foreach ( $associated_resources as $resource_id ) : ?>
-						<?php $resource = get_post( $resource_id ); ?>
-						<?php
-						$background = '';
-						if( has_post_thumbnail( $resource_id ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-							// scrim
-							// $background = 'linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
-							$background = 'url(' . $featured[0] . ')';
-							$class = '';
-						} else {
-							$class = ' pattern-' . rand(1, 9);
-						} ?>
+				<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
+					<?php foreach ( $section['attached_blocks'] as $block_id ) : ?>
 
-						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-									<?php $target_parents = array(); ?>
+						<?php echo WS_Helpers::get_content_block( $block_id ); ?>
 
-									<?php foreach ( $targets as $target ) : ?>
-										<?php if ( 'Featured' != $target->name ) : ?>
-
-											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-												<?php $target_parents[] = $parent->term_id; ?>
-
-												<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
-
-											<?php endif; ?>
-
-										<?php endif; ?>
-									<?php endforeach; ?>
-
-								</ul>
-								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-							</div>
-						</li>
 					<?php endforeach; ?>
+				<?php endif; ?>
 
-				</ul>
-			</section>
+			<?php endforeach; ?>
+
+		</section>
+
 		<?php endif; ?>
 
 		<section class="home-section learn-more clearfix ws-container">

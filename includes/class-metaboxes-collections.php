@@ -241,12 +241,18 @@ class WS_Metaboxes_Collections {
 		) );
 
 		$cmb->add_field( array(
-			'name'       => __( 'List of Itineraries', 'cmb2' ),
-			'id'         => 'title',
-			'desc'       => 'Itineraries can be added or removed on the individual itinerary page',
-			'type'       => 'associated_itineraries',
-			'show_names' => false
-			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+			'name'    => __( 'Itineraries', 'cmb2' ),
+			'desc'    => __( 'Drag blocks from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'associated_itineraries',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => -1,
+					'post_type' => 'itinerary',
+				),
+			)
 		) );
 	}
 

@@ -443,27 +443,4 @@ class WS_Helpers {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 WS_Helpers::instance();

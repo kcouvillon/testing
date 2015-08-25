@@ -19,24 +19,39 @@ if ( ! $display_title ) {
 	$display_title = get_the_title();
 }
 
-$post_obj = $wp_query->get_queried_object();
+$associated_collections_override = get_post_meta( $post->ID, 'associated_collections', true );
 
-$associated_collections = new WP_Query( array(
-	'post_type' => 'collection',
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'product-line',
-			'field'    => 'slug',
-			'terms'    => $post_obj->post_name
-		)
-	),
-	'posts_per_page' => 75,
-	'no_found_rows' => true,
-	'update_post_term_cache' => false,
-	'update_post_meta_cache' => false,
-	'order' => 'ASC',
-	'orderby' => 'title'
-) );
+if ( $associated_collections_override ) {
+	$associated_collections = new WP_Query( array(
+		'post_type'              => 'collection',
+		'posts_per_page'         => 75,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'order'                  => 'ASC',
+		'orderby'                => 'title',
+		'post__in'               => $associated_collections_override
+	) );
+} else {
+	$post_obj = $wp_query->get_queried_object();
+
+	$associated_collections = new WP_Query( array(
+		'post_type'              => 'collection',
+		'tax_query'              => array(
+			array(
+				'taxonomy' => 'product-line',
+				'field'    => 'slug',
+				'terms'    => $post_obj->post_name
+			)
+		),
+		'posts_per_page'         => 75,
+		'no_found_rows'          => true,
+		'update_post_term_cache' => false,
+		'update_post_meta_cache' => false,
+		'order'                  => 'ASC',
+		'orderby'                => 'title'
+	) );
+}
 
 if ( 'discoveries' == $post->post_name ) {
 	$division_target = 'Middle School';
@@ -61,8 +76,6 @@ get_header(); ?>
 			$background = '';
 			if ( has_post_thumbnail() ) {
 				$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-				// scrim
-				// $background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 				$background = 'url(' . $featured[0] . ')';
 				$class = '';
 			} else {
@@ -162,8 +175,6 @@ get_header(); ?>
 						$background = '';
 						if( has_post_thumbnail( $resource_id ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
-							// scrim
-							// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
@@ -239,8 +250,6 @@ get_header(); ?>
 						$background = '';
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-							// scrim
-							// $background = 'linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.28) ), url(' . $featured[0] . ')';
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
