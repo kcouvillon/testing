@@ -233,16 +233,33 @@ class WS_Metaboxes {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Additional Fields', 'cmb2' ),
+			'title'        => __( 'Contact Sections', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/contact.php' ),
-			'show_names'   => false, // Show field names on the left
+			// 'show_names'   => false, // Show field names on the left
 		) );
 
-		$cmb->add_field( array(
-			'name'             => 'Second Column',
-			'id'               => 'contact_column_2',
-			'type'             => 'wysiwyg'
+		$group_field_id = $cmb->add_field( array(
+			'id'      => $prefix . 'sections',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Section', 'cmb2' ),
+				'remove_button' => __( 'Remove Section', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+		
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Title',
+			'id' => $prefix . 'section_title',
+			'type' => 'text'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Content',
+			'id' => $prefix . 'section_content',
+			'type' => 'wysiwyg'
 		) );
 
 	}
