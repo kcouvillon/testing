@@ -39,6 +39,8 @@ class WS_Shortcodes {
 		add_shortcode( 'button', array( $this, 'button' ) );
 		add_shortcode( 'activity', array( $this, 'activity' ) );
 		add_shortcode( 'formstack', array( $this, 'formstack' ) );
+		add_shortcode( 'columns', array( $this, 'columns' ) );
+		add_shortcode( 'column', array( $this, 'column' ) );
 	}
 
 	/**
@@ -162,6 +164,34 @@ class WS_Shortcodes {
 		?>
 		<script type="text/javascript" src="https://wsforms.formstack.com/forms/js.php/<?php echo $atts['slug'];?>"></script>
 		<noscript><a href="https://wsforms.formstack.com/forms/<?php echo $atts['slug'];?>" title="<?php echo $atts['title'];?>"><?php echo $atts['title'];?></a></noscript>
+		<?php
+		$html = ob_get_contents();
+		ob_get_clean();
+
+		return $html;
+	}
+
+	/**
+	 * Creates a columns shortcode
+	 *
+	 * @return html wrapper for columns
+	 */
+	public static function columns( $atts, $content = "" ) {
+		$content = '<div class="columns clearfix">' . do_shortcode( $content ) . '</div>';
+		$content = str_replace( '\r\n', "\n", $content );
+		return $content;
+	}
+
+	/**
+	 * Creates a column shortcode
+	 *
+	 * @return html content for a column
+	 */
+	public static function column( $atts, $content = "" ) {
+		ob_start(); ?>
+			
+			<div class="column"><?php echo $content; ?></div>
+
 		<?php
 		$html = ob_get_contents();
 		ob_get_clean();
