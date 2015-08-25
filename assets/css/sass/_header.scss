@@ -18,7 +18,7 @@
 	}
 
 	.transparent-header & {
-		background-color: transparent;
+		background-color: rgba($gray_base, 0.4);
 		position: relative;
 		z-index: 100;
 
@@ -29,6 +29,10 @@
 				color: $color_link;
 			}
 		}
+	}
+	.ws-cssgradients .transparent-header & {
+		background-color: rgba(0,0,0,0);
+		background-image: linear-gradient( rgba(35, 41, 53, 0.6) 0, rgba(35, 41, 53, 0.001)  100%);
 	}
 
 	.page-template-default & {
