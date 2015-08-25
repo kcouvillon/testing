@@ -26,47 +26,170 @@ get_header(); ?>
 
 					<ul>
 						<h3>Middle School</h3>
-						<li>All the collections</li>
+
+						<?php
+							$posts = new WP_Query( array(
+								'post_type' => 'itinerary',
+								'tax_query'              => array(
+									array(
+										'taxonomy' => 'product-line',
+										'field'    => 'slug',
+										'terms'    => 'discoveries'
+									)
+								),
+								'posts_per_page'         => -1,
+								'no_found_rows'          => true,
+								'update_post_term_cache' => false,
+								'update_post_meta_cache' => false,
+								'order'                  => 'ASC',
+								'orderby'                => 'title'
+							));
+
+							while ( $posts->have_posts() ) : $posts->the_post();
+						?>
+
+							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+						<?php endwhile; ?>
 					</ul>
 
 					<ul>
 						<h3>High School</h3>
-						<li>All the collections</li>
+
+						<?php
+						$posts = new WP_Query( array(
+							'post_type' => 'itinerary',
+							'tax_query'              => array(
+								array(
+									'taxonomy' => 'product-line',
+									'field'    => 'slug',
+									'terms'    => 'perspectives'
+								)
+							),
+							'posts_per_page'         => -1,
+							'no_found_rows'          => true,
+							'update_post_term_cache' => false,
+							'update_post_meta_cache' => false,
+							'order'                  => 'ASC',
+							'orderby'                => 'title'
+						));
+
+						while ( $posts->have_posts() ) : $posts->the_post();
+							?>
+
+							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+						<?php endwhile; ?>
 					</ul>
 
 					<ul>
 						<h3>University</h3>
-						<li>All the collections</li>
+
+						<?php
+						$posts = new WP_Query( array(
+							'post_type' => 'itinerary',
+							'tax_query'              => array(
+								array(
+									'taxonomy' => 'product-line',
+									'field'    => 'slug',
+									'terms'    => 'capstone'
+								)
+							),
+							'posts_per_page'         => -1,
+							'no_found_rows'          => true,
+							'update_post_term_cache' => false,
+							'update_post_meta_cache' => false,
+							'order'                  => 'ASC',
+							'orderby'                => 'title'
+						));
+
+						while ( $posts->have_posts() ) : $posts->the_post();
+							?>
+
+							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+						<?php endwhile; ?>
 					</ul>
 
 					<ul>
 						<h3>Performing Arts</h3>
-						<li>All the collections</li>
+						<?php
+						$posts = new WP_Query( array(
+							'post_type' => 'itinerary',
+							'tax_query'              => array(
+								array(
+									'taxonomy' => 'product-line',
+									'field'    => 'slug',
+									'terms'    => 'on-stage'
+								)
+							),
+							'posts_per_page'         => -1,
+							'no_found_rows'          => true,
+							'update_post_term_cache' => false,
+							'update_post_meta_cache' => false,
+							'order'                  => 'ASC',
+							'orderby'                => 'title'
+						));
+
+						while ( $posts->have_posts() ) : $posts->the_post();
+							?>
+
+							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+						<?php endwhile; ?>
 					</ul>
 				</section>
 
 				<section>
-					<h2><a href="">Why WorldStrides</a></h2>
+					<h2><a href="/why-worldstrides/">Why WorldStrides</a></h2>
 				</section>
 
 				<section>
 					<h2><a href="">Stories</a></h2>
 					<ul>
-						<li>All the stories?</li>
+						<?php
+						$posts = new WP_Query( array(
+
+							'posts_per_page'         => -1,
+							'no_found_rows'          => true,
+							'update_post_term_cache' => false,
+							'update_post_meta_cache' => false
+						));
+
+						while ( $posts->have_posts() ) : $posts->the_post();
+							?>
+
+							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+						<?php endwhile; ?>
 					</ul>
 				</section>
 
 				<section>
 					<h2>Resource Center</h2>
 					<ul>
-						<li>All the targets</li>
+						<?php
+						$posts = new WP_Query( array(
+							'post_type'              => 'resource',
+							'posts_per_page'         => -1,
+							'no_found_rows'          => true,
+							'update_post_term_cache' => false,
+							'update_post_meta_cache' => false
+						));
+
+						while ( $posts->have_posts() ) : $posts->the_post();
+							?>
+
+							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+						<?php endwhile; ?>
 					</ul>
 				</section>
 
 				<section>
 					<h2>About</h2>
 					<ul>
-						<li>Pages + bios under leadership</li>
+						<li>Pages + bios under leadership + press</li>
 					</ul>
 				</section>
 
