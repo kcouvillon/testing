@@ -189,21 +189,71 @@ get_header(); ?>
 				<section>
 					<h2>About</h2>
 					<ul>
-						<li>Pages + bios under leadership + press</li>
+						<li><a href="<?php echo esc_url( home_url( '/about/history/' ) ); ?>">History</a></li>
+						<li><a href="<?php echo esc_url( home_url( '/about/partnerships/' ) ); ?>">Partnerships</a></li>
+						<li>
+							<a href="<?php echo esc_url( home_url( '/about/leadership/' ) ); ?>">Leadership</a>
+							<ul>
+								<?php
+								$leadership_bios = new WP_Query( array(
+									'post_type' => 'bio',
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'role',
+											'field'    => 'slug',
+											'terms'    => 'leadership',
+										),
+									),
+									'posts_per_page'         => -1,
+									'order'                  => 'ASC',
+									'orderby'                => 'title',
+									'no_found_rows'          => true,
+									'update_post_term_cache' => false,
+									'update_post_meta_cache' => false
+								));
+
+								while ( $leadership_bios->have_posts() ) : $leadership_bios->the_post();
+								?>
+									<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+								<?php endwhile; ?>
+							</ul>
+						</li>
+						<li><a href="<?php echo esc_url( home_url( '/about/careers/' ) ); ?>">Careers</a></li>
+						<li>
+							<a href="<?php echo esc_url( home_url( '/about/press/' ) ); ?>">Press Center</a>
+							<ul>
+								<?php
+								$press = new WP_Query( array(
+									'post_type' => 'press',
+									'posts_per_page'         => -1,
+									'order'                  => 'ASC',
+									'orderby'                => 'title',
+									'no_found_rows'          => true,
+									'update_post_term_cache' => false,
+									'update_post_meta_cache' => false
+								));
+
+								while ( $press->have_posts() ) : $press->the_post();
+								?>
+								<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+							<?php endwhile; ?>
+							</ul>
+						</li>
+						<li><a href="<?php echo esc_url( home_url( '/about/offices/' ) ); ?>">Offices</a></li>
 					</ul>
 				</section>
 
 				<ul>
-					<li>Contact Us</li>
-					<li>Register</li>
-					<li>Make a payment</li>
-					<li>MyTrip login</li>
+					<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/register/' ) ); ?>">Register</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/make-a-payment/' ) ); ?>">Make a payment</a></li>
+					<li><a href="http://mytrip.worldstrides.org/login.xml">MyTrip login</a></li>
 				</ul>
 
 				<ul>
-					<li>Legal Policy</li>
-					<li>Privacy Policy</li>
-					<li>Terms and Conditions</li>
+					<li><a href="<?php echo esc_url( home_url( '/legal-policy/' ) ); ?>">Legal Policy</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></li>
+					<li><a href="<?php echo esc_url( home_url( '/terms-conditions/' ) ); ?>">Terms and Conditions</a></li>
 				</ul>
 
 			</section>
