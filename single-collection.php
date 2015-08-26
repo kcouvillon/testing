@@ -36,8 +36,6 @@ if ( $associated_itineraries_override ) {
 		'no_found_rows'          => true,
 		'update_post_term_cache' => false,
 		'update_post_meta_cache' => false,
-		'order'                  => 'ASC',
-		'orderby'                => 'title',
 		'post__in'               => $associated_itineraries_override
 	) );
 } else {
