@@ -37,7 +37,7 @@ get_header(); ?>
 						<?php the_content(); ?>
 
 						<footer class="entry-footer">
-							<a href="<?php esc_url( home_url( '/about/leadership' ) ); ?>">Back to Leadership</a>
+							<a href="<?php echo esc_url( home_url( '/about/leadership' ) ); ?>">Back to Leadership</a>
 						</footer>
 						
 					</div>
