@@ -46,7 +46,7 @@
 
 		</section>
 
-	</main>
+	</main> 
 </div>
 
 <?php get_footer(); ?>
