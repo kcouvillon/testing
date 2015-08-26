@@ -102,7 +102,7 @@ function ws_scripts_styles() {
 	}
 
 	// if ( is_singular( 'itinerary' ) ) {
-		// wp_enqueue_script( 'mustache', get_template_directory_uri() . "/assets/js/vendor/mustache.min.js", array(), WS_VERSION, true );
+	// wp_enqueue_script( 'mustache', get_template_directory_uri() . "/assets/js/vendor/mustache.min.js", array(), WS_VERSION, true );
 	// }
 
 	if ( is_page_template( 'templates/explore.php' ) ) {
@@ -127,9 +127,16 @@ function ws_admin_scripts_styles() {
 
 add_action( 'admin_enqueue_scripts', 'ws_admin_scripts_styles' );
 
-function get_id_by_slug($page_slug) {
-	$page = get_page_by_path($page_slug);
-	if ($page) {
+/**
+ * Find a post/page id via slug
+ *
+ * @param $page_slug
+ *
+ * @return int|null
+ */
+function get_id_by_slug( $page_slug ) {
+	$page = get_page_by_path( $page_slug );
+	if ( $page ) {
 		return $page->ID;
 	} else {
 		return null;
@@ -138,10 +145,14 @@ function get_id_by_slug($page_slug) {
 
 /**
  * Add class to body_class if there is a featured image
+ *
+ * @param $classes
+ *
+ * @return array original classes plus ones we've added
  */
 function ws_add_body_classes( $classes ) {
 	global $post;
-	$about_id = get_id_by_slug( 'about' );
+	$about_id       = get_id_by_slug( 'about' );
 	$is_about_child = false;
 
 	if ( $post && $about_id == $post->post_parent ) {
@@ -168,7 +179,6 @@ function ws_add_body_classes( $classes ) {
 
 	return $classes;
 }
-
 add_filter( 'body_class', 'ws_add_body_classes' );
 
 /**
@@ -177,14 +187,13 @@ add_filter( 'body_class', 'ws_add_body_classes' );
 function ws_new_excerpt_more( $more ) {
 	return '...';
 }
-
 add_filter( 'excerpt_more', 'ws_new_excerpt_more' );
 
 
 /**
  * Remove cruft from header
  *
- * @todo better location for this?
+ * This could potentially be replaced by Yoast SEO functionality
  */
 // remove_action( 'wp_head', 'feed_links', 2 );
 remove_action( 'wp_head', 'feed_links_extra', 3 );
@@ -210,12 +219,17 @@ function customize_admin_init() {
 }
 add_action( 'admin_init', 'customize_admin_init' );
 
-
+/**
+ * Modify default areas in specific areas of the site
+ *
+ * @param $query
+ */
 function ws_modified_queries( $query ) {
 	if ( is_tax( 'resource-target' ) && ! is_admin() ) {
 		$query->set( 'posts_per_page', '100' );
 		$query->set( 'orderby', 'title' );
 		$query->set( 'order', 'ASC' );
+
 		return;
 	}
 }
@@ -242,9 +256,9 @@ function ws_filter_guest_author_fields( $fields_to_return, $groups ) {
 
 	if ( in_array( 'all', $groups ) || in_array( 'name', $groups ) ) {
 		$fields_to_return[] = array(
-			'key'      => 'author_type',
-			'label'    => 'Author Type',
-			'group'    => 'name',
+			'key'   => 'author_type',
+			'label' => 'Author Type',
+			'group' => 'name',
 		);
 	}
 
@@ -261,7 +275,7 @@ add_filter( 'coauthors_guest_author_fields', 'ws_filter_guest_author_fields', 10
  */
 function ws_filter_endpoints( $template ) {
 	$filter_types = array( 'destination', 'interest', 'traveler' );
-	$post_type = get_post_type();
+	$post_type    = get_post_type();
 
 	if ( ! in_array( $post_type, $filter_types ) ) {
 		return $template;
@@ -275,13 +289,14 @@ add_filter( 'template_include', 'ws_filter_endpoints' );
 /**
  * Include metabox on front page
  *
- * @todo find a better place for this to live.
+ * @todo   find a better place for this to live.
  *
  * @author Ed Townend
- * @link https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-show_on-filters
+ * @link   https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-show_on-filters
  *
- * @param bool $display
+ * @param bool  $display
  * @param array $meta_box
+ *
  * @return bool display metabox
  */
 function ws_metabox_include_front_page( $display, $meta_box ) {
@@ -314,11 +329,17 @@ function ws_metabox_include_front_page( $display, $meta_box ) {
 }
 add_filter( 'cmb2_show_on', 'ws_metabox_include_front_page', 10, 2 );
 
+/**
+ * Remove items from the admin sidebar menu
+ */
 function remove_admin_menu_itmes() {
 	remove_menu_page( 'edit-comments.php' );
 }
 add_action( 'admin_menu', 'remove_admin_menu_itmes' );
 
+/**
+ * Remove widgets from the dashboard
+ */
 function remove_dashboard_widgets() {
 	remove_meta_box( 'arve_dashboard_widget', 'dashboard', 'normal' );
 }
