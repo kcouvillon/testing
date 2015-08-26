@@ -28,7 +28,6 @@ include WS_PATH . 'includes/cmb2/init.php';
 include WS_PATH . 'includes/cmb2-attached-posts/cmb2-attached-posts-field.php';
 include WS_PATH . 'includes/cmb2-maps-google/cmb-field-map.php';
 include WS_PATH . 'includes/cmb2-post-search/cmb2-post-search-field.php';
-include WS_PATH . 'includes/cmb2-associated-itineraries/cmb2-associated-itineraries.php';
 include WS_PATH . 'includes/taxonomy-metadata/Taxonomy_MetaData.php';
 include WS_PATH . 'includes/taxonomy-metadata/Taxonomy_MetaData_CMB2.php';
 
