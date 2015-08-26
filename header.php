@@ -68,8 +68,8 @@ if ( is_singular( 'post' ) ) {
 
 	<header id="masthead" class="site-header" role="banner">
 		<h1 class="logo hide-print"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><span class="hide">Worldstrides</span></a></h1>
+		<h2 class="print-only">WorldStrides</h2>
 		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-menu"></i></a>
-		<img src="<?php echo get_template_directory_uri() . '/assets/images/logo-gray.png'; ?>" class="print-only" width="216" height="46" />
 
 		<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
 			<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Our Trips »</a>

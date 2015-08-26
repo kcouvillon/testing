@@ -46,6 +46,11 @@
 		@include span(3);
 	}
 
+	@media print {
+		width: 100% !important;
+		float: none !important;
+	}
+
 	.date-list {
 		margin: 0 0 0 38px;
 		padding-top: 0.75em;
@@ -114,8 +119,10 @@
 	@include span(full);
 	font-size: em(14);
 
-	@include susy-media($screen-sm) {
-		// @include gallery(3 of 6);
+	@media print {
+		width: 100% !important;
+		display: block !important;
+		float: none !important;
 	}
 }
 

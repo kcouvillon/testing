@@ -27,6 +27,7 @@ get_header(); ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
+
 					<nav class="breadcrumbs hide-print">
 						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
 						<span>Collections</span>>
@@ -44,6 +45,8 @@ get_header(); ?>
 					<?php endif; ?>
 
 					<?php the_content(); ?>
+
+					<p class="print-only"><?php the_permalink(); ?></p>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>

@@ -6364,6 +6364,9 @@ a.no-decoration {
     @media screen and (min-width: 768px) {
       .site-header .menu-toggle {
         display: none; } }
+    @media print {
+      .site-header .menu-toggle {
+        display: none; } }
 
 .logo {
   display: inline-block;
@@ -7088,6 +7091,10 @@ a.no-decoration {
       width: 23.5294117647%;
       float: left;
       margin-right: 1.9607843137%; } }
+  @media print {
+    .tour-duration {
+      width: 100% !important;
+      float: none !important; } }
   .tour-duration .date-list {
     margin: 0 0 0 38px;
     padding-top: 0.75em;
@@ -7146,6 +7153,11 @@ a.no-decoration {
   margin-left: 0;
   margin-right: 0;
   font-size: 0.875em; }
+  @media print {
+    .tour-feature {
+      width: 100% !important;
+      display: block !important;
+      float: none !important; } }
 
 .tour-weather {
   width: 100%;
@@ -9769,6 +9781,11 @@ section:after {
     width: 23.5294117647%;
     float: right;
     margin-right: 0; } }
+
+@media only print {
+  .site-info {
+    width: 100% !important;
+    float: none !important; } }
 
 .site-info .social-icons, .site-info .departing-from {
   margin-bottom: 1em; }
