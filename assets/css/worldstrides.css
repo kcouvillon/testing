@@ -7143,6 +7143,11 @@ a.no-decoration {
       float: left;
       margin-right: 1.9607843137%;
       margin-left: 8.4967320261%; } }
+  @media only print {
+    .tour-features {
+      width: 100%;
+      float: none;
+      margin: 0; } }
 
 .tour-feature-list {
   margin-left: 38px; }

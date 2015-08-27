@@ -68,6 +68,12 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_field( array(
+			'name' => __( 'Phone Number', 'cmb2' ),
+			'id'   => 'itinerary_phone',
+			'type' => 'text'
+		) );
+
+		$cmb->add_field( array(
 			'name' => 'Duration',
 			'desc' => 'Number of days',
 			'id' => $prefix . 'duration',

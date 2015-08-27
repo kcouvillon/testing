@@ -12,7 +12,8 @@ get_header(); ?>
 
 		<?php
 		$terms = get_the_terms( $post->ID, '_collection' );
-		$term = $terms[0];
+		$term  = $terms[0];
+		$phone = get_post_meta( $post->ID, 'itinerary_phone', true );
 		?>
 
 		<?php
@@ -47,6 +48,9 @@ get_header(); ?>
 					<?php the_content(); ?>
 
 					<p class="print-only"><?php the_permalink(); ?></p>
+					<?php if ( $phone ) : ?>
+					<p class="print-only"><?php echo $phone; ?></p>
+					<?php endif; ?>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
