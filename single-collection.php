@@ -236,7 +236,15 @@ get_header(); ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="section-content programs">
-				<h2 class="section-title"><?php echo $itinerary_title; ?></h2>
+				<header class="programs-header">
+					<h2 class="section-title"><?php echo $itinerary_title; ?></h2>
+					<?php if ( 1147 == get_the_ID() ) : // IF Heritage Festivals Collection ?>
+						<div id="jrange" class="dates" style="display: none;">
+							<input />
+							<div></div>
+						</div>
+					<?php endif; ?>
+				</header>
 				<ul class="programs-list list-unstyled clearfix">
 
 					<?php while ( $associated_itineraries->have_posts() ) : ?>

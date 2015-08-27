@@ -22,6 +22,120 @@
 
 }
 
+.ui-datepicker {
+	position: relative;
+    background-color: $gray_base;
+    color: #FFF;
+    padding: 1em 2em;
+    font-size: 16px;
+ //    :before {
+	//     content: "Select Dates";
+	//     color: $orange;
+	// }
+
+	a {
+		color: white;
+		&:hover {
+			color: $orange;
+		}
+	}
+}
+
+.ui-datepicker-group {
+    width: 50%;
+    float: left;
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+	cursor: pointer;
+	position: absolute;
+    top: 50%;
+    padding: 10px 7px;
+    margin-top: -18px;
+    font-family: 'worldstrides-ui';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+    .ui-icon {
+    	display: none;
+    }
+}
+.ui-datepicker-prev{
+	left: 0;
+	&:before {
+		content: "\e618";
+	}
+}
+.ui-datepicker-next{
+	right: 0;
+	&:before {
+		content: "\e619";
+	}
+}
+
+.ui-datepicker-title {
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.ui-datepicker-calendar { 
+	td, th {
+		text-align: center;
+		font-weight: 700;
+		padding: 6px 0;
+		border-bottom: 1px solid tint($gray_base, 10%);
+	}
+	th {
+		color: tint($gray_base, 25%);
+		font-size: 10px;
+	}
+	td {
+		font-size: 12px;
+	}
+	a {
+		display: inline-block;
+	    padding: 0 10px;
+	}
+}
+
+.ui-datepicker-today {
+	background-color: darken($gray_base, 5%);
+}
+
+.date-range-selected {
+   background: none;
+   background-color: $orange;
+   color: white;
+
+   a {
+   	&:hover {
+   		color: white;
+   	}
+   }
+}
+
+.ui-datepicker button {
+    background-color: $blue_dark;
+    border: 0;
+    font-size: 12px;
+    margin-right: 5px;
+    color: #FFF;
+    font-weight: 700;
+    padding: 0.25em 1em;
+    &:hover {
+    	background-color: darken($blue_dark, 10%);
+    }
+}
+
 .info-cta {
 	@include container();
 	padding-top: 5vh;

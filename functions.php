@@ -94,6 +94,7 @@ add_action( 'after_setup_theme', 'ws_setup' );
 function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
+	wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
 	wp_enqueue_script( 'jquery' );
 
 	if ( is_page_template( 'templates/about-offices.php' ) || is_singular( 'itinerary' ) ) {
@@ -105,12 +106,17 @@ function ws_scripts_styles() {
 	// wp_enqueue_script( 'mustache', get_template_directory_uri() . "/assets/js/vendor/mustache.min.js", array(), WS_VERSION, true );
 	// }
 
+	if ( is_singular( 'collection' ) ) {
+		wp_enqueue_script( 'mixitup' );
+		wp_enqueue_script( 'jquery-ui-core' );
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+	}
+
 	if ( is_page_template( 'templates/explore.php' ) ) {
-		wp_enqueue_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+		wp_enqueue_script( 'mixitup' );
 	}
 
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
-
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
 }
 
