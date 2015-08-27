@@ -2,27 +2,28 @@
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
-	'use strict';
-
-	// Collections
-	// http://www.benknowscode.com/2012/11/selecting-ranges-jquery-ui-datepicker.html
-
-	$.datepicker._defaults.onAfterUpdate = null;
-
-	var datepicker__updateDatepicker = $.datepicker._updateDatepicker;
-	
-	$.datepicker._updateDatepicker = function( inst ) {
-		datepicker__updateDatepicker.call( this, inst );
-
-		var onAfterUpdate = this._get(inst, 'onAfterUpdate');
-		if (onAfterUpdate) {
-			onAfterUpdate.apply((inst.input ? inst.input[0] : null), [(inst.input ? inst.input.val() : ''), inst]);
-		}
-	}
-
-	var cur, prv;
 
 	if ( $('body').hasClass('single-collection postid-1147') ) { // only for Heritage Festivals Collection
+
+		'use strict';
+
+		// Collections
+		// http://www.benknowscode.com/2012/11/selecting-ranges-jquery-ui-datepicker.html
+
+		$.datepicker._defaults.onAfterUpdate = null;
+
+		var datepicker__updateDatepicker = $.datepicker._updateDatepicker;
+
+		$.datepicker._updateDatepicker = function( inst ) {
+			datepicker__updateDatepicker.call( this, inst );
+
+			var onAfterUpdate = this._get(inst, 'onAfterUpdate');
+			if (onAfterUpdate) {
+				onAfterUpdate.apply((inst.input ? inst.input[0] : null), [(inst.input ? inst.input.val() : ''), inst]);
+			}
+		}
+
+		var cur, prv;
 
 		// global variables to track the date range
 		cur = -1;
