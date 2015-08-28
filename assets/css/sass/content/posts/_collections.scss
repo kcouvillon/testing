@@ -15,15 +15,12 @@
 			@include bleed-x(5vw 5vw);
 		}
 	}
+}
 
+#mix-container {
 	.program.tile {
 		display: none;
-
-		// &.available {
-		// 	display: block;
-		// }
 	}
-
 }
 
 #jrange {

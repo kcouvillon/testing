@@ -59,6 +59,8 @@ if ( $associated_itineraries_override ) {
 	) );
 }
 
+$calendar = get_post_meta($post->ID, 'itineraries_calendar', true);
+
 get_header(); ?>
 
 <div id="primary" class="content-area">
@@ -238,7 +240,7 @@ get_header(); ?>
 			<section class="section-content programs">
 				<header class="programs-header ws-container">
 					<h2 class="section-title"><?php echo $itinerary_title; ?></h2>
-					<?php if ( 1147 == get_the_ID() ) : // IF Heritage Festivals Collection ?>
+					<?php if ( "on" === $calendar ) : ?>
 						<div id="jrange" class="dates">
 							<div class="mask">
 								<a href="#open-calendar">
@@ -253,7 +255,7 @@ get_header(); ?>
 						</div>
 					<?php endif; ?>
 				</header>
-				<ul id="mix-container" class="programs-list list-unstyled clearfix">
+				<ul <?php echo ( "on" === $calendar ) ? 'id="mix-container"' : ''; ?> class="programs-list list-unstyled clearfix">
 
 					<?php 
 						$count = 0;

@@ -29,7 +29,7 @@
 		var cur = -1,
 			prv = -1;
 
-		if ( $('body').hasClass('single-collection postid-1147') ) { // only for Heritage Festivals Collection
+		if ( $('#jrange').index() > -1 ) { // only for Heritage Festivals Collection
 
 			// Instantiate MixItUp for filtering ///////////////////////////////
 

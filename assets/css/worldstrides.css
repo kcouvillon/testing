@@ -7505,7 +7505,7 @@ a.no-decoration {
     padding-right: 5vw;
     padding-left: 5vw; } }
 
-.collection .program.tile {
+#mix-container .program.tile {
   display: none; }
 
 #jrange {
