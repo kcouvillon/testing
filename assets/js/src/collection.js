@@ -8,7 +8,7 @@
  
 ( function( $, window, undefined ) {
 
-	'use strict';
+	// 'use strict';
 
 	// Collections
 
@@ -30,7 +30,7 @@
 			// global variables to track the date range
 			var cur = -1,
 				prv = -1;
-			
+
 			// Instantiate MixItUp for filtering ///////////////////////////////
 
 			$('#mix-container').mixItUp({
