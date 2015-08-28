@@ -1,37 +1,93 @@
 .collection {
 
+	.programs-header {
+		position: relative;
+		overflow: visible;
+		margin: 0 0 2em;
+	}
+
 	.programs {
 		padding: 0;
+	}
 
-		.section-title {
-			padding-left: 5vw;
+	.programs-list {
+		@include susy-media($screen-sm) {
+			@include bleed-x(5vw 5vw);
 		}
+	}
 
-		.programs-list {
+	.program.tile {
+		display: none;
 
-			@include susy-media($screen-sm) {
-				@include bleed-x(5vw 5vw);
-			}
-		}
-
-		.program-all-link {
-			display: block;
-			text-align: center;
-		}
+		// &.available {
+		// 	display: block;
+		// }
 	}
 
 }
 
+#jrange {
+	position: absolute;
+	z-index: 1;
+	right: 5vw;
+    top: 0px;
+    &.has-dates {
+    	.mask {
+			background-color: $orange;
+			a { color: white; }
+		}
+		a[href="#clear-calendar"] {
+			display: inline-block;		
+		}
+	}
+	&.open {
+		.mask {
+			background-color: $blue_dark;
+			a { color: white; }
+		}
+		a[href="#clear-calendar"] {
+			display: inline-block;		
+		}
+	}
+
+	.mask {
+	    font-size: 14px;
+	    font-weight: bold;
+	    background-color: #EEE;
+		padding: 10px;
+		display: inline-block;
+		float: right;
+		cursor: pointer;
+	
+		.icon {
+			font-size: 18px;
+			vertical-align: -3px;
+		}
+		.icon-calendar {
+			margin-right: 5px;
+		}
+		.icon-small-close {
+			margin-left: 15px;
+		}
+	}
+
+	a[href="#clear-calendar"] {
+		display: none;
+	}
+
+	.datepicker {
+		clear: both;
+	}
+}
+
 .ui-datepicker {
-	position: relative;
     background-color: $gray_base;
     color: #FFF;
     padding: 1em 2em;
     font-size: 16px;
- //    :before {
-	//     content: "Select Dates";
-	//     color: $orange;
-	// }
+    @media screen and (max-width: ($screen-sm - 1) ) {
+    	width: auto !important;
+    }
 
 	a {
 		color: white;
@@ -42,8 +98,14 @@
 }
 
 .ui-datepicker-group {
-    width: 50%;
-    float: left;
+   	@media screen and (min-width: $screen-sm) {
+   		width: 47.5%;
+	    float: left;
+	    margin-right: 5%;
+	    &.ui-datepicker-group-last {
+	    	margin-right: 0;
+	    }
+   	}
 }
 
 .ui-datepicker-prev,
@@ -123,16 +185,44 @@
    }
 }
 
-.ui-datepicker button {
-    background-color: $blue_dark;
-    border: 0;
-    font-size: 12px;
-    margin-right: 5px;
-    color: #FFF;
-    font-weight: 700;
-    padding: 0.25em 1em;
-    &:hover {
-    	background-color: darken($blue_dark, 10%);
+.ui-datepicker-buttonpane {
+	button {
+	    background-color: $blue_dark;
+	    border: 0;
+	    font-size: 12px;
+	    color: #FFF;
+	    font-weight: 700;
+	    padding: 1.25em 0;
+	    width: 49%;
+	    margin-right: 2%;
+	    @media screen and ( min-width: $screen-sm ) {
+	    	margin-right: 5px;
+	    	padding: 0.25em 1em;
+	    	width: auto;
+	    }
+	    &:hover {
+	    	background-color: darken($blue_dark, 10%);
+	    }
+	    &.ui-datepicker-close {
+	    	margin-right: 0;
+	    }
+	    &.ui-datepicker-current {
+	    	background-color: $gray;
+	    	&:hover {
+		    	background-color: darken($gray, 10%);
+		    }
+	    }
+	}
+	a[href="#close-calendar"] {
+		font-size: 14px;
+		display: block;
+		text-align: center;
+		margin: 1em 0 0;
+		@media screen and (min-width: $screen-sm) {
+			display: inline;
+			float: right;
+			margin: 0;
+		}
     }
 }
 

@@ -236,20 +236,32 @@ get_header(); ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="section-content programs">
-				<header class="programs-header">
+				<header class="programs-header ws-container">
 					<h2 class="section-title"><?php echo $itinerary_title; ?></h2>
 					<?php if ( 1147 == get_the_ID() ) : // IF Heritage Festivals Collection ?>
-						<div id="jrange" class="dates" style="display: none;">
-							<input />
-							<div></div>
+						<div id="jrange" class="dates">
+							<div class="mask">
+								<a href="#open-calendar">
+									<i class="icon icon-calendar"></i>
+									<span class="mask-text">Choose By Date</span>
+								</a>
+								<a href="#clear-calendar">
+									<i class="icon icon-small-close"></i>
+								</a>
+							</div>
+							<div class="datepicker"></div>
 						</div>
 					<?php endif; ?>
 				</header>
-				<ul class="programs-list list-unstyled clearfix">
+				<ul id="mix-container" class="programs-list list-unstyled clearfix">
 
-					<?php while ( $associated_itineraries->have_posts() ) : ?>
-						<?php $associated_itineraries->the_post(); ?>
+					<?php 
+						$count = 0;
+						while ( $associated_itineraries->have_posts() ) : ?>
+						
 						<?php
+						$associated_itineraries->the_post();
+
 						$background = '';
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
@@ -258,9 +270,24 @@ get_header(); ?>
 						} else {
 							$class = ' pattern-' . rand(1, 9);
 						}
-						?>
 
-						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
+						// Heritage Festivals Collection //////////////////////////////////////
+						// Calculate dates for filtering
+						$dates = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
+						$json_dates = '';
+
+						if ( $dates && is_array( $dates ) ) {
+							$i = 0;
+							while ( $i < count( $dates ) ) {
+								$start 	= strtotime( $dates[$i]["itinerary_details_date_start"] ) * 1000;
+								$end 	= strtotime( $dates[$i]["itinerary_details_date_end"] ) * 1000;
+								$dates[$i] = array( $start, $end );
+								$i++;
+							}
+							$json_dates = json_encode($dates);
+						} ?>
+
+						<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
 									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
@@ -269,10 +296,10 @@ get_header(); ?>
 							</div>
 						</li>
 
-					<?php endwhile; ?>
+					<?php $count++; endwhile; ?>
 				</ul>
 
-			<a class="program-all-link" href="">See All</a>
+				<!-- <a class="program-all-link" href="">See All</a> -->
 
 			</section>
 		<?php endif; ?>

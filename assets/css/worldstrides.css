@@ -7487,37 +7487,84 @@ a.no-decoration {
   .tour-day .tour-related-post .btn, .tour-day .tour-related-post .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .tour-day .tour-related-post button.mktoButton {
     margin: 0 2vw; }
 
+.collection .programs-header {
+  position: relative;
+  overflow: visible;
+  margin: 0 0 2em; }
+
 .collection .programs {
   padding: 0; }
-  .collection .programs .section-title {
-    padding-left: 5vw; }
-  @media (min-width: 768px) {
-    .collection .programs .programs-list {
-      -webkit-box-sizing: content-box;
-      -moz-box-sizing: content-box;
-      box-sizing: content-box;
-      margin-right: -5vw;
-      margin-left: -5vw;
-      padding-right: 5vw;
-      padding-left: 5vw; } }
-  .collection .programs .program-all-link {
-    display: block;
-    text-align: center; }
+
+@media (min-width: 768px) {
+  .collection .programs-list {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    margin-right: -5vw;
+    margin-left: -5vw;
+    padding-right: 5vw;
+    padding-left: 5vw; } }
+
+.collection .program.tile {
+  display: none; }
+
+#jrange {
+  position: absolute;
+  z-index: 1;
+  right: 5vw;
+  top: 0px; }
+  #jrange.has-dates .mask {
+    background-color: #fb901d; }
+    #jrange.has-dates .mask a {
+      color: white; }
+  #jrange.has-dates a[href="#clear-calendar"] {
+    display: inline-block; }
+  #jrange.open .mask {
+    background-color: #3076bc; }
+    #jrange.open .mask a {
+      color: white; }
+  #jrange.open a[href="#clear-calendar"] {
+    display: inline-block; }
+  #jrange .mask {
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #EEE;
+    padding: 10px;
+    display: inline-block;
+    float: right;
+    cursor: pointer; }
+    #jrange .mask .icon {
+      font-size: 18px;
+      vertical-align: -3px; }
+    #jrange .mask .icon-calendar {
+      margin-right: 5px; }
+    #jrange .mask .icon-small-close {
+      margin-left: 15px; }
+  #jrange a[href="#clear-calendar"] {
+    display: none; }
+  #jrange .datepicker {
+    clear: both; }
 
 .ui-datepicker {
-  position: relative;
   background-color: #323c53;
   color: #FFF;
   padding: 1em 2em;
   font-size: 16px; }
+  @media screen and (max-width: 767px) {
+    .ui-datepicker {
+      width: auto !important; } }
   .ui-datepicker a {
     color: white; }
     .ui-datepicker a:hover {
       color: #fb901d; }
 
-.ui-datepicker-group {
-  width: 50%;
-  float: left; }
+@media screen and (min-width: 768px) {
+  .ui-datepicker-group {
+    width: 47.5%;
+    float: left;
+    margin-right: 5%; }
+    .ui-datepicker-group.ui-datepicker-group-last {
+      margin-right: 0; } }
 
 .ui-datepicker-prev,
 .ui-datepicker-next {
@@ -7581,16 +7628,39 @@ a.no-decoration {
   .date-range-selected a:hover {
     color: white; }
 
-.ui-datepicker button {
+.ui-datepicker-buttonpane button {
   background-color: #3076bc;
   border: 0;
   font-size: 12px;
-  margin-right: 5px;
   color: #FFF;
   font-weight: 700;
-  padding: 0.25em 1em; }
-  .ui-datepicker button:hover {
+  padding: 1.25em 0;
+  width: 49%;
+  margin-right: 2%; }
+  @media screen and (min-width: 768px) {
+    .ui-datepicker-buttonpane button {
+      margin-right: 5px;
+      padding: 0.25em 1em;
+      width: auto; } }
+  .ui-datepicker-buttonpane button:hover {
     background-color: #265c93; }
+  .ui-datepicker-buttonpane button.ui-datepicker-close {
+    margin-right: 0; }
+  .ui-datepicker-buttonpane button.ui-datepicker-current {
+    background-color: #777d8d; }
+    .ui-datepicker-buttonpane button.ui-datepicker-current:hover {
+      background-color: #5f6472; }
+
+.ui-datepicker-buttonpane a[href="#close-calendar"] {
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  margin: 1em 0 0; }
+  @media screen and (min-width: 768px) {
+    .ui-datepicker-buttonpane a[href="#close-calendar"] {
+      display: inline;
+      float: right;
+      margin: 0; } }
 
 .info-cta {
   display: block;

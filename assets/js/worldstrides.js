@@ -1,79 +1,166 @@
-/*! WorldStrides - v0.1.0 - 2015-08-27
+/*! WorldStrides - v0.1.0 - 2015-08-28
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
 
-	if ( $('body').hasClass('single-collection postid-1147') ) { // only for Heritage Festivals Collection
+	'use strict';
 
-		'use strict';
+	// Collections
 
-		// Collections
-		// http://www.benknowscode.com/2012/11/selecting-ranges-jquery-ui-datepicker.html
+	$(document).ready(function(){
 
+		// https://github.com/bseth99/sandbox/blob/master/projects/jquery-ui/4-jquery-ui-datepicker-range.html
 		$.datepicker._defaults.onAfterUpdate = null;
-
 		var datepicker__updateDatepicker = $.datepicker._updateDatepicker;
-
 		$.datepicker._updateDatepicker = function( inst ) {
-			datepicker__updateDatepicker.call( this, inst );
-
-			var onAfterUpdate = this._get(inst, 'onAfterUpdate');
-			if (onAfterUpdate) {
-				onAfterUpdate.apply((inst.input ? inst.input[0] : null), [(inst.input ? inst.input.val() : ''), inst]);
-			}
+		   datepicker__updateDatepicker.call( this, inst );
+		   var onAfterUpdate = this._get(inst, 'onAfterUpdate');
+		   if (onAfterUpdate)
+		      onAfterUpdate.apply((inst.input ? inst.input[0] : null),
+		         [(inst.input ? inst.input.val() : ''), inst]);
 		}
 
-		var cur, prv;
-
 		// global variables to track the date range
-		cur = -1;
-		prv = -1;
-		 
-		// Create the picker and align it to the bottom of the input field 
-		$('#jrange div')
-			.datepicker({
-				numberOfMonths: 2,
-				dateFormat: "yymmdd",
-	            // changeMonth: true,
-	            // changeYear: true,
-	            showButtonPanel: true,
-	            beforeShowDay: function ( date ) {
-					return [true, ( (date.getTime() >= Math.min(prv, cur) && date.getTime() <= Math.max(prv, cur)) ? 'date-range-selected' : '')];
+		var cur = -1,
+			prv = -1;
+
+		if ( $('body').hasClass('single-collection postid-1147') ) { // only for Heritage Festivals Collection
+
+			// Instantiate MixItUp for filtering ///////////////////////////////
+
+			$('#mix-container').mixItUp({
+				selectors: {
+					target: '.tile',
 				},
-				onSelect: function ( dateText, inst ) {
-					var d1, d2;
-
-					prv = +cur;
-					cur = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
-
-					if ( prv == -1 || prv == cur ) {
-						prv = cur;
-						$('#jrange input').val( dateText );
-					} else {
-						d1 = $.datepicker.formatDate( 'yymmdd', new Date(Math.min(prv,cur)), {} );
-						d2 = $.datepicker.formatDate( 'yymmdd', new Date(Math.max(prv,cur)), {} );
-						$('#jrange input').val( d1+'-'+d2 );	
-					}
-
+				animation: {
+					duration: 350,
+					effects: 'fade',
+					easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
 				},
-				onAfterUpdate: function ( inst ) {
-					$('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Apply</button>')
-						.appendTo($('#jrange div .ui-datepicker-buttonpane'))
-						.on('click', function () { 
-							$('#jrange div').hide(); 
-						});
+				onMixLoad: function (state) {
+					console.log('mixLoad', state);
+				},
+				onMixEnd: function (state) {
+					console.log('mixEnd', state);
+				},
+				onMixEnd: function (state) {
+					console.log('mixEnd', state);
+				},
+				onMixStart: function (state) {
+					console.log('mixStart', state);
+				},
+				onMixFail: function (state) {
+					console.log('mixFail', state);
 				}
-			})
-			.hide(); // Hide it for later
-		 
-		// Listen for focus on the input field and show the picker
-		$('#jrange input').on('focus', function (e) {
-				$('#jrange div').show();
-			 });
+			});
 
-	}
+			// Create the picker and align it to the bottom of the input field 
 
+			$('#jrange .datepicker')
+				.datepicker({
+					numberOfMonths: ( window.innerWidth < 768 ) ? 1 : 2,
+					dateFormat: "yymmdd",
+		            showButtonPanel: true,
+		            beforeShowDay: function ( date ) {
+						return [true, ( (date.getTime() >= Math.min(prv, cur) && date.getTime() <= Math.max(prv, cur)) ? 'date-range-selected' : '')];
+					},
+					onSelect: function ( dateText, inst ) {
+						var d1, d2, 
+							d1Text = '',
+							d2Text = '';
 
+						prv = +cur;
+						cur = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
+
+						if ( prv == -1 || prv == cur ) {
+							prv = cur;
+							$('#jrange input').val( dateText );
+						} else {
+							d1 = $.datepicker.formatDate( 'yymmdd', new Date(Math.min(prv,cur)), {} );
+							d2 = $.datepicker.formatDate( 'yymmdd', new Date(Math.max(prv,cur)), {} );
+							d1Text = $.datepicker.formatDate( 'M d', new Date(Math.min(prv,cur)), {} );
+							d2Text 	 = $.datepicker.formatDate( 'M d', new Date(Math.max(prv,cur)), {} );
+							$('#jrange input').val( d1+'-'+d2 );
+							$('.mask-text').text('From '+d1Text+' to '+d2Text);
+						}
+
+					},
+					onAfterUpdate: function ( dateText, inst ) {
+						$('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Apply</button>')
+							.appendTo($('#jrange div .ui-datepicker-buttonpane'))
+							.on('click', function () { 
+
+								$('#jrange').removeClass('open');
+								$('#jrange .datepicker').hide();
+
+								if ( prv !== -1 && cur !== -1 ) {
+									
+									$('#jrange').addClass('has-dates');
+									
+									$('.program.tile').each(function(i){
+										var i = 0, 
+											isAvailable = false,
+											dates = $(this).data('dates');
+
+										while( i < dates.length ) {
+											if ( dates[i][0] >= Math.min(prv,cur) && dates[i][1] <= Math.max(prv,cur) ) {
+												isAvailable = true;
+												break;
+											}
+											i++;
+										}
+
+										if ( isAvailable ) {
+											$(this).addClass('available');
+										} else {
+											$(this).removeClass('available');
+										}
+									});
+
+								} else {
+									$('#jrange').removeClass('has-dates');
+								}
+
+								$('#mix-container').mixItUp('filter', '.available');
+
+							});
+						$('<a href="#close-calendar" ><i class="icon icon-small-close"></i> Close</a>')
+							.appendTo($('#jrange div .ui-datepicker-buttonpane'))
+							.on('click', function (e) {
+								e.preventDefault();
+								$('#jrange').removeClass('open');
+								$('#jrange .datepicker').hide();
+							});
+					}
+				})
+				.hide();
+			 
+			// Event handlers //////////////////////////////////////////////
+
+			$('#jrange a[href="#open-calendar"]').on('click', function (e) {
+				e.preventDefault();
+				$('#jrange').addClass('open');
+				$('#jrange .datepicker').show();
+			});
+
+			$('#jrange a[href="#clear-calendar"]').on('click', function (e) {
+				e.preventDefault();
+				
+				prv = -1; cur = -1;
+				
+				$('#jrange').removeClass('open has-dates');
+				$('#jrange .datepicker').hide();
+
+				$('td').removeClass('date-range-selected');
+				$('.mask-text').text('Choose by date');
+
+				$('.program.tile').addClass('available');
+				$('#mix-container').mixItUp('filter', '.available');
+			});
+
+		}
+
+	});
 
 })(jQuery, window);
 
