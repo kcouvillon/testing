@@ -241,6 +241,13 @@ class WS_Metaboxes_Collections {
 		) );
 
 		$cmb->add_field( array(
+		    'name' => __( 'Include calendar', 'cmb2' ),
+		    'desc' => __( 'Checking this box will allow users to find itineraries by selecting a date range', 'cmb2' ),
+		    'id'   => 'itineraries_calendar',
+		    'type' => 'checkbox'
+		) );
+
+		$cmb->add_field( array(
 			'name'    => __( 'Itineraries', 'cmb2' ),
 			'desc'    => __( 'Drag blocks from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
 			'id'      => 'associated_itineraries',
