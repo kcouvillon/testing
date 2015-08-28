@@ -66,13 +66,11 @@
 		.icon-calendar {
 			margin-right: 5px;
 		}
-		.icon-small-close {
-			margin-left: 15px;
-		}
 	}
 
 	a[href="#clear-calendar"] {
 		display: none;
+		margin-left: 15px;
 	}
 
 	.datepicker {
@@ -171,6 +169,7 @@
 
 .ui-datepicker-today {
 	background-color: darken($gray_base, 5%);
+	a { color: $orange; }
 }
 
 .date-range-selected {
@@ -179,6 +178,7 @@
    color: white;
 
    a {
+   	color: white;
    	&:hover {
    		color: white;
    	}
@@ -197,8 +197,8 @@
 	    margin-right: 2%;
 	    @media screen and ( min-width: $screen-sm ) {
 	    	margin-right: 5px;
-	    	padding: 0.25em 1em;
-	    	width: auto;
+	    	padding: 1em 0;
+		    width: 22.25%;
 	    }
 	    &:hover {
 	    	background-color: darken($blue_dark, 10%);
@@ -221,7 +221,7 @@
 		@media screen and (min-width: $screen-sm) {
 			display: inline;
 			float: right;
-			margin: 0;
+			margin: 0.6em 0 0;
 		}
     }
 }

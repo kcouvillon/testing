@@ -65,25 +65,20 @@
 						return [true, ( (date.getTime() >= Math.min(prv, cur) && date.getTime() <= Math.max(prv, cur)) ? 'date-range-selected' : '')];
 					},
 					onSelect: function ( dateText, inst ) {
-						var d1, d2, 
-							d1Text = '',
-							d2Text = '';
+						var d1, d2;
 
 						prv = +cur;
 						cur = (new Date(inst.selectedYear, inst.selectedMonth, inst.selectedDay)).getTime();
 
 						if ( prv == -1 || prv == cur ) {
 							prv = cur;
-							$('#jrange input').val( dateText );
+							d1 = $.datepicker.formatDate( 'M d', new Date(cur), {} );
+							$('.mask-text').text('From '+d1);
 						} else {
-							d1 = $.datepicker.formatDate( 'yymmdd', new Date(Math.min(prv,cur)), {} );
-							d2 = $.datepicker.formatDate( 'yymmdd', new Date(Math.max(prv,cur)), {} );
-							d1Text = $.datepicker.formatDate( 'M d', new Date(Math.min(prv,cur)), {} );
-							d2Text 	 = $.datepicker.formatDate( 'M d', new Date(Math.max(prv,cur)), {} );
-							$('#jrange input').val( d1+'-'+d2 );
-							$('.mask-text').text('From '+d1Text+' to '+d2Text);
+							d1 = $.datepicker.formatDate( 'M d', new Date(Math.min(prv,cur)), {} );
+							d2 = $.datepicker.formatDate( 'M d', new Date(Math.max(prv,cur)), {} );
+							$('.mask-text').text('From '+d1+' to '+d2);
 						}
-
 					},
 					onAfterUpdate: function ( dateText, inst ) {
 						$('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Apply</button>')

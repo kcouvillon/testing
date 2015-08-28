@@ -7538,10 +7538,9 @@ a.no-decoration {
       vertical-align: -3px; }
     #jrange .mask .icon-calendar {
       margin-right: 5px; }
-    #jrange .mask .icon-small-close {
-      margin-left: 15px; }
   #jrange a[href="#clear-calendar"] {
-    display: none; }
+    display: none;
+    margin-left: 15px; }
   #jrange .datepicker {
     clear: both; }
 
@@ -7620,13 +7619,17 @@ a.no-decoration {
 
 .ui-datepicker-today {
   background-color: #283043; }
+  .ui-datepicker-today a {
+    color: #fb901d; }
 
 .date-range-selected {
   background: none;
   background-color: #fb901d;
   color: white; }
-  .date-range-selected a:hover {
+  .date-range-selected a {
     color: white; }
+    .date-range-selected a:hover {
+      color: white; }
 
 .ui-datepicker-buttonpane button {
   background-color: #3076bc;
@@ -7640,8 +7643,8 @@ a.no-decoration {
   @media screen and (min-width: 768px) {
     .ui-datepicker-buttonpane button {
       margin-right: 5px;
-      padding: 0.25em 1em;
-      width: auto; } }
+      padding: 1em 0;
+      width: 22.25%; } }
   .ui-datepicker-buttonpane button:hover {
     background-color: #265c93; }
   .ui-datepicker-buttonpane button.ui-datepicker-close {
@@ -7660,7 +7663,7 @@ a.no-decoration {
     .ui-datepicker-buttonpane a[href="#close-calendar"] {
       display: inline;
       float: right;
-      margin: 0; } }
+      margin: 0.6em 0 0; } }
 
 .info-cta {
   display: block;
