@@ -9,23 +9,23 @@
 
 	$(document).ready(function(){
 
-		// https://github.com/bseth99/sandbox/blob/master/projects/jquery-ui/4-jquery-ui-datepicker-range.html
-		$.datepicker._defaults.onAfterUpdate = null;
-		var datepicker__updateDatepicker = $.datepicker._updateDatepicker;
-		$.datepicker._updateDatepicker = function( inst ) {
-		   datepicker__updateDatepicker.call( this, inst );
-		   var onAfterUpdate = this._get(inst, 'onAfterUpdate');
-		   if (onAfterUpdate)
-		      onAfterUpdate.apply((inst.input ? inst.input[0] : null),
-		         [(inst.input ? inst.input.val() : ''), inst]);
-		}
-
-		// global variables to track the date range
-		var cur = -1,
-			prv = -1;
-
 		if ( $('#jrange').index() > -1 ) { // only for Heritage Festivals Collection
 
+			// https://github.com/bseth99/sandbox/blob/master/projects/jquery-ui/4-jquery-ui-datepicker-range.html
+			$.datepicker._defaults.onAfterUpdate = null;
+			var datepicker__updateDatepicker = $.datepicker._updateDatepicker;
+			$.datepicker._updateDatepicker = function( inst ) {
+				datepicker__updateDatepicker.call( this, inst );
+				var onAfterUpdate = this._get(inst, 'onAfterUpdate');
+				if (onAfterUpdate)
+					onAfterUpdate.apply((inst.input ? inst.input[0] : null),
+						[(inst.input ? inst.input.val() : ''), inst]);
+			}
+
+			// global variables to track the date range
+			var cur = -1,
+				prv = -1;
+			
 			// Instantiate MixItUp for filtering ///////////////////////////////
 
 			$('#mix-container').mixItUp({
