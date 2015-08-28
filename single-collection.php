@@ -20,7 +20,7 @@ $is_capstone = has_term( 'capstone', 'product-line' );
 if ( $is_capstone ) {
 	$itinerary_title = 'Featured Destinations';
 } else {
-	$itinerary_title = 'Itinerary';
+	$itinerary_title = 'Select an Itinerary';
 }
 
 if ( ! $display_title ) {
