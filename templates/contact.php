@@ -26,16 +26,11 @@ get_header(); ?>
 				</div>
 			</section>
 		
-			<?php
-				$contact_sections = get_post_meta( $post->ID, 'contact_fields_sections', true );
-				$count = 0;
-			?>
-
-			<?php foreach ( $contact_sections as $section ) : ?>
+			<?php 
+			$contact_sections = get_post_meta( $post->ID, 'contact_fields_sections', true );
+			foreach ( $contact_sections as $section ) : ?>
 
 				<?php
-					$count = ( $count == 3 ) ? 1 : $count+1;
-					$pattern = ( $count == 3 ) ? 'pattern-8' : 'pattern-'.$count;
 					if ( array_key_exists( 'contact_fields_section_title', $section ) ) {
 						$title_clean = str_replace( array('?','!','$','*','&','(',')','%','#','@','\'','"',':', '.'), '', $section['contact_fields_section_title']);
 						$section_slug = strtolower( str_replace( array(' '), '-', $title_clean) );
@@ -46,7 +41,7 @@ get_header(); ?>
 
 				<section class="<?php echo esc_attr( $section_slug ); ?> contact-section">
 					<?php if ( array_key_exists( 'contact_fields_section_title', $section ) ) { ?>
-						<h2 class="ws-container <?php echo $pattern; ?>"><?php echo $section['contact_fields_section_title']; ?></h2>
+						<h2 class="ws-container pattern-1"><?php echo $section['contact_fields_section_title']; ?></h2>
 					<?php } ?>
 					<div class="section-content ws-container">
 						<?php echo apply_filters( 'the_content', $section['contact_fields_section_content'] ); ?>
