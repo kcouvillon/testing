@@ -226,7 +226,7 @@ get_header(); ?>
 			<?php $pdf = get_post_meta( $post->ID, 'itinerary_pdf' ); ?>
 			<ul class="sharing-links list-unstyled">
 				<li><a href="<?php echo 'mailto:?subject='.rawurlencode(get_the_title()).'&body='.urlencode(get_the_permalink()); ?>"><i class="icon icon-email"></i> Email Itinerary</a></li>
-				<li><a href="#"><i class="icon icon-print"></i> Print Itinerary</a></li>
+				<li><a href="javascript:window.print()"><i class="icon icon-print"></i> Print Itinerary</a></li>
 				<?php if ( $pdf ) : ?>
 				<li><a href="<?php echo $pdf[0]; ?>"><i class="icon icon-pdf"></i> Download PDF</a></li>
 				<?php endif; ?>
