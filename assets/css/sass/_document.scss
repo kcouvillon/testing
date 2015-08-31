@@ -14,16 +14,23 @@
 
 @import "document/helpers";
 
+body {
+	@media only print {
+		font-size: 14px;
+		margin: 2em 72px 3em;
+	}
+}
+
+#page {
+  // @include container;
+}
+
 .entry-content,
 .comment-content,
 .site-header,
 .site-content,
 .site-footer {
 	@include clearfix;
-}
-
-#page {
-  // @include container;
 }
 
 .site-footer {

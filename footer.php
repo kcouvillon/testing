@@ -37,7 +37,7 @@
 				</select>
 			</ul>
 
-			<ul class="site-info-menu">
+			<ul class="site-info-menu hide-print">
 				<li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></li>
 				<li><a href="<?php echo esc_url( home_url( '/terms-conditions/' ) ); ?>">Terms and Conditions</a></li>
 				<li>&copy; <?php echo date('Y'); ?> WorldStrides, Inc.</li>

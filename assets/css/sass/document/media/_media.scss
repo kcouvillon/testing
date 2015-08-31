@@ -12,6 +12,9 @@ embed,
 iframe,
 object {
 	max-width: 100%;
+	@media only print {
+		display: none !important;
+	}
 }
 
 img {

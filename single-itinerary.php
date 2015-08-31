@@ -314,7 +314,7 @@ get_header(); ?>
 
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
 
-			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
+			<section class="ws-container ws-blocks tour-blocks-before">
 
 			<?php foreach ( $before_block_sections as $section ) : ?>
 
@@ -339,7 +339,7 @@ get_header(); ?>
 
 		<?php if ( ! empty ( $itinerary ) ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-			<section class="tour-itinerary print-page-break">
+			<section class="tour-itinerary">
 
 				<h2>Your Adventure, Day by Day</h2>
 
