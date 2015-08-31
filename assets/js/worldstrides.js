@@ -1,9 +1,9 @@
-/*! WorldStrides - v0.1.0 - 2015-08-28
+/*! WorldStrides - v0.1.0 - 2015-08-31
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
 
-	// 'use strict';
+	'use strict';
 
 	// Collections
 
@@ -36,21 +36,6 @@
 					duration: 350,
 					effects: 'fade',
 					easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
-				},
-				onMixLoad: function (state) {
-					console.log('mixLoad', state);
-				},
-				onMixEnd: function (state) {
-					console.log('mixEnd', state);
-				},
-				onMixEnd: function (state) {
-					console.log('mixEnd', state);
-				},
-				onMixStart: function (state) {
-					console.log('mixStart', state);
-				},
-				onMixFail: function (state) {
-					console.log('mixFail', state);
 				}
 			});
 
