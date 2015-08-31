@@ -8,6 +8,9 @@
 	@include susy-media($screen-md) {
 		display: block;
 	}
+	@media only print {
+		display: none;
+	}
 
 	.ws-tooltip {
 		position: absolute;

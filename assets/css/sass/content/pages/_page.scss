@@ -94,6 +94,10 @@ section {
 		margin-top: -100px;
 		padding-top: 100px;
 		min-height: 75vh;
+
+		@media only print {
+			min-height: 0;
+		}
 	}
 }
 

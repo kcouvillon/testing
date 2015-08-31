@@ -361,6 +361,11 @@
 			display: flex;
 			padding: 0;
 		}
+
+		@media only print {
+			display: block;
+			clear: both;
+		}
 	}
 
 	.tour-activity-list {
@@ -377,6 +382,8 @@
 
 		@media print {
 			padding-left: 0;
+			float: none;
+			width: 100%;
 		}
 
 		&:before {

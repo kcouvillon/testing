@@ -95,5 +95,8 @@
 		@include susy-media($screen-sm) {
 			@include gallery(6 of 12);
 		}
+		@media only print {
+			width: 100%;
+		}
 	}
 }

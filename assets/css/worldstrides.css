@@ -7418,6 +7418,10 @@ a.no-decoration {
     .tour-day .day-wrap {
       display: flex;
       padding: 0; } }
+  @media only print {
+    .tour-day .day-wrap {
+      display: block;
+      clear: both; } }
 
 .tour-day .tour-activity-list {
   width: 100%;
@@ -7436,7 +7440,9 @@ a.no-decoration {
       margin-right: 1.9607843137%; } }
   @media print {
     .tour-day .tour-activity-list {
-      padding-left: 0; } }
+      padding-left: 0;
+      float: none;
+      width: 100%; } }
   .tour-day .tour-activity-list:before {
     content: '';
     position: absolute;
@@ -7809,6 +7815,9 @@ section:after {
     margin-top: -100px;
     padding-top: 100px;
     min-height: 75vh; }
+    @media only print {
+      .transparent-header .primary-section .section-header {
+        min-height: 0; } }
 
 .solid-header .primary-section {
   margin-top: 0; }
@@ -9458,6 +9467,10 @@ section:after {
       margin-right: -100%;
       clear: none; } }
 
+@media only print {
+  .block-two-col .block-text-column {
+    width: 100%; } }
+
 .cycle-slideshow {
   position: relative;
   overflow: hidden; }
@@ -9557,6 +9570,9 @@ section:after {
   @media (min-width: 960px) {
     .ws-tooltips {
       display: block; } }
+  @media only print {
+    .ws-tooltips {
+      display: none; } }
   .ws-tooltips .ws-tooltip {
     position: absolute;
     z-index: 1;
