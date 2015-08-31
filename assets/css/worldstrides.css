@@ -7505,6 +7505,10 @@ a.no-decoration {
     padding-right: 5vw;
     padding-left: 5vw; } }
 
+#mix-container.fail:before {
+  content: "This collection has no Itineraries during these dates.";
+  margin: 0 5vw; }
+
 #mix-container .program.tile {
   display: none; }
 

@@ -18,6 +18,13 @@
 }
 
 #mix-container {
+	&.fail {
+		&:before {
+			content: "This collection has no Itineraries during these dates.";
+			margin: 0 5vw;
+		}
+	}
+
 	.program.tile {
 		display: none;
 	}
