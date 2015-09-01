@@ -98,16 +98,14 @@
 					</select>
 				</div>
 				<div class="field-right">
-					<input type="text" name="city" value="City" placeholder="City">
+					<input type="text" name="city" value="" placeholder="City">
 				</div>
 			</li>
 			<li class="field">
 				<input type="text" name="group_name" value="" placeholder="School Name">
 			</li>
 			<li class="field">
-				<textarea name="message" rows="3" cols="30" style="max-height: none;">
-					Comments or Questions?
-				</textarea>
+				<textarea name="message" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" ></textarea>
 			</li>
 		</ul>
 		<input type="submit" name="" value="Get Info" class="btn btn-primary">
