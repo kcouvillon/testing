@@ -120,7 +120,12 @@ class WS_Marketo {
 	}
 	
 	public static function submit_marketo_data() {
-		
+		$lead1 = new stdClass();
+		$lead1->email = "upsert.test@marketo.com";
+
+		$upsert = new WS_MktoUpsertLeads();
+		$upsert->input = array($lead1);
+		print_r($upsert->postData());
 	}
 }
 
@@ -132,9 +137,9 @@ class WS_Marketo {
  */
 
 class WS_MktoUpsertLeads{
-	private $host = "";//CHANGE ME
-	private $clientId = WS_Marketo::$marketo_id;
-	private $clientSecret = "";//CHANGE ME
+	private $host = "https://" . WS_Marketo::$marketo_id . ".mktorest.com";
+	private $clientId = "45c494eb-4c74-490d-917d-84e5f7e1c3b9";
+	private $clientSecret = "Ih0ugeoKgeOMjAnPMyG0mrAeC73QD70U";
 	public $input; //an array of lead records as objects
 	public $lookupField; //field used for deduplication
 	public $action; //operation type, createOnly, updateOnly, createOrUpdate, createDuplicate
