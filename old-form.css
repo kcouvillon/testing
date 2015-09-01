@@ -1,0 +1,124 @@
+.ws-form:after,
+.ws-form:before {
+    content: "";
+    display: table;
+}
+.ws-form .form-title {
+    margin: 0 0 1em;
+    font-weight: lighter;
+}
+.ws-form .field,
+.ws-form .field-complex .field-left { margin-bottom: .8em }
+@media (min-width:960px) { 
+    .ws-form .left {
+        width: 49.0196078431%;
+        float: left;
+        margin-right: 1.9607843137%;
+    }
+    .ws-form .right {
+        width: 49.0196078431%;
+        float: right;
+        margin-right: 0;
+    }
+}
+.ws-form input[type=number],
+.ws-form input[type=search],
+.ws-form input[type=date],
+.ws-form input[type=url],
+.ws-form input[type=text],
+.ws-form input[type=tel],
+.ws-form input[type=email],
+.ws-form input[type=name],
+.ws-form textarea {
+    display: block;
+    width: 100%;
+    background-color: #b3b7bf;
+    border: 0;
+    padding: .8em;
+    max-height: 50px;
+    color: #323c53;
+}
+.ws-form input[type=number]:focus,
+.ws-form input[type=search]:focus,
+.ws-form input[type=date]:focus,
+.ws-form input[type=url]:focus,
+.ws-form input[type=text]:focus,
+.ws-form input[type=tel]:focus,
+.ws-form input[type=email]:focus,
+.ws-form input[type=name]:focus,
+.ws-form textarea:focus {
+    background-color: #f2f2f4;
+    outline: 0;
+}
+.ws-form input[type=number]::-webkit-input-placeholder,
+.ws-form input[type=search]::-webkit-input-placeholder,
+.ws-form input[type=date]::-webkit-input-placeholder,
+.ws-form input[type=url]::-webkit-input-placeholder,
+.ws-form input[type=text]::-webkit-input-placeholder,
+.ws-form input[type=tel]::-webkit-input-placeholder,
+.ws-form input[type=email]::-webkit-input-placeholder,
+.ws-form input[type=name]::-webkit-input-placeholder,
+.ws-form textarea::-webkit-input-placeholder { color: #777d8d }
+.ws-form input[type=number]::-moz-placeholder,
+.ws-form input[type=search]::-moz-placeholder,
+.ws-form input[type=date]::-moz-placeholder,
+.ws-form input[type=url]::-moz-placeholder,
+.ws-form input[type=text]::-moz-placeholder,
+.ws-form input[type=tel]::-moz-placeholder,
+.ws-form input[type=email]::-moz-placeholder,
+.ws-form input[type=name]::-moz-placeholder,
+.ws-form textarea::-moz-placeholder { color: #777d8d }
+.ws-form input[type=number]:-moz-placeholder,
+.ws-form input[type=search]:-moz-placeholder,
+.ws-form input[type=date]:-moz-placeholder,
+.ws-form input[type=url]:-moz-placeholder,
+.ws-form input[type=text]:-moz-placeholder,
+.ws-form input[type=tel]:-moz-placeholder,
+.ws-form input[type=email]:-moz-placeholder,
+.ws-form input[type=name]:-moz-placeholder,
+.ws-form textarea:-moz-placeholder { color: #777d8d }
+.ws-form input[type=number]:-ms-input-placeholder,
+.ws-form input[type=search]:-ms-input-placeholder,
+.ws-form input[type=date]:-ms-input-placeholder,
+.ws-form input[type=url]:-ms-input-placeholder,
+.ws-form input[type=text]:-ms-input-placeholder,
+.ws-form input[type=tel]:-ms-input-placeholder,
+.ws-form input[type=email]:-ms-input-placeholder,
+.ws-form input[type=name]:-ms-input-placeholder,
+.ws-form textarea:-ms-input-placeholder { color: #777d8d }
+.ws-form .field-complex:after,
+.ws-form .field-complex:before {
+    content: "";
+    display: table;
+}
+@media (min-width:768px) { 
+    .ws-form .field-complex .field-left {
+        width: 48%;
+        float: left;
+        margin-right: 4%;
+        margin-bottom: 0;
+    }
+    .ws-form .field-complex .field-right {
+        width: 48%;
+        float: right;
+        margin-right: 0;
+    }
+}
+.learn-more {
+    margin-top: 4em;
+    padding-top: 2.5em!important;
+    padding-bottom: 3em!important;
+    background: #323c53;
+    color: #FFF;
+}
+.learn-more .ws-form { margin-bottom: 0 }
+.learn-more .ws-form .form-title { font-size: 2em }
+.single-itinerary .learn-more { margin-top: 0 }
+.comment-content .wp-smiley,
+.entry-content .wp-smiley,
+.page-content .wp-smiley {
+    border: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+}

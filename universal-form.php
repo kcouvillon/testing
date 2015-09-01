@@ -1,3 +1,6 @@
+<script type="text/javascript">
+	jQuery('head').append('<link rel="stylesheet" href="old-form.css" type="text/css" />');
+</script>
 <form>
 				<form action="http://wsbeta.co/#" class="ws-form">
 					<div class="left">
