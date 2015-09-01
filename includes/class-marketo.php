@@ -15,7 +15,7 @@ class WS_Marketo {
 	/**
 	 * The 9-character code for WorldStrides and Marketo
 	 */
-	 public static $marketo_id = '593-ASZ-675';
+	public static $marketo_id = '593-ASZ-675';
 	
 	/**
 	 * Get the instance of this class, or set it up if it has not been setup yet.
@@ -136,8 +136,8 @@ class WS_Marketo {
  * http://developers.marketo.com/documentation/rest/createupdate-leads/
  */
 
-class WS_MktoUpsertLeads{
-	private $host = "https://" . WS_Marketo::$marketo_id . ".mktorest.com";
+class WS_MktoUpsertLeads {
+	private $host = 'https://' . WS_Marketo::$marketo_id . '.mktorest.com';
 	private $clientId = "45c494eb-4c74-490d-917d-84e5f7e1c3b9";
 	private $clientSecret = "Ih0ugeoKgeOMjAnPMyG0mrAeC73QD70U";
 	public $input; //an array of lead records as objects
