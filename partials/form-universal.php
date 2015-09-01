@@ -1,4 +1,4 @@
-<form method="post" action="<?php echo get_template_directory_uri() . '/universal-thanks-page.php'; // TODO real destination!!! ?>" class="ws-form">
+<form method="post" action="<?php echo site_url() . '/wp-admin/admin-post.php'; ?>" class="ws-form">
 	<div class="left">
 		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 		<ul class="form-fields list-unstyled">

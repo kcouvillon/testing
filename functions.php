@@ -350,3 +350,10 @@ function remove_dashboard_widgets() {
 	remove_meta_box( 'arve_dashboard_widget', 'dashboard', 'normal' );
 }
 add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+/**
+ * Send submitted form data to Marketo using munchkin API
+ */
+ function data_to_marketo() {
+	echo 'DATA TO MARKETO!';
+ }
