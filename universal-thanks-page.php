@@ -6,6 +6,10 @@
 */
 ?>
 <?php // get_header(); // TODO: reinstate this once it's wired up properly ?>
+
+<!-- Pull in Munchkin by hand. TODO: pull this in dynamically. -->
+<script type="text/javascript" src="//munchkin.marketo.net//munchkin.js"></script>
+
 <h1>Thanks for your Interest in WorldStrides</h1>
 <p>&nbsp;</p>
 <p>POST VARIABLES RECEIVED:</p>
