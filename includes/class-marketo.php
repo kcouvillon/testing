@@ -114,6 +114,10 @@ class WS_Marketo {
 		
 		echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
 	}
+	
+	public static function submit_marketo_data() {
+		echo 'WS_Marketo::submit_marketo_data() called'; 
+	}
 }
 
 WS_Marketo::instance();
