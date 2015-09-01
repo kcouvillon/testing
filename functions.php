@@ -357,3 +357,5 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
  function data_to_marketo() {
 	echo 'DATA TO MARKETO!';
  }
+add_action( 'admin_post_data_to_marketo', 'data_to_marketo' );
+add_action( 'admin_post_nopriv_data_to_marketo', 'data_to_marketo' );

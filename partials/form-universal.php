@@ -1,4 +1,5 @@
 <form method="post" action="<?php echo site_url() . '/wp-admin/admin-post.php'; ?>" class="ws-form">
+	<input type="hidden" name="action" value="data_to_marketo">
 	<div class="left">
 		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 		<ul class="form-fields list-unstyled">
