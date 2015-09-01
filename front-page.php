@@ -179,7 +179,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 		<?php endif; ?>
 
 		<section class="home-section learn-more clearfix ws-container">
-			<?php include 'universal-form.php'; ?>
+			<?php get_template_part('form','universal'); ?>
 		</section>
 
 		<section class="home-section blog">
