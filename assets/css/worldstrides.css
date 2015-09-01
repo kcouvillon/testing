@@ -9408,8 +9408,8 @@ section:after {
     .block-image-right .block-text {
       width: 42.4836601307%;
       float: left;
-      padding-left: 6.5359477124%;
-      padding-right: 1.9607843137%;
+      padding-left: 5vw;
+      padding-right: 5vw;
       order: 1; } }
 
 .block-image-left .block-image {
@@ -9434,8 +9434,8 @@ section:after {
     .block-image-left .block-text {
       width: 42.4836601307%;
       float: left;
-      padding-right: 6.5359477124%;
-      padding-left: 1.9607843137%;
+      padding-left: 5vw;
+      padding-right: 5vw;
       order: 2; } }
 
 .block-single-col .block-text {

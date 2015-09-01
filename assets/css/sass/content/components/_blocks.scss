@@ -36,8 +36,8 @@
 
 		@include susy-media($screen-sm) {
 			@include span(5 wide no-gutters);
-			padding-left: span(1);
-			padding-right: gutter();
+			padding-left: 5vw;
+			padding-right: 5vw;
 			order: 1;
 		}
 	}
@@ -60,8 +60,8 @@
 
 		@include susy-media($screen-sm) {
 			@include span(5 wide no-gutters);
-			padding-right: span(1);
-			padding-left: gutter();
+			padding-left: 5vw;
+			padding-right: 5vw;
 			order: 2;
 		}
 	}
