@@ -81,7 +81,7 @@ get_header(); ?>
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 				<div class="section-header-content">
 					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore' ) ); ?>">Explore</a>>
+						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
 						<span>Collections</span>>
 						<span><?php the_title(); ?></span>
 					</nav>

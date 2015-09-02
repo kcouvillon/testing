@@ -298,7 +298,7 @@
 
 		</script>
 
-		<div class="error-message">We&apos;re sorry but there has been an error retrieving your quote. <a href="<?php echo esc_url( site_url('/request-info') ); ?>">Click here</a> to get more information about this tour.</div>
+		<div class="error-message">We&apos;re sorry but there has been an error retrieving your quote. <a href="<?php echo esc_url( site_url('/request-info/') ); ?>">Click here</a> to get more information about this tour.</div>
 		<img src="<?php echo get_template_directory_uri() . '/assets/images/loader.svg'; ?>" width="50" heigh="50" alt="loader" class="loader">
 
 	</div>

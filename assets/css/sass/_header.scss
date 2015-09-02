@@ -75,6 +75,10 @@
 		height: 100%;
 		@include logo;
 	}
+
+	img {
+		display: none;
+	}
 }
 
 .print-logo {
