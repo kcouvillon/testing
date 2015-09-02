@@ -122,12 +122,22 @@ class WS_Marketo {
 	}
 	
 	public static function submit_marketo_data() {
+		
+	
+/* 		print_r("Post Data: \n");
+		print_r($_POST);
+		print_r("\nResult: \n");
+		
 		$lead1 = new stdClass();
-		$lead1->email = "upsert.test@marketo.com";
-
-		$upsert = new WS_MktoUpsertLeads();
-		$upsert->input = array($lead1);
-		print_r($upsert->postData());
+		// $lead1->email = "upsert.test@marketo.com";
+		if(isset($_POST['email'])) {
+			$lead1->email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+		}
+		print_r($lead1);
+ */
+		//$upsert = new WS_MktoUpsertLeads();
+		//$upsert->input = array($lead1);
+		//print_r($upsert->postData());
 	}
 }
 

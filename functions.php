@@ -96,6 +96,7 @@ function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+	wp_register_script( 'lockSubmit', get_template_directory_uri() . '/assets/js/vendor/jquery.lockSubmit.js', array(), WS_VERSION, true );
 	wp_enqueue_script( 'jquery' );
 
 	if ( is_page_template( 'templates/about-offices.php' ) || is_singular( 'itinerary' ) ) {
@@ -117,6 +118,8 @@ function ws_scripts_styles() {
 		wp_enqueue_script( 'mixitup' );
 	}
 
+	wp_enqueue_script('lockSubmit'); // used on form submissions, available on all pages
+	
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
 }

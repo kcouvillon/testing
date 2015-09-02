@@ -17,18 +17,15 @@
 			</li>
 			<li class="field">
 				I am interested in
-				<select id="interestedin" name="interestedin">
-					<option value="">Select...</option>
-					<option value='History Themed Programs' class='par ele mse hse'>History Themed
-						Programs</option>
-					<option value='Science Themed Programs' class='par ele mse hse'>Science Themed
-						Programs</option>
-					<option value='Tours to International Destinations' class='par mse hse'>Tours to
-						International Destinations</option>
-					<option value='Performing Arts Travel' class='par ele mse hse une'>Performing Arts Travel</option>
-					<option value='Undergraduate Tours' class='par une'>Undergraduate Tours</option>
-					<option value='Graduate-Level Tours' class='par une'>Graduate-Level Tours</option>
-					<option value="I'm not sure" class="par ele mse hse une">I'm not sure</option>
+				<select id="wsProduct" name="wsProduct">
+					<option value="Unknown">Select...</option>
+					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
+					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
+					<option value='High School - International' class='par mse hse'>Tours to International Destinations</option>
+					<option value='Performing' class='par ele mse hse une'>Performing Arts Travel</option>
+					<option value='Undergraduate' class='par une'>Undergraduate Tours</option>
+					<option value='Graduate' class='par une'>Graduate-Level Tours</option>
+					<option value="Unknown" class="par ele mse hse une">I'm not sure</option>
 				</select>
 			</li>
 			<li id="moremusicfield" class="field" style="display:none;">
