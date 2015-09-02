@@ -19,7 +19,7 @@ if ( !empty ($parent_id) ) {
 		<div class="section-header-content">
 			<nav class="breadcrumbs">
 				<?php // @todo needs to be dynamic ?>
-				<a href="<?php echo esc_url( home_url( '/resource-center' ) ); ?>">Resource Center</a>
+				<a href="<?php echo esc_url( home_url( '/resource-center/' ) ); ?>">Resource Center</a>
 				<?php if( !empty ( $parent ) ) { ?>
 
 				>

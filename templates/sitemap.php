@@ -255,7 +255,7 @@ get_header(); ?>
 				<section class="sitemap-section sitemap-about" id="sitemap-about">
 					<header>
 						<h2>About</h2>
-						<a href="<?php echo esc_url( home_url( '/about/history' ) ); ?>" class="btn btn-primary hide-print">Discover who we are »</a>
+						<a href="<?php echo esc_url( home_url( '/about/history/' ) ); ?>" class="btn btn-primary hide-print">Discover who we are »</a>
 					</header>
 					<ul class="list-unstyled">
 						<div class="column">
