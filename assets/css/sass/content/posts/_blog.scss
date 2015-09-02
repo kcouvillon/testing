@@ -176,13 +176,33 @@
 	@include container();
 	background-size: cover;
 	text-align: center;
-	padding-top: 15vh;
-	padding-bottom: 20vh;
+	padding-top: 6vh;
+	padding-bottom: 10vh;
 	color: #fff;
 
 	.h2 {
-		// color: #fff;
 		font-weight: 700;
+		font-size: 1.2em;
+		text-shadow: 0 0px 3px #666;
+		@media screen and (min-width: $screen-sm) {
+			font-size: 1.6em;
+		}
+	}
+
+	input[type="submit"],
+	select {
+		display: block;
+		margin: 0.5em auto;
+		width: 50%;
+		@media screen and (min-width: 360px) {
+			margin: 0;
+			width: auto;
+			display: inline;
+		}
+	}
+
+	select {
+		padding: 5px 3em 9px 0.8em;
 	}
 }
 

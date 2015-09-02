@@ -6819,11 +6819,29 @@ a.no-decoration {
   padding: 0 5vw;
   background-size: cover;
   text-align: center;
-  padding-top: 15vh;
-  padding-bottom: 20vh;
+  padding-top: 6vh;
+  padding-bottom: 10vh;
   color: #fff; }
   .blog-single-cta .h2 {
-    font-weight: 700; }
+    font-weight: 700;
+    font-size: 1.2em;
+    text-shadow: 0 0px 3px #666; }
+    @media screen and (min-width: 768px) {
+      .blog-single-cta .h2 {
+        font-size: 1.6em; } }
+  .blog-single-cta input[type="submit"],
+  .blog-single-cta select {
+    display: block;
+    margin: 0.5em auto;
+    width: 50%; }
+    @media screen and (min-width: 360px) {
+      .blog-single-cta input[type="submit"],
+      .blog-single-cta select {
+        margin: 0;
+        width: auto;
+        display: inline; } }
+  .blog-single-cta select {
+    padding: 5px 3em 9px 0.8em; }
 
 .sidebar {
   width: 100%;
