@@ -15,7 +15,7 @@ class WS_Marketo {
 	/**
 	 * The 9-character code for WorldStrides and Marketo
 	 */
-	public static function marketo_id() { 
+	public function marketo_id() { 
 		return '593-ASZ-675';
 	}
 	

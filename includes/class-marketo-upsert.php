@@ -6,10 +6,9 @@
  * Update or insert leads into Marketo database.  From here:
  * http://developers.marketo.com/documentation/rest/createupdate-leads/
  */
-
+ 
 class WS_MktoUpsertLeads {
-	private $marketo_id = WS_Marketo::marketo_id();
-	private $host = 'https://' . $marketo_id . '.mktorest.com';
+	private $host = 'https://593-ASZ-675.mktorest.com';
 	private $clientId = "45c494eb-4c74-490d-917d-84e5f7e1c3b9";
 	private $clientSecret = "Ih0ugeoKgeOMjAnPMyG0mrAeC73QD70U";
 	public $input; //an array of lead records as objects
