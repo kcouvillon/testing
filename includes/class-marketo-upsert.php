@@ -8,7 +8,7 @@
  */
 
 class WS_MktoUpsertLeads {
-	private $host = 'https://' . WS_Marketo::$marketo_id . '.mktorest.com';
+	private $host = 'https://' . WS_Marketo::marketo_id() . '.mktorest.com';
 	private $clientId = "45c494eb-4c74-490d-917d-84e5f7e1c3b9";
 	private $clientSecret = "Ih0ugeoKgeOMjAnPMyG0mrAeC73QD70U";
 	public $input; //an array of lead records as objects

@@ -15,7 +15,9 @@ class WS_Marketo {
 	/**
 	 * The 9-character code for WorldStrides and Marketo
 	 */
-	public static $marketo_id = '593-ASZ-675';
+	public static function marketo_id() { 
+		return '593-ASZ-675';
+	}
 	
 	/**
 	 * Get the instance of this class, or set it up if it has not been setup yet.
@@ -75,7 +77,7 @@ class WS_Marketo {
 				<form id="mktoForm_<?php echo esc_attr( $form_id ); ?>"></form>
 
 				<script>
-					MktoForms2.loadForm( "//app-sjg.marketo.com", "<?php echo esc_js( self::$marketo_id ); ?>", <?php echo esc_js( $form_id ); ?> );
+					MktoForms2.loadForm( "//app-sjg.marketo.com", "<?php echo esc_js( $this->marketo_id() ); ?>", <?php echo esc_js( $form_id ); ?> );
 				</script>
 			</div>
 
