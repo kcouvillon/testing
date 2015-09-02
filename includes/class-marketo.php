@@ -124,9 +124,11 @@ class WS_Marketo {
 	public static function submit_marketo_data() {
 		
 	
-/* 		print_r("Post Data: \n");
+ 		print_r("Post Data: \n");
+		echo '<pre>';
 		print_r($_POST);
-		print_r("\nResult: \n");
+		echo '</pre>';
+/*		print_r("\nResult: \n");
 		
 		$lead1 = new stdClass();
 		// $lead1->email = "upsert.test@marketo.com";

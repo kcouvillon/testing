@@ -1,4 +1,4 @@
-<form method="post" action="<?php echo site_url() . '/wp-admin/admin-post.php'; ?>" class="ws-form">
+<form id="get-info-form" method="post" action="<?php echo site_url() . '/wp-admin/admin-post.php?'; ?>" class="ws-form">
 	<input type="hidden" name="action" value="data_to_marketo">
 	<div class="left">
 		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
@@ -47,18 +47,52 @@
 					roleSelect.on('change',function(){
 						console.log(jQuery(this).val());
 						role =  jQuery(this).val();
-						jQuery('#interestedin option').filter('.'+role).show();
-						jQuery('#interestedin option').not('.'+role).hide();
+						jQuery('#wsProduct option').filter('.'+role).show();
+						jQuery('#wsProduct option').not('.'+role).hide();
 					});
 					interestSelect.on('change',function(){
 						console.log(jQuery(this).val());
-						if('Performing Arts Travel' === (jQuery(this)).val()) {
+						if('Performing' === (jQuery(this)).val()) {
 							jQuery('li#moremusicfield').css('display','list-item');
 						} else {
 							jQuery('li#moremusicfield').css('display','none');
 						}
 					});
-				})(jQuery('select#role'),jQuery('select#interestedin'));
+				})(jQuery('select#role'),jQuery('select#wsProduct'));
+				
+				jQuery(document).ready(function() {
+					jQuery('#get-info-submit').lockSubmit();
+				});
+				
+				jQuery('#get-info-form').submit(function (e) {
+					var form = this;
+					var action = jQuery('#get-info-form').attr('action');
+					e.preventDefault();
+					var url = "//apis.worldstrides.com/mktohash/hash-email.php?email=" + jQuery('#get-info-email').val() + '&callback=?';
+					jQuery.getJSON(url, function(jsonp){
+						console.log('Marketo associate lead: hash of user email is: ' + jsonp.Email);
+						jQuery('#get-info-form').attr('action',action + '&hash=success');
+						mktoMunchkinFunction(
+							'associateLead', {
+								'Email': jQuery('#get-info-email').val(),
+								'FirstName': jQuery('#get-info-first-name').val(),
+								'LastName': jQuery('#get-info-last-name').val(),
+								'wsProduct': jQuery('#wsProduct').val(),
+								'form_comments': jQuery('#get-info-comment').val()
+							},
+							jsonp.Email
+						);
+					})
+					.fail(function(){
+						console.log('Marketo associate lead: API hash call failed.');
+						jQuery('#get-info-form').attr('action',action + '&hash=fail');
+					})
+					.always(function(){
+						form.submit();
+					});
+					
+					//CALLBACK: form.submit();
+				});
 			</script>
 			<li class="field">
 				I have a tour scheduled:
@@ -75,18 +109,18 @@
 		<ul class="form-fields list-unstyled">
 			<li class="field field-complex">
 				<div class="field-left">
-					<input type="text" name="first_name" value="" placeholder="First Name">
+					<input id="get-info-first-name" type="text" name="first_name" value="" placeholder="First Name">
 				</div>
 				<div class="field-right">
-					<input type="text" name="last_name" value="" placeholder="Last Name">
+					<input id="get-info-last-name" type="text" name="last_name" value="" placeholder="Last Name">
 				</div>
 			</li>
 			<li class="field field-complex">
 				<div class="field-left">
-					<input type="email" name="email" value="" placeholder="Email Address">
+					<input id="get-info-email" type="email" name="email" value="" placeholder="Email Address">
 				</div>
 				<div class="field-right">
-					<input type="tel" name="phone" value="" placeholder="Phone Number">
+					<input id="get-info-phone" type="tel" name="phone" value="" placeholder="Phone Number">
 				</div>
 			</li>
 			<li class="field field-complex">
@@ -103,9 +137,9 @@
 				<input type="text" name="group_name" value="" placeholder="School Name">
 			</li>
 			<li class="field">
-				<textarea name="message" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" ></textarea>
+				<textarea id="get-info-comment" name="message" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" ></textarea>
 			</li>
 		</ul>
-		<input type="submit" name="" value="Get Info" class="btn btn-primary">
+		<input id="get-info-submit" type="submit" name="" value="Get Info" class="btn btn-primary">
 	</div>
 </form>
