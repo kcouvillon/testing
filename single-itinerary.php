@@ -384,52 +384,56 @@ get_header(); ?>
 
 							$related_type = 'other';
 
-							if ( ! empty ( $related ) ) {
-								$post  = get_post( $related );
-								// print_r($post);
-								$class         = 'pattern-' . rand( 1, 9 );
+							$related_posts = explode( ',', $related );
+							$related_post_count = 0;
 
-								if ( in_array( $post->post_type, array( 'post', 'resource', 'block' ) ) ) {
-									$related_type = $post->post_type;
-								}
+							if ( ! empty ( $related ) ) : ?>
+								<div class="tour-related-posts">
 
-								$related_image_title = $post->post_title;
+								<?php foreach ( $related_posts as $related ) :
+									$related_post_count++;
 
-								if ( $related_type === 'block' ) {
-									$related_description = apply_filters( 'the_content', $post->post_content );
-								} else {
-									$related_description = esc_html( wp_trim_words( $post->post_content, 40 ) );
-								}
+									$post  = get_post( $related );
+									$class         = 'pattern-' . rand( 1, 9 );
 
-								$related_url = get_permalink( $post->ID );
-
-								$block_image_id = get_post_meta( $post->ID, 'block_image_id', true );
-
-								if ( has_post_thumbnail( $related ) || $block_image_id ) {
-
-									$class = 'no-pattern';
-
-									if ( $block_image_id ) {
-										$image = wp_get_attachment_image_src( $block_image_id, 'large' );
-									} else {
-										$image      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
+									if ( in_array( $post->post_type, array( 'post', 'resource', 'block' ) ) ) {
+										$related_type = $post->post_type;
 									}
 
-									$related_image = 'url(' . $image[0] . ')';
+									$related_image_title = $post->post_title;
 
-								}
-							}
+									if ( $related_type === 'block' ) {
+										$related_description = apply_filters( 'the_content', $post->post_content );
+									} else {
+										$related_description = esc_html( wp_trim_words( $post->post_content, 40 ) );
+									}
 
-							if ( $related_image ) {
-								$class = 'no-pattern';
-							}
+									$related_url = get_permalink( $post->ID );
+
+									$block_image_id = get_post_meta( $post->ID, 'block_image_id', true );
+
+									if ( has_post_thumbnail( $related ) || $block_image_id ) {
+
+										$class = 'no-pattern';
+
+										if ( $block_image_id ) {
+											$image = wp_get_attachment_image_src( $block_image_id, 'large' );
+										} else {
+											$image      = wp_get_attachment_image_src( get_post_thumbnail_id( $related ), 'large' );
+										}
+
+										$related_image = 'url(' . $image[0] . ')';
+
+									}
+
+									if ( $related_image ) {
+										$class = 'no-pattern';
+									}
 
 							?>
 
-							<?php if ( $related || $related_image_title ) : ?>
-
 								<div class="tour-related-post hide-print">
-									<?php if ( $related_title && $related_type != 'post' ) : ?>
+									<?php if ( $related_title && $related_type != 'post' && $related_post_count == 1 ) : ?>
 										<span class="h3"><?php echo apply_filters( 'the_title', $related_title ); ?></span>
 									<?php elseif ( empty ( $related_title ) && $related_type === 'resource' ) : ?>
 										<span class="h3">Have Questions?<br>We Have Answers</span>
@@ -480,7 +484,8 @@ get_header(); ?>
 
 
 								</div><!-- end .tour-related-post -->
-
+								<?php endforeach; ?>
+								</div>
 							<?php endif; ?>
 
 							</div><!-- end .day-wrap -->
