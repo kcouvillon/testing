@@ -281,7 +281,7 @@
 					var city = jQuery('#get-info-city');
 					var state = jQuery('#get-info-state');
 				
-					jQuery("#Company").autocomplete({
+					school.autocomplete({
 							minLength: 1,
 							source: function (req, response) {
 								var reqRegex = jQuery.ui.autocomplete.escapeRegex(req.term);
@@ -322,7 +322,7 @@
 								//http://api.jqueryui.com/autocomplete/#event-change -
 								// The item selected from the menu, if any. Otherwise the property is null
 								//so clear the item for force selection
-								jQuery("#Company").val("");
+								school.val("");
 								jQuery("#schoolError").show();
 
 							}}
@@ -344,7 +344,12 @@
 				 * Parse MDRAPI data to find the specific school
 				 */
 				wsData.findSchool = function(){
-					var ws_schoolPid = jQuery('#Company').attr('name');
+					// find and alias members:
+					var school = jQuery('#get-info-school');
+					var city = jQuery('#get-info-city');
+					var state = jQuery('#get-info-state');
+				
+					var ws_schoolPid = school.attr('name');
 					if(ws_schoolPid === undefined){
 						jQuery("#Company").hide();
 						jQuery("#wsOtherSchool").show();
@@ -353,9 +358,9 @@
 						setTimeout(function(){
 							jQuery("#wsOtherSchool").focus();
 						}, 0);
-						ws_showHiddenFields();
+						// TODO IE FALLBACK?? ws_showHiddenFields();
 					}else {
-						var ws_schoolObject = wsMdrApiSchools.filter(function (x) {
+						var ws_schoolObject = wsData.mdrApiSchools.filter(function (x) {
 							return x.pid == ws_schoolPid;
 						})[0];
 						var ws_schoolName = ws_schoolObject.school_name;
@@ -364,6 +369,8 @@
 						var ws_schoolState = ws_schoolObject.school_state;
 						var ws_schoolZip = ws_schoolObject.school_zipcode;
 						var ws_schoolPhone = ws_schoolObject.school_phone;
+						
+						alert('TODO: Populate info about '+ws_schoolName+' in hidden fields');
 
 						wsData.fillOutForm(ws_schoolName, ws_schoolPid, ws_schoolPhone, ws_schoolAddress, ws_schoolCity, ws_schoolState, ws_schoolZip);
 					}
