@@ -43,6 +43,8 @@
 				</select>
 			</li>
 			<script type="text/javascript">
+				
+			
 				/**
 				 * Wire the Role, wsProduct and MoreMusic fields together
 				 * - restrict wsProduct based on Role
@@ -65,17 +67,37 @@
 						}
 					});
 				})(jQuery('select#get-info-role'),jQuery('select#get-info-wsProduct'));
-				
+
+				/**
+				 * Make the submit button unclickable after first click
+				 */
 				jQuery(document).ready(function() {
 					jQuery('#get-info-submit').lockSubmit();
 				});
 				
+				/**
+				 * Base URL for API calls
+				 */
+				wsData.api_base_url = "http://apis.worldstrides.com/mdrapi/v1/"; 
 				
+				/**
+				 * Digest and display JSON list of states
+				 */
+				wsData.populateStates = function (){
+					var numstates = wsData.states.length;
+					var statefield = jQuery('#get-info-state');
+					for(var i=0; i<numstates; i++){
+						statefield.append('<option value="'+wsData.states[i].abbrev+'">'+wsData.states[i].full+'</option>');
+					}
+				};
+				jQuery(document).ready(function() {
+					wsData.populateStates(); 
+				});
 				
 				/**
 				 * Async call to the MDR API to get the State list
 				 */
-				wsData.ws_getCityList = function (){
+				wsData.getCityList = function (){
 					//Erase values of city and school, in case they switch states.
 					//TODO: UNCOMMENT THIS: ws_resetSchoolCitySchoolNameFields();
 					
@@ -95,7 +117,7 @@
 					}
 
 					jQuery.ajax({
-						url: api_base_url + 'cityList/' + jQuery('#companyState').val() + "'",
+						url: wsData.api_base_url + 'cityList/' + jQuery('#companyState').val() + "'",
 						type: 'GET',
 						dataType: 'jsonp',
 						jsonp:'callback',
@@ -109,11 +131,13 @@
 							jQuery.each(output, function(i, item){
 								city.append('<option value="' + item.school_city + '">' + item.school_city + '</option>');
 							});
-							ws_mdrapiSetCityAutoComplete();
+							//TODO: UNCOMMENT THIS: ws_mdrapiSetCityAutoComplete();
 							city.val('').removeAttr('readonly'); // make city editable
 						}
 					});					
 				};
+				wsData.getCityList();
+				
 				
 				/**
 				 * Chain off to the Marketo Munchkin API function 'associateLead' to submit user data
@@ -148,7 +172,6 @@
 						form.submit();
 					});
 					
-					//CALLBACK: form.submit();
 				});
 				
 				
@@ -186,7 +209,7 @@
 			<li class="field field-complex">
 				<div class="field-left">
 					<select id="get-info-state" name="get-info-state">
-						<option value="">State</option>
+						<option value="">Select State...</option>
 					</select>
 				</div>
 				<div class="field-right">
@@ -203,3 +226,266 @@
 		<input id="get-info-submit" type="submit" name="" value="Get Info" class="btn btn-primary">
 	</div>
 </form>
+
+<script type="text/javascript">
+// TODO: Move this to js/
+wsData.states = 
+[
+    {
+        "full": "Alabama",
+        "abbrev": "AL"
+    },
+    {
+        "full": "Alaska",
+        "abbrev": "AK"
+    },
+    {
+        "full": "Arizona",
+        "abbrev": "AZ"
+    },
+    {
+        "full": "Arkansas",
+        "abbrev": "AR"
+    },
+    {
+        "full": "California",
+        "abbrev": "CA"
+    },
+    {
+        "full": "Colorado",
+        "abbrev": "CO"
+    },
+    {
+        "full": "Connecticut",
+        "abbrev": "CT"
+    },
+    {
+        "full": "Delaware",
+        "abbrev": "DE"
+    },
+    {
+        "full": "District of Columbia",
+        "abbrev": "DC"
+    },
+    {
+        "full": "Florida",
+        "abbrev": "FL"
+    },
+    {
+        "full": "Georgia",
+        "abbrev": "GA"
+    },
+    {
+        "full": "Hawaii",
+        "abbrev": "HI"
+    },
+    {
+        "full": "Idaho",
+        "abbrev": "ID"
+    },
+    {
+        "full": "Illinois",
+        "abbrev": "IL"
+    },
+    {
+        "full": "Indiana",
+        "abbrev": "IN"
+    },
+    {
+        "full": "Iowa",
+        "abbrev": "IA"
+    },
+    {
+        "full": "Kansas",
+        "abbrev": "KS"
+    },
+    {
+        "full": "Kentucky",
+        "abbrev": "KY"
+    },
+    {
+        "full": "Louisiana",
+        "abbrev": "LA"
+    },
+    {
+        "full": "Maine",
+        "abbrev": "ME"
+    },
+    {
+        "full": "Maryland",
+        "abbrev": "MD"
+    },
+    {
+        "full": "Massachusetts",
+        "abbrev": "MA"
+    },
+    {
+        "full": "Michigan",
+        "abbrev": "MI"
+    },
+    {
+        "full": "Minnesota",
+        "abbrev": "MN"
+    },
+    {
+        "full": "Mississippi",
+        "abbrev": "MS"
+    },
+    {
+        "full": "Missouri",
+        "abbrev": "MO"
+    },
+    {
+        "full": "Montana",
+        "abbrev": "MT"
+    },
+    {
+        "full": "Nebraska",
+        "abbrev": "NE"
+    },
+    {
+        "full": "Nevada",
+        "abbrev": "NV"
+    },
+    {
+        "full": "New Hampshire",
+        "abbrev": "NH"
+    },
+    {
+        "full": "New Jersey",
+        "abbrev": "NJ"
+    },
+    {
+        "full": "New Mexico",
+        "abbrev": "NM"
+    },
+    {
+        "full": "New York",
+        "abbrev": "NY"
+    },
+    {
+        "full": "North Carolina",
+        "abbrev": "NC"
+    },
+    {
+        "full": "North Dakota",
+        "abbrev": "ND"
+    },
+    {
+        "full": "Ohio",
+        "abbrev": "OH"
+    },
+    {
+        "full": "Oklahoma",
+        "abbrev": "OK"
+    },
+    {
+        "full": "Oregon",
+        "abbrev": "OR"
+    },
+    {
+        "full": "Pennsylvania",
+        "abbrev": "PA"
+    },
+    {
+        "full": "Rhode Island",
+        "abbrev": "RI"
+    },
+    {
+        "full": "South Carolina",
+        "abbrev": "SC"
+    },
+    {
+        "full": "South Dakota",
+        "abbrev": "SD"
+    },
+    {
+        "full": "Tennessee",
+        "abbrev": "TN"
+    },
+    {
+        "full": "Texas",
+        "abbrev": "TX"
+    },
+    {
+        "full": "Utah",
+        "abbrev": "UT"
+    },
+    {
+        "full": "Vermont",
+        "abbrev": "VT"
+    },
+    {
+        "full": "Virginia",
+        "abbrev": "VA"
+    },
+    {
+        "full": "Virgin Islands",
+        "abbrev": "VI"
+    },
+    {
+        "full": "Washington",
+        "abbrev": "WA"
+    },
+    {
+        "full": "West Virginia",
+        "abbrev": "WV"
+    },
+    {
+        "full": "Wisconsin",
+        "abbrev": "WI"
+    },
+    {
+        "full": "Wyoming",
+        "abbrev": "WY"
+    },
+    {
+        "full": "Alberta",
+        "abbrev": "AB"
+    },
+    {
+        "full": "British Columbia",
+        "abbrev": "BC"
+    },
+    {
+        "full": "Manitoba",
+        "abbrev": "MB"
+    },
+    {
+        "full": "New Brunswick",
+        "abbrev": "NB"
+    },
+    {
+        "full": "Newfoundland",
+        "abbrev": "NF"
+    },
+    {
+        "full": "Northwest Territories",
+        "abbrev": "NT"
+    },
+    {
+        "full": "Nova Scotia",
+        "abbrev": "NS"
+    },
+    {
+        "full": "Ontario",
+        "abbrev": "ON"
+    },
+    {
+        "full": "Prince Edward Island",
+        "abbrev": "PE"
+    },
+    {
+        "full": "Quebec",
+        "abbrev": "QC"
+    },
+    {
+        "full": "Saskatchewan",
+        "abbrev": "SK"
+    },
+    {
+        "full": "Yukon",
+        "abbrev": "YT"
+    }
+]
+</script>
