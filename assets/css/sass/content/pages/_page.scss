@@ -112,6 +112,7 @@ section {
 
 .section-header {
 	background-size: cover;
+	background-position: right center;
 	@include clearfix;
 	@include container();
 	margin-bottom: gutter()*2;

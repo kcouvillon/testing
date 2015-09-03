@@ -7847,6 +7847,7 @@ section:after {
 
 .section-header {
   background-size: cover;
+  background-position: right center;
   display: block;
   max-width: 1500px;
   margin-left: auto;
@@ -8646,6 +8647,7 @@ section:after {
 #intro {
   position: relative;
   background-size: cover;
+  background-position: right center;
   display: block;
   max-width: 1500px;
   margin-left: auto;
