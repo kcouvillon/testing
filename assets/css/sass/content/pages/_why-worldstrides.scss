@@ -3,7 +3,7 @@
 		@include full;
 		margin-bottom: gutter();
 
-		@include susy-media($screen-xs) {
+		@include susy-media($screen-sm) {
 			@include gallery(6);
 		}
 	}

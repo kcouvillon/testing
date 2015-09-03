@@ -92,12 +92,17 @@ section {
 
 	.section-header {
 		margin-top: -100px;
-		padding-top: 100px;
-		min-height: 75vh;
+		padding-top: 140px;
+		min-height: 50vh;
 
 		@media only print {
 			min-height: 0;
 		}
+	}
+}
+.transparent-header.has-featured-image .primary-section {
+	.section-header {
+		min-height: 75vh;
 	}
 }
 
@@ -107,6 +112,7 @@ section {
 
 .section-header {
 	background-size: cover;
+	background-position: right center;
 	@include clearfix;
 	@include container();
 	margin-bottom: gutter()*2;
@@ -161,14 +167,19 @@ section {
 	}
 
 
-	.primary-section & {
+	.has-featured-image .primary-section & {
 		margin-top: 11.333333%;
 
 		@include susy-media($screen-xs) {
 			margin-top: 6.66666%;
 			margin-bottom: 11.66666%;
 		}
-
+	}
+	.primary-section & {
+		margin-top: 5%;
+		@include susy-media($screen-xs) {			
+			margin-bottom: 6%;
+		}
 		@media print {
 			margin-bottom: 2em;
 		}
