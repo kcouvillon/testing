@@ -77,8 +77,8 @@
 								'Email': jQuery('#get-info-email').val(),
 								'FirstName': jQuery('#get-info-first-name').val(),
 								'LastName': jQuery('#get-info-last-name').val(),
-								'Title': jQuery('#get-info-role').val(),
-								'Phone': jQuery('#get-info-phone').val(),
+								'Job Title': jQuery('#get-info-role').val(),
+								'Phone Number': jQuery('#get-info-phone').val(),
 								'wsProduct': jQuery('#get-info-wsProduct').val(),
 								'form_comments': jQuery('#get-info-comment').val()
 							},
@@ -139,7 +139,7 @@
 				<input type="text" name="group_name" value="" placeholder="School Name">
 			</li>
 			<li class="field">
-				<textarea id="get-info-comment" name="message" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" ></textarea>
+				<textarea id="get-info-comment" name="get-info-comment" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" ></textarea>
 			</li>
 		</ul>
 		<input id="get-info-submit" type="submit" name="" value="Get Info" class="btn btn-primary">
