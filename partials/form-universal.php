@@ -5,7 +5,7 @@
 		<ul class="form-fields list-unstyled">
 			<li class="field">
 				My role is
-				<select id="role" name="role">
+				<select id="get-info-role" name="Title">
 					<option value="">Select...</option>
 					<option value="stu">Student</option>
 					<option value="par">Parent</option>
@@ -17,7 +17,7 @@
 			</li>
 			<li class="field">
 				I am interested in
-				<select id="wsProduct" name="wsProduct">
+				<select id="get-info-wsProduct" name="wsProduct">
 					<option value="Unknown">Select...</option>
 					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
 					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
@@ -47,8 +47,8 @@
 					roleSelect.on('change',function(){
 						console.log(jQuery(this).val());
 						role =  jQuery(this).val();
-						jQuery('#wsProduct option').filter('.'+role).show();
-						jQuery('#wsProduct option').not('.'+role).hide();
+						jQuery('#get-info-wsProduct option').filter('.'+role).show();
+						jQuery('#get-info-wsProduct option').not('.'+role).hide();
 					});
 					interestSelect.on('change',function(){
 						console.log(jQuery(this).val());
@@ -58,7 +58,7 @@
 							jQuery('li#moremusicfield').css('display','none');
 						}
 					});
-				})(jQuery('select#role'),jQuery('select#wsProduct'));
+				})(jQuery('select#get-info-role'),jQuery('select#get-info-wsProduct'));
 				
 				jQuery(document).ready(function() {
 					jQuery('#get-info-submit').lockSubmit();
@@ -77,7 +77,9 @@
 								'Email': jQuery('#get-info-email').val(),
 								'FirstName': jQuery('#get-info-first-name').val(),
 								'LastName': jQuery('#get-info-last-name').val(),
-								'wsProduct': jQuery('#wsProduct').val(),
+								'Title': jQuery('#get-info-role').val(),
+								'Phone': jQuery('#get-info-phone').val(),
+								'wsProduct': jQuery('#get-info-wsProduct').val(),
 								'form_comments': jQuery('#get-info-comment').val()
 							},
 							jsonp.Email
