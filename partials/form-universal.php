@@ -95,7 +95,7 @@
 				});
 				
 				/**
-				 * Async call to the MDR API to get the State list
+				 * Async call to the MDR API to get the list of cities
 				 */
 				wsData.getCityList = function (){
 					//Erase values of city and school, in case they switch states.
@@ -117,7 +117,7 @@
 					}
 
 					jQuery.ajax({
-						url: wsData.api_base_url + 'cityList/' + jQuery('#companyState').val() + "'",
+						url: wsData.api_base_url + 'cityList/' + city.val() + "'",
 						type: 'GET',
 						dataType: 'jsonp',
 						jsonp:'callback',
@@ -136,9 +136,80 @@
 						}
 					});					
 				};
-				wsData.getCityList();
+				jQuery(document).ready(function() {
+					// wsData.getCityList(); // Don't call on document ready -- too much data!
+				});
 				
 				
+				/**
+				 * Set autocomplete for city input
+				 */
+				function ws_mdrapiSetCityAutoComplete(){
+				
+					// find and alias members:
+					var school = jQuery('#get-info-school');
+					var city = jQuery('#get-info-city');
+					var state = jQuery('#get-info-state');
+
+				
+					city.autocomplete({
+						minLength: 1,
+						source: function(req, response) {
+							var reqRegex = jQuery.ui.autocomplete.escapeRegex(req.term);
+							var reqMatcher = new RegExp("^"+reqRegex,"i");
+							response(
+								jQuery.grep(wsMdrApiCities,function(item){
+									return reqMatcher.test(item.label);
+								})
+							);
+						},
+						response: function (event, ui) {
+							var noResult = {
+								value: "Other",
+								label: "Other"
+							};
+							ui.content.push(noResult);
+
+						},
+						select: function (event, ui) {
+							if (ui.item.value === "Other") {
+								// The item selected from the menu, if any. Otherwise the property is null
+								//If they choose "other," it's not a ui.item, so show the hidden fields and clear the field.
+								city.val("Other");
+								ws_showHiddenFields();
+								city.val("");
+								//If you don't shift close it, the menu stays open, the autocomplete list stays open
+								city.autocomplete( "close" ).autocomplete( "option", "disabled", true );
+								jQuery('#Company').val('').removeAttr('readonly');  // make school editable
+								event.preventDefault(); // prevent jQuery UI from putting "Other" in the input field
+							} else {
+								city.attr("name", ui.item.pid);
+								city.attr("value", ui.item.label);
+								ws_getSchoolsFromCity();
+							}
+							// TODO: CREATE ERROR CODE: jQuery("#cityError").hide();
+						},
+						open: function(event, ui){
+							//this line adds 'other' at the end of the autocomplete list.
+							//jQuery("ul.ui-autocomplete.ui-menu").append('<li class="ui-menu-item" role="presentation"><a class = "ui-corner-all" name="Other" id="ui-id-' + parseInt(jQuery("ul.ui-autocomplete.ui-menu").children().length + 2) + '" tabindex="-1">Other</a></li>');
+
+						},
+						change: function (event, ui) {
+
+
+							if(!ui.item){
+								//http://api.jqueryui.com/autocomplete/#event-change -
+								// The item selected from the menu, if any. Otherwise the property is null
+								//so clear the item for force selection
+								city.val("");
+								// TODO: CREATE ERROR CODE: jQuery("#cityError").show();
+
+							}
+
+						}
+					});//end autocomplete})
+				}
+					
 				/**
 				 * Chain off to the Marketo Munchkin API function 'associateLead' to submit user data
 				 */
