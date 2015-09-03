@@ -76,6 +76,22 @@
 				});
 				
 				/**
+				 * (Re)set the SchoolCity and SchoolName to (Choose State first.) and (Please choose your City first.) respectively
+				 */
+				wsData.resetSchoolCitySchoolNameFields = function() {
+					// find and alias members:
+					var school = jQuery('#get-info-school');
+					var city = jQuery('#get-info-city');
+					var state = jQuery('#get-info-state');
+				
+					school.val('(Please choose your City first.)').attr('readonly','readonly');
+					city.val('(Choose State first.)').attr('readonly','readonly');
+				}
+				jQuery(document).ready(function() {
+					wsData.resetSchoolCitySchoolNameFields();
+				});
+				
+				/**
 				 * Base URL for API calls
 				 */
 				wsData.api_base_url = "http://apis.worldstrides.com/mdrapi/v1/"; 
@@ -95,8 +111,27 @@
 				});
 				
 				/**
+				 * (Re)set the ajax listeners to be connected to the State dropdown and City input
+				 */
+				wsData.reattachAjaxListeners = function() {
+					// find and alias members:
+					var school = jQuery('#get-info-school');
+					var city = jQuery('#get-info-city');
+					var state = jQuery('#get-info-state');
+					
+					state.attr("onchange", "wsData.getCityList();"); // get the cities after state is chosen
+					city.attr("onchange", "wsData.getSchoolsFromCity();"); // get the schools after the city is chosen
+				}
+				jQuery(document).ready(function() {
+					wsData.reattachAjaxListeners(); 
+				});
+				
+				
+				
+				/**
 				 * Async call to the MDR API to get the list of cities
 				 */
+				wsData.mdrApiCities = {};
 				wsData.getCityList = function (){
 					//Erase values of city and school, in case they switch states.
 					//TODO: UNCOMMENT THIS: ws_resetSchoolCitySchoolNameFields();
@@ -117,7 +152,7 @@
 					}
 
 					jQuery.ajax({
-						url: wsData.api_base_url + 'cityList/' + city.val() + "'",
+						url: wsData.api_base_url + 'cityList/' + state.val() + "'",
 						type: 'GET',
 						dataType: 'jsonp',
 						jsonp:'callback',
@@ -127,11 +162,11 @@
 						success:function(data){
 							var output = jQuery.parseJSON(data);
 							city.find('option').remove().end();
-							wsMdrApiCities = output;
+							wsData.mdrApiCities = output;
 							jQuery.each(output, function(i, item){
 								city.append('<option value="' + item.school_city + '">' + item.school_city + '</option>');
 							});
-							//TODO: UNCOMMENT THIS: ws_mdrapiSetCityAutoComplete();
+							wsData.mdrapiSetCityAutoComplete();
 							city.val('').removeAttr('readonly'); // make city editable
 						}
 					});					
@@ -144,7 +179,7 @@
 				/**
 				 * Set autocomplete for city input
 				 */
-				function ws_mdrapiSetCityAutoComplete(){
+				wsData.mdrapiSetCityAutoComplete = function (){
 				
 					// find and alias members:
 					var school = jQuery('#get-info-school');
@@ -158,7 +193,7 @@
 							var reqRegex = jQuery.ui.autocomplete.escapeRegex(req.term);
 							var reqMatcher = new RegExp("^"+reqRegex,"i");
 							response(
-								jQuery.grep(wsMdrApiCities,function(item){
+								jQuery.grep(wsData.mdrApiCities,function(item){
 									return reqMatcher.test(item.label);
 								})
 							);
@@ -176,7 +211,7 @@
 								// The item selected from the menu, if any. Otherwise the property is null
 								//If they choose "other," it's not a ui.item, so show the hidden fields and clear the field.
 								city.val("Other");
-								ws_showHiddenFields();
+								// TODO: (MAYBE) IE FALLBACK: ws_showHiddenFields();
 								city.val("");
 								//If you don't shift close it, the menu stays open, the autocomplete list stays open
 								city.autocomplete( "close" ).autocomplete( "option", "disabled", true );
@@ -185,7 +220,7 @@
 							} else {
 								city.attr("name", ui.item.pid);
 								city.attr("value", ui.item.label);
-								ws_getSchoolsFromCity();
+								wsData.getSchoolsFromCity();
 							}
 							// TODO: CREATE ERROR CODE: jQuery("#cityError").hide();
 						},
@@ -209,11 +244,134 @@
 						}
 					});//end autocomplete})
 				}
-					
+				
+				/**
+				 * Ajax call for populating school autocomplete
+				 */
+				wsData.mdrApiSchools = {};
+				wsData.getSchoolsFromCity = function(){
+					// find and alias members:
+					var school = jQuery('#get-info-school');
+					var city = jQuery('#get-info-city');
+					var state = jQuery('#get-info-state');
+				
+					jQuery.ajax({
+						url: wsData.api_base_url + 'city/'+ city.val() + '/state/' + state.val() + "'",
+						type: 'GET',
+						dataType: 'jsonp',
+						jsonp:'callback',
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							alert('Status: ' + textStatus); alert('Error: ' + errorThrown);
+						},
+						success:function(data){
+							var output = jQuery.parseJSON(data);
+							wsData.mdrApiSchools = output;
+							wsData.setSchoolAutoComplete();
+							school.val('').removeAttr('readonly');  // make school editable
+						}
+					});
+				}				
+				
+				/**
+				 * populate autocomplete for school based on Ajax data
+				 */
+				wsData.setSchoolAutoComplete = function(){
+					// find and alias members:
+					var school = jQuery('#get-info-school');
+					var city = jQuery('#get-info-city');
+					var state = jQuery('#get-info-state');
+				
+					jQuery("#Company").autocomplete({
+							minLength: 1,
+							source: function (req, response) {
+								var reqRegex = jQuery.ui.autocomplete.escapeRegex(req.term);
+								var reqMatcher = new RegExp("^" + reqRegex, "i");
+								response(
+									jQuery.grep(wsData.mdrApiSchools, function (item) {
+										return reqMatcher.test(item.label);
+									})
+								);
+							},
+							response: function (event, ui) {
+									var noResult = {
+										value: "Other",
+										label: "Other"
+									};
+									ui.content.push(noResult);
+
+							},
+							select: function (event, ui) {
+								if (ui.item.value === "Other") {
+									// The item selected from the menu, if any. Otherwise the property is null
+									//If they choose "other," it's not a ui.item, so show the hidden fields and clear the field.
+									// jQuery("#Company").val("Other");
+									// TODO IE FALLBACK?? ws_showHiddenFields();
+									school.val("");
+									//If you don't close it, the autocomplete menu stays open.
+									school.autocomplete("close").autocomplete("option", "disabled", true);
+									event.preventDefault(); // prevent jQuery UI error
+								} else {
+									school.attr("name", ui.item.pid);
+									school.attr("value", ui.item.label);
+									wsData.findSchool();
+								}
+								jQuery("#schoolError").hide();
+							},
+							change: function (event, ui) {
+							if(!ui.item){
+								//http://api.jqueryui.com/autocomplete/#event-change -
+								// The item selected from the menu, if any. Otherwise the property is null
+								//so clear the item for force selection
+								jQuery("#Company").val("");
+								jQuery("#schoolError").show();
+
+							}}
+					});//end autocomplete})
+
+				}
+
+				/**
+				 * Take input from findSchool, fill out hidden fields with information about that school
+				 */
+				wsData.fillOutForm = function(school_name, school_pid, school_Phone, school_Address, school_City, school_State, school_Zip) {
+					jQuery("#companyMDRPID").val(school_pid);
+					jQuery('#companyPhone').val(school_Phone);
+					jQuery('#companyAddress').val(school_Address);
+					jQuery('#companyZipcode').val(school_Zip);
+				}
+				
+				/**
+				 * Parse MDRAPI data to find the specific school
+				 */
+				wsData.findSchool = function(){
+					var ws_schoolPid = jQuery('#Company').attr('name');
+					if(ws_schoolPid === undefined){
+						jQuery("#Company").hide();
+						jQuery("#wsOtherSchool").show();
+						//focus wasn't working. According to stack overflow, this callback takes focus out of the current thread and puts
+						//it into another one.
+						setTimeout(function(){
+							jQuery("#wsOtherSchool").focus();
+						}, 0);
+						ws_showHiddenFields();
+					}else {
+						var ws_schoolObject = wsMdrApiSchools.filter(function (x) {
+							return x.pid == ws_schoolPid;
+						})[0];
+						var ws_schoolName = ws_schoolObject.school_name;
+						var ws_schoolAddress = ws_schoolObject.school_address_1;
+						var ws_schoolCity = ws_schoolObject.school_city;
+						var ws_schoolState = ws_schoolObject.school_state;
+						var ws_schoolZip = ws_schoolObject.school_zipcode;
+						var ws_schoolPhone = ws_schoolObject.school_phone;
+
+						wsData.fillOutForm(ws_schoolName, ws_schoolPid, ws_schoolPhone, ws_schoolAddress, ws_schoolCity, ws_schoolState, ws_schoolZip);
+					}
+				}
+				
 				/**
 				 * Chain off to the Marketo Munchkin API function 'associateLead' to submit user data
 				 */
-				
 				jQuery('#get-info-form').submit(function (e) {
 					var form = this;
 					var action = jQuery('#get-info-form').attr('action');
