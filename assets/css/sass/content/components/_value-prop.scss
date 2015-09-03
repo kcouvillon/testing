@@ -3,13 +3,13 @@
 }
 
 .value-prop-img {
-	width: 75%;
+	width: 35%;
 	margin: 0 auto 1em;
 	float: none;
 	display: block;
 
 	@include susy-media($screen-xs) {
-		@include span(2 of 6);
+		@include span(1 of 6);
 	}
 }
 
@@ -20,7 +20,7 @@
 	margin-bottom: gutter();
 
 	@include susy-media($screen-xs) {
-		@include span(4 of 6 last);
+		@include span(5 of 6 last);
 	}
 }
 
@@ -28,6 +28,6 @@
 	@include span(full);
 
 	@include susy-media($screen-xs) {
-		@include span(4 of 6 last);
+		@include span(5 of 6 last);
 	}
 }

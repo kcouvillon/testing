@@ -7942,7 +7942,7 @@ section:after {
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 1.9607843137%; }
-  @media (min-width: 600px) {
+  @media (min-width: 768px) {
     .why-content > div {
       width: 49.0196078431%;
       float: left; }
@@ -9327,13 +9327,13 @@ section:after {
   clear: both; }
 
 .value-prop-img {
-  width: 75%;
+  width: 35%;
   margin: 0 auto 1em;
   float: none;
   display: block; }
   @media (min-width: 600px) {
     .value-prop-img {
-      width: 30.6666666667%;
+      width: 13.3333333333%;
       float: left;
       margin-right: 4%; } }
 
@@ -9347,7 +9347,7 @@ section:after {
   margin-bottom: 1.9607843137%; }
   @media (min-width: 600px) {
     .value-prop-title {
-      width: 65.3333333333%;
+      width: 82.6666666667%;
       float: right;
       margin-right: 0; } }
 
@@ -9358,7 +9358,7 @@ section:after {
   margin-right: 0; }
   @media (min-width: 600px) {
     .value-prop-desc {
-      width: 65.3333333333%;
+      width: 82.6666666667%;
       float: right;
       margin-right: 0; } }
 
