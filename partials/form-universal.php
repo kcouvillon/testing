@@ -43,6 +43,12 @@
 				</select>
 			</li>
 			<script type="text/javascript">
+				/**
+				 * Wire the Role, wsProduct and MoreMusic fields together
+				 * - restrict wsProduct based on Role
+				 * - show MoreMusic where wsProduct === 'Performing'
+				 * 
+				 */
 				(function(roleSelect,interestSelect){
 					roleSelect.on('change',function(){
 						console.log(jQuery(this).val());
@@ -63,6 +69,55 @@
 				jQuery(document).ready(function() {
 					jQuery('#get-info-submit').lockSubmit();
 				});
+				
+				
+				
+				/**
+				 * Async call to the MDR API to get the State list
+				 */
+				wsData.ws_getCityList = function (){
+					//Erase values of city and school, in case they switch states.
+					//TODO: UNCOMMENT THIS: ws_resetSchoolCitySchoolNameFields();
+					
+					// find and alias members:
+					var school = jQuery('#get-info-school');
+					var city = jQuery('#get-info-city');
+					var state = jQuery('#get-info-state');
+					
+					//If they choose other for city or state, autocomplete is turned off. If they choose a different state,
+					//we want autocomplete to be back on. If they choose other, autocomplete will be disabled. We'll un-disable it. (not
+					//the same as enabling it, in case you're wondering.
+					if(city.attr("autocomplete") != null) {
+						city.autocomplete("option", "disabled", false);
+					}
+					if(school.attr("autocomplete") != null){
+						school.autocomplete("option", "disabled", false);
+					}
+
+					jQuery.ajax({
+						url: api_base_url + 'cityList/' + jQuery('#companyState').val() + "'",
+						type: 'GET',
+						dataType: 'jsonp',
+						jsonp:'callback',
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							alert('Status: ' + textStatus); alert('Error: ' + errorThrown);
+						},
+						success:function(data){
+							var output = jQuery.parseJSON(data);
+							city.find('option').remove().end();
+							wsMdrApiCities = output;
+							jQuery.each(output, function(i, item){
+								city.append('<option value="' + item.school_city + '">' + item.school_city + '</option>');
+							});
+							ws_mdrapiSetCityAutoComplete();
+							city.val('').removeAttr('readonly'); // make city editable
+						}
+					});					
+				};
+				
+				/**
+				 * Chain off to the Marketo Munchkin API function 'associateLead' to submit user data
+				 */
 				
 				jQuery('#get-info-form').submit(function (e) {
 					var form = this;
@@ -95,6 +150,9 @@
 					
 					//CALLBACK: form.submit();
 				});
+				
+				
+				
 			</script>
 			<li class="field">
 				I have a tour scheduled:
@@ -127,16 +185,16 @@
 			</li>
 			<li class="field field-complex">
 				<div class="field-left">
-					<select name="state">
+					<select id="get-info-state" name="get-info-state">
 						<option value="">State</option>
 					</select>
 				</div>
 				<div class="field-right">
-					<input type="text" name="city" value="" placeholder="City">
+					<input id="get-info-city" type="text" name="get-info-city" value="" placeholder="City">
 				</div>
 			</li>
 			<li class="field">
-				<input type="text" name="group_name" value="" placeholder="School Name">
+				<input id="get-info-school" type="text" name="get-info-school" value="" placeholder="School Name">
 			</li>
 			<li class="field">
 				<textarea id="get-info-comment" name="get-info-comment" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" ></textarea>
