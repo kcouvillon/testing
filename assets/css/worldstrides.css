@@ -7833,11 +7833,14 @@ section:after {
   padding-top: 100px !important; }
   .transparent-header .primary-section .section-header {
     margin-top: -100px;
-    padding-top: 100px;
-    min-height: 75vh; }
+    padding-top: 140px;
+    min-height: 50vh; }
     @media only print {
       .transparent-header .primary-section .section-header {
         min-height: 0; } }
+
+.transparent-header.has-featured-image .primary-section .section-header {
+  min-height: 75vh; }
 
 .solid-header .primary-section {
   margin-top: 0; }
@@ -7885,12 +7888,17 @@ section:after {
         color: #E1EBF2; }
         .pattern-1 .section-header-content .breadcrumbs a:hover, .pattern-2 .section-header-content .breadcrumbs a:hover, .pattern-4 .section-header-content .breadcrumbs a:hover, .pattern-5 .section-header-content .breadcrumbs a:hover, .pattern-7 .section-header-content .breadcrumbs a:hover, .pattern-8 .section-header-content .breadcrumbs a:hover {
           color: #b3b7bf; }
-  .primary-section .section-header-content {
+  .has-featured-image .primary-section .section-header-content {
     margin-top: 11.333333%; }
     @media (min-width: 600px) {
-      .primary-section .section-header-content {
+      .has-featured-image .primary-section .section-header-content {
         margin-top: 6.66666%;
         margin-bottom: 11.66666%; } }
+  .primary-section .section-header-content {
+    margin-top: 5%; }
+    @media (min-width: 600px) {
+      .primary-section .section-header-content {
+        margin-bottom: 6%; } }
     @media print {
       .primary-section .section-header-content {
         margin-bottom: 2em; } }
