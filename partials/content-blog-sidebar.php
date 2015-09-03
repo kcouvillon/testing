@@ -31,7 +31,6 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 	<div class="entry-body">
 
 		<div class="entry-content">
-			<?php //the_excerpt(); ?>
 			<a href="<?php the_permalink(); ?>" class="entry-link">Keep Reading</a>
 		</div>
 
