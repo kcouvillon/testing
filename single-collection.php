@@ -215,8 +215,10 @@ get_header(); ?>
 			<section class="ws-container ws-blocks tour-blocks-before print-page-break">
 
 				<?php foreach ( $before_block_sections as $section ) : ?>
-					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 					<?php if ( ! empty( $section['collection_blocks_before_title'] ) ) : ?>
+						<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['collection_blocks_before_title'] ); ?></h2>
 					<?php endif; ?>
 
@@ -308,9 +310,10 @@ get_header(); ?>
 
 		<?php if ( ! empty( $after_block_sections ) ) : ?>
 			<?php foreach ( $after_block_sections as $section ) : ?>
-				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 				<section class="ws-container ws-blocks tour-blocks-after">
 					<?php if ( ! empty( $section['collection_blocks_after_title'] ) ) : ?>
+						<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 						<h2><?php echo apply_filters( 'the_title', $section['collection_blocks_after_title'] ); ?></h2>
 					<?php endif; ?>
 
