@@ -27,7 +27,7 @@
 				<div class="section-header-content">
 
 					<h1 class="section-title"><?php the_title(); ?></h1>
-					<p class="description"><?php the_content(); ?></p>
+					<div class="description"><?php the_content(); ?></div>
 
 				</div>
 			</header>

@@ -8725,8 +8725,21 @@ section:after {
   padding-top: 1.5em;
   padding-bottom: 3.5em; }
 
-/* Explore Tool
+/* Explore
  * ------------------------------------------------------------- */
+.transparent-header.has-featured-image .explore .section-header {
+  min-height: 0;
+  padding-bottom: 40px; }
+
+.has-featured-image .explore .section-header-content {
+  margin: 2em 0 0; }
+
+.explore .section-title {
+  font-size: 2.5em; }
+  @media screen and (min-width: 768px) {
+    .explore .section-title {
+      font-size: 3em; } }
+
 .explore-tool {
   position: relative; }
   .explore-tool .active-filter {
