@@ -3,31 +3,17 @@
 }
 
 .value-prop-img {
-	width: 35%;
-	margin: 0 auto 1em;
-	float: none;
+	@include span(1 of 6);
 	display: block;
-
-	@include susy-media($screen-xs) {
-		@include span(1 of 6);
-	}
 }
 
 .value-prop-title {
-	@include span(full);
+	@include span(5 of 6 last);
 	font-size: em(20);
 	font-weight: bold;
 	margin-bottom: gutter();
-
-	@include susy-media($screen-xs) {
-		@include span(5 of 6 last);
-	}
 }
 
 .value-prop-desc {
-	@include span(full);
-
-	@include susy-media($screen-xs) {
-		@include span(5 of 6 last);
-	}
+	@include span(5 of 6 last);
 }

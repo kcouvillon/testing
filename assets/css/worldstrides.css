@@ -9329,40 +9329,23 @@ section:after {
   clear: both; }
 
 .value-prop-img {
-  width: 35%;
-  margin: 0 auto 1em;
-  float: none;
+  width: 13.3333333333%;
+  float: left;
+  margin-right: 4%;
   display: block; }
-  @media (min-width: 600px) {
-    .value-prop-img {
-      width: 13.3333333333%;
-      float: left;
-      margin-right: 4%; } }
 
 .value-prop-title {
-  width: 100%;
-  float: left;
-  margin-left: 0;
+  width: 82.6666666667%;
+  float: right;
   margin-right: 0;
   font-size: 1.25em;
   font-weight: bold;
   margin-bottom: 1.9607843137%; }
-  @media (min-width: 600px) {
-    .value-prop-title {
-      width: 82.6666666667%;
-      float: right;
-      margin-right: 0; } }
 
 .value-prop-desc {
-  width: 100%;
-  float: left;
-  margin-left: 0;
+  width: 82.6666666667%;
+  float: right;
   margin-right: 0; }
-  @media (min-width: 600px) {
-    .value-prop-desc {
-      width: 82.6666666667%;
-      float: right;
-      margin-right: 0; } }
 
 .contact-sidebar {
   background: #E1EBF2;
