@@ -55,6 +55,12 @@
 // Style
 // ======================================= /
 a.no-decoration { text-decoration: none; }
+a.text-color-link { 
+	color: $color_text_main;
+	&:hover {
+		color: $color_link;
+	}
+}
 .circular { border-radius: 50%; }
 
 // Screens

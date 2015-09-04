@@ -6232,6 +6232,11 @@ p {
 a.no-decoration {
   text-decoration: none; }
 
+a.text-color-link {
+  color: #1a1a1a; }
+  a.text-color-link:hover {
+    color: #fb901d; }
+
 .circular {
   border-radius: 50%; }
 

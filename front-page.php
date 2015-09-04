@@ -237,7 +237,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 		<section class="home-section blog">
 			<div class="ws-container">
-				<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
+				<h2 class="section-title"><a class="text-color-link" href="<?php echo home_url('/blog/'); ?>">Latest Stories from the WorldStrides Blog<a></h2>
 			</div>
 
 			<div class="blog-wrap">

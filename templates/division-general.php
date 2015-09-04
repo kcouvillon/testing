@@ -305,7 +305,7 @@ get_header(); ?>
 			<?php if ( $blog_posts->have_posts() ) : ?>
 			<section class="home-section blog">
 				<div class="ws-container">
-					<h2 class="section-title">Latest Stories from the WorldStrides Blog</h2>
+					<h2 class="section-title"><a class="text-color-link" href="<?php echo home_url('/blog/'); ?>">Latest Stories from the WorldStrides Blog</a></h2>
 				</div>
 
 				<?php $sidebar_open = false; ?>
