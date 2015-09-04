@@ -15,10 +15,7 @@
 		}
 	}
 	.section-title {
-		font-size: em(40);
-		@media screen and (min-width: $screen-sm) {
-			font-size: em(48);
-		}
+		font-size: 2.2em;
 	}
 }
 
@@ -126,8 +123,6 @@
 	background: $navy;
 	color: $gray;
 	font-size: 16px;
-	@media screen and (min-width: $screen-md) {
-	font-size: 18px; }
 	&.filter-menus-closed {		
 		
 		.filter-menus {

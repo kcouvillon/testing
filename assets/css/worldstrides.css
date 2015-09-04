@@ -8735,10 +8735,7 @@ section:after {
   margin: 2em 0 0; }
 
 .explore .section-title {
-  font-size: 2.5em; }
-  @media screen and (min-width: 768px) {
-    .explore .section-title {
-      font-size: 3em; } }
+  font-size: 2.2em; }
 
 .explore-tool {
   position: relative; }
@@ -8832,9 +8829,6 @@ section:after {
 	 * ------------------------------------------------------------- */
   /* Filter Menu
 	 * ------------------------------------------------------------- */ }
-  @media screen and (min-width: 960px) {
-    .explore-filters {
-      font-size: 18px; } }
   .explore-filters.filter-menus-closed .filter-menus {
     transition: max-height 400ms ease-out; }
     @media screen and (min-width: 768px) {
