@@ -36,7 +36,7 @@
 		<section class="explore-tool">
 
 			<div class="explore-utility ws-container">
-				<span class="search-by"><i class="icon-arrow-down"></i> Use the filters below to narrow your search</span>
+				<span class="search-by"><i class="icon-arrow-down"></i> Select filters to narrow your search</span>
 				<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
 			</div>
 
