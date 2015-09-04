@@ -241,6 +241,13 @@ class WS_Metaboxes_Collections {
 		) );
 
 		$cmb->add_field( array(
+			'name' => __( 'Section title', 'cmb2' ),
+			'desc' => __( 'Override default "Select an Itinerary"', 'cmb2' ),
+			'id'   => 'itineraries_title',
+			'type' => 'text'
+		) );
+
+		$cmb->add_field( array(
 		    'name' => __( 'Include calendar', 'cmb2' ),
 		    'desc' => __( 'Checking this box will allow users to find itineraries by selecting a date range', 'cmb2' ),
 		    'id'   => 'itineraries_calendar',

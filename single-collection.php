@@ -16,9 +16,9 @@ $collection_type = get_post_meta( $post->ID, 'collection_type', true );
 $display_title = get_post_meta( $post->ID, 'general_display_title', true );
 
 // Different title for Capstone itineraries
-$is_capstone = has_term( 'capstone', 'product-line' );
-if ( $is_capstone ) {
-	$itinerary_title = 'Featured Destinations';
+$itinerary_title = get_post_meta( $post->ID, 'itineraries_title', true );
+if ( $itinerary_title ) {
+	$itinerary_title = apply_filters( 'the_title', $itinerary_title );
 } else {
 	$itinerary_title = 'Select an Itinerary';
 }
