@@ -8785,7 +8785,34 @@ section:after {
       .explore-tool .search-by {
         position: absolute;
         bottom: 100%;
-        padding: 0.5em 1em 0.5em 0.5em; } }
+        padding: 0.5em 1em 0.5em 1em; } }
+  .explore-tool .results-count {
+    display: block;
+    padding: 1em 0;
+    font-size: 14px;
+    font-weight: 700;
+    border-top: 1px solid #424c61;
+    color: #4fa9e5; }
+    .explore-tool .results-count:hover {
+      color: white; }
+    @media screen and (min-width: 768px) {
+      .explore-tool .results-count {
+        position: absolute;
+        bottom: 100%;
+        width: 270px;
+        padding: 0.5em 1em 0.5em 1em;
+        background-color: #323c53;
+        margin-left: 233px;
+        border-top: 0;
+        border-left: 1px solid #424c61; } }
+    .explore-tool .results-count .icon {
+      float: right;
+      padding-right: 15px;
+      font-size: 18px; }
+      @media screen and (min-width: 768px) {
+        .explore-tool .results-count .icon {
+          padding-right: 0;
+          padding-left: 15px; } }
   .explore-tool .clear-all {
     display: none;
     padding: 1em 0;
@@ -8801,7 +8828,7 @@ section:after {
         display: block;
         position: absolute;
         bottom: 0;
-        margin: 0 0 0 292px;
+        margin: 0 0 0 503px;
         background-color: #323c53;
         padding: 0.5em 1em 0.5em 0.5em;
         border: 0;

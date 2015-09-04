@@ -161,9 +161,9 @@ $continents = get_terms( 'filter', $continentsArgs );
 
 </nav>
 
-<div class="explore-filters-toggle ws-container">
+<!-- <div class="explore-filters-toggle ws-container">
 	<a href="#explore-results"><span class="collections-count">Collections</span> and <span class="itineraries-count">Itineraries</span>.</a>
-</div>
+</div> -->
 
 
 
