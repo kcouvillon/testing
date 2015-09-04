@@ -25,7 +25,7 @@
 	function checkRows() {
 		var marketoTitle = document.querySelector('#Title');
 		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
-		console.log(marketoTitle);
+
 		$(marketoFormRow).each(function() {
 			if( $(this).children('.mktoPlaceholder').length ) {
 				$(this).addClass('hidden');

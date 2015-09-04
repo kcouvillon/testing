@@ -76,8 +76,6 @@
 					onMixEnd: function (state) {
 						var $results = $('.results');
 
-						console.log(state)
-
 						updateAvailableFilters(state);
 						
 						state.$targets.removeClass('preview-tile');
@@ -378,8 +376,6 @@
 	function getResultsText (state, singular, plural) {
 		
 		var count = state.totalShow;
-
-		console.log(count);
 
 		if ( count === 0 ) {
 			return '0 ' + plural;

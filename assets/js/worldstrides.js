@@ -214,8 +214,6 @@
 					onMixEnd: function (state) {
 						var $results = $('.results');
 
-						console.log(state)
-
 						updateAvailableFilters(state);
 						
 						state.$targets.removeClass('preview-tile');
@@ -517,8 +515,6 @@
 		
 		var count = state.totalShow;
 
-		console.log(count);
-
 		if ( count === 0 ) {
 			return '0 ' + plural;
 		} else if ( count === 1 ) {
@@ -557,7 +553,7 @@
 	function checkRows() {
 		var marketoTitle = document.querySelector('#Title');
 		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
-		console.log(marketoTitle);
+
 		$(marketoFormRow).each(function() {
 			if( $(this).children('.mktoPlaceholder').length ) {
 				$(this).addClass('hidden');
