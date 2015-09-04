@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-09-02
+/*! WorldStrides - v0.1.0 - 2015-09-04
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -214,6 +214,8 @@
 					onMixEnd: function (state) {
 						var $results = $('.results');
 
+						console.log(state)
+
 						updateAvailableFilters(state);
 						
 						state.$targets.removeClass('preview-tile');
@@ -245,7 +247,7 @@
 							} else {
 								$('.collections .toggle-results').show();
 							}
-							// $('.collections-count').text( getResultsCountText(state, 'Collection', 'Collections') );
+							$('.collections-count').text( getResultsText(state, 'Collection', 'Collections') );
 
 						} else if ( $(state.$show[0]).hasClass('type-itinerary') ) {
 							if ( state.$show.length <= 9 ) {
@@ -253,8 +255,21 @@
 							} else {
 								$('.itineraries .toggle-results').show();
 							}
-							// $('.itineraries-count').text( getResultsCountText(state, 'Itinerary', 'Itineraries') );
+							$('.itineraries-count').text( getResultsText(state, 'Itinerary', 'Itineraries') );
+
 						}
+
+					},
+					onMixFail: function (state) {
+
+						if ( $(state.$hide[0]).hasClass('type-collection') ) {
+							$('.collections-count').text( getResultsText(state, 'Collection', 'Collections') );
+
+						} else if ( $(state.$hide[0]).hasClass('type-itinerary') ) {
+							$('.itineraries-count').text( getResultsText(state, 'Itinerary', 'Itineraries') );
+
+						}
+					
 					}
 				}
 			});
@@ -498,17 +513,21 @@
 		}
 	}
 
-	// function getResultsCountText (state, singular, plural) {
-	// 	var count = state.$show.length;
-	// 	if ( count > 1 ) {
-	// 		return count + ' ' + plural + ' and ';
-	// 	} else if ( count == 1 ) {
-	// 		return count + ' ' + singluar + ' and ';
-	// 	} else {
-	// 		return '';
-	// 	}
-	// }
+	function getResultsText (state, singular, plural) {
+		
+		var count = state.totalShow;
 
+		console.log(count);
+
+		if ( count === 0 ) {
+			return '0 ' + plural;
+		} else if ( count === 1 ) {
+			return count + ' ' + singular;
+		} else {
+			return count + ' ' + plural;
+		}
+
+	}
 
 
 
