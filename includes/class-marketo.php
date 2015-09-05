@@ -13,6 +13,13 @@ class WS_Marketo {
 	protected static $_instance = null;
 
 	/**
+	 * The 9-character code for WorldStrides and Marketo
+	 */
+	public function marketo_id() { 
+		return '593-ASZ-675';
+	}
+	
+	/**
 	 * Get the instance of this class, or set it up if it has not been setup yet.
 	 *
 	 * @return WS_Marketo
@@ -37,6 +44,7 @@ class WS_Marketo {
 		add_shortcode( 'marketo', array( $this, 'marketo_shortcode' ) );
 	}
 
+	
 	/**
 	 * Shortcode to generate Marketo embeds
 	 *
@@ -51,8 +59,6 @@ class WS_Marketo {
 			'id' => '',
 			'mdrapi' => 'false'
 		), $attributes, 'marketo' );
-
-		$marketo_id = '593-ASZ-675';
 
 		$form_id = $attributes['id'];
 
@@ -71,7 +77,7 @@ class WS_Marketo {
 				<form id="mktoForm_<?php echo esc_attr( $form_id ); ?>"></form>
 
 				<script>
-					MktoForms2.loadForm( "//app-sjg.marketo.com", "<?php echo esc_js( $marketo_id ); ?>", <?php echo esc_js( $form_id ); ?> );
+					MktoForms2.loadForm( "//app-sjg.marketo.com", "<?php echo esc_js( $this->marketo_id() ); ?>", <?php echo esc_js( $form_id ); ?> );
 				</script>
 			</div>
 
@@ -113,6 +119,27 @@ class WS_Marketo {
 		}
 		
 		echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
+	}
+	
+	public static function submit_marketo_data() {
+		
+	
+ 		print_r("Post Data: \n");
+		echo '<pre>';
+		print_r($_POST);
+		echo '</pre>';
+/*		print_r("\nResult: \n");
+		
+		$lead1 = new stdClass();
+		// $lead1->email = "upsert.test@marketo.com";
+		if(isset($_POST['email'])) {
+			$lead1->email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+		}
+		print_r($lead1);
+ */
+		//$upsert = new WS_MktoUpsertLeads();
+		//$upsert->input = array($lead1);
+		//print_r($upsert->postData());
 	}
 }
 

@@ -39,6 +39,7 @@ include WS_PATH . 'includes/class-comments.php';
 include WS_PATH . 'includes/class-cpts.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
+include WS_PATH . 'includes/class-marketo-upsert.php';
 include WS_PATH . 'includes/class-metaboxes.php';
 include WS_PATH . 'includes/class-metaboxes-blocks.php';
 include WS_PATH . 'includes/class-metaboxes-collections.php';
@@ -95,6 +96,8 @@ function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+	wp_register_script( 'lockSubmit', get_template_directory_uri() . '/assets/js/vendor/jquery.lockSubmit.js', array(), WS_VERSION, true );
+	wp_register_script( 'jquery-ui-autocomplete', get_template_directory_uri() . 'assets/js/vendor/jquery-ui-1.11.4.custom/jquery-ui.min.js', array(), WS_VERSION, true );
 	wp_enqueue_script( 'jquery' );
 
 	if ( is_page_template( 'templates/about-offices.php' ) || is_singular( 'itinerary' ) ) {
@@ -102,6 +105,8 @@ function ws_scripts_styles() {
 		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
 	}
 
+	wp_enqueue_style('ui-autocomplete-style','https://apis.worldstrides.com/mdrapi/css/ws_mdrapiStyle.css', array(), WS_VERSION);
+	
 	// if ( is_singular( 'itinerary' ) ) {
 	// wp_enqueue_script( 'mustache', get_template_directory_uri() . "/assets/js/vendor/mustache.min.js", array(), WS_VERSION, true );
 	// }
@@ -116,6 +121,9 @@ function ws_scripts_styles() {
 		wp_enqueue_script( 'mixitup' );
 	}
 
+	wp_enqueue_script('lockSubmit'); // used on form submissions, available on all pages
+	wp_enqueue_script('jquery-ui-autocomplete'); // used on form submissions, available on all pages
+	
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
 }
@@ -350,3 +358,12 @@ function remove_dashboard_widgets() {
 	remove_meta_box( 'arve_dashboard_widget', 'dashboard', 'normal' );
 }
 add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+/**
+ * Send submitted form data to Marketo using munchkin API
+ */
+ function data_to_marketo() {
+	WS_Marketo::submit_marketo_data();
+ }
+add_action( 'admin_post_data_to_marketo', 'data_to_marketo' );
+add_action( 'admin_post_nopriv_data_to_marketo', 'data_to_marketo' );
