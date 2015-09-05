@@ -36,7 +36,7 @@
 					<option value="International Concert Tours">International Concert Tours</option>
 					<option value="American Performing Tours">American Performing Tours</option>
 					<option value="Marching Band Opportunities">Marching Band Opportunities</option>
-					<option value="Dance & Cheer Opportunities">Dance & Cheer Opportunities</option>
+					<option value="Dance &amp; Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
 					<option value="Domestic Theatre Opportunities">Domestic Theatre Opportunities</option>
 					<option value="International Theatre Opportunities">International Theatre Opportunities</option>
 					<option value="Im not sure yet">I'm not sure yet</option>
