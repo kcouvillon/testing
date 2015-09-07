@@ -390,3 +390,21 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
  }
 add_action( 'admin_post_data_to_marketo', 'data_to_marketo' );
 add_action( 'admin_post_nopriv_data_to_marketo', 'data_to_marketo' );
+
+/**
+ * Add schema.org markup for Site Name to header
+ */
+function ws_head_add_schema() {
+?>
+	<script type="application/ld+json">
+		{
+		  "@context" : "http://schema.org",
+		  "@type" : "WebSite",
+		  "name" : "WorldStrides",
+		  "alternateName" : "<?php echo get_bloginfo( 'name' ); ?>",
+		  "url" : "<?php echo esc_url( home_url( '/' ) ); ?>"
+		}
+	</script>
+<?php
+}
+add_action( 'wp_head', 'ws_head_add_schema' );
