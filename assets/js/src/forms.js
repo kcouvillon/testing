@@ -51,7 +51,7 @@
 		(function(roleSelect,interestSelect){
 			roleSelect.on('change',function(){
 				console.log(jQuery(this).val());
-				role =  jQuery(this).val();
+				var role =  jQuery(this).val();
 				jQuery('#get-info-wsProduct option').filter('.'+role).show();
 				jQuery('#get-info-wsProduct option').not('.'+role).hide();
 			});

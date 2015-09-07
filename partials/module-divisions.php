@@ -19,10 +19,17 @@ $data = array(
 	),
 );
 
+$options = get_option( 'ws_options' );
+
+$title = ( isset( $options['divisions_title'] ) ? $options['divisions_title'] : '' );
+
 ?>
 <section class="home-section programs">
 	<div class="ws-container">
-		<h2 class="section-title">Our Educational Travel Opportunities</h2>
+		<?php if ( $title ) : ?>
+		<h2 class="section-title"><?php echo apply_filters( 'the_content', $title ) ?></h2>
+		<?php endif; ?>
+
 		<ul class="programs-list list-unstyled clearfix">
 			<?php $count = 0; ?>
 

@@ -44,7 +44,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 			</section>
 		<?php endif; ?>
 
-		<?php get_template_part( 'partials/divisions'); ?>
+		<?php get_template_part( 'partials/module', 'divisions' ); ?>
 
 		<?php if ( $associated_resources ) : ?>
 			<section class="section-content resources">

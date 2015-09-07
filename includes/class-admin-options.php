@@ -132,6 +132,14 @@ class WS_Admin {
 			'id'      => 'contact_email_info',
 			'type'    => 'textarea_small',
 		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Divisions Title', 'ws' ),
+			// 'default' => '',
+			// 'desc'    => __( 'field description (optional)', 'ws' ),
+			'id'      => 'divisions_title',
+			'type'    => 'text',
+		) );
 	}
 
 	/**
