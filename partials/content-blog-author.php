@@ -15,7 +15,11 @@ if ( class_exists( 'coauthors_plus' ) ) :
 				<?php if ( $co_author->author_type ) : ?>
 					<?php echo $co_author->author_type; ?><br>
 				<?php endif; ?>
-				<strong><?php echo $co_author->display_name; ?></strong>
+				<strong>
+					<a href="<?php echo esc_url( home_url( '/author/' . $co_author->user_nicename . '/' ) ); ?>" rel="author">
+						<?php echo $co_author->display_name; ?>
+					</a>
+				</strong>
 			</span>
 		</div>
 
