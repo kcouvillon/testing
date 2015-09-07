@@ -271,11 +271,37 @@ function ws_filter_guest_author_fields( $fields_to_return, $groups ) {
 			'label' => 'Author Type',
 			'group' => 'name',
 		);
+
+		$fields_to_return[] = array(
+			'key'   => 'facebook_profile_url',
+			'label' => 'Facebook Profile URL',
+			'group' => 'name',
+		);
 	}
 
 	return $fields_to_return;
 }
 add_filter( 'coauthors_guest_author_fields', 'ws_filter_guest_author_fields', 10, 2 );
+
+/**
+ * Use Co-Authors for OpenGraph author url, rather than WordPress users
+ *
+ * @param $profile_url
+ *
+ * @return mixed
+ */
+function ws_seo_og_filter_facebook_author( $profile_url ) {
+	global $post;
+
+	// Get the Co-Authors for the post
+	$co_authors = get_coauthors( $post->ID );
+
+	if ( $co_authors ) {
+		$profile_url = $co_authors[0]->facebook_profile_url;
+	}
+	return $profile_url;
+}
+add_filter( 'wpseo_opengraph_author_facebook', 'ws_seo_og_filter_facebook_author', 10, 1 );
 
 /**
  * Use filter endpoint template for destinations, interests, and travelers
