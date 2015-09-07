@@ -65,7 +65,8 @@ class WS_Custom_Post_Types {
 		register_extended_post_type( 'itinerary',
 			array(
 				'menu_icon'   => 'dashicons-location-alt',
-				'admin_cols'  => $admin_cols_default
+				'admin_cols'  => $admin_cols_default,
+				'has_archive' => false
 			),
 			array(
 				'plural' => 'Itineraries'
@@ -78,7 +79,8 @@ class WS_Custom_Post_Types {
 		register_extended_post_type( 'collection',
 			array(
 				'menu_icon' => 'dashicons-format-gallery',
-				'admin_cols'  => $admin_cols_default
+				'admin_cols'  => $admin_cols_default,
+				'has_archive' => false,
 			)
 		);
 
@@ -87,20 +89,23 @@ class WS_Custom_Post_Types {
 		 */
 		register_extended_post_type( 'destination',
 			array(
-				'menu_icon' => 'dashicons-location'
+				'menu_icon' => 'dashicons-location',
+				'has_archive' => false,
 			)
 		);
 
 
 		register_extended_post_type( 'interest',
 			array(
-				'menu_icon' => 'dashicons-awards'
+				'menu_icon' => 'dashicons-awards',
+				'has_archive' => false
 			)
 		);
 
 		register_extended_post_type( 'traveler',
 			array(
-				'menu_icon' => 'dashicons-universal-access'
+				'menu_icon' => 'dashicons-universal-access',
+				'has_archive' => false
 			)
 		);
 
@@ -136,7 +141,8 @@ class WS_Custom_Post_Types {
 
 		register_extended_post_type( 'campaign',
 			array(
-				'menu_icon' => 'dashicons-feedback'
+				'menu_icon' => 'dashicons-feedback',
+				'has_archive' => false
 			)
 		);
 
