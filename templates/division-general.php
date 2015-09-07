@@ -51,13 +51,15 @@ if ( $associated_collections_override ) {
 	) );
 }
 
-if ( 'discoveries' == $post->post_name ) {
+$division_slug = $post->post_name;
+
+if ( 'discoveries' == $division_slug ) {
 	$division_target = 'Middle School';
-} elseif ( 'perspectives' == $post->post_name ) {
+} elseif ( 'perspectives' == $division_slug ) {
 	$division_target = 'High School';
-} elseif ( 'capstone' == $post->post_name ) {
+} elseif ( 'capstone' == $division_slug ) {
 	$division_target = 'Capstone';
-} elseif ( 'on-stage' == $post->post_name ) {
+} elseif ( 'on-stage' == $division_slug ) {
 	$division_target = 'Performing Arts';
 } else {
 	$division_target = get_the_title();
@@ -257,9 +259,11 @@ get_header(); ?>
 
 						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 							<div class="tile-content">
+								<?php if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives' ) ) ) : ?>
 								<ul class="meta list-unstyled">
-									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
+									<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></li>
 								</ul>
+								<?php endif; ?>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
 						</li>
