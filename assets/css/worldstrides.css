@@ -6188,6 +6188,9 @@ select {
     float: right;
     margin-right: 0; } }
 
+.ws-form .help-text {
+  font-size: 14px; }
+
 .learn-more {
   margin-top: 4em;
   padding-top: 2.5em !important;
@@ -9088,12 +9091,37 @@ section:after {
     .error-map {
       background-size: cover; } }
 
-.register.section-content {
-  background: #323c53;
-  color: #FFF;
-  margin: 0 auto;
-  padding-top: 1.5em;
-  padding-bottom: 3.5em; }
+.register-and-payment {
+  visibility: visible; }
+  .register-and-payment .ws-container {
+    padding: 0;
+    background-color: #323c53; }
+    @media (min-width: 768px) {
+      .register-and-payment .ws-container {
+        display: flex;
+        padding: 0; } }
+  .register-and-payment .section-content {
+    color: #FFF; }
+    @media (min-width: 768px) {
+      .register-and-payment .section-content {
+        width: 74.5098039216%;
+        float: left;
+        margin-right: 1.9607843137%;
+        padding-right: 0; } }
+  @media (min-width: 960px) {
+    .register-and-payment .fields {
+      width: 54.3859649123%;
+      float: left;
+      margin-right: 2.6315789474%; } }
+  .register-and-payment .fields li {
+    margin-bottom: 1em; }
+  .register-and-payment .ws-form footer {
+    clear: both; }
+  @media (min-width: 960px) {
+    .register-and-payment .contact-sidebar {
+      width: 23.5294117647%;
+      float: right;
+      margin-right: 0; } }
 
 /* Explore
  * ------------------------------------------------------------- */

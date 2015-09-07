@@ -1,0 +1,47 @@
+.register-and-payment {
+	visibility: visible;
+
+	.ws-container {
+		padding: 0;
+		background-color: $gray_base;
+
+		@include susy-media($screen-sm) {
+			display: flex;
+			padding: 0;
+		}
+	}
+
+	.section-content {
+		color: #FFF;
+
+		@include susy-media($screen-sm) {
+			@include span(9);
+			padding-right: 0;
+		}
+	}
+
+	.fields {
+		@include susy-media($screen-md) {
+			@include span(5 of 9);
+		}
+
+		li {
+			margin-bottom: 1em;
+		}
+
+	}
+
+	.ws-form {
+
+		footer {
+			clear: both
+		}
+	}
+
+	.contact-sidebar {
+		@include susy-media($screen-md) {
+			@include span(3 last);
+		}	
+	}
+
+}

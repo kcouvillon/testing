@@ -5,7 +5,7 @@
 
 $classes = 'contact-sidebar';
 
-if( is_page( 'resource-center' ) || is_page( 'register' ) || is_page( 'make-a-payment' ) || is_post_type_archive( 'resource' ) || is_singular( 'resource' ) || is_tax( 'resource-target' ) ) {
+if( is_page( 'resource-center' ) || is_post_type_archive( 'resource' ) || is_singular( 'resource' ) || is_tax( 'resource-target' ) ) {
 	$classes = 'contact-sidebar wide';
 }
 
