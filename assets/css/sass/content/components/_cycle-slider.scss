@@ -5,12 +5,19 @@
 
 .slideshow-header {
 	position: absolute;
-	z-index: 1000;
-	margin: 0 !important;
+	z-index: 100;
+	margin: 0;
 	top: 1em;
 	left: 5vw;
 	color: #fff;
 	@extend %overlay-text;
+
+	.ws-no-js & {
+		position: static;
+		margin: 2em 0 1em;
+		color: $color_text_main;
+		text-shadow: none;
+	}
 }
 
 .cycle-overlay {
@@ -28,6 +35,10 @@
 
 	div:first-of-type {
 		padding-top: 73%;
+	}
+
+	.ws-no-js & {
+		display: none;
 	}
 }
 
@@ -58,6 +69,9 @@
 	z-index: 999;
 	color: #fff;
 	cursor: pointer;
+	.ws-no-js & {
+		display: none;
+	}
 }
 
 .cycle-prev {

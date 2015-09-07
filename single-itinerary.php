@@ -254,12 +254,12 @@ get_header(); ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
 
-				<h2 class="slideshow-header">Highlights</h2>
+				<h3 class="slideshow-header">Highlights</h3>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
 					
-					<div class="cycle-overlay"></div>
+					<div class="cycle-overlay js-only"></div>
 					
 					<?php if ( count($highlights) > 1 ) : ?>
 					<div class="cycle-prev"></div>
@@ -275,6 +275,10 @@ get_header(); ?>
 						     alt=""
 						     data-cycle-title="<?php echo $highlight['title']; ?>"
 						     data-cycle-desc="<?php echo $highlight['caption']; ?>">
+						<div class="no-js-content">
+							<h4><?php echo $highlight['title']; ?></h4>
+							<p><?php echo $highlight['caption']; ?></p>
+						</div>
 					<?php } ?>
 					
 					<?php if ( count($highlights) > 1 ) : ?>

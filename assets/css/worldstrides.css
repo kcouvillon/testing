@@ -6685,6 +6685,12 @@ a.text-color-link {
   clear: both;
   width: 100%; }
 
+.ws-js .no-js-content {
+  display: none !important; }
+
+.ws-no-js .js-only {
+  display: none !important; }
+
 /* Media size indicator (for development purposes).
  * ---------------------------------------------------------------- *
  */
@@ -9971,11 +9977,16 @@ section:after {
 
 .slideshow-header {
   position: absolute;
-  z-index: 1000;
-  margin: 0 !important;
+  z-index: 100;
+  margin: 0;
   top: 1em;
   left: 5vw;
   color: #fff; }
+  .ws-no-js .slideshow-header {
+    position: static;
+    margin: 2em 0 1em;
+    color: #1a1a1a;
+    text-shadow: none; }
 
 .cycle-overlay {
   position: absolute;
@@ -9989,6 +10000,8 @@ section:after {
   height: 100%; }
   .cycle-overlay div:first-of-type {
     padding-top: 73%; }
+  .ws-no-js .cycle-overlay {
+    display: none; }
 
 .cycle-pager {
   position: absolute;
@@ -10012,6 +10025,8 @@ section:after {
   z-index: 999;
   color: #fff;
   cursor: pointer; }
+  .ws-no-js .cycle-prev, .ws-no-js .cycle-next {
+    display: none; }
 
 .cycle-prev:after {
   content: "\25C0";

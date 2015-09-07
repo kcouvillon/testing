@@ -38,6 +38,17 @@ body {
 	width: 100%;
 }
 
+.ws-js {
+	.no-js-content {
+		display: none !important;
+	}
+}
+.ws-no-js {
+	.js-only {
+		display: none !important;
+	}
+}
+
 /* Media size indicator (for development purposes).
  * ---------------------------------------------------------------- *
  */
