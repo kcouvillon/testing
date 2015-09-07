@@ -9977,7 +9977,7 @@ section:after {
 
 .slideshow-header {
   position: absolute;
-  z-index: 100;
+  z-index: 200;
   margin: 0;
   top: 1em;
   left: 5vw;
@@ -9994,7 +9994,7 @@ section:after {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 100;
   color: #fff;
   padding: 0 5vw;
   height: 100%; }
