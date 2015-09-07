@@ -102,8 +102,6 @@ function ws_scripts_styles() {
 		wp_enqueue_style( 'mapbox-style', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css', array(), WS_VERSION );
 		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
 	}
-
-	wp_enqueue_style('ui-autocomplete-style','https://apis.worldstrides.com/mdrapi/css/ws_mdrapiStyle.css', array(), WS_VERSION);
 	
 	// if ( is_singular( 'itinerary' ) ) {
 	// wp_enqueue_script( 'mustache', get_template_directory_uri() . "/assets/js/vendor/mustache.min.js", array(), WS_VERSION, true );

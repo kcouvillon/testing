@@ -1,0 +1,103 @@
+@charset "utf-8";
+/*Hide fields if browser does jquery*/
+
+div.mktoFormRow label[for=companyPhone],
+div.mktoFormRow * #companyPhone {
+	display: none;
+}
+
+div.mktoFormRow label[for=companyZipcode],
+div.mktoFormRow * #companyZipcode {
+	display: none;
+}
+
+
+div.mktoFormRow label[for=companyAddress],
+div.mktoFormRow * #companyAddress {
+	display: none;
+}
+
+div.mktoFormRow label[for=companyAddress2],
+div.mktoFormRow * #companyAddress2 {
+	display: none;
+}
+
+.ui-helper-hidden-accessible {
+	display:none !important;
+}
+.ui-autocomplete {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	float: left;
+	display: none;
+	min-width: 160px;
+	padding: 4px 0;
+	margin: 0 0 10px 25px;
+	list-style: none;
+	background-color: #ffffff;
+	border-color: #ccc;
+	border-color: rgba(0, 0, 0, 0.2);
+	border-style: solid;
+	border-width: 1px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	*border-right-width: 2px;
+	*border-bottom-width: 2px;
+	max-height: 240px;  /* NEW - 2015-04-29 */
+	overflow-y: auto;   /* NEW - 2015-04-29 */
+	overflow-x: hidden; /* NEW - 2015-04-29 */
+}
+
+.ui-menu-item > a.ui-corner-all {
+	display: block;
+	padding: 3px 15px;
+	clear: both;
+	font-weight: normal;
+	line-height: 18px;
+	color: #555555;
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+/*.ui-menu-item > a:hover, .ui-menu-item > a:active {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0088cc;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-image: none;
+}*/
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+	background: #ff8a00;
+	border: none;
+	color:#000;
+	border-radius:0;
+	font-weight: normal;
+}
+
+.modal-dialog {
+	width:375px !important;
+}
+
+.modal-content {
+	border:none !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	border-radius: 0px !important;
+}
+
+.modal-header {
+	border: none !important;
+
+}
