@@ -234,6 +234,7 @@ $associated_itineraries = new WP_Query( array(
 
 						<li class="program tile tile-third" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
+								<?php if( 'interest' === $post_type || 'destination' === $post_type ) : ?>
 								<ul class="meta list-unstyled list-tags">
 									<?php if( 'interest' === $post_type ) : ?>
 										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'destination' ); ?></li>
@@ -241,11 +242,9 @@ $associated_itineraries = new WP_Query( array(
 									<?php elseif( 'destination' === $post_type ) : ?>
 										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'interest' ); ?></li>
 										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'traveler' ); ?></li>
-									<?php elseif( 'traveler' === $post_type ) : ?>
-										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'destination' ); ?></li>
-										<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID, 'interest' ); ?></li>
 									<?php endif; ?>
 								</ul>
+								<?php endif; ?>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
 						</li>
