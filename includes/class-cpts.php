@@ -65,10 +65,7 @@ class WS_Custom_Post_Types {
 		register_extended_post_type( 'itinerary',
 			array(
 				'menu_icon'   => 'dashicons-location-alt',
-				'admin_cols'  => $admin_cols_default,
-				'show_in_rest' => true,
-				'rest_base' => 'itinerary',
-				'rest_controller_class' => 'WP_REST_Posts_Controller'
+				'admin_cols'  => $admin_cols_default
 			),
 			array(
 				'plural' => 'Itineraries'
@@ -81,10 +78,7 @@ class WS_Custom_Post_Types {
 		register_extended_post_type( 'collection',
 			array(
 				'menu_icon' => 'dashicons-format-gallery',
-				'admin_cols'  => $admin_cols_default,
-				'show_in_rest' => true,
-				'rest_base' => 'collection',
-				'rest_controller_class' => 'WP_REST_Posts_Controller'
+				'admin_cols'  => $admin_cols_default
 			)
 		);
 
