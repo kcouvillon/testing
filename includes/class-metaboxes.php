@@ -51,6 +51,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'about_offices' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_offices_programs' ) );
 		add_action( 'cmb2_init',  array( $this, 'taxonomy_metadata_cmb2_init' ) );
+		add_action( 'cmb2_init',  array( $this, 'home_options' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_why_ws' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_select_programs' ) );
@@ -844,6 +845,30 @@ class WS_Metaboxes {
 		 * Instantiate our taxonomy meta class
 		 */
 		$cats = new Taxonomy_MetaData_CMB2( 'resource-target', $metabox_id, __( 'Resource Target Settings', 'taxonomy-metadata' ), $wlo_overrides );
+	}
+
+	/**
+	 * Field group for Home page
+	 */
+	function home_options() {
+
+		$prefix = 'home_options_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Home Options', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array(
+				'key' => 'front-page', 'value' => ''
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name'       => __( 'Divisions Title', 'cmb2' ),
+			'id'         => $prefix . 'divisions_title',
+			'type'       => 'text',
+		) );
+
 	}
 
 	/**
