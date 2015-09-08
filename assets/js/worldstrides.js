@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-09-08
+/*! WorldStrides - v0.1.0 - 2015-09-07
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -549,7 +549,8 @@
 		});
 
 		if( $('#get-info-form').length )  {
-			universalLead();
+			// universalLead();
+			ajaxFormSubmit();
 		}
 
 	});
@@ -904,6 +905,8 @@
 		/**
 		 * Chain off to the Marketo Munchkin API function 'associateLead' to submit user data
 		 */
+		/*
+		 // All of this needs to go into the processing function in php
 		jQuery('#get-info-form').submit(function (e) {
 			var form = this;
 			var action = jQuery('#get-info-form').attr('action');
@@ -930,10 +933,12 @@
 					jQuery('#get-info-form').attr('action',action + '&hash=fail');
 				})
 				.always(function(){
-					form.submit();
+					// form.submit();
+					form.options;
 				});
 
 		});
+		*/
 
 		wsData.states =
 			[
@@ -1195,6 +1200,44 @@
 				}
 			]
 	}
+
+	 function ajaxFormSubmit() {
+
+		 var form = $('#get-info-form'),
+			 options = {
+			 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
+			 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
+			 dataType:  'json',       // 'xml', 'script', or 'json' (expected server response type)
+			 data: {
+				// 'action': 'data_to_marketo',
+			 },
+			 success : function(responseText, statusText, xhr, $form) {
+				 if (responseText.type == "success") {
+					 form.html('Your form has been submitted successfully');
+					 //alert("success");
+				 }
+				 else {
+					 alert("noooooooo!!!");
+				 }
+			 },
+			 // use beforeSubmit to add your nonce to the form data before submitting.
+			 beforeSubmit : function(arr, $form, options){
+				 arr.push( { "name" : "nonce", "value" : worldstrides_ajax.nonce });
+			 }
+
+		 };
+
+		 //console.log('hello, is this me youre lookin for?');
+		 //console.log(options);
+
+		 // capture ajax submit
+		 form.submit( function(event) {
+			event.preventDefault();
+			jQuery.ajax(options);
+			// console.log('zomg!');
+		 });
+
+	 }
  } )( jQuery );
 ( function( $, window, undefined ) {
 	'use strict';
