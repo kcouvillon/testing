@@ -7389,32 +7389,10 @@ a.text-color-link {
   margin-right: auto;
   padding: 0 5vw;
   padding: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column; }
+  overflow: hidden; }
   @media (min-width: 768px) {
     .blog-single-wrap {
-      padding-left: 5vw;
-      flex-direction: row; } }
-
-.blog-single-meta {
-  width: 100%;
-  float: left;
-  margin-left: 0;
-  margin-right: 0;
-  padding-top: 2em;
-  padding-left: 5vw;
-  order: 1; }
-  @media (min-width: 768px) {
-    .blog-single-meta {
-      width: 15.0326797386%;
-      float: left;
-      margin-right: 1.9607843137%;
-      padding-left: 0;
-      order: initial; } }
-  .blog-single-meta .entry-author {
-    margin: 0;
-    margin-bottom: 1em; }
+      padding-left: 5vw; } }
 
 .blog-single-content {
   width: 100%;
@@ -7422,16 +7400,46 @@ a.text-color-link {
   margin-left: 0;
   margin-right: 0;
   padding-top: 2em;
-  padding-left: 2vw;
-  padding-right: 2vw; }
+  padding-left: 5vw;
+  padding-right: 5vw; }
   @media (min-width: 768px) {
     .blog-single-content {
+      width: 66.0130718954%;
+      float: right;
+      margin-right: 0;
+      margin-right: 8.496732%;
+      padding-left: 0;
+      padding-right: 0; } }
+  @media (min-width: 1200px) {
+    .blog-single-content {
       width: 49.0196078431%;
+      float: right;
+      margin-right: 0;
+      margin-right: 33%; } }
+  .blog-single-content .entry-content {
+    margin-top: 0; }
+
+.blog-single-meta {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 2em;
+  padding-left: 5vw; }
+  @media (min-width: 768px) {
+    .blog-single-meta {
+      width: 23.5294117647%;
       float: left;
       margin-right: 1.9607843137%;
       padding-left: 0; } }
-  .blog-single-content .entry-content {
-    margin-top: 0; }
+  @media (min-width: 1200px) {
+    .blog-single-meta {
+      width: 15.0326797386%;
+      float: left;
+      margin-right: 1.9607843137%; } }
+  .blog-single-meta .entry-author {
+    margin: 0;
+    margin-bottom: 1em; }
 
 .postcard .primary-section {
   display: block;
