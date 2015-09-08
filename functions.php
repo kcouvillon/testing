@@ -393,7 +393,8 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
  * Send submitted form data to Marketo using munchkin API
  */
  function data_to_marketo() {
-	WS_Marketo::submit_marketo_data();
+	 WS_Marketo::submit_marketo_data();
+	 wp_die();
  }
 add_action( 'wp_ajax_data_to_marketo', 'data_to_marketo' );
 add_action( 'wp_ajax_nopriv_data_to_marketo', 'data_to_marketo' );
