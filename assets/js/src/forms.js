@@ -21,7 +21,7 @@
 		});
 
 		if( $('#get-info-form').length )  {
-			// universalLead();
+			universalLead();
 			ajaxFormSubmit();
 		}
 
