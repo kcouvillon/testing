@@ -123,10 +123,10 @@ class WS_Marketo {
 	
 	public static function submit_marketo_data() {
 
- 		//print_r("Post Data: \n");
-		//echo '<pre>';
-		//print_r($_POST);
-		//echo '</pre>';
+ 		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
+		echo '<pre>';
+		print_r($_POST);
+		echo '</pre>';
 /*		print_r("\nResult: \n");
 		
 		$lead1 = new stdClass();
