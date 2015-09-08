@@ -549,7 +549,7 @@
 		});
 
 		if( $('#get-info-form').length )  {
-			// universalLead();
+			universalLead();
 			ajaxFormSubmit();
 		}
 
@@ -906,7 +906,7 @@
 		 * Chain off to the Marketo Munchkin API function 'associateLead' to submit user data
 		 */
 		/*
-		 // All of this needs to go into the processing function in php
+		 // All of this needs to go into the processing function in php or maybe the ajax submit
 		jQuery('#get-info-form').submit(function (e) {
 			var form = this;
 			var action = jQuery('#get-info-form').attr('action');
@@ -1203,38 +1203,40 @@
 
 	 function ajaxFormSubmit() {
 
-		 var form = $('#get-info-form'),
-			 options = {
-			 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
-			 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
-			 dataType:  'json',       // 'xml', 'script', or 'json' (expected server response type)
-			 data: {
-				// 'action': 'data_to_marketo',
-			 },
-			 success : function(responseText, statusText, xhr, $form) {
-				 if (responseText.type == "success") {
-					 form.html('Your form has been submitted successfully');
-					 //alert("success");
-				 }
-				 else {
-					 alert("noooooooo!!!");
-				 }
-			 },
-			 // use beforeSubmit to add your nonce to the form data before submitting.
-			 beforeSubmit : function(arr, $form, options){
-				 arr.push( { "name" : "nonce", "value" : worldstrides_ajax.nonce });
-			 }
+		 var form = $('#get-info-form');
+			 // form_data = new FormData( this ),
+			 // first_name = $('#get-info-form').find(),
 
-		 };
-
-		 //console.log('hello, is this me youre lookin for?');
-		 //console.log(options);
 
 		 // capture ajax submit
 		 form.submit( function(event) {
-			event.preventDefault();
-			jQuery.ajax(options);
-			// console.log('zomg!');
+			 // setup AJAX options
+			 var options = {
+				 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
+				 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
+				 // dataType: 'json',       // 'xml', 'script', or 'json' (expected server response type) Note: json doesn't like echos in the php function
+				 data: {
+					 action: 'data_to_marketo',
+					 // not sure if there's a more efficient way to do this
+					 first_name : form.find('input[name="first_name"]').val(),
+					 last_name : form.find('input[name="last_name"]').val(),
+					 email : form.find('input[name="email"]').val(),
+					 phone : form.find('input[name="phone"]').val(),
+					 state : form.find('input[name="get-info-state"]').val(),
+					 city : form.find('input[name="get-info-city"]').val(),
+					 school : form.find('input[name="get-info-school"]').val(),
+					 comments : form.find('#get-info-comment').val(),
+					 // form_data : form.serialize()
+				 },
+				 success : function( responseText ) {
+					 // alert( responseText );
+					 form.html('Your request has been submitted successfully - ' + responseText );
+				 }
+			 };
+
+			 event.preventDefault();
+
+			 jQuery.ajax(options);
 		 });
 
 	 }
