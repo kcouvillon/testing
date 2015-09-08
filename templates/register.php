@@ -13,10 +13,6 @@ get_header(); ?>
 			<header class="section-header pattern-3">
 				<div class="section-header-content">
 					<h1 class="section-title"><?php the_title(); ?></h1>
-
-					<div class="description">
-						<?php the_content(); ?>
-					</div>
 				</div>
 			</header>
 		</section>
@@ -26,6 +22,8 @@ get_header(); ?>
 		<div class="ws-container">
 
 			<section class="section-content">
+
+				<?php the_content(); ?>
 
 				<form class="ws-form">
 					
@@ -41,13 +39,12 @@ get_header(); ?>
 						<li>
 							<label for="payment-trip-id">Trip ID</label>
 							<input type="text" class="payment-field trip-id" name="trip_id" id="payment-trip-id">
-							<span class="help-text">Don’t know your trip ID? Call customer service <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span>
+							<span class="help-text">Don’t know your trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span>
 						</li>
 					</ul>
 
 					<footer>
-						<input type="submit" value="Register" class="btn btn-primary">
-						<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn btn-info">Contact Worldstrides</a>
+						<input type="submit" value="Make a Payment" class="btn btn-primary">
 					</footer>
 
 				</form>

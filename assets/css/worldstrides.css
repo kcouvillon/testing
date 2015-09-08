@@ -9201,37 +9201,39 @@ section:after {
         display: flex;
         padding: 0; } }
   .register-and-payment .section-content {
-    color: #FFF; }
+    color: #FFF;
+    margin-top: 1em; }
     @media (min-width: 768px) {
+      .register-and-payment .section-content {
+        width: 66.0130718954%;
+        float: left;
+        margin-right: 1.9607843137%;
+        padding-right: 0;
+        margin-top: 2%;
+        padding-right: 30%;
+        padding-top: 35px; } }
+    @media (min-width: 1200px) {
       .register-and-payment .section-content {
         width: 74.5098039216%;
         float: left;
-        margin-right: 1.9607843137%;
-        padding-right: 0; } }
-  @media (min-width: 960px) {
-    .register-and-payment .fields {
-      width: 54.3859649123%;
-      float: left;
-      margin-right: 2.6315789474%; } }
+        margin-right: 1.9607843137%; } }
   .register-and-payment .fields li {
     margin-bottom: 1em; }
-  .register-and-payment .ws-form {
-    margin-top: 1em; }
-    @media (min-width: 768px) {
-      .register-and-payment .ws-form {
-        margin-top: 2em; } }
-    .register-and-payment .ws-form footer {
-      clear: both; }
-    .register-and-payment .ws-form .btn, .register-and-payment .ws-form .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .register-and-payment .ws-form button.mktoButton {
-      display: block;
-      margin: 1em 0 0;
-      width: 100%; }
-      @media (min-width: 600px) {
-        .register-and-payment .ws-form .btn, .register-and-payment .ws-form .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .register-and-payment .ws-form button.mktoButton {
-          display: inline-block;
-          margin: 0;
-          width: auto; } }
-  @media (min-width: 960px) {
+  .register-and-payment .ws-form .btn, .register-and-payment .ws-form .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .register-and-payment .ws-form button.mktoButton {
+    display: block;
+    margin: 1em 0 0;
+    width: 100%; }
+    @media (min-width: 600px) {
+      .register-and-payment .ws-form .btn, .register-and-payment .ws-form .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .register-and-payment .ws-form button.mktoButton {
+        display: inline-block;
+        margin: 0;
+        width: auto; } }
+  @media (min-width: 768px) {
+    .register-and-payment .contact-sidebar {
+      width: 32.0261437908%;
+      float: right;
+      margin-right: 0; } }
+  @media (min-width: 1200px) {
     .register-and-payment .contact-sidebar {
       width: 23.5294117647%;
       float: right;
