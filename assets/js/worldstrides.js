@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-09-07
+/*! WorldStrides - v0.1.0 - 2015-09-08
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -579,7 +579,7 @@
 		(function(roleSelect,interestSelect){
 			roleSelect.on('change',function(){
 				console.log(jQuery(this).val());
-				role =  jQuery(this).val();
+				var role =  jQuery(this).val();
 				jQuery('#get-info-wsProduct option').filter('.'+role).show();
 				jQuery('#get-info-wsProduct option').not('.'+role).hide();
 			});
