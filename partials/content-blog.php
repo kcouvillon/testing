@@ -34,14 +34,14 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 			get_template_part( 'partials/content', 'blog-author' );
 		?>
 
-			<div class="entry-content">
+			<div class="entry-content" itemprop="articleBody">
 				<?php the_excerpt(); ?>
 				<a href="<?php the_permalink(); ?>" class="entry-link">Keep Reading</a>
 			</div>
 
 		<?php else : ?>
 
-			<div class="entry-content">
+			<div class="entry-content" itemprop="articleBody">
 				<?php the_content(); ?>
 			</div>
 

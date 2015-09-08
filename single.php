@@ -9,7 +9,12 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 ?>
 
 <div id="primary" class="content-area">
-	<main id="main" class="site-main <?php echo $blog_type; ?>" role="main">
+	<main id="main" class="site-main <?php echo $blog_type; ?>" role="main" itemid="<?php the_permalink(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
+
+		<div class="post-schema" style="display: none;">
+			<?php the_post_thumbnail( 'thumbnail', array( 'itemprop' => 'image' ) ); ?>
+			<meta itemprop="datePublished" content="<?php echo get_the_date('c'); ?>"/>
+		</div>
 
 		<?php
 		$background = '';
@@ -37,8 +42,8 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 						<?php echo get_the_category_list( '>' ); ?>>
 						<span><?php echo get_the_title(); ?></span>
 					</nav>
-					<h1><?php echo get_the_title(); ?></h1>
-					<?php echo get_the_excerpt(); ?>
+					<h1 itemprop="headline"><?php echo get_the_title(); ?></h1>
+					<span itemprop="description"><?php echo get_the_excerpt(); ?></span>
 				</div>
 			<?php endif; ?>
 		</section>

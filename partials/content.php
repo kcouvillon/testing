@@ -19,7 +19,7 @@
 
 		<time><?php the_time( 'F, j Y' ); ?></time>
 
-		<h1 class="entry-title">
+		<h1 class="entry-title" itemprop="headline">
 				<?php the_title(); ?>
 		</h1>
 
@@ -31,11 +31,12 @@
 		<?php endif; ?>
 	</header>
 
-	<div class="entry-content">
+	<div class="entry-content" itemprop="articleBody">
 		<?php the_content(); ?>
 	</div>
 
 	<footer class="entry-footer">
 
 	</footer>
+
 </article>
