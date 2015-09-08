@@ -9189,6 +9189,8 @@ section:after {
     .error-map {
       background-size: cover; } }
 
+/* pages/_register-payment.scss
+ * ======================================================== */
 .register-and-payment {
   visibility: visible; }
   .register-and-payment .ws-container {
@@ -9213,8 +9215,13 @@ section:after {
       margin-right: 2.6315789474%; } }
   .register-and-payment .fields li {
     margin-bottom: 1em; }
-  .register-and-payment .ws-form footer {
-    clear: both; }
+  .register-and-payment .ws-form {
+    margin-top: 1em; }
+    @media (min-width: 768px) {
+      .register-and-payment .ws-form {
+        margin-top: 2em; } }
+    .register-and-payment .ws-form footer {
+      clear: both; }
   @media (min-width: 960px) {
     .register-and-payment .contact-sidebar {
       width: 23.5294117647%;
