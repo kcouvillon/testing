@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Payment
+ * Template Name: Register
  *
  * This is the general template for the Make a Payment page. Make sure this page is selected from the template drop down
  */
