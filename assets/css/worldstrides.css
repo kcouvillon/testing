@@ -9222,6 +9222,15 @@ section:after {
         margin-top: 2em; } }
     .register-and-payment .ws-form footer {
       clear: both; }
+    .register-and-payment .ws-form .btn, .register-and-payment .ws-form .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .register-and-payment .ws-form button.mktoButton {
+      display: block;
+      margin: 1em 0 0;
+      width: 100%; }
+      @media (min-width: 600px) {
+        .register-and-payment .ws-form .btn, .register-and-payment .ws-form .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .register-and-payment .ws-form button.mktoButton {
+          display: inline-block;
+          margin: 0;
+          width: auto; } }
   @media (min-width: 960px) {
     .register-and-payment .contact-sidebar {
       width: 23.5294117647%;
