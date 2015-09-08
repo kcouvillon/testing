@@ -17,18 +17,20 @@
 
 	.section-content {
 		color: #FFF;
-
+		margin-top: 1em;
 		@include susy-media($screen-sm) {
-			@include span(9);
+			@include span(8);
 			padding-right: 0;
+			margin-top: 2%;
+			padding-right: 30%;
+			padding-top: 35px;
+		}
+		@include susy-media($screen-lg) {
+			@include span(9);
 		}
 	}
 
 	.fields {
-		@include susy-media($screen-md) {
-			@include span(5 of 9);
-		}
-
 		li {
 			margin-bottom: 1em;
 		}
@@ -36,20 +38,26 @@
 	}
 
 	.ws-form {
-		margin-top: 1em;
-		@include susy-media($screen-sm) {
-			margin-top: 2em;
-		}
 
-		footer {
-			clear: both
+		.btn {
+			display: block;
+		    margin: 1em 0 0;
+		    width: 100%;
+		    @include susy-media($screen-xs) {
+		    	display: inline-block;
+		    	margin: 0;
+		    	width: auto;
+		    }
 		}
 	}
 
 	.contact-sidebar {
-		@include susy-media($screen-md) {
+		@include susy-media($screen-sm) {
+			@include span(4 last);
+		}
+		@include susy-media($screen-lg) {
 			@include span(3 last);
-		}	
+		}
 	}
 
 }

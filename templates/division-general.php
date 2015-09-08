@@ -242,7 +242,7 @@ get_header(); ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 
 			<section class="section-content programs">
-				<h2 class="section-title">Collections</h2>
+				<h2 class="section-title ws-container">Collections</h2>
 				<ul class="programs-list list-unstyled clearfix">
 					<?php while ( $associated_collections->have_posts() ) : ?>
 						<?php $associated_collections->the_post(); ?>

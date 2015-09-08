@@ -13,10 +13,6 @@ get_header(); ?>
 			<header class="section-header pattern-3">
 				<div class="section-header-content">
 					<h1 class="section-title"><?php the_title(); ?></h1>
-
-					<div class="description">
-						<?php the_content(); ?>
-					</div>
 				</div>
 			</header>
 		</section>
@@ -26,6 +22,8 @@ get_header(); ?>
 		<div class="ws-container">
 
 			<section class="section-content">
+
+				<?php the_content(); ?>
 
 				<form class="ws-form">
 					
@@ -47,7 +45,6 @@ get_header(); ?>
 
 					<footer>
 						<input type="submit" value="Make a Payment" class="btn btn-primary">
-						<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn btn-info">Contact Worldstrides</a>
 					</footer>
 
 				</form>
