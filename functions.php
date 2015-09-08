@@ -121,6 +121,15 @@ function ws_scripts_styles() {
 	
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
+
+	wp_localize_script( "ws",
+		'worldstrides_ajax',
+		array(
+			'ajaxUrl' => admin_url( "admin-ajax{$postfix}.php" ), //url for php file that process ajax request to WP
+			'nonce' => wp_create_nonce( "unique_id_nonce" ),// this is a unique token to prevent form hijacking
+			//'someData' => 'extra data you want  available to JS'
+		)
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
