@@ -126,7 +126,7 @@ function ws_scripts_styles() {
 		'worldstrides_ajax',
 		array(
 			'ajaxUrl' => admin_url( "admin-ajax{$postfix}.php" ), //url for php file that process ajax request to WP
-			'nonce' => wp_create_nonce( "unique_id_nonce" ),// this is a unique token to prevent form hijacking
+			'nonce' => wp_create_nonce( "worldstrides_ajax_nonce" ),// this is a unique token to prevent form hijacking
 			//'someData' => 'extra data you want  available to JS'
 		)
 	);
