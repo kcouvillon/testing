@@ -386,8 +386,8 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
  function data_to_marketo() {
 	WS_Marketo::submit_marketo_data();
  }
-add_action( 'admin_post_data_to_marketo', 'data_to_marketo' );
-add_action( 'admin_post_nopriv_data_to_marketo', 'data_to_marketo' );
+add_action( 'wp_ajax_data_to_marketo', 'data_to_marketo' );
+add_action( 'wp_ajax_nopriv_data_to_marketo', 'data_to_marketo' );
 
 /**
  * Add schema.org markup for Site Name to header
