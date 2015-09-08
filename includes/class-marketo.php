@@ -122,12 +122,11 @@ class WS_Marketo {
 	}
 	
 	public static function submit_marketo_data() {
-		
-	
- 		print_r("Post Data: \n");
-		echo '<pre>';
-		print_r($_POST);
-		echo '</pre>';
+
+ 		//print_r("Post Data: \n");
+		//echo '<pre>';
+		//print_r($_POST);
+		//echo '</pre>';
 /*		print_r("\nResult: \n");
 		
 		$lead1 = new stdClass();
@@ -140,6 +139,8 @@ class WS_Marketo {
 		//$upsert = new WS_MktoUpsertLeads();
 		//$upsert->input = array($lead1);
 		//print_r($upsert->postData());
+
+		// return what?;
 	}
 }
 

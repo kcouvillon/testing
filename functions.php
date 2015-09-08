@@ -121,6 +121,15 @@ function ws_scripts_styles() {
 	
 	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
 	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
+
+	wp_localize_script( "ws",
+		'worldstrides_ajax',
+		array(
+			'ajaxUrl' => admin_url( "admin-ajax.php" ), //url for php file that process ajax request to WP
+			'nonce' => wp_create_nonce( "worldstrides_ajax_nonce" ),// this is a unique token to prevent form hijacking
+			//'someData' => 'extra data you want  available to JS'
+		)
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'ws_scripts_styles' );
@@ -386,8 +395,8 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
  function data_to_marketo() {
 	WS_Marketo::submit_marketo_data();
  }
-add_action( 'admin_post_data_to_marketo', 'data_to_marketo' );
-add_action( 'admin_post_nopriv_data_to_marketo', 'data_to_marketo' );
+add_action( 'wp_ajax_data_to_marketo', 'data_to_marketo' );
+add_action( 'wp_ajax_nopriv_data_to_marketo', 'data_to_marketo' );
 
 /**
  * Add schema.org markup for Site Name to header
