@@ -213,7 +213,7 @@ get_header(); ?>
 						$count = 0;
 						$month = '';
 						$posts = new WP_Query( array(
-							'posts_per_page'         => 30,
+							'posts_per_page'         => 27,
 							'no_found_rows'          => true,
 							'update_post_term_cache' => false,
 							'update_post_meta_cache' => false
@@ -233,7 +233,7 @@ get_header(); ?>
 								$this_month = get_the_date('M \'y');
 								if ( $month !== $this_month ) {
 									$month = $this_month;
-									echo '<li><strong>' . $month . '</strong></li>';
+									echo '<li><small><strong>' . $month . '</strong></small></li>';
 								} ?>
 
 							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
