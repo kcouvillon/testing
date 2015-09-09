@@ -126,7 +126,10 @@ class WS_Marketo {
  		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
 		echo '<pre>';
 		print_r($_POST);
+		print_r($_COOKIE);
 		echo '</pre>';
+		
+		
 /*		print_r("\nResult: \n");
 		
 		$lead1 = new stdClass();
