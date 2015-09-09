@@ -1,5 +1,5 @@
 <form id="get-info-form" action="" class="ws-form">
-	<input type="hidden" name="action" value="data_to_marketo">
+	<input id="get-info-action" type="hidden" name="action" value="data_to_marketo">
 	<div class="left">
 		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 		<ul class="form-fields list-unstyled">
@@ -30,7 +30,7 @@
 			</li>
 			<li id="moremusicfield" class="field" style="display:none;">
 				I want to learn more about
-				<select id="moremusic" name="moremusic">
+				<select id="get-info-moremusic" name="moremusic">
 					<option value="">Select...</option>
 					<option value="Music Festivals">Music Festivals </option>
 					<option value="International Concert Tours">International Concert Tours</option>
@@ -43,7 +43,7 @@
 				</select>
 			</li>
 
-			<li class="field">
+			<li id="get-info-tour-scheduled" class="field">
 				I have a tour scheduled:
 				&nbsp;&nbsp;
 				<input type="radio" name="tour" id="tour-yes" value="yes">

@@ -130,8 +130,6 @@ class WS_Marketo {
 		
 		print_r($_COOKIE['_mkto_trk']);
 		
-
-		
 		$mkto_cookie = urlencode("mkto_trk=".$_COOKIE['_mkto_trk']); // use cookie for associate lead
 		
 		// sanitize and populate lead object:

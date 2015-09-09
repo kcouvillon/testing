@@ -1204,32 +1204,34 @@
 	 function ajaxFormSubmit() {
 
 		 var form = jQuery('#get-info-form');
-			 // form_data = new FormData( this ),
-			 // first_name = $('#get-info-form').find(),
-
-
 		 // capture ajax submit
 		 form.submit( function(event) {
 			 // setup AJAX options
+			 var formData = {};
+			 var elements = form.find('[id^="get-info-"]');
+			 var numEls = elements.length;
+			 var varVal = {};
+			 for(var i=0; i<numEls; i++){
+			 	var el = elements.eq(i);
+			 	var varName = el.attr('id').slice(9); // everything after "get-info-"
+			 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
+			 		var inputs = el.children().filter('input'); // Yes or No
+			 		if(inputs.eq(0).is(':checked')) {
+			 			varVal = inputs.eq(0).val();
+			 		} else {
+			 			varVal = inputs.eq(1).val();
+			 		}
+			 	} else {
+			 		varVal = el.val();
+			 	}
+			 	formData[varName]=varVal;
+			 	console.log(varName+' => '+varVal);
+			 }
 			 var options = {
 				 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
 				 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
-				 // dataType: 'json',       // 'xml', 'script', or 'json' (expected server response type) Note: json doesn't like echos in the php function
-				 data: {
-					 action: 'data_to_marketo',
-					 // not sure if there's a more efficient way to do this
-					 first_name : form.find('input[name="first_name"]').val(),
-					 last_name : form.find('input[name="last_name"]').val(),
-					 email : form.find('input[name="email"]').val(),
-					 phone : form.find('input[name="phone"]').val(),
-					 state : form.find('#get-info-state').val(),
-					 city : form.find('input[name="get-info-city"]').val(),
-					 school : form.find('input[name="get-info-school"]').val(),
-					 comments : form.find('#get-info-comment').val(),
-					 // form_data : form.serialize()
-				 },
+				 data: formData, 
 				 success : function( responseText ) {
-					 // alert( responseText );
 					 form.html('Your request has been submitted successfully - ' + responseText );
 				 }
 			 };
