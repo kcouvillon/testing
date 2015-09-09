@@ -6,20 +6,6 @@ section {
 	@include clearfix;
 }
 
-// Default Page styles
-
-.page-template-default {
-	.section-content {
-		max-width: 900px;
-	}
-}
-
-.home {
-	&.page-template-default .section-content {
-		max-width: 1500px;
-	}
-}
-
 // These styles apply to the section heros that appear on several pages
 .section-nav {
 	position: relative;
@@ -223,6 +209,19 @@ section {
 	margin-top: gutter();
 	margin-bottom: gutter();
 	position: relative;
+
+	.page-template-default & {
+		@include susy-media($screen-sm) {
+			padding-right: 25%;
+		}
+		@include susy-media($screen-lg) {
+			padding-right: 40%;
+		}
+	}
+
+	.home.page-template-default & {
+		@include container();
+	}
 }
 
 @import 'why-worldstrides';
