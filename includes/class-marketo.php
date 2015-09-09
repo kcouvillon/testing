@@ -126,21 +126,38 @@ class WS_Marketo {
  		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
 		echo '<pre>';
 		print_r($_POST);
-		print_r($_COOKIE);
-		echo '</pre>';
+		//print_r($_COOKIE);
 		
+		print_r($_COOKIE['_mkto_trk']);
 		
-/*		print_r("\nResult: \n");
+
 		
-		$lead1 = new stdClass();
-		// $lead1->email = "upsert.test@marketo.com";
-		if(isset($_POST['email'])) {
-			$lead1->email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+		$mkto_cookie = urlencode("mkto_trk=".$_COOKIE['_mkto_trk']); // use cookie for associate lead
+		
+		// sanitize and populate lead object:
+		$lead = new stdClass();
+		
+		// loop through POST array
+		foreach( $_POST as $leadattr => $leadval ) {
+			if( is_array( $leadattr ) ) {
+				foreach( $leadattr as $thing ) {
+					// echo $thing;	// code here for array elements ...
+				}
+			} else {
+				$lead->{$leadattr} = sanitize_text_field($leadval);
+			}
 		}
-		print_r($lead1);
- */
+		print_r("\n");
+		print_r($lead);
+		
+		echo '</pre>';
+
+		
+		// print_r("\nResult: \n");
+		
+ 
 		//$upsert = new WS_MktoUpsertLeads();
-		//$upsert->input = array($lead1);
+		//$upsert->input = array($lead);
 		//print_r($upsert->postData());
 
 		// return what?;

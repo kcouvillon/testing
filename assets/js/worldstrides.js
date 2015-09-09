@@ -1203,7 +1203,7 @@
 
 	 function ajaxFormSubmit() {
 
-		 var form = $('#get-info-form');
+		 var form = jQuery('#get-info-form');
 			 // form_data = new FormData( this ),
 			 // first_name = $('#get-info-form').find(),
 
@@ -1222,7 +1222,7 @@
 					 last_name : form.find('input[name="last_name"]').val(),
 					 email : form.find('input[name="email"]').val(),
 					 phone : form.find('input[name="phone"]').val(),
-					 state : form.find('input[name="get-info-state"]').val(),
+					 state : form.find('#get-info-state').val(),
 					 city : form.find('input[name="get-info-city"]').val(),
 					 school : form.find('input[name="get-info-school"]').val(),
 					 comments : form.find('#get-info-comment').val(),
