@@ -37,7 +37,7 @@ get_header(); ?>
 
 					<h4>Middle School</h4>
 
-					<p><strong>Explore all <a href="<?php echo home_url( '/explore/?travelers=middle-school' ); ?>">Middle School trips »</strong></a></p>
+					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=middle-school' ); ?>">Middle School trips »</strong></a></p>
 
 					<ul class="list-unstyled">
 						<?php
@@ -77,7 +77,7 @@ get_header(); ?>
 
 					<h4>High School</h4>
 
-					<p><strong>Explore all <a href="<?php echo home_url( '/explore/?travelers=high-school' ); ?>">High School trips »</strong></a></p>
+					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=high-school' ); ?>">High School trips »</strong></a></p>
 
 					<ul class="list-unstyled">
 
@@ -117,7 +117,7 @@ get_header(); ?>
 
 					<h4>University</h4>
 
-					<p><strong>Explore all <a href="<?php echo home_url( '/explore/?travelers=undergrad-postgrad' ); ?>">University trips »</strong></a></p>
+					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=undergrad-postgrad' ); ?>">University trips »</strong></a></p>
 
 					<ul class="list-unstyled">
 
@@ -159,7 +159,7 @@ get_header(); ?>
 					<h4>Performing Arts</h4>
 
 					<p><strong>
-						Explore Performing Arts trips for 
+						See Performing Arts trips for 
 						<a href="<?php echo home_url( '/explore/?interests=band' ); ?>">Band</a>,
 						<a href="<?php echo home_url( '/explore/?interests=choir' ); ?>">Choir</a>,
 						<a href="<?php echo home_url( '/explore/?interests=dance-cheer' ); ?>">Dance &amp; Cheer</a>,
@@ -230,7 +230,7 @@ get_header(); ?>
 								} ?>
 
 							<?php 
-								$this_month = get_the_date('M \'y');
+								$this_month = get_the_date('M Y');
 								if ( $month !== $this_month ) {
 									$month = $this_month;
 									echo '<li><small><strong>' . $month . '</strong></small></li>';
@@ -320,6 +320,15 @@ get_header(); ?>
 							<li><a href="<?php echo esc_url( home_url( '/about/partnerships/' ) ); ?>">Partnerships</a></li>
 							<li><a href="<?php echo esc_url( home_url( '/about/careers/' ) ); ?>">Careers</a></li>
 							<li><a href="<?php echo esc_url( home_url( '/about/offices/' ) ); ?>">Offices</a></li>
+							<li><br/></li>
+							<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/register/' ) ); ?>">Register</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/make-a-payment/' ) ); ?>">Make a payment</a></li>
+							<li><a href="http://mytrip.worldstrides.org/login.xml">MyTrip login</a></li>
+							<li><br/></li>
+							<li><a href="<?php echo esc_url( home_url( '/legal-policy/' ) ); ?>">Legal Policy</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/terms-conditions/' ) ); ?>">Terms and Conditions</a></li>
 						</div>
 						<div class="column">
 							<li>
@@ -357,7 +366,7 @@ get_header(); ?>
 									<?php
 									$press = new WP_Query( array(
 										'post_type' => 'press',
-										'posts_per_page'         => -1,
+										'posts_per_page'         => 10,
 										'order'                  => 'ASC',
 										'orderby'                => 'title',
 										'no_found_rows'          => true,
@@ -373,27 +382,6 @@ get_header(); ?>
 							</li>
 						</div>
 					</ul>
-				</section>
-
-				<section class="sitemap-section sitemap-utility">
-
-					<header>
-						<h2>More...</h2>
-					</header>
-
-					<ul class="list-unstyled">
-						<div class="column">
-							<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/register/' ) ); ?>">Register</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/make-a-payment/' ) ); ?>">Make a payment</a></li>
-							<li><a href="http://mytrip.worldstrides.org/login.xml">MyTrip login</a></li>
-						</div><div class="column">
-							<li><a href="<?php echo esc_url( home_url( '/legal-policy/' ) ); ?>">Legal Policy</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/terms-conditions/' ) ); ?>">Terms and Conditions</a></li>
-						</div>
-					</ul>
-
 				</section>
 
 			</section>
