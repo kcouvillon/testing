@@ -1,11 +1,11 @@
 <form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
-	<input id="get-info-action" type="hidden" name="mkto_Action" value="submit_marketo_data">
+	<input id="get-info-action" type="hidden" name="mkto_action" value="data_to_marketo">
 	<div class="left">
 		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 		<ul class="form-fields list-unstyled">
 			<li class="field">
 				My role is
-				<select id="get-info-Title" name="mkto_Job Title" title="Role">
+				<select id="get-info-Title" name="mkto_Title" title="Role">
 					<option value="">Select...</option>
 					<option value="stu">Student</option>
 					<option value="par">Parent</option>
