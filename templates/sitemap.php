@@ -31,11 +31,13 @@ get_header(); ?>
 
 				<section class="sitemap-section sitemap-explore" id="sitemap-explore">
 					<header>
-						<h2>Explore</h2>
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>" class="btn btn-primary hide-print">Explore Our Trips »</a>
+						<h2>Explore Our Trips</h2>
+						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>" class="btn btn-primary hide-print">Explore all Trips »</a>
 					</header>
 
 					<h4>Middle School</h4>
+
+					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=middle-school' ); ?>">Middle School trips »</strong></a></p>
 
 					<ul class="list-unstyled">
 						<?php
@@ -49,7 +51,7 @@ get_header(); ?>
 										'terms'    => 'discoveries'
 									)
 								),
-								'posts_per_page'         => -1,
+								'posts_per_page'         => 30,
 								'no_found_rows'          => true,
 								'update_post_term_cache' => false,
 								'update_post_meta_cache' => false,
@@ -75,6 +77,8 @@ get_header(); ?>
 
 					<h4>High School</h4>
 
+					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=high-school' ); ?>">High School trips »</strong></a></p>
+
 					<ul class="list-unstyled">
 
 						<?php
@@ -88,7 +92,7 @@ get_header(); ?>
 									'terms'    => 'perspectives'
 								)
 							),
-							'posts_per_page'         => -1,
+							'posts_per_page'         => 30,
 							'no_found_rows'          => true,
 							'update_post_term_cache' => false,
 							'update_post_meta_cache' => false,
@@ -113,6 +117,8 @@ get_header(); ?>
 
 					<h4>University</h4>
 
+					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=undergrad-postgrad' ); ?>">University trips »</strong></a></p>
+
 					<ul class="list-unstyled">
 
 						<?php
@@ -126,7 +132,7 @@ get_header(); ?>
 									'terms'    => 'capstone'
 								)
 							),
-							'posts_per_page'         => -1,
+							'posts_per_page'         => 30,
 							'no_found_rows'          => true,
 							'update_post_term_cache' => false,
 							'update_post_meta_cache' => false,
@@ -152,6 +158,15 @@ get_header(); ?>
 
 					<h4>Performing Arts</h4>
 
+					<p><strong>
+						See Performing Arts trips for 
+						<a href="<?php echo home_url( '/explore/?interests=band' ); ?>">Band</a>,
+						<a href="<?php echo home_url( '/explore/?interests=choir' ); ?>">Choir</a>,
+						<a href="<?php echo home_url( '/explore/?interests=dance-cheer' ); ?>">Dance &amp; Cheer</a>,
+						<a href="<?php echo home_url( '/explore/?interests=orchestra' ); ?>">Orchestra</a>, or
+						<a href="<?php echo home_url( '/explore/?interests=theater' ); ?>">Theater</a>.
+					</strong></p>
+
 					<ul class="list-unstyled">
 						<?php
 						$count = 0;
@@ -164,7 +179,7 @@ get_header(); ?>
 									'terms'    => 'on-stage'
 								)
 							),
-							'posts_per_page'         => -1,
+							'posts_per_page'         => 30,
 							'no_found_rows'          => true,
 							'update_post_term_cache' => false,
 							'update_post_meta_cache' => false,
@@ -196,9 +211,9 @@ get_header(); ?>
 					<ul class="list-unstyled">
 						<?php
 						$count = 0;
+						$month = '';
 						$posts = new WP_Query( array(
-
-							'posts_per_page'         => -1,
+							'posts_per_page'         => 27,
 							'no_found_rows'          => true,
 							'update_post_term_cache' => false,
 							'update_post_meta_cache' => false
@@ -210,9 +225,17 @@ get_header(); ?>
 						<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 
 							<?php if ( $count == $posts_per_col ) {
-								echo '</div><div class="column">';
-								$count = 0;
+									echo '</div><div class="column">';
+									$count = 0;
 								} ?>
+
+							<?php 
+								$this_month = get_the_date('M Y');
+								if ( $month !== $this_month ) {
+									$month = $this_month;
+									echo '<li><small><strong>' . $month . '</strong></small></li>';
+								} ?>
+
 							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
 
 						<?php $count++; endwhile; ?>
@@ -227,27 +250,61 @@ get_header(); ?>
 					</header>
 					<ul class="list-unstyled">
 						<?php
-						$count = 0;
-						$posts = new WP_Query( array(
-							'post_type'              => 'resource',
-							'posts_per_page'         => -1,
+						$options = array(
+							'post_type' => 'resource',
+							'posts_per_page'         => 10,
 							'no_found_rows'          => true,
 							'update_post_term_cache' => false,
-							'update_post_meta_cache' => false
-						));
-						$post_count = count( $posts->posts );
-						$posts_per_col = intval( $post_count / 3 ); ?>
+							'update_post_meta_cache' => false,
+							'orderBy'				 => 'title',
+							'order'					 => 'ASC'
+						);
+
+						$edu_resources = new WP_Query( array_merge( $options, array(
+							'tax_query'	=> array( array(
+								'taxonomy' => 'resource-target',
+								'field'	   => 'slug',
+								'terms'	   => 'educators'
+								) 
+							) 
+						) ) );
+
+						$par_resources = new WP_Query( array_merge( $options, array(
+							'tax_query'	=> array( array(
+								'taxonomy' => 'resource-target',
+								'field'	   => 'slug',
+								'terms'	   => 'parents'
+								) 
+							) 
+						) ) );
+
+						$stu_resources = new WP_Query( array_merge( $options, array(
+							'tax_query'	=> array( array(
+								'taxonomy' => 'resource-target',
+								'field'	   => 'slug',
+								'terms'	   => 'students'
+								) 
+							) 
+						) ) ); 
+						?>
 
 						<div class="column">
-						<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
-
-							<?php if ( $count == $posts_per_col ) {
-								echo '</div><div class="column">';
-								$count = 0;
-								} ?>
-							<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
-
-						<?php $count++; endwhile; ?>
+							<li><strong>Educators</strong></li>
+							<?php while ( $edu_resources->have_posts() ) : $edu_resources->the_post(); ?>
+								<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+							<?php endwhile; ?>
+						</div>
+						<div class="column">
+							<li><strong>Parents</strong></li>
+							<?php while ( $par_resources->have_posts() ) : $par_resources->the_post(); ?>
+								<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+							<?php endwhile; ?>
+						</div>
+						<div class="column">
+							<li><strong>Students</strong></li>
+							<?php while ( $stu_resources->have_posts() ) : $stu_resources->the_post(); ?>
+								<li><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+							<?php endwhile; ?>
 						</div>
 					</ul>
 				</section>
@@ -263,6 +320,15 @@ get_header(); ?>
 							<li><a href="<?php echo esc_url( home_url( '/about/partnerships/' ) ); ?>">Partnerships</a></li>
 							<li><a href="<?php echo esc_url( home_url( '/about/careers/' ) ); ?>">Careers</a></li>
 							<li><a href="<?php echo esc_url( home_url( '/about/offices/' ) ); ?>">Offices</a></li>
+							<li><br/></li>
+							<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/register/' ) ); ?>">Register</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/make-a-payment/' ) ); ?>">Make a payment</a></li>
+							<li><a href="http://mytrip.worldstrides.org/login.xml">MyTrip login</a></li>
+							<li><br/></li>
+							<li><a href="<?php echo esc_url( home_url( '/legal-policy/' ) ); ?>">Legal Policy</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/terms-conditions/' ) ); ?>">Terms and Conditions</a></li>
 						</div>
 						<div class="column">
 							<li>
@@ -300,7 +366,7 @@ get_header(); ?>
 									<?php
 									$press = new WP_Query( array(
 										'post_type' => 'press',
-										'posts_per_page'         => -1,
+										'posts_per_page'         => 10,
 										'order'                  => 'ASC',
 										'orderby'                => 'title',
 										'no_found_rows'          => true,
@@ -316,27 +382,6 @@ get_header(); ?>
 							</li>
 						</div>
 					</ul>
-				</section>
-
-				<section class="sitemap-section sitemap-utility">
-
-					<header>
-						<h2>More...</h2>
-					</header>
-
-					<ul class="list-unstyled">
-						<div class="column">
-							<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact Us</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/register/' ) ); ?>">Register</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/make-a-payment/' ) ); ?>">Make a payment</a></li>
-							<li><a href="http://mytrip.worldstrides.org/login.xml">MyTrip login</a></li>
-						</div><div class="column">
-							<li><a href="<?php echo esc_url( home_url( '/legal-policy/' ) ); ?>">Legal Policy</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a></li>
-							<li><a href="<?php echo esc_url( home_url( '/terms-conditions/' ) ); ?>">Terms and Conditions</a></li>
-						</div>
-					</ul>
-
 				</section>
 
 			</section>

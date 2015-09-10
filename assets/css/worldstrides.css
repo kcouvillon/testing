@@ -8254,12 +8254,6 @@ section:after {
 section:after {
   clear: both; }
 
-.page-template-default .section-content {
-  max-width: 900px; }
-
-.home.page-template-default .section-content {
-  max-width: 1500px; }
-
 .section-nav {
   position: relative;
   background: #323c53;
@@ -8419,6 +8413,18 @@ section:after {
     display: table; }
   .section-content:after {
     clear: both; }
+  @media (min-width: 768px) {
+    .page-template-default .section-content {
+      padding-right: 25%; } }
+  @media (min-width: 1200px) {
+    .page-template-default .section-content {
+      padding-right: 40%; } }
+  .home.page-template-default .section-content {
+    display: block;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5vw; }
 
 .why-content > div {
   clear: both;
