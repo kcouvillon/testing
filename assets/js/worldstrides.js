@@ -860,10 +860,10 @@
 		 * Take input from findSchool, fill out hidden fields with information about that school
 		 */
 		wsData.fillOutForm = function(school_name, school_pid, school_Phone, school_Address, school_City, school_State, school_Zip) {
-			jQuery("#companyMDRPID").val(school_pid);
-			jQuery('#companyPhone').val(school_Phone);
-			jQuery('#companyAddress').val(school_Address);
-			jQuery('#companyZipcode').val(school_Zip);
+			jQuery("#get-info-companyMDRPID").val(school_pid);
+			jQuery('#get-info-companyPhone').val(school_Phone);
+			jQuery('#get-info-companyAddress').val(school_Address);
+			jQuery('#get-info-companyZipcode').val(school_Zip);
 		}
 
 		/**
@@ -896,9 +896,8 @@
 				var ws_schoolZip = ws_schoolObject.school_zipcode;
 				var ws_schoolPhone = ws_schoolObject.school_phone;
 
-				alert('TODO: Populate info about '+ws_schoolName+' in hidden fields');
-
 				wsData.fillOutForm(ws_schoolName, ws_schoolPid, ws_schoolPhone, ws_schoolAddress, ws_schoolCity, ws_schoolState, ws_schoolZip);
+				school.attr('name','mkto_Company'); // reset the name for transfer to Marketo
 			}
 		}
 
