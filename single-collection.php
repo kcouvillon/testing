@@ -243,7 +243,6 @@ get_header(); ?>
 			<section class="section-content programs">
 				<header class="programs-header ws-container">
 					<h2 class="section-title"><?php echo $itinerary_title; ?></h2>
-					<?php echo var_dump( $associated_itineraries_override ); ?>
 					<?php if ( "on" === $calendar ) : ?>
 						<div id="jrange" class="dates">
 							<div class="mask">
