@@ -72,6 +72,10 @@ $collections = new WP_Query( $collection_args );
 							<?php } endforeach; ?>
 						</ul>
 						<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+
+						<?php if ( '844' == $post->ID ) : ?>
+							<div class="smithsonian"></div>
+						<?php endif; ?>
 					</div>
 
 				</article>
@@ -115,6 +119,12 @@ $collections = new WP_Query( $collection_args );
 							<?php } endforeach; ?>
 						</ul>
 						<h2 class="tile-title itinerary-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+
+						<?php $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true ); ?>
+
+						<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+							<div class="smithsonian"></div>
+						<?php endif; ?>
 					</div>
 
 				</article>
