@@ -52,6 +52,9 @@
 		a {
 			color: #FFF;
 		}
+		.smithsonian {
+			@include smithsonian( 308px, 38px );
+		}
 	}
 
 	.tile-title {

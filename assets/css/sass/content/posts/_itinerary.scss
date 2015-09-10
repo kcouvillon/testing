@@ -17,6 +17,11 @@
 	}
 }
 
+.section-header {
+	.smithsonian {
+		@include smithsonian;
+	}
+}
 .tour-details {
 	@include container();
 	background-color: $gray_lighter;
