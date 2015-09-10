@@ -31,7 +31,8 @@ if ( $associated_collections_override ) {
 		'no_found_rows'          => true,
 		'update_post_term_cache' => false,
 		'update_post_meta_cache' => false,
-		'post__in'               => $associated_collections_override
+		'post__in'               => $associated_collections_override,
+		'orderby'                => 'post__in'
 	) );
 } else {
 	$post_obj = $wp_query->get_queried_object();

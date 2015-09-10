@@ -36,7 +36,8 @@ if ( $associated_itineraries_override ) {
 		'no_found_rows'          => true,
 		'update_post_term_cache' => false,
 		'update_post_meta_cache' => false,
-		'post__in'               => $associated_itineraries_override
+		'post__in'               => $associated_itineraries_override,
+		'orderby'                => 'post__in'
 	) );
 } else {
 	$post_obj = $wp_query->get_queried_object();
@@ -242,6 +243,7 @@ get_header(); ?>
 			<section class="section-content programs">
 				<header class="programs-header ws-container">
 					<h2 class="section-title"><?php echo $itinerary_title; ?></h2>
+					<?php echo var_dump( $associated_itineraries_override ); ?>
 					<?php if ( "on" === $calendar ) : ?>
 						<div id="jrange" class="dates">
 							<div class="mask">
@@ -294,7 +296,7 @@ get_header(); ?>
 						<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
-									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
+									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); echo $post->ID; ?></a></li>
 								</ul>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
