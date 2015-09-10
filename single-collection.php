@@ -295,7 +295,7 @@ get_header(); ?>
 						<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
-									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); echo $post->ID; ?></a></li>
+									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
 								</ul>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
