@@ -98,6 +98,10 @@ get_header(); ?>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
+
+				<?php if ( '844' == $post->ID ) : ?>
+					<div class="smithsonian"></div>
+				<?php endif; ?>
 				
 			</header>
 
