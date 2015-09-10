@@ -55,6 +55,12 @@ get_header(); ?>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
+				<?php $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true ); ?>
+
+				<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+					<div class="smithsonian"></div>
+				<?php endif; ?>
+
 			</header>
 
 			<nav class="section-nav">
