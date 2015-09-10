@@ -7589,6 +7589,16 @@ a.text-color-link {
     .itinerary h2 {
       margin-top: 0; } }
 
+.section-header .smithsonian {
+  background-image: url(../images/smithsonian-small.png);
+  background-repeat: no-repeat;
+  background-size: 616px 69px;
+  height: 69px;
+  width: 616px;
+  position: absolute;
+  bottom: 2%;
+  right: 2%; }
+
 .tour-details {
   display: block;
   max-width: 1500px;
@@ -10328,6 +10338,15 @@ section:after {
       left: 1.5em; } }
   .tile-content a {
     color: #FFF; }
+  .tile-content .smithsonian {
+    background-image: url(../images/smithsonian-small.png);
+    background-repeat: no-repeat;
+    background-size: 308px 38px;
+    height: 38px;
+    width: 308px;
+    position: absolute;
+    bottom: 2%;
+    right: 2%; }
 
 .tile-title {
   color: #FFF;
