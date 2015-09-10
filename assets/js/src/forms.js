@@ -684,6 +684,9 @@
 			 var varVal = {};
 			 for(var i=0; i<numEls; i++){
 			 	var el = elements.eq(i);
+			 	if(el.attr('name').slice(0,5) !== 'mkto_') { 
+			 		continue; // skip if it's not labeled as mkto_
+			 	}
 			 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
 			 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
 			 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others

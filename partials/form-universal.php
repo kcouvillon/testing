@@ -43,7 +43,7 @@
 				</select>
 			</li>
 
-			<li id="get-info-tour-scheduled" name="mkto_Is Customer" class="field" title="I have a Tour Scheduled">
+			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field" title="I have a Tour Scheduled">
 				I have a tour scheduled:
 				&nbsp;&nbsp;
 				<input type="radio" name="tour" id="tour-yes" value="yes" title="Yes">
@@ -86,7 +86,7 @@
 				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" title="School Name">
 			</li>
 			<li class="field">
-				<textarea id="get-info-comment" name="mkto_form_comments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" title="Comments or Questions"></textarea>
+				<textarea id="get-info-comment" name="mkto_formcomments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" title="Comments or Questions"></textarea>
 			</li>
 		</ul>
 
@@ -95,6 +95,6 @@
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 
-		<input id="get-info-submit" type="submit" name="mkto_ButtonAction" value="Get Info" class="btn btn-primary" title="Get Information">
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary" title="Get Information">
 	</div>
 </form>

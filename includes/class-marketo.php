@@ -142,22 +142,42 @@ class WS_Marketo {
 					// echo $thing;	// code here for array elements ...
 				}
 			} else {
-				$lead->{$leadattr} = sanitize_text_field($leadval);
+				if($leadattr !== 'action'){
+					$lead->{$leadattr} = sanitize_text_field($leadval);
+				}
 			}
 		}
-		print_r("\n");
-		print_r($lead);
+
+		print_r("\ncalling WS_MktoUpsertLeads() ... \n");
 		
+		$upsert = new WS_MktoUpsertLeads();
+		$upsert->input = array($lead);
+		$upsert_result = $upsert->postData();
+		$upsert_obj = json_decode($upsert_result);
+
+		//print_r("\n\nResult Parsed:\n");
+		//print_r($upsert_obj);
+
+		// alias the id:
+		$upsert_id = $upsert_obj->result[0]->id;
+		//print_r($upsert_id);
+
+
+		print_r("\n\nResult Status:\n");
+		// alias the status:
+		$upsert_status = $upsert_obj->result[0]->status;
+		print_r($upsert_status);
+
+
+		if($upsert_status === 'created') {
+			$associate = new WS_MktoAssociateLead($upsert_id,$mkto_cookie);
+			print_r("\n\ncalling WS_MktoAssociateLead() ...\n");
+			print_r($associate->getData());
+		} else {
+			print_r("\n\nNOT calling WS_MktoAssociateLead() because lead is not new (not created) ...\n");
+		}
+
 		echo '</pre>';
-
-		
-		// print_r("\nResult: \n");
-		
- 
-		//$upsert = new WS_MktoUpsertLeads();
-		//$upsert->input = array($lead);
-		//print_r($upsert->postData());
-
 		// return what?;
 	}
 }

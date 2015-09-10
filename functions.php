@@ -39,6 +39,7 @@ include WS_PATH . 'includes/class-comments.php';
 include WS_PATH . 'includes/class-cpts.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
+include WS_PATH . 'includes/class-marketo-associate.php';
 include WS_PATH . 'includes/class-marketo-upsert.php';
 include WS_PATH . 'includes/class-metaboxes.php';
 include WS_PATH . 'includes/class-metaboxes-blocks.php';
