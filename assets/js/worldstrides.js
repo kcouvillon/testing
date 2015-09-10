@@ -1213,7 +1213,7 @@
 			 var varVal = {};
 			 for(var i=0; i<numEls; i++){
 			 	var el = elements.eq(i);
-			 	var varName = el.attr('id').slice(9); // everything after "get-info-"
+			 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
 			 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
 			 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others
 			 		varVal = {};

@@ -1,11 +1,11 @@
-<form id="get-info-form" action="" class="ws-form">
-	<input id="get-info-action" type="hidden" name="action" value="data_to_marketo">
+<form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
+	<input id="get-info-action" type="hidden" name="mkto_Action" value="submit_marketo_data">
 	<div class="left">
 		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 		<ul class="form-fields list-unstyled">
 			<li class="field">
 				My role is
-				<select id="get-info-role" name="Title">
+				<select id="get-info-Title" name="mkto_Job Title" title="Role">
 					<option value="">Select...</option>
 					<option value="stu">Student</option>
 					<option value="par">Parent</option>
@@ -17,7 +17,7 @@
 			</li>
 			<li class="field">
 				I am interested in
-				<select id="get-info-wsProduct" name="wsProduct">
+				<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
 					<option value="Unknown">Select...</option>
 					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
 					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
@@ -30,7 +30,7 @@
 			</li>
 			<li id="moremusicfield" class="field" style="display:none;">
 				I want to learn more about
-				<select id="get-info-moremusic" name="moremusic">
+				<select id="get-info-moremusic" name="mkto_moremusic" title="Musical Interest">
 					<option value="">Select...</option>
 					<option value="Music Festivals">Music Festivals </option>
 					<option value="International Concert Tours">International Concert Tours</option>
@@ -43,13 +43,13 @@
 				</select>
 			</li>
 
-			<li id="get-info-tour-scheduled" class="field">
+			<li id="get-info-tour-scheduled" name="mkto_Is Customer" class="field" title="I have a Tour Scheduled">
 				I have a tour scheduled:
 				&nbsp;&nbsp;
-				<input type="radio" name="tour" id="tour-yes" value="yes">
+				<input type="radio" name="tour" id="tour-yes" value="yes" title="Yes">
 				<label for="tour-yes">Yes</label>
 				&nbsp;
-				<input type="radio" name="tour" id="tour-no" value="no">
+				<input type="radio" name="tour" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
 			</li>
 		</ul>
@@ -58,37 +58,37 @@
 		<ul class="form-fields list-unstyled">
 			<li class="field field-complex">
 				<div class="field-left">
-					<input id="get-info-first-name" type="text" name="first_name" value="" placeholder="First Name">
+					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" title="First Name">
 				</div>
 				<div class="field-right">
-					<input id="get-info-last-name" type="text" name="last_name" value="" placeholder="Last Name">
+					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" title="Last Name">
 				</div>
 			</li>
 			<li class="field field-complex">
 				<div class="field-left">
-					<input id="get-info-email" type="email" name="email" value="" placeholder="Email Address">
+					<input id="get-info-email" type="email" name="mkto_Email" value="" placeholder="Email Address" title="Email Address">
 				</div>
 				<div class="field-right">
-					<input id="get-info-phone" type="tel" name="phone" value="" placeholder="Phone Number">
+					<input id="get-info-phone" type="tel" name="mkto_Phone" value="" placeholder="Phone Number" title="Preferred Phone Number">
 				</div>
 			</li>
 			<li class="field field-complex">
 				<div class="field-left">
-					<select id="get-info-state" name="get-info-state">
+					<select id="get-info-state" name="mkto_companyState" title="School State">
 						<option value="">Select State...</option>
 					</select>
 				</div>
 				<div class="field-right">
-					<input id="get-info-city" type="text" name="get-info-city" value="" placeholder="City">
+					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" title="School City">
 				</div>
 			</li>
 			<li class="field">
-				<input id="get-info-school" type="text" name="get-info-school" value="" placeholder="School Name">
+				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" title="School Name">
 			</li>
 			<li class="field">
-				<textarea id="get-info-comment" name="get-info-comment" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" ></textarea>
+				<textarea id="get-info-comment" name="mkto_form_comments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" title="Comments or Questions"></textarea>
 			</li>
 		</ul>
-		<input id="get-info-submit" type="submit" name="" value="Get Info" class="btn btn-primary">
+		<input id="get-info-submit" type="submit" name="mkto_ButtonAction" value="Get Info" class="btn btn-primary" title="Get Information">
 	</div>
 </form>
