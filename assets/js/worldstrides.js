@@ -534,21 +534,21 @@
 
 
 })(jQuery);
-( function( $, window, undefined ) {
+( function( jQuery, window, undefined ) {
 	'use strict';
 
 	// MARKETO FORM BEHAVIOR
 
-	$(document).ready(function() {
+	jQuery(document).ready(function() {
 		var marketoTitle = '';
 
 		setTimeout( checkRows, 2000 );
 		
-		$(document).on( 'change', '#Title', function() {
+		jQuery(document).on( 'change', '#Title', function() {
 			checkRows();
 		});
 
-		if( $('#get-info-form').length )  {
+		if( jQuery('#get-info-form').length )  {
 			universalLead();
 			ajaxFormSubmit();
 		}
@@ -559,12 +559,12 @@
 		var marketoTitle = document.querySelector('#Title');
 		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
 
-		$(marketoFormRow).each(function() {
-			if( $(this).children('.mktoPlaceholder').length ) {
-				$(this).addClass('hidden');
+		jQuery(marketoFormRow).each(function() {
+			if( jQuery(this).children('.mktoPlaceholder').length ) {
+				jQuery(this).addClass('hidden');
 				console.log('hide');
 			} else {
-				$(this).removeClass('hidden');
+				jQuery(this).removeClass('hidden');
 				console.log('show');
 			}
 		});
@@ -1215,12 +1215,13 @@
 			 	var el = elements.eq(i);
 			 	var varName = el.attr('id').slice(9); // everything after "get-info-"
 			 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
-			 		var inputs = el.children().filter('input'); // Yes or No
-			 		if(inputs.eq(0).is(':checked')) {
-			 			varVal = inputs.eq(0).val();
-			 		} else {
-			 			varVal = inputs.eq(1).val();
-			 		}
+			 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others
+			 		varVal = {};
+			 		for(var j=0; j<inputs.length; j++){
+				 		if(inputs.eq(j).is(':checked')) {
+				 			varVal = inputs.eq(j).val();
+				 		}
+				 	}
 			 	} else {
 			 		varVal = el.val();
 			 	}
