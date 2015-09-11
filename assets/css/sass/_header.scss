@@ -10,6 +10,10 @@
 		padding-bottom: em(38);
 	}
 
+	@media only print {
+		padding: 0;
+	}
+
 	a {
 		color: #fff;
 		&:hover {
@@ -82,7 +86,8 @@
 }
 
 .print-logo {
-	margin: 0 0 2em;
+	margin: 0 0 1em;
+    font-size: 24px;
 }
 
 .main-navigation, .quick-access {

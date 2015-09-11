@@ -291,6 +291,12 @@ $associated_itineraries = new WP_Query( array(
 									<?php endif; ?>
 								</ul>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+
+								<?php $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true ); ?>
+
+								<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+									<div class="smithsonian"></div>
+								<?php endif; ?>
 							</div>
 						</li>
 

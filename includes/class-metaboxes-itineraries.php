@@ -62,6 +62,18 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		$cmb->add_field( array(
+			'name'             => 'Itinerary Type',
+			'id'               => 'itinerary_type',
+			'type'             => 'select',
+			'show_option_none' => false,
+			'default'          => 'Regular',
+			'options'          => array(
+				'regular' => __( 'Regular', 'cmb' ),
+				'smithsonian'   => __( 'Smithsonian', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
 			'name' => __( 'PDF', 'cmb2' ),
 			'id'   => 'itinerary_pdf',
 			'type' => 'file'

@@ -20,6 +20,14 @@
 // 	}
 // }
 
+a {
+	&[href]:after {
+	@media print {
+		content: none !important;	
+	}		
+	}
+}
+
 a, .entry-title, button {
 	transition: color 250ms ease, background-color 250ms ease;
 }

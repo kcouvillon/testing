@@ -75,6 +75,10 @@ section {
 .transparent-header .primary-section {
 	margin-top: -158px;
 	padding-top: 100px !important;
+	@media only print {
+		margin-top: 0;
+		padding: 0;
+	}
 
 	.section-header {
 		margin-top: -100px;
@@ -89,6 +93,10 @@ section {
 .transparent-header.has-featured-image .primary-section {
 	.section-header {
 		min-height: 75vh;
+		@media only print {
+			min-height: 0;
+			padding: 0;
+		}
 	}
 }
 
@@ -200,6 +208,10 @@ section {
 		.header-subtitle {
 			font-weight: 400;
 		}
+	}
+
+	.smithsonian {
+		max-width: 300px;
 	}
 }
 

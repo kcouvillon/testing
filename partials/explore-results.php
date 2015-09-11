@@ -71,6 +71,10 @@ $collections = new WP_Query( $collection_args );
 								<li><?php echo $term->name; ?></li>
 							<?php } endforeach; ?>
 						</ul>
+						<?php if ( '844' == $post->ID ) : ?>
+							<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+							<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
+						<?php endif; ?>
 						<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					</div>
 
@@ -96,6 +100,7 @@ $collections = new WP_Query( $collection_args );
 				$terms = get_the_terms( get_the_ID(), 'filter' );
 				$count++;	
 				$post_class = ( $count <= 9 ) ? 'tile tile-third' : 'tile tile-third';
+				$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 				if ( has_post_thumbnail() ) {
 					$thumb_id = get_post_thumbnail_id();
 					$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
@@ -114,6 +119,10 @@ $collections = new WP_Query( $collection_args );
 								<li><?php echo $term->name; ?></li>
 							<?php } endforeach; ?>
 						</ul>
+						<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+							<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+							<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
+						<?php endif; ?>
 						<h2 class="tile-title itinerary-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					</div>
 

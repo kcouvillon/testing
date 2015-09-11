@@ -14,6 +14,7 @@ get_header(); ?>
 		$terms = get_the_terms( $post->ID, '_collection' );
 		$term  = $terms[0];
 		$phone = get_post_meta( $post->ID, 'itinerary_phone', true );
+		$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 		?>
 
 		<?php
@@ -30,13 +31,14 @@ get_header(); ?>
 				<div class="section-header-content">
 
 					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-						<span>Collections</span>>
+						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>
+						<span>Collections</span>
 						<?php if( ! empty( $term ) ) : ?>
 							<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
 						<?php endif; ?>
 						<span><?php the_title(); ?></span>
 					</nav>
+					<span class="print-only"><?php the_permalink(); ?></span>
 					<h1><?php the_title(); ?></h1>
 
 					<?php $subtitle = get_post_meta( $post->ID, 'itinerary_subtitle', true ); ?>
@@ -47,9 +49,12 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 
-					<p class="print-only"><?php the_permalink(); ?></p>
+					<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+						<h3 class="hide-print"><img class="smithsonian" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian.png' ); ?>" /></h3>
+					<?php endif; ?>
+
 					<?php if ( $phone ) : ?>
-					<p class="print-only"><?php echo $phone; ?></p>
+					<p class="print-only">Call for more information: <?php echo $phone; ?></p>
 					<?php endif; ?>
 				</div>
 
@@ -57,8 +62,8 @@ get_header(); ?>
 
 			</header>
 
-			<nav class="section-nav">
-				<ul class="section-menu hide-print">
+			<nav class="section-nav hide-print">
+				<ul class="section-menu">
 					<?php
 					$section_link = 1;
 
@@ -302,7 +307,7 @@ get_header(); ?>
 							$lat = $highlight['itinerary_highlights_location']['latitude'];
 							$map_id = 'worldstrides.b898407f';
 							$pin = urlencode('http://wsbeta.co/wp-content/themes/worldstrides/assets/images/pin-orange.png');
-							$src = 'https://api.tiles.mapbox.com/v4/'.$map_id.'/url-'.$pin.'('.$lon.','.$lat.')/'.$lon.','.$lat.',14/250x120.png?access_token=pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
+							$src = 'https://api.tiles.mapbox.com/v4/'.$map_id.'/url-'.$pin.'('.$lon.','.$lat.')/'.$lon.','.$lat.',8/250x120.png?access_token=pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
 						?>
 						<img src="<?php echo $src; ?>" width="250" height="120" />
 						<h4><strong><?php echo $highlight['title']; ?></strong></h4>

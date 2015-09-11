@@ -6418,6 +6418,10 @@ img {
 /*--------------------------------------------------------------
 5.1 Links
 --------------------------------------------------------------*/
+@media print {
+  a[href]:after {
+    content: none !important; } }
+
 a, .entry-title, button {
   transition: color 250ms ease, background-color 250ms ease; }
 
@@ -6750,7 +6754,7 @@ a.text-color-link {
 
 @media only print {
   body {
-    font-size: 14px;
+    font-size: 12px;
     margin: 2em 72px 3em; } }
 
 .entry-content:before,
@@ -6825,6 +6829,9 @@ a.text-color-link {
     .site-header {
       padding-top: 2.1875em;
       padding-bottom: 2.375em; } }
+  @media only print {
+    .site-header {
+      padding: 0; } }
   .site-header a {
     color: #fff; }
     .site-header a:hover {
@@ -6880,7 +6887,8 @@ a.text-color-link {
     display: none; }
 
 .print-logo {
-  margin: 0 0 2em; }
+  margin: 0 0 1em;
+  font-size: 24px; }
 
 .main-navigation, .quick-access {
   clear: both;
@@ -7155,6 +7163,8 @@ a.text-color-link {
   margin: 0;
   font-size: 1.875em; }
 
+/* blog.scss
+ * -------------------------------------------------- */
 .blog .section-header, .single .section-header {
   margin-bottom: 0; }
 
@@ -7193,7 +7203,7 @@ a.text-color-link {
   margin-bottom: 3em; }
 
 .blog .entry-header, .single .entry-header {
-  margin-left: -9%;
+  margin-left: -5vw;
   padding: 0 0 0 5vw; }
   .blog .entry-header .post-categories, .single .entry-header .post-categories {
     list-style: none;
@@ -7333,11 +7343,10 @@ a.text-color-link {
       margin-right: 0; } }
   .sidebar .entry-header {
     margin-left: 0;
-    padding-left: 2vw; }
+    padding-left: 5vw; }
     @media (min-width: 768px) {
       .sidebar .entry-header {
-        margin-left: -9%;
-        padding-left: 5vw; } }
+        padding-left: 2vw; } }
     .sidebar .entry-header .post-categories {
       margin-top: 15vh; }
       @media (min-width: 768px) {
@@ -7348,8 +7357,11 @@ a.text-color-link {
   .sidebar .entry-title {
     font-size: 1.875em; }
   .sidebar .entry-content {
-    margin-left: 2vw;
+    margin-left: 5vw;
     margin-right: 3vw; }
+    @media (min-width: 768px) {
+      .sidebar .entry-content {
+        margin-left: 2vw; } }
 
 .entry-author {
   max-width: 180px;
@@ -7587,7 +7599,23 @@ a.text-color-link {
   margin-bottom: 30px; }
   @media print {
     .itinerary h2 {
-      margin-top: 0; } }
+      font-size: 18px;
+      margin: 1em 0;
+      padding: 0; } }
+
+@media print {
+  .itinerary h4 {
+    font-size: 14px;
+    margin: 1em 0; } }
+
+@media print {
+  .itinerary img.alignleft,
+  .itinerary img.alignright,
+  .itinerary img.aligncenter {
+    width: 33.333%;
+    float: none;
+    display: block;
+    margin: 0 0 1em; } }
 
 .tour-details {
   display: block;
@@ -7599,13 +7627,16 @@ a.text-color-link {
   padding-bottom: 1.5em; }
   @media only print {
     .tour-details {
-      border-bottom: 1px solid #707787; } }
+      border-bottom: 1px solid #707787;
+      border-top: 1px solid #707787;
+      padding: 0 0 1em; } }
   .tour-details .h3 {
     font-weight: 700;
     position: relative; }
     @media only print {
       .tour-details .h3 {
-        font-size: 22px; } }
+        font-size: 14px;
+        margin: 1em 0; } }
     .tour-details .h3 .icon {
       display: inline-block;
       color: #3076bc;
@@ -7823,7 +7854,7 @@ a.text-color-link {
   @media only print {
     .tour-itinerary {
       border-top: 1px solid #707787;
-      padding-top: 2em; } }
+      padding-top: 1em; } }
 
 .tour-day:before,
 .tour-day:after {
@@ -7835,7 +7866,7 @@ a.text-color-link {
 
 @media print {
   .tour-day {
-    margin-top: 4em; } }
+    margin-top: 2em; } }
 
 .tour-day .tour-hero {
   background-size: cover;
@@ -7865,8 +7896,12 @@ a.text-color-link {
   float: left; }
   @media print {
     .tour-day .tour-day-marker {
-      width: 50px;
-      min-width: 0; } }
+      width: 30px;
+      min-width: 0;
+      height: 25px;
+      float: none;
+      display: block;
+      margin: 0; } }
 
 .tour-day .tour-day-number {
   width: 6.5359477124%;
@@ -7882,14 +7917,15 @@ a.text-color-link {
   float: left; }
   @media print {
     .tour-day .tour-day-number {
-      border: 4px solid #3076bc;
+      border: 2px solid #3076bc;
       border-bottom-width: 8px;
-      float: left;
-      font-size: 2em;
+      font-size: 16px;
+      float: none;
       padding: 4px 0 0;
-      width: 50px;
-      height: 50px;
-      min-width: 0; } }
+      width: 30px;
+      height: 35px;
+      min-width: 0;
+      display: block; } }
 
 .tour-day > header > .h3 {
   width: 100%;
@@ -7907,7 +7943,8 @@ a.text-color-link {
     .tour-day > header > .h3 {
       float: left;
       width: auto;
-      margin: 0.5em 0;
+      font-size: 14px;
+      margin: 1em 0;
       clear: both; } }
 
 .tour-day .day-wrap {
@@ -7977,8 +8014,10 @@ a.text-color-link {
       left: -55px; }
     @media print {
       .tour-day .tour-activity-list li:after {
-        left: -20px;
-        top: 5px; } }
+        left: -15px;
+        top: 7px;
+        width: 6px;
+        height: 6px; } }
 
 .tour-day .tour-related-posts {
   width: 100%;
@@ -8309,6 +8348,10 @@ section:after {
 .transparent-header .primary-section {
   margin-top: -158px;
   padding-top: 100px !important; }
+  @media only print {
+    .transparent-header .primary-section {
+      margin-top: 0;
+      padding: 0; } }
   .transparent-header .primary-section .section-header {
     margin-top: -100px;
     padding-top: 140px;
@@ -8319,6 +8362,10 @@ section:after {
 
 .transparent-header.has-featured-image .primary-section .section-header {
   min-height: 75vh; }
+  @media only print {
+    .transparent-header.has-featured-image .primary-section .section-header {
+      min-height: 0;
+      padding: 0; } }
 
 .solid-header .primary-section {
   margin-top: 0; }
@@ -8397,6 +8444,8 @@ section:after {
       font-weight: 700; }
     .primary-section .section-header-content .header-subtitle {
       font-weight: 400; }
+  .section-header-content .smithsonian {
+    max-width: 300px; }
 
 .section-content {
   display: block;
@@ -9676,12 +9725,14 @@ section:after {
       border-bottom: 0; }
       .explore-results .tile.has-post-thumbnail {
         background-size: cover; } }
-  .explore-results .tile img {
+  .explore-results .tile .itinerary-image,
+  .explore-results .tile .collection-image {
     float: left;
     margin-right: 5%;
     width: 25%; }
     @media screen and (min-width: 768px) {
-      .explore-results .tile img {
+      .explore-results .tile .itinerary-image,
+      .explore-results .tile .collection-image {
         display: none; } }
   .explore-results .tile .tile-content {
     position: static;
@@ -10002,13 +10053,30 @@ section:after {
   .ws-block {
     display: flex; } }
 
+@media only print {
+  .ws-block {
+    display: block; } }
+
 .ws-block h3, .ws-block .h3 {
   font-weight: 700; }
+  @media only print {
+    .ws-block h3, .ws-block .h3 {
+      font-size: 16px;
+      margin: 1em 0; } }
 
 .block-text {
   background: #f2f2f4;
   padding-top: 5vh;
   padding-bottom: 10vh; }
+  .block-text:before,
+  .block-text:after {
+    content: "";
+    display: table; }
+  .block-text:after {
+    clear: both; }
+  @media only print {
+    .block-text {
+      padding: 1em 0; } }
 
 .block-image-right .block-image {
   width: 100%;
@@ -10020,6 +10088,11 @@ section:after {
       width: 59.477124183%;
       float: left;
       order: 2; } }
+  @media only print {
+    .block-image-right .block-image {
+      width: 100%;
+      margin: 1em 0;
+      float: none; } }
 
 .block-image-right .block-text {
   width: 100%;
@@ -10035,6 +10108,12 @@ section:after {
       padding-left: 5vw;
       padding-right: 5vw;
       order: 1; } }
+  @media only print {
+    .block-image-right .block-text {
+      width: 100%;
+      padding: 0;
+      float: none;
+      margin: 1em 0; } }
 
 .block-image-left .block-image {
   width: 100%;
@@ -10046,6 +10125,11 @@ section:after {
       width: 59.477124183%;
       float: left;
       order: 1; } }
+  @media only print {
+    .block-image-left .block-image {
+      width: 100%;
+      margin: 1em 0;
+      float: none; } }
 
 .block-image-left .block-text {
   width: 100%;
@@ -10061,6 +10145,12 @@ section:after {
       padding-left: 5vw;
       padding-right: 5vw;
       order: 2; } }
+  @media only print {
+    .block-image-left .block-text {
+      width: 100%;
+      padding: 0;
+      float: none;
+      margin: 1em 0; } }
 
 .block-single-col .block-text {
   padding-left: 5vw;
@@ -10070,12 +10160,18 @@ section:after {
       padding-left: 16.9934640523%;
       padding-right: 16.9934640523%;
       width: 100%; } }
+  @media print {
+    .block-single-col .block-text {
+      padding: 1em 0; } }
   .block-single-col .block-text iframe {
     width: 100%; }
 
 .block-two-col .block-text {
   padding-left: 5vw;
   padding-right: 5vw; }
+  @media only print {
+    .block-two-col .block-text {
+      padding: 1em 0; } }
 
 @media (min-width: 768px) {
   .block-two-col .block-text-column {
@@ -10093,7 +10189,10 @@ section:after {
 
 @media only print {
   .block-two-col .block-text-column {
-    width: 100%; } }
+    width: 100%;
+    float: none;
+    clear: both !important;
+    margin: 0 !important; } }
 
 .cycle-slideshow {
   position: relative;
@@ -10328,6 +10427,22 @@ section:after {
       left: 1.5em; } }
   .tile-content a {
     color: #FFF; }
+
+.smithsonian-image {
+  display: none;
+  margin: 0.4em 0 0.7em;
+  max-width: 250px; }
+  @media screen and (min-width: 768px) {
+    .smithsonian-image {
+      display: block; } }
+
+.smithsonian-image-mobile {
+  display: block;
+  margin: 0 0 0.5em;
+  max-width: 200px; }
+  @media screen and (min-width: 768px) {
+    .smithsonian-image-mobile {
+      display: none; } }
 
 .tile-title {
   color: #FFF;

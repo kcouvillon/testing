@@ -36,7 +36,8 @@ if ( $associated_itineraries_override ) {
 		'no_found_rows'          => true,
 		'update_post_term_cache' => false,
 		'update_post_meta_cache' => false,
-		'post__in'               => $associated_itineraries_override
+		'post__in'               => $associated_itineraries_override,
+		'orderby'                => 'post__in'
 	) );
 } else {
 	$post_obj = $wp_query->get_queried_object();
@@ -265,6 +266,7 @@ get_header(); ?>
 						
 						<?php
 						$associated_itineraries->the_post();
+						$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 
 						$background = '';
 						if( has_post_thumbnail( $post->ID ) ) {
@@ -296,6 +298,9 @@ get_header(); ?>
 								<ul class="meta list-unstyled">
 									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
 								</ul>
+								<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+								<?php endif; ?>
 								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
 						</li>
