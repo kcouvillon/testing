@@ -98,10 +98,6 @@ get_header(); ?>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
-
-				<?php if ( '844' == $post->ID ) : ?>
-					<div class="smithsonian"></div>
-				<?php endif; ?>
 				
 			</header>
 
@@ -270,6 +266,7 @@ get_header(); ?>
 						
 						<?php
 						$associated_itineraries->the_post();
+						$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 
 						$background = '';
 						if( has_post_thumbnail( $post->ID ) ) {
@@ -301,13 +298,10 @@ get_header(); ?>
 								<ul class="meta list-unstyled">
 									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
 								</ul>
-								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-
-								<?php $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true ); ?>
-
 								<?php if ( 'smithsonian' == $itinerary_type ) : ?>
-									<div class="smithsonian"></div>
+									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 								<?php endif; ?>
+								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							</div>
 						</li>
 

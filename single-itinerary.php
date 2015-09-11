@@ -14,6 +14,7 @@ get_header(); ?>
 		$terms = get_the_terms( $post->ID, '_collection' );
 		$term  = $terms[0];
 		$phone = get_post_meta( $post->ID, 'itinerary_phone', true );
+		$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 		?>
 
 		<?php
@@ -47,6 +48,10 @@ get_header(); ?>
 
 					<?php the_content(); ?>
 
+					<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+						<h3 class="hide-print"><img class="smithsonian" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian.png' ); ?>" /></h3>
+					<?php endif; ?>
+
 					<p class="print-only"><?php the_permalink(); ?></p>
 					<?php if ( $phone ) : ?>
 					<p class="print-only"><?php echo $phone; ?></p>
@@ -54,12 +59,6 @@ get_header(); ?>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
-
-				<?php $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true ); ?>
-
-				<?php if ( 'smithsonian' == $itinerary_type ) : ?>
-					<div class="smithsonian"></div>
-				<?php endif; ?>
 
 			</header>
 
