@@ -71,11 +71,11 @@ $collections = new WP_Query( $collection_args );
 								<li><?php echo $term->name; ?></li>
 							<?php } endforeach; ?>
 						</ul>
-						<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-
 						<?php if ( '844' == $post->ID ) : ?>
-							<div class="smithsonian"></div>
+							<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+							<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
 						<?php endif; ?>
+						<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 					</div>
 
 				</article>
