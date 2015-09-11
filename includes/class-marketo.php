@@ -178,6 +178,13 @@ class WS_Marketo {
 			print_r("\n\nNOT calling WS_MktoAssociateLead() because lead is not new (not created) ...\n");
 		}
 
+		print_r("\n\ncalling WS_MktoRequestCampaign() ...\n");
+		$request = new WS_MktoRequestCampaign();
+		$request_lead = new stdClass();
+		$request_lead->id = $upsert_id; // reuse the Lead ID from the Upsert call
+		$request->leads = array($request_lead);
+		print_r($request->postData());
+
 		echo '</pre>';
 		// return what?;
 	}
