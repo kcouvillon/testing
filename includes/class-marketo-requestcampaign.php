@@ -41,8 +41,9 @@ class WS_MktoRequestCampaign{
 	}
 	private function bodyBuilder(){
 		$body = new stdClass();
-		if (isset($this->tokens)){
-			$body->tokens = $this->tokens;
+		if (isset($this->leads)){ 		// sample code used 'tokens' - not used here
+			$body->input = new stdClass();
+			$body->input->leads = $this->leads;//  using 'leads' instead
 		}
 		$json = json_encode($body);
 		return $json;
