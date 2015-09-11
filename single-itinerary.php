@@ -31,13 +31,14 @@ get_header(); ?>
 				<div class="section-header-content">
 
 					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-						<span>Collections</span>>
+						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>
+						<span>Collections</span>
 						<?php if( ! empty( $term ) ) : ?>
 							<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
 						<?php endif; ?>
 						<span><?php the_title(); ?></span>
 					</nav>
+					<span class="print-only"><?php the_permalink(); ?></span>
 					<h1><?php the_title(); ?></h1>
 
 					<?php $subtitle = get_post_meta( $post->ID, 'itinerary_subtitle', true ); ?>
@@ -52,9 +53,8 @@ get_header(); ?>
 						<h3 class="hide-print"><img class="smithsonian" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian.png' ); ?>" /></h3>
 					<?php endif; ?>
 
-					<p class="print-only"><?php the_permalink(); ?></p>
 					<?php if ( $phone ) : ?>
-					<p class="print-only"><?php echo $phone; ?></p>
+					<p class="print-only">Call for more information: <?php echo $phone; ?></p>
 					<?php endif; ?>
 				</div>
 

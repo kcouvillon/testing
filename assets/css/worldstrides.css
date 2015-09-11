@@ -6754,7 +6754,7 @@ a.text-color-link {
 
 @media only print {
   body {
-    font-size: 14px;
+    font-size: 12px;
     margin: 2em 72px 3em; } }
 
 .entry-content:before,
@@ -6884,7 +6884,8 @@ a.text-color-link {
     display: none; }
 
 .print-logo {
-  margin: 0 0 2em; }
+  margin: 0 0 1em;
+  font-size: 24px; }
 
 .main-navigation, .quick-access {
   clear: both;
@@ -7595,7 +7596,19 @@ a.text-color-link {
   margin-bottom: 30px; }
   @media print {
     .itinerary h2 {
-      margin-top: 0; } }
+      font-size: 18px;
+      margin: 1em 0; } }
+
+@media print {
+  .itinerary h4 {
+    font-size: 14px;
+    margin: 1em 0; } }
+
+@media print {
+  .itinerary img.alignleft,
+  .itinerary img.alignright,
+  .itinerary img.aligncenter {
+    width: 33.333%; } }
 
 .tour-details {
   display: block;
@@ -7613,7 +7626,8 @@ a.text-color-link {
     position: relative; }
     @media only print {
       .tour-details .h3 {
-        font-size: 22px; } }
+        font-size: 14px;
+        margin: 1em 0; } }
     .tour-details .h3 .icon {
       display: inline-block;
       color: #3076bc;
@@ -7831,7 +7845,7 @@ a.text-color-link {
   @media only print {
     .tour-itinerary {
       border-top: 1px solid #707787;
-      padding-top: 2em; } }
+      padding-top: 1em; } }
 
 .tour-day:before,
 .tour-day:after {
@@ -7843,7 +7857,7 @@ a.text-color-link {
 
 @media print {
   .tour-day {
-    margin-top: 4em; } }
+    margin-top: 2em; } }
 
 .tour-day .tour-hero {
   background-size: cover;
@@ -7873,8 +7887,12 @@ a.text-color-link {
   float: left; }
   @media print {
     .tour-day .tour-day-marker {
-      width: 50px;
-      min-width: 0; } }
+      width: 30px;
+      min-width: 0;
+      height: 25px;
+      float: none;
+      display: block;
+      margin: 0; } }
 
 .tour-day .tour-day-number {
   width: 6.5359477124%;
@@ -7890,14 +7908,15 @@ a.text-color-link {
   float: left; }
   @media print {
     .tour-day .tour-day-number {
-      border: 4px solid #3076bc;
+      border: 2px solid #3076bc;
       border-bottom-width: 8px;
-      float: left;
-      font-size: 2em;
+      font-size: 16px;
+      float: none;
       padding: 4px 0 0;
-      width: 50px;
-      height: 50px;
-      min-width: 0; } }
+      width: 30px;
+      height: 35px;
+      min-width: 0;
+      display: block; } }
 
 .tour-day > header > .h3 {
   width: 100%;
@@ -7915,7 +7934,8 @@ a.text-color-link {
     .tour-day > header > .h3 {
       float: left;
       width: auto;
-      margin: 0.5em 0;
+      font-size: 14px;
+      margin: 1em 0;
       clear: both; } }
 
 .tour-day .day-wrap {
@@ -7985,8 +8005,10 @@ a.text-color-link {
       left: -55px; }
     @media print {
       .tour-day .tour-activity-list li:after {
-        left: -20px;
-        top: 5px; } }
+        left: -15px;
+        top: 7px;
+        width: 6px;
+        height: 6px; } }
 
 .tour-day .tour-related-posts {
   width: 100%;
@@ -10016,11 +10038,19 @@ section:after {
 
 .ws-block h3, .ws-block .h3 {
   font-weight: 700; }
+  @media only print {
+    .ws-block h3, .ws-block .h3 {
+      font-size: 16px;
+      margin: 1em 0; } }
 
 .block-text {
   background: #f2f2f4;
   padding-top: 5vh;
   padding-bottom: 10vh; }
+  @media only print {
+    .block-text {
+      padding-top: 1em;
+      padding-bottom: 1em; } }
 
 .block-image-right .block-image {
   width: 100%;
@@ -10082,6 +10112,9 @@ section:after {
       padding-left: 16.9934640523%;
       padding-right: 16.9934640523%;
       width: 100%; } }
+  @media print {
+    .block-single-col .block-text {
+      padding: 20px 5vw !important; } }
   .block-single-col .block-text iframe {
     width: 100%; }
 
@@ -10105,7 +10138,10 @@ section:after {
 
 @media only print {
   .block-two-col .block-text-column {
-    width: 100%; } }
+    width: 100%;
+    float: none;
+    clear: both;
+    margin: 0; } }
 
 .cycle-slideshow {
   position: relative;

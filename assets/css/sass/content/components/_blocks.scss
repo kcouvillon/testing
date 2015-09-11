@@ -9,6 +9,10 @@
 
 	h3, .h3 {
 		font-weight: 700;
+		@media only print {
+			font-size: 16px;
+		    margin: 1em 0;
+		}
 	}
 }
 
@@ -16,6 +20,10 @@
 	background: $gray_lighter;
 	padding-top: 5vh;
 	padding-bottom: 10vh;
+	@media only print {
+		padding-top: 1em;
+		padding-bottom: 1em;
+	}
 }
 
 // IMAGE RIGHT
@@ -78,6 +86,10 @@
 			width: 100%;
 		}
 
+		@media print {
+			padding: 20px 5vw !important;
+		}
+
 		iframe {
 			width: 100%;
 		}
@@ -97,6 +109,9 @@
 		}
 		@media only print {
 			width: 100%;
+			float: none;
+			clear: both;
+			margin: 0;
 		}
 	}
 }
