@@ -62,8 +62,8 @@ get_header(); ?>
 
 			</header>
 
-			<nav class="section-nav">
-				<ul class="section-menu hide-print">
+			<nav class="section-nav hide-print">
+				<ul class="section-menu">
 					<?php
 					$section_link = 1;
 

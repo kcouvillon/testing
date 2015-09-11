@@ -6,6 +6,9 @@
 	@include susy-media($screen-sm) {
 		display: flex;
 	}
+	@media only print {
+		display: block;
+	}
 
 	h3, .h3 {
 		font-weight: 700;
@@ -17,12 +20,12 @@
 }
 
 .block-text {
+	@include clearfix;
 	background: $gray_lighter;
 	padding-top: 5vh;
 	padding-bottom: 10vh;
 	@media only print {
-		padding-top: 1em;
-		padding-bottom: 1em;
+		padding: 1em 0;
 	}
 }
 
@@ -35,6 +38,12 @@
 			@include span(7 wide no-gutters);
 			order: 2;
 		}
+
+		@media only print {
+			width: 100%;
+			margin: 1em 0;
+			float: none;
+		}
 	}
 
 	.block-text {
@@ -48,6 +57,13 @@
 			padding-right: 5vw;
 			order: 1;
 		}
+
+		@media only print {
+			width: 100%;
+			padding: 0;
+			float: none;
+			margin: 1em 0;
+		}
 	}
 }
 
@@ -58,6 +74,12 @@
 		@include susy-media($screen-sm) {
 			@include span(7 wide no-gutters);
 			order: 1;
+		}
+
+		@media only print {
+			width: 100%;
+			margin: 1em 0;
+			float: none;
 		}
 	}
 
@@ -71,6 +93,13 @@
 			padding-left: 5vw;
 			padding-right: 5vw;
 			order: 2;
+		}
+
+		@media only print {
+			width: 100%;
+			padding: 0;
+			float: none;
+			margin: 1em 0;
 		}
 	}
 }
@@ -87,7 +116,7 @@
 		}
 
 		@media print {
-			padding: 20px 5vw !important;
+			padding: 1em 0;
 		}
 
 		iframe {
@@ -101,6 +130,10 @@
 	.block-text {
 		padding-left: 5vw;
 		padding-right: 5vw;
+
+		@media only print {
+			padding: 1em 0;
+		}
 	}
 
 	.block-text-column {
@@ -110,8 +143,8 @@
 		@media only print {
 			width: 100%;
 			float: none;
-			clear: both;
-			margin: 0;
+			clear: both !important;
+			margin: 0 !important;
 		}
 	}
 }

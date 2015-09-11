@@ -6829,6 +6829,9 @@ a.text-color-link {
     .site-header {
       padding-top: 2.1875em;
       padding-bottom: 2.375em; } }
+  @media only print {
+    .site-header {
+      padding: 0; } }
   .site-header a {
     color: #fff; }
     .site-header a:hover {
@@ -7597,7 +7600,8 @@ a.text-color-link {
   @media print {
     .itinerary h2 {
       font-size: 18px;
-      margin: 1em 0; } }
+      margin: 1em 0;
+      padding: 0; } }
 
 @media print {
   .itinerary h4 {
@@ -7608,7 +7612,10 @@ a.text-color-link {
   .itinerary img.alignleft,
   .itinerary img.alignright,
   .itinerary img.aligncenter {
-    width: 33.333%; } }
+    width: 33.333%;
+    float: none;
+    display: block;
+    margin: 0 0 1em; } }
 
 .tour-details {
   display: block;
@@ -7620,7 +7627,9 @@ a.text-color-link {
   padding-bottom: 1.5em; }
   @media only print {
     .tour-details {
-      border-bottom: 1px solid #707787; } }
+      border-bottom: 1px solid #707787;
+      border-top: 1px solid #707787;
+      padding: 0 0 1em; } }
   .tour-details .h3 {
     font-weight: 700;
     position: relative; }
@@ -8339,6 +8348,10 @@ section:after {
 .transparent-header .primary-section {
   margin-top: -158px;
   padding-top: 100px !important; }
+  @media only print {
+    .transparent-header .primary-section {
+      margin-top: 0;
+      padding: 0; } }
   .transparent-header .primary-section .section-header {
     margin-top: -100px;
     padding-top: 140px;
@@ -8349,6 +8362,10 @@ section:after {
 
 .transparent-header.has-featured-image .primary-section .section-header {
   min-height: 75vh; }
+  @media only print {
+    .transparent-header.has-featured-image .primary-section .section-header {
+      min-height: 0;
+      padding: 0; } }
 
 .solid-header .primary-section {
   margin-top: 0; }
@@ -10036,6 +10053,10 @@ section:after {
   .ws-block {
     display: flex; } }
 
+@media only print {
+  .ws-block {
+    display: block; } }
+
 .ws-block h3, .ws-block .h3 {
   font-weight: 700; }
   @media only print {
@@ -10047,10 +10068,15 @@ section:after {
   background: #f2f2f4;
   padding-top: 5vh;
   padding-bottom: 10vh; }
+  .block-text:before,
+  .block-text:after {
+    content: "";
+    display: table; }
+  .block-text:after {
+    clear: both; }
   @media only print {
     .block-text {
-      padding-top: 1em;
-      padding-bottom: 1em; } }
+      padding: 1em 0; } }
 
 .block-image-right .block-image {
   width: 100%;
@@ -10062,6 +10088,11 @@ section:after {
       width: 59.477124183%;
       float: left;
       order: 2; } }
+  @media only print {
+    .block-image-right .block-image {
+      width: 100%;
+      margin: 1em 0;
+      float: none; } }
 
 .block-image-right .block-text {
   width: 100%;
@@ -10077,6 +10108,12 @@ section:after {
       padding-left: 5vw;
       padding-right: 5vw;
       order: 1; } }
+  @media only print {
+    .block-image-right .block-text {
+      width: 100%;
+      padding: 0;
+      float: none;
+      margin: 1em 0; } }
 
 .block-image-left .block-image {
   width: 100%;
@@ -10088,6 +10125,11 @@ section:after {
       width: 59.477124183%;
       float: left;
       order: 1; } }
+  @media only print {
+    .block-image-left .block-image {
+      width: 100%;
+      margin: 1em 0;
+      float: none; } }
 
 .block-image-left .block-text {
   width: 100%;
@@ -10103,6 +10145,12 @@ section:after {
       padding-left: 5vw;
       padding-right: 5vw;
       order: 2; } }
+  @media only print {
+    .block-image-left .block-text {
+      width: 100%;
+      padding: 0;
+      float: none;
+      margin: 1em 0; } }
 
 .block-single-col .block-text {
   padding-left: 5vw;
@@ -10114,13 +10162,16 @@ section:after {
       width: 100%; } }
   @media print {
     .block-single-col .block-text {
-      padding: 20px 5vw !important; } }
+      padding: 1em 0; } }
   .block-single-col .block-text iframe {
     width: 100%; }
 
 .block-two-col .block-text {
   padding-left: 5vw;
   padding-right: 5vw; }
+  @media only print {
+    .block-two-col .block-text {
+      padding: 1em 0; } }
 
 @media (min-width: 768px) {
   .block-two-col .block-text-column {
@@ -10140,8 +10191,8 @@ section:after {
   .block-two-col .block-text-column {
     width: 100%;
     float: none;
-    clear: both;
-    margin: 0; } }
+    clear: both !important;
+    margin: 0 !important; } }
 
 .cycle-slideshow {
   position: relative;
