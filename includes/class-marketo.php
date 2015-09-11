@@ -160,7 +160,8 @@ class WS_Marketo {
 
 		// alias the id:
 		$upsert_id = $upsert_obj->result[0]->id;
-		//print_r($upsert_id);
+		print_r("\n\nUpsert ID:\n");
+		print_r($upsert_id);
 
 
 		print_r("\n\nResult Status:\n");

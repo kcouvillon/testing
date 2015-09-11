@@ -15,15 +15,19 @@ class WS_MktoAssociateLead {
 	public $cookie;//cookie to associate
 	
 	public function __construct($new_id,$new_cookie) {
-		$id = $new_id;
-		$cookie = $new_cookie;
+		$this->id = $new_id;
+		$this->cookie = $new_cookie;
 	}
 
 	public function getData(){
 		$url = $this->host . "/rest/v1/leads/" . $this->id . "/associate.json?access_token=" . $this->getToken() . "&cookie=" . $this->cookie;
+
+		print_r($url);
+		print_r("\n");
+
 		$ch = curl_init($url);
 		curl_setopt($ch,  CURLOPT_RETURNTRANSFER, 1);
-		// curl_setopt($ch, CURLOPT_POST, 1); // post wasn't working.  Default is GET
+		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('accept: application/json','Content-Type: application/json'));
 		$response = curl_exec($ch);
 		return $response;
