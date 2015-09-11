@@ -22,8 +22,8 @@ class WS_MktoAssociateLead {
 	public function getData(){
 		$url = $this->host . "/rest/v1/leads/" . $this->id . "/associate.json?access_token=" . $this->getToken() . "&cookie=" . $this->cookie;
 
-		print_r($url);
-		print_r("\n");
+		// print_r($url);
+		// print_r("\n");
 
 		$ch = curl_init($url);
 		curl_setopt($ch,  CURLOPT_RETURNTRANSFER, 1);
