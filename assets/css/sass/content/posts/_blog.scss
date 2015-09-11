@@ -1,4 +1,6 @@
-// Styles for the Blog Page
+
+/* blog.scss
+ * -------------------------------------------------- */
 
 .blog, .single {
 
@@ -45,7 +47,7 @@
 	}
 
 	.entry-header {
-		margin-left: -9%;
+		margin-left: -5vw;
 		padding: 0 0 0 5vw;
 
 		.post-categories {
@@ -217,11 +219,10 @@
 
 	.entry-header {
 		margin-left: 0;
-		padding-left: 2vw;
+		padding-left: 5vw;
 
 		@include susy-media($screen-sm) {
-			margin-left: -9%;
-			padding-left: 5vw;
+			padding-left: 2vw;
 		}
 
 		.post-categories {
@@ -242,8 +243,11 @@
 	}
 
 	.entry-content {
-		margin-left: 2vw;
+		margin-left: 5vw;
 		margin-right: 3vw;
+		@include susy-media($screen-sm) {
+			margin-left: 2vw;
+		}
 	}
 }
 

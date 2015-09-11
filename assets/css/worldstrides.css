@@ -7155,6 +7155,8 @@ a.text-color-link {
   margin: 0;
   font-size: 1.875em; }
 
+/* blog.scss
+ * -------------------------------------------------- */
 .blog .section-header, .single .section-header {
   margin-bottom: 0; }
 
@@ -7193,7 +7195,7 @@ a.text-color-link {
   margin-bottom: 3em; }
 
 .blog .entry-header, .single .entry-header {
-  margin-left: -9%;
+  margin-left: -5vw;
   padding: 0 0 0 5vw; }
   .blog .entry-header .post-categories, .single .entry-header .post-categories {
     list-style: none;
@@ -7333,11 +7335,10 @@ a.text-color-link {
       margin-right: 0; } }
   .sidebar .entry-header {
     margin-left: 0;
-    padding-left: 2vw; }
+    padding-left: 5vw; }
     @media (min-width: 768px) {
       .sidebar .entry-header {
-        margin-left: -9%;
-        padding-left: 5vw; } }
+        padding-left: 2vw; } }
     .sidebar .entry-header .post-categories {
       margin-top: 15vh; }
       @media (min-width: 768px) {
@@ -7348,8 +7349,11 @@ a.text-color-link {
   .sidebar .entry-title {
     font-size: 1.875em; }
   .sidebar .entry-content {
-    margin-left: 2vw;
+    margin-left: 5vw;
     margin-right: 3vw; }
+    @media (min-width: 768px) {
+      .sidebar .entry-content {
+        margin-left: 2vw; } }
 
 .entry-author {
   max-width: 180px;
