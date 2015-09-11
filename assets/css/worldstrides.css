@@ -6418,6 +6418,10 @@ img {
 /*--------------------------------------------------------------
 5.1 Links
 --------------------------------------------------------------*/
+@media print {
+  a[href]:after {
+    content: none !important; } }
+
 a, .entry-title, button {
   transition: color 250ms ease, background-color 250ms ease; }
 
