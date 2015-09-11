@@ -7589,16 +7589,6 @@ a.text-color-link {
     .itinerary h2 {
       margin-top: 0; } }
 
-.section-header .smithsonian {
-  background-image: url(../images/smithsonian-small.png);
-  background-repeat: no-repeat;
-  background-size: 616px 69px;
-  height: 69px;
-  width: 616px;
-  position: absolute;
-  bottom: 2%;
-  right: 2%; }
-
 .tour-details {
   display: block;
   max-width: 1500px;
@@ -9686,12 +9676,14 @@ section:after {
       border-bottom: 0; }
       .explore-results .tile.has-post-thumbnail {
         background-size: cover; } }
-  .explore-results .tile img {
+  .explore-results .tile .itinerary-image,
+  .explore-results .tile .collection-image {
     float: left;
     margin-right: 5%;
     width: 25%; }
     @media screen and (min-width: 768px) {
-      .explore-results .tile img {
+      .explore-results .tile .itinerary-image,
+      .explore-results .tile .collection-image {
         display: none; } }
   .explore-results .tile .tile-content {
     position: static;
@@ -9717,6 +9709,20 @@ section:after {
       @media screen and (min-width: 768px) {
         .explore-results .tile ul.meta li {
           color: #FFF; } }
+  .explore-results .tile .smithsonian-image {
+    display: none;
+    margin: 0.4em 0 0.7em;
+    max-width: 250px; }
+    @media screen and (min-width: 768px) {
+      .explore-results .tile .smithsonian-image {
+        display: block; } }
+  .explore-results .tile .smithsonian-image-mobile {
+    display: block;
+    margin: 0 0 0.5em;
+    max-width: 200px; }
+    @media screen and (min-width: 768px) {
+      .explore-results .tile .smithsonian-image-mobile {
+        display: none; } }
   .explore-results .tile .tile-title {
     font-weight: 300;
     font-size: 1em;
@@ -10338,15 +10344,6 @@ section:after {
       left: 1.5em; } }
   .tile-content a {
     color: #FFF; }
-  .tile-content .smithsonian {
-    background-image: url(../images/smithsonian-small.png);
-    background-repeat: no-repeat;
-    background-size: 308px 38px;
-    height: 38px;
-    width: 308px;
-    position: absolute;
-    bottom: 2%;
-    right: 2%; }
 
 .tile-title {
   color: #FFF;

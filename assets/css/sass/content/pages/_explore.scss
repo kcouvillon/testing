@@ -569,7 +569,8 @@
 			}
 	    }
 
-	    img {
+	    .itinerary-image,
+	    .collection-image {
 	    	float: left;
 	    	margin-right: 5%;
 	    	width: 25%;
@@ -611,6 +612,23 @@
 
 			}
 		}
+
+		.smithsonian-image {
+			display: none;
+	    	margin: 0.4em 0 0.7em;
+	    	max-width: 250px;
+	    	@media screen and ( min-width: $screen-sm ) {
+	    		display: block;
+	    	}
+	    }
+	    .smithsonian-image-mobile {
+	    	display: block;
+	    	margin: 0 0 0.5em;
+	    	max-width: 200px; 
+	    	@media screen and ( min-width: $screen-sm ) {
+	    		display: none;
+	    	}
+	    }
 
 		.tile-title {
 			font-weight: 300;

@@ -49,17 +49,6 @@
 	background-size: $width $height;
 }
 
-@mixin smithsonian($width: 616px, $height: 69px) {
-	background-image: url(../images/smithsonian-small.png);
-	background-repeat: no-repeat;
-	background-size: $width $height;
-	height: $height;
-	width: $width;
-	position: absolute;
-	bottom: 2%;
-	right: 2%;
-}
-
 @mixin retina($url) {
 	
 	@media
