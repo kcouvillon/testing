@@ -12,10 +12,10 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 
 		<nav id="footer-navigation" class="footer-navigation clearfix  hide-print" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'container_class' => 'footer-menu footer-1', 'menu_id' => '' ) ); ?>
-			<?php wp_nav_menu( array( 'theme_location' => 'footer2', 'container_class' => 'footer-menu footer-2', 'menu_id' => '' ) ); ?>
-			<?php wp_nav_menu( array( 'theme_location' => 'footer3', 'container_class' => 'footer-menu footer-3', 'menu_id' => '' ) ); ?>
-			<?php wp_nav_menu( array( 'theme_location' => 'footer4', 'container_class' => 'footer-menu footer-4', 'menu_id' => '' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer', 'container_class' => 'footer-menu footer-1', 'menu_id' => '', 'link_after' => ' <i class="icon icon-arrow-down"></i>' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer2', 'container_class' => 'footer-menu footer-2', 'menu_id' => '', 'link_after' => ' <i class="icon icon-arrow-down"></i>' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer3', 'container_class' => 'footer-menu footer-3', 'menu_id' => '', 'link_after' => ' <i class="icon icon-arrow-down"></i>' ) ); ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer4', 'container_class' => 'footer-menu footer-4', 'menu_id' => '', 'link_after' => ' <i class="icon icon-arrow-down"></i>' ) ); ?>
 		</nav>
 
 		<div class="site-info">
