@@ -9,7 +9,7 @@
  * http://developers.marketo.com/documentation/rest/request-campaign/
  */
 
-class WS_MktoRequestCampaign{
+class WS_MktoRequestCampaign extends WS_MktoAuthenticator {
 	private $host = 'https://593-ASZ-675.mktorest.com';
 	private $clientId = "45c494eb-4c74-490d-917d-84e5f7e1c3b9";
 	private $clientSecret = "Ih0ugeoKgeOMjAnPMyG0mrAeC73QD70U";
@@ -30,15 +30,6 @@ class WS_MktoRequestCampaign{
 		return $response;
 	}
 
-	private function getToken(){
-		$ch = curl_init($this->host . "/identity/oauth/token?grant_type=client_credentials&client_id=" . $this->clientId . "&client_secret=" . $this->clientSecret);
-		curl_setopt($ch,  CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('accept: application/json',));
-		$response = json_decode(curl_exec($ch));
-		curl_close($ch);
-		$token = $response->access_token;
-		return $token;
-	}
 	private function bodyBuilder(){
 		$body = new stdClass();
 		if (isset($this->leads)){ 		// sample code used 'tokens' - not used here
