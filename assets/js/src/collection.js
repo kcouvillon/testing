@@ -135,6 +135,7 @@
 	}
 
 	function onAfterUpdateFunc( dateText, inst ) {
+		$('#jrange .ui-datepicker').prepend('<div class="calendar-title">Select a range from the available dates</div>');
 		$('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Apply</button>')
 			.appendTo($('#jrange div .ui-datepicker-buttonpane'))
 			.on('click', function () { 

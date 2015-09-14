@@ -97,6 +97,57 @@
 			color: $orange;
 		}
 	}
+
+	.ui-datepicker-prev,
+	.ui-datepicker-next {
+		cursor: pointer;
+		position: absolute;
+	    top: 50%;
+	    padding: 10px 7px;
+	    margin-top: -18px;
+	    font-family: 'worldstrides-ui';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+
+		/* Better Font Rendering =========== */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+	    .ui-icon {
+	    	display: none;
+	    }
+	}
+	.ui-datepicker-prev{
+		left: 0;
+		&:before {
+			content: "\e618";
+		}
+		&:hover {
+			background-color: $orange;
+			color: #FFF;
+		}
+	}
+	.ui-datepicker-next{
+		right: 0;
+		&:before {
+			content: "\e619";
+		}
+		&:hover {
+			background-color: $orange;
+			color: #FFF;
+		}
+	}
+
+	.calendar-title {
+		margin: 0 0 1em;
+		color: #FFF;
+		font-size: 1em;
+		font-weight: 700;
+	}
 }
 
 .ui-datepicker-group {
@@ -108,50 +159,6 @@
 	    	margin-right: 0;
 	    }
    	}
-}
-
-.ui-datepicker-prev,
-.ui-datepicker-next {
-	cursor: pointer;
-	position: absolute;
-    top: 50%;
-    padding: 10px 7px;
-    margin-top: -18px;
-    font-family: 'worldstrides-ui';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-
-	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-
-    .ui-icon {
-    	display: none;
-    }
-}
-.ui-datepicker-prev{
-	left: 0;
-	&:before {
-		content: "\e618";
-	}
-	&:hover {
-		background-color: $orange;
-		color: #FFF;
-	}
-}
-.ui-datepicker-next{
-	right: 0;
-	&:before {
-		content: "\e619";
-	}
-	&:hover {
-		background-color: $orange;
-		color: #FFF;
-	}
 }
 
 .ui-datepicker-title {
@@ -228,15 +235,18 @@
 	    }
 	    &:hover {
 	    	background-color: darken($blue_dark, 10%);
+	    	color: white;
+	    	font-weight: 700;
 	    }
 	    &.ui-datepicker-close {
 	    	margin-right: 0;
 	    }
 	    &.ui-datepicker-current {
-	    	background-color: $gray;
-	    	&:hover {
-		    	background-color: darken($gray, 10%);
-		    }
+	    	display: none;
+	    	// background-color: $gray;
+	    	// &:hover {
+		    // 	background-color: darken($gray, 10%);
+		    // }
 	    }
 	}
 	a[href="#close-calendar"] {
