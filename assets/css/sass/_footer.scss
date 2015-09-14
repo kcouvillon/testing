@@ -1,4 +1,5 @@
 .site-footer {
+	border-top: 1px solid #e3e3e3;
 	position: relative;
 	@include container();
 	background: $gray_lighter;
@@ -20,13 +21,49 @@
 
 	.menu {
 		> li {
-			margin-bottom: 1em;
+			margin-bottom: 0.5em;
+			border-bottom: 1px solid $gray_light;
+			@include susy-media($screen-sm) {
+				margin-bottom: 1em;
+				border-bottom: 0;
+			}
+			& > a {
+				display: block;
+				margin-bottom: 0.5em;
+				.icon {
+					display: none;
+				}
+			}
+			&.menu-item-has-children > a {
+				.icon {
+					display: inline;
+					float: right;
+					margin-top: 5px;
+					color: $gray_light;
+					&.active:before {
+						content: "\e61a";
+					}
+					@include susy-media($screen-sm) {
+						display: none;
+					}
+				}
+			}
 		}
 	}
 
-	.sub-menu li a {
-		font-size: em(14);
-		color: $color_text_footer;
+	.sub-menu {
+		display: none;
+		padding: 0 0 1em 0;
+		@include susy-media($screen-sm) {
+			display: block !important;
+		}
+
+		li a {
+			font-size: em(14);
+			color: $color_text_footer;
+
+			.icon { display: none; }
+		}
 	}
 
 	.site-info-menu {
@@ -35,7 +72,12 @@
 }
 
 .footer-navigation {
+	margin-bottom: 1em;
+	@include susy-media($screen-sm) {
+		margin-bottom: 0;
+	}
 	@include susy-media($screen-md) {
+		margin-bottom: 0;
 		@include span(9);
 	}
 
