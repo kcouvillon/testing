@@ -45,14 +45,14 @@
 				},
 				callbacks: {
 					onMixStart: function(state) {
-						$(this)
-							.removeClass('no-results');
+						$(this).removeClass('no-results');
 					},
 					onMixFail: function(state) {
-						$(this)
-							.mixItUp('filter', '.always-available')
-							.addClass('no-results');
-
+						$(this).addClass('no-results');
+						if ( $('.always-available').length > 0 ) {
+							$(this).mixItUp('filter', '.always-available');
+							$(this).addClass('no-results');
+						}
 					}
 				}
 			});
