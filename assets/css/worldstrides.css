@@ -8096,7 +8096,7 @@ a.text-color-link {
     padding-left: 5vw; } }
 
 #mix-container.fail:before {
-  content: "This collection has no Itineraries during these dates.";
+  content: "Sorry, this collection has no Itineraries during your selected dates. Try selecting a broader range.";
   margin: 0 5vw; }
 
 #mix-container .program.tile {
@@ -8184,11 +8184,17 @@ a.text-color-link {
   left: 0; }
   .ui-datepicker-prev:before {
     content: "\e618"; }
+  .ui-datepicker-prev:hover {
+    background-color: #fb901d;
+    color: #FFF; }
 
 .ui-datepicker-next {
   right: 0; }
   .ui-datepicker-next:before {
     content: "\e619"; }
+  .ui-datepicker-next:hover {
+    background-color: #fb901d;
+    color: #FFF; }
 
 .ui-datepicker-title {
   font-size: 12px;
@@ -8206,24 +8212,31 @@ a.text-color-link {
 
 .ui-datepicker-calendar td {
   font-size: 12px; }
-
-.ui-datepicker-calendar a {
-  display: inline-block;
-  padding: 0 10px; }
-
-.ui-datepicker-today {
-  background-color: #283043; }
-  .ui-datepicker-today a {
-    color: #fb901d; }
-
-.date-range-selected {
-  background: none;
-  background-color: #fb901d;
-  color: white; }
-  .date-range-selected a {
+  .ui-datepicker-calendar td:hover {
+    background-color: #fb901d; }
+    .ui-datepicker-calendar td:hover a {
+      color: white;
+      background-color: none; }
+  .ui-datepicker-calendar td.date-range-unselectable {
+    color: #656d7e;
+    background: none; }
+  .ui-datepicker-calendar td.ui-datepicker-today {
+    background-color: #283043; }
+    .ui-datepicker-calendar td.ui-datepicker-today > * {
+      color: #fb901d; }
+  .ui-datepicker-calendar td.date-range-selected {
+    background: none;
+    background-color: #fb901d;
     color: white; }
-    .date-range-selected a:hover {
+    .ui-datepicker-calendar td.date-range-selected a {
       color: white; }
+      .ui-datepicker-calendar td.date-range-selected a:hover {
+        color: white; }
+  .ui-datepicker-calendar td > * {
+    display: inline-block;
+    padding: 0 10px; }
+  .ui-datepicker-calendar td a:hover {
+    color: #FFF; }
 
 .ui-datepicker-buttonpane button {
   background-color: #3076bc;

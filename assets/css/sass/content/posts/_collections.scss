@@ -20,7 +20,7 @@
 #mix-container {
 	&.fail {
 		&:before {
-			content: "This collection has no Itineraries during these dates.";
+			content: "Sorry, this collection has no Itineraries during your selected dates. Try selecting a broader range.";
 			margin: 0 5vw;
 		}
 	}
@@ -138,11 +138,19 @@
 	&:before {
 		content: "\e618";
 	}
+	&:hover {
+		background-color: $orange;
+		color: #FFF;
+	}
 }
 .ui-datepicker-next{
 	right: 0;
 	&:before {
 		content: "\e619";
+	}
+	&:hover {
+		background-color: $orange;
+		color: #FFF;
 	}
 }
 
@@ -164,29 +172,43 @@
 	}
 	td {
 		font-size: 12px;
+		&:hover {
+			background-color: $orange;
+			a {
+				color: white;
+				background-color: none;
+			}
+		}
+		&.date-range-unselectable {
+			color: tint($gray_base, 25%);
+			background: none;
+		}
+		&.ui-datepicker-today {
+			background-color: darken($gray_base, 5%);
+			& > * { color: $orange; }
+		}
+		&.date-range-selected {
+			background: none;
+			background-color: $orange;
+			color: white;
+
+			a {
+				color: white;
+				&:hover {
+					color: white;
+				}
+			}
+		}
+	
+		& > * {
+			display: inline-block;
+		    padding: 0 10px;
+		}
+
+		a:hover {
+			color: #FFF;
+		}
 	}
-	a {
-		display: inline-block;
-	    padding: 0 10px;
-	}
-}
-
-.ui-datepicker-today {
-	background-color: darken($gray_base, 5%);
-	a { color: $orange; }
-}
-
-.date-range-selected {
-   background: none;
-   background-color: $orange;
-   color: white;
-
-   a {
-   	color: white;
-   	&:hover {
-   		color: white;
-   	}
-   }
 }
 
 .ui-datepicker-buttonpane {
