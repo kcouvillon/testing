@@ -18,7 +18,7 @@
 }
 
 #mix-container {
-	&.fail {
+	&.no-results {
 		&:before {
 			content: "Sorry, this collection has no Itineraries during your selected dates. Try selecting a broader range.";
 			margin: 0 5vw;

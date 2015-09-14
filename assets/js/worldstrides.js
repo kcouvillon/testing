@@ -37,6 +37,18 @@
 					duration: 350,
 					effects: 'fade',
 					easing: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
+				},
+				callbacks: {
+					onMixStart: function(state) {
+						$(this)
+							.removeClass('no-results');
+					},
+					onMixFail: function(state) {
+						$(this)
+							.mixItUp('filter', '.always-available')
+							.addClass('no-results');
+
+					}
 				}
 			});
 
@@ -166,7 +178,7 @@
 					$('#jrange').removeClass('has-dates');
 				}
 
-				$('#mix-container').mixItUp('filter', '.available, .always-available');
+				$('#mix-container').mixItUp('filter', '.available');
 
 			});
 		$('<a href="#close-calendar" ><i class="icon icon-small-close"></i> Close</a>')

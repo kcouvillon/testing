@@ -8095,7 +8095,7 @@ a.text-color-link {
     padding-right: 5vw;
     padding-left: 5vw; } }
 
-#mix-container.fail:before {
+#mix-container.no-results:before {
   content: "Sorry, this collection has no Itineraries during your selected dates. Try selecting a broader range.";
   margin: 0 5vw; }
 
