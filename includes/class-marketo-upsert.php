@@ -8,9 +8,9 @@
  */
  
 class WS_MktoUpsertLeads extends WS_MktoAuthenticator {
-	private $host = 'https://593-ASZ-675.mktorest.com';
-	private $clientId = "45c494eb-4c74-490d-917d-84e5f7e1c3b9";
-	private $clientSecret = "Ih0ugeoKgeOMjAnPMyG0mrAeC73QD70U";
+	// private $host = ''; // defined in Authenticator
+	// private $clientId = "";
+	// private $clientSecret = "";
 	public $input; //an array of lead records as objects
 	public $lookupField; //field used for deduplication
 	public $action; //operation type, createOnly, updateOnly, createOrUpdate, createDuplicate
