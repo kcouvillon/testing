@@ -114,8 +114,6 @@ get_header(); ?>
 						<?php endif; ?>
 
 					</ul>
-
-					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta hide-print">Request Info</a>
 				</nav>
 
 			</section>
