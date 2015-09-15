@@ -55,6 +55,12 @@ class WS_Metaboxes_Custom_Pages {
 			'id'   => $prefix . 'trip_id',
 			'type' => 'text_small'
 		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Price', 'cmb2' ),
+			'id'   => $prefix . 'price',
+			'type' => 'text_small'
+		) );
 	}
 }
 
