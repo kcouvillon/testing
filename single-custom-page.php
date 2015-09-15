@@ -554,20 +554,6 @@ get_header(); ?>
 				<?php endforeach; ?>
 			<?php endif; ?>
 
-			<?php
-			// if ( has_term('perspectives', 'product-line') ) {
-			// 	echo get_template_part('partials/itinerary', 'pricing');
-			// }
-			?>
-
-			<section class="clearfix ws-container learn-more hide-print">
-				<section class="clearfix ws-container learn-more">
-					<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
-
-					<?php WS_Marketo::get_marketo_form( $post->ID ); ?>
-				</section>
-			</section>
-
 		<?php else : ?>
 
 			<?php the_content(); ?>
