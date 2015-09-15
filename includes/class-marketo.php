@@ -125,21 +125,67 @@ class WS_Marketo {
 
  		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
 		echo '<pre>';
-		print_r($_POST);
-		echo '</pre>';
-/*		print_r("\nResult: \n");
+		//print_r($_POST);
+		//print_r($_COOKIE);
 		
-		$lead1 = new stdClass();
-		// $lead1->email = "upsert.test@marketo.com";
-		if(isset($_POST['email'])) {
-			$lead1->email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
+		print_r($_COOKIE['_mkto_trk']);
+		
+		$mkto_cookie = urlencode("mkto_trk=".$_COOKIE['_mkto_trk']); // use cookie for associate lead
+		
+		// sanitize and populate lead object:
+		$lead = new stdClass();
+		
+		// loop through POST array
+		foreach( $_POST as $leadattr => $leadval ) {
+			if( is_array( $leadattr ) ) {
+				foreach( $leadattr as $thing ) {
+					// echo $thing;	// code here for array elements ...
+				}
+			} else {
+				if($leadattr !== 'action'){
+					$lead->{$leadattr} = sanitize_text_field($leadval);
+				}
+			}
 		}
-		print_r($lead1);
- */
-		//$upsert = new WS_MktoUpsertLeads();
-		//$upsert->input = array($lead1);
-		//print_r($upsert->postData());
 
+		print_r("\ncalling WS_MktoUpsertLeads() ... \n");
+		
+		$upsert = new WS_MktoUpsertLeads();
+		$upsert->input = array($lead);
+		$upsert_result = $upsert->postData();
+		$upsert_obj = json_decode($upsert_result);
+
+		//print_r("\n\nResult Parsed:\n");
+		//print_r($upsert_obj);
+
+		// alias the id:
+		$upsert_id = $upsert_obj->result[0]->id;
+		print_r("\n\nUpsert ID:\n");
+		print_r($upsert_id);
+
+
+		print_r("\n\nResult Status:\n");
+		// alias the status:
+		$upsert_status = $upsert_obj->result[0]->status;
+		print_r($upsert_status);
+
+
+		if($upsert_status === 'created') {
+			$associate = new WS_MktoAssociateLead($upsert_id,$mkto_cookie);
+			print_r("\n\ncalling WS_MktoAssociateLead() ...\n");
+			print_r($associate->getData());
+		} else {
+			print_r("\n\nNOT calling WS_MktoAssociateLead() because lead is not new (not created) ...\n");
+		}
+
+		print_r("\n\ncalling WS_MktoRequestCampaign() ...\n");
+		$request = new WS_MktoRequestCampaign();
+		$request_lead = new stdClass();
+		$request_lead->id = $upsert_id; // reuse the Lead ID from the Upsert call
+		$request->leads = array($request_lead);
+		print_r($request->postData());
+
+		echo '</pre>';
 		// return what?;
 	}
 }
