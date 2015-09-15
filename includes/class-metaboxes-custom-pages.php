@@ -49,7 +49,12 @@ class WS_Metaboxes_Custom_Pages {
 			'title'        => __( 'Itinerary Details', 'cmb2' ),
 			'object_types' => array( 'custom-page', ),
 		) );
-		
+
+		$cmb->add_field( array(
+			'name' => __( 'Trip ID', 'cmb2' ),
+			'id'   => $prefix . 'trip_id',
+			'type' => 'text_small'
+		) );
 	}
 }
 
