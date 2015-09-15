@@ -616,21 +616,21 @@
 
 })(jQuery);
 
-( function( $, window, undefined ) {
+( function( jQuery, window, undefined ) {
 	'use strict';
 
 	// MARKETO FORM BEHAVIOR
 
-	$(document).ready(function() {
+	jQuery(document).ready(function() {
 		var marketoTitle = '';
 
 		setTimeout( checkRows, 2000 );
 		
-		$(document).on( 'change', '#Title', function() {
+		jQuery(document).on( 'change', '#Title', function() {
 			checkRows();
 		});
 
-		if( $('#get-info-form').length )  {
+		if( jQuery('#get-info-form').length )  {
 			universalLead();
 			ajaxFormSubmit();
 		}
@@ -641,12 +641,12 @@
 		var marketoTitle = document.querySelector('#Title');
 		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
 
-		$(marketoFormRow).each(function() {
-			if( $(this).children('.mktoPlaceholder').length ) {
-				$(this).addClass('hidden');
+		jQuery(marketoFormRow).each(function() {
+			if( jQuery(this).children('.mktoPlaceholder').length ) {
+				jQuery(this).addClass('hidden');
 				console.log('hide');
 			} else {
-				$(this).removeClass('hidden');
+				jQuery(this).removeClass('hidden');
 				console.log('show');
 			}
 		});
@@ -942,10 +942,10 @@
 		 * Take input from findSchool, fill out hidden fields with information about that school
 		 */
 		wsData.fillOutForm = function(school_name, school_pid, school_Phone, school_Address, school_City, school_State, school_Zip) {
-			jQuery("#companyMDRPID").val(school_pid);
-			jQuery('#companyPhone').val(school_Phone);
-			jQuery('#companyAddress').val(school_Address);
-			jQuery('#companyZipcode').val(school_Zip);
+			jQuery("#get-info-companyMDRPID").val(school_pid);
+			jQuery('#get-info-companyPhone').val(school_Phone);
+			jQuery('#get-info-companyAddress').val(school_Address);
+			jQuery('#get-info-companyZipcode').val(school_Zip);
 		}
 
 		/**
@@ -978,9 +978,8 @@
 				var ws_schoolZip = ws_schoolObject.school_zipcode;
 				var ws_schoolPhone = ws_schoolObject.school_phone;
 
-				alert('TODO: Populate info about '+ws_schoolName+' in hidden fields');
-
 				wsData.fillOutForm(ws_schoolName, ws_schoolPid, ws_schoolPhone, ws_schoolAddress, ws_schoolCity, ws_schoolState, ws_schoolZip);
+				school.attr('name','mkto_Company'); // reset the name for transfer to Marketo
 			}
 		}
 
@@ -1285,33 +1284,39 @@
 
 	 function ajaxFormSubmit() {
 
-		 var form = $('#get-info-form');
-			 // form_data = new FormData( this ),
-			 // first_name = $('#get-info-form').find(),
-
-
+		 var form = jQuery('#get-info-form');
 		 // capture ajax submit
 		 form.submit( function(event) {
 			 // setup AJAX options
+			 var formData = {};
+			 var elements = form.find('[id^="get-info-"]');
+			 var numEls = elements.length;
+			 var varVal = {};
+			 for(var i=0; i<numEls; i++){
+			 	var el = elements.eq(i);
+			 	if(el.attr('name').slice(0,5) !== 'mkto_') { 
+			 		continue; // skip if it's not labeled as mkto_
+			 	}
+			 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
+			 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
+			 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others
+			 		varVal = {};
+			 		for(var j=0; j<inputs.length; j++){
+				 		if(inputs.eq(j).is(':checked')) {
+				 			varVal = inputs.eq(j).val();
+				 		}
+				 	}
+			 	} else {
+			 		varVal = el.val();
+			 	}
+			 	formData[varName]=varVal;
+			 	console.log(varName+' => '+varVal);
+			 }
 			 var options = {
 				 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
 				 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
-				 // dataType: 'json',       // 'xml', 'script', or 'json' (expected server response type) Note: json doesn't like echos in the php function
-				 data: {
-					 action: 'data_to_marketo',
-					 // not sure if there's a more efficient way to do this
-					 first_name : form.find('input[name="first_name"]').val(),
-					 last_name : form.find('input[name="last_name"]').val(),
-					 email : form.find('input[name="email"]').val(),
-					 phone : form.find('input[name="phone"]').val(),
-					 state : form.find('input[name="get-info-state"]').val(),
-					 city : form.find('input[name="get-info-city"]').val(),
-					 school : form.find('input[name="get-info-school"]').val(),
-					 comments : form.find('#get-info-comment').val(),
-					 // form_data : form.serialize()
-				 },
+				 data: formData, 
 				 success : function( responseText ) {
-					 // alert( responseText );
 					 form.html('Your request has been submitted successfully - ' + responseText );
 				 }
 			 };
