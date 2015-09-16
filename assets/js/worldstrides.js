@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-/*! WorldStrides - v0.1.0 - 2015-09-15
-=======
 /*! WorldStrides - v0.1.0 - 2015-09-16
->>>>>>> eae9a71925e5d910bc486029451e864f6df8e996
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
