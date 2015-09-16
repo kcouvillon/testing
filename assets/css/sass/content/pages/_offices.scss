@@ -1,5 +1,6 @@
 #office-map {
-  padding-top: 40%;
+	@include container();
+	padding: 40% 0 0;
 }
 
 .office {

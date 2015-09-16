@@ -8942,7 +8942,12 @@ section:after {
       margin-right: 1em; } }
 
 #office-map {
-  padding-top: 40%; }
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  padding: 40% 0 0; }
 
 .office:before,
 .office:after {
