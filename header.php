@@ -69,7 +69,7 @@ if ( is_singular( 'post' ) ) {
 	<header id="masthead" class="site-header" role="banner">
 		<div class="logo hide-print"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.png' ); ?>" alt="Worldstrides" width="216" height="46" /></a></div>
 		<div class="print-logo print-only"><span class="icon icon-shield"></span> Worldstrides</div>
-		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-menu"></i></a>
+		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-menu"></i><span class="hide">Menu</span></a>
 
 		<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
 			<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Our Trips »</a>
@@ -78,7 +78,7 @@ if ( is_singular( 'post' ) ) {
 	</header>
 
 	<nav id="mobile-nav" class="mobile-nav hide-print" role="navigation">
-		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-close"></i></a>
+		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-close"></i><span class="hide">Close</span></a>
 		<ul class="primary-nav menu list-unstyled">
 			<li class="menu-item menu-item-explore">
 				<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Our Trips »</a>

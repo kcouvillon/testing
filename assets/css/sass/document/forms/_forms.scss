@@ -33,12 +33,15 @@ select {
   }
 }
 
+label {
+	font-weight: 400;
+	margin-right: 5px;
+}
+
 .ws-form {
 	@include clearfix;
 
 	label {
-		font-weight: 400;
-		margin-right: 5px;
 		&.block {
 			display: block;
 		}
