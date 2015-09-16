@@ -121,13 +121,15 @@ $continents = get_terms( 'filter', $continentsArgs );
 							<img src="<?php echo get_template_directory_uri() . '/assets/images/map-global.png'; ?>" alt="Global"/>
 						</span>
 					</li>
-					<ul class="terms list-unstyled clearfix">
-						<?php foreach ( $continents as $continent ) : ?>
+					<li>
+						<ul class="terms list-unstyled clearfix">
+							<?php foreach ( $continents as $continent ) : ?>
 
-						<li><a href="#<?php echo $continent->slug; ?>" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters"><?php echo $continent->name; ?></a></li>
+							<li><a href="#<?php echo $continent->slug; ?>" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters"><?php echo $continent->name; ?></a></li>
 
-						<?php endforeach; ?>
-					</ul>
+							<?php endforeach; ?>
+						</ul>
+					</li>
 				</ul>
 
 				<?php foreach ( $continents as $continent ) : ?>
@@ -139,14 +141,16 @@ $continents = get_terms( 'filter', $continentsArgs );
 								<img src="<?php echo get_template_directory_uri() . '/assets/images/map-' . $continent->slug . '.png'; ?>" alt="<?php echo $continent->name; ?>"/>
 							</span>
 						</li>
-						<ul class="terms list-unstyled clearfix">
-							<?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id ) ); 
-							foreach ( $destinations as $destination ) : ?>
+						<li>
+							<ul class="terms list-unstyled clearfix">
+								<?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id ) ); 
+								foreach ( $destinations as $destination ) : ?>
 
-							<li><a href="#<?php echo $destination->slug; ?>" class="filter" data-filter-list=".destination-filters"><?php echo $destination->name; ?></a></li>
-							
-							<?php endforeach; ?>
-						</ul>
+								<li><a href="#<?php echo $destination->slug; ?>" class="filter" data-filter-list=".destination-filters"><?php echo $destination->name; ?></a></li>
+								
+								<?php endforeach; ?>
+							</ul>
+						</li>
 						<a href="#destinations-parent" class="term-list-toggle">« Back to Destinations</a>
 					</ul>
 

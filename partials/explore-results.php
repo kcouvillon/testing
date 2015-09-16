@@ -83,7 +83,7 @@ $collections = new WP_Query( $collection_args );
 			<?php endwhile; ?>
 
 		</div>
-		<a href="#toggle-results" class="toggle-results">See All</a>
+		<a href="#toggle-results" class="toggle-results">See All Collections</a>
 	</div>
 
 	<div class="itineraries show-previews">
@@ -131,7 +131,7 @@ $collections = new WP_Query( $collection_args );
 			<?php endwhile; ?>
 		
 		</div>
-		<a href="#toggle-results" class="toggle-results">See All</a>
+		<a href="#toggle-results" class="toggle-results">See All Itineraries</a>
 	</div>
 
 </section>
