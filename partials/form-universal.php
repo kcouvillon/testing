@@ -18,7 +18,7 @@
 			<li class="field">
 				I am interested in
 				<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
-					<option value="Unknown">Select...</option>
+					<option value="">Select...</option>
 					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
 					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
 					<option value='High School - International' class='par mse hse'>Tours to International Destinations</option>

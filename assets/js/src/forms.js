@@ -692,6 +692,20 @@
 				mkto_companyCity: "required",
 				mkto_Company: "required",
 			},
+			messages: {
+				mkto_Title: " (important!)",
+				mkto_wsProduct: " Please tell us your interest.",
+				mkto_FirstName: "Please provide your First Name.",
+				mkto_LastName: "Please provide your Last Name.",
+				mkto_Email: { 
+					required: "Please provide your Email Address.",
+					email: "Please give a valid Email Address."
+				},
+				mkto_Phone: "Please provide a Number where we can reach you.",
+				mkto_companyState: "What state is your school in?",
+				mkto_companyCity: "What city is your school in?",
+				mkto_Company: "What is the name of your school?",
+			},
 			invalidHandler: function(event, validator) {
 				jQuery('#invalid-message').show();
 				jQuery('#get-info-submit').lockSubmitReset();
