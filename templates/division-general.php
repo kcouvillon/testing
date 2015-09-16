@@ -139,7 +139,7 @@ get_header(); ?>
 
 					</ul>
 
-					<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
+					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
 				</nav>
 
 			</section>
