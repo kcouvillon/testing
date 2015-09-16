@@ -35,7 +35,7 @@ get_header(); ?>
 						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>" class="btn btn-primary hide-print">Explore all Trips »</a>
 					</header>
 
-					<h4>Middle School</h4>
+					<h3 class="h4">Middle School</h3>
 
 					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=middle-school' ); ?>">Middle School trips »</strong></a></p>
 
@@ -75,7 +75,7 @@ get_header(); ?>
 						</div>
 					</ul>
 
-					<h4>High School</h4>
+					<h3 class="h4">High School</h3>
 
 					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=high-school' ); ?>">High School trips »</strong></a></p>
 
@@ -115,7 +115,7 @@ get_header(); ?>
 						</div>
 					</ul>
 
-					<h4>University</h4>
+					<h3 class="h4">University</h3>
 
 					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=undergrad-postgrad' ); ?>">University trips »</strong></a></p>
 
@@ -156,7 +156,7 @@ get_header(); ?>
 
 					</ul>
 
-					<h4>Performing Arts</h4>
+					<h3 class="h4">Performing Arts</h3>
 
 					<p><strong>
 						See Performing Arts trips for 

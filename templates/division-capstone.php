@@ -271,7 +271,7 @@ get_header(); ?>
 								<?php if ( '844' == $post->ID ) : ?>
 									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 								<?php endif; ?>
-								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+								<h3 class="h2 tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 							</div>
 						</li>
 

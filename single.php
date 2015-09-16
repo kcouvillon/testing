@@ -109,7 +109,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 					<?php if ( $comments ) : ?>
 					<a name="comments"></a>
-					<h4>Comments</h4>
+					<h2>Comments</h2>
 					<div class="fb-comments" data-href="<?php the_permalink(); ?>"></div>
 					<?php endif; ?>
 

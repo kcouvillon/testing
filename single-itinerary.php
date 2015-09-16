@@ -298,7 +298,7 @@ get_header(); ?>
 
 			<!-- Print-only version of tour highlights -->
 			<section class="tour-highlights-print print-only print-page-break">
-				<h2>Tour Highlights</h2>
+				<h3 class="h2">Tour Highlights</h3>
 				<ul class="list-unstyled">
 				<?php foreach ( $highlights as $highlight ) { ?>
 					<li>

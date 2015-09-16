@@ -49,11 +49,11 @@
 		<div class="clearfix"></div>
 
 		<div class="tagline">
-			<h2 class="footer-logo">
+			<div class="footer-logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<span class="hide"><?php echo bloginfo('description'); ?></span>
 				</a>
-			</h2>
+			</div>
 		</div>
 
 	</footer>
