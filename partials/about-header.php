@@ -12,9 +12,9 @@ $about_page = get_page_by_path( 'about' );
 		<div class="section-header-content">
 			<h1 class="section-title"><?php echo apply_filters( 'the_title', $about_page->post_title ) ?></h1>
 
-			<p class="description">
+			<div class="description">
 				<?php echo apply_filters( 'the_content', $about_page->post_excerpt ) ?>
-			</p>
+			</div>
 		</div>
 	</header>
 
