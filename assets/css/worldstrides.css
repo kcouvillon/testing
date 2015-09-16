@@ -8668,11 +8668,17 @@ section:after {
         margin-left: 67.9738562092%;
         margin-right: -100%;
         clear: none; } }
+  .leadership > article .leader-name {
+    font-size: 1.625em;
+    line-height: 1.2em;
+    margin-top: 27px;
+    margin-bottom: 13.5px;
+    margin-top: 13.5px; }
 
 .leadership .headshot img {
   width: 100%; }
 
-.leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
+.leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
 
 .entry-position {
@@ -8815,7 +8821,9 @@ section:after {
     font-weight: bold; }
   .contact-section .section-content h4, .contact-section .section-content h5, .contact-section .section-content h6 {
     font-size: 1em;
-    line-height: 1.2em; }
+    line-height: 1.2em;
+    margin-top: 13.5px;
+    margin-bottom: 13.5px; }
     @media screen and (min-width: 960px) {
       .contact-section .section-content h4, .contact-section .section-content h5, .contact-section .section-content h6 {
         font-size: 1.3em; } }

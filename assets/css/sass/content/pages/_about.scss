@@ -123,6 +123,11 @@
 		@include susy-media($screen-xs) {
 			@include gallery(4 wide);
 		}
+
+		.leader-name {
+			@include h3;
+			margin-top: 13.5px;
+		}
 	}
 
 	.headshot {
@@ -132,7 +137,7 @@
 		}
 	}
 
-	.entry-title, .entry-position, .entry-content {
+	.entry-position, .entry-content {
 		margin-right: 1em;
 	}
 
