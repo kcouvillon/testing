@@ -6,7 +6,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'resource-question' ); ?>>
 	<header class="entry-header">
-			<a href="#" rel="bookmark">
+			<a href="<?php the_permalink(); ?>" rel="bookmark">
 				<?php the_title(); ?>
 			</a>
 	</header>
