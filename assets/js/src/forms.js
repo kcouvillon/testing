@@ -22,7 +22,7 @@
 
 		if( jQuery('#get-info-form').length )  {
 			universalLead();
-			ajaxFormSubmit();
+			wsData.validateAndSubmitForm();
 		}
 
 	});
@@ -70,7 +70,9 @@
 		 * Make the submit button unclickable after first click
 		 */
 		jQuery(document).ready(function() {
-			jQuery('#get-info-submit').lockSubmit();
+				jQuery('#get-info-submit').lockSubmit().on('click',function(){
+					// TODO: react to click
+				});
 		});
 
 		/**
@@ -92,7 +94,7 @@
 		/**
 		 * Base URL for API calls
 		 */
-		wsData.api_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
+		wsData.mdrapi_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
 
 		/**
 		 * Digest and display JSON list of states
@@ -150,7 +152,7 @@
 			}
 
 			jQuery.ajax({
-				url: wsData.api_base_url + 'cityList/' + state.val() + "'",
+				url: wsData.mdrapi_base_url + 'cityList/' + state.val() + "'",
 				type: 'GET',
 				dataType: 'jsonp',
 				jsonp:'callback',
@@ -254,7 +256,7 @@
 			var state = jQuery('#get-info-state');
 
 			jQuery.ajax({
-				url: wsData.api_base_url + 'city/'+ city.val() + '/state/' + state.val() + "'",
+				url: wsData.mdrapi_base_url + 'city/'+ city.val() + '/state/' + state.val() + "'",
 				type: 'GET',
 				dataType: 'jsonp',
 				jsonp:'callback',
@@ -672,49 +674,66 @@
 			]
 	}
 
-	 function ajaxFormSubmit() {
+	wsData.validateAndSubmitForm = function() {
+		jQuery('#get-info-form').validate({
+			submitHandler: function(form) {
+				wsData.ajaxFormSubmit(jQuery(form));
+				event.preventDefault();
+				return false;
+			},
+			rules: {
+				mkto_Title: "required",
+				mkto_wsProduct: "required",
+				mkto_FirstName: "required",
+				mkto_LastName: "required",
+				mkto_Email: "required",
+				mkto_Phone: "required",
+				mkto_companyState: "required",
+				mkto_companyCity: "required",
+				mkto_Company: "required",
+			},
+			invalidHandler: function(event, validator) {
+				jQuery('#invalid-message').show();
+				jQuery('#get-info-submit').lockSubmitReset();
+			}
+		});
+	}
 
-		 var form = jQuery('#get-info-form');
-		 // capture ajax submit
-		 form.submit( function(event) {
-			 // setup AJAX options
-			 var formData = {};
-			 var elements = form.find('[id^="get-info-"]');
-			 var numEls = elements.length;
-			 var varVal = {};
-			 for(var i=0; i<numEls; i++){
-			 	var el = elements.eq(i);
-			 	if(el.attr('name').slice(0,5) !== 'mkto_') { 
-			 		continue; // skip if it's not labeled as mkto_
+	wsData.ajaxFormSubmit = function(form) {
+		 // setup AJAX options
+		 var formData = {};
+		 var elements = form.find('[id^="get-info-"]');
+		 var numEls = elements.length;
+		 var varVal = {};
+		 for(var i=0; i<numEls; i++){
+		 	var el = elements.eq(i);
+		 	if(el.attr('name').slice(0,5) !== 'mkto_') { 
+		 		continue; // skip if it's not labeled as mkto_
+		 	}
+		 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
+		 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
+		 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others
+		 		varVal = {};
+		 		for(var j=0; j<inputs.length; j++){
+			 		if(inputs.eq(j).is(':checked')) {
+			 			varVal = inputs.eq(j).val();
+			 		}
 			 	}
-			 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
-			 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
-			 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others
-			 		varVal = {};
-			 		for(var j=0; j<inputs.length; j++){
-				 		if(inputs.eq(j).is(':checked')) {
-				 			varVal = inputs.eq(j).val();
-				 		}
-				 	}
-			 	} else {
-			 		varVal = el.val();
-			 	}
-			 	formData[varName]=varVal;
-			 	console.log(varName+' => '+varVal);
+		 	} else {
+		 		varVal = el.val();
+		 	}
+		 	formData[varName]=varVal;
+		 	console.log(varName+' => '+varVal);
+		 }
+		 var options = {
+			 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
+			 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
+			 data: formData, 
+			 success : function( responseText ) {
+				 form.html('Your request has been submitted successfully - ' + responseText );
 			 }
-			 var options = {
-				 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
-				 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
-				 data: formData, 
-				 success : function( responseText ) {
-					 form.html('Your request has been submitted successfully - ' + responseText );
-				 }
-			 };
+		 };
 
-			 event.preventDefault();
-
-			 jQuery.ajax(options);
-		 });
-
+		 jQuery.ajax(options);
 	 }
  } )( jQuery );
