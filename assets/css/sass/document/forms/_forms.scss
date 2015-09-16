@@ -36,6 +36,22 @@ select {
 .ws-form {
 	@include clearfix;
 
+	label {
+		font-weight: 400;
+		margin-right: 5px;
+		&.block {
+			display: block;
+		}
+		&.hide {
+			display: none;
+		}
+		&.no-placeholder {
+			.ws-placeholder & {
+				display: none;
+			}
+		}
+	}
+
 	.form-title {
 		margin: 0 0 1em;
 		font-weight: lighter;

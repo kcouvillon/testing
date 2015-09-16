@@ -6170,6 +6170,16 @@ select {
 .ws-form:after {
   clear: both; }
 
+.ws-form label {
+  font-weight: 400;
+  margin-right: 5px; }
+  .ws-form label.block {
+    display: block; }
+  .ws-form label.hide {
+    display: none; }
+  .ws-placeholder .ws-form label.no-placeholder {
+    display: none; }
+
 .ws-form .form-title {
   margin: 0 0 1em;
   font-weight: lighter; }
