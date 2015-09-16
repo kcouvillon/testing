@@ -6830,11 +6830,6 @@ a.text-color-link {
       content: "x-large"; } }
 
 .site-header {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
   background-color: #323c53;
   color: #fff;
   padding-top: 1em;
@@ -7634,11 +7629,6 @@ a.text-color-link {
     margin: 0 0 1em; } }
 
 .tour-details {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
   background-color: #f2f2f4;
   padding-bottom: 1.5em; }
   @media only print {
@@ -8327,11 +8317,6 @@ section:after {
 .section-nav {
   position: relative;
   background: #323c53;
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
   background-image: linear-gradient(transparent 0, transparent 54px, #b3b7bf 54px, #b3b7bf 55px, transparent 55px);
   border-bottom: 1px solid #707787; }
   .section-nav:before,
@@ -8402,15 +8387,10 @@ section:after {
   margin-top: 0; }
 
 .section-header {
+  position: relative;
   background-size: cover;
   background-position: right center;
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
-  margin-bottom: 3.9215686275%;
-  position: relative; }
+  margin-bottom: 3.9215686275%; }
   .section-header:before,
   .section-header:after {
     content: "";
@@ -9847,7 +9827,8 @@ section:after {
 
 .search-results-form {
   position: relative;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  text-shadow: none; }
   .search-results-form i {
     position: absolute;
     top: 15px;

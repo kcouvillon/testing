@@ -25,12 +25,12 @@ get_header(); ?>
 			?>
 
 			<section class="section-header primary-section<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-
-				<div class="section-header-content">
-					<h1><?php echo get_the_title(); ?></h1>
-					<?php the_content(); ?>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<h1><?php echo get_the_title(); ?></h1>
+						<?php the_content(); ?>
+					</div>
 				</div>
-
 			</section>
 
 			<div class="campaign-single-wrap">				

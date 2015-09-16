@@ -84,22 +84,25 @@ get_header(); ?>
 			} ?>
 			<section class="primary-section">
 				<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-					<div class="section-header-content">
-						<nav class="breadcrumbs hide-print">
-							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-							<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
-						</nav>
-						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
+					<div class="ws-container">
+						<div class="section-header-content">
+							<nav class="breadcrumbs hide-print">
+								<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+								<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
+							</nav>
+							<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
-						<?php $subtitle = get_post_meta( $post->ID, 'division_options_subtitle', true ); ?>
+							<?php $subtitle = get_post_meta( $post->ID, 'division_options_subtitle', true ); ?>
 
-						<?php if ( $subtitle ) : ?>
-							<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
-						<?php endif; ?>
+							<?php if ( $subtitle ) : ?>
+								<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+							<?php endif; ?>
 
-						<?php the_content(); ?>
+							<?php the_content(); ?>
+						</div>
+
 					</div>
-
+					
 					<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
 				</header>
@@ -107,39 +110,41 @@ get_header(); ?>
 				<?php if ( 'outlier' != $division_type ) : ?>
 
 				<nav class="section-nav">
-					<ul class="section-menu hide-print">
+					<div class="ws-container">
+						<ul class="section-menu hide-print">
 
-						<?php if ( ! empty( $associated_why_ws ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-						<?php endif; ?>
+							<?php if ( ! empty( $associated_why_ws ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+							<?php endif; ?>
 
-						<?php if ( ! empty( $associated_resources ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-						<?php endif; ?>
+							<?php if ( ! empty( $associated_resources ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+							<?php endif; ?>
 
-						<?php if ( ! empty( $before_block_sections ) ) : ?>
-							<?php foreach ( $before_block_sections as $section ) : ?>
-								<?php if ( ! empty ( $section['division_blocks_before_title'] ) ) : ?>
-									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_before_title']; ?></a></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						<?php endif; ?>
+							<?php if ( ! empty( $before_block_sections ) ) : ?>
+								<?php foreach ( $before_block_sections as $section ) : ?>
+									<?php if ( ! empty ( $section['division_blocks_before_title'] ) ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_before_title']; ?></a></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-						<?php if ( $associated_collections->have_posts() ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
-						<?php endif; ?>
+							<?php if ( $associated_collections->have_posts() ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+							<?php endif; ?>
 
-						<?php if ( ! empty( $after_block_sections ) ) : ?>
-							<?php foreach ( $after_block_sections as $section ) : ?>
-								<?php if ( ! empty ( $section['division_blocks_after_title'] ) ) : ?>
-									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_after_title']; ?></a></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						<?php endif; ?>
+							<?php if ( ! empty( $after_block_sections ) ) : ?>
+								<?php foreach ( $after_block_sections as $section ) : ?>
+									<?php if ( ! empty ( $section['division_blocks_after_title'] ) ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_after_title']; ?></a></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-					</ul>
+						</ul>
 
-					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
+						<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
+					</div>
 				</nav>
 
 			</section>

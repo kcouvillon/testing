@@ -10,19 +10,23 @@ get_header(); ?>
 
 			<section class="primary-section">
 				<header class="section-header pattern-6">
-					<div class="section-header-content">
-						<h1><?php the_title(); ?></h1>
-						<p class="description"><?php the_content(); ?></p>
+					<div class="ws-container">
+						<div class="section-header-content">
+							<h1><?php the_title(); ?></h1>
+							<p class="description"><?php the_content(); ?></p>
+						</div>
 					</div>
 				</header>
 				<nav class="section-nav">
-					<ul class="section-menu hide-print">
-						<li><a href="#sitemap-explore">Explore</a></li>
-						<li><a href="#sitemap-stories">Stories</a></li>
-						<li><a href="#sitemap-resource-center">Resource Center</a></li>
-						<li><a href="#sitemap-about">About</a></li>
-					</ul>
-					<a href="<?php echo esc_url( home_url( '/why-worldstrides/' ) ); ?>" class="btn btn-info subnav-cta hide-print">Why Worldstrides »</a>
+					<div class="ws-container">
+						<ul class="section-menu hide-print">
+							<li><a href="#sitemap-explore">Explore</a></li>
+							<li><a href="#sitemap-stories">Stories</a></li>
+							<li><a href="#sitemap-resource-center">Resource Center</a></li>
+							<li><a href="#sitemap-about">About</a></li>
+						</ul>
+						<a href="<?php echo esc_url( home_url( '/why-worldstrides/' ) ); ?>" class="btn btn-info subnav-cta hide-print">Why Worldstrides »</a>
+					</div>
 				</nav>
 			</section>
 

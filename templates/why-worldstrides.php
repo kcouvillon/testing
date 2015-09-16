@@ -25,20 +25,24 @@ get_header(); ?>
 
 		<section class="primary-section">
 			<header class="section-header" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
-					<h1 class="page-title section-title">Why Travel With WorldStrides?</h1>
-					<?php the_content(); ?>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<h1 class="page-title section-title">Why Travel With WorldStrides?</h1>
+						<?php the_content(); ?>
+					</div>
 				</div>
 			</header>
 
 			<nav class="section-nav">
-				<ul class="section-menu">
-					<?php foreach ( $sections as $section ) : ?>
-						<li>
-							<a href="#<?php echo sanitize_title( $section['title'] ); ?>"><?php echo apply_filters( 'title', $section['title'] ); ?></a>
-						</li>
-					<?php endforeach; ?>
-				</ul>
+				<div class="ws-container">
+					<ul class="section-menu">
+						<?php foreach ( $sections as $section ) : ?>
+							<li>
+								<a href="#<?php echo sanitize_title( $section['title'] ); ?>"><?php echo apply_filters( 'title', $section['title'] ); ?></a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
 			</nav>
 		</section>
 

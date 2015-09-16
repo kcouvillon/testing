@@ -67,14 +67,16 @@ if ( is_singular( 'post' ) ) {
 	</nav>
 
 	<header id="masthead" class="site-header" role="banner">
-		<div class="logo hide-print"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.png' ); ?>" alt="Worldstrides" width="216" height="46" /></a></div>
-		<div class="print-logo print-only"><span class="icon icon-shield"></span> Worldstrides</div>
-		<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-menu"></i><span class="hide">Menu</span></a>
+		<div class="ws-container">
+			<div class="logo hide-print"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.png' ); ?>" alt="Worldstrides" width="216" height="46" /></a></div>
+			<div class="print-logo print-only"><span class="icon icon-shield"></span> Worldstrides</div>
+			<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-menu"></i><span class="hide">Menu</span></a>
 
-		<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
-			<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Our Trips »</a>
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav>
+			<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
+				<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Our Trips »</a>
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+			</nav>
+		</div>
 	</header>
 
 	<nav id="mobile-nav" class="mobile-nav hide-print" role="navigation">
