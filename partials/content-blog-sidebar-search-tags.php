@@ -1,7 +1,8 @@
 <div class="search-widget">
 
 	<?php if( ! is_search() ) : ?>
-		<input type="search" placeholder="Search Blog">
+		<label for="input-search-blog" class="block no-placeholder">Search Blog</label>
+		<input type="search" id="input-search-blog" placeholder="Search Blog">
 	<?php endif; ?>
 
 	<h3>Explore by Tag</h3>
