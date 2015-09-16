@@ -298,7 +298,7 @@ get_header(); ?>
 						<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
-									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
+									<li><a href="<?php the_permalink(); ?>"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
 								</ul>
 								<?php if ( 'smithsonian' == $itinerary_type ) : ?>
 									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
