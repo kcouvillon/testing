@@ -32,7 +32,7 @@ get_header(); ?>
 				<article <?php post_class(); ?>>
 					<header class="entry-header">
 						<?php if ( has_post_thumbnail( $bio_id ) ) : ?>
-							<div class="headshot">
+							<div class="headshot clearfix">
 								<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
 								<?php echo get_the_post_thumbnail( $bio_id, 'medium' ); ?>
 							</div>
@@ -42,7 +42,7 @@ get_header(); ?>
 							</div>
 						<?php endif; ?>
 
-						<h3 class="entry-title">
+						<h3 class="leader-name entry-title">
 							<a href="<?php echo esc_url( get_permalink( $bio_id ) ); ?>" rel="bookmark">
 								<?php echo apply_filters( 'title', $bio->post_title ); ?>
 							</a>
@@ -64,7 +64,7 @@ get_header(); ?>
 					</div>
 
 					<footer class="entry-footer">
-						<a href="<?php echo esc_url( get_the_permalink( $bio_id ) ); ?>">Read More</a>
+						<a href="<?php echo esc_url( get_the_permalink( $bio_id ) ); ?>">Read more about <?php echo apply_filters( 'title', $bio->post_title ); ?></a>
 					</footer>
 				</article>
 

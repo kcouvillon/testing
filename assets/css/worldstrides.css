@@ -6162,6 +6162,10 @@ select {
     outline: none;
     box-shadow: 0 0 5px -1px; }
 
+label {
+  font-weight: 400;
+  margin-right: 5px; }
+
 .ws-form:before,
 .ws-form:after {
   content: "";
@@ -6169,6 +6173,15 @@ select {
 
 .ws-form:after {
   clear: both; }
+
+.ws-form label.block {
+  display: block; }
+
+.ws-form label.hide {
+  display: none; }
+
+.ws-placeholder .ws-form label.no-placeholder {
+  display: none; }
 
 .ws-form .form-title {
   margin: 0 0 1em;
@@ -6463,22 +6476,24 @@ a, .entry-title, button {
   text-align: right;
   width: 50%; }
 
-h1 {
+/* headings.scss
+ * ---------------------------------- */
+h1, .h1 {
   line-height: 1em; }
 
-h2 {
+h2, .h2 {
   font-weight: 500; }
 
-h3 {
+h3, .h3 {
   font-weight: 700; }
 
-h4 {
+h4, .h4 {
   font-weight: 700; }
 
-h5 {
+h5, .h5 {
   font-weight: 700; }
 
-h6 {
+h6, .h6 {
   font-weight: 700; }
 
 p {
@@ -6815,11 +6830,6 @@ a.text-color-link {
       content: "x-large"; } }
 
 .site-header {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
   background-color: #323c53;
   color: #fff;
   padding-top: 1em;
@@ -7304,6 +7314,7 @@ a.text-color-link {
   margin-right: auto;
   padding: 0 5vw;
   background-size: cover;
+  background-color: #323c53;
   text-align: center;
   padding-top: 6vh;
   padding-bottom: 10vh;
@@ -7618,11 +7629,6 @@ a.text-color-link {
     margin: 0 0 1em; } }
 
 .tour-details {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
   background-color: #f2f2f4;
   padding-bottom: 1.5em; }
   @media only print {
@@ -8311,11 +8317,6 @@ section:after {
 .section-nav {
   position: relative;
   background: #323c53;
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
   background-image: linear-gradient(transparent 0, transparent 54px, #b3b7bf 54px, #b3b7bf 55px, transparent 55px);
   border-bottom: 1px solid #707787; }
   .section-nav:before,
@@ -8386,15 +8387,10 @@ section:after {
   margin-top: 0; }
 
 .section-header {
+  position: relative;
   background-size: cover;
   background-position: right center;
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
-  margin-bottom: 3.9215686275%;
-  position: relative; }
+  margin-bottom: 3.9215686275%; }
   .section-header:before,
   .section-header:after {
     content: "";
@@ -8652,11 +8648,17 @@ section:after {
         margin-left: 67.9738562092%;
         margin-right: -100%;
         clear: none; } }
+  .leadership > article .leader-name {
+    font-size: 1.625em;
+    line-height: 1.2em;
+    margin-top: 27px;
+    margin-bottom: 13.5px;
+    margin-top: 13.5px; }
 
 .leadership .headshot img {
   width: 100%; }
 
-.leadership .entry-title, .leadership .entry-position, .leadership .entry-content {
+.leadership .entry-position, .leadership .entry-content {
   margin-right: 1em; }
 
 .entry-position {
@@ -8797,9 +8799,14 @@ section:after {
     line-height: 1.3em; }
   .contact-section .section-content a {
     font-weight: bold; }
-  @media screen and (min-width: 960px) {
-    .contact-section .section-content h5 {
-      font-size: 1.3em; } }
+  .contact-section .section-content h4, .contact-section .section-content h5, .contact-section .section-content h6 {
+    font-size: 1em;
+    line-height: 1.2em;
+    margin-top: 13.5px;
+    margin-bottom: 13.5px; }
+    @media screen and (min-width: 960px) {
+      .contact-section .section-content h4, .contact-section .section-content h5, .contact-section .section-content h6 {
+        font-size: 1.3em; } }
 
 @media screen and (min-width: 768px) {
   .contact-section .column {
@@ -8915,7 +8922,12 @@ section:after {
       margin-right: 1em; } }
 
 #office-map {
-  padding-top: 40%; }
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  padding: 40% 0 0; }
 
 .office:before,
 .office:after {
@@ -9815,7 +9827,8 @@ section:after {
 
 .search-results-form {
   position: relative;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  text-shadow: none; }
   .search-results-form i {
     position: absolute;
     top: 15px;

@@ -7,7 +7,7 @@ $text = ( isset( $options['request_info_text'] ) ? $options['request_info_text']
 <div class="blog-single-cta" style="background-image:<?php echo 'url(' . $background . ')'; ?>;">
 	<span class="h2"><?php echo apply_filters( 'the_content', $text ) ?></span>
 	<form>
-		<span>I am a</span>
+		<label for="selectMenu">I am a</label>
 		<select id="selectMenu">
 			<option value="/request-info/?type=parent">Parent</option>
 			<option value="/request-info/?type=traveler">Traveler</option>

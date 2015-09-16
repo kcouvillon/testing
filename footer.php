@@ -28,8 +28,8 @@
 			</ul>
 
 			<ul class="departing-from hide-print">
-				<li>Departing From</li>
-				<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+				<li><label for="select-ws-region">Departing From</label></li>
+				<select id="select-ws-region" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
 					<option value="" selected>USA</option>
 					<option value="http://worldstrides.co.uk/">United Kingdom</option>
 					<option value="http://trekset.com.au/">Australia</option>
@@ -49,11 +49,11 @@
 		<div class="clearfix"></div>
 
 		<div class="tagline">
-			<h2 class="footer-logo">
+			<div class="footer-logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<span class="hide"><?php echo bloginfo('description'); ?></span>
 				</a>
-			</h2>
+			</div>
 		</div>
 
 	</footer>

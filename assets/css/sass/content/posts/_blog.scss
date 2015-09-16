@@ -177,6 +177,7 @@
 .blog-single-cta {
 	@include container();
 	background-size: cover;
+	background-color: $gray_base;
 	text-align: center;
 	padding-top: 6vh;
 	padding-bottom: 10vh;

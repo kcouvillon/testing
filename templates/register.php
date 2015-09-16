@@ -11,8 +11,10 @@ get_header(); ?>
 
 		<section class="primary-section">
 			<header class="section-header pattern-3">
-				<div class="section-header-content">
-					<h1 class="section-title"><?php the_title(); ?></h1>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<h1 class="section-title"><?php the_title(); ?></h1>
+					</div>
 				</div>
 			</header>
 		</section>

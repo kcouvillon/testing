@@ -33,8 +33,27 @@ select {
   }
 }
 
+label {
+	font-weight: 400;
+	margin-right: 5px;
+}
+
 .ws-form {
 	@include clearfix;
+
+	label {
+		&.block {
+			display: block;
+		}
+		&.hide {
+			display: none;
+		}
+		&.no-placeholder {
+			.ws-placeholder & {
+				display: none;
+			}
+		}
+	}
 
 	.form-title {
 		margin: 0 0 1em;

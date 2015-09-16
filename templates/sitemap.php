@@ -10,19 +10,23 @@ get_header(); ?>
 
 			<section class="primary-section">
 				<header class="section-header pattern-6">
-					<div class="section-header-content">
-						<h1><?php the_title(); ?></h1>
-						<p class="description"><?php the_content(); ?></p>
+					<div class="ws-container">
+						<div class="section-header-content">
+							<h1><?php the_title(); ?></h1>
+							<p class="description"><?php the_content(); ?></p>
+						</div>
 					</div>
 				</header>
 				<nav class="section-nav">
-					<ul class="section-menu hide-print">
-						<li><a href="#sitemap-explore">Explore</a></li>
-						<li><a href="#sitemap-stories">Stories</a></li>
-						<li><a href="#sitemap-resource-center">Resource Center</a></li>
-						<li><a href="#sitemap-about">About</a></li>
-					</ul>
-					<a href="<?php echo esc_url( home_url( '/why-worldstrides/' ) ); ?>" class="btn btn-info subnav-cta hide-print">Why Worldstrides »</a>
+					<div class="ws-container">
+						<ul class="section-menu hide-print">
+							<li><a href="#sitemap-explore">Explore</a></li>
+							<li><a href="#sitemap-stories">Stories</a></li>
+							<li><a href="#sitemap-resource-center">Resource Center</a></li>
+							<li><a href="#sitemap-about">About</a></li>
+						</ul>
+						<a href="<?php echo esc_url( home_url( '/why-worldstrides/' ) ); ?>" class="btn btn-info subnav-cta hide-print">Why Worldstrides »</a>
+					</div>
 				</nav>
 			</section>
 
@@ -35,7 +39,7 @@ get_header(); ?>
 						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>" class="btn btn-primary hide-print">Explore all Trips »</a>
 					</header>
 
-					<h4>Middle School</h4>
+					<h3 class="h4">Middle School</h3>
 
 					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=middle-school' ); ?>">Middle School trips »</strong></a></p>
 
@@ -75,7 +79,7 @@ get_header(); ?>
 						</div>
 					</ul>
 
-					<h4>High School</h4>
+					<h3 class="h4">High School</h3>
 
 					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=high-school' ); ?>">High School trips »</strong></a></p>
 
@@ -115,7 +119,7 @@ get_header(); ?>
 						</div>
 					</ul>
 
-					<h4>University</h4>
+					<h3 class="h4">University</h3>
 
 					<p><strong>See all <a href="<?php echo home_url( '/explore/?travelers=undergrad-postgrad' ); ?>">University trips »</strong></a></p>
 
@@ -156,7 +160,7 @@ get_header(); ?>
 
 					</ul>
 
-					<h4>Performing Arts</h4>
+					<h3 class="h4">Performing Arts</h3>
 
 					<p><strong>
 						See Performing Arts trips for 

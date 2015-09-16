@@ -11,9 +11,11 @@ get_header(); ?>
 	<main id="main" class="site-main blog" role="main">
 
 		<section class="section-header primary-section pattern-3">
-			<div class="section-header-content">
-				<?php $category = get_category_by_slug( get_query_var('category_name') ); ?>
-				<h1><?php echo $category->name; ?> Stories</h1>
+			<div class="ws-container">
+				<div class="section-header-content">
+					<?php $category = get_category_by_slug( get_query_var('category_name') ); ?>
+					<h1><?php echo $category->name; ?> Stories</h1>
+				</div>
 			</div>
 		</section>
 

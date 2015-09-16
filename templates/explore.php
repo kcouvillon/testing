@@ -24,21 +24,25 @@
 
 		<section class="explore primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
+				<div class="ws-container">
+					<div class="section-header-content">
 
-					<h1 class="section-title"><?php the_title(); ?></h1>
-					<div class="description"><?php the_content(); ?></div>
+						<h1 class="section-title"><?php the_title(); ?></h1>
+						<div class="description"><?php the_content(); ?></div>
 
+					</div>
 				</div>
 			</header>
 		</section>
 
 		<section class="explore-tool">
 
-			<div class="explore-utility ws-container">
-				<span class="search-by">Select filters to narrow your search</span>
-				<a class="results-count" href="#explore-results"><span class="collections-count">Collections</span> and <span class="itineraries-count">Itineraries</span>&nbsp;<i class="icon icon-arrow-down"></i></a>
-				<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
+			<div class="explore-utility">
+				<div class="ws-container">
+					<span class="search-by">Select filters to narrow your search</span>
+					<a class="results-count" href="#explore-results"><span class="collections-count">Collections</span> and <span class="itineraries-count">Itineraries</span>&nbsp;<i class="icon icon-arrow-down"></i></a>
+					<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
+				</div>
 			</div>
 
 			<?php get_template_part('partials/explore', 'filters'); ?>		

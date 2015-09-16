@@ -8,10 +8,10 @@ section {
 
 // These styles apply to the section heros that appear on several pages
 .section-nav {
+	@include clearfix;
+	// @include container();
 	position: relative;
 	background: $gray-base;
-	@include container();
-	@include clearfix;
 	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
 	border-bottom: 1px solid tint($gray_base, 30%);
 
@@ -105,12 +105,12 @@ section {
 }
 
 .section-header {
+	// @include container();
+	@include clearfix;
+	position: relative;
 	background-size: cover;
 	background-position: right center;
-	@include clearfix;
-	@include container();
 	margin-bottom: gutter()*2;
-	position: relative;
 
 	.primary-section &, .single & {
 		margin-bottom: 0;

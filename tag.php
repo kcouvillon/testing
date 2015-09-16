@@ -11,9 +11,11 @@ get_header(); ?>
 	<main id="main" class="site-main blog" role="main">
 
 		<section class="section-header primary-section pattern-3">
-			<div class="section-header-content">
-				<?php $tag = get_term_by( 'slug', get_query_var( 'tag' ), 'post_tag' ); ?>
-				<h1><?php echo $tag->name; ?> Stories</h1>
+			<div class="ws-container">
+				<div class="section-header-content">
+					<?php $tag = get_term_by( 'slug', get_query_var( 'tag' ), 'post_tag' ); ?>
+					<h1><?php echo $tag->name; ?> Stories</h1>
+				</div>
 			</div>
 		</section>
 

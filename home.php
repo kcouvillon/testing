@@ -9,14 +9,16 @@ get_header(); ?>
 	<main id="main" class="site-main blog" role="main">
 
 		<section class="section-header primary-section pattern-3">
-			<div class="section-header-content">
-				<h1>Stories</h1>
+			<div class="ws-container">
+				<div class="section-header-content">
+					<h1>Stories</h1>
 
-				<?php
-				$page = get_page_by_title( 'Blog' );
-				$excerpt = $page->post_excerpt;
-				?>
-				<?php echo apply_filters( 'the_content', $excerpt ); ?>
+					<?php
+					$page = get_page_by_title( 'Blog' );
+					$excerpt = $page->post_excerpt;
+					?>
+					<?php echo apply_filters( 'the_content', $excerpt ); ?>
+				</div>
 			</div>
 		</section>
 

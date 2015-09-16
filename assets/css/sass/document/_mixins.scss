@@ -74,32 +74,44 @@
 	//font-size: $sizeValue + rem;
 }
 
-// @mixin h1 {
-// 	font-size: $h1_size;
-// 	line-height: $h1_line_height;
-// }
+@mixin h1 {
+	font-size: $h1_size;
+	line-height: $h1_line_height;
+	margin-top: 27px;
+    margin-bottom: 13.5px;
+}
 
-// @mixin h2 {
-// 	font-size: $h2_size;
-// 	line-height: $h2_line_height;
-// }
+@mixin h2 {
+	font-size: $h2_size;
+	line-height: $h2_line_height;
+	margin-top: 27px;
+    margin-bottom: 13.5px;
+}
 
-// @mixin h3 {
-// 	font-size: $h3_size;
-// 	line-height: $h3_line_height;
-// }
+@mixin h3 {
+	font-size: $h3_size;
+	line-height: $h3_line_height;
+	margin-top: 27px;
+    margin-bottom: 13.5px;
+}
 
-// @mixin h4 {
-// 	font-size: $h4_size;
-// 	line-height: $h4_line_height;
-// }
+@mixin h4 {
+	font-size: $h4_size;
+	line-height: $h4_line_height;
+	margin-top: 13.5px;
+	margin-bottom: 13.5px;
+}
 
-// @mixin h5 {
-// 	font-size: $h5_size;
-// 	line-height: $h5_line_height;
-// }
+@mixin h5 {
+	font-size: $h5_size;
+	line-height: $h5_line_height;
+	margin-top: 13.5px;
+	margin-bottom: 13.5px;
+}
 
-// @mixin h6 {
-// 	font-size: $h6_size;
-// 	line-height: $h6_line_height;
-// }
+@mixin h6 {
+	font-size: $h6_size;
+	line-height: $h6_line_height;
+	margin-top: 13.5px;
+	margin-bottom: 13.5px;
+}

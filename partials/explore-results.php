@@ -75,7 +75,7 @@ $collections = new WP_Query( $collection_args );
 							<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 							<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
 						<?php endif; ?>
-						<h2 class="tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						<h3 class="h2 tile-title collection-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 					</div>
 
 				</article>
@@ -83,7 +83,7 @@ $collections = new WP_Query( $collection_args );
 			<?php endwhile; ?>
 
 		</div>
-		<a href="#toggle-results" class="toggle-results">See All</a>
+		<a href="#toggle-results" class="toggle-results">See All Collections</a>
 	</div>
 
 	<div class="itineraries show-previews">
@@ -123,7 +123,7 @@ $collections = new WP_Query( $collection_args );
 							<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 							<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
 						<?php endif; ?>
-						<h2 class="tile-title itinerary-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+						<h3 class="h2 tile-title itinerary-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 					</div>
 
 				</article>
@@ -131,7 +131,7 @@ $collections = new WP_Query( $collection_args );
 			<?php endwhile; ?>
 		
 		</div>
-		<a href="#toggle-results" class="toggle-results">See All</a>
+		<a href="#toggle-results" class="toggle-results">See All Itineraries</a>
 	</div>
 
 </section>

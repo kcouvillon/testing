@@ -38,7 +38,7 @@
 }
 
 .tour-details {
-	@include container();
+	// @include container();
 	background-color: $gray_lighter;
 	padding-bottom: 1.5em;
 	@media only print {

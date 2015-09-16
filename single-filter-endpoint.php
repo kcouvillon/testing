@@ -73,15 +73,17 @@ $associated_itineraries = new WP_Query( array(
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
-					<nav class="breadcrumbs">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-						<span>Interests</span>>
-						<span><?php the_title(); ?></span>
-					</nav>
-					<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<nav class="breadcrumbs">
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+							<span>Interests</span>>
+							<span><?php the_title(); ?></span>
+						</nav>
+						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
-					<?php the_content(); ?>
+						<?php the_content(); ?>
+					</div>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
@@ -89,41 +91,43 @@ $associated_itineraries = new WP_Query( array(
 			</header>
 
 			<nav class="section-nav">
-				<ul class="section-menu hide-print">
+				<div class="ws-container">
+					<ul class="section-menu hide-print">
 
-					<?php if ( ! empty( $associated_why_ws ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_why_ws ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $associated_resources ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_resources ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $before_block_sections ) ) : ?>
-						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $before_block_sections ) ) : ?>
+							<?php foreach ( $before_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-					<?php if ( $associated_collections->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
-					<?php endif; ?>
+						<?php if ( $associated_collections->have_posts() ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+						<?php endif; ?>
 
-					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Programs</a></li>
-					<?php endif; ?>
+						<?php if ( $associated_itineraries->have_posts() ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Programs</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $after_block_sections ) ) : ?>
-						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $after_block_sections ) ) : ?>
+							<?php foreach ( $after_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-				</ul>
+					</ul>
+				</div>
 			</nav>
 
 		</section>

@@ -80,21 +80,23 @@ get_header(); ?>
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
-					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-						<span>Collections</span>>
-						<span><?php the_title(); ?></span>
-					</nav>
-					<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<nav class="breadcrumbs hide-print">
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+							<span>Collections</span>>
+							<span><?php the_title(); ?></span>
+						</nav>
+						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
-					<?php $subtitle = get_post_meta( $post->ID, 'collection_options_subtitle', true ); ?>
+						<?php $subtitle = get_post_meta( $post->ID, 'collection_options_subtitle', true ); ?>
 
-					<?php if ( $subtitle ) : ?>
-						<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
-					<?php endif; ?>
+						<?php if ( $subtitle ) : ?>
+							<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+						<?php endif; ?>
 
-					<?php the_content(); ?>
+						<?php the_content(); ?>
+					</div>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
@@ -104,39 +106,41 @@ get_header(); ?>
 			<?php if ( 'outlier' != $collection_type ) : ?>
 
 			<nav class="section-nav">
-				<ul class="section-menu hide-print">
+				<div class="ws-container">
+					<ul class="section-menu hide-print">
 
-					<?php if ( ! empty( $associated_why_ws ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_why_ws ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $associated_resources ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_resources ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $before_block_sections ) ) : ?>
-						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['collection_blocks_before_title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_before_title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $before_block_sections ) ) : ?>
+							<?php foreach ( $before_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['collection_blocks_before_title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_before_title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
-					<?php endif; ?>
+						<?php if ( $associated_itineraries->have_posts() ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $after_block_sections ) ) : ?>
-						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['collection_blocks_after_title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_after_title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $after_block_sections ) ) : ?>
+							<?php foreach ( $after_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['collection_blocks_after_title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_after_title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-				</ul>
+					</ul>
 
-				<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
+					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
+				</div>
 			</nav>
 
 		</section>
@@ -201,7 +205,7 @@ get_header(); ?>
 									<?php endforeach; ?>
 
 								</ul>
-								<h2 class="tile-title"><a href="<?php echo get_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
+								<h3 class="h2 tile-title"><a href="<?php echo get_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h3>
 							</div>
 						</li>
 					<?php endforeach; ?>
@@ -298,12 +302,12 @@ get_header(); ?>
 						<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled">
-									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
+									<li><a href="<?php the_permalink(); ?>"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
 								</ul>
 								<?php if ( 'smithsonian' == $itinerary_type ) : ?>
 									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 								<?php endif; ?>
-								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+								<h3 class="h2 tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 							</div>
 						</li>
 
