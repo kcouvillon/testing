@@ -12,7 +12,11 @@ get_header(); ?>
 
 		<section class="section-header primary-section pattern-3">
 			<div class="section-header-content">
-				<h1>Stories</h1>
+				<?php if ( is_author() ) : ?>
+					<h1><?php echo 'Stories by ' . get_the_author(); ?></h1>
+				<?php else : ?>
+					<h1><?php the_archive_title(); ?></h1>
+				<?php endif; ?>
 
 				<?php
 				$page = get_page_by_title( 'Blog' );
