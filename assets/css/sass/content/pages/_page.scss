@@ -221,6 +221,11 @@ section {
 	margin-top: gutter();
 	margin-bottom: gutter();
 	position: relative;
+	&.bleed-container {
+		@include susy-media($screen-sm) {
+			@include bleed-x(5vw 5vw);
+		}
+	}
 
 	.page-template-default & {
 		@include susy-media($screen-sm) {

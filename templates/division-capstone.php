@@ -353,23 +353,23 @@ get_header(); ?>
 
 		<?php if ( ! empty( $partnerships ) ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-			<section class="partners ws-container ws-blocks tour-blocks-after">
-				<h2><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_title', true ) ); ?></h2>
+			<section class="section-content partners">
+				<h2 class="h3"><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_title', true ) ); ?></h2>
 				<div class="partner-wrap">
 					<?php foreach ( $partnerships as $partnership ) : ?>
 						<div class="partner">
 							<?php if ( $partnership['image'] ) : ?>
-							<a href="<?php echo $partnership['url']; ?>">
-								<img src="<?php echo $partnership['image']; ?>">
+							<a href="<?php echo $partnership['url']; ?>" target="_blank">
+								<img src="<?php echo $partnership['image']; ?>" class="partner-img" />
 							</a>
 							<?php endif; ?>
-							<h3 class="h4"><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
+							<h3 class="h5"><a href="<?php echo $partnership['url']; ?>" target="_blank"><?php echo $partnership['title']; ?></a></h3>
 							<p><?php echo $partnership['description']; ?></p>
 						</div>
 					<?php endforeach;?>
 				</div>
 
-				<h2><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_small_title', true ) ); ?></h2>
+				<h2 class="h3"><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_small_title', true ) ); ?></h2>
 				<?php foreach ( $partnerships_small as $partnership ) : ?>
 					<h3 class="h5"><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
 				<?php endforeach;?>
