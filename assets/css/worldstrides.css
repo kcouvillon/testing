@@ -6671,6 +6671,16 @@ p {
   padding: 0 5vw;
   overflow: hidden; }
 
+@media (min-width: 768px) {
+  .bleed-container {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    margin-right: -5vw;
+    margin-left: -5vw;
+    padding-right: 5vw;
+    padding-left: 5vw; } }
+
 .bg-gray-base, .bg-gray-darker, .bg-gray-dark, .bg-gray {
   color: #f2f2f4; }
 
@@ -8090,16 +8100,6 @@ a.text-color-link {
 
 .collection .programs {
   padding: 0; }
-
-@media (min-width: 768px) {
-  .collection .programs-list {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    margin-right: -5vw;
-    margin-left: -5vw;
-    padding-right: 5vw;
-    padding-left: 5vw; } }
 
 #mix-container.no-results:before {
   content: "Sorry, this collection has no Itineraries during your selected dates. Try selecting a broader range.";

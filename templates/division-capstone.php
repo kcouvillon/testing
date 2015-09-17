@@ -257,7 +257,7 @@ get_header(); ?>
 
 			<section class="section-content programs">
 				<h2 class="section-title ws-container">Collections</h2>
-				<ul class="programs-list list-unstyled clearfix">
+				<ul class="programs-list bleed-container list-unstyled clearfix">
 					<?php while ( $associated_collections->have_posts() ) : ?>
 						<?php $associated_collections->the_post(); ?>
 						<?php
@@ -288,9 +288,9 @@ get_header(); ?>
 		<?php endif; ?>
 
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-		<section class="section-content global-reach">
+		<section class="section-content bleed-container global-reach">
 
-			<h2>Global Reach</h2>
+			<h2 class="section-title ws-container">Global Reach</h2>
 
 			<div id="office-map"></div>
 			<div id="offices-json" style="display: none;">
