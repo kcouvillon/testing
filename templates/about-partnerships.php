@@ -25,7 +25,7 @@ get_header(); ?>
 					$section_notes    = get_post_meta( $post->ID, 'about_partnerships_section_'. $i .'_notes', true );
 					?>
 					<?php if ( $section_title ) : ?>
-						<section class="partners accreditation">
+						<section class="partners">
 
 							<h3><?php echo apply_filters( 'the_title', $section_title ); ?></h3>
 

@@ -9,12 +9,6 @@
 	.programs {
 		padding: 0;
 	}
-
-	.programs-list {
-		@include susy-media($screen-sm) {
-			@include bleed-x(5vw 5vw);
-		}
-	}
 }
 
 #mix-container {

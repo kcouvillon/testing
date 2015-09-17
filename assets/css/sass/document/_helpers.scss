@@ -33,6 +33,11 @@
 	@include container();
 	overflow: hidden;
 }
+.bleed-container {
+	@include susy-media($screen-sm) {
+		@include bleed-x(5vw 5vw);
+	}
+}
 
 // Colors
 // ======================================= /
