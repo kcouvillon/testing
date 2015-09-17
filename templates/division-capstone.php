@@ -189,14 +189,14 @@ get_header(); ?>
 					$background = '';
 					if( has_post_thumbnail( $resource_id ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
-						$background = 'url(' . $featured[0] . ')';
+						$background = 'url(' . $featured[0] . ');';
 						$class = ' has-tile-image';
 					} else {
 						$class = ' pattern-' . rand(1, 9);
 					}
 					?>
 
-					<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+					<li class="resource tile tile-third <?php echo esc_attr($class); ?>" style="background-image:<?php echo $background; ?>);">
 						<div class="tile-content">
 							<ul class="meta list-unstyled">
 								<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
@@ -297,14 +297,16 @@ get_header(); ?>
 				<?php echo json_encode( get_post_meta( 157, 'about_offices_locations_list', true ) ); ?>
 			</div>
 
-			<ul>
-				<li>North America</li>
-				<li>South &amp; Central America</li>
-				<li>Europe</li>
-				<li>Asia</li>
-				<li>Africa</li>
-				<li>Oceania</li>
-			</ul>
+			<div class="ws-container">
+				<ul>
+					<li>North America</li>
+					<li>South &amp; Central America</li>
+					<li>Europe</li>
+					<li>Asia</li>
+					<li>Africa</li>
+					<li>Oceania</li>
+				</ul>
+			</div>
 
 		</section>
 
