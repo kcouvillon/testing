@@ -125,8 +125,12 @@ class WS_Marketo {
 
  		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
 		echo '<pre>';
-		//print_r($_POST);
-		//print_r($_COOKIE);
+
+		if( "" === trim($_POST['Email']) ) {
+			echo 'no email address submitted.';
+			echo '</pre>';
+			return;
+		}
 		
 		print_r($_COOKIE['_mkto_trk']);
 		
@@ -154,9 +158,6 @@ class WS_Marketo {
 		$upsert->input = array($lead);
 		$upsert_result = $upsert->postData();
 		$upsert_obj = json_decode($upsert_result);
-
-		//print_r("\n\nResult Parsed:\n");
-		//print_r($upsert_obj);
 
 		// alias the id:
 		$upsert_id = $upsert_obj->result[0]->id;

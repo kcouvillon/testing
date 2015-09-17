@@ -18,7 +18,7 @@
 			<li class="field">
 				<label for="get-info-wsProduct">I am interested in</label>
 				<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
-					<option value="Unknown">Select...</option>
+					<option value="">Select...</option>
 					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
 					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
 					<option value='High School - International' class='par mse hse'>Tours to International Destinations</option>
@@ -103,6 +103,6 @@
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary" title="Get Information">
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>
