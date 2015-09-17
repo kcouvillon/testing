@@ -292,7 +292,10 @@ get_header(); ?>
 
 			<h2>Global Reach</h2>
 
-			{MAP GOES HERE}
+			<div id="office-map"></div>
+			<div id="offices-json" style="display: none;">
+				<?php echo json_encode( get_post_meta( 157, 'about_offices_locations_list', true ) ); ?>
+			</div>
 
 			<ul>
 				<li>North America</li>
@@ -306,30 +309,43 @@ get_header(); ?>
 		</section>
 
 		<?php if ( ! empty( $associated_bios ) ) : ?>
-		<section class="section-content global-reach">
+		<section class="section-content">
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<h2>University Team</h2>
 
+			<div class="leadership">
+			
 			<?php foreach ( $associated_bios as $bio_id ) : ?>
+				<?php $post = get_post($bio_id); ?>
+				<?php setup_postdata( $post ); ?>
+				<?php $position = get_post_meta( $post->ID, 'ws_bio_position', true ); ?>
 
-				<?php $bio = get_post( $bio_id ); ?>
-				<?php $position = get_post_meta( $bio_id, 'ws_bio_position', true ); ?>
+				<article <?php post_class(); ?>>
+					<header class="entry-header">
+						<?php if ( has_post_thumbnail() ) : ?>
+							<div class="headshot clearfix">
+								<?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?>
+							</div>
+						<?php else : ?>
+							<div class="headshot-pattern pattern-<?php echo rand(1, 9); ?>">
 
-				<?php if ( has_post_thumbnail( $bio_id ) ) : ?>
-					<div class="headshot">
-						<?php echo get_the_post_thumbnail( $bio_id, 'thumbnail' ); ?>
-					</div>
-				<?php endif; ?>
+							</div>
+						<?php endif; ?>
 
-				<h3>
-					<?php echo apply_filters( 'title', $bio->post_title ); ?>
-				</h3>
+						<h3 class="leader-name entry-title">
+							<a href="<?php the_permalink(); ?>" rel="bookmark">
+								<?php the_title(); ?>
+							</a>
+						</h3>
 
-				<?php if ( $position ) : ?>
-					<span class="entry-position"><?php echo esc_html( $position ); ?></span>
-				<?php endif; ?>
+						<?php if ( $position ) : ?>
+							<span class="entry-position"><?php echo esc_html( $position ); ?></span>
+						<?php endif; ?>
+					</header>
+				</article>
 
-			<?php endforeach; ?>
+			<?php endforeach; wp_reset_postdata(); ?>
+			</div>
 		</section>
 		<?php endif; ?>
 
