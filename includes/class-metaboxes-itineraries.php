@@ -118,12 +118,12 @@ class WS_Metaboxes_Itineraries {
 		) );
 
 		// Option to always show on collections
-		$cmb->add_field( array(
-			'name' => 'Collections Visibility',
-			'desc' => 'Select to always keep this itinerary visible when a user is filtering itineraries by date on collection pages.',
-			'id'   => $prefix . 'always_show',
-			'type' => 'checkbox'
-		) );
+		// $cmb->add_field( array(
+		// 	'name' => 'Collections Visibility',
+		// 	'desc' => 'Select to always keep this itinerary visible when a user is filtering itineraries by date on collection pages.',
+		// 	'id'   => $prefix . 'always_show',
+		// 	'type' => 'checkbox'
+		// ) );
 
 		// Destinations / Activities
 		$cmb->add_field( array(

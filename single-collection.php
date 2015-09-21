@@ -271,7 +271,7 @@ get_header(); ?>
 						<?php
 						$associated_itineraries->the_post();
 						$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
-						$always_available = get_post_meta( $post->ID, 'itinerary_details_always_show', true );
+						// $always_available = get_post_meta( $post->ID, 'itinerary_details_always_show', true );
 						$background = '';
 						$class = '';
 						$dates = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
@@ -285,7 +285,7 @@ get_header(); ?>
 							$class = ' pattern-' . rand(1, 9);
 						}
 
-						$class .= ( "on" === $always_available ) ? ' always-available ' : '';
+						// $class .= ( "on" === $always_available ) ? ' always-available ' : '';
 
 						// Calculate dates for filtering
 						if ( $dates && is_array( $dates ) ) {
