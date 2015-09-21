@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-09-17
+/*! WorldStrides - v0.1.0 - 2015-09-21
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -776,7 +776,7 @@
 					jQuery.each(output, function(i, item){
 						city.append('<option value="' + item.school_city + '">' + item.school_city + '</option>');
 					});
-					wsData.mdrapiSetCityAutoComplete();
+					wsData.setCityAutoComplete();
 					city.val('').removeAttr('readonly'); // make city editable
 				}
 			});
@@ -789,7 +789,7 @@
 		/**
 		 * Set autocomplete for city input
 		 */
-		wsData.mdrapiSetCityAutoComplete = function (){
+		wsData.setCityAutoComplete = function (){
 
 			// find and alias members:
 			var school = jQuery('#get-info-school');
@@ -820,9 +820,10 @@
 					if (ui.item.value === "Other") {
 						// The item selected from the menu, if any. Otherwise the property is null
 						//If they choose "other," it's not a ui.item, so show the hidden fields and clear the field.
-						city.val("Other");
 						// TODO: (MAYBE) IE FALLBACK: ws_showHiddenFields();
-						city.val("");
+						// city.val("");  <- DELETE ME?
+						console.log('OTHER selected - disabling autocomplte on City.');
+
 						//If you don't shift close it, the menu stays open, the autocomplete list stays open
 						city.autocomplete( "close" ).autocomplete( "option", "disabled", true );
 						jQuery('#Company').val('').removeAttr('readonly');  // make school editable
@@ -846,7 +847,7 @@
 						//http://api.jqueryui.com/autocomplete/#event-change -
 						// The item selected from the menu, if any. Otherwise the property is null
 						//so clear the item for force selection
-						city.val("");
+						// city.val("");
 						// TODO: CREATE ERROR CODE: jQuery("#cityError").show();
 
 					}
@@ -916,7 +917,9 @@
 						//If they choose "other," it's not a ui.item, so show the hidden fields and clear the field.
 						// jQuery("#Company").val("Other");
 						// TODO IE FALLBACK?? ws_showHiddenFields();
-						school.val("");
+						// school.val(""); <- DELETE ME?
+						console.log('OTHER selected - disabling autocomplte on School.');
+
 						//If you don't close it, the autocomplete menu stays open.
 						school.autocomplete("close").autocomplete("option", "disabled", true);
 						event.preventDefault(); // prevent jQuery UI error
@@ -932,7 +935,7 @@
 						//http://api.jqueryui.com/autocomplete/#event-change -
 						// The item selected from the menu, if any. Otherwise the property is null
 						//so clear the item for force selection
-						school.val("");
+						// school.val("");
 						jQuery("#schoolError").show();
 
 					}}
@@ -1023,272 +1026,14 @@
 		});
 		*/
 
-		wsData.states =
-			[
-				{
-					"full": "Alabama",
-					"abbrev": "AL"
-				},
-				{
-					"full": "Alaska",
-					"abbrev": "AK"
-				},
-				{
-					"full": "Arizona",
-					"abbrev": "AZ"
-				},
-				{
-					"full": "Arkansas",
-					"abbrev": "AR"
-				},
-				{
-					"full": "California",
-					"abbrev": "CA"
-				},
-				{
-					"full": "Colorado",
-					"abbrev": "CO"
-				},
-				{
-					"full": "Connecticut",
-					"abbrev": "CT"
-				},
-				{
-					"full": "Delaware",
-					"abbrev": "DE"
-				},
-				{
-					"full": "District of Columbia",
-					"abbrev": "DC"
-				},
-				{
-					"full": "Florida",
-					"abbrev": "FL"
-				},
-				{
-					"full": "Georgia",
-					"abbrev": "GA"
-				},
-				{
-					"full": "Hawaii",
-					"abbrev": "HI"
-				},
-				{
-					"full": "Idaho",
-					"abbrev": "ID"
-				},
-				{
-					"full": "Illinois",
-					"abbrev": "IL"
-				},
-				{
-					"full": "Indiana",
-					"abbrev": "IN"
-				},
-				{
-					"full": "Iowa",
-					"abbrev": "IA"
-				},
-				{
-					"full": "Kansas",
-					"abbrev": "KS"
-				},
-				{
-					"full": "Kentucky",
-					"abbrev": "KY"
-				},
-				{
-					"full": "Louisiana",
-					"abbrev": "LA"
-				},
-				{
-					"full": "Maine",
-					"abbrev": "ME"
-				},
-				{
-					"full": "Maryland",
-					"abbrev": "MD"
-				},
-				{
-					"full": "Massachusetts",
-					"abbrev": "MA"
-				},
-				{
-					"full": "Michigan",
-					"abbrev": "MI"
-				},
-				{
-					"full": "Minnesota",
-					"abbrev": "MN"
-				},
-				{
-					"full": "Mississippi",
-					"abbrev": "MS"
-				},
-				{
-					"full": "Missouri",
-					"abbrev": "MO"
-				},
-				{
-					"full": "Montana",
-					"abbrev": "MT"
-				},
-				{
-					"full": "Nebraska",
-					"abbrev": "NE"
-				},
-				{
-					"full": "Nevada",
-					"abbrev": "NV"
-				},
-				{
-					"full": "New Hampshire",
-					"abbrev": "NH"
-				},
-				{
-					"full": "New Jersey",
-					"abbrev": "NJ"
-				},
-				{
-					"full": "New Mexico",
-					"abbrev": "NM"
-				},
-				{
-					"full": "New York",
-					"abbrev": "NY"
-				},
-				{
-					"full": "North Carolina",
-					"abbrev": "NC"
-				},
-				{
-					"full": "North Dakota",
-					"abbrev": "ND"
-				},
-				{
-					"full": "Ohio",
-					"abbrev": "OH"
-				},
-				{
-					"full": "Oklahoma",
-					"abbrev": "OK"
-				},
-				{
-					"full": "Oregon",
-					"abbrev": "OR"
-				},
-				{
-					"full": "Pennsylvania",
-					"abbrev": "PA"
-				},
-				{
-					"full": "Rhode Island",
-					"abbrev": "RI"
-				},
-				{
-					"full": "South Carolina",
-					"abbrev": "SC"
-				},
-				{
-					"full": "South Dakota",
-					"abbrev": "SD"
-				},
-				{
-					"full": "Tennessee",
-					"abbrev": "TN"
-				},
-				{
-					"full": "Texas",
-					"abbrev": "TX"
-				},
-				{
-					"full": "Utah",
-					"abbrev": "UT"
-				},
-				{
-					"full": "Vermont",
-					"abbrev": "VT"
-				},
-				{
-					"full": "Virginia",
-					"abbrev": "VA"
-				},
-				{
-					"full": "Virgin Islands",
-					"abbrev": "VI"
-				},
-				{
-					"full": "Washington",
-					"abbrev": "WA"
-				},
-				{
-					"full": "West Virginia",
-					"abbrev": "WV"
-				},
-				{
-					"full": "Wisconsin",
-					"abbrev": "WI"
-				},
-				{
-					"full": "Wyoming",
-					"abbrev": "WY"
-				},
-				{
-					"full": "Alberta",
-					"abbrev": "AB"
-				},
-				{
-					"full": "British Columbia",
-					"abbrev": "BC"
-				},
-				{
-					"full": "Manitoba",
-					"abbrev": "MB"
-				},
-				{
-					"full": "New Brunswick",
-					"abbrev": "NB"
-				},
-				{
-					"full": "Newfoundland",
-					"abbrev": "NF"
-				},
-				{
-					"full": "Northwest Territories",
-					"abbrev": "NT"
-				},
-				{
-					"full": "Nova Scotia",
-					"abbrev": "NS"
-				},
-				{
-					"full": "Ontario",
-					"abbrev": "ON"
-				},
-				{
-					"full": "Prince Edward Island",
-					"abbrev": "PE"
-				},
-				{
-					"full": "Quebec",
-					"abbrev": "QC"
-				},
-				{
-					"full": "Saskatchewan",
-					"abbrev": "SK"
-				},
-				{
-					"full": "Yukon",
-					"abbrev": "YT"
-				}
-			]
 	}
 
 	wsData.validateAndSubmitForm = function() {
 		jQuery('#get-info-form').validate({
 			submitHandler: function(form) {
 				wsData.ajaxFormSubmit(jQuery(form));
-				event.preventDefault();
+				if(event.preventDefault) { event.preventDefault(); }
+				event.returnValue = false; // IE9
 				return false;
 			},
 			rules: {
@@ -1304,7 +1049,7 @@
 			},
 			messages: {
 				mkto_Title: " (important!)",
-				mkto_wsProduct: " Please tell us your interest.",
+				mkto_wsProduct: "&nbsp; Please tell us what kind of travel interests you.",
 				mkto_FirstName: "Please provide your First Name.",
 				mkto_LastName: "Please provide your Last Name.",
 				mkto_Email: { 
@@ -1331,7 +1076,7 @@
 		 var varVal = {};
 		 for(var i=0; i<numEls; i++){
 		 	var el = elements.eq(i);
-		 	if(el.attr('name').slice(0,5) !== 'mkto_') { 
+		 	if(!el.attr('name') || el.attr('name').slice(0,5) !== 'mkto_') { 
 		 		continue; // skip if it's not labeled as mkto_
 		 	}
 		 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
@@ -1361,6 +1106,268 @@
 		 jQuery.ajax(options);
 	 }
  } )( jQuery );
+
+
+wsData.states =
+[
+	{
+		"full": "Alabama",
+		"abbrev": "AL"
+	},
+	{
+		"full": "Alaska",
+		"abbrev": "AK"
+	},
+	{
+		"full": "Arizona",
+		"abbrev": "AZ"
+	},
+	{
+		"full": "Arkansas",
+		"abbrev": "AR"
+	},
+	{
+		"full": "California",
+		"abbrev": "CA"
+	},
+	{
+		"full": "Colorado",
+		"abbrev": "CO"
+	},
+	{
+		"full": "Connecticut",
+		"abbrev": "CT"
+	},
+	{
+		"full": "Delaware",
+		"abbrev": "DE"
+	},
+	{
+		"full": "District of Columbia",
+		"abbrev": "DC"
+	},
+	{
+		"full": "Florida",
+		"abbrev": "FL"
+	},
+	{
+		"full": "Georgia",
+		"abbrev": "GA"
+	},
+	{
+		"full": "Hawaii",
+		"abbrev": "HI"
+	},
+	{
+		"full": "Idaho",
+		"abbrev": "ID"
+	},
+	{
+		"full": "Illinois",
+		"abbrev": "IL"
+	},
+	{
+		"full": "Indiana",
+		"abbrev": "IN"
+	},
+	{
+		"full": "Iowa",
+		"abbrev": "IA"
+	},
+	{
+		"full": "Kansas",
+		"abbrev": "KS"
+	},
+	{
+		"full": "Kentucky",
+		"abbrev": "KY"
+	},
+	{
+		"full": "Louisiana",
+		"abbrev": "LA"
+	},
+	{
+		"full": "Maine",
+		"abbrev": "ME"
+	},
+	{
+		"full": "Maryland",
+		"abbrev": "MD"
+	},
+	{
+		"full": "Massachusetts",
+		"abbrev": "MA"
+	},
+	{
+		"full": "Michigan",
+		"abbrev": "MI"
+	},
+	{
+		"full": "Minnesota",
+		"abbrev": "MN"
+	},
+	{
+		"full": "Mississippi",
+		"abbrev": "MS"
+	},
+	{
+		"full": "Missouri",
+		"abbrev": "MO"
+	},
+	{
+		"full": "Montana",
+		"abbrev": "MT"
+	},
+	{
+		"full": "Nebraska",
+		"abbrev": "NE"
+	},
+	{
+		"full": "Nevada",
+		"abbrev": "NV"
+	},
+	{
+		"full": "New Hampshire",
+		"abbrev": "NH"
+	},
+	{
+		"full": "New Jersey",
+		"abbrev": "NJ"
+	},
+	{
+		"full": "New Mexico",
+		"abbrev": "NM"
+	},
+	{
+		"full": "New York",
+		"abbrev": "NY"
+	},
+	{
+		"full": "North Carolina",
+		"abbrev": "NC"
+	},
+	{
+		"full": "North Dakota",
+		"abbrev": "ND"
+	},
+	{
+		"full": "Ohio",
+		"abbrev": "OH"
+	},
+	{
+		"full": "Oklahoma",
+		"abbrev": "OK"
+	},
+	{
+		"full": "Oregon",
+		"abbrev": "OR"
+	},
+	{
+		"full": "Pennsylvania",
+		"abbrev": "PA"
+	},
+	{
+		"full": "Rhode Island",
+		"abbrev": "RI"
+	},
+	{
+		"full": "South Carolina",
+		"abbrev": "SC"
+	},
+	{
+		"full": "South Dakota",
+		"abbrev": "SD"
+	},
+	{
+		"full": "Tennessee",
+		"abbrev": "TN"
+	},
+	{
+		"full": "Texas",
+		"abbrev": "TX"
+	},
+	{
+		"full": "Utah",
+		"abbrev": "UT"
+	},
+	{
+		"full": "Vermont",
+		"abbrev": "VT"
+	},
+	{
+		"full": "Virginia",
+		"abbrev": "VA"
+	},
+	{
+		"full": "Virgin Islands",
+		"abbrev": "VI"
+	},
+	{
+		"full": "Washington",
+		"abbrev": "WA"
+	},
+	{
+		"full": "West Virginia",
+		"abbrev": "WV"
+	},
+	{
+		"full": "Wisconsin",
+		"abbrev": "WI"
+	},
+	{
+		"full": "Wyoming",
+		"abbrev": "WY"
+	},
+	{
+		"full": "Alberta",
+		"abbrev": "AB"
+	},
+	{
+		"full": "British Columbia",
+		"abbrev": "BC"
+	},
+	{
+		"full": "Manitoba",
+		"abbrev": "MB"
+	},
+	{
+		"full": "New Brunswick",
+		"abbrev": "NB"
+	},
+	{
+		"full": "Newfoundland",
+		"abbrev": "NF"
+	},
+	{
+		"full": "Northwest Territories",
+		"abbrev": "NT"
+	},
+	{
+		"full": "Nova Scotia",
+		"abbrev": "NS"
+	},
+	{
+		"full": "Ontario",
+		"abbrev": "ON"
+	},
+	{
+		"full": "Prince Edward Island",
+		"abbrev": "PE"
+	},
+	{
+		"full": "Quebec",
+		"abbrev": "QC"
+	},
+	{
+		"full": "Saskatchewan",
+		"abbrev": "SK"
+	},
+	{
+		"full": "Yukon",
+		"abbrev": "YT"
+	}
+];
+
 ( function( $, window, undefined ) {
 	'use strict';
 
