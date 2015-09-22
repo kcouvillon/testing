@@ -2,7 +2,7 @@
 /**
  * Adding Metaboxes and custom fields to Content Blocks
  *
- * Class WS_Metaboxes
+ * Class WS_Metaboxes_Blocks
  */
 class WS_Metaboxes_Blocks {
 	/**
@@ -42,6 +42,9 @@ class WS_Metaboxes_Blocks {
 		add_action( 'cmb2_after_post_form_block_slideshow_metabox', array( $this, 'js_limit_group_repeat' ), 10, 2 );
 	}
 
+	/**
+	 * Core Block fields
+	 */
 	function block_details() {
 
 		$prefix = 'block_type_';
@@ -72,6 +75,12 @@ class WS_Metaboxes_Blocks {
 		) );
 	}
 
+	/**
+	 * Show the appropriate block when the dropdown is selected
+	 *
+	 * @param $post_id
+	 * @param $cmb
+	 */
 	function js_boxes_show_hidden( $post_id, $cmb ) {
 		?>
 		<script type="text/javascript">
@@ -137,6 +146,9 @@ class WS_Metaboxes_Blocks {
 	<?php
 	}
 
+	/**
+	 * Main content field for blocks
+	 */
 	function block_content_main() {
 
 		$prefix = 'block_content_main_';
@@ -156,6 +168,9 @@ class WS_Metaboxes_Blocks {
 
 	}
 
+	/**
+	 * Secondary content field for two column block
+	 */
 	function block_content_secondary() {
 
 		$prefix = 'block_content_secondary_';
@@ -176,6 +191,11 @@ class WS_Metaboxes_Blocks {
 
 	}
 
+	/**
+	 * Fields for the image block type
+	 *
+	 * Currently the small/medium/large doesn't really do anything
+	 */
 	function block_image() {
 
 		$prefix = 'block_image_';
@@ -263,6 +283,12 @@ class WS_Metaboxes_Blocks {
 		) );
 	}
 
+	/**
+	 * Limit the numbers of posts in a repeatable group
+	 *
+	 * @param $post_id
+	 * @param $cmb
+	 */
 	function js_limit_group_repeat( $post_id, $cmb ) {
 		// Grab the custom attribute to determine the limit
 		$limit = absint( $cmb->prop( 'slideshow_rows_limit' ) );

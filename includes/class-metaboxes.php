@@ -227,6 +227,9 @@ class WS_Metaboxes {
 		) );
 	}
 
+	/**
+	 * Fields for the Contact page
+	 */
 	function contact_fields() {
 
 		$prefix = 'contact_fields_';
@@ -305,7 +308,9 @@ class WS_Metaboxes {
 
 	}
 
-
+	/**
+	 * Add fields to Bios
+	 */
 	function bio_details() {
 		$bio_details = new_cmb2_box( array(
 			'id'           => 'ws_bio_details',
@@ -323,6 +328,9 @@ class WS_Metaboxes {
 		) );
 	}
 
+	/**
+	 * Options for blog posts
+	 */
 	function blog_details() {
 		$cmb = new_cmb2_box( array(
 			'id'           => 'ws_blog_details',
@@ -808,6 +816,9 @@ class WS_Metaboxes {
 
 	}
 
+	/**
+	 * Adding fields to Taxonomy terms
+	 */
 	function taxonomy_metadata_cmb2_init() {
 
 		$metabox_id = 'cat_options';
@@ -909,7 +920,7 @@ class WS_Metaboxes {
 	}
 
 	/**
-	 * Resources to display
+	 * Home Resources selector
 	 */
 	function home_resources() {
 
@@ -948,7 +959,7 @@ class WS_Metaboxes {
 	}
 
 	/**
-	 * Resources to display
+	 * Home display select itinearies and collections
 	 */
 	function home_select_programs() {
 
