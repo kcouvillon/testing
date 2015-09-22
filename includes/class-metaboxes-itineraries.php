@@ -104,7 +104,6 @@ class WS_Metaboxes_Itineraries {
 		) );
 		
 		// Date(s) / Duration
-		// @todo duration and date-range select
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Start Date',
 			'id' => $prefix . 'date_start',
