@@ -9510,7 +9510,9 @@ section:after {
   .explore-filters .traveler-filters,
   .explore-filters .interests-filters,
   .explore-filters .destination-filters {
-    padding: 1em 0; }
+    padding: 1em 0;
+    position: relative;
+    z-index: 1; }
     .explore-filters .traveler-filters:before,
     .explore-filters .interests-filters:before,
     .explore-filters .destination-filters:before {
@@ -9583,10 +9585,10 @@ section:after {
           display: block; } }
     .explore-filters .filter-menu .menu-container.closed {
       display: none; }
-      .explore-filters .filter-menu .menu-container.closed ~ .filter-menu-toggle .icon-arrow:before {
+      .explore-filters .filter-menu .menu-container.closed ~ .arrow:before {
         content: "\e617"; }
-    .explore-filters .filter-menu .menu-container.open ~ .filter-menu-toggle .icon-arrow:before {
-      content: "\e61a"; }
+    .explore-filters .filter-menu .menu-container.open ~ .arrow:before {
+      content: "\e605"; }
     @media screen and (min-width: 768px) {
       .explore-filters .filter-menu .menu-container {
         display: block !important; } }
@@ -9709,6 +9711,12 @@ section:after {
       .explore-filters .filter-menu.destination-menu .terms {
         width: 50%;
         float: right; } }
+    .explore-filters .filter-menu > .arrow {
+      position: absolute;
+      z-index: 0;
+      top: 1.3em;
+      right: 1em;
+      color: #FFF; }
     .explore-filters .filter-menu .filter-menu-toggle {
       position: absolute;
       top: 0;

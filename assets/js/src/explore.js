@@ -155,15 +155,14 @@
 				$exploreResults.mixItUp('filter', filters);
 			})
 			.on('click', '.remove-filter', function(event){
-
-				event.preventDefault();
-
 				var slug = $(this).parent().data('related'),
 					filters = '';
 
 				removeFilter(slug);
 				filters = getCurrentFilters();
 				$exploreResults.mixItUp('filter', filters);
+
+				return false;
 			})
 			.on('click', 'a[href="#clear-filters"]', function(event){
 				

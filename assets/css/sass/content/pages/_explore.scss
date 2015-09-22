@@ -201,6 +201,8 @@
 	.interests-filters,
 	.destination-filters {
 		padding: 1em 0;
+		position: relative;
+		z-index: 1;
 		&:before {
 			display: block;
 		}
@@ -289,13 +291,13 @@
 		.menu-container {
 			&.closed {
 				display: none;
-				& ~ .filter-menu-toggle .icon-arrow:before {
+				& ~ .arrow:before {
 				    content: "\e617"; // arrow down
 				}	
 			}
 			&.open {
-				& ~ .filter-menu-toggle .icon-arrow:before {
-				    content: "\e61a"; // arrow up
+				& ~ .arrow:before {
+				    content: "\e605"; // close
 				}	
 			}
 			@media screen and (min-width: $screen-sm) {
@@ -483,6 +485,14 @@
 					float: right;
 				}
 			}
+		}
+
+		& > .arrow {
+			position: absolute;
+			z-index: 0;
+			top: 1.3em;
+			right: 1em;
+			color: #FFF;
 		}
 
 		.filter-menu-toggle {
