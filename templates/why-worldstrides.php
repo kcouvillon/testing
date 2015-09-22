@@ -59,7 +59,7 @@ get_header(); ?>
 				<header class="section-header<?php echo ( !empty( $featured ) ) ? ' has-section-image' : ''; ?>" style="background-image: <?php echo $background; ?>;">
 					<div class="ws-container">
 						<div class="section-header-content">
-							<h2 class="h1 page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h1>
+							<h2 class="h1 page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h2>
 
 							<p><?php echo esc_textarea( $section['description'] ); ?></p>
 						</div>
