@@ -21,9 +21,8 @@ get_header(); ?>
 
 		<?php the_post(); ?>
 
-		<div class="ws-container">
-
-			<section class="section-content">
+		<section class="register-payment-section ws-container">
+			<div class="section-content">
 
 				<?php the_content(); ?>
 
@@ -51,11 +50,9 @@ get_header(); ?>
 
 				</form>
 
-			</section>
-
+			</div>
 			<?php get_template_part( 'partials/module', 'contact' ) ?>
-
-		</div>
+		</section>
 
 	</main>
 </div>

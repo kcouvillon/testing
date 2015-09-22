@@ -1,108 +1,34 @@
-#page {
-	overflow: hidden;
-}
+
+/* _page.scss
+ * ----------------------------------------- */
 
 section {
 	@include clearfix;
 }
 
-// These styles apply to the section heros that appear on several pages
-.section-nav {
-	@include clearfix;
-	// @include container();
-	position: relative;
-	background: $gray-base;
-	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
-	border-bottom: 1px solid tint($gray_base, 30%);
-
-	select {
-		margin: 1em 0;
-	}
-
-	.about & {
-		background: $gray_dark;
-	}
-
-	.subnav-cta {
-		display: none;
-		float: right;
-		font-size: em(14);
-		margin-top: 8px;
-
-		@include susy-media($screen-sm) {
-			display: block;
-		}
-	}
-}
-
-.section-menu {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	float: left;
-
-	li {
-		display: inline-block;
-		margin-right: 20px;
-
-		.about &.current-menu-item a {
-			color: #fff;
-		}
-	}
-
-	a {
-		color: #fff;
-		line-height: 3;
-
-		&:hover {
-			color: $gray-light;
-		}
-
-		.about &, &.active {
-			color: $gray-light;
-
-			&:hover {
-				color: #fff;
-			}
-		}
-	}
-}
+/* Page and Section Headers
+ * ------------------------ */
 
 .section-title {
 	font-weight: lighter;
 }
 
-.transparent-header .primary-section {
-	margin-top: -158px;
-	padding-top: 100px !important;
-	@media only print {
-		margin-top: 0;
-		padding: 0;
-	}
+.primary-section {
 
-	.section-header {
-		margin-top: -100px;
-		padding-top: 140px;
-		min-height: 50vh;
-
+	.transparent-header & {
+		// margin-top: -158px;
+		// padding-top: 100px !important;
 		@media only print {
-			min-height: 0;
-		}
-	}
-}
-.transparent-header.has-featured-image .primary-section {
-	.section-header {
-		min-height: 75vh;
-		@media only print {
-			min-height: 0;
+			margin-top: 0;
 			padding: 0;
 		}
 	}
+
+	.solid-header & {
+		margin-top: 0;
+	}
 }
 
-.solid-header .primary-section {
-	margin-top: 0;
-}
 
 .section-header {
 	// @include container();
@@ -110,17 +36,62 @@ section {
 	position: relative;
 	background-size: cover;
 	background-position: right center;
+    background-repeat: no-repeat;
+    background-color: $gray_base;
 	margin-bottom: gutter()*2;
 
 	.primary-section &, .single & {
 		margin-bottom: 0;
+		border-bottom: 1px solid darken($gray_base, 5%);
 	}
 
-	.has-featured-image & {
-		background-size: cover;
-		@extend %overlay-text;
+	&[class*="pattern-"] {
+		background-repeat: repeat;
 	}
-}
+
+	.transparent-header .primary-section & {
+		padding-top: 89px;
+		@include susy-media($screen-sm) {
+			padding-top: 181px;
+		}
+	}
+
+	.has-featured-image .primary-section & {
+		@media screen and (max-width: ($screen-sm - 1) ) {
+			background-image: none !important;
+		}
+		@include susy-media($screen-sm) {
+			background-size: cover;
+			@include overlay-text;
+		}
+	}
+
+	.transparent-header.has-featured-image .primary-section & {
+		padding-top: 0;
+		@media only print {
+			min-height: 0;
+			padding: 0;
+		}
+		@include susy-media($screen-sm) {
+			padding-top: 181px;
+			min-height: 75vh;
+		}
+	}
+
+	.solid-header .primary-section & {
+		padding: 3vh 0;
+	}
+
+	.mobile-hero {
+		@include susy-media($screen-sm) {
+			display: none;
+		}
+		img {
+			width: 100%;
+		}
+	}
+	
+} // .section-header
 
 .header-subtitle {
 	margin-top: 0.5em;
@@ -160,15 +131,6 @@ section {
 		}
 	}
 
-
-	.has-featured-image .primary-section & {
-		margin-top: 11.333333%;
-
-		@include susy-media($screen-xs) {
-			margin-top: 6.66666%;
-			margin-bottom: 11.66666%;
-		}
-	}
 	.primary-section & {
 		margin-top: 5%;
 		@include susy-media($screen-xs) {			
@@ -178,35 +140,43 @@ section {
 			margin-bottom: 2em;
 		}
 
-		.has-featured-image & {
-			color: #fff;
-		}
-
-		.archive &, .blog &, .single & {
-			color: $gray_base;
-		}
-
-		.has-featured-image.archive &, .has-featured-image.blog &, .has-featured-image.single &, .has-featured-image.page & {
-			color: #fff;
-
-			.breadcrumbs {
-				color: $blue_lighter;
-
-				a {
-					color: $blue_lighter;
-
-					&:hover {
-						color: $color_link;
-					}
-				}
-			}
-		}
-
 		p {
 			font-weight: 700;
 		}
+
 		.header-subtitle {
 			font-weight: 400;
+		}
+	}
+	.has-featured-image .primary-section & {
+		color: #FFF;
+
+		@include susy-media($screen-xs) {
+			margin-top: 6.66666%;
+			margin-bottom: 11.66666%;
+		}
+	}
+	.archive .primary-section &, 
+	.blog .primary-section &, 
+	.single .primary-section & {
+		color: $gray_base;
+	}
+	.has-featured-image.archive .primary-section &, 
+	.has-featured-image.blog .primary-section &, 
+	.has-featured-image.single .primary-section &, 
+	.has-featured-image.page .primary-section & {
+		color: #fff;
+
+		.breadcrumbs {
+			color: $blue_lighter;
+
+			a {
+				color: $blue_lighter;
+
+				&:hover {
+					color: $color_link;
+				}
+			}
 		}
 	}
 
@@ -238,6 +208,72 @@ section {
 
 	.home.page-template-default & {
 		@include container();
+	}
+}
+
+.section-nav {
+	@include clearfix;
+	// @include container();
+	position: relative;
+	background: $gray-base;
+	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
+	border-bottom: 1px solid darken($gray_base, 5%);
+
+	select {
+		margin: 1em 0;
+	}
+
+	.about & {
+		background: $gray_dark;
+	}
+
+	.subnav-cta {
+		display: none;
+		float: right;
+		font-size: em(14);
+		margin-top: 8px;
+
+		@include susy-media($screen-sm) {
+			display: block;
+		}
+	}
+}
+
+.section-menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	float: left;
+
+	li {
+		display: inline-block;
+		margin-right: 20px;
+
+		.about &.current-menu-item a {
+			color: #fff;
+		}
+	}
+
+	a {
+		color: #fff;
+		font-size: 16px;
+		line-height: 3.4;
+		@include susy-media($screen-sm) {
+			font-size: 1em;
+			line-height: 3em;
+		}
+
+		&:hover {
+			color: $gray-light;
+		}
+
+		.about &, &.active {
+			color: $gray-light;
+
+			&:hover {
+				color: #fff;
+			}
+		}
 	}
 }
 

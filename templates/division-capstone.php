@@ -85,6 +85,9 @@ get_header(); ?>
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
+				<div class="mobile-hero">
+					<?php the_post_thumbnail( 'large' ); ?>
+				</div>
 				<div class="ws-container">
 					<div class="section-header-content">
 						<nav class="breadcrumbs hide-print">

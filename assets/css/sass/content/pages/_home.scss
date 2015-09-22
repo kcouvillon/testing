@@ -1,39 +1,12 @@
-#intro { 
-	position: relative;
-	background-size: cover;
-	background-position: right center;
-	@include container();
-}
 
-.intro-content {
-	position: relative;
-	z-index: 1;
-	color: #FFF;
-	padding: 3em 0;
+/* _home.scss
+ * ----------------------------------- */
 
-	@include susy-media($screen-sm) {
-		padding: 8em 0;
-	}
-	@include susy-media($screen-md) {
-		@include span(9);
-	}
-	@include susy-media($screen-lg) {
-		@include span(7);
-	}
-
-	.page-title {
-		line-height: 1em;
-		margin: 0 0 0.5em;
-	}
-	.page-subtitle {
-		font-weight: lighter;
-		margin: 0 0 1.5em;
-	}
-
-	.has-featured-image & {
-		@extend %overlay-text;
-	}
-}
+ #intro .section-header {
+ 	@media screen and (max-width: ($screen-sm - 1)) {
+ 		min-height: 0 !important;
+ 	}
+ }
 
 .home-section {
 

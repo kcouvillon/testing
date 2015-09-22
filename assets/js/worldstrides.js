@@ -341,15 +341,14 @@
 				$exploreResults.mixItUp('filter', filters);
 			})
 			.on('click', '.remove-filter', function(event){
-
-				event.preventDefault();
-
 				var slug = $(this).parent().data('related'),
 					filters = '';
 
 				removeFilter(slug);
 				filters = getCurrentFilters();
 				$exploreResults.mixItUp('filter', filters);
+
+				return false;
 			})
 			.on('click', 'a[href="#clear-filters"]', function(event){
 				
@@ -1377,11 +1376,11 @@ wsData.states =
 
 		$(document).ready(function(){
 
-			var $intro = $('#intro'),
+			var $introHeader = $('#intro .section-header'),
 				offset = $('#quick-access-menu').innerHeight(),
 				winHeight = window.innerHeight - offset;
 
-			$intro.css({
+			$introHeader.css({
 				minHeight: winHeight + 'px'
 			});
 

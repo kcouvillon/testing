@@ -68,6 +68,10 @@
 // Typography
 // ============================================ /
 
+@mixin overlay-text($opacity: $overlay_opacity){
+	text-shadow: 5px 5px 20px rgba(0, 0, 0, $opacity), -5px -5px 20px rgba(0, 0, 0, $opacity);
+}
+
 // Rem output with px fallback
 @mixin font-size($sizeValue: 1) {
 	font-size: ($sizeValue * 18) + px;

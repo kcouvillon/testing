@@ -7,6 +7,5 @@
 }
 
 %overlay-text {
-	$overlay_opacity: 0.45;
 	text-shadow: 5px 5px 20px rgba(0, 0, 0, $overlay_opacity), -5px -5px 20px rgba(0, 0, 0, $overlay_opacity);
 }

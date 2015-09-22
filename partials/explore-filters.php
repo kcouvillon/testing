@@ -37,7 +37,7 @@ $continents = get_terms( 'filter', $continentsArgs );
 			<?php ////////////////////////////////////////////////////////////////// ?>
 
 			<li class="filter-menu traveler-menu">
-				<div class="traveler-filters hide-sm"></div>
+				<div class="traveler-filters hide-sm toggle" data-target=".traveler-menu-container"></div>
 
 				<div class="traveler-menu-container menu-container closed">
 					<ul class="terms-list list-unstyled clearfix">
@@ -48,13 +48,14 @@ $continents = get_terms( 'filter', $continentsArgs );
 
 					</ul>
 				</div>
-				<a href="#" class="toggle filter-menu-toggle" data-target=".traveler-menu-container"><i class="icon-arrow"></i></a>
+
+				<span class="arrow icon-arrow-down hide-sm"></span>
 			</li>
 
 			<?php ////////////////////////////////////////////////////////////////// ?>
 
 			<li class="filter-menu interests-menu">
-				<div class="interests-filters hide-sm"></div>
+				<div class="interests-filters toggle hide-sm" data-target=".interests-menu-container"></div>
 
 				<div class="interests-menu-container menu-container closed">
 
@@ -107,13 +108,13 @@ $continents = get_terms( 'filter', $continentsArgs );
 
 				</div>
 
-				<a href="#" class="toggle filter-menu-toggle" data-target=".interests-menu-container"><i class="icon-arrow"></i></a>
+				<span class="arrow icon-arrow-down hide-sm"></span>
 			</li>
 			
 			<?php ////////////////////////////////////////////////////////////////// ?>
 
 			<li class="filter-menu destination-menu">
-				<div class="destination-filters hide-sm"></div>
+				<div class="destination-filters toggle hide-sm" data-target=".destination-menu-container"></div>
 				
 				<div class="destination-menu-container menu-container closed">
 
@@ -160,7 +161,7 @@ $continents = get_terms( 'filter', $continentsArgs );
 
 				</div>
 
-				<a href="#" class="toggle filter-menu-toggle" data-target=".destination-menu-container"><i class="icon-arrow"></i></a>
+				<span class="arrow icon-arrow-down hide-sm"></span>
 			</li>
 
 		</ul>
