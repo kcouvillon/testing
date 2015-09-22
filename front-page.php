@@ -70,6 +70,10 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 				'slug' => 'on-stage',
 				'meta' => 'Performing Arts'
 			),
+			array(
+				'slug' => 'sports',
+				'meta' => 'Sports'
+			),
 		);
 
 		$divisions_title = get_post_meta( $post->ID, 'home_options_divisions_title', true );
