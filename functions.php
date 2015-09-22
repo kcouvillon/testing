@@ -337,8 +337,6 @@ add_filter( 'template_include', 'ws_filter_endpoints' );
 /**
  * Include metabox on front page
  *
- * @todo   find a better place for this to live.
- *
  * @author Ed Townend
  * @link   https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-show_on-filters
  *

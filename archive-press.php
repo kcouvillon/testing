@@ -20,7 +20,6 @@ get_header(); ?>
 					<?php /* Start the Loop */ ?>
 					<?php while ( have_posts() ) : the_post(); ?>
 
-						<?php // @todo probably want press content module ?>
 						<?php get_template_part( 'partials/content', 'about' ) ?>
 
 					<?php endwhile; ?>
