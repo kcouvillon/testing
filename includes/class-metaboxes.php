@@ -2,8 +2,6 @@
 /**
  * Adding Metaboxes and custom fields
  *
- * @todo might need smaller classeses if this gets too big
- *
  * Class WS_Metaboxes
  */
 class WS_Metaboxes {
@@ -152,9 +150,8 @@ class WS_Metaboxes {
 	/**
 	 * Duplicating hero tooltips for homepage.
 	 *
-	 * Couldn't sort out how to isolate the metaboxes to both specific post types AND the home page
-	 *
-	 * @todo figure out how to avoid the duplication here
+	 * Couldn't sort out how to isolate the metaboxes to both specific post types AND the home page.
+	 * Doesn't seem possible to avoid this duplication of hero_tooltips() at the moment
 	 */
 	function hero_tooltips_pages() {
 
