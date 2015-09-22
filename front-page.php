@@ -22,11 +22,18 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 		}
 		?>
 
-		<section id="intro" class="home-section primary-section" style="background-image: <?php echo $background; ?>;">
-		
-			<div class="intro-content">
-				<?php the_content(); ?>
-			</div>
+		<section id="intro" class="home-section primary-section">
+			
+			<header class="section-header" style="background-image: <?php echo $background; ?>;">
+				<div class="mobile-hero">
+					<?php the_post_thumbnail( 'large' ); ?>
+				</div>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<?php the_content(); ?>
+					</div>
+				</div>
+			</header>
 
 			<?php get_template_part('partials/content', 'tooltips'); ?>
 

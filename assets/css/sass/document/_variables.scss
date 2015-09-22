@@ -38,6 +38,8 @@ $gray: tint($gray_base, 33.5%);
 $gray_light: tint($gray_base, 63%);
 $gray_lighter: tint($gray_base, 93.5%);
 
+$overlay_opacity: 0.45;
+
 $color_text_main: #1a1a1a;
 $color_text_heading: #1a1a1a;
 $color_text_input: #1a1a1a;

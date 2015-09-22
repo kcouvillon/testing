@@ -22,7 +22,8 @@ body {
 }
 
 #page {
-  // @include container;
+  overflow: hidden;
+  position: relative;
 }
 
 .entry-content,

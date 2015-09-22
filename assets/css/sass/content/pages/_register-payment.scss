@@ -5,13 +5,12 @@
 .register-and-payment {
 	visibility: visible;
 
-	.ws-container {
+	.register-payment-section {
 		padding: 0;
 		background-color: $gray_base;
 
 		@include susy-media($screen-sm) {
 			display: flex;
-			padding: 0;
 		}
 	}
 
@@ -19,14 +18,15 @@
 		color: #FFF;
 		margin-top: 1em;
 		@include susy-media($screen-sm) {
-			@include span(8);
+			@include span(7);
 			padding-right: 0;
 			margin-top: 2%;
-			padding-right: 30%;
+			padding-right: 5%;
 			padding-top: 35px;
 		}
 		@include susy-media($screen-lg) {
-			@include span(9);
+			@include span(8);
+			padding-right: 30%;
 		}
 	}
 
@@ -52,11 +52,13 @@
 	}
 
 	.contact-sidebar {
+		padding-left: 5vw;
+		padding-right: 5vw;
 		@include susy-media($screen-sm) {
-			@include span(4 last);
+			@include span(5 last);
 		}
 		@include susy-media($screen-lg) {
-			@include span(3 last);
+			@include span(4 last);
 		}
 	}
 

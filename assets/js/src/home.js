@@ -15,11 +15,11 @@
 
 		$(document).ready(function(){
 
-			var $intro = $('#intro'),
+			var $introHeader = $('#intro .section-header'),
 				offset = $('#quick-access-menu').innerHeight(),
 				winHeight = window.innerHeight - offset;
 
-			$intro.css({
+			$introHeader.css({
 				minHeight: winHeight + 'px'
 			});
 

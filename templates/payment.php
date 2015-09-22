@@ -21,14 +21,12 @@ get_header(); ?>
 
 		<?php the_post(); ?>
 
-		<div class="ws-container">
-
-			<section class="section-content">
+		<section class="register-payment-section ws-container">
+			<div class="section-content">
 
 				<?php the_content(); ?>
 
 				<form class="ws-form">
-					
 					<ul class="fields list-unstyled">
 						<li>
 							<label for="payment-first-name">First Name</label>
@@ -44,18 +42,14 @@ get_header(); ?>
 							<span class="help-text">Don’t know your trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span>
 						</li>
 					</ul>
-
 					<footer>
 						<input type="submit" value="Make a Payment" class="btn btn-primary">
 					</footer>
-
 				</form>
 
-			</section>
-
+			</div>
 			<?php get_template_part( 'partials/module', 'contact' ) ?>
-
-		</div>
+		</section>
 
 	</main>
 </div>

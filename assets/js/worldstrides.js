@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-09-17
+/*! WorldStrides - v0.1.0 - 2015-09-22
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1370,11 +1370,11 @@
 
 		$(document).ready(function(){
 
-			var $intro = $('#intro'),
+			var $introHeader = $('#intro .section-header'),
 				offset = $('#quick-access-menu').innerHeight(),
 				winHeight = window.innerHeight - offset;
 
-			$intro.css({
+			$introHeader.css({
 				minHeight: winHeight + 'px'
 			});
 
