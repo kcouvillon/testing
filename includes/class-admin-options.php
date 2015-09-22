@@ -1,6 +1,6 @@
 <?php
 /**
- * CMB2 Theme Options
+ * Create a theme settings/options page using CMB2
  */
 class WS_Admin {
 	/**
@@ -141,6 +141,7 @@ class WS_Admin {
 	 * @param  string $field Field to retrieve
 	 *
 	 * @return mixed          Field value or exception is thrown
+	 * @throws exception
 	 */
 	public function __get( $field ) {
 		// Allowed fields to retrieve

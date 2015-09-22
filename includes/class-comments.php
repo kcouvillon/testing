@@ -1,6 +1,8 @@
 <?php
 /**
  * Class WS_Comments
+ *
+ * Remove default comment functionality and replace with Facebook
  */
 class WS_Comments {
 	/**
