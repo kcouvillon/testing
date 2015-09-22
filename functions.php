@@ -376,14 +376,6 @@ function ws_metabox_include_front_page( $display, $meta_box ) {
 add_filter( 'cmb2_show_on', 'ws_metabox_include_front_page', 10, 2 );
 
 /**
- * Remove items from the admin sidebar menu
- */
-function remove_admin_menu_itmes() {
-	remove_menu_page( 'edit-comments.php' );
-}
-add_action( 'admin_menu', 'remove_admin_menu_itmes' );
-
-/**
  * Remove widgets from the dashboard
  */
 function remove_dashboard_widgets() {

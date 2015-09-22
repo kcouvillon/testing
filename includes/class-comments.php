@@ -1,22 +1,19 @@
 <?php
 /**
  * Class WS_Comments
- *
- * @todo turn off all defaults comments
- * @todo add functionality to turn comments on/off
  */
 class WS_Comments {
 	/**
 	 * Instance of this class, if it has been created.
 	 *
-	 * @var WS_Marketo
+	 * @var WS_Comments
 	 */
 	protected static $_instance = null;
 
 	/**
 	 * Get the instance of this class, or set it up if it has not been setup yet.
 	 *
-	 * @return WS_Marketo
+	 * @return WS_Comments
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -36,6 +33,10 @@ class WS_Comments {
 	 */
 	protected function _init() {
 		add_action( 'wp_head', array( $this, 'facebook_app_id' ) );
+		add_action( 'admin_menu', array( $this, 'remove_comments_menu' ) );
+		add_action( 'admin_init', array( $this, 'disable_comments_admin_menu_redirect' ) );
+		add_action( 'admin_init', array( $this, 'remove_comments_support' ) );
+		add_action( 'wp_before_admin_bar_render', array( $this, 'remove_admin_bar_comments' ) );
 	}
 
 	/**
@@ -58,6 +59,13 @@ class WS_Comments {
 		}
 	}
 
+	/**
+	 * Print Facebook SDK
+	 *
+	 * For use immediately after the opening body tag in the header.
+	 *
+	 * @return string
+	 */
 	public static function facebook_sdk() {
 		ob_start(); ?>
 			<div id="fb-root"></div>
@@ -72,6 +80,41 @@ class WS_Comments {
 		$facebook_sdk = ob_get_clean();
 
 		return $facebook_sdk;
+	}
+
+	/**
+	 * Remove items from the admin sidebar menu
+	 */
+	function remove_comments_menu() {
+		remove_menu_page( 'edit-comments.php' );
+	}
+
+	/**
+	 * Redirect people who visit edit-comments.php directly
+	 */
+	function disable_comments_admin_menu_redirect() {
+		global $pagenow;
+
+		if ( $pagenow === 'edit-comments.php' ) {
+			wp_redirect( admin_url() );
+			exit;
+		}
+	}
+
+	/**
+	 * Remove comments/trackback support from posts
+	 */
+	function remove_comments_support() {
+		remove_post_type_support ('post', 'comments' );
+		remove_post_type_support( 'post', 'trackbacks' );
+	}
+
+	/**
+	 * Remove comments from the admin bar
+	 */
+	function remove_admin_bar_comments() {
+		global $wp_admin_bar;
+		$wp_admin_bar->remove_menu('comments');
 	}
 }
 
