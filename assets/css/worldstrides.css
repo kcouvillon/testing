@@ -6501,8 +6501,8 @@ p {
 
 @font-face {
   font-family: 'worldstrides-ui';
-  src: url("../fonts/worldstrides-ui.eot?-tnlerl");
-  src: url("../fonts/worldstrides-ui.eot?#iefix-tnlerl") format("embedded-opentype"), url("../fonts/worldstrides-ui.ttf?-tnlerl") format("truetype"), url("../fonts/worldstrides-ui.woff?-tnlerl") format("woff"), url("../fonts/worldstrides-ui.svg?-tnlerl#worldstrides-ui") format("svg");
+  src: url("../fonts/worldstrides-ui.eot?-jyyfio");
+  src: url("../fonts/worldstrides-ui.eot?#iefix-jyyfio") format("embedded-opentype"), url("../fonts/worldstrides-ui.ttf?-jyyfio") format("truetype"), url("../fonts/worldstrides-ui.woff?-jyyfio") format("woff"), url("../fonts/worldstrides-ui.svg?-jyyfio#worldstrides-ui") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -6517,6 +6517,9 @@ p {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icon-sports:before {
+  content: "\e622"; }
 
 .icon-shield:before {
   content: "\e621"; }
