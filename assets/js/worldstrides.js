@@ -653,15 +653,15 @@
 
 	function universalLead() {
 		/**
-		 * Wire the Role, wsProduct and MoreMusic fields together
+		 * Wire the Role (Title), wsProduct and MoreMusic fields together
 		 * - restrict wsProduct based on Role
 		 * - show MoreMusic where wsProduct === 'Performing'
 		 *
 		 */
 		(function(roleSelect,interestSelect){
 			roleSelect.on('change',function(){
-				console.log(jQuery(this).val());
-				var role =  jQuery(this).val();
+				var role =  jQuery(this).children('option:selected').attr('data-value');
+				console.log(role);
 				jQuery('#get-info-wsProduct option').filter('.'+role).show();
 				jQuery('#get-info-wsProduct option').not('.'+role).hide();
 			});
@@ -673,7 +673,7 @@
 					jQuery('li#moremusicfield').css('display','none');
 				}
 			});
-		})(jQuery('select#get-info-role'),jQuery('select#get-info-wsProduct'));
+		})(jQuery('select#get-info-Title'),jQuery('select#get-info-wsProduct'));
 
 		/**
 		 * Make the submit button unclickable after first click

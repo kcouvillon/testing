@@ -7,25 +7,25 @@
 				<label for="get-info-Title">My role is</label>
 				<select id="get-info-Title" name="mkto_Title" title="Role">
 					<option value="">Select...</option>
-					<option value="stu">Student</option>
-					<option value="par">Parent</option>
-					<option value="ele">Elementary School Educator</option>
-					<option value="mse">Middle School Educator</option>
-					<option value="hse">High School Educator</option>
-					<option value="une">College / University Educator</option>
+					<option data-value="stu" value="Student">Student</option>
+					<option data-value="par" value="Parent">Parent</option>
+					<option data-value="ele" value="Teacher">Elementary School Educator</option>
+					<option data-value="mse" value="Teacher">Middle School Educator</option>
+					<option data-value="hse" value="Teacher">High School Educator</option>
+					<option data-value="une" value="Teacher">College / University Educator</option>
 				</select>
 			</li>
 			<li class="field">
 				<label for="get-info-wsProduct">I am interested in</label>
 				<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
 					<option value="">Select...</option>
-					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
-					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
-					<option value='High School - International' class='par mse hse'>Tours to International Destinations</option>
-					<option value='Performing' class='par ele mse hse une'>Performing Arts Travel</option>
-					<option value='Undergraduate' class='par une'>Undergraduate Tours</option>
-					<option value='Graduate' class='par une'>Graduate-Level Tours</option>
-					<option value="Unknown" class="par ele mse hse une">I'm not sure</option>
+					<option value='Middle School - History' class='stu par ele mse hse'>U.S. History Themed Tours</option>
+					<option value='Middle School - Science' class='stu par ele mse hse'>Science Themed Tours</option>
+					<option value='High School - International' class='stu par mse hse'>Tours to International Destinations</option>
+					<option value='Performing' class='stu par ele mse hse une'>Performing Arts Travel</option>
+					<option value='Undergraduate' class='stu par une'>Undergraduate Tours</option>
+					<option value='Graduate' class='stu par une'>Graduate-Level Tours</option>
+					<option value="Unknown" class='stu par ele mse hse une'>I'm not sure</option>
 				</select>
 			</li>
 			<li id="moremusicfield" class="field" style="display:none;">
