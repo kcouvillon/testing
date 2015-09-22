@@ -43,7 +43,7 @@ class WS_Metaboxes_Itineraries {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Itinerary Details box
 	 */
 	function itinerary_details() {
 
@@ -116,14 +116,6 @@ class WS_Metaboxes_Itineraries {
 			'type' => 'text_date'
 		) );
 
-		// Option to always show on collections
-		// $cmb->add_field( array(
-		// 	'name' => 'Collections Visibility',
-		// 	'desc' => 'Select to always keep this itinerary visible when a user is filtering itineraries by date on collection pages.',
-		// 	'id'   => $prefix . 'always_show',
-		// 	'type' => 'checkbox'
-		// ) );
-
 		// Destinations / Activities
 		$cmb->add_field( array(
 			'name' => 'Features title',
@@ -171,7 +163,7 @@ class WS_Metaboxes_Itineraries {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Field group for Itinerary Highlights
 	 */
 	function itinerary_highlights() {
 
@@ -235,7 +227,7 @@ class WS_Metaboxes_Itineraries {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Attach before block sections
 	 */
 	function itinerary_blocks_before() {
 
@@ -289,7 +281,7 @@ class WS_Metaboxes_Itineraries {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Itinerary Days
 	 */
 	function itinerary_days() {
 
@@ -352,7 +344,7 @@ class WS_Metaboxes_Itineraries {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Sections of Blocks to appear after itineraries
 	 */
 	function itinerary_blocks_after() {
 
@@ -407,7 +399,7 @@ class WS_Metaboxes_Itineraries {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Featured blog posts
 	 */
 	function itinerary_blog_post() {
 
