@@ -3,8 +3,6 @@
  * Template Name: Why WorldStrides
  *
  * Template for the Why WorldStrides page
- *
- * @todo figure out where the various content pieces are being stored
  */
 get_header(); ?>
 
