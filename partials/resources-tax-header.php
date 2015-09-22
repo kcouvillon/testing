@@ -72,7 +72,7 @@ if ( !empty ($parent_id) ) {
 			'include'    => $shared_terms
 		) );
 
-		// @todo we may want to store these menus in transients or some sort of cache if they proove problematic
+		// if these menus become problematic resource-wise, we could store them in transients or some sort of cache
 		?>
 
 		<nav class="resource-nav section-nav">
