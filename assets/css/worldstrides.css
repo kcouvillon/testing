@@ -8327,13 +8327,14 @@ section:after {
 .section-title {
   font-weight: lighter; }
 
-@media only print {
-  .transparent-header .primary-section {
-    margin-top: 0;
-    padding: 0; } }
-
-.solid-header .primary-section {
-  margin-top: 0; }
+.primary-section {
+  position: relative; }
+  @media only print {
+    .transparent-header .primary-section {
+      margin-top: 0;
+      padding: 0; } }
+  .solid-header .primary-section {
+    margin-top: 0; }
 
 .section-header {
   position: relative;
