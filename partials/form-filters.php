@@ -48,7 +48,7 @@
 
 <?php foreach ( $interests as $interest ) : /*START LOOP FOR SUB-SELECT LISTS*/?>
 
-<li id="get-info-wsProductDetail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field invisible">
+<li id="get-info-wsProductDetail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
 	<label for="get-info-moredetail-<?php echo $interest->slug; ?>">I want to learn more about</label>
 	<select id="get-info-moredetail-<?php echo $interest->slug; ?>" name="mkto_wsProductDetail" title="-<?php echo 'Specific Interest within ' . $interest->name; ?>">
 		<option value="">Select...</option>
