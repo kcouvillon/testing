@@ -27,20 +27,6 @@
 
 	});
 
-	function checkRows() {
-		var marketoTitle = document.querySelector('#Title');
-		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
-
-		jQuery(marketoFormRow).each(function() {
-			if( jQuery(this).children('.mktoPlaceholder').length ) {
-				jQuery(this).addClass('hidden');
-				console.log('hide');
-			} else {
-				jQuery(this).removeClass('hidden');
-				console.log('show');
-			}
-		});
-	}
 
 	function universalLead() {
 		/**
@@ -65,6 +51,11 @@
 				}
 			});
 		})(jQuery('select#get-info-Title'),jQuery('select#get-info-wsProduct'));
+
+
+
+
+
 
 		/**
 		 * Make the submit button unclickable after first click
