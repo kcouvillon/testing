@@ -35,22 +35,14 @@
 		 * - show MoreMusic where wsProduct === 'Performing'
 		 *
 		 */
-		(function(roleSelect,interestSelect){
+		(function(roleSelect){
 			roleSelect.on('change',function(){
 				var role =  jQuery(this).children('option:selected').attr('data-value');
 				console.log(role);
 				jQuery('#get-info-wsProduct option').filter('.'+role).show();
 				jQuery('#get-info-wsProduct option').not('.'+role).hide();
 			});
-			interestSelect.on('change',function(){
-				console.log(jQuery(this).val());
-				if('Performing' === (jQuery(this)).val()) {
-					jQuery('li#moremusicfield').css('display','list-item');
-				} else {
-					jQuery('li#moremusicfield').css('display','none');
-				}
-			});
-		})(jQuery('select#get-info-Title'),jQuery('select#get-info-wsProduct'));
+		})(jQuery('select#get-info-Title'));
 
 
 
