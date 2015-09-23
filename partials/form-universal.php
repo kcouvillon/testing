@@ -15,33 +15,8 @@
 					<option data-value="une" value="Teacher">College / University Educator</option>
 				</select>
 			</li>
-			<li class="field">
-				<label for="get-info-wsProduct">I am interested in</label>
-				<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
-					<option value="">Select...</option>
-					<option value='Middle School - History' class='stu par ele mse hse'>U.S. History Themed Tours</option>
-					<option value='Middle School - Science' class='stu par ele mse hse'>Science Themed Tours</option>
-					<option value='High School - International' class='stu par mse hse'>Tours to International Destinations</option>
-					<option value='Performing' class='stu par ele mse hse une'>Performing Arts Travel</option>
-					<option value='Undergraduate' class='stu par une'>Undergraduate Tours</option>
-					<option value='Graduate' class='stu par une'>Graduate-Level Tours</option>
-					<option value="Unknown" class='stu par ele mse hse une'>I'm not sure</option>
-				</select>
-			</li>
-			<li id="moremusicfield" class="field" style="display:none;">
-				<label for="get-info-moremusic">I want to learn more about</label>
-				<select id="get-info-moremusic" name="mkto_moremusic" title="Musical Interest">
-					<option value="">Select...</option>
-					<option value="Music Festivals">Music Festivals </option>
-					<option value="International Concert Tours">International Concert Tours</option>
-					<option value="American Performing Tours">American Performing Tours</option>
-					<option value="Marching Band Opportunities">Marching Band Opportunities</option>
-					<option value="Dance &amp; Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
-					<option value="Domestic Theatre Opportunities">Domestic Theatre Opportunities</option>
-					<option value="International Theatre Opportunities">International Theatre Opportunities</option>
-					<option value="Im not sure yet">I'm not sure yet</option>
-				</select>
-			</li>
+			
+			<?php get_template_part('partials/form','filters'); ?>
 
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field" title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
