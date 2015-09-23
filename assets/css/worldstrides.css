@@ -6309,6 +6309,9 @@ label {
   .single-itinerary .learn-more {
     margin-top: 0; }
 
+#current-context-name {
+  font-weight: bold; }
+
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {

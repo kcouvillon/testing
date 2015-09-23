@@ -12,11 +12,16 @@
 	);
 
  $interests  = get_terms( 'filter', $interestsArgs ); 
+ $this_post = get_post();
+ $title = $this_post->post_title;
+ if($title === "Home") {
+ 	$title = "";
+ }
 /*OUT OF PHP*/?>
 
 
 <li class="field">
-	<label for="get-info-wsProduct">I am interested in</label>
+	<label for="get-info-wsProduct">I am interested in <span id="current-context-name"><?php echo $title; ?><span></label>
 	<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
 		<option value="">Select...</option>
 
