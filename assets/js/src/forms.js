@@ -12,13 +12,6 @@
 	// MARKETO FORM BEHAVIOR
 
 	jQuery(document).ready(function() {
-		var marketoTitle = '';
-
-		setTimeout( checkRows, 2000 );
-		
-		jQuery(document).on( 'change', '#Title', function() {
-			checkRows();
-		});
 
 		if( jQuery('#get-info-form').length )  {
 			universalLead();

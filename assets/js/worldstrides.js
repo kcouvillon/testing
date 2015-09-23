@@ -636,20 +636,6 @@
 
 	});
 
-	function checkRows() {
-		var marketoTitle = document.querySelector('#Title');
-		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
-
-		jQuery(marketoFormRow).each(function() {
-			if( jQuery(this).children('.mktoPlaceholder').length ) {
-				jQuery(this).addClass('hidden');
-				console.log('hide');
-			} else {
-				jQuery(this).removeClass('hidden');
-				console.log('show');
-			}
-		});
-	}
 
 	function universalLead() {
 		/**
@@ -658,22 +644,19 @@
 		 * - show MoreMusic where wsProduct === 'Performing'
 		 *
 		 */
-		(function(roleSelect,interestSelect){
+		(function(roleSelect){
 			roleSelect.on('change',function(){
 				var role =  jQuery(this).children('option:selected').attr('data-value');
 				console.log(role);
 				jQuery('#get-info-wsProduct option').filter('.'+role).show();
 				jQuery('#get-info-wsProduct option').not('.'+role).hide();
 			});
-			interestSelect.on('change',function(){
-				console.log(jQuery(this).val());
-				if('Performing' === (jQuery(this)).val()) {
-					jQuery('li#moremusicfield').css('display','list-item');
-				} else {
-					jQuery('li#moremusicfield').css('display','none');
-				}
-			});
-		})(jQuery('select#get-info-Title'),jQuery('select#get-info-wsProduct'));
+		})(jQuery('select#get-info-Title'));
+
+
+
+
+
 
 		/**
 		 * Make the submit button unclickable after first click
