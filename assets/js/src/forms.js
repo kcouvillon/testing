@@ -23,23 +23,32 @@
 
 	function universalLead() {
 		/**
-		 * Wire the Role (Title), wsProduct and MoreMusic fields together
-		 * - restrict wsProduct based on Role
-		 * - show MoreMusic where wsProduct === 'Performing'
-		 *
+		 * Wire the Role (Title), wsProduct fields together
+		 * toggle wsProduct based on Role: stu (student) par (parent) ...
 		 */
 		(function(roleSelect){
 			roleSelect.on('change',function(){
 				var role =  jQuery(this).children('option:selected').attr('data-value');
-				console.log(role);
 				jQuery('#get-info-wsProduct option').filter('.'+role).show();
 				jQuery('#get-info-wsProduct option').not('.'+role).hide();
 			});
 		})(jQuery('select#get-info-Title'));
 
 
-
-
+		/**
+		 * Toggle the visibility of the wsProductDetail dropdowns
+		 */
+		(function(productSelect){
+			productSelect.on('change', function(){
+				var interestID = parseFloat(jQuery(this).children('option:selected').attr('data-interest-id'));
+				jQuery('li[id^="get-info-wsProductDetail"]')
+					.addClass('hidden')
+					.filter(function(){
+						return parseFloat(jQuery(this).attr('data-interest-parent-id'))===interestID;
+					})
+					.removeClass('hidden'); 
+			});
+		})(jQuery('select#get-info-wsProduct'));
 
 
 		/**

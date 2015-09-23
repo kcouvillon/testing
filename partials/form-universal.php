@@ -15,18 +15,30 @@
 					<option data-value="une" value="Teacher">College / University Educator</option>
 				</select>
 			</li>
-			
-			<?php get_template_part('partials/form','filters'); ?>
 
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field" title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
-				&nbsp;&nbsp;
+				&nbsp;<wbr>
 				<input type="radio" name="tour" id="tour-yes" value="yes" title="Yes">
 				<label for="tour-yes">Yes</label>
 				&nbsp;
 				<input type="radio" name="tour" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
 			</li>
+
+			<?php get_template_part('partials/form','filters'); ?>
+
+			<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field" title="Destination U.S. or Elsewhere?">
+				<label>I would travel:</label>
+				&nbsp;<wbr>
+				<input type="radio" name="destination" id="destination-us" value="us" title="Within the U.S.">
+				<label for="destination-us">within the U.S.</label>
+				<br class="visible-xs">
+				<input type="radio" name="destination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
+				<label for="destination-abroad">outside of the U.S.</label>
+			</li>
+
+
 		</ul>
 	</div>
 	<div class="right">
