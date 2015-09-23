@@ -4,6 +4,12 @@
   * Borrows code from explore-filters.php
   */
 
+ $post_id = get_the_ID();
+
+ $product_lines = get_the_terms( $post_id, 'product-line' );
+ $filters = get_the_terms( $post_id, 'filter' );
+ $collections = get_the_terms( $post_id, '_collection' );
+
  $interestsArgs = array( 
 	'parent' => 11, // Interest
 	'orderby' => 'term_order', 
@@ -12,17 +18,32 @@
 	);
 
  $interests  = get_terms( 'filter', $interestsArgs ); 
- $this_post = get_post();
- $title = $this_post->post_title;
- if($title === "Home") {
+ $title = get_the_title( $post_id );
+
+ if($title === "Home") { // @todo -better criteria for hiding the #current-context-name
  	$title = "";
  }
+
+$hide_if_context_classes ='hidden hide-if-context';
+ if(false===$filters) {
+ 	$hide_if_context_classes = 'hide-if-context';
+ }
+
+
+
 /*OUT OF PHP*/?>
+
+			<script type="text/javascript">
+				console.log('Term Data about current post / itinerary: ');
+				console.log(<?php echo "'Product Lines: " . json_encode($product_lines) . "'" ?>);
+				console.log(<?php echo "'Filters: " . json_encode($filters) . "'" ?>);
+				console.log(<?php echo "'Collections: " . json_encode($collections) . "'" ?>);
+			</script>
 
 
 <li class="field">
 	<label for="get-info-wsProduct">I am interested in <span id="current-context-name"><?php echo $title; ?><span></label>
-	<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
+	<select id="get-info-wsProduct" class="<?php echo $hide_if_context_classes; ?>" name="mkto_wsProduct" title="General Interest">
 		<option value="">Select...</option>
 
 <?php foreach ( $interests as $interest ) : /*START LOOP FOR MAIN SELECT LIST*/ ?>
@@ -80,4 +101,14 @@
 </li>
 
 <?php endif; ?>
-<?php endforeach; /*END LOOP FOR SUB-SELECT LISTS*/
+<?php endforeach; /*END LOOP FOR SUB-SELECT LISTS*/?>
+
+<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
+	<label>I would travel:</label>
+	&nbsp;<wbr>
+	<input type="radio" name="destination" id="destination-us" value="us" title="Within the U.S.">
+	<label for="destination-us">within the U.S.</label>
+	<br class="visible-xs">
+	<input type="radio" name="destination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
+	<label for="destination-abroad">outside of the U.S.</label>
+</li>

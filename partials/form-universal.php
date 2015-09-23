@@ -28,17 +28,6 @@
 
 			<?php get_template_part('partials/form','filters'); ?>
 
-			<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field" title="Destination U.S. or Elsewhere?">
-				<label>I would travel:</label>
-				&nbsp;<wbr>
-				<input type="radio" name="destination" id="destination-us" value="us" title="Within the U.S.">
-				<label for="destination-us">within the U.S.</label>
-				<br class="visible-xs">
-				<input type="radio" name="destination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
-				<label for="destination-abroad">outside of the U.S.</label>
-			</li>
-
-
 		</ul>
 	</div>
 	<div class="right">

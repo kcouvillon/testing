@@ -90,19 +90,8 @@ class WS_Marketo {
 	}
 
 	public static function get_marketo_form( $post_id ) {
-		$form_id = '';
-		$product_lines = get_the_terms( $post_id, 'product-line' );
-		$filters = get_the_terms( $post_id, 'filter' );
-		$collections = get_the_terms( $post_id, '_collection' );
-
 		?>
 		<section class="learn-more clearfix ws-container">
-			<script type="text/javascript">
-				console.log('Term Data about current post / itinerary: ');
-				console.log(<?php echo "'Product Lines: " . json_encode($product_lines) . "'" ?>);
-				console.log(<?php echo "'Filters: " . json_encode($filters) . "'" ?>);
-				console.log(<?php echo "'Collections: " . json_encode($collections) . "'" ?>);
-			</script>
 			<?php get_template_part('partials/form','universal'); ?>
 		</section>		
 		<?php
