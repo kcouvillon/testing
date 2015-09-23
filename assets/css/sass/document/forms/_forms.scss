@@ -156,4 +156,11 @@ label {
 
 #current-context-name {
 	font-weight: bold;
+	& em{
+		font-weight: normal;
+		font-size: small;
+		&:hover {
+			color: $gray;
+		}
+	}
 }

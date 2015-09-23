@@ -35,6 +35,11 @@
 		})(jQuery('select#get-info-Title'));
 
 
+		jQuery('#current-context-name').on('click',function(){
+			jQuery('.hide-if-context').removeClass('hidden');
+			jQuery(this).hide();
+		});
+
 		/**
 		 * Toggle the visibility of the wsProductDetail dropdowns
 		 */

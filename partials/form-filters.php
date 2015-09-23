@@ -42,7 +42,7 @@ $hide_if_context_classes ='hidden hide-if-context';
 
 
 <li class="field">
-	<label for="get-info-wsProduct">I am interested in <span id="current-context-name"><?php echo $title; ?><span></label>
+	<label for="get-info-wsProduct">I am interested in <span id="current-context-name">tours such as: <?php echo $title; ?>. <em>(Or not.)</em><span></label>
 	<select id="get-info-wsProduct" class="<?php echo $hide_if_context_classes; ?>" name="mkto_wsProduct" title="General Interest">
 		<option value="">Select...</option>
 

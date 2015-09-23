@@ -6311,6 +6311,11 @@ label {
 
 #current-context-name {
   font-weight: bold; }
+  #current-context-name em {
+    font-weight: normal;
+    font-size: small; }
+    #current-context-name em:hover {
+      color: #777d8d; }
 
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
