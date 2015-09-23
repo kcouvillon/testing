@@ -45,7 +45,7 @@ class WS_Metaboxes_Filter_Endpoints {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Attach Why Worldstrides posts
 	 */
 	function why_ws() {
 
@@ -173,7 +173,7 @@ class WS_Metaboxes_Filter_Endpoints {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Oveerride associated itineraries
 	 */
 	function itineraries() {
 

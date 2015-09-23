@@ -18,7 +18,6 @@ get_header(); ?>
 				<section <?php post_class( 'section-content bio' ); ?>>
 					<?php if ( has_post_thumbnail() ) : ?>
 						<div class="headshot-hero">
-							<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
 							<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 						</div>
 					<?php endif; ?>

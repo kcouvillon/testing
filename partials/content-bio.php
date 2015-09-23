@@ -10,7 +10,6 @@ $position = get_post_meta( $post->ID, 'ws_bio_position', true )
 	<header class="entry-header">
 		<?php if ( has_post_thumbnail() ) : ?>
 			<div class="headshot">
-				<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
 				<?php the_post_thumbnail( 'large' ); ?>
 			</div>
 		<?php endif; ?>
@@ -36,7 +35,7 @@ $position = get_post_meta( $post->ID, 'ws_bio_position', true )
 
 	<footer class="entry-footer">
 		<?php if ( is_page('about') ) : ?>
-			<?php // @todo should 'back to leadership/category' link go here? ?>
+			<?php // about page gets redirected to history anyway ?>
 		<?php else : ?>
 			<a href="<?php the_permalink(); ?>">Read More</a>
 		<?php endif; ?>

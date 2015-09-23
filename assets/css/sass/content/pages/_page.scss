@@ -14,10 +14,9 @@ section {
 }
 
 .primary-section {
+	position: relative;
 
 	.transparent-header & {
-		// margin-top: -158px;
-		// padding-top: 100px !important;
 		@media only print {
 			margin-top: 0;
 			padding: 0;
@@ -31,7 +30,6 @@ section {
 
 
 .section-header {
-	// @include container();
 	@include clearfix;
 	position: relative;
 	background-size: cover;
@@ -213,7 +211,6 @@ section {
 
 .section-nav {
 	@include clearfix;
-	// @include container();
 	position: relative;
 	background: $gray-base;
 	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);

@@ -201,7 +201,14 @@ class WS_Helpers {
 		return $html;
 	}
 
-	// determine the topmost parent of a term
+	/**
+	 * Helper to determine the top-most parent of a term
+	 *
+	 * @param $term_id
+	 * @param $taxonomy
+	 *
+	 * @return array|false|null|object|WP_Error
+	 */
 	public static function get_term_top_most_parent( $term_id, $taxonomy ) {
 
 		// start from the current term
@@ -234,10 +241,10 @@ class WS_Helpers {
 
 		$terms = wp_get_post_terms( $post_id, 'filter' );
 
+		// loop through terms, see if parent id equals destination id, get first term that's true
 		foreach ( $terms as $term ) {
 			$subtitle_parent = WS_Helpers::get_term_top_most_parent( $term->term_id, 'filter' );
 
-			//var_dump( $parent );
 			if ( $subtitle_parent->term_id == $subtitle_term_parent_id ) {
 				$subtitle_term = $term;
 				break;
@@ -249,10 +256,6 @@ class WS_Helpers {
 		}
 
 		return $subtitle;
-
-		// loop through terms, see if parent id equals destination id, get first term that's true
-
-		// var_dump( $terms );
 	}
 
 	/**
@@ -282,6 +285,8 @@ class WS_Helpers {
 	}
 
 	/**
+	 * Returns the posts appearing in the sidebar of a block of blog posts
+	 *
 	 * @return array ids of the most recent travelogue and postcard
 	 */
 	public static function get_blog_sidebar_posts() {
@@ -332,8 +337,11 @@ class WS_Helpers {
 	}
 
 	/**
-	 * Get the weather data.
-	 * http://openweathermap.org/api
+	 * Get the weather data from http://openweathermap.org/api and store in a transient
+	 *
+	 * @param $post_id
+	 *
+	 * @return array|bool|mixed|object
 	 */
 	public static function get_weather_data( $post_id ) {
 
@@ -379,13 +387,19 @@ class WS_Helpers {
 	}
 
 	/**
-	 * Get the weather icon.
+	 * Get the weather icon
+	 *
 	 * Icon codes based off of http://openweathermap.org/weather-conditions.
+	 *
+	 * @param $iconCode
+	 *
+	 * @return string|void
 	 */
 	public static function get_weather_icon( $iconCode ) {
 		
-		if ( ! $iconCode )
-			return;
+		if ( ! $iconCode ) {
+			return null;
+		}
 
 		$icon = '';
 
@@ -416,6 +430,11 @@ class WS_Helpers {
 	/**
 	 * Get the local time by timezone name (i.e. "America/New_York").
 	 * http://php.net/manual/en/timezones.php
+	 *
+	 * @param        $timezone
+	 * @param string $format
+	 *
+	 * @return bool|string
 	 */
 	public static function get_local_time_by_tz( $timezone, $format = 'g:i a' ) {
 
@@ -431,6 +450,11 @@ class WS_Helpers {
 	/**
 	 * Get the local time by timezone offset in hours (i.e. "-5.5").
 	 * http://php.net/manual/en/timezones.php
+	 *
+	 * @param        $offset_hours
+	 * @param string $format
+	 *
+	 * @return bool|string
 	 */
 	public static function get_local_time_by_offset( $offset_hours, $format = 'g:i a' ) {
 
