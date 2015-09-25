@@ -96,6 +96,11 @@
 		position: absolute;
 		bottom: 10px;
 		left: 20px;
+		transition: color 250ms ease;
+
+		.resource-target:hover & {
+			color: $orange;
+		}
 	}
 }
 

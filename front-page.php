@@ -56,23 +56,23 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 		$data = array(
 			array(
 				'slug' => 'discoveries',
-				'meta' => 'Middle School',
+				'meta' => array( array( 'name'=>'Middle School' ) )
 			),
 			array(
 				'slug' => 'perspectives',
-				'meta' => 'High School',
+				'meta' => array( array( 'name'=>'High School' ) )
 			),
 			array(
 				'slug' => 'capstone',
-				'meta' => "University",
+				'meta' => array( array( 'name'=>'University' ) )
 			),
 			array(
 				'slug' => 'on-stage',
-				'meta' => 'Performing Arts'
+				'meta' => array( array( 'name'=>'Performing Arts' ) )
 			),
 			array(
 				'slug' => 'sports',
-				'meta' => 'Sports'
+				'meta' => array( array( 'name'=>'Sports' ) )
 			),
 		);
 
@@ -90,9 +90,12 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 					<?php foreach ( $data as $item ) : ?>
 
-						<?php $division_page = get_page_by_path( $item['slug'] ); ?>
+						<?php 
+						$division_page = get_page_by_path( $item['slug'] );
+						$meta_list = $item['meta'];
+						$url = get_the_permalink( $division_page->ID );
+						$title = apply_filters( 'the_title', $division_page->post_title );
 
-						<?php
 						if ( has_post_thumbnail( $division_page->ID ) ) {
 							$thumb_id = get_post_thumbnail_id( $division_page->ID );
 							$thumb_url_array = wp_get_attachment_image_src( $thumb_id, 'medium', true );
@@ -105,16 +108,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 						?>
 
 						<li class="program tile tile-third<?php echo $class; ?>" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<li class="list-tag-no-link"><?php echo $item['meta']; ?></li>
-								</ul>
-								<h2 class="tile-title">
-									<a href="<?php echo get_the_permalink( $division_page->ID ); ?>">
-										<?php echo apply_filters( 'the_title', $division_page->post_title ); ?>
-									</a>
-								</h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
 
 						<?php $count++; ?>
@@ -131,9 +125,29 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 				<ul class="resources-list list-unstyled clearfix">
 
 					<?php foreach ( $associated_resources as $resource_id ) : ?>
-						<?php $resource = get_post( $resource_id ); ?>
-						<?php
+						
+						<?php 
+						$resource = get_post( $resource_id );
 						$background = '';
+						$targets = wp_get_object_terms( $resource_id, 'resource-target' );
+						$target_parents = array();
+						$url = get_the_permalink( $resource_id );
+						$title = apply_filters( 'the_title', $resource->post_title );
+						$meta_list = array();
+						
+						foreach ( $targets as $target ) {
+							if ( 'Featured' != $target->name ) {
+								$parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' );
+								if ( ! in_array( $parent->term_id, $target_parents ) ) {
+									$target_parents[] = $parent->term_id;
+									$target_url = home_url( '/resources/' . $parent->slug . '/' );
+									$target_name = $parent->name;
+									array_push( $meta_list , array( 'url' => $target_url, 'name' => $target_name ) );
+								}
+
+							}
+						}
+
 						if( has_post_thumbnail( $resource_id ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
 							$background = 'url(' . $featured[0] . ')';
@@ -143,30 +157,9 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 						} ?>
 
 						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-									<?php $target_parents = array(); ?>
-
-									<?php foreach ( $targets as $target ) : ?>
-										<?php if ( 'Featured' != $target->name ) : ?>
-
-											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-												<?php $target_parents[] = $parent->term_id; ?>
-
-												<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
-
-											<?php endif; ?>
-
-										<?php endif; ?>
-									<?php endforeach; ?>
-
-								</ul>
-								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
+
 					<?php endforeach; ?>
 
 				</ul>
@@ -186,8 +179,10 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 						<?php
 						$program = get_post( $program_id );
-
 						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern5.gif' : 'ws_w_pattern8.gif';
+						$title = apply_filters( 'the_title', $program->post_title );
+						$url = get_the_permalink( $program->ID );
+						$meta_list = array( array( 'name' => WS_Helpers::get_subtitle( $program->ID ) ) );
 
 						if ( $count == 3 || $count == 4 ) {
 							$tile_size = 'tile-half';
@@ -217,12 +212,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 						?>
 
 						<li class="program tile <?php echo $tile_size; echo $class; ?>" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $program->ID ); ?></li>
-								</ul>
-								<h2 class="tile-title"><a href="<?php echo get_the_permalink( $program->ID ); ?>"><?php echo apply_filters( 'the_title', $program->post_title ); ?></a></h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
 
 						<?php $count++; ?>

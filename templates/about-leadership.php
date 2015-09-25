@@ -33,11 +33,11 @@ get_header(); ?>
 					<header class="entry-header">
 						<?php if ( has_post_thumbnail() ) : ?>
 							<div class="headshot clearfix">
-								<?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?>
+								<a href="<?php echo esc_url( get_the_permalink( $post->ID ) ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?></a>
 							</div>
 						<?php else : ?>
 							<div class="headshot-pattern pattern-<?php echo rand(1, 9); ?>">
-
+								<a href="<?php echo esc_url( get_the_permalink( $post->ID ) ); ?>"></a>
 							</div>
 						<?php endif; ?>
 

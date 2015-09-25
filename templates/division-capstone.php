@@ -187,42 +187,40 @@ get_header(); ?>
 			<ul class="resources-list list-unstyled clearfix">
 
 				<?php foreach ( $associated_resources as $resource_id ) : ?>
-					<?php $resource = get_post( $resource_id ); ?>
-					<?php
+					
+					<?php 
+					$resource = get_post( $resource_id );
 					$background = '';
+					$targets = wp_get_object_terms( $resource_id, 'resource-target' );
+					$target_parents = array();
+					$url = get_the_permalink( $resource_id );
+					$title = apply_filters( 'the_title', $resource->post_title );
+					$meta_list = array();
+					
+					foreach ( $targets as $target ) {
+						if ( 'Featured' != $target->name ) {
+							$parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' );
+							if ( ! in_array( $parent->term_id, $target_parents ) ) {
+								$target_parents[] = $parent->term_id;
+								$target_url = home_url( '/resources/' . $parent->slug . '/' );
+								$target_name = $parent->name;
+								array_push( $meta_list , array( 'url' => $target_url, 'name' => $target_name ) );
+							}
+
+						}
+					}
+
 					if( has_post_thumbnail( $resource_id ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
 						$background = 'url(' . $featured[0] . ');';
 						$class = ' has-tile-image';
 					} else {
-						$class = ' pattern-' . rand(1, 9);
+						$class = ' ' . WS_Helpers::get_random_pattern('dark');
 					}
 					?>
 
 					<li class="resource tile tile-third <?php echo esc_attr($class); ?>" style="background-image:<?php echo $background; ?>);">
-						<div class="tile-content">
-							<ul class="meta list-unstyled">
-								<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-								<?php $target_parents = array(); ?>
-
-								<?php foreach ( $targets as $target ) : ?>
-									<?php if ( 'Featured' != $target->name ) : ?>
-
-										<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-										<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-											<?php $target_parents[] = $parent->term_id; ?>
-
-											<li class="list-tag-no-link"><?php echo $parent->name; ?></li>
-
-										<?php endif; ?>
-
-									<?php endif; ?>
-								<?php endforeach; ?>
-
-							</ul>
-							<h2 class="tile-title"><a href="<?php echo get_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-						</div>
+						<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 					</li>
 
 				<?php endforeach; ?>
@@ -262,25 +260,25 @@ get_header(); ?>
 				<h2 class="section-title ws-container">Collections</h2>
 				<ul class="programs-list bleed-container list-unstyled clearfix">
 					<?php while ( $associated_collections->have_posts() ) : ?>
-						<?php $associated_collections->the_post(); ?>
-						<?php
+						
+						<?php 
+						$associated_collections->the_post();
 						$background = '';
+						$title = get_the_title();
+						$url = get_the_permalink();
+						$meta_list = array();
+						$show_smithsonian = ( $post->ID == '844' ) ? true : false;
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
-							$class = ' pattern-' . rand(1, 9);
+							$class = ' ' . WS_Helpers::get_random_pattern('dark');
 						}
 						?>
 
 						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-							<div class="tile-content">
-								<?php if ( '844' == $post->ID ) : ?>
-									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-								<?php endif; ?>
-								<h3 class="h2 tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>	
 						</li>
 
 					<?php endwhile; ?>
@@ -291,31 +289,23 @@ get_header(); ?>
 		<?php endif; ?>
 
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 		<section class="section-content bleed-container global-reach">
 
 			<h2 class="section-title ws-container">Global Reach</h2>
 
 			<div id="office-map"></div>
-			<div id="offices-json" style="display: none;">
-				<?php echo json_encode( get_post_meta( 157, 'about_offices_locations_list', true ) ); ?>
-			</div>
-
-			<div class="ws-container">
-				<ul>
-					<li>North America</li>
-					<li>South &amp; Central America</li>
-					<li>Europe</li>
-					<li>Asia</li>
-					<li>Africa</li>
-					<li>Oceania</li>
-				</ul>
+			<div id="offices-json" data-prefix="division_locations_" style="display: none;">
+				<?php echo json_encode( get_post_meta( $post->ID, 'division_locations_list', true ) ); ?>
 			</div>
 
 		</section>
 
 		<?php if ( ! empty( $associated_bios ) ) : ?>
 		<section class="section-content">
+		
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 			<h2>University Team</h2>
 
 			<div class="leadership">
@@ -332,7 +322,7 @@ get_header(); ?>
 								<?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?>
 							</div>
 						<?php else : ?>
-							<div class="headshot-pattern pattern-<?php echo rand(1, 9); ?>">
+							<div class="headshot-pattern <?php echo WS_Helpers::get_random_pattern('dark'); ?>">
 
 							</div>
 						<?php endif; ?>

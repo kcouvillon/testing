@@ -1657,7 +1657,8 @@ wsData.states =
 					"type": "FeatureCollection",
 					"features": []
 				},
-				layer = L.mapbox.featureLayer().addTo(map);
+				layer = L.mapbox.featureLayer().addTo(map),
+				prefix = $('#offices-json').data('prefix');
 
 			if ( data ) {
 
@@ -1667,8 +1668,8 @@ wsData.states =
 					  "geometry": {
 					    "type": "Point",
 					    "coordinates": [
-					      parseFloat(this.about_offices_locations_coordinates.longitude),
-					      parseFloat(this.about_offices_locations_coordinates.latitude)
+					      parseFloat(this[prefix + 'coordinates']['longitude']),
+					      parseFloat(this[prefix + 'coordinates']['latitude'])
 					    ]
 					  },
 					  "properties": {
