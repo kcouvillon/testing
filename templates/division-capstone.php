@@ -295,8 +295,8 @@ get_header(); ?>
 			<h2 class="section-title ws-container">Global Reach</h2>
 
 			<div id="office-map"></div>
-			<div id="offices-json" style="display: none;">
-				<?php echo json_encode( get_post_meta( 157, 'about_offices_locations_list', true ) ); ?>
+			<div id="offices-json" data-prefix="division_locations_" style="display: none;">
+				<?php echo json_encode( get_post_meta( $post->ID, 'division_locations_list', true ) ); ?>
 			</div>
 
 		</section>

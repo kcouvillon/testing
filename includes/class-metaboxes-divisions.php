@@ -38,7 +38,7 @@ class WS_Metaboxes_Divisions {
 		add_action( 'cmb2_init',  array( $this, 'division_why_ws' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blocks_before' ) );
-		// add_action( 'cmb2_init',  array( $this, 'division_locations' ) );
+		add_action( 'cmb2_init',  array( $this, 'division_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_collections' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_team' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships' ) );
