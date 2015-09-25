@@ -9143,7 +9143,10 @@ section:after {
     color: #fff;
     position: absolute;
     bottom: 10px;
-    left: 20px; }
+    left: 20px;
+    transition: color 250ms ease; }
+    .resource-target:hover .resource-target-title h2 {
+      color: #fb901d; }
 
 .resource-target-list-wrap {
   width: 100%;
