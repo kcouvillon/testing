@@ -20,7 +20,7 @@
  $interests  = get_terms( 'filter', $interestsArgs ); 
  $title = get_the_title( $post_id );
 
- if($title === "Home") { // @todo -better criteria for hiding the #current-context-name
+ if($title === "Home") { // @todo - move this to the leading question: Ready to learn more?
  	$title = "Traveling with WorldStrides";
  }
 
@@ -87,9 +87,9 @@
 	$child_interests = get_terms( 'filter', array( 'parent' => $interest->term_id ) ); 
 	if(!empty($child_interests)) : ?>
 
-<li id="get-info-wsProductDetail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
+<li id="get-info-wsInterestDetail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
 	<label for="get-info-moredetail-<?php echo $interest->slug; ?>">I want to learn more about</label>
-	<select id="get-info-moredetail-<?php echo $interest->slug; ?>" name="mkto_wsProductDetail" title="-<?php echo 'Specific Interest within ' . $interest->name; ?>">
+	<select id="get-info-moredetail-<?php echo $interest->slug; ?>" name="mkto_wsInterestDetail" title="-<?php echo 'Specific Interest within ' . $interest->name; ?>">
 		<option value="">Select...</option>
 
 		<?php 
@@ -112,9 +112,9 @@
 <li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
 	<label>I would travel:</label>
 	&nbsp;<wbr>
-	<input type="radio" name="destination" id="destination-us" value="us" title="Within the U.S.">
+	<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">
 	<label for="destination-us">within the U.S.</label>
 	<br class="visible-xs">
-	<input type="radio" name="destination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
+	<input type="radio" name="mkto_USorAbroadDestination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
 	<label for="destination-abroad">outside of the U.S.</label>
 </li>

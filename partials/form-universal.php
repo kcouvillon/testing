@@ -19,11 +19,30 @@
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field" title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
 				&nbsp;<wbr>
-				<input type="radio" name="tour" id="tour-yes" value="yes" title="Yes">
+				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
 				<label for="tour-yes">Yes</label>
 				&nbsp;
-				<input type="radio" name="tour" id="tour-no" value="no" title="No">
+				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
+			</li>
+
+		
+			<li id="moremusicfield" class="field">
+				<label for="get-info-Product">I want to learn more about</label>
+				<select id="get-info-Product" name="mkto_wsProduct">
+					<option value="">Select...</option>
+					<option value='History-Culture Themed Programs (K-12)' class='par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
+					<option value='Science Themed Programs (K-12)' class='par ele mse hse'>Science Themed Programs (K-12)</option>
+					<option value='Sports Tours' class='stu par ele mse hse une'>Sports Tours</option>
+					<option value='Undergraduate Tours' class='par une'>Undergraduate Tours</option>
+					<option value='Graduate-Level Tours' class='par une'>Graduate-Level Tours</option>
+					<option value="Music Festivals">Music Festivals </option>
+					<option value="Concert and Performing Tours">Concert and Performing Tours</option>
+					<option value="Marching Band Opportunities">Marching Band Opportunities</option>
+					<option value="Dance-Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
+					<option value="Theatre Opportunities">Theatre Opportunities</option>
+					<option value="Im not sure yet">I'm not sure yet</option>
+				</select>
 			</li>
 
 			<?php get_template_part('partials/form','filters'); ?>
