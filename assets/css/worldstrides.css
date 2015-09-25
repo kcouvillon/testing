@@ -7234,6 +7234,8 @@ a.text-color-link {
 .blog .entry-header, .single .entry-header {
   margin-left: -5vw;
   padding: 0 0 0 5vw; }
+  .blog .entry-header:hover .entry-title, .single .entry-header:hover .entry-title {
+    color: #fb901d; }
   .blog .entry-header .post-categories, .single .entry-header .post-categories {
     list-style: none;
     margin: 0;
@@ -7251,19 +7253,21 @@ a.text-color-link {
       font-size: 0.75em; }
       .blog .entry-header .post-categories a:hover, .single .entry-header .post-categories a:hover {
         color: #fb901d; }
-  .blog .entry-header > a:first-child, .single .entry-header > a:first-child {
+  .blog .entry-header > a, .single .entry-header > a {
     display: block;
-    margin-top: 15vh; }
-    @media (min-width: 768px) {
-      .blog .entry-header > a:first-child, .single .entry-header > a:first-child {
-        margin-top: 35vh; } }
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
 
 .blog .entry-title, .single .entry-title {
   color: #fff;
   margin: 0;
   margin-bottom: 5vh;
   font-size: 1.875em;
-  font-weight: 200; }
+  font-weight: 200;
+  transition: color 250ms ease; }
   .blog .entry-title:hover, .single .entry-title:hover {
     color: #fb901d; }
   @media (min-width: 768px) {

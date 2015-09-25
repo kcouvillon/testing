@@ -20,11 +20,9 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 			} ?>
 
 		<header class="section-header entry-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-
 			<?php echo get_the_category_list(); ?>
-
-			<a href="<?php the_permalink(); ?>"><h2 class="entry-title"><?php the_title(); ?></h2></a>
-
+			<h2 class="entry-title"><?php the_title(); ?></h2>
+			<a href="<?php the_permalink(); ?>" title="Read <?php the_title(); ?> »"><span class="hide">Read more</span></a>
 		</header>
 	<?php endif; ?>
 
