@@ -21,12 +21,18 @@
  $title = get_the_title( $post_id );
 
  if($title === "Home") { // @todo -better criteria for hiding the #current-context-name
- 	$title = "";
+ 	$title = "Traveling with WorldStrides";
  }
 
-$hide_if_context_classes ='hidden hide-if-context';
+
+ /**
+  * The Interests will just be hidden fields
+  */
+ $hide_if_context_classes ='hidden hide-if-context';
  if(false===$filters) {
- 	$hide_if_context_classes = 'hide-if-context';
+  	$hide_if_context_classes = 'hide-if-context'; // show these elements if there's no context
+ } else {
+
  }
 
 
@@ -42,8 +48,8 @@ $hide_if_context_classes ='hidden hide-if-context';
 
 
 <li class="field">
-	<label for="get-info-wsProduct">I am interested in <span id="current-context-name">tours such as: <?php echo $title; ?>. <em>(Or not.)</em><span></label>
-	<select id="get-info-wsProduct" class="<?php echo $hide_if_context_classes; ?>" name="mkto_wsProduct" title="General Interest">
+	<label class="hidden" for="get-info-interest">I am interested in </label>
+	<select type="hidden" id="get-info-interest" class="hidden" name="mkto_Interest" title="General Interest">
 		<option value="">Select...</option>
 
 <?php foreach ( $interests as $interest ) : /*START LOOP FOR MAIN SELECT LIST*/ ?>
