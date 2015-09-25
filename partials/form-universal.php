@@ -1,7 +1,22 @@
+ <?php
+ $post_id = get_the_ID();
+ $title = get_the_title( $post_id );
+
+ if($title === "Home") { // @todo - move this to the leading question: Ready to learn more?
+ 	$title = __("Ready to Learn More About Traveling with WorldStrides?", "worldstrides");
+ } else {
+ 	$title = sprintf(__("Thank you for your interest in our WorldStrides %s Tour! Please tell us a little more about yourself so we can get you sent to the right place."),$title);
+ }
+?>
+
 <form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
 	<input id="get-info-action" type="hidden" name="mkto_action" value="data_to_marketo">
+		<h2 class="form-title"><?php echo $title; ?></h2>
 	<div class="left">
-		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
+		<?php $phone = get_post_meta( $post->ID, 'itinerary_phone', true ); 
+			if (!empty($phone)) : ?>
+		<p>Rather call us on the phone? Reach us at: <?php echo $phone; ?></p>
+			<?php endif; ?>
 		<ul class="form-fields list-unstyled">
 			<li class="field">
 				<label for="get-info-Title">My role is</label>
@@ -24,25 +39,6 @@
 				&nbsp;
 				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
-			</li>
-
-		
-			<li id="moremusicfield" class="field">
-				<label for="get-info-Product">I want to learn more about</label>
-				<select id="get-info-Product" name="mkto_wsProduct">
-					<option value="">Select...</option>
-					<option value='History-Culture Themed Programs (K-12)' class='par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
-					<option value='Science Themed Programs (K-12)' class='par ele mse hse'>Science Themed Programs (K-12)</option>
-					<option value='Sports Tours' class='stu par ele mse hse une'>Sports Tours</option>
-					<option value='Undergraduate Tours' class='par une'>Undergraduate Tours</option>
-					<option value='Graduate-Level Tours' class='par une'>Graduate-Level Tours</option>
-					<option value="Music Festivals">Music Festivals </option>
-					<option value="Concert and Performing Tours">Concert and Performing Tours</option>
-					<option value="Marching Band Opportunities">Marching Band Opportunities</option>
-					<option value="Dance-Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
-					<option value="Theatre Opportunities">Theatre Opportunities</option>
-					<option value="Im not sure yet">I'm not sure yet</option>
-				</select>
 			</li>
 
 			<?php get_template_part('partials/form','filters'); ?>

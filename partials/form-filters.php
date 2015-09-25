@@ -1,7 +1,9 @@
 <?php
 
  /**
-  * Borrows code from explore-filters.php
+  * Populates hidden multi-select lists for form submission to Marketo.
+  * Provides filter information (interests, etc) as extra hidden data.
+  * Borrows code from explore-filters.php.
   */
 
  $post_id = get_the_ID();
@@ -18,12 +20,6 @@
 	);
 
  $interests  = get_terms( 'filter', $interestsArgs ); 
- $title = get_the_title( $post_id );
-
- if($title === "Home") { // @todo - move this to the leading question: Ready to learn more?
- 	$title = "Traveling with WorldStrides";
- }
-
 
  /**
   * The Interests will just be hidden fields
@@ -35,8 +31,6 @@
 
  }
 
-
-
 /*OUT OF PHP*/?>
 
 			<script type="text/javascript">
@@ -47,7 +41,7 @@
 			</script>
 
 
-<li class="field">
+<li id="interest" class="field">
 	<label class="hidden" for="get-info-interest">I am interested in </label>
 	<select type="hidden" id="get-info-interest" class="hidden" name="mkto_Interest" title="General Interest">
 		<option value="">Select...</option>
@@ -87,7 +81,7 @@
 	$child_interests = get_terms( 'filter', array( 'parent' => $interest->term_id ) ); 
 	if(!empty($child_interests)) : ?>
 
-<li id="get-info-wsInterestDetail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
+<li id="interest-detail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
 	<label for="get-info-moredetail-<?php echo $interest->slug; ?>">I want to learn more about</label>
 	<select id="get-info-moredetail-<?php echo $interest->slug; ?>" name="mkto_wsInterestDetail" title="-<?php echo 'Specific Interest within ' . $interest->name; ?>">
 		<option value="">Select...</option>
@@ -109,6 +103,25 @@
 <?php endif; ?>
 <?php endforeach; /*END LOOP FOR SUB-SELECT LISTS*/?>
 
+<li id="product" class="field <?php echo $hide_if_context_classes; ?>">
+	<label for="get-info-Product">I want to learn more about</label>
+	<select id="get-info-Product" name="mkto_wsProduct">
+		<option value="">Select...</option>
+		<option value='History-Culture Themed Programs (K-12)' class='par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
+		<option value='Science Themed Programs (K-12)' class='par ele mse hse'>Science Themed Programs (K-12)</option>
+		<option value='Sports Tours' class='stu par ele mse hse une'>Sports Tours</option>
+		<option value='Undergraduate Tours' class='par une'>Undergraduate Tours</option>
+		<option value='Graduate-Level Tours' class='par une'>Graduate-Level Tours</option>
+		<option value="Music Festivals">Music Festivals </option>
+		<option value="Concert and Performing Tours">Concert and Performing Tours</option>
+		<option value="Marching Band Opportunities">Marching Band Opportunities</option>
+		<option value="Dance-Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
+		<option value="Theatre Opportunities">Theatre Opportunities</option>
+		<option value="Im not sure yet">I'm not sure yet</option>
+	</select>
+</li>
+
+
 <li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
 	<label>I would travel:</label>
 	&nbsp;<wbr>
@@ -117,4 +130,5 @@
 	<br class="visible-xs">
 	<input type="radio" name="mkto_USorAbroadDestination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
 	<label for="destination-abroad">outside of the U.S.</label>
+	<label for="mkto_USorAbroadDestination" class="error" style="display:none;"></label>
 </li>
