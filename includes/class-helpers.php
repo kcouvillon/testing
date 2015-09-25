@@ -465,6 +465,28 @@ class WS_Helpers {
 		return $local_time;
 
 	}
+
+	/**
+	 * Get a random worldstrides pattern
+	 *
+	 * @param string $shade -- 'dark' or 'light'
+	 *
+	 * @return string
+	 */
+	public static function get_random_pattern( $shade = false ) {
+
+		if ( $shade === 'dark' )
+			$patterns = array(1,2,4,7,8);
+		elseif ( $shade === 'light' )
+			$patterns = array(3,5,6,9);
+		else
+			$patterns = array(1,2,3,4,5,6,7,8,9);
+
+		$random_key = rand( 0, (count($patterns) - 1) );
+
+		return 'pattern-' . $patterns[$random_key];
+
+	}
 }
 
 WS_Helpers::instance();
