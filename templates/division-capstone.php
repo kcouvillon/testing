@@ -300,17 +300,6 @@ get_header(); ?>
 				<?php echo json_encode( get_post_meta( 157, 'about_offices_locations_list', true ) ); ?>
 			</div>
 
-			<div class="ws-container">
-				<ul>
-					<li>North America</li>
-					<li>South &amp; Central America</li>
-					<li>Europe</li>
-					<li>Asia</li>
-					<li>Africa</li>
-					<li>Oceania</li>
-				</ul>
-			</div>
-
 		</section>
 
 		<?php if ( ! empty( $associated_bios ) ) : ?>
