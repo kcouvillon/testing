@@ -90,9 +90,13 @@ class WS_Marketo {
 	}
 
 	public static function get_marketo_form( $post_id ) {
-		$form_id = '';
-		$product_lines = get_the_terms( $post_id, 'product-line' );
+		?>
+		<section class="learn-more clearfix ws-container">
+			<?php get_template_part('partials/form','universal'); ?>
+		</section>		
+		<?php
 
+		/*
 		foreach ( $product_lines as $division ) {
 
 			if ( 'discoveries' == $division->slug ) {
@@ -117,8 +121,9 @@ class WS_Marketo {
 				$form_id = $current_id;
 			}
 		}
+		*/
 		
-		echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
+		// echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
 	}
 	
 	public static function submit_marketo_data() {

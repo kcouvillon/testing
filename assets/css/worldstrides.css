@@ -6309,6 +6309,14 @@ label {
   .single-itinerary .learn-more {
     margin-top: 0; }
 
+#current-context-name {
+  font-weight: bold; }
+  #current-context-name em {
+    font-weight: normal;
+    font-size: small; }
+    #current-context-name em:hover {
+      color: #777d8d; }
+
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {

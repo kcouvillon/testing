@@ -12,13 +12,6 @@
 	// MARKETO FORM BEHAVIOR
 
 	jQuery(document).ready(function() {
-		var marketoTitle = '';
-
-		setTimeout( checkRows, 2000 );
-		
-		jQuery(document).on( 'change', '#Title', function() {
-			checkRows();
-		});
 
 		if( jQuery('#get-info-form').length )  {
 			universalLead();
@@ -27,44 +20,41 @@
 
 	});
 
-	function checkRows() {
-		var marketoTitle = document.querySelector('#Title');
-		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
-
-		jQuery(marketoFormRow).each(function() {
-			if( jQuery(this).children('.mktoPlaceholder').length ) {
-				jQuery(this).addClass('hidden');
-				console.log('hide');
-			} else {
-				jQuery(this).removeClass('hidden');
-				console.log('show');
-			}
-		});
-	}
 
 	function universalLead() {
 		/**
-		 * Wire the Role, wsProduct and MoreMusic fields together
-		 * - restrict wsProduct based on Role
-		 * - show MoreMusic where wsProduct === 'Performing'
-		 *
+		 * Wire the Role (Title), wsProduct fields together
+		 * toggle wsProduct based on Role: stu (student) par (parent) ...
 		 */
-		(function(roleSelect,interestSelect){
+		(function(roleSelect){
 			roleSelect.on('change',function(){
-				console.log(jQuery(this).val());
-				var role =  jQuery(this).val();
+				var role =  jQuery(this).children('option:selected').attr('data-value');
 				jQuery('#get-info-wsProduct option').filter('.'+role).show();
 				jQuery('#get-info-wsProduct option').not('.'+role).hide();
 			});
-			interestSelect.on('change',function(){
-				console.log(jQuery(this).val());
-				if('Performing' === (jQuery(this)).val()) {
-					jQuery('li#moremusicfield').css('display','list-item');
-				} else {
-					jQuery('li#moremusicfield').css('display','none');
-				}
+		})(jQuery('select#get-info-Title'));
+
+
+		jQuery('#current-context-name').on('click',function(){
+			jQuery('.hide-if-context').removeClass('hidden');
+			jQuery(this).hide();
+		});
+
+		/**
+		 * Toggle the visibility of the wsProductDetail dropdowns
+		 */
+		(function(productSelect){
+			productSelect.on('change', function(){
+				var interestID = parseFloat(jQuery(this).children('option:selected').attr('data-interest-id'));
+				jQuery('li[id^="get-info-wsProductDetail"]')
+					.addClass('hidden')
+					.filter(function(){
+						return parseFloat(jQuery(this).attr('data-interest-parent-id'))===interestID;
+					})
+					.removeClass('hidden'); 
 			});
-		})(jQuery('select#get-info-role'),jQuery('select#get-info-wsProduct'));
+		})(jQuery('select#get-info-wsProduct'));
+
 
 		/**
 		 * Make the submit button unclickable after first click
@@ -430,6 +420,7 @@
 				mkto_Title: "required",
 				mkto_wsProduct: "required",
 				mkto_FirstName: "required",
+				mkto_USorAbroadDestination: "required",
 				mkto_LastName: "required",
 				mkto_Email: "required",
 				mkto_Phone: "required",
@@ -438,8 +429,9 @@
 				mkto_Company: "required",
 			},
 			messages: {
-				mkto_Title: " (important!)",
+				mkto_Title: "&nbsp; (important!)",
 				mkto_wsProduct: "&nbsp; Please tell us what kind of travel interests you.",
+				mkto_USorAbroadDestination: "&nbsp; Please tell us: U.S. or outside the U.S.?",
 				mkto_FirstName: "Please provide your First Name.",
 				mkto_LastName: "Please provide your Last Name.",
 				mkto_Email: { 

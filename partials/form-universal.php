@@ -1,57 +1,48 @@
+ <?php
+ $post_id = get_the_ID();
+ $title = get_the_title( $post_id );
+
+ if($title === "Home") { // @todo - move this to the leading question: Ready to learn more?
+ 	$title = __("Ready to Learn More About Traveling with WorldStrides?", "worldstrides");
+ } else {
+ 	$title = sprintf(__("Thank you for your interest in our WorldStrides %s Tour! Please tell us a little more about yourself so we can get you sent to the right place."),$title);
+ }
+?>
+
 <form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
 	<input id="get-info-action" type="hidden" name="mkto_action" value="data_to_marketo">
+		<h2 class="form-title"><?php echo $title; ?></h2>
 	<div class="left">
-		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
+		<?php $phone = get_post_meta( $post->ID, 'itinerary_phone', true ); 
+			if (!empty($phone)) : ?>
+		<p>Rather call us on the phone? Reach us at: <?php echo $phone; ?></p>
+			<?php endif; ?>
 		<ul class="form-fields list-unstyled">
 			<li class="field">
 				<label for="get-info-Title">My role is</label>
 				<select id="get-info-Title" name="mkto_Title" title="Role">
 					<option value="">Select...</option>
-					<option value="stu">Student</option>
-					<option value="par">Parent</option>
-					<option value="ele">Elementary School Educator</option>
-					<option value="mse">Middle School Educator</option>
-					<option value="hse">High School Educator</option>
-					<option value="une">College / University Educator</option>
-				</select>
-			</li>
-			<li class="field">
-				<label for="get-info-wsProduct">I am interested in</label>
-				<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
-					<option value="">Select...</option>
-					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
-					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
-					<option value='High School - International' class='par mse hse'>Tours to International Destinations</option>
-					<option value='Performing' class='par ele mse hse une'>Performing Arts Travel</option>
-					<option value='Undergraduate' class='par une'>Undergraduate Tours</option>
-					<option value='Graduate' class='par une'>Graduate-Level Tours</option>
-					<option value="Unknown" class="par ele mse hse une">I'm not sure</option>
-				</select>
-			</li>
-			<li id="moremusicfield" class="field" style="display:none;">
-				<label for="get-info-moremusic">I want to learn more about</label>
-				<select id="get-info-moremusic" name="mkto_moremusic" title="Musical Interest">
-					<option value="">Select...</option>
-					<option value="Music Festivals">Music Festivals </option>
-					<option value="International Concert Tours">International Concert Tours</option>
-					<option value="American Performing Tours">American Performing Tours</option>
-					<option value="Marching Band Opportunities">Marching Band Opportunities</option>
-					<option value="Dance &amp; Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
-					<option value="Domestic Theatre Opportunities">Domestic Theatre Opportunities</option>
-					<option value="International Theatre Opportunities">International Theatre Opportunities</option>
-					<option value="Im not sure yet">I'm not sure yet</option>
+					<option data-value="stu" value="Student">Student</option>
+					<option data-value="par" value="Parent">Parent</option>
+					<option data-value="ele" value="Teacher">Elementary School Educator</option>
+					<option data-value="mse" value="Teacher">Middle School Educator</option>
+					<option data-value="hse" value="Teacher">High School Educator</option>
+					<option data-value="une" value="Teacher">College / University Educator</option>
 				</select>
 			</li>
 
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field" title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
-				&nbsp;&nbsp;
-				<input type="radio" name="tour" id="tour-yes" value="yes" title="Yes">
+				&nbsp;<wbr>
+				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
 				<label for="tour-yes">Yes</label>
 				&nbsp;
-				<input type="radio" name="tour" id="tour-no" value="no" title="No">
+				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
 			</li>
+
+			<?php get_template_part('partials/form','filters'); ?>
+
 		</ul>
 	</div>
 	<div class="right">
