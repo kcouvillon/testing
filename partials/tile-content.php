@@ -1,5 +1,11 @@
 
+<?php if ( is_singular( 'collection' ) ) :
+// On collections, open itinerary in new tab 
+// to preserve results from date selection. ?>
+<a href="<?php echo esc_url( $url ); ?>" target="_blank">
+<?php else : ?>
 <a href="<?php echo esc_url( $url ); ?>">
+<?php endif; ?>
 	<div class="tile-content">
 		
 		<?php if ( !empty( $meta_list ) ) : ?>
