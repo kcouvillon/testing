@@ -198,7 +198,7 @@ get_header(); ?>
 						}
 
 						if( has_post_thumbnail( $resource_id ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'medium' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = '';
 						} else {
