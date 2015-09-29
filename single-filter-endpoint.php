@@ -174,9 +174,18 @@ $associated_itineraries = new WP_Query( array(
 									array_push( $meta_list, array( "name" => $parent->name ) );
 								}
 							}
-						} ?>
+						}
 
-						<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
+						if( has_post_thumbnail( $resource_id ) ) {
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'medium' );
+							$background = 'url(' . $featured[0] . ')';
+							$class = '';
+						} else {
+							$class = ' ' . WS_Helpers::get_random_pattern( 'dark' );
+						}
+						?>
+
+						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
 							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
 					
