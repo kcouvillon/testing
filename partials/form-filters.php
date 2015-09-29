@@ -47,9 +47,14 @@
   *
   * ORDER, IN CASE OF TIES: Discoveries > Perspectives > Capstone > OnStage > Excel Sports
   */
-if(false !== $product_lines) :
+$product_line_maximizer = '';
 
-	$product_line_maximizer = '';
+
+if(false !== $product_lines) :	// IF PRODUCT LINES ARE KNOWN -----------------------------
+
+
+	// See LEAD ROUTING LOGIC DIAGRAM: http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
+
 	foreach ( $product_lines as $division ) {
 		if ( 'discoveries' == $division->slug ) {
 			$product_line_maximizer = 'Middle School - History'; // default to History
@@ -78,16 +83,15 @@ if(false !== $product_lines) :
 		}
 	}
 
-	?>
-	<li id="product-line" class="field hidden">
-		<input type="hidden" name="mkto_wsProduct" title="Product Line" value="<?php echo $product_line_maximizer; ?>">
-	</li>
+endif;	          // ENDIF PRODUCT LINES ARE KNOWN -----------------------------  ?>
 
-<?php endif; ?>
+<li class="field hidden">
+	<input id="get-info-maxproductline" type="hidden" name="mkto_wsMaxProductLine" title="Product Line" value="<?php echo $product_line_maximizer; ?>">
+</li>
 
 <li id="interest" class="field">
 	<label class="hidden" for="get-info-interest">I am interested in </label>
-	<select type="hidden" id="get-info-interest" class="hidden" name="mkto_Interest" title="General Interest">
+	<select type="hidden" id="get-info-interest" class="hidden" name="mkto_wsInterest" title="General Interest">
 		<option value="">Select...</option>
 
 <?php foreach ( $interests as $interest ) : /*START LOOP FOR MAIN SELECT LIST*/ ?>

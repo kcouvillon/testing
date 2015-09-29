@@ -131,6 +131,8 @@ class WS_Marketo {
  		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
 		echo '<pre>';
 
+		// print_r( $_POST );
+
 		if( "" === trim($_POST['Email']) ) {
 			echo 'no email address submitted.';
 			echo '</pre>';
@@ -138,6 +140,7 @@ class WS_Marketo {
 		}
 		
 		print_r($_COOKIE['_mkto_trk']);
+
 		
 		$mkto_cookie = urlencode("mkto_trk=".$_COOKIE['_mkto_trk']); // use cookie for associate lead
 		
@@ -156,6 +159,44 @@ class WS_Marketo {
 				}
 			}
 		}
+
+		// See LEAD ROUTING LOGIC DIAGRAM: http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
+
+		if(empty($lead->wsMaxProductLine)) { // Product Line was not available on the form page
+			if ( 'History-Culture Themed Programs (K-12)' == $lead->leadFormProduct ) {
+				if( !empty($lead->domesticOrInternational ) && 'us' == $lead->domesticOrInternational ) {
+					$lead->wsProduct = 'Middle School - History'; // default to History
+				} else {
+					$lead->wsProduct = 'High School - International'; // abroad means Perspectives Division
+				}
+			} elseif ( 'Science Themed Programs (K-12)' == $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Middle School - Sciences';
+			} elseif ( 'Undergraduate Tours' == $lead->leadFormProduct || 
+					   'Graduate-Level Tours' ==  $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Capstone'; // does not exist in Maximizer yet
+			} elseif ( 'Music Festivals' == $lead->leadFormProduct ||
+					   'Concert and Performing Tours' == $lead->leadFormProduct ||
+					   'Marching Band Opportunities' == $lead->leadFormProduct ||
+					   'Dance-Cheer Opportunities' == $lead->leadFormProduct ||
+					   'Theatre Opportunities' == $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Performing';
+			} elseif ( 'Sports Tours' == $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Sports'; // does not exist in Maximizer yet
+			} else {
+				$lead->wsProduct = 'Unknown';
+			}
+		} else {
+			$lead->wsProduct = $lead->wsMaxProductLine;
+		}
+
+		print_r($lead);
+
+		echo '</pre>'; // DEBUGGING!
+		return; // DEBUGGING!
+
+		/////////////////////////////////////////////////////////////////////////////////////
+		////////////   SHORTCUT OUT - DEBUGGING  ////////////
+		/////////////////////////////////////////////////////////////////////////////////////
 
 		print_r("\ncalling WS_MktoUpsertLeads() ... \n");
 		
