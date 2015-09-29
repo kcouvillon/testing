@@ -31,15 +31,59 @@
 
  }
 
-/*OUT OF PHP*/?>
+/*OUT OF PHP - FOLLOWING IS DEBUGGING JS:*/?>
 
-			<script type="text/javascript">
-				console.log('Term Data about current post / itinerary: ');
-				console.log(<?php echo "'Product Lines: " . json_encode($product_lines) . "'" ?>);
-				console.log(<?php echo "'Filters: " . json_encode($filters) . "'" ?>);
-				console.log(<?php echo "'Collections: " . json_encode($collections) . "'" ?>);
-			</script>
+		<script type="text/javascript">
+			console.log('Term Data about current post / itinerary: ');
+			console.log(<?php echo "'Product Lines: " . json_encode($product_lines) . "'" ?>);
+			console.log(<?php echo "'Filters: " . json_encode($filters) . "'" ?>);
+			console.log(<?php echo "'Collections: " . json_encode($collections) . "'" ?>);
+		</script>
 
+<?php /*BACK IN PHP*/
+
+ /**
+  * If there is Product-Line context on this page, it will pass through as hidden
+  *
+  * ORDER, IN CASE OF TIES: Discoveries > Perspectives > Capstone > OnStage > Excel Sports
+  */
+if(false !== $product_lines) :
+
+	$product_line_maximizer = '';
+	foreach ( $product_lines as $division ) {
+		if ( 'discoveries' == $division->slug ) {
+			$product_line_maximizer = 'Middle School - History'; // default to History
+			break;
+		} elseif ( 'perspectives' == $division->slug ) {
+			$product_line_maximizer = 'High School - International';
+			break;
+		} elseif ( 'capstone' == $division->slug ) {
+			$product_line_maximizer = 'Capstone'; // does not exist in Maximizer yet
+			break;
+		} elseif ( 'on-stage' == $division->slug ) {
+			$product_line_maximizer = 'Performing';
+			break;
+		} elseif ( 'excel-sports' == $division->slug ) {
+			$product_line_maximizer = 'Sports'; // does not exist in Maximizer yet
+			break;
+		} else {
+			$product_line_maximizer = 'Unknown';
+		}
+	}
+
+	if('Middle School - History' == $product_line_maximizer) {
+		foreach ( $collections as $collection) {
+			if ( 'science-discoveries' == $collection->slug )
+				$product_line_maximizer = 'Middle School - Science'; // Science if it's in that collection
+		}
+	}
+
+	?>
+	<li id="product-line" class="field hidden">
+		<input type="hidden" name="mkto_wsProduct" title="Product Line" value="<?php echo $product_line_maximizer; ?>">
+	</li>
+
+<?php endif; ?>
 
 <li id="interest" class="field">
 	<label class="hidden" for="get-info-interest">I am interested in </label>
@@ -105,7 +149,7 @@
 
 <li id="product" class="field <?php echo $hide_if_context_classes; ?>">
 	<label for="get-info-Product">I want to learn more about</label>
-	<select id="get-info-Product" name="mkto_wsProduct">
+	<select id="get-info-Product" name="mkto_leadFormProduct">
 		<option value="">Select...</option>
 		<option value='History-Culture Themed Programs (K-12)' class='par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
 		<option value='Science Themed Programs (K-12)' class='par ele mse hse'>Science Themed Programs (K-12)</option>
