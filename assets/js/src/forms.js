@@ -29,8 +29,8 @@
 		(function(roleSelect){
 			roleSelect.on('change',function(){
 				var role =  jQuery(this).children('option:selected').attr('data-value');
-				jQuery('#get-info-wsProduct option').filter('.'+role).show();
-				jQuery('#get-info-wsProduct option').not('.'+role).hide();
+				jQuery('#get-info-Product option').filter('.'+role).show();
+				jQuery('#get-info-Product option').not('.'+role).hide();
 			});
 		})(jQuery('select#get-info-Title'));
 
@@ -418,7 +418,7 @@
 			},
 			rules: {
 				mkto_Title: "required",
-				mkto_wsProduct: "required",
+				mkto_leadFormProduct: "required",
 				mkto_FirstName: "required",
 				mkto_USorAbroadDestination: "required",
 				mkto_LastName: "required",
@@ -430,7 +430,7 @@
 			},
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
-				mkto_wsProduct: "&nbsp; Please tell us what kind of travel interests you.",
+				mkto_leadFormProduct: "&nbsp; Please tell us what kind of travel interests you.",
 				mkto_USorAbroadDestination: "&nbsp; Please tell us: U.S. or outside the U.S.?",
 				mkto_FirstName: "Please provide your First Name.",
 				mkto_LastName: "Please provide your Last Name.",

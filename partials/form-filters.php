@@ -154,18 +154,18 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 <li id="product" class="field <?php echo $hide_if_context_classes; ?>">
 	<label for="get-info-Product">I want to learn more about</label>
 	<select id="get-info-Product" name="mkto_leadFormProduct">
-		<option value="">Select...</option>
-		<option value='History-Culture Themed Programs (K-12)' class='par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
-		<option value='Science Themed Programs (K-12)' class='par ele mse hse'>Science Themed Programs (K-12)</option>
+		<option value="" class='stu par ele mse hse une'>Select...</option>
+		<option value='History-Culture Themed Programs (K-12)' class='stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
+		<option value='Science Themed Programs (K-12)' class='stu par ele mse hse'>Science Themed Programs (K-12)</option>
 		<option value='Sports Tours' class='stu par ele mse hse une'>Sports Tours</option>
-		<option value='Undergraduate Tours' class='par une'>Undergraduate Tours</option>
-		<option value='Graduate-Level Tours' class='par une'>Graduate-Level Tours</option>
-		<option value="Music Festivals">Music Festivals </option>
-		<option value="Concert and Performing Tours">Concert and Performing Tours</option>
-		<option value="Marching Band Opportunities">Marching Band Opportunities</option>
-		<option value="Dance-Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
-		<option value="Theatre Opportunities">Theatre Opportunities</option>
-		<option value="Im not sure yet">I'm not sure yet</option>
+		<option value='Undergraduate Tours' class='stu par une'>Undergraduate Tours</option>
+		<option value='Graduate-Level Tours' class='stu par une'>Graduate-Level Tours</option>
+		<option value="Music Festivals" class='stu par ele mse hse une'>Music Festivals </option>
+		<option value="Concert and Performing Tours" class='stu par ele mse hse une'>Concert and Performing Tours</option>
+		<option value="Marching Band Opportunities" class='stu par ele mse hse une'>Marching Band Opportunities</option>
+		<option value="Dance-Cheer Opportunities" class='stu par ele mse hse une'>Dance &amp; Cheer Opportunities</option>
+		<option value="Theatre Opportunities" class='stu par ele mse hse une'>Theatre Opportunities</option>
+		<option value="Im not sure yet" class='stu par ele mse hse une'>I'm not sure yet</option>
 	</select>
 </li>
 
