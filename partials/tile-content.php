@@ -32,7 +32,7 @@
 			<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 		<?php endif; ?>
 		
-		<h3 class="h2 tile-title"><?php echo $title; ?></h2>
+		<h3 class="h2 tile-title"><?php echo $title; ?></h3>
 
 	</div>
 </a>
