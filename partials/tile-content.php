@@ -28,7 +28,7 @@ if ( $post->ID == '844' || 'smithsonian' == $itinerary_type ) {
 		<ul class="meta list-unstyled">
 
 			<?php foreach( $meta_list as $meta ) : ?>
-				<?php if ( $meta['url'] ) : ?>
+				<?php if ( array_key_exists('url', $meta) ) : ?>
 
 				<li><a href="<?php echo esc_url( $meta['url'] ); ?>"><?php echo $meta['name']; ?></a></li>
 				
