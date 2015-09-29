@@ -43,10 +43,6 @@
 
 			<?php get_template_part('partials/form','filters'); ?>
 
-		</ul>
-	</div>
-	<div class="right">
-		<ul class="form-fields list-unstyled">
 			<li class="field field-complex">
 				<div class="field-left">
 					<label for="get-info-first-name" class="block no-placeholder">First Name</label>
@@ -57,6 +53,10 @@
 					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" title="Last Name">
 				</div>
 			</li>
+		</ul>
+	</div>
+	<div class="right">
+		<ul class="form-fields list-unstyled">
 			<li class="field field-complex">
 				<div class="field-left">
 					<label for="get-info-email" class="block no-placeholder">Email Address</label>	
