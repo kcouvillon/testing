@@ -1,3 +1,20 @@
+<?php
+/**
+ * Used to display "tiles" around the site
+ */
+
+global $post;
+
+$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
+
+if ( $post->ID == '844' || 'smithsonian' == $itinerary_type ) {
+	$show_smithsonian = true;
+} else {
+	$show_smithsonian = false;
+}
+
+?>
+
 <?php if ( is_singular( 'collection' ) ) :
 // On collections, open itinerary in new tab 
 // to preserve results from date selection. ?>
