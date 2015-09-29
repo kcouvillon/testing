@@ -198,7 +198,7 @@ get_header(); ?>
 						}
 
 						if( has_post_thumbnail( $resource_id ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'medium' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = '';
 						} else {
@@ -274,7 +274,6 @@ get_header(); ?>
 						$json_dates = '';
 						$title = get_the_title();
 						$url = get_the_permalink();
-						$show_smithsonian = ( "smithsonian" == get_post_meta( $post->ID, 'itinerary_type', true ) ) ? true : false;
 						$meta_list = array( array( "name" => WS_Helpers::get_subtitle( $post->ID ) ) );
 
 						if ( has_post_thumbnail( $post->ID ) ) {

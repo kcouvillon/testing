@@ -267,7 +267,6 @@ get_header(); ?>
 						$title = get_the_title();
 						$url = get_the_permalink();
 						$meta_list = array();
-						$show_smithsonian = ( $post->ID == '844' ) ? true : false;
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
 							$background = 'url(' . $featured[0] . ')';

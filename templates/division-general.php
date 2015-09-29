@@ -258,7 +258,6 @@ get_header(); ?>
 						$background = '';
 						$title = get_the_title();
 						$url = get_the_permalink();
-						$show_smithsonian = ( $post->ID == '844' ) ? true : false;
 						if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives' ) ) ) {
 							$meta_list = array(
 								array( 'name' => WS_Helpers::get_subtitle( $post->ID ) )

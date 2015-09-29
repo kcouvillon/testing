@@ -1,3 +1,19 @@
+<?php
+/**
+ * Used to display "tiles" around the site
+ */
+
+global $post;
+
+$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
+
+if ( $post->ID == '844' || 'smithsonian' == $itinerary_type ) {
+	$show_smithsonian = true;
+} else {
+	$show_smithsonian = false;
+}
+
+?>
 
 <?php if ( is_singular( 'collection' ) ) :
 // On collections, open itinerary in new tab 
@@ -12,7 +28,7 @@
 		<ul class="meta list-unstyled">
 
 			<?php foreach( $meta_list as $meta ) : ?>
-				<?php if ( $meta['url'] ) : ?>
+				<?php if ( array_key_exists('url', $meta) ) : ?>
 
 				<li><a href="<?php echo esc_url( $meta['url'] ); ?>"><?php echo $meta['name']; ?></a></li>
 				
@@ -33,7 +49,7 @@
 			<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 		<?php endif; ?>
 		
-		<h3 class="h2 tile-title"><?php echo $title; ?></h2>
+		<h3 class="h2 tile-title"><?php echo $title; ?></h3>
 
 	</div>
 </a>

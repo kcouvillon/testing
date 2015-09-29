@@ -95,7 +95,6 @@ $collections = new WP_Query( $collection_args );
 				<?php 
 				$terms = get_the_terms( get_the_ID(), 'filter' );
 				$post_class = 'tile tile-third ';
-				$show_smithsonian = ('smithsonian' == get_post_meta( $post->ID, 'itinerary_type', true )) ? true : false;
 				$title = get_the_title();
 				$url = get_the_permalink();
 				$meta_list = array();
