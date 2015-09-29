@@ -1,4 +1,3 @@
-
 <?php if ( is_singular( 'collection' ) ) :
 // On collections, open itinerary in new tab 
 // to preserve results from date selection. ?>
