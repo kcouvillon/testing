@@ -97,7 +97,7 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 <?php foreach ( $interests as $interest ) : /*START LOOP FOR MAIN SELECT LIST*/ ?>
 
 		<option value="<?php echo $interest->slug; ?>"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>
+				class = "stu par ele mse hse une"
 				data-interest-id="<?php echo $interest->term_id; ?>">
 			<?php echo $interest->name; ?>
 		</option>
@@ -105,19 +105,18 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 <?php endforeach; /*END LOOP FOR MAIN SELECT LIST*/ ?>
 
 		<option value="faith-and-service"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>
+				class = "stu par ele mse hse une"
 				data-interest-id="384">
 			Faith-based
 		</option>
 
 		<option value="faith-and-service"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>
-				data-interest-id="384">
+				class = "stu par ele mse hse une"
 			Service
 		</option>
 
 		<option value="Unknown"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>>
+				class = "stu par ele mse hse une">
 			I don't know yet
 		</option>
 
