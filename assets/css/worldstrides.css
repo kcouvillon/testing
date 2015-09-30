@@ -9410,15 +9410,17 @@ section:after {
         color: white; }
   .explore-tool .search-by {
     display: block;
-    color: #FFF;
+    color: #777d8d;
     background-color: #323c53;
     padding: 1em 0;
-    font-size: 14px;
-    font-weight: 700; }
+    font-size: 16px; }
     @media screen and (min-width: 768px) {
       .explore-tool .search-by {
         position: absolute;
         bottom: 100%;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
         padding: 0.5em 1em 0.5em 1em; } }
   .explore-tool .results-count {
     display: block;
@@ -9521,7 +9523,13 @@ section:after {
     .explore-filters .traveler-filters:before,
     .explore-filters .interests-filters:before,
     .explore-filters .destination-filters:before {
-      display: block; }
+      display: block;
+      color: white; }
+      @media (min-width: 768px) {
+        .explore-filters .traveler-filters:before,
+        .explore-filters .interests-filters:before,
+        .explore-filters .destination-filters:before {
+          color: #777d8d; } }
   .explore-filters .interests-filters:before {
     content: "Interests"; }
   .explore-filters .traveler-filters:before {

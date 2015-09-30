@@ -68,14 +68,16 @@
 
 	.search-by {
 		display: block;
-		color: #FFF;
+		color: $gray;
 		background-color: $gray_base;
 		padding: 1em 0;
-		font-size: 14px;
-		font-weight: 700;
+		font-size: 16px;
 		@media screen and ( min-width: $screen-sm ) {
 	    	position: absolute;
 		    bottom: 100%;
+			color: white;
+			font-size: 14px;
+			font-weight: 700;
 			padding: 0.5em 1em 0.5em 1em;
 	    }
 	}
@@ -205,6 +207,10 @@
 		z-index: 1;
 		&:before {
 			display: block;
+			color: white;
+			@include susy-media($screen-sm) {
+				color: $gray;
+			}
 		}
 	}
 	.interests-filters {
