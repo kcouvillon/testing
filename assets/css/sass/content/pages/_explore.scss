@@ -571,6 +571,7 @@
 	    padding: 0 0 0.8em;
 	    color: $color_text_main;
 	    border-bottom: 1px solid $gray_lighter;
+	    background: none;
 	    @include clearfix;
 
 	    @media screen and ( max-width: ($screen-sm - 1) ) {
@@ -585,19 +586,26 @@
 			}
 	    }
 
+	    & > a {
+	    	position: static;
+	    	@include susy-media($screen-sm ) {
+				position: absolute;
+			}
+	    }
+
 	    .itinerary-image,
 	    .collection-image {
 	    	float: left;
 	    	margin-right: 5%;
 	    	width: 25%;
-	    	@media screen and ( min-width: $screen-sm ) {
-	    		display: none;
-	    	}
+			@media screen and ( min-width: $screen-sm ) {
+				display: none;
+			}
 	    }
 
 		.tile-content {
 			position: static;
-			float: left;
+			float: right;
 			width: 70%;
 			text-shadow: none;
 
@@ -633,8 +641,10 @@
 			font-weight: 300;
 			font-size: 1em;
 			margin: 0;
+			color: $color_text_main;
 			@media screen and ( min-width: $screen-sm ) {
 				font-size: 29px;
+				color: #FFF;
 			}
 		}
 	}
