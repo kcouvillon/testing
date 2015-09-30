@@ -71,7 +71,9 @@ $collections = new WP_Query( $collection_args );
 				<article <?php post_class( $post_class ); ?> style="background-image:<?php echo ' url(' . $image . ')'; ?>;" >
 
 					<?php if ( $image ) { ?>
-						<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
+						<a href="<?php echo esc_url($url); ?>">
+							<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
+						</a>
 					<?php } ?>
 
 					<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
@@ -117,7 +119,9 @@ $collections = new WP_Query( $collection_args );
 				<article <?php post_class( $post_class ); ?> style="background-image:<?php echo ' url(' . $image . ')'; ?>;" >
 
 					<?php if ( $image ) { ?>
-						<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
+						<a href="<?php echo esc_url($url); ?>">
+							<img src="<?php echo $image; ?>" alt="<?php the_title(); ?>" class="hide-sm itinerary-image" />
+						</a>
 					<?php } ?>
 
 					<?php include( locate_template( 'partials/tile-content.php' ) ); ?>

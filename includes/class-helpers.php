@@ -476,11 +476,11 @@ class WS_Helpers {
 	public static function get_random_pattern( $shade = false ) {
 
 		if ( $shade === 'dark' )
-			$patterns = array(1,2,4,7,8);
+			$patterns = array(1,2,4,6,7);
 		elseif ( $shade === 'light' )
-			$patterns = array(3,5,6,9);
+			$patterns = array(3,5,8);
 		else
-			$patterns = array(1,2,3,4,5,6,7,8,9);
+			$patterns = array(1,2,3,4,5,6,7,8);
 
 		$random_key = rand( 0, (count($patterns) - 1) );
 

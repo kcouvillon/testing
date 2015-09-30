@@ -68,14 +68,16 @@
 
 	.search-by {
 		display: block;
-		color: #FFF;
+		color: $gray;
 		background-color: $gray_base;
 		padding: 1em 0;
-		font-size: 14px;
-		font-weight: 700;
+		font-size: 16px;
 		@media screen and ( min-width: $screen-sm ) {
 	    	position: absolute;
 		    bottom: 100%;
+			color: white;
+			font-size: 14px;
+			font-weight: 700;
 			padding: 0.5em 1em 0.5em 1em;
 	    }
 	}
@@ -205,6 +207,10 @@
 		z-index: 1;
 		&:before {
 			display: block;
+			color: white;
+			@include susy-media($screen-sm) {
+				color: $gray;
+			}
 		}
 	}
 	.interests-filters {
@@ -565,6 +571,7 @@
 	    padding: 0 0 0.8em;
 	    color: $color_text_main;
 	    border-bottom: 1px solid $gray_lighter;
+	    background: none;
 	    @include clearfix;
 
 	    @media screen and ( max-width: ($screen-sm - 1) ) {
@@ -579,19 +586,26 @@
 			}
 	    }
 
+	    & > a {
+	    	position: static;
+	    	@include susy-media($screen-sm ) {
+				position: absolute;
+			}
+	    }
+
 	    .itinerary-image,
 	    .collection-image {
 	    	float: left;
 	    	margin-right: 5%;
 	    	width: 25%;
-	    	@media screen and ( min-width: $screen-sm ) {
-	    		display: none;
-	    	}
+			@media screen and ( min-width: $screen-sm ) {
+				display: none;
+			}
 	    }
 
 		.tile-content {
 			position: static;
-			float: left;
+			float: right;
 			width: 70%;
 			text-shadow: none;
 
@@ -627,8 +641,10 @@
 			font-weight: 300;
 			font-size: 1em;
 			margin: 0;
+			color: $color_text_main;
 			@media screen and ( min-width: $screen-sm ) {
 				font-size: 29px;
+				color: #FFF;
 			}
 		}
 	}

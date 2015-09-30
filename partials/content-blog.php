@@ -16,7 +16,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 				$background = 'url(' . $featured[0] . ')';
 				$class = ' has-blog-image';
 			} else {
-				$class = ' pattern-' . rand(1, 9);
+				$class = ' ' . WS_Helpers::get_random_pattern();
 			} ?>
 
 		<header class="section-header entry-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">

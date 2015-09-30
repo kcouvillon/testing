@@ -72,7 +72,7 @@ get_header(); ?>
 											<img src="<?php echo esc_url( $image_url ); ?>" alt="">
 										</div>
 									<?php } else { ?>
-										<div class="headshot-pattern pattern-<?php echo rand(1,9); ?>"></div>
+										<div class="headshot-pattern pattern-<?php echo rand(1,8); ?>"></div>
 									<?php } ?>
 									<header class="entry-title">
 										<h3 class="entry-name"><?php echo apply_filters( 'the_title', $example['name'] ); ?></h3>
