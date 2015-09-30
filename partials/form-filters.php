@@ -97,7 +97,7 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 <?php foreach ( $interests as $interest ) : /*START LOOP FOR MAIN SELECT LIST*/ ?>
 
 		<option value="<?php echo $interest->slug; ?>"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>
+				class = "non stu par ele mse hse une"
 				data-interest-id="<?php echo $interest->term_id; ?>">
 			<?php echo $interest->name; ?>
 		</option>
@@ -105,19 +105,18 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 <?php endforeach; /*END LOOP FOR MAIN SELECT LIST*/ ?>
 
 		<option value="faith-and-service"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>
+				class = "non stu par ele mse hse une"
 				data-interest-id="384">
 			Faith-based
 		</option>
 
 		<option value="faith-and-service"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>
-				data-interest-id="384">
+				class = "non stu par ele mse hse une"
 			Service
 		</option>
 
 		<option value="Unknown"
-				class = "stu par ele mse hse une" <?php // @todo dynamically tie interests to these stu (student) par (parent) ... roles ?>>
+				class = "non stu par ele mse hse une">
 			I don't know yet
 		</option>
 
@@ -151,26 +150,26 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 <?php endif; ?>
 <?php endforeach; /*END LOOP FOR SUB-SELECT LISTS*/?>
 
-<li id="product" class="field <?php echo $hide_if_context_classes; ?>">
+<li id="product" class="field hide-if-student <?php echo $hide_if_context_classes; ?>">
 	<label for="get-info-Product">I want to learn more about</label>
 	<select id="get-info-Product" name="mkto_leadFormProduct">
-		<option value="" class='stu par ele mse hse une'>Select...</option>
-		<option value='History-Culture Themed Programs (K-12)' class='stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
-		<option value='Science Themed Programs (K-12)' class='stu par ele mse hse'>Science Themed Programs (K-12)</option>
-		<option value='Sports Tours' class='stu par ele mse hse une'>Sports Tours</option>
-		<option value='Undergraduate Tours' class='stu par une'>Undergraduate Tours</option>
-		<option value='Graduate-Level Tours' class='stu par une'>Graduate-Level Tours</option>
-		<option value="Music Festivals" class='stu par ele mse hse une'>Music Festivals </option>
-		<option value="Concert and Performing Tours" class='stu par ele mse hse une'>Concert and Performing Tours</option>
-		<option value="Marching Band Opportunities" class='stu par ele mse hse une'>Marching Band Opportunities</option>
-		<option value="Dance-Cheer Opportunities" class='stu par ele mse hse une'>Dance &amp; Cheer Opportunities</option>
-		<option value="Theatre Opportunities" class='stu par ele mse hse une'>Theatre Opportunities</option>
-		<option value="Im not sure yet" class='stu par ele mse hse une'>I'm not sure yet</option>
+		<option value="" class='non stu par ele mse hse une'>Select...</option>
+		<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
+		<option value='Science Themed Programs (K-12)' class='non stu par ele mse hse'>Science Themed Programs (K-12)</option>
+		<option value='Sports Tours' class='non stu par ele mse hse une'>Sports Tours</option>
+		<option value='Undergraduate Tours' class='non stu par une'>Undergraduate Tours</option>
+		<option value='Graduate-Level Tours' class='non stu par une'>Graduate-Level Tours</option>
+		<option value="Music Festivals" class='non stu par ele mse hse une'>Music Festivals </option>
+		<option value="Concert and Performing Tours" class='non stu par ele mse hse une'>Concert and Performing Tours</option>
+		<option value="Marching Band Opportunities" class='non stu par ele mse hse une'>Marching Band Opportunities</option>
+		<option value="Dance-Cheer Opportunities" class='non stu par ele mse hse une'>Dance &amp; Cheer Opportunities</option>
+		<option value="Theatre Opportunities" class='non stu par ele mse hse une'>Theatre Opportunities</option>
+		<option value="Im not sure yet" class='non stu par ele mse hse une'>I'm not sure yet</option>
 	</select>
 </li>
 
 
-<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
+<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
 	<label>I would travel:</label>
 	&nbsp;<wbr>
 	<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">
