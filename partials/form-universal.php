@@ -37,6 +37,8 @@
 				<p id="student-thanks-p2"> <?php _e("You can also visit all our social media sites and see what the excitement is all about.", 'worldstrides'); ?>
 					<?php _e(" Tell your friends about all these amazing places to visit.", 'worldstrides'); ?>
 				</p>
+				<?php get_template_part('partials/sociallinks'); ?>
+
 			</li>
 
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field hide-if-student" title="I have a Tour Scheduled">
