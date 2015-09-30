@@ -21,7 +21,7 @@
 			<li class="field">
 				<label for="get-info-Title">My role is</label>
 				<select id="get-info-Title" name="mkto_Title" title="Role">
-					<option value="">Select...</option>
+					<option data-value="non" value="">Select...</option>
 					<option data-value="stu" value="Student">Student</option>
 					<option data-value="par" value="Parent">Parent</option>
 					<option data-value="ele" value="Teacher">Elementary School Educator</option>
