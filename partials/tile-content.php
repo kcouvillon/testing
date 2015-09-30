@@ -7,7 +7,7 @@ global $post;
 
 $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 
-if ( $post->ID == '844' || 'smithsonian' == $itinerary_type ) {
+if ( ( $post->ID == '844' || 'smithsonian' == $itinerary_type ) && ! isset( $resource ) ) {
 	$show_smithsonian = true;
 } else {
 	$show_smithsonian = false;
