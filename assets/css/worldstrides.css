@@ -10496,15 +10496,18 @@ section:after {
     left: 0;
     width: 100%;
     height: 100%; }
-  .tile .meta li {
-    display: inline-block;
-    margin-right: 10px; }
-  .tile .meta a {
-    color: #bde5ff;
-    font-size: 0.75em;
-    text-transform: uppercase; }
-    .tile .meta a:hover {
-      color: #fb901d; }
+  .tile .meta {
+    position: relative;
+    z-index: 1; }
+    .tile .meta li {
+      display: inline-block;
+      margin-right: 10px; }
+    .tile .meta a {
+      color: #bde5ff;
+      font-size: 0.75em;
+      text-transform: uppercase; }
+      .tile .meta a:hover {
+        color: #fb901d; }
 
 .tile-content {
   position: absolute;

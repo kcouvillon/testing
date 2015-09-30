@@ -13,45 +13,44 @@ if ( $post->ID == '844' || 'smithsonian' == $itinerary_type ) {
 	$show_smithsonian = false;
 }
 
+if ( is_singular( 'collection' ) ) {
+	// On collections, open itinerary in new tab 
+	// to preserve results from date selection. 
+	$target = "_blank";
+} else {
+	$target = "_self";
+}
 ?>
 
-<?php if ( is_singular( 'collection' ) ) :
-// On collections, open itinerary in new tab 
-// to preserve results from date selection. ?>
-<a href="<?php echo esc_url( $url ); ?>" target="_blank">
-<?php else : ?>
-<a href="<?php echo esc_url( $url ); ?>">
-<?php endif; ?>
-	<div class="tile-content">
-		
-		<?php if ( !empty( $meta_list ) ) : ?>
-		<ul class="meta list-unstyled">
+<div class="tile-content">
+	
+	<?php if ( !empty( $meta_list ) ) : ?>
+	<ul class="meta list-unstyled">
 
-			<?php foreach( $meta_list as $meta ) : ?>
-				<?php if ( array_key_exists('url', $meta) ) : ?>
+		<?php foreach( $meta_list as $meta ) : ?>
+			<?php if ( array_key_exists('url', $meta) ) : ?>
 
-				<li><a href="<?php echo esc_url( $meta['url'] ); ?>"><?php echo $meta['name']; ?></a></li>
-				
-				<?php else : ?>
+			<li><a href="<?php echo esc_url( $meta['url'] ); ?>"><?php echo $meta['name']; ?></a></li>
+			
+			<?php else : ?>
 
-				<li class="list-tag-no-link"><?php echo $meta['name']; ?></li>	
-				
-				<?php endif; ?>
-			<?php endforeach; ?>
+			<li class="list-tag-no-link"><?php echo $meta['name']; ?></li>	
+			
+			<?php endif; ?>
+		<?php endforeach; ?>
 
-		</ul>
-		<?php endif; ?>
+	</ul>
+	<?php endif; ?>
 
-		<?php if ( is_page('explore') && $show_smithsonian ) : ?>
-			<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-			<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
-		<?php elseif ( $show_smithsonian ) : ?>
-			<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-		<?php endif; ?>
-		
-		<h3 class="h2 tile-title"><?php echo $title; ?></h3>
+	<?php if ( is_page('explore') && $show_smithsonian ) : ?>
+		<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+		<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
+	<?php elseif ( $show_smithsonian ) : ?>
+		<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+	<?php endif; ?>
+	
+	<h3 class="h2 tile-title"><?php echo $title; ?></h3>
 
-	</div>
-</a>
+</div>
 
-<?php //include( locate_template( 'partials/tile-content.php' ) ); ?>
+<a class="tile-link" href="<?php echo esc_url( $url ); ?>" target="<?php echo esc_attr( $target ); ?>"><span class="hide">Go to <?php echo $title; ?></span></a>
