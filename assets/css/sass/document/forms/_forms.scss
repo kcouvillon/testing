@@ -164,3 +164,20 @@ label {
 		}
 	}
 }
+
+#student-thanks {
+	.social-icons {
+		li {
+			display: inline-block;
+			font-size: 1.5em;
+			margin-right: 10px;
+
+			a {
+				color: $gray_base;
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+	}	
+}

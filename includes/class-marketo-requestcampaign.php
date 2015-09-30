@@ -17,7 +17,7 @@ class WS_MktoRequestCampaign extends WS_MktoAuthenticator {
 	public $tokens;//array of stdClass objects with two members, name and value
 
 	public function postData(){
-		$url = $this->host . "/rest/v1/campaigns/6227/trigger.json?access_token=" . $this->getToken(); // <----------------- WILL ID 6227 work here?
+		$url = $this->host . "/rest/v1/campaigns/6227/trigger.json?access_token=" . $this->getToken(); // 6227
 		$ch = curl_init($url);
 		$requestBody = $this->bodyBuilder();
 		print_r($requestBody);
