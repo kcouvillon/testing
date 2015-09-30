@@ -21,17 +21,22 @@ if ( 'post' == $post_type ) {
 	<main id="main" class="site-main search" role="main">
 
 		<section class="search-header section-header">
+
+			<div class="ws-container">
 			
-			<form role="search" method="get" class="search-results-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<i class="icon icon-search"></i>
-				<input type="search" class="search-field" placeholder="<?php the_search_query(); ?>" value="" name="s" title="Search for:">
-				<div class="search-options">
-					<span>All of WorldStrides</span>
-					<input type="radio" name="post_type" class="search-radio" value="all"<?php if ( ! $stories ) { echo ' checked="checked" '; } ?>>
-					<span>Stories</span>
-					<input type="radio" name="post_type" class="search-radio" value="post" <?php if ( $stories ) { echo ' checked="checked" '; } ?>>
-				</div>
-			</form>
+				<form role="search" method="get" class="search-results-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<i class="icon icon-search"></i>
+					<input type="search" class="search-field" placeholder="<?php the_search_query(); ?>" value="" name="s" title="Search for:">
+					<div class="search-options">
+						<span>All of WorldStrides</span>
+						<input type="radio" name="post_type" class="search-radio" value="all"<?php if ( ! $stories ) { echo ' checked="checked" '; } ?>>
+						<span>Stories</span>
+						<input type="radio" name="post_type" class="search-radio" value="post" <?php if ( $stories ) { echo ' checked="checked" '; } ?>>
+					</div>
+				</form>
+
+			</div>
+			
 		</section>
 
 		<div class="search-wrap">

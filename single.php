@@ -32,20 +32,26 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 			$class = ' pattern-3';
 		} ?>
 
-		<section class="section-header primary-section<?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
-
-			<?php if ( $blog_type === 'general' || $blog_type === 'travelogue' ) : ?>
-				<div class="section-header-content">
-
-					<nav class="breadcrumbs">
-						<time><?php the_time( 'F, j Y' ); ?></time>>
-						<?php echo get_the_category_list( '>' ); ?>>
-						<span><?php echo get_the_title(); ?></span>
-					</nav>
-					<h1 itemprop="headline"><?php echo get_the_title(); ?></h1>
-					<span itemprop="description"><?php echo get_the_excerpt(); ?></span>
+		<section class="primary-section">
+			<div class="section-header <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
+				<div class="mobile-hero">
+					<?php the_post_thumbnail( 'large' ); ?>
 				</div>
-			<?php endif; ?>
+				<?php if ( $blog_type === 'general' || $blog_type === 'travelogue' ) : ?>
+				<div class="ws-container">
+					<div class="section-header-content">
+
+						<nav class="breadcrumbs">
+							<time><?php the_time( 'F, j Y' ); ?></time>>
+							<?php echo get_the_category_list( '>' ); ?>>
+							<span><?php echo get_the_title(); ?></span>
+						</nav>
+						<h1 itemprop="headline"><?php echo get_the_title(); ?></h1>
+						<span itemprop="description"><?php echo get_the_excerpt(); ?></span>
+					</div>
+				</div>
+				<?php endif; ?>
+			</div>
 		</section>
 
 		<div class="blog-single-wrap">
@@ -109,7 +115,7 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 
 					<?php if ( $comments ) : ?>
 					<a name="comments"></a>
-					<h4>Comments</h4>
+					<h2>Comments</h2>
 					<div class="fb-comments" data-href="<?php the_permalink(); ?>"></div>
 					<?php endif; ?>
 

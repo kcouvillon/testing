@@ -5,6 +5,7 @@
 	overflow: hidden;
 	padding-top: percentage(9/16);
 	margin: 0;
+	background-color: #f7f7f7;
 	
 	@include susy-media($screen-sm) {
 		&.tile-third,
@@ -23,8 +24,19 @@
 	&.has-tile-image {
 		background-size: cover;
 	}
+
+	& > a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 	
 	.meta {
+		position: relative;
+		z-index: 1;
+		
 		li {
 			display: inline-block;
 			margin-right: 10px;
@@ -40,49 +52,49 @@
 	}
 }
 
-	.tile-content {
-		position: absolute;
-		bottom: 1em;
-		left: 1em;
-		@extend %overlay-text;
-		@include susy-media($screen-md) {
-			bottom: 1.5em;
-			left: 1.5em;
-		}
-		a {
-			color: #FFF;
-		}
+.tile-content {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	@extend %overlay-text;
+	@include susy-media($screen-md) {
+		bottom: 1.5em;
+		left: 1.5em;
 	}
-
-	.smithsonian-image {
-		display: none;
-		margin: 0.4em 0 0.7em;
-		max-width: 250px;
-		@media screen and ( min-width: $screen-sm ) {
-			display: block;
-		}
-	}
-	.smithsonian-image-mobile {
-		display: block;
-		margin: 0 0 0.5em;
-		max-width: 200px; 
-		@media screen and ( min-width: $screen-sm ) {
-			display: none;
-		}
-	}
-
-	.tile-title {
+	a {
 		color: #FFF;
-		margin: 0;
-		a {
-			color: inherit;
-			&:hover {
-				color: $orange;
-			}
-		}
 	}
+}
 
-	.list-tag-no-link {
-		color: #fff;
-		font-size: 0.75em;
+.smithsonian-image {
+	display: none;
+	margin: 0.4em 0 0.7em;
+	max-width: 250px;
+	@media screen and ( min-width: $screen-sm ) {
+		display: block;
 	}
+}
+.smithsonian-image-mobile {
+	display: block;
+	margin: 0 0 0.5em;
+	max-width: 200px; 
+	@media screen and ( min-width: $screen-sm ) {
+		display: none;
+	}
+}
+
+.tile-title {
+	color: #FFF;
+	margin: 0;
+	transition: color 250ms ease;
+	cursor: pointer;
+	
+	.tile:hover & {
+		color: $orange;
+	}
+}
+
+.list-tag-no-link {
+	color: #fff;
+	font-size: 0.75em;
+}

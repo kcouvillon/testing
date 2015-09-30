@@ -44,7 +44,7 @@ class WS_Metaboxes_Collections {
 	}
 
 	/**
-	 * Options
+	 * Collection Options
 	 */
 	function collection_options() {
 
@@ -100,7 +100,7 @@ class WS_Metaboxes_Collections {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Select Why Worldstrides posts to display
 	 */
 	function collection_why_ws() {
 
@@ -228,7 +228,7 @@ class WS_Metaboxes_Collections {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Oveerride _collection taxonomy by attaching specific itineraries
 	 */
 	function collection_itineraries() {
 
@@ -326,7 +326,7 @@ class WS_Metaboxes_Collections {
 	}
 
 	/**
-	 * Options
+	 * Additional options for collections (turning various modules on/off)
 	 */
 	function collection_additional_info() {
 

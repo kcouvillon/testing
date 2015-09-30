@@ -100,16 +100,13 @@ function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
 	wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+
 	wp_enqueue_script( 'jquery' );
 
-	if ( is_page_template( 'templates/about-offices.php' ) || is_singular( 'itinerary' ) ) {
+	if ( is_page_template( 'templates/about-offices.php' ) || is_page_template( 'templates/division-capstone.php' ) || is_singular( 'itinerary' ) ) {
 		wp_enqueue_style( 'mapbox-style', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css', array(), WS_VERSION );
 		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
 	}
-	
-	// if ( is_singular( 'itinerary' ) ) {
-	// wp_enqueue_script( 'mustache', get_template_directory_uri() . "/assets/js/vendor/mustache.min.js", array(), WS_VERSION, true );
-	// }
 
 	if ( is_singular( 'collection' ) ) {
 		wp_enqueue_script( 'mixitup' );
@@ -130,8 +127,7 @@ function ws_scripts_styles() {
 		'worldstrides_ajax',
 		array(
 			'ajaxUrl' => admin_url( "admin-ajax.php" ), //url for php file that process ajax request to WP
-			'nonce' => wp_create_nonce( "worldstrides_ajax_nonce" ),// this is a unique token to prevent form hijacking
-			//'someData' => 'extra data you want  available to JS'
+			'nonce' => wp_create_nonce( "worldstrides_ajax_nonce" ), // this is a unique token to prevent form hijacking
 		)
 	);
 }
@@ -337,8 +333,6 @@ add_filter( 'template_include', 'ws_filter_endpoints' );
 /**
  * Include metabox on front page
  *
- * @todo   find a better place for this to live.
- *
  * @author Ed Townend
  * @link   https://github.com/WebDevStudios/CMB2/wiki/Adding-your-own-show_on-filters
  *
@@ -376,14 +370,6 @@ function ws_metabox_include_front_page( $display, $meta_box ) {
 	return $post_id == $front_page;
 }
 add_filter( 'cmb2_show_on', 'ws_metabox_include_front_page', 10, 2 );
-
-/**
- * Remove items from the admin sidebar menu
- */
-function remove_admin_menu_itmes() {
-	remove_menu_page( 'edit-comments.php' );
-}
-add_action( 'admin_menu', 'remove_admin_menu_itmes' );
 
 /**
  * Remove widgets from the dashboard

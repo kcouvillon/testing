@@ -38,7 +38,7 @@ class WS_Metaboxes_Divisions {
 		add_action( 'cmb2_init',  array( $this, 'division_why_ws' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_blocks_before' ) );
-		// add_action( 'cmb2_init',  array( $this, 'division_locations' ) );
+		add_action( 'cmb2_init',  array( $this, 'division_locations' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_collections' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_team' ) );
 		add_action( 'cmb2_init',  array( $this, 'division_partnerships' ) );
@@ -49,7 +49,7 @@ class WS_Metaboxes_Divisions {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Division Options
 	 */
 	function division_options() {
 
@@ -99,7 +99,7 @@ class WS_Metaboxes_Divisions {
 	}
 
 	/**
-	 * Field group for Why WorldStrides page
+	 * Select Why Worldstrides posts to display
 	 */
 	function division_why_ws() {
 
@@ -324,6 +324,9 @@ class WS_Metaboxes_Divisions {
 		) );
 	}
 
+	/**
+	 * Attach bios for the Division Team
+	 */
 	function division_team() {
 
 		$cmb = new_cmb2_box( array(
@@ -362,7 +365,7 @@ class WS_Metaboxes_Divisions {
 
 
 	/**
-	 * Field groupings for the About - Partnerships page
+	 * Add Partnerships for the Capstone division
 	 */
 	function division_partnerships() {
 
@@ -425,7 +428,7 @@ class WS_Metaboxes_Divisions {
 	}
 
 	/**
-	 * Field groupings for the About - Partnerships page
+	 * Add small Partnerships for the Capstone division
 	 */
 	function division_partnerships_small() {
 
@@ -566,7 +569,7 @@ class WS_Metaboxes_Divisions {
 	}
 
 	/**
-	 * Options
+	 * Additonal info box
 	 */
 	function division_additional_info() {
 

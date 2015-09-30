@@ -80,21 +80,28 @@ get_header(); ?>
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
-					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-						<span>Collections</span>>
-						<span><?php the_title(); ?></span>
-					</nav>
-					<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
+				
+				<div class="mobile-hero">
+					<?php the_post_thumbnail( 'large' ); ?>
+				</div>
 
-					<?php $subtitle = get_post_meta( $post->ID, 'collection_options_subtitle', true ); ?>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<nav class="breadcrumbs hide-print">
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+							<span>Collections</span>>
+							<span><?php the_title(); ?></span>
+						</nav>
+						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
-					<?php if ( $subtitle ) : ?>
-						<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
-					<?php endif; ?>
+						<?php $subtitle = get_post_meta( $post->ID, 'collection_options_subtitle', true ); ?>
 
-					<?php the_content(); ?>
+						<?php if ( $subtitle ) : ?>
+							<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+						<?php endif; ?>
+
+						<?php the_content(); ?>
+					</div>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
@@ -104,39 +111,41 @@ get_header(); ?>
 			<?php if ( 'outlier' != $collection_type ) : ?>
 
 			<nav class="section-nav">
-				<ul class="section-menu hide-print">
+				<div class="ws-container">
+					<ul class="section-menu hide-print">
 
-					<?php if ( ! empty( $associated_why_ws ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_why_ws ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $associated_resources ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_resources ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $before_block_sections ) ) : ?>
-						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['collection_blocks_before_title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_before_title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $before_block_sections ) ) : ?>
+							<?php foreach ( $before_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['collection_blocks_before_title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_before_title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
-					<?php endif; ?>
+						<?php if ( $associated_itineraries->have_posts() ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $after_block_sections ) ) : ?>
-						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['collection_blocks_after_title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_after_title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $after_block_sections ) ) : ?>
+							<?php foreach ( $after_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['collection_blocks_after_title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['collection_blocks_after_title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-				</ul>
+					</ul>
 
-				<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
+					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
+				</div>
 			</nav>
 
 		</section>
@@ -168,44 +177,40 @@ get_header(); ?>
 				<ul class="resources-list list-unstyled clearfix">
 
 					<?php foreach ( $associated_resources as $resource_id ) : ?>
-						<?php $resource = get_post( $resource_id ); ?>
-						<?php
+						
+						<?php 
+						$resource = get_post( $resource_id );
 						$background = '';
+						$targets = wp_get_object_terms( $resource_id, 'resource-target' );
+						$target_parents = array();
+						$title = apply_filters( 'the_title', $resource->post_title );
+						$url = get_the_permalink( $resource_id );
+						$meta_list = array();
+
+						foreach ( $targets as $target ) {
+							if ( 'Featured' != $target->name ) {
+								$parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' );
+								if ( ! in_array( $parent->term_id, $target_parents ) ) {
+									$target_parents[] = $parent->term_id;
+									array_push( $meta_list, array( "name" => $parent->name, "url" => home_url( '/resources/' . $parent->slug . '/' ) ) );
+								}
+							}
+						}
+
 						if( has_post_thumbnail( $resource_id ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'medium' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = '';
 						} else {
-							$class = ' pattern-' . rand(1, 9);
+							$class = ' ' . WS_Helpers::get_random_pattern('dark');
 						} ?>
 
 						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-									<?php $target_parents = array(); ?>
-
-									<?php foreach ( $targets as $target ) : ?>
-										<?php if ( 'Featured' != $target->name ) : ?>
-
-											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-												<?php $target_parents[] = $parent->term_id; ?>
-
-												<li><a href="<?php echo esc_url( home_url( '/resources/' . $parent->slug . '/' ) ) ; ?>"><?php echo $parent->name; ?></a></li>
-
-											<?php endif; ?>
-
-										<?php endif; ?>
-									<?php endforeach; ?>
-
-								</ul>
-								<h2 class="tile-title"><a href="<?php echo get_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
-					<?php endforeach; ?>
 
+					<?php endforeach; ?>
+					<?php $resource = null; ?>
 				</ul>
 
 		</section>
@@ -260,28 +265,24 @@ get_header(); ?>
 				</header>
 				<ul <?php echo ( "on" === $calendar ) ? 'id="mix-container"' : ''; ?> class="programs-list list-unstyled clearfix">
 
-					<?php 
-						$count = 0;
-						while ( $associated_itineraries->have_posts() ) : ?>
+					<?php while ( $associated_itineraries->have_posts() ) : $associated_itineraries->the_post(); ?>
 						
 						<?php
-						$associated_itineraries->the_post();
-						$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
-						$always_available = get_post_meta( $post->ID, 'itinerary_details_always_show', true );
 						$background = '';
 						$class = '';
 						$dates = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
 						$json_dates = '';
+						$title = get_the_title();
+						$url = get_the_permalink();
+						$meta_list = array( array( "name" => WS_Helpers::get_subtitle( $post->ID ) ) );
 
-						if( has_post_thumbnail( $post->ID ) ) {
+						if ( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
-							$class = ' pattern-' . rand(1, 9);
+							$class = ' ' . WS_Helpers::get_random_pattern('dark');
 						}
-
-						$class .= ( "on" === $always_available ) ? ' always-available ' : '';
 
 						// Calculate dates for filtering
 						if ( $dates && is_array( $dates ) ) {
@@ -296,18 +297,10 @@ get_header(); ?>
 						} ?>
 
 						<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<li><a href="#"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></a></li>
-								</ul>
-								<?php if ( 'smithsonian' == $itinerary_type ) : ?>
-									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-								<?php endif; ?>
-								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
 
-					<?php $count++; endwhile; ?>
+					<?php endwhile; ?>
 				</ul>
 
 				<!-- <a class="program-all-link" href="">See All</a> -->

@@ -73,7 +73,8 @@
 			font-weight: bold;
 		}
 
-		h5 {
+		h4, h5, h6 {
+			@include h5;
 			@media screen and (min-width: $screen-md) {
 				font-size: 1.3em;
 			}

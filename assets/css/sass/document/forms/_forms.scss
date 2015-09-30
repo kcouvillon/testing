@@ -33,8 +33,27 @@ select {
   }
 }
 
+label {
+	font-weight: 400;
+	margin-right: 5px;
+}
+
 .ws-form {
 	@include clearfix;
+
+	label {
+		&.block {
+			display: block;
+		}
+		&.hide {
+			display: none;
+		}
+		&.no-placeholder {
+			.ws-placeholder & {
+				display: none;
+			}
+		}
+	}
 
 	.form-title {
 		margin: 0 0 1em;
@@ -126,11 +145,39 @@ select {
 		margin-bottom: 0;
 	
 		.form-title {
-			font-size: 2em;
+			font-size: 1.3em;
 		}
 	}
 
 	.single-itinerary & {
 		margin-top: 0;
 	}
+}
+
+#current-context-name {
+	font-weight: bold;
+	& em{
+		font-weight: normal;
+		font-size: small;
+		&:hover {
+			color: $gray;
+		}
+	}
+}
+
+#student-thanks {
+	.social-icons {
+		li {
+			display: inline-block;
+			font-size: 1.5em;
+			margin-right: 10px;
+
+			a {
+				color: $gray_lighter;
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+	}	
 }

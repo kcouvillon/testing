@@ -25,26 +25,25 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php foreach ( $associated_bios as $bio_id ) : ?>
-
-				<?php $bio = get_post( $bio_id ); ?>
-				<?php $position = get_post_meta( $bio_id, 'ws_bio_position', true ); ?>
+				<?php $post = get_post( $bio_id ); ?>
+				<?php setup_postdata($post); ?>
+				<?php $position = get_post_meta( $post->ID, 'ws_bio_position', true ); ?>
 
 				<article <?php post_class(); ?>>
 					<header class="entry-header">
-						<?php if ( has_post_thumbnail( $bio_id ) ) : ?>
-							<div class="headshot">
-								<?php // @todo replace this with specific image size when ready (differentiate between single/page) ?>
-								<?php echo get_the_post_thumbnail( $bio_id, 'medium' ); ?>
+						<?php if ( has_post_thumbnail() ) : ?>
+							<div class="headshot clearfix">
+								<a href="<?php echo esc_url( get_the_permalink( $post->ID ) ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?></a>
 							</div>
 						<?php else : ?>
-							<div class="headshot-pattern pattern-<?php echo rand(1, 9); ?>">
-
+							<div class="headshot-pattern <?php echo WS_Helpers::get_random_pattern(); ?>">
+								<a href="<?php echo esc_url( get_the_permalink( $post->ID ) ); ?>"></a>
 							</div>
 						<?php endif; ?>
 
-						<h3 class="entry-title">
-							<a href="<?php echo esc_url( get_permalink( $bio_id ) ); ?>" rel="bookmark">
-								<?php echo apply_filters( 'title', $bio->post_title ); ?>
+						<h3 class="leader-name entry-title">
+							<a href="<?php the_permalink(); ?>" rel="bookmark">
+								<?php the_title(); ?>
 							</a>
 						</h3>
 
@@ -55,20 +54,20 @@ get_header(); ?>
 
 					<div class="entry-content">
 						<?php
-						$content = $bio->post_excerpt;
-						if ( ! $content ) {
-							$content = $bio->post_content;
-						}
+							if ( get_the_excerpt() ) {
+								the_excerpt();
+							} else {
+								the_content();
+							}
 						?>
-						<?php echo apply_filters( 'content', $content ); ?>
 					</div>
 
 					<footer class="entry-footer">
-						<a href="<?php echo esc_url( get_the_permalink( $bio_id ) ); ?>">Read More</a>
+						<a href="<?php the_permalink(); ?>">Read more about <?php the_title(); ?></a>
 					</footer>
 				</article>
 
-			<?php endforeach; ?>
+			<?php endforeach; wp_reset_postdata(); ?>
 		</section>
 
 	</main>

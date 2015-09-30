@@ -85,69 +85,77 @@ get_header(); ?>
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
-					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-						<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
-					</nav>
-					<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
-
-					<?php $subtitle = get_post_meta( $post->ID, 'division_options_subtitle', true ); ?>
-
-					<?php if ( $subtitle ) : ?>
-						<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
-					<?php endif; ?>
-
-					<?php the_content(); ?>
+				<div class="mobile-hero">
+					<?php the_post_thumbnail( 'large' ); ?>
 				</div>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<nav class="breadcrumbs hide-print">
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+							<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
+						</nav>
+						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
+						<?php $subtitle = get_post_meta( $post->ID, 'division_options_subtitle', true ); ?>
+
+						<?php if ( $subtitle ) : ?>
+							<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+						<?php endif; ?>
+
+						<?php the_content(); ?>
+					</div>
+
+				</div>
+				
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
 			</header>
 
 			<nav class="section-nav">
-				<ul class="section-menu hide-print">
+				<div class="ws-container">
+					<ul class="section-menu hide-print">
 
-					<?php if ( ! empty( $associated_why_ws ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_why_ws ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $associated_resources ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_resources ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $before_block_sections ) ) : ?>
-						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['division_blocks_before_title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_before_title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $before_block_sections ) ) : ?>
+							<?php foreach ( $before_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['division_blocks_before_title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_before_title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-					<?php if ( $associated_collections->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
-					<?php endif; ?>
+						<?php if ( $associated_collections->have_posts() ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+						<?php endif; ?>
 
-					<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Global Reach</a></li>
+						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Global Reach</a></li>
 
-					<?php if ( ! empty( $associated_bios ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Team</a></li>
-					<?php endif; ?>
-					<?php if ( ! empty( $partnerships ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Partners</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_bios ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Team</a></li>
+						<?php endif; ?>
+						<?php if ( ! empty( $partnerships ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Partners</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $after_block_sections ) ) : ?>
-						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['division_blocks_after_title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_after_title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $after_block_sections ) ) : ?>
+							<?php foreach ( $after_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['division_blocks_after_title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_after_title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-				</ul>
+					</ul>
 
-				<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
+					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
+				</div>
 			</nav>
 
 		</section>
@@ -179,42 +187,40 @@ get_header(); ?>
 			<ul class="resources-list list-unstyled clearfix">
 
 				<?php foreach ( $associated_resources as $resource_id ) : ?>
-					<?php $resource = get_post( $resource_id ); ?>
-					<?php
+					
+					<?php 
+					$resource = get_post( $resource_id );
 					$background = '';
+					$targets = wp_get_object_terms( $resource_id, 'resource-target' );
+					$target_parents = array();
+					$url = get_the_permalink( $resource_id );
+					$title = apply_filters( 'the_title', $resource->post_title );
+					$meta_list = array();
+					
+					foreach ( $targets as $target ) {
+						if ( 'Featured' != $target->name ) {
+							$parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' );
+							if ( ! in_array( $parent->term_id, $target_parents ) ) {
+								$target_parents[] = $parent->term_id;
+								$target_url = home_url( '/resources/' . $parent->slug . '/' );
+								$target_name = $parent->name;
+								array_push( $meta_list , array( 'url' => $target_url, 'name' => $target_name ) );
+							}
+
+						}
+					}
+
 					if( has_post_thumbnail( $resource_id ) ) {
 						$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
-						$background = 'url(' . $featured[0] . ')';
+						$background = 'url(' . $featured[0] . ');';
 						$class = ' has-tile-image';
 					} else {
-						$class = ' pattern-' . rand(1, 9);
+						$class = ' ' . WS_Helpers::get_random_pattern('dark');
 					}
 					?>
 
-					<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-						<div class="tile-content">
-							<ul class="meta list-unstyled">
-								<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-								<?php $target_parents = array(); ?>
-
-								<?php foreach ( $targets as $target ) : ?>
-									<?php if ( 'Featured' != $target->name ) : ?>
-
-										<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-										<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-											<?php $target_parents[] = $parent->term_id; ?>
-
-											<li class="list-tag-no-link"><?php echo $parent->name; ?></li>
-
-										<?php endif; ?>
-
-									<?php endif; ?>
-								<?php endforeach; ?>
-
-							</ul>
-							<h2 class="tile-title"><a href="<?php echo get_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-						</div>
+					<li class="resource tile tile-third <?php echo esc_attr($class); ?>" style="background-image:<?php echo $background; ?>);">
+						<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 					</li>
 
 				<?php endforeach; ?>
@@ -252,27 +258,26 @@ get_header(); ?>
 
 			<section class="section-content programs">
 				<h2 class="section-title ws-container">Collections</h2>
-				<ul class="programs-list list-unstyled clearfix">
+				<ul class="programs-list bleed-container list-unstyled clearfix">
 					<?php while ( $associated_collections->have_posts() ) : ?>
-						<?php $associated_collections->the_post(); ?>
-						<?php
+						
+						<?php 
+						$associated_collections->the_post();
 						$background = '';
+						$title = get_the_title();
+						$url = get_the_permalink();
+						$meta_list = array();
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
-							$class = ' pattern-' . rand(1, 9);
+							$class = ' ' . WS_Helpers::get_random_pattern('dark');
 						}
 						?>
 
 						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-							<div class="tile-content">
-								<?php if ( '844' == $post->ID ) : ?>
-									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-								<?php endif; ?>
-								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>	
 						</li>
 
 					<?php endwhile; ?>
@@ -283,64 +288,82 @@ get_header(); ?>
 		<?php endif; ?>
 
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-		<section class="section-content global-reach">
 
-			<h2>Global Reach</h2>
+		<section class="section-content bleed-container global-reach">
 
-			{MAP GOES HERE}
+			<h2 class="section-title ws-container">Global Reach</h2>
 
-			<ul>
-				<li>North America</li>
-				<li>South &amp; Central America</li>
-				<li>Europe</li>
-				<li>Asia</li>
-				<li>Africa</li>
-				<li>Oceania</li>
-			</ul>
+			<div id="office-map"></div>
+			<div id="offices-json" data-prefix="division_locations_" style="display: none;">
+				<?php echo json_encode( get_post_meta( $post->ID, 'division_locations_list', true ) ); ?>
+			</div>
 
 		</section>
 
 		<?php if ( ! empty( $associated_bios ) ) : ?>
-		<section class="section-content global-reach">
+		<section class="section-content">
+		
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 			<h2>University Team</h2>
 
+			<div class="leadership">
+			
 			<?php foreach ( $associated_bios as $bio_id ) : ?>
+				<?php $post = get_post($bio_id); ?>
+				<?php setup_postdata( $post ); ?>
+				<?php $position = get_post_meta( $post->ID, 'ws_bio_position', true ); ?>
 
-				<?php $bio = get_post( $bio_id ); ?>
-				<?php $position = get_post_meta( $bio_id, 'ws_bio_position', true ); ?>
+				<article <?php post_class(); ?>>
+					<header class="entry-header">
+						<?php if ( has_post_thumbnail() ) : ?>
+							<div class="headshot clearfix">
+								<?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?>
+							</div>
+						<?php else : ?>
+							<div class="headshot-pattern <?php echo WS_Helpers::get_random_pattern('dark'); ?>">
 
-				<?php if ( has_post_thumbnail( $bio_id ) ) : ?>
-					<div class="headshot">
-						<?php echo get_the_post_thumbnail( $bio_id, 'thumbnail' ); ?>
-					</div>
-				<?php endif; ?>
+							</div>
+						<?php endif; ?>
 
-				<h3>
-					<?php echo apply_filters( 'title', $bio->post_title ); ?>
-				</h3>
+						<h3 class="leader-name entry-title">
+							<a href="<?php the_permalink(); ?>" rel="bookmark">
+								<?php the_title(); ?>
+							</a>
+						</h3>
 
-				<?php if ( $position ) : ?>
-					<span class="entry-position"><?php echo esc_html( $position ); ?></span>
-				<?php endif; ?>
+						<?php if ( $position ) : ?>
+							<span class="entry-position"><?php echo esc_html( $position ); ?></span>
+						<?php endif; ?>
+					</header>
+				</article>
 
-			<?php endforeach; ?>
+			<?php endforeach; wp_reset_postdata(); ?>
+			</div>
 		</section>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $partnerships ) ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-			<section class="ws-container ws-blocks tour-blocks-after">
-				<h2><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_title', true ) ); ?></h2>
-				<?php foreach ( $partnerships as $partnership ) : ?>
-					<h3><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
-					<img src="<?php echo $partnership['image']; // image_id ?>">
-					<p><?php echo $partnership['description']; ?></p>
-				<?php endforeach;?>
+			<section class="section-content partners">
+				<h2 class="h3"><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_title', true ) ); ?></h2>
+				<div class="partner-wrap">
+					<?php foreach ( $partnerships as $partnership ) : ?>
+						<div class="partner">
+							<?php if ( $partnership['image'] ) : ?>
+							<a href="<?php echo $partnership['url']; ?>" target="_blank">
+								<img src="<?php echo $partnership['image']; ?>" class="partner-img" />
+							</a>
+							<?php endif; ?>
+							<h3 class="h5"><a href="<?php echo $partnership['url']; ?>" target="_blank"><?php echo $partnership['title']; ?></a></h3>
+							<p><?php echo $partnership['description']; ?></p>
+						</div>
+					<?php endforeach;?>
+				</div>
 
-				<h2><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_small_title', true ) ); ?></h2>
+				<h2 class="h3"><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_small_title', true ) ); ?></h2>
 				<?php foreach ( $partnerships_small as $partnership ) : ?>
-					<h3><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
+					<h3 class="h5"><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
 				<?php endforeach;?>
 			</section>
 		<?php endif; ?>

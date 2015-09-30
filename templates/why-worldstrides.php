@@ -3,8 +3,6 @@
  * Template Name: Why WorldStrides
  *
  * Template for the Why WorldStrides page
- *
- * @todo figure out where the various content pieces are being stored
  */
 get_header(); ?>
 
@@ -25,20 +23,27 @@ get_header(); ?>
 
 		<section class="primary-section">
 			<header class="section-header" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
-					<h1 class="page-title section-title">Why Travel With WorldStrides?</h1>
-					<?php the_content(); ?>
+				<div class="mobile-hero">
+					<?php the_post_thumbnail( 'large' ); ?>
+				</div>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<h1 class="page-title section-title">Why Travel With WorldStrides?</h1>
+						<?php the_content(); ?>
+					</div>
 				</div>
 			</header>
 
 			<nav class="section-nav">
-				<ul class="section-menu">
-					<?php foreach ( $sections as $section ) : ?>
-						<li>
-							<a href="#<?php echo sanitize_title( $section['title'] ); ?>"><?php echo apply_filters( 'title', $section['title'] ); ?></a>
-						</li>
-					<?php endforeach; ?>
-				</ul>
+				<div class="ws-container">
+					<ul class="section-menu">
+						<?php foreach ( $sections as $section ) : ?>
+							<li>
+								<a href="#<?php echo sanitize_title( $section['title'] ); ?>"><?php echo apply_filters( 'title', $section['title'] ); ?></a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
 			</nav>
 		</section>
 
@@ -50,11 +55,13 @@ get_header(); ?>
 				$background = 'linear-gradient( 90deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0) ), url(' . $featured[0] . ')';
 				?>
 				<header class="section-header<?php echo ( !empty( $featured ) ) ? ' has-section-image' : ''; ?>" style="background-image: <?php echo $background; ?>;">
-					<div class="section-header-content">
-						<h2 class="h1 page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h1>
+					<div class="ws-container">
+						<div class="section-header-content">
+							<h2 class="h1 page-title section-title"><?php echo apply_filters( 'title', $section['title'] ); ?></h2>
 
-						<p><?php echo esc_textarea( $section['description'] ); ?></p>
-					</div>
+							<p><?php echo esc_textarea( $section['description'] ); ?></p>
+						</div>
+					<div class="ws-container">
 				</header>
 
 				<div class="section-content why-content">

@@ -11,17 +11,18 @@ get_header(); ?>
 
 		<section class="primary-section">
 			<header class="section-header pattern-3">
-				<div class="section-header-content">
-					<h1 class="section-title"><?php the_title(); ?></h1>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<h1 class="section-title"><?php the_title(); ?></h1>
+					</div>
 				</div>
 			</header>
 		</section>
 
 		<?php the_post(); ?>
 
-		<div class="ws-container">
-
-			<section class="section-content">
+		<section class="register-payment-section ws-container">
+			<div class="section-content">
 
 				<?php the_content(); ?>
 
@@ -49,11 +50,9 @@ get_header(); ?>
 
 				</form>
 
-			</section>
-
+			</div>
 			<?php get_template_part( 'partials/module', 'contact' ) ?>
-
-		</div>
+		</section>
 
 	</main>
 </div>

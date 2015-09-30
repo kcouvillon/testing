@@ -90,9 +90,13 @@ class WS_Marketo {
 	}
 
 	public static function get_marketo_form( $post_id ) {
-		$form_id = '';
-		$product_lines = get_the_terms( $post_id, 'product-line' );
+		?>
+		<section class="learn-more clearfix ws-container">
+			<?php get_template_part('partials/form','universal'); ?>
+		</section>		
+		<?php
 
+		/*
 		foreach ( $product_lines as $division ) {
 
 			if ( 'discoveries' == $division->slug ) {
@@ -117,18 +121,26 @@ class WS_Marketo {
 				$form_id = $current_id;
 			}
 		}
+		*/
 		
-		echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
+		// echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
 	}
 	
 	public static function submit_marketo_data() {
 
  		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
 		echo '<pre>';
-		//print_r($_POST);
-		//print_r($_COOKIE);
+
+		// print_r( $_POST );
+
+		if( "" === trim($_POST['Email']) ) {
+			echo 'no email address submitted.';
+			echo '</pre>';
+			return;
+		}
 		
 		print_r($_COOKIE['_mkto_trk']);
+
 		
 		$mkto_cookie = urlencode("mkto_trk=".$_COOKIE['_mkto_trk']); // use cookie for associate lead
 		
@@ -148,15 +160,50 @@ class WS_Marketo {
 			}
 		}
 
+		// See LEAD ROUTING LOGIC DIAGRAM: http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
+
+		if(empty($lead->wsMaxProductLine)) { // Product Line was not available on the form page
+			if ( 'History-Culture Themed Programs (K-12)' == $lead->leadFormProduct ) {
+				if( !empty($lead->domesticOrInternational ) && 'us' == $lead->domesticOrInternational ) {
+					$lead->wsProduct = 'Middle School - History'; // default to History
+				} else {
+					$lead->wsProduct = 'High School - International'; // abroad means Perspectives Division
+				}
+			} elseif ( 'Science Themed Programs (K-12)' == $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Middle School - Sciences';
+			} elseif ( 'Undergraduate Tours' == $lead->leadFormProduct || 
+					   'Graduate-Level Tours' ==  $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Capstone'; // does not exist in Maximizer yet
+			} elseif ( 'Music Festivals' == $lead->leadFormProduct ||
+					   'Concert and Performing Tours' == $lead->leadFormProduct ||
+					   'Marching Band Opportunities' == $lead->leadFormProduct ||
+					   'Dance-Cheer Opportunities' == $lead->leadFormProduct ||
+					   'Theatre Opportunities' == $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Performing';
+			} elseif ( 'Sports Tours' == $lead->leadFormProduct ) {
+				$lead->wsProduct = 'Sports'; // does not exist in Maximizer yet
+			} else {
+				$lead->wsProduct = 'Unknown';
+			}
+		} else {
+			$lead->wsProduct = $lead->wsMaxProductLine;
+		}
+
+		print_r($lead);
+
+		echo '</pre>'; // DEBUGGING!
+		return; // DEBUGGING!
+
+		/////////////////////////////////////////////////////////////////////////////////////
+		////////////   SHORTCUT OUT - DEBUGGING  ////////////
+		/////////////////////////////////////////////////////////////////////////////////////
+
 		print_r("\ncalling WS_MktoUpsertLeads() ... \n");
 		
 		$upsert = new WS_MktoUpsertLeads();
 		$upsert->input = array($lead);
 		$upsert_result = $upsert->postData();
 		$upsert_obj = json_decode($upsert_result);
-
-		//print_r("\n\nResult Parsed:\n");
-		//print_r($upsert_obj);
 
 		// alias the id:
 		$upsert_id = $upsert_obj->result[0]->id;

@@ -25,7 +25,7 @@ get_header(); ?>
 					$section_notes    = get_post_meta( $post->ID, 'about_partnerships_section_'. $i .'_notes', true );
 					?>
 					<?php if ( $section_title ) : ?>
-						<section class="partners accreditation">
+						<section class="partners">
 
 							<h3><?php echo apply_filters( 'the_title', $section_title ); ?></h3>
 
@@ -40,7 +40,10 @@ get_header(); ?>
 									?>
 									<div class="partner">
 										<?php if ( $partner_image ) : ?>
-											<a href="<?php echo $partner['url']; ?>" target="_blank"><img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt=""></a>
+											<a href="<?php echo $partner['url']; ?>" target="_blank">
+												<img class="partner-img" src="<?php echo esc_url( $partner_image ); ?>" alt="">
+												<span class="hide">Partner image</span>
+											</a>
 										<?php endif; ?>
 										<a href="<?php echo $partner['url']; ?>" class="partner-title" target="_blank"><?php echo apply_filters( 'the_title', $partner['title'] ); ?></a>
 									</div>

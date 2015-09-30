@@ -73,15 +73,17 @@ $associated_itineraries = new WP_Query( array(
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
-					<nav class="breadcrumbs">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-						<span>Interests</span>>
-						<span><?php the_title(); ?></span>
-					</nav>
-					<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
+				<div class="ws-container">
+					<div class="section-header-content">
+						<nav class="breadcrumbs">
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+							<span>Interests</span>>
+							<span><?php the_title(); ?></span>
+						</nav>
+						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
-					<?php the_content(); ?>
+						<?php the_content(); ?>
+					</div>
 				</div>
 
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
@@ -89,41 +91,43 @@ $associated_itineraries = new WP_Query( array(
 			</header>
 
 			<nav class="section-nav">
-				<ul class="section-menu hide-print">
+				<div class="ws-container">
+					<ul class="section-menu hide-print">
 
-					<?php if ( ! empty( $associated_why_ws ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_why_ws ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $associated_resources ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $associated_resources ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $before_block_sections ) ) : ?>
-						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $before_block_sections ) ) : ?>
+							<?php foreach ( $before_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-					<?php if ( $associated_collections->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
-					<?php endif; ?>
+						<?php if ( $associated_collections->have_posts() ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+						<?php endif; ?>
 
-					<?php if ( $associated_itineraries->have_posts() ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Programs</a></li>
-					<?php endif; ?>
+						<?php if ( $associated_itineraries->have_posts() ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Programs</a></li>
+						<?php endif; ?>
 
-					<?php if ( ! empty( $after_block_sections ) ) : ?>
-						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php if ( ! empty( $after_block_sections ) ) : ?>
+							<?php foreach ( $after_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-				</ul>
+					</ul>
+				</div>
 			</nav>
 
 		</section>
@@ -151,39 +155,43 @@ $associated_itineraries = new WP_Query( array(
 				<ul class="resources-list list-unstyled clearfix">
 					
 					<?php $count = 0; ?>
-
 					<?php foreach ( $associated_resources as $resource_id ) : ?>
-						<?php $resource = get_post( $resource_id ); ?>
-						<?php $pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif'; ?>
+						
+						<?php 
+						$resource = get_post( $resource_id );
+						$pattern = ( $count % 2 == 0 ) ? 'ws_w_pattern1.gif' : 'ws_w_pattern2.gif';
+						$targets = wp_get_object_terms( $resource_id, 'resource-target' );
+						$target_parents = array();
+						$title = apply_filters( 'the_title', $resource->post_title );
+						$url = get_the_permalink( $resource_id );
+						$meta_list = array();
 
-						<li class="resource tile tile-third" style="background-image:url(<?php echo esc_url( get_template_directory_uri().'/assets/images/src/patterns/'.$pattern ); ?>);">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-									<?php $target_parents = array(); ?>
+						foreach ( $targets as $target ) {
+							if ( 'Featured' != $target->name ) {
+								$parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' );
+								if ( ! in_array( $parent->term_id, $target_parents ) ) {
+									$target_parents[] = $parent->term_id;
+									array_push( $meta_list, array( "name" => $parent->name ) );
+								}
+							}
+						}
 
-									<?php foreach ( $targets as $target ) : ?>
-										<?php if ( 'Featured' != $target->name ) : ?>
+						if( has_post_thumbnail( $resource_id ) ) {
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'medium' );
+							$background = 'url(' . $featured[0] . ')';
+							$class = '';
+						} else {
+							$class = ' ' . WS_Helpers::get_random_pattern( 'dark' );
+						}
+						?>
 
-											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-												<?php $target_parents[] = $parent->term_id; ?>
-
-												<li><?php echo $parent->name; ?></li>
-
-											<?php endif; ?>
-
-										<?php endif; ?>
-									<?php endforeach; ?>
-
-								</ul>
-								<h2 class="tile-title"><a href="#"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-							</div>
+						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
 					
 						<?php $count++; ?>
 					<?php endforeach; ?>
+					<?php $resource = null; ?>
 
 				</ul>
 		</section>

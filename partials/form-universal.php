@@ -1,91 +1,100 @@
+ <?php
+ $post_id = get_the_ID();
+ $title = get_the_title( $post_id );
+
+ if($title === "Home") { // @todo - move this to the leading question: Ready to learn more?
+ 	$title = __("Ready to Learn More About Traveling with WorldStrides?", "worldstrides");
+ } else {
+ 	$title = sprintf(__("Thank you for your interest in our WorldStrides %s Tour! Please tell us a little more about yourself so we can get you sent to the right place."),$title);
+ }
+?>
+
 <form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
 	<input id="get-info-action" type="hidden" name="mkto_action" value="data_to_marketo">
+		<h2 class="form-title"><?php echo $title; ?></h2>
 	<div class="left">
-		<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
+		<?php $phone = get_post_meta( $post->ID, 'itinerary_phone', true ); 
+			if (!empty($phone)) : ?>
+		<p>Rather call us on the phone? Reach us at: <?php echo $phone; ?></p>
+			<?php endif; ?>
 		<ul class="form-fields list-unstyled">
 			<li class="field">
-				My role is
+				<label for="get-info-Title">My role is</label>
 				<select id="get-info-Title" name="mkto_Title" title="Role">
-					<option value="">Select...</option>
-					<option value="stu">Student</option>
-					<option value="par">Parent</option>
-					<option value="ele">Elementary School Educator</option>
-					<option value="mse">Middle School Educator</option>
-					<option value="hse">High School Educator</option>
-					<option value="une">College / University Educator</option>
-				</select>
-			</li>
-			<li class="field">
-				I am interested in
-				<select id="get-info-wsProduct" name="mkto_wsProduct" title="General Interest">
-					<option value="Unknown">Select...</option>
-					<option value='Middle School - History' class='par ele mse hse'>U.S. History Themed Tours</option>
-					<option value='Middle School - Science' class='par ele mse hse'>Science Themed Tours</option>
-					<option value='High School - International' class='par mse hse'>Tours to International Destinations</option>
-					<option value='Performing' class='par ele mse hse une'>Performing Arts Travel</option>
-					<option value='Undergraduate' class='par une'>Undergraduate Tours</option>
-					<option value='Graduate' class='par une'>Graduate-Level Tours</option>
-					<option value="Unknown" class="par ele mse hse une">I'm not sure</option>
-				</select>
-			</li>
-			<li id="moremusicfield" class="field" style="display:none;">
-				I want to learn more about
-				<select id="get-info-moremusic" name="mkto_moremusic" title="Musical Interest">
-					<option value="">Select...</option>
-					<option value="Music Festivals">Music Festivals </option>
-					<option value="International Concert Tours">International Concert Tours</option>
-					<option value="American Performing Tours">American Performing Tours</option>
-					<option value="Marching Band Opportunities">Marching Band Opportunities</option>
-					<option value="Dance &amp; Cheer Opportunities">Dance &amp; Cheer Opportunities</option>
-					<option value="Domestic Theatre Opportunities">Domestic Theatre Opportunities</option>
-					<option value="International Theatre Opportunities">International Theatre Opportunities</option>
-					<option value="Im not sure yet">I'm not sure yet</option>
+					<option data-value="non" value="">Select...</option>
+					<option data-value="stu" value="Student">Student</option>
+					<option data-value="par" value="Parent">Parent</option>
+					<option data-value="ele" value="Teacher">Elementary School Educator</option>
+					<option data-value="mse" value="Teacher">Middle School Educator</option>
+					<option data-value="hse" value="Teacher">High School Educator</option>
+					<option data-value="une" value="Teacher">College / University Educator</option>
 				</select>
 			</li>
 
-			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field" title="I have a Tour Scheduled">
-				I have a tour scheduled:
-				&nbsp;&nbsp;
-				<input type="radio" name="tour" id="tour-yes" value="yes" title="Yes">
+			<li id="student-thanks" name="student-thanks" class="show-if-student hidden" title="Students, thanks for your interest.">
+				<p id="student-thanks-p1"> <?php _e("Thanks for visiting!  There&#39;s nothing more we need from you.", 'worldstrides'); ?>
+				</p>
+				<p id="student-thanks-p2"> <?php _e("You can also visit all our social media sites and see what the excitement is all about.", 'worldstrides'); ?>
+					<?php _e(" Tell your friends about all these amazing places to visit.", 'worldstrides'); ?>
+				</p>
+				<?php get_template_part('partials/sociallinks'); ?>
+
+			</li>
+
+			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field hide-if-student" title="I have a Tour Scheduled">
+				<label>I have a tour scheduled:</label>
+				&nbsp;<wbr>
+				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
 				<label for="tour-yes">Yes</label>
 				&nbsp;
-				<input type="radio" name="tour" id="tour-no" value="no" title="No">
+				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
+			</li>
+
+			<?php get_template_part('partials/form','filters'); ?>
+
+			<li class="field field-complex hide-if-student">
+				<div class="field-left">
+					<label for="get-info-first-name" class="block no-placeholder">First Name</label>
+					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" title="First Name">
+				</div>
+				<div class="field-right">
+					<label for="get-info-last-name" class="block no-placeholder">Last Name</label>
+					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" title="Last Name">
+				</div>
 			</li>
 		</ul>
 	</div>
 	<div class="right">
 		<ul class="form-fields list-unstyled">
-			<li class="field field-complex">
+			<li class="field field-complex hide-if-student">
 				<div class="field-left">
-					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" title="First Name">
-				</div>
-				<div class="field-right">
-					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" title="Last Name">
-				</div>
-			</li>
-			<li class="field field-complex">
-				<div class="field-left">
+					<label for="get-info-email" class="block no-placeholder">Email Address</label>	
 					<input id="get-info-email" type="email" name="mkto_Email" value="" placeholder="Email Address" title="Email Address">
 				</div>
 				<div class="field-right">
+					<label for="get-info-phone" class="block no-placeholder">Phone Number</label>
 					<input id="get-info-phone" type="tel" name="mkto_Phone" value="" placeholder="Phone Number" title="Preferred Phone Number">
 				</div>
 			</li>
-			<li class="field field-complex">
+			<li class="field field-complex hide-if-student">
 				<div class="field-left">
+					<label for="get-info-state" class="block no-placeholder">Select State...</label>
 					<select id="get-info-state" name="mkto_companyState" title="School State">
 						<option value="">Select State...</option>
 					</select>
 				</div>
-				<div class="field-right">
+				<div class="field-right hide-if-student">
+					<label for="get-info-city" class="block no-placeholder">School City</label>
 					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" title="School City">
 				</div>
 			</li>
-			<li class="field">
+			<li class="field hide-if-student">
+				<label for="get-info-school" class="block no-placeholder">School Name</label>
 				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" title="School Name">
 			</li>
-			<li class="field">
+			<li class="field hide-if-student">
+				<label for="get-info-comment" class="block no-placeholder">Comments or Questions?</label>
 				<textarea id="get-info-comment" name="mkto_formcomments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" title="Comments or Questions"></textarea>
 			</li>
 		</ul>
@@ -95,6 +104,6 @@
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary" title="Get Information">
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary hide-if-student" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>

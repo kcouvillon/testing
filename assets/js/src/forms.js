@@ -12,65 +12,66 @@
 	// MARKETO FORM BEHAVIOR
 
 	jQuery(document).ready(function() {
-		var marketoTitle = '';
-
-		setTimeout( checkRows, 2000 );
-		
-		jQuery(document).on( 'change', '#Title', function() {
-			checkRows();
-		});
 
 		if( jQuery('#get-info-form').length )  {
 			universalLead();
-			ajaxFormSubmit();
+			wsData.validateAndSubmitForm();
 		}
 
 	});
 
-	function checkRows() {
-		var marketoTitle = document.querySelector('#Title');
-		var marketoFormRow = document.querySelectorAll( '.mktoFormRow' );
-
-		jQuery(marketoFormRow).each(function() {
-			if( jQuery(this).children('.mktoPlaceholder').length ) {
-				jQuery(this).addClass('hidden');
-				console.log('hide');
-			} else {
-				jQuery(this).removeClass('hidden');
-				console.log('show');
-			}
-		});
-	}
 
 	function universalLead() {
 		/**
-		 * Wire the Role, wsProduct and MoreMusic fields together
-		 * - restrict wsProduct based on Role
-		 * - show MoreMusic where wsProduct === 'Performing'
-		 *
+		 * Wire the Role (Title), wsProduct fields together
+		 * toggle wsProduct based on Role: stu (student) par (parent) ...
+		 * Hide most of the form if it's a student
 		 */
-		(function(roleSelect,interestSelect){
+		(function(roleSelect){
 			roleSelect.on('change',function(){
-				console.log(jQuery(this).val());
-				var role =  jQuery(this).val();
-				jQuery('#get-info-wsProduct option').filter('.'+role).show();
-				jQuery('#get-info-wsProduct option').not('.'+role).hide();
-			});
-			interestSelect.on('change',function(){
-				console.log(jQuery(this).val());
-				if('Performing' === (jQuery(this)).val()) {
-					jQuery('li#moremusicfield').css('display','list-item');
+				var role =  jQuery(this).children('option:selected').attr('data-value');
+				jQuery('#get-info-Product option').filter('.'+role).show();
+				jQuery('#get-info-Product option').not('.'+role).hide();
+
+				if('stu' === role ) {
+					jQuery('.hide-if-student').addClass('hidden');
+					jQuery('.show-if-student').removeClass('hidden');
 				} else {
-					jQuery('li#moremusicfield').css('display','none');
+					jQuery('.hide-if-student').removeClass('hidden');
+					jQuery('.show-if-student').addClass('hidden');
 				}
 			});
-		})(jQuery('select#get-info-role'),jQuery('select#get-info-wsProduct'));
+		})(jQuery('select#get-info-Title'));
+
+
+		jQuery('#current-context-name').on('click',function(){
+			jQuery('.hide-if-context').removeClass('hidden');
+			jQuery(this).hide();
+		});
+
+		/**
+		 * Toggle the visibility of the wsProductDetail dropdowns
+		 */
+		(function(productSelect){
+			productSelect.on('change', function(){
+				var interestID = parseFloat(jQuery(this).children('option:selected').attr('data-interest-id'));
+				jQuery('li[id^="get-info-wsProductDetail"]')
+					.addClass('hidden')
+					.filter(function(){
+						return parseFloat(jQuery(this).attr('data-interest-parent-id'))===interestID;
+					})
+					.removeClass('hidden'); 
+			});
+		})(jQuery('select#get-info-wsProduct'));
+
 
 		/**
 		 * Make the submit button unclickable after first click
 		 */
 		jQuery(document).ready(function() {
-			jQuery('#get-info-submit').lockSubmit();
+				jQuery('#get-info-submit').lockSubmit().on('click',function(){
+					// TODO: react to click
+				});
 		});
 
 		/**
@@ -92,7 +93,7 @@
 		/**
 		 * Base URL for API calls
 		 */
-		wsData.api_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
+		wsData.mdrapi_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
 
 		/**
 		 * Digest and display JSON list of states
@@ -150,7 +151,7 @@
 			}
 
 			jQuery.ajax({
-				url: wsData.api_base_url + 'cityList/' + state.val() + "'",
+				url: wsData.mdrapi_base_url + 'cityList/' + state.val() + "'",
 				type: 'GET',
 				dataType: 'jsonp',
 				jsonp:'callback',
@@ -164,7 +165,7 @@
 					jQuery.each(output, function(i, item){
 						city.append('<option value="' + item.school_city + '">' + item.school_city + '</option>');
 					});
-					wsData.mdrapiSetCityAutoComplete();
+					wsData.setCityAutoComplete();
 					city.val('').removeAttr('readonly'); // make city editable
 				}
 			});
@@ -177,7 +178,7 @@
 		/**
 		 * Set autocomplete for city input
 		 */
-		wsData.mdrapiSetCityAutoComplete = function (){
+		wsData.setCityAutoComplete = function (){
 
 			// find and alias members:
 			var school = jQuery('#get-info-school');
@@ -208,9 +209,10 @@
 					if (ui.item.value === "Other") {
 						// The item selected from the menu, if any. Otherwise the property is null
 						//If they choose "other," it's not a ui.item, so show the hidden fields and clear the field.
-						city.val("Other");
 						// TODO: (MAYBE) IE FALLBACK: ws_showHiddenFields();
-						city.val("");
+						// city.val("");  <- DELETE ME?
+						console.log('OTHER selected - disabling autocomplte on City.');
+
 						//If you don't shift close it, the menu stays open, the autocomplete list stays open
 						city.autocomplete( "close" ).autocomplete( "option", "disabled", true );
 						jQuery('#Company').val('').removeAttr('readonly');  // make school editable
@@ -234,7 +236,7 @@
 						//http://api.jqueryui.com/autocomplete/#event-change -
 						// The item selected from the menu, if any. Otherwise the property is null
 						//so clear the item for force selection
-						city.val("");
+						// city.val("");
 						// TODO: CREATE ERROR CODE: jQuery("#cityError").show();
 
 					}
@@ -254,7 +256,7 @@
 			var state = jQuery('#get-info-state');
 
 			jQuery.ajax({
-				url: wsData.api_base_url + 'city/'+ city.val() + '/state/' + state.val() + "'",
+				url: wsData.mdrapi_base_url + 'city/'+ city.val() + '/state/' + state.val() + "'",
 				type: 'GET',
 				dataType: 'jsonp',
 				jsonp:'callback',
@@ -304,7 +306,9 @@
 						//If they choose "other," it's not a ui.item, so show the hidden fields and clear the field.
 						// jQuery("#Company").val("Other");
 						// TODO IE FALLBACK?? ws_showHiddenFields();
-						school.val("");
+						// school.val(""); <- DELETE ME?
+						console.log('OTHER selected - disabling autocomplte on School.');
+
 						//If you don't close it, the autocomplete menu stays open.
 						school.autocomplete("close").autocomplete("option", "disabled", true);
 						event.preventDefault(); // prevent jQuery UI error
@@ -320,7 +324,7 @@
 						//http://api.jqueryui.com/autocomplete/#event-change -
 						// The item selected from the menu, if any. Otherwise the property is null
 						//so clear the item for force selection
-						school.val("");
+						// school.val("");
 						jQuery("#schoolError").show();
 
 					}}
@@ -411,310 +415,346 @@
 		});
 		*/
 
-		wsData.states =
-			[
-				{
-					"full": "Alabama",
-					"abbrev": "AL"
-				},
-				{
-					"full": "Alaska",
-					"abbrev": "AK"
-				},
-				{
-					"full": "Arizona",
-					"abbrev": "AZ"
-				},
-				{
-					"full": "Arkansas",
-					"abbrev": "AR"
-				},
-				{
-					"full": "California",
-					"abbrev": "CA"
-				},
-				{
-					"full": "Colorado",
-					"abbrev": "CO"
-				},
-				{
-					"full": "Connecticut",
-					"abbrev": "CT"
-				},
-				{
-					"full": "Delaware",
-					"abbrev": "DE"
-				},
-				{
-					"full": "District of Columbia",
-					"abbrev": "DC"
-				},
-				{
-					"full": "Florida",
-					"abbrev": "FL"
-				},
-				{
-					"full": "Georgia",
-					"abbrev": "GA"
-				},
-				{
-					"full": "Hawaii",
-					"abbrev": "HI"
-				},
-				{
-					"full": "Idaho",
-					"abbrev": "ID"
-				},
-				{
-					"full": "Illinois",
-					"abbrev": "IL"
-				},
-				{
-					"full": "Indiana",
-					"abbrev": "IN"
-				},
-				{
-					"full": "Iowa",
-					"abbrev": "IA"
-				},
-				{
-					"full": "Kansas",
-					"abbrev": "KS"
-				},
-				{
-					"full": "Kentucky",
-					"abbrev": "KY"
-				},
-				{
-					"full": "Louisiana",
-					"abbrev": "LA"
-				},
-				{
-					"full": "Maine",
-					"abbrev": "ME"
-				},
-				{
-					"full": "Maryland",
-					"abbrev": "MD"
-				},
-				{
-					"full": "Massachusetts",
-					"abbrev": "MA"
-				},
-				{
-					"full": "Michigan",
-					"abbrev": "MI"
-				},
-				{
-					"full": "Minnesota",
-					"abbrev": "MN"
-				},
-				{
-					"full": "Mississippi",
-					"abbrev": "MS"
-				},
-				{
-					"full": "Missouri",
-					"abbrev": "MO"
-				},
-				{
-					"full": "Montana",
-					"abbrev": "MT"
-				},
-				{
-					"full": "Nebraska",
-					"abbrev": "NE"
-				},
-				{
-					"full": "Nevada",
-					"abbrev": "NV"
-				},
-				{
-					"full": "New Hampshire",
-					"abbrev": "NH"
-				},
-				{
-					"full": "New Jersey",
-					"abbrev": "NJ"
-				},
-				{
-					"full": "New Mexico",
-					"abbrev": "NM"
-				},
-				{
-					"full": "New York",
-					"abbrev": "NY"
-				},
-				{
-					"full": "North Carolina",
-					"abbrev": "NC"
-				},
-				{
-					"full": "North Dakota",
-					"abbrev": "ND"
-				},
-				{
-					"full": "Ohio",
-					"abbrev": "OH"
-				},
-				{
-					"full": "Oklahoma",
-					"abbrev": "OK"
-				},
-				{
-					"full": "Oregon",
-					"abbrev": "OR"
-				},
-				{
-					"full": "Pennsylvania",
-					"abbrev": "PA"
-				},
-				{
-					"full": "Rhode Island",
-					"abbrev": "RI"
-				},
-				{
-					"full": "South Carolina",
-					"abbrev": "SC"
-				},
-				{
-					"full": "South Dakota",
-					"abbrev": "SD"
-				},
-				{
-					"full": "Tennessee",
-					"abbrev": "TN"
-				},
-				{
-					"full": "Texas",
-					"abbrev": "TX"
-				},
-				{
-					"full": "Utah",
-					"abbrev": "UT"
-				},
-				{
-					"full": "Vermont",
-					"abbrev": "VT"
-				},
-				{
-					"full": "Virginia",
-					"abbrev": "VA"
-				},
-				{
-					"full": "Virgin Islands",
-					"abbrev": "VI"
-				},
-				{
-					"full": "Washington",
-					"abbrev": "WA"
-				},
-				{
-					"full": "West Virginia",
-					"abbrev": "WV"
-				},
-				{
-					"full": "Wisconsin",
-					"abbrev": "WI"
-				},
-				{
-					"full": "Wyoming",
-					"abbrev": "WY"
-				},
-				{
-					"full": "Alberta",
-					"abbrev": "AB"
-				},
-				{
-					"full": "British Columbia",
-					"abbrev": "BC"
-				},
-				{
-					"full": "Manitoba",
-					"abbrev": "MB"
-				},
-				{
-					"full": "New Brunswick",
-					"abbrev": "NB"
-				},
-				{
-					"full": "Newfoundland",
-					"abbrev": "NF"
-				},
-				{
-					"full": "Northwest Territories",
-					"abbrev": "NT"
-				},
-				{
-					"full": "Nova Scotia",
-					"abbrev": "NS"
-				},
-				{
-					"full": "Ontario",
-					"abbrev": "ON"
-				},
-				{
-					"full": "Prince Edward Island",
-					"abbrev": "PE"
-				},
-				{
-					"full": "Quebec",
-					"abbrev": "QC"
-				},
-				{
-					"full": "Saskatchewan",
-					"abbrev": "SK"
-				},
-				{
-					"full": "Yukon",
-					"abbrev": "YT"
-				}
-			]
 	}
 
-	 function ajaxFormSubmit() {
+	wsData.validateAndSubmitForm = function() {
+		jQuery('#get-info-form').validate({
+			submitHandler: function(form) {
+				wsData.ajaxFormSubmit(jQuery(form));
+				if(event.preventDefault) { event.preventDefault(); }
+				event.returnValue = false; // IE9
+				return false;
+			},
+			rules: {
+				mkto_Title: "required",
+				mkto_leadFormProduct: "required",
+				mkto_FirstName: "required",
+				mkto_USorAbroadDestination: "required",
+				mkto_LastName: "required",
+				mkto_Email: "required",
+				mkto_Phone: "required",
+				mkto_companyState: "required",
+				mkto_companyCity: "required",
+				mkto_Company: "required",
+			},
+			messages: {
+				mkto_Title: "&nbsp; (important!)",
+				mkto_leadFormProduct: "&nbsp; Please tell us what kind of travel interests you.",
+				mkto_USorAbroadDestination: "&nbsp; Please tell us: U.S. or outside the U.S.?",
+				mkto_FirstName: "Please provide your First Name.",
+				mkto_LastName: "Please provide your Last Name.",
+				mkto_Email: { 
+					required: "Please provide your Email Address.",
+					email: "Please give a valid Email Address."
+				},
+				mkto_Phone: "Please provide a Number where we can reach you.",
+				mkto_companyState: "What state is your school in?",
+				mkto_companyCity: "What city is your school in?",
+				mkto_Company: "What is the name of your school?",
+			},
+			invalidHandler: function(event, validator) {
+				jQuery('#invalid-message').show();
+				jQuery('#get-info-submit').lockSubmitReset();
+			}
+		});
+	}
 
-		 var form = jQuery('#get-info-form');
-		 // capture ajax submit
-		 form.submit( function(event) {
-			 // setup AJAX options
-			 var formData = {};
-			 var elements = form.find('[id^="get-info-"]');
-			 var numEls = elements.length;
-			 var varVal = {};
-			 for(var i=0; i<numEls; i++){
-			 	var el = elements.eq(i);
-			 	if(el.attr('name').slice(0,5) !== 'mkto_') { 
-			 		continue; // skip if it's not labeled as mkto_
+	wsData.ajaxFormSubmit = function(form) {
+		 // setup AJAX options
+		 var formData = {};
+		 var elements = form.find('[id^="get-info-"]');
+		 var numEls = elements.length;
+		 var varVal = {};
+		 for(var i=0; i<numEls; i++){
+		 	var el = elements.eq(i);
+		 	if(!el.attr('name') || el.attr('name').slice(0,5) !== 'mkto_') { 
+		 		continue; // skip if it's not labeled as mkto_
+		 	}
+		 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
+		 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
+		 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others
+		 		varVal = {};
+		 		for(var j=0; j<inputs.length; j++){
+			 		if(inputs.eq(j).is(':checked')) {
+			 			varVal = inputs.eq(j).val();
+			 		}
 			 	}
-			 	var varName = el.attr('name').slice(5); // name is now Marketo-friendly name, after 'mkto_', (FWIW, title is web-accessible title)
-			 	if(el.prop('tagName').toUpperCase() === "LI") { // radio button groups in "LI"
-			 		var inputs = el.children().filter('input'); // Usually, Yes or No - maybe others
-			 		varVal = {};
-			 		for(var j=0; j<inputs.length; j++){
-				 		if(inputs.eq(j).is(':checked')) {
-				 			varVal = inputs.eq(j).val();
-				 		}
-				 	}
-			 	} else {
-			 		varVal = el.val();
-			 	}
-			 	formData[varName]=varVal;
-			 	console.log(varName+' => '+varVal);
+		 	} else {
+		 		varVal = el.val();
+		 	}
+		 	formData[varName]=varVal;
+		 	console.log(varName+' => '+varVal);
+		 }
+		 var options = {
+			 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
+			 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
+			 data: formData, 
+			 success : function( responseText ) {
+				 form.html('Your request has been submitted successfully - ' + responseText );
 			 }
-			 var options = {
-				 url: worldstrides_ajax.ajaxUrl,  // this is part of the JS object you pass in from wp_localize_scripts.
-				 type: 'post',        // 'get' or 'post', override for form's 'method' attribute
-				 data: formData, 
-				 success : function( responseText ) {
-					 form.html('Your request has been submitted successfully - ' + responseText );
-				 }
-			 };
+		 };
 
-			 event.preventDefault();
-
-			 jQuery.ajax(options);
-		 });
-
+		 jQuery.ajax(options);
 	 }
  } )( jQuery );
+
+
+wsData.states =
+[
+	{
+		"full": "Alabama",
+		"abbrev": "AL"
+	},
+	{
+		"full": "Alaska",
+		"abbrev": "AK"
+	},
+	{
+		"full": "Arizona",
+		"abbrev": "AZ"
+	},
+	{
+		"full": "Arkansas",
+		"abbrev": "AR"
+	},
+	{
+		"full": "California",
+		"abbrev": "CA"
+	},
+	{
+		"full": "Colorado",
+		"abbrev": "CO"
+	},
+	{
+		"full": "Connecticut",
+		"abbrev": "CT"
+	},
+	{
+		"full": "Delaware",
+		"abbrev": "DE"
+	},
+	{
+		"full": "District of Columbia",
+		"abbrev": "DC"
+	},
+	{
+		"full": "Florida",
+		"abbrev": "FL"
+	},
+	{
+		"full": "Georgia",
+		"abbrev": "GA"
+	},
+	{
+		"full": "Hawaii",
+		"abbrev": "HI"
+	},
+	{
+		"full": "Idaho",
+		"abbrev": "ID"
+	},
+	{
+		"full": "Illinois",
+		"abbrev": "IL"
+	},
+	{
+		"full": "Indiana",
+		"abbrev": "IN"
+	},
+	{
+		"full": "Iowa",
+		"abbrev": "IA"
+	},
+	{
+		"full": "Kansas",
+		"abbrev": "KS"
+	},
+	{
+		"full": "Kentucky",
+		"abbrev": "KY"
+	},
+	{
+		"full": "Louisiana",
+		"abbrev": "LA"
+	},
+	{
+		"full": "Maine",
+		"abbrev": "ME"
+	},
+	{
+		"full": "Maryland",
+		"abbrev": "MD"
+	},
+	{
+		"full": "Massachusetts",
+		"abbrev": "MA"
+	},
+	{
+		"full": "Michigan",
+		"abbrev": "MI"
+	},
+	{
+		"full": "Minnesota",
+		"abbrev": "MN"
+	},
+	{
+		"full": "Mississippi",
+		"abbrev": "MS"
+	},
+	{
+		"full": "Missouri",
+		"abbrev": "MO"
+	},
+	{
+		"full": "Montana",
+		"abbrev": "MT"
+	},
+	{
+		"full": "Nebraska",
+		"abbrev": "NE"
+	},
+	{
+		"full": "Nevada",
+		"abbrev": "NV"
+	},
+	{
+		"full": "New Hampshire",
+		"abbrev": "NH"
+	},
+	{
+		"full": "New Jersey",
+		"abbrev": "NJ"
+	},
+	{
+		"full": "New Mexico",
+		"abbrev": "NM"
+	},
+	{
+		"full": "New York",
+		"abbrev": "NY"
+	},
+	{
+		"full": "North Carolina",
+		"abbrev": "NC"
+	},
+	{
+		"full": "North Dakota",
+		"abbrev": "ND"
+	},
+	{
+		"full": "Ohio",
+		"abbrev": "OH"
+	},
+	{
+		"full": "Oklahoma",
+		"abbrev": "OK"
+	},
+	{
+		"full": "Oregon",
+		"abbrev": "OR"
+	},
+	{
+		"full": "Pennsylvania",
+		"abbrev": "PA"
+	},
+	{
+		"full": "Rhode Island",
+		"abbrev": "RI"
+	},
+	{
+		"full": "South Carolina",
+		"abbrev": "SC"
+	},
+	{
+		"full": "South Dakota",
+		"abbrev": "SD"
+	},
+	{
+		"full": "Tennessee",
+		"abbrev": "TN"
+	},
+	{
+		"full": "Texas",
+		"abbrev": "TX"
+	},
+	{
+		"full": "Utah",
+		"abbrev": "UT"
+	},
+	{
+		"full": "Vermont",
+		"abbrev": "VT"
+	},
+	{
+		"full": "Virginia",
+		"abbrev": "VA"
+	},
+	{
+		"full": "Virgin Islands",
+		"abbrev": "VI"
+	},
+	{
+		"full": "Washington",
+		"abbrev": "WA"
+	},
+	{
+		"full": "West Virginia",
+		"abbrev": "WV"
+	},
+	{
+		"full": "Wisconsin",
+		"abbrev": "WI"
+	},
+	{
+		"full": "Wyoming",
+		"abbrev": "WY"
+	},
+	{
+		"full": "Alberta",
+		"abbrev": "AB"
+	},
+	{
+		"full": "British Columbia",
+		"abbrev": "BC"
+	},
+	{
+		"full": "Manitoba",
+		"abbrev": "MB"
+	},
+	{
+		"full": "New Brunswick",
+		"abbrev": "NB"
+	},
+	{
+		"full": "Newfoundland",
+		"abbrev": "NF"
+	},
+	{
+		"full": "Northwest Territories",
+		"abbrev": "NT"
+	},
+	{
+		"full": "Nova Scotia",
+		"abbrev": "NS"
+	},
+	{
+		"full": "Ontario",
+		"abbrev": "ON"
+	},
+	{
+		"full": "Prince Edward Island",
+		"abbrev": "PE"
+	},
+	{
+		"full": "Quebec",
+		"abbrev": "QC"
+	},
+	{
+		"full": "Saskatchewan",
+		"abbrev": "SK"
+	},
+	{
+		"full": "Yukon",
+		"abbrev": "YT"
+	}
+];

@@ -8,12 +8,15 @@ $resources_page = get_page_by_path( 'resource-center' );
 
 <section class="primary-section">
 	<header class="section-header resources-header pattern-8">
-		<div class="section-header-content">
-			<h1><?php echo apply_filters( 'the_title', $resources_page->post_title ) ?></h1>
-
-			<p class="description">
-				<?php echo apply_filters( 'the_content', $resources_page->post_excerpt ) ?>
-			</p>
+		<div class="ws-container">
+			<div class="section-header-content">
+				<h1><?php echo apply_filters( 'the_title', $resources_page->post_title ) ?></h1>
+				<?php if ( $resources_page->post_excerpt ) : ?>
+					<div class="description">
+						<?php echo apply_filters( 'the_content', $resources_page->post_excerpt ) ?>
+					</div>
+				<?php endif; ?>
+			</div>
 		</div>
 	</header>
 </section>

@@ -16,20 +16,21 @@ if ( !empty ($parent_id) ) {
 
 <section class="primary-section">
 	<header class="section-header resources-header pattern-8">
-		<div class="section-header-content">
-			<nav class="breadcrumbs">
-				<?php // @todo needs to be dynamic ?>
-				<a href="<?php echo esc_url( home_url( '/resource-center/' ) ); ?>">Resource Center</a>
-				<?php if( !empty ( $parent ) ) { ?>
+		<div class="ws-container">
+			<div class="section-header-content">
+				<nav class="breadcrumbs">
+					<a href="<?php echo esc_url( home_url( '/resource-center/' ) ); ?>">Resource Center</a>
+					<?php if( !empty ( $parent ) ) { ?>
 
-				>
-				<a href="<?php echo $parent_link; ?>"><?php echo $parent->name; ?></a>
+					>
+					<a href="<?php echo $parent_link; ?>"><?php echo $parent->name; ?></a>
 
-				<?php } ?>
-				>
-				<span><?php echo $title; ?></span>
-			</nav>
-			<h1><?php echo $title; ?></h1>
+					<?php } ?>
+					>
+					<span><?php echo $title; ?></span>
+				</nav>
+				<h1><?php echo $title; ?></h1>
+			</div>
 		</div>
 	</header>
 
@@ -71,19 +72,21 @@ if ( !empty ($parent_id) ) {
 			'include'    => $shared_terms
 		) );
 
-		// @todo we may want to store these menus in transients or some sort of cache if they proove problematic
+		// if these menus become problematic resource-wise, we could store them in transients or some sort of cache
 		?>
 
 		<nav class="resource-nav section-nav">
-			<ul class="section-menu">
-				<?php foreach( $resource_types as $type ) : ?>
+			<div class="ws-container">
+				<ul class="section-menu">
+					<?php foreach( $resource_types as $type ) : ?>
 
-					<li>
-						<a href="#" data-filter="<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
-					</li>
+						<li>
+							<a href="#" data-filter="<?php echo $type->slug; ?>"><?php echo $type->name; ?></a>
+						</li>
 
-				<?php endforeach; ?>
-			</ul>
+					<?php endforeach; ?>
+				</ul>
+			</div>
 		</nav>
 
 	<?php endif; ?>

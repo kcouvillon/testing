@@ -9,10 +9,12 @@ get_header(); ?>
 
 			<section class="primary-section">
 				<header class="section-header error-header pattern-6">
-					<div class="section-header-content">
-						<h1 class="page-title"><?php _e( 'Oops! We don’t know where that page is.', 'obsub' ); ?></h1>
-						<h4 class="description">But we know where the Louvre is!</h4>
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>" class="btn btn-primary">Explore our trips »</a>
+					<div class="ws-container">
+						<div class="section-header-content">
+							<h1 class="page-title"><?php _e( 'Oops! We don’t know where that page is.', 'obsub' ); ?></h1>
+							<h4 class="description">But we know where the Louvre is!</h4>
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>" class="btn btn-primary">Explore our trips »</a>
+						</div>
 					</div>
 				</header>
 			</section>

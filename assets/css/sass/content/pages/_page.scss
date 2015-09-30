@@ -1,19 +1,219 @@
-#page {
-	overflow: hidden;
-}
+
+/* _page.scss
+ * ----------------------------------------- */
 
 section {
 	@include clearfix;
 }
 
-// These styles apply to the section heros that appear on several pages
+/* Page and Section Headers
+ * ------------------------ */
+
+.section-title {
+	font-weight: lighter;
+}
+
+.primary-section {
+	position: relative;
+
+	.transparent-header & {
+		@media only print {
+			margin-top: 0;
+			padding: 0;
+		}
+	}
+
+	.solid-header & {
+		margin-top: 0;
+	}
+}
+
+
+.section-header {
+	@include clearfix;
+	position: relative;
+	background-size: cover;
+	background-position: right center;
+    background-repeat: no-repeat;
+    background-color: $gray_base;
+	margin-bottom: gutter()*2;
+
+	.primary-section &, .single & {
+		margin-bottom: 0;
+		border-bottom: 1px solid darken($gray_base, 5%);
+	}
+
+	&[class*="pattern-"] {
+		background-repeat: repeat;
+	}
+
+	.transparent-header .primary-section & {
+		padding-top: 89px;
+		@include susy-media($screen-sm) {
+			padding-top: 181px;
+		}
+	}
+
+	.has-featured-image .primary-section & {
+		@media screen and (max-width: ($screen-sm - 1) ) {
+			background-image: none !important;
+		}
+		@include susy-media($screen-sm) {
+			background-size: cover;
+			@include overlay-text;
+		}
+	}
+
+	.transparent-header.has-featured-image .primary-section & {
+		padding-top: 0;
+		@media only print {
+			min-height: 0;
+			padding: 0;
+		}
+		@include susy-media($screen-sm) {
+			padding-top: 181px;
+			min-height: 75vh;
+		}
+	}
+
+	.solid-header .primary-section & {
+		padding: 3vh 0;
+	}
+
+	.mobile-hero {
+		@include susy-media($screen-sm) {
+			display: none;
+		}
+		img {
+			width: 100%;
+		}
+	}
+	
+} // .section-header
+
+.header-subtitle {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	font-size: 1.8em;
+    line-height: 1em;
+}
+
+.section-header-content {
+	color: $gray_base;
+	margin-top: 10%;
+	margin-bottom: 4%;
+	max-width: 670px;
+
+	.has-section-image & {
+		color: #fff;
+		@extend %overlay-text;
+	}
+
+	.pattern-1 &, .pattern-2 &, .pattern-4 &, .pattern-5 &, .pattern-6 &, .pattern-7 & {
+		color: #fff;
+
+		h1, p, strong, em {
+			color: #fff;
+		}
+
+		.breadcrumbs {
+			color: $blue_lighter;
+
+			a {
+				color: $blue_lighter;
+
+				&:hover {
+					color: $gray_light;
+				}
+			}
+		}
+	}
+
+	.primary-section & {
+		margin-top: 5%;
+		@include susy-media($screen-xs) {			
+			margin-bottom: 6%;
+		}
+		@media print {
+			margin-bottom: 2em;
+		}
+
+		p {
+			font-weight: 700;
+		}
+
+		.header-subtitle {
+			font-weight: 400;
+		}
+	}
+	.has-featured-image .primary-section & {
+		color: #FFF;
+
+		@include susy-media($screen-xs) {
+			margin-top: 6.66666%;
+			margin-bottom: 11.66666%;
+		}
+	}
+	.archive .primary-section &, 
+	.blog .primary-section &, 
+	.single .primary-section & {
+		color: $gray_base;
+	}
+	.has-featured-image.archive .primary-section &, 
+	.has-featured-image.blog .primary-section &, 
+	.has-featured-image.single .primary-section &, 
+	.has-featured-image.page .primary-section & {
+		color: #fff;
+
+		.breadcrumbs {
+			color: $blue_lighter;
+
+			a {
+				color: $blue_lighter;
+
+				&:hover {
+					color: $color_link;
+				}
+			}
+		}
+	}
+
+	.smithsonian {
+		max-width: 300px;
+	}
+}
+
+.section-content {
+	@include clearfix;
+	@include container();
+	margin-top: gutter();
+	margin-bottom: gutter();
+	position: relative;
+	&.bleed-container {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.page-template-default & {
+		@include susy-media($screen-sm) {
+			padding-right: 25%;
+		}
+		@include susy-media($screen-lg) {
+			padding-right: 40%;
+		}
+	}
+
+	.home.page-template-default & {
+		@include container();
+	}
+}
+
 .section-nav {
+	@include clearfix;
 	position: relative;
 	background: $gray-base;
-	@include container();
-	@include clearfix;
 	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
-	border-bottom: 1px solid tint($gray_base, 30%);
+	border-bottom: 1px solid darken($gray_base, 5%);
 
 	select {
 		margin: 1em 0;
@@ -52,7 +252,12 @@ section {
 
 	a {
 		color: #fff;
-		line-height: 3;
+		font-size: 16px;
+		line-height: 3.4;
+		@include susy-media($screen-sm) {
+			font-size: 1em;
+			line-height: 3em;
+		}
 
 		&:hover {
 			color: $gray-light;
@@ -65,174 +270,6 @@ section {
 				color: #fff;
 			}
 		}
-	}
-}
-
-.section-title {
-	font-weight: lighter;
-}
-
-.transparent-header .primary-section {
-	margin-top: -158px;
-	padding-top: 100px !important;
-	@media only print {
-		margin-top: 0;
-		padding: 0;
-	}
-
-	.section-header {
-		margin-top: -100px;
-		padding-top: 140px;
-		min-height: 50vh;
-
-		@media only print {
-			min-height: 0;
-		}
-	}
-}
-.transparent-header.has-featured-image .primary-section {
-	.section-header {
-		min-height: 75vh;
-		@media only print {
-			min-height: 0;
-			padding: 0;
-		}
-	}
-}
-
-.solid-header .primary-section {
-	margin-top: 0;
-}
-
-.section-header {
-	background-size: cover;
-	background-position: right center;
-	@include clearfix;
-	@include container();
-	margin-bottom: gutter()*2;
-	position: relative;
-
-	.primary-section &, .single & {
-		margin-bottom: 0;
-	}
-
-	.has-featured-image & {
-		background-size: cover;
-		@extend %overlay-text;
-	}
-}
-
-.header-subtitle {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	font-size: 1.8em;
-    line-height: 1em;
-}
-
-.section-header-content {
-	color: $gray_base;
-	margin-top: 10%;
-	margin-bottom: 4%;
-	max-width: 670px;
-
-	.has-section-image & {
-		color: #fff;
-		@extend %overlay-text;
-	}
-
-	.pattern-1 &, .pattern-2 &, .pattern-4 &, .pattern-5 &, .pattern-7 &, .pattern-8 & {
-		color: #fff;
-
-		h1, p, strong, em {
-			color: #fff;
-		}
-
-		.breadcrumbs {
-			color: $blue_lighter;
-
-			a {
-				color: $blue_lighter;
-
-				&:hover {
-					color: $gray_light;
-				}
-			}
-		}
-	}
-
-
-	.has-featured-image .primary-section & {
-		margin-top: 11.333333%;
-
-		@include susy-media($screen-xs) {
-			margin-top: 6.66666%;
-			margin-bottom: 11.66666%;
-		}
-	}
-	.primary-section & {
-		margin-top: 5%;
-		@include susy-media($screen-xs) {			
-			margin-bottom: 6%;
-		}
-		@media print {
-			margin-bottom: 2em;
-		}
-
-		.has-featured-image & {
-			color: #fff;
-		}
-
-		.archive &, .blog &, .single & {
-			color: $gray_base;
-		}
-
-		.has-featured-image.archive &, .has-featured-image.blog &, .has-featured-image.single &, .has-featured-image.page & {
-			color: #fff;
-
-			.breadcrumbs {
-				color: $blue_lighter;
-
-				a {
-					color: $blue_lighter;
-
-					&:hover {
-						color: $color_link;
-					}
-				}
-			}
-		}
-
-		p {
-			font-weight: 700;
-		}
-		.header-subtitle {
-			font-weight: 400;
-		}
-	}
-
-	.smithsonian {
-		max-width: 300px;
-	}
-}
-
-.section-content {
-	@include clearfix;
-	@include container();
-	margin-top: gutter();
-	margin-bottom: gutter();
-	position: relative;
-
-	.page-template-default & {
-		@include susy-media($screen-sm) {
-			padding-right: 25%;
-		}
-		@include susy-media($screen-lg) {
-			padding-right: 40%;
-		}
-	}
-
-	.home.page-template-default & {
-		@include container();
 	}
 }
 

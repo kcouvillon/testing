@@ -1,4 +1,4 @@
-@for $i from 1 through 9 {
+@for $i from 1 through 8 {
 	.pattern-#{$i} {
 		background-image: url(../images/src/patterns/ws_w_pattern#{$i}.gif);
 		background-size: 63px 54px !important;

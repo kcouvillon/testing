@@ -80,26 +80,32 @@ get_header(); ?>
 				$background = 'url(' . $featured[0] . ')';
 				$class = '';
 			} else {
-				$class = ' pattern-' . rand( 3, 9 );
+				$class = ' ' . WS_Helpers::get_random_pattern();
 			} ?>
 			<section class="primary-section">
 				<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-					<div class="section-header-content">
-						<nav class="breadcrumbs hide-print">
-							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-							<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
-						</nav>
-						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
-
-						<?php $subtitle = get_post_meta( $post->ID, 'division_options_subtitle', true ); ?>
-
-						<?php if ( $subtitle ) : ?>
-							<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
-						<?php endif; ?>
-
-						<?php the_content(); ?>
+					<div class="mobile-hero">
+						<?php the_post_thumbnail( 'large' ); ?>
 					</div>
+					<div class="ws-container">
+						<div class="section-header-content">
+							<nav class="breadcrumbs hide-print">
+								<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+								<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
+							</nav>
+							<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
+							<?php $subtitle = get_post_meta( $post->ID, 'division_options_subtitle', true ); ?>
+
+							<?php if ( $subtitle ) : ?>
+								<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+							<?php endif; ?>
+
+							<?php the_content(); ?>
+						</div>
+
+					</div>
+					
 					<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
 				</header>
@@ -107,39 +113,41 @@ get_header(); ?>
 				<?php if ( 'outlier' != $division_type ) : ?>
 
 				<nav class="section-nav">
-					<ul class="section-menu hide-print">
+					<div class="ws-container">
+						<ul class="section-menu hide-print">
 
-						<?php if ( ! empty( $associated_why_ws ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
-						<?php endif; ?>
+							<?php if ( ! empty( $associated_why_ws ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Why WorldStrides?</a></li>
+							<?php endif; ?>
 
-						<?php if ( ! empty( $associated_resources ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-						<?php endif; ?>
+							<?php if ( ! empty( $associated_resources ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+							<?php endif; ?>
 
-						<?php if ( ! empty( $before_block_sections ) ) : ?>
-							<?php foreach ( $before_block_sections as $section ) : ?>
-								<?php if ( ! empty ( $section['division_blocks_before_title'] ) ) : ?>
-									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_before_title']; ?></a></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						<?php endif; ?>
+							<?php if ( ! empty( $before_block_sections ) ) : ?>
+								<?php foreach ( $before_block_sections as $section ) : ?>
+									<?php if ( ! empty ( $section['division_blocks_before_title'] ) ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_before_title']; ?></a></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-						<?php if ( $associated_collections->have_posts() ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
-						<?php endif; ?>
+							<?php if ( $associated_collections->have_posts() ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Collections</a></li>
+							<?php endif; ?>
 
-						<?php if ( ! empty( $after_block_sections ) ) : ?>
-							<?php foreach ( $after_block_sections as $section ) : ?>
-								<?php if ( ! empty ( $section['division_blocks_after_title'] ) ) : ?>
-									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_after_title']; ?></a></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						<?php endif; ?>
+							<?php if ( ! empty( $after_block_sections ) ) : ?>
+								<?php foreach ( $after_block_sections as $section ) : ?>
+									<?php if ( ! empty ( $section['division_blocks_after_title'] ) ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['division_blocks_after_title']; ?></a></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-					</ul>
+						</ul>
 
-					<a href="#" class="btn btn-primary subnav-cta">Request Info</a>
+						<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
+					</div>
 				</nav>
 
 			</section>
@@ -171,42 +179,40 @@ get_header(); ?>
 				<ul class="resources-list list-unstyled clearfix">
 
 					<?php foreach ( $associated_resources as $resource_id ) : ?>
-						<?php $resource = get_post( $resource_id ); ?>
-						<?php
+						
+						<?php 
+						$resource = get_post( $resource_id );
 						$background = '';
+						$targets = wp_get_object_terms( $resource_id, 'resource-target' );
+						$target_parents = array();
+						$url = get_the_permalink( $resource_id );
+						$title = apply_filters( 'the_title', $resource->post_title );
+						$meta_list = array();
+						
+						foreach ( $targets as $target ) {
+							if ( 'Featured' != $target->name ) {
+								$parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' );
+								if ( ! in_array( $parent->term_id, $target_parents ) ) {
+									$target_parents[] = $parent->term_id;
+									$target_url = home_url( '/resources/' . $parent->slug . '/' );
+									$target_name = $parent->name;
+									array_push( $meta_list , array( 'url' => $target_url, 'name' => $target_name ) );
+								}
+
+							}
+						}
+
 						if( has_post_thumbnail( $resource_id ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'large' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
-							$class = ' pattern-' . rand(1, 9);
+							$class = ' ' . WS_Helpers::get_random_pattern('dark');
 						}
 						?>
 
 						<li class="resource tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-							<div class="tile-content">
-								<ul class="meta list-unstyled">
-									<?php $targets = wp_get_object_terms( $resource_id, 'resource-target' ); ?>
-									<?php $target_parents = array(); ?>
-
-									<?php foreach ( $targets as $target ) : ?>
-										<?php if ( 'Featured' != $target->name ) : ?>
-
-											<?php $parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' ); ?>
-
-											<?php if ( ! in_array( $parent->term_id, $target_parents ) ) : ?>
-												<?php $target_parents[] = $parent->term_id; ?>
-
-												<li class="list-tag-no-link"><?php echo $parent->name; ?></li>
-
-											<?php endif; ?>
-
-										<?php endif; ?>
-									<?php endforeach; ?>
-
-								</ul>
-								<h2 class="tile-title"><a href="<?php echo get_permalink( $resource_id ); ?>"><?php echo apply_filters( 'the_title', $resource->post_title ); ?></a></h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
 						</li>
 
 					<?php endforeach; ?>
@@ -246,30 +252,30 @@ get_header(); ?>
 				<h2 class="section-title ws-container">Collections</h2>
 				<ul class="programs-list list-unstyled clearfix">
 					<?php while ( $associated_collections->have_posts() ) : ?>
-						<?php $associated_collections->the_post(); ?>
-						<?php
+						
+						<?php 
+						$associated_collections->the_post();
 						$background = '';
+						$title = get_the_title();
+						$url = get_the_permalink();
+						if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives' ) ) ) {
+							$meta_list = array(
+								array( 'name' => WS_Helpers::get_subtitle( $post->ID ) )
+							);
+						} else {
+							$meta_list = array();
+						}
 						if( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
 							$background = 'url(' . $featured[0] . ')';
 							$class = ' has-tile-image';
 						} else {
-							$class = ' pattern-' . rand(1, 9);
+							$class = ' ' . WS_Helpers::get_random_pattern('dark');
 						}
 						?>
 
 						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-							<div class="tile-content">
-								<?php if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives' ) ) ) : ?>
-								<ul class="meta list-unstyled">
-									<li class="list-tag-no-link"><?php echo WS_Helpers::get_subtitle( $post->ID ); ?></li>
-								</ul>
-								<?php endif; ?>
-								<?php if ( '844' == $post->ID ) : ?>
-									<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-								<?php endif; ?>
-								<h2 class="tile-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-							</div>
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>	
 						</li>
 
 					<?php endwhile; ?>

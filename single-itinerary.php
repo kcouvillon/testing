@@ -28,203 +28,214 @@ get_header(); ?>
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-				<div class="section-header-content">
 
-					<nav class="breadcrumbs hide-print">
-						<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>
-						<span>Collections</span>
-						<?php if( ! empty( $term ) ) : ?>
-							<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
-						<?php endif; ?>
-						<span><?php the_title(); ?></span>
-					</nav>
-					<span class="print-only"><?php the_permalink(); ?></span>
-					<h1><?php the_title(); ?></h1>
-
-					<?php $subtitle = get_post_meta( $post->ID, 'itinerary_subtitle', true ); ?>
-
-					<?php if ( $subtitle ) : ?>
-						<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
-					<?php endif; ?>
-
-					<?php the_content(); ?>
-
-					<?php if ( 'smithsonian' == $itinerary_type ) : ?>
-						<h3 class="hide-print"><img class="smithsonian" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian.png' ); ?>" /></h3>
-					<?php endif; ?>
-
-					<?php if ( $phone ) : ?>
-					<p class="print-only">Call for more information: <?php echo $phone; ?></p>
-					<?php endif; ?>
+				<div class="mobile-hero">
+					<?php the_post_thumbnail( 'large' ); ?>
 				</div>
 
+				<div class="ws-container">
+					<div class="section-header-content">
+
+						<nav class="breadcrumbs hide-print">
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>
+							<span>Collections</span>
+							<?php if( ! empty( $term ) ) : ?>
+								<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
+							<?php endif; ?>
+							<span><?php the_title(); ?></span>
+						</nav>
+						<span class="print-only"><?php the_permalink(); ?></span>
+						<h1><?php the_title(); ?></h1>
+
+						<?php $subtitle = get_post_meta( $post->ID, 'itinerary_subtitle', true ); ?>
+
+						<?php if ( $subtitle ) : ?>
+							<p class="header-subtitle"><?php echo apply_filters( 'the_title', $subtitle ); ?></p>
+						<?php endif; ?>
+
+						<?php the_content(); ?>
+
+						<?php if ( 'smithsonian' == $itinerary_type ) : ?>
+							<h3 class="hide-print"><img class="smithsonian" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian.png' ); ?>" /></h3>
+						<?php endif; ?>
+
+						<?php if ( $phone ) : ?>
+						<p class="print-only">Call for more information: <?php echo $phone; ?></p>
+						<?php endif; ?>
+					</div>
+
+				</div>
+				
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
 			</header>
 
 			<nav class="section-nav hide-print">
-				<ul class="section-menu">
-					<?php
-					$section_link = 1;
+				<div class="ws-container">
+					<ul class="section-menu">
+						<?php
+						$section_link = 1;
 
-					// Get highlights
+						// Get highlights
 
-					$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
-					if ( ! empty( $highlights[1]['image'] ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
-					<?php endif; ?>
+						$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
+						if ( ! empty( $highlights[1]['image'] ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
+						<?php endif; ?>
 
-					<?php
-					// Get Before Blocks
-					$before_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
-					
-					<?php if ( ! empty( $before_block_sections ) ) : ?>
-						<?php foreach ( $before_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php
+						// Get Before Blocks
+						$before_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
+						
+						<?php if ( ! empty( $before_block_sections ) ) : ?>
+							<?php foreach ( $before_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-					<?php
-					// Get Itinerary
-					$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true ); ?>
+						<?php
+						// Get Itinerary
+						$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true ); ?>
 
-					<?php if ( ! empty( $itinerary ) ) : ?>
-						<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itinerary</a></li>
-					<?php endif; ?>
+						<?php if ( ! empty( $itinerary ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itinerary</a></li>
+						<?php endif; ?>
 
-					<?php
-					// Get After Blocks
-					$after_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
-					
-					<?php if ( ! empty( $after_block_sections ) ) : ?>
-						<?php foreach ( $after_block_sections as $section ) : ?>
-							<?php if ( ! empty ( $section['title'] ) ) : ?>
-								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					<?php endif; ?>
+						<?php
+						// Get After Blocks
+						$after_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
+						
+						<?php if ( ! empty( $after_block_sections ) ) : ?>
+							<?php foreach ( $after_block_sections as $section ) : ?>
+								<?php if ( ! empty ( $section['title'] ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
 
-				</ul>
+					</ul>
 
-				<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta hide-print">Request Info</a>
+					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta hide-print">Request Info</a>
+				</div>
 			</nav>
 
 		</section>
 
 		<section class="tour-details">
+			<div class="ws-container">
 
-			<?php
-			$number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true );
-			$date_list = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
-			if ( $date_list && count($date_list) >= 4 ) {
-				$column_count = 2;
-			} else {
-				$column_count = 1;
-			}
-			?>
+				<?php
+				$number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true );
+				$date_list = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
+				if ( $date_list && count($date_list) >= 4 ) {
+					$column_count = 2;
+				} else {
+					$column_count = 1;
+				}
+				?>
 
-			<div class="tour-duration">
+				<div class="tour-duration">
 
-				<?php if ( $number_days ) : ?>
+					<?php if ( $number_days ) : ?>
 
-					<span class="h3"><i class="icon icon-calendar"></i> <?php echo esc_html( $number_days ); ?></span>
+						<span class="h3"><i class="icon icon-calendar"></i> <?php echo esc_html( $number_days ); ?></span>
 
-				<?php elseif ( $date_list ) : ?>
+					<?php elseif ( $date_list ) : ?>
 
-					<div class="h3"><i class="icon icon-calendar"></i> Dates</div>
-					
-					<ul class="date-list <?php echo 'columns-'.$column_count; ?> list-unstyled clearfix">
-						<?php 
-						$count = 0;
-						foreach ( $date_list as $list ) : ?>
-							
-							<?php
-							$start = $list['itinerary_details_date_start'];
-							$end   = $list['itinerary_details_date_end'];
-							$date_class = ( $count > 3 ) ? 'date-range hidden-dates' : 'date-range visible-dates';
-							?>
+						<div class="h3"><i class="icon icon-calendar"></i> Dates</div>
+						
+						<ul class="date-list <?php echo 'columns-'.$column_count; ?> list-unstyled clearfix">
+							<?php 
+							$count = 0;
+							foreach ( $date_list as $list ) : ?>
+								
+								<?php
+								$start = $list['itinerary_details_date_start'];
+								$end   = $list['itinerary_details_date_end'];
+								$date_class = ( $count > 3 ) ? 'date-range hidden-dates' : 'date-range visible-dates';
+								?>
 
-							<li class="<?php echo $date_class; ?>"><strong>
-								<?php echo $start; ?> <em class="small gray-light">to</em><br/>
-								<?php echo $end; ?>
-							</strong></li>
+								<li class="<?php echo $date_class; ?>"><strong>
+									<?php echo $start; ?> <em class="small gray-light">to</em><br/>
+									<?php echo $end; ?>
+								</strong></li>
 
-						<?php $count++; endforeach; ?>
+							<?php $count++; endforeach; ?>
 
-						<?php if ( count( $date_list ) > 4 ) : ?>
-						<li><a href="#" class="toggle-dates hide-print"></a></li>
-						<?php endif; ?>
+							<?php if ( count( $date_list ) > 4 ) : ?>
+							<li><a href="#" class="toggle-dates hide-print"></a></li>
+							<?php endif; ?>
 
-					</ul>
+						</ul>
+
+					<?php endif; ?>
+				</div>
+
+				<?php
+				$features = get_post_meta( $post->ID, 'itinerary_details_features', true );
+				if ( ! empty( $features ) ) : ?>
+
+					<div class="tour-features">
+						<span class="h3"><i class="icon icon-pin"></i> <?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
+						<div class="tour-feature-list">
+						<?php
+							foreach ( $features as $feature ) {
+								echo '<span class="tour-feature">' . $feature . '</span>';
+							}
+						?>
+						</div>
+					</div>
 
 				<?php endif; ?>
-			</div>
 
-			<?php
-			$features = get_post_meta( $post->ID, 'itinerary_details_features', true );
-			if ( ! empty( $features ) ) : ?>
+				<div class="tour-weather hide-print">
 
-				<div class="tour-features">
-					<span class="h3"><i class="icon icon-pin"></i> <?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
-					<div class="tour-feature-list">
-					<?php
-						foreach ( $features as $feature ) {
-							echo '<span class="tour-feature">' . $feature . '</span>';
-						}
-					?>
-					</div>
-				</div>
+					<?php 
+					$weather = WS_Helpers::get_weather_data( $post->ID );
 
-			<?php endif; ?>
+					if ( is_object( $weather ) ) {
 
-			<div class="tour-weather hide-print">
+						$temp = round( $weather->main->temp, 0 );
+						$icon = WS_Helpers::get_weather_icon( $weather->weather[0]->icon );
 
-				<?php 
-				$weather = WS_Helpers::get_weather_data( $post->ID );
+					} else {
 
-				if ( is_object( $weather ) ) {
+						$temp = '—';
+						$icon = '';
 
-					$temp = round( $weather->main->temp, 0 );
-					$icon = WS_Helpers::get_weather_icon( $weather->weather[0]->icon );
+					} ?>
 
-				} else {
+					<span class="h3"><i class="icon icon-weather icon-<?php echo $icon; ?>"></i> Local Conditions</span>
 
-					$temp = '—';
-					$icon = '';
+					<div class="weather-content">
 
-				} ?>
-
-				<span class="h3"><i class="icon icon-weather icon-<?php echo $icon; ?>"></i> Local Conditions</span>
-
-				<div class="weather-content">
-
-					<div class="tour-local-weather">
-						<span><?php echo $temp; ?>&#8457;</span>
-						<span>Current Temp</span>
-					</div>
-
-					<?php $tz = get_post_meta( $post->ID, 'itinerary_details_timezone', true ); ?>
-
-					<?php if ( $tz ) : ?>
-						<?php if ( strrpos( $tz, 'UTC') !== false ) {
-							$tz = substr( $tz, 3 ); // "UTC-5.5" -> "-5.5"
-							$local_time = WS_Helpers::get_local_time_by_offset( $tz );
-						} else {
-							$local_time = WS_Helpers::get_local_time_by_tz( $tz );
-						}
-						?>
-						<div class="tour-local-time">
-							<time><?php echo $local_time; ?></time>
-							<span>Current Time</span>
+						<div class="tour-local-weather">
+							<span><?php echo $temp; ?>&#8457;</span>
+							<span>Current Temp</span>
 						</div>
-					<?php endif; ?>
 
+						<?php $tz = get_post_meta( $post->ID, 'itinerary_details_timezone', true ); ?>
+
+						<?php if ( $tz ) : ?>
+							<?php if ( strrpos( $tz, 'UTC') !== false ) {
+								$tz = substr( $tz, 3 ); // "UTC-5.5" -> "-5.5"
+								$local_time = WS_Helpers::get_local_time_by_offset( $tz );
+							} else {
+								$local_time = WS_Helpers::get_local_time_by_tz( $tz );
+							}
+							?>
+							<div class="tour-local-time">
+								<time><?php echo $local_time; ?></time>
+								<span>Current Time</span>
+							</div>
+						<?php endif; ?>
+
+					</div>
+					
 				</div>
-				
 			</div>
-
 		</section>
 
 		<section class="tour-sharing hide-print">
@@ -298,7 +309,7 @@ get_header(); ?>
 
 			<!-- Print-only version of tour highlights -->
 			<section class="tour-highlights-print print-only print-page-break">
-				<h2>Tour Highlights</h2>
+				<h3 class="h2">Tour Highlights</h3>
 				<ul class="list-unstyled">
 				<?php foreach ( $highlights as $highlight ) { ?>
 					<li>
