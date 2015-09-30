@@ -25,12 +25,19 @@
 		/**
 		 * Wire the Role (Title), wsProduct fields together
 		 * toggle wsProduct based on Role: stu (student) par (parent) ...
+		 * Hide most of the form if it's a student
 		 */
 		(function(roleSelect){
 			roleSelect.on('change',function(){
 				var role =  jQuery(this).children('option:selected').attr('data-value');
 				jQuery('#get-info-Product option').filter('.'+role).show();
 				jQuery('#get-info-Product option').not('.'+role).hide();
+
+				if('stu' === role ) {
+					jQuery('.hide-if-student').addClass('hidden');
+				} else {
+					jQuery('.hide-if-student').removeClass('hidden');
+				}
 			});
 		})(jQuery('select#get-info-Title'));
 

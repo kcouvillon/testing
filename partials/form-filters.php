@@ -150,7 +150,7 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 <?php endif; ?>
 <?php endforeach; /*END LOOP FOR SUB-SELECT LISTS*/?>
 
-<li id="product" class="field <?php echo $hide_if_context_classes; ?>">
+<li id="product" class="field hide-if-student <?php echo $hide_if_context_classes; ?>">
 	<label for="get-info-Product">I want to learn more about</label>
 	<select id="get-info-Product" name="mkto_leadFormProduct">
 		<option value="" class='stu par ele mse hse une'>Select...</option>
@@ -169,7 +169,7 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 </li>
 
 
-<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
+<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
 	<label>I would travel:</label>
 	&nbsp;<wbr>
 	<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">

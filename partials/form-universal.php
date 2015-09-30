@@ -43,7 +43,7 @@
 
 			<?php get_template_part('partials/form','filters'); ?>
 
-			<li class="field field-complex">
+			<li class="field field-complex hide-if-student ">
 				<div class="field-left">
 					<label for="get-info-first-name" class="block no-placeholder">First Name</label>
 					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" title="First Name">
@@ -57,7 +57,7 @@
 	</div>
 	<div class="right">
 		<ul class="form-fields list-unstyled">
-			<li class="field field-complex">
+			<li class="field field-complex hide-if-student">
 				<div class="field-left">
 					<label for="get-info-email" class="block no-placeholder">Email Address</label>	
 					<input id="get-info-email" type="email" name="mkto_Email" value="" placeholder="Email Address" title="Email Address">
@@ -67,23 +67,23 @@
 					<input id="get-info-phone" type="tel" name="mkto_Phone" value="" placeholder="Phone Number" title="Preferred Phone Number">
 				</div>
 			</li>
-			<li class="field field-complex">
+			<li class="field field-complex hide-if-student">
 				<div class="field-left">
 					<label for="get-info-state" class="block no-placeholder">Select State...</label>
 					<select id="get-info-state" name="mkto_companyState" title="School State">
 						<option value="">Select State...</option>
 					</select>
 				</div>
-				<div class="field-right">
+				<div class="field-right hide-if-student">
 					<label for="get-info-city" class="block no-placeholder">School City</label>
 					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" title="School City">
 				</div>
 			</li>
-			<li class="field">
+			<li class="field hide-if-student">
 				<label for="get-info-school" class="block no-placeholder">School Name</label>
 				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" title="School Name">
 			</li>
-			<li class="field">
+			<li class="field hide-if-student">
 				<label for="get-info-comment" class="block no-placeholder">Comments or Questions?</label>
 				<textarea id="get-info-comment" name="mkto_formcomments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" title="Comments or Questions"></textarea>
 			</li>
@@ -94,6 +94,6 @@
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary hide-if-student" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>
