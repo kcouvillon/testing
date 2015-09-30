@@ -644,8 +644,10 @@
 
 				if('stu' === role ) {
 					jQuery('.hide-if-student').addClass('hidden');
+					jQuery('.show-if-student').removeClass('hidden');
 				} else {
 					jQuery('.hide-if-student').removeClass('hidden');
+					jQuery('.show-if-student').addClass('hidden');
 				}
 			});
 		})(jQuery('select#get-info-Title'));

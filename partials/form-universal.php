@@ -31,7 +31,15 @@
 				</select>
 			</li>
 
-			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field" title="I have a Tour Scheduled">
+			<li id="student-thanks" name="student-thanks" class="show-if-student hidden" title="Students, thanks for your interest.">
+				<p id="student-thanks-p1"> <?php _e("Thanks for visiting!  There&#39;s nothing more we need from you.", 'worldstrides'); ?>
+				</p>
+				<p id="student-thanks-p2"> <?php _e("You can also visit all our social media sites and see what the excitement is all about.", 'worldstrides'); ?>
+					<?php _e(" Tell your friends about all these amazing places to visit.", 'worldstrides'); ?>
+				</p>
+			</li>
+
+			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field hide-if-student" title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
 				&nbsp;<wbr>
 				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
@@ -43,7 +51,7 @@
 
 			<?php get_template_part('partials/form','filters'); ?>
 
-			<li class="field field-complex hide-if-student ">
+			<li class="field field-complex hide-if-student">
 				<div class="field-left">
 					<label for="get-info-first-name" class="block no-placeholder">First Name</label>
 					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" title="First Name">
