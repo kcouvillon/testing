@@ -153,7 +153,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 							$background = 'url(' . $featured[0] . ')';
 							$class = '';
 						} else {
-							$class = ' pattern-' . rand(1, 9);
+							$class = ' ' . WS_Helpers::get_random_pattern();
 						} ?>
 
 						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">

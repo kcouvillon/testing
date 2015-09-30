@@ -36,7 +36,7 @@ get_header(); ?>
 								<a href="<?php echo esc_url( get_the_permalink( $post->ID ) ); ?>"><?php echo get_the_post_thumbnail( $post->ID, 'medium' ); ?></a>
 							</div>
 						<?php else : ?>
-							<div class="headshot-pattern pattern-<?php echo rand(1, 9); ?>">
+							<div class="headshot-pattern <?php echo WS_Helpers::get_random_pattern(); ?>">
 								<a href="<?php echo esc_url( get_the_permalink( $post->ID ) ); ?>"></a>
 							</div>
 						<?php endif; ?>

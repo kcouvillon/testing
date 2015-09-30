@@ -5,7 +5,7 @@
 ?>
 
 <section class="primary-section">
-	<header class="section-header resources-header pattern-<?php echo rand(1, 9); ?>">
+	<header class="section-header resources-header <?php echo WS_Helpers::get_random_pattern(); ?>">
 		<div class="ws-container">
 			<div class="section-header-content">
 				<nav class="breadcrumbs">
