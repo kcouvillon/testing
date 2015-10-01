@@ -35,9 +35,9 @@
 
 				if('stu' === role ) {
 					jQuery('.hide-if-student').addClass('hidden');
-					jQuery('.show-if-student').removeClass('hidden');
+					jQuery('.show-if-student').not('.hide-if-context').removeClass('hidden');
 				} else {
-					jQuery('.hide-if-student').removeClass('hidden');
+					jQuery('.hide-if-student').not('.hide-if-context').removeClass('hidden');
 					jQuery('.show-if-student').addClass('hidden');
 				}
 			});

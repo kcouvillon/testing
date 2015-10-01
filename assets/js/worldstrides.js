@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-09-30
+/*! WorldStrides - v0.1.0 - 2015-10-01
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -644,9 +644,9 @@
 
 				if('stu' === role ) {
 					jQuery('.hide-if-student').addClass('hidden');
-					jQuery('.show-if-student').removeClass('hidden');
+					jQuery('.show-if-student').not('.hide-if-context').removeClass('hidden');
 				} else {
-					jQuery('.hide-if-student').removeClass('hidden');
+					jQuery('.hide-if-student').not('.hide-if-context').removeClass('hidden');
 					jQuery('.show-if-student').addClass('hidden');
 				}
 			});
