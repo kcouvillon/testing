@@ -170,7 +170,7 @@ class WS_Marketo {
 					$lead->wsProduct = 'High School - International'; // abroad means Perspectives Division
 				}
 			} elseif ( 'Science Themed Programs (K-12)' == $lead->leadFormProduct ) {
-				$lead->wsProduct = 'Middle School - Sciences';
+				$lead->wsProduct = 'Middle School - Science';
 			} elseif ( 'Undergraduate Tours' == $lead->leadFormProduct || 
 					   'Graduate-Level Tours' ==  $lead->leadFormProduct ) {
 				$lead->wsProduct = 'Capstone'; // does not exist in Maximizer yet
