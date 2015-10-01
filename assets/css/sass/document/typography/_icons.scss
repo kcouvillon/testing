@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'worldstrides-ui';
-	src:url('../fonts/worldstrides-ui.eot?-jyyfio');
-	src:url('../fonts/worldstrides-ui.eot?#iefix-jyyfio') format('embedded-opentype'),
-		url('../fonts/worldstrides-ui.ttf?-jyyfio') format('truetype'),
-		url('../fonts/worldstrides-ui.woff?-jyyfio') format('woff'),
-		url('../fonts/worldstrides-ui.svg?-jyyfio#worldstrides-ui') format('svg');
+	src:url('../fonts/worldstrides-ui.eot?-iu707y');
+	src:url('../fonts/worldstrides-ui.eot?-iu707y#iefix') format('embedded-opentype'),
+		url('../fonts/worldstrides-ui.ttf?-iu707y') format('truetype'),
+		url('../fonts/worldstrides-ui.woff?-iu707y') format('woff'),
+		url('../fonts/worldstrides-ui.svg?-iu707y#worldstrides-ui') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,13 +23,16 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-faith-based:before {
+	content: "\e623";
+}
 .icon-sports:before {
 	content: "\e622";
 }
 .icon-shield:before {
 	content: "\e621";
 }
-.icon-faith-and-service:before {
+.icon-service:before {
 	content: "\e61c";
 }
 .icon-professional:before {
