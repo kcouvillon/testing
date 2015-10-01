@@ -161,7 +161,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 						</li>
 
 					<?php endforeach; ?>
-
+					<?php $resource = null; ?>
 				</ul>
 			</section>
 		<?php endif; ?>

@@ -191,6 +191,7 @@ $associated_itineraries = new WP_Query( array(
 					
 						<?php $count++; ?>
 					<?php endforeach; ?>
+					<?php $resource = null; ?>
 
 				</ul>
 		</section>

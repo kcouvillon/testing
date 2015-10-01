@@ -210,7 +210,7 @@ get_header(); ?>
 						</li>
 
 					<?php endforeach; ?>
-
+					<?php $resource = null; ?>
 				</ul>
 
 		</section>
