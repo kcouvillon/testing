@@ -37,8 +37,8 @@ get_header(); ?>
 					<div class="section-header-content">
 
 						<nav class="breadcrumbs hide-print">
-							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>
-							<span>Collections</span>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>'"?>Home</a>>
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
 							<?php if( ! empty( $term ) ) : ?>
 								<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
 							<?php endif; ?>

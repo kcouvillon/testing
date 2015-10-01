@@ -76,7 +76,8 @@ $associated_itineraries = new WP_Query( array(
 				<div class="ws-container">
 					<div class="section-header-content">
 						<nav class="breadcrumbs">
-							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>'"?>Home</a>>
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
 							<span><?php the_title(); ?></span>
 						</nav>
 						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
