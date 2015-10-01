@@ -12,7 +12,7 @@ $travelersArgs = array(
 	'hide_empty' => false
 	);
 $continentsArgs = array( 
-	'parent' => 6, // Destination
+	'parent' => 498, // Destination
 	'orderby' => 'term_order', 
 	'hide_empty' => false
 	);
