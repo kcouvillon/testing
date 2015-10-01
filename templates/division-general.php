@@ -258,7 +258,7 @@ get_header(); ?>
 						$background = '';
 						$title = get_the_title();
 						$url = get_the_permalink();
-						if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives' ) ) ) {
+						if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives', 'on-stage' ) ) ) {
 							$meta_list = array(
 								array( 'name' => WS_Helpers::get_subtitle( $post->ID ) )
 							);
