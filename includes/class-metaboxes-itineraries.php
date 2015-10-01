@@ -70,6 +70,7 @@ class WS_Metaboxes_Itineraries {
 			'options'          => array(
 				'regular' => __( 'Regular', 'cmb' ),
 				'smithsonian'   => __( 'Smithsonian', 'cmb' ),
+				'no-destination'   => __( 'No Destination', 'cmb' ),
 			),
 		) );
 
