@@ -274,7 +274,7 @@ get_header(); ?>
 						$json_dates = '';
 						$title = get_the_title();
 						$url = get_the_permalink();
-						$meta_list = array( array( "name" => WS_Helpers::get_subtitle( $post->ID ) ) );
+						$meta_list = array( array( "name" => WS_Helpers::get_subtitle( $post->ID, 'traveler' ) ) );
 
 						if ( has_post_thumbnail( $post->ID ) ) {
 							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );

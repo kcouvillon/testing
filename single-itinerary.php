@@ -123,6 +123,7 @@ get_header(); ?>
 
 		</section>
 
+		<?php if ( 'no-destination' != $itinerary_type ) : ?>
 		<section class="tour-details">
 			<div class="ws-container">
 
@@ -260,6 +261,7 @@ get_header(); ?>
 				</li>
 			</ul>
 		</section>
+		<?php endif; // end no-destination check ?>
 
 		<?php $section_num = 1; // set first section number ?>
 
