@@ -90,12 +90,6 @@ class WS_Marketo {
 	}
 
 	public static function get_marketo_form( $post_id ) {
-		?>
-		<section class="learn-more clearfix ws-container">
-			<?php get_template_part('partials/form','universal'); ?>
-		</section>		
-		<?php
-
 		/*
 		foreach ( $product_lines as $division ) {
 
@@ -124,6 +118,8 @@ class WS_Marketo {
 		*/
 		
 		// echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
+
+		echo do_shortcode( "[marketo id=1699 mdrapi=true]" ); // remove form_id logic -- just give the universal
 	}
 	
 	public static function submit_marketo_data() {
