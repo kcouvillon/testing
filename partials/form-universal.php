@@ -2,7 +2,7 @@
  $post_id = get_the_ID();
  $title = get_the_title( $post_id );
 
- if($title === "Home") { // @todo - move this to the leading question: Ready to learn more?
+ if(false === get_the_terms( $post_id, 'product-line' )) { // different greeting based on context
  	$title = __("Ready to Learn More About Traveling with WorldStrides?", "worldstrides");
  } else {
  	$title = sprintf(__("Thank you for your interest in our WorldStrides %s Tour! Please tell us a little more about yourself so we can get you sent to the right place."),$title);
