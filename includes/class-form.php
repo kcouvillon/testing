@@ -50,15 +50,16 @@ class WS_Form {
 		$attributes = shortcode_atts( array(
 			// No attributes defined yet
 		), $attributes, 'worldstrides-form' );
+		ob_start(); ?>
 
-		ob_start(); 
+		<section class="learn-more clearfix ws-container">
+			<?php get_template_part('partials/form','universal'); /* provide the universal form */ ?>
+		</section>
 
-		get_template_part('partials/form','universal'); // provide the universal form
+		<?php 
 
 		$output = ob_get_contents();
-
 		ob_end_clean();
-
 		return $output;
 	}
 
