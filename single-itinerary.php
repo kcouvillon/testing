@@ -37,8 +37,8 @@ get_header(); ?>
 					<div class="section-header-content">
 
 						<nav class="breadcrumbs hide-print">
-							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>
-							<span>Collections</span>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>'"?>Home</a>>
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
 							<?php if( ! empty( $term ) ) : ?>
 								<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
 							<?php endif; ?>
@@ -79,7 +79,7 @@ get_header(); ?>
 						// Get highlights
 
 						$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
-						if ( ! empty( $highlights[1]['image'] ) ) : ?>
+						if ( ! empty( $highlights[1]['image'] ) && 'no-destination' != $itinerary_type ) : ?>
 							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
 						<?php endif; ?>
 
@@ -122,6 +122,8 @@ get_header(); ?>
 			</nav>
 
 		</section>
+
+		<?php $section_num = 1; // set first section number ?>
 
 		<?php if ( 'no-destination' != $itinerary_type ) : ?>
 		<section class="tour-details">
@@ -261,9 +263,6 @@ get_header(); ?>
 				</li>
 			</ul>
 		</section>
-		<?php endif; // end no-destination check ?>
-
-		<?php $section_num = 1; // set first section number ?>
 
 		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<?php 
@@ -331,7 +330,8 @@ get_header(); ?>
 			</section>
 			<!-- // -->
 
-		<?php endif; ?>
+		<?php endif; // tour highlights ?>
+		<?php endif; // end no-destination check ?>
 
 
 		<?php if ( ! empty( $before_block_sections ) ) : ?>
