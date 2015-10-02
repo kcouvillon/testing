@@ -51,7 +51,7 @@ class WS_Form {
 			// No attributes defined yet
 		), $attributes, 'worldstrides-form' );
 
-		ob_start() 
+		ob_start(); 
 
 		get_template_part('partials/form','universal'); // provide the universal form
 

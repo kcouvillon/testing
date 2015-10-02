@@ -69,7 +69,7 @@ class WS_Marketo {
 			$mdr_include_js = "";
 		}
 
-		ob_start() ?>
+		ob_start(); ?>
 
 			<div class="embedded-marketo-form">
 				<?php echo $mdr_include_js; ?>
