@@ -9498,19 +9498,21 @@ section:after {
   background: #323c53;
   color: #777d8d;
   font-size: 16px;
+  background-image: url(../images/ripple.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
   /* Filters (mobile and desktop)
 	 * ------------------------------------------------------------- */
   /* Desktop Current Filters
 	 * ------------------------------------------------------------- */
   /* Filter Menu
 	 * ------------------------------------------------------------- */ }
-  .explore-filters.filter-menus-closed .filter-menus {
-    transition: max-height 400ms ease-out; }
-    @media screen and (min-width: 768px) {
-      .explore-filters.filter-menus-closed .filter-menus {
-        max-height: 0; } }
-  .explore-filters.filter-menus-closed ~ .explore-filters-toggle .icon-arrow-up:before {
-    content: "\e617"; }
+  .explore-filters.results-loaded {
+    background-image: none; }
+    .explore-filters.results-loaded .filter-menus {
+      opacity: 1; }
+      .ws-no-opacity .explore-filters.results-loaded .filter-menus {
+        visibility: visible; }
   .explore-filters a {
     color: #FFF;
     font-weight: 600; }
@@ -9525,7 +9527,10 @@ section:after {
     height: auto;
     max-height: 1000px;
     overflow: hidden;
-    transition: max-height 400ms ease-in; }
+    opacity: 0;
+    transition: opacity 300ms ease; }
+    .ws-no-opacity .explore-filters .filter-menus {
+      visibility: hidden; }
   .explore-filters .traveler-filters,
   .explore-filters .interests-filters,
   .explore-filters .destination-filters {

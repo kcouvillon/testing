@@ -223,6 +223,9 @@
 				},
 				callbacks: {
 					onMixLoad: function(state){
+
+						$('.explore-filters').addClass('results-loaded');
+
 						if ( filters ) {
 
 							if ( filters.travelers ) {
@@ -379,11 +382,6 @@
 					.slideToggle()
 					.toggleClass('closed open');
 			})
-			// .on('click', '.explore-filters-toggle', function(event){
-			// 	event.preventDefault();
-
-			// 	$('.explore-filters').toggleClass('filter-menus-closed');
-			// })
 			.on('click', 'a[href="#explore-results"]', function(event){
 				event.preventDefault();
 				var offsetTop = $('#explore-results').offset().top;
