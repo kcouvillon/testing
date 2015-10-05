@@ -33,6 +33,9 @@
 				selectors: {
 					target: '.tile',
 				},
+				layout: {
+					display: 'block',
+				},
 				animation: {
 					duration: 350,
 					effects: 'fade',
@@ -89,6 +92,12 @@
 
 				$('.program.tile').addClass('available');
 				$('#mix-container').mixItUp('filter', '.available');
+
+				if ( $('.tile.available').length > 9 ) {
+					$('.programs-container').addClass('count-9-plus');
+				} else {
+					$('.programs-container').removeClass('count-9-plus');
+				}
 			});
 
 		}
@@ -145,42 +154,7 @@
 		$('#jrange .ui-datepicker').prepend('<div class="calendar-title">Select a range from the available dates</div>');
 		$('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Apply</button>')
 			.appendTo($('#jrange div .ui-datepicker-buttonpane'))
-			.on('click', function () { 
-
-				$('#jrange').removeClass('open');
-				$('#jrange .datepicker').hide();
-
-				if ( prv !== -1 && cur !== -1 ) {
-					
-					$('#jrange').addClass('has-dates');
-					
-					$('.program.tile').each(function(i){
-						var i = 0, 
-							isAvailable = false,
-							dates = $(this).data('dates');
-
-						while( i < dates.length ) {
-							if ( dates[i][0] >= Math.min(prv,cur) && dates[i][1] <= Math.max(prv,cur) ) {
-								isAvailable = true;
-								break;
-							}
-							i++;
-						}
-
-						if ( isAvailable ) {
-							$(this).addClass('available');
-						} else {
-							$(this).removeClass('available');
-						}
-					});
-
-				} else {
-					$('#jrange').removeClass('has-dates');
-				}
-
-				$('#mix-container').mixItUp('filter', '.available');
-
-			});
+			.on('click', applyDatesFunc);
 		$('<a href="#close-calendar" ><i class="icon icon-small-close"></i> Close</a>')
 			.appendTo($('#jrange div .ui-datepicker-buttonpane'))
 			.on('click', function (e) {
@@ -188,6 +162,46 @@
 				$('#jrange').removeClass('open');
 				$('#jrange .datepicker').hide();
 			});
+	}
+
+	function applyDatesFunc() { 
+		$('#jrange').removeClass('open');
+		$('#jrange .datepicker').hide();
+
+		if ( prv !== -1 && cur !== -1 ) {
+			
+			$('#jrange').addClass('has-dates');
+			
+			$('.program.tile').each(function(i){
+				var i = 0, 
+					isAvailable = false,
+					dates = $(this).data('dates');
+
+				while( i < dates.length ) {
+					if ( dates[i][0] >= Math.min(prv,cur) && dates[i][1] <= Math.max(prv,cur) ) {
+						isAvailable = true;
+						break;
+					}
+					i++;
+				}
+
+				if ( isAvailable ) {
+					$(this).addClass('available');
+				} else {
+					$(this).removeClass('available');
+				}
+			});
+
+		} else {
+			$('#jrange').removeClass('has-dates');
+		}
+
+		$('#mix-container').mixItUp('filter', '.available');
+		if ( $('.tile.available').length > 9 ) {
+			$('.programs-container').addClass('count-9-plus');
+		} else {
+			$('.programs-container').removeClass('count-9-plus');
+		}
 	}
 
 })(jQuery, window);
@@ -1855,6 +1869,34 @@ wsData.states =
 	});
 
  } )( jQuery );
+( function( $, window, undefined ) {
+
+	'use strict';
+
+	// Toggles
+
+	$(document).ready(function(){
+
+		var $programsContainer = $('.programs-container');
+
+		if ( $programsContainer.length ) {
+		
+			$('.programs-container .toggle-all').click(function(){
+				var text = $(this).text();
+				if ( text == 'See All' ) {
+					$programsContainer.addClass('show-all');
+					$(this).text('Close');
+				} else {
+					$programsContainer.removeClass('show-all');
+					$(this).text('See All');
+				}
+			});
+		
+		}
+
+	});
+
+})(jQuery, window);
 /*!
 * jQuery Cycle2; version: 2.1.6 build: 20141007
 * http://jquery.malsup.com/cycle2/

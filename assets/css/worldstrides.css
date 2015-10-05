@@ -8131,7 +8131,7 @@ a.text-color-link {
 
 #jrange {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   right: 5vw;
   top: 0px; }
   #jrange.has-dates .mask {
@@ -10564,6 +10564,47 @@ section:after {
 .list-tag-no-link {
   color: #fff;
   font-size: 0.75em; }
+
+/* Programs containers
+ * -------------------------------------- */
+.programs-container {
+  position: relative;
+  margin-bottom: 5em; }
+  .programs-container.count-9-plus {
+    padding-top: 506.25%;
+    height: 0; }
+    @media (min-width: 768px) {
+      .programs-container.count-9-plus {
+        padding-top: 120%; } }
+    @media (min-width: 960px) {
+      .programs-container.count-9-plus {
+        padding-top: 63%; } }
+    .programs-container.count-9-plus .toggle-all {
+      display: block; }
+    .programs-container.count-9-plus .programs-list {
+      position: absolute; }
+  .programs-container.show-all {
+    height: auto;
+    padding-top: 0; }
+    .programs-container.show-all .programs-list {
+      position: relative; }
+  .programs-container .toggle-all {
+    display: none;
+    position: absolute;
+    bottom: -40px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    color: #fb901d; }
+    .programs-container .toggle-all:hover {
+      color: #1a1a1a; }
+
+.programs-list {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
 
 .itinerary-pricing {
   background-color: #323c53;
