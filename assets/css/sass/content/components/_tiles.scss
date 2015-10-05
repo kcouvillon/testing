@@ -98,3 +98,57 @@
 	color: #fff;
 	font-size: 0.75em;
 }
+
+
+/* Programs containers
+ * -------------------------------------- */
+.programs-container {
+	position: relative;
+	margin-bottom: 5em;
+	&.count-9-plus {
+		padding-top: 56.25% * 9;
+		height: 0;
+		@include susy-media($screen-sm) {
+			padding-top: 30% * 4;
+		}
+		@include susy-media($screen-md) {
+			padding-top: 21% * 3;
+		}
+
+		.toggle-all {
+			display: block;
+		}
+
+		.programs-list {
+			position: absolute;
+		}
+	}
+	&.show-all {
+		height: auto;
+		padding-top: 0;
+		.programs-list {
+			position: relative;
+		}
+	}
+
+	.toggle-all {
+		display: none;
+		position: absolute;
+		bottom: -40px;
+		text-align: center;
+		width: 100%;
+		cursor: pointer;
+		color: $orange;
+		&:hover {
+			color: $color_text_main;
+		}
+	}
+}
+
+.programs-list {
+	position: relative;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
