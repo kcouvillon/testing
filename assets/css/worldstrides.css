@@ -9447,7 +9447,7 @@ section:after {
       .explore-tool .results-count {
         position: absolute;
         bottom: 100%;
-        width: 270px;
+        width: 290px;
         padding: 0.5em 1em 0.5em 1em;
         background-color: #323c53;
         margin-left: 233px;
@@ -9476,7 +9476,7 @@ section:after {
         display: block;
         position: absolute;
         bottom: 0;
-        margin: 0 0 0 503px;
+        margin: 0 0 0 523px;
         background-color: #323c53;
         padding: 0.5em 1em 0.5em 0.5em;
         border: 0;
