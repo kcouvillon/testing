@@ -6159,135 +6159,128 @@ label {
   font-weight: 400;
   margin-right: 5px; }
 
-.ws-form:before,
-.ws-form:after {
-  content: "";
-  display: table; }
-
-.ws-form:after {
-  clear: both; }
-
-.ws-form label.block {
-  display: block; }
-
-.ws-form label.hide {
-  display: none; }
-
-.ws-placeholder .ws-form label.no-placeholder {
-  display: none; }
-
-.ws-form .form-title {
-  margin: 0 0 1em;
-  font-weight: lighter; }
-
-@media (min-width: 960px) {
-  .ws-form .left {
-    width: 49.0196078431%;
-    float: left;
-    margin-right: 1.9607843137%; } }
-
-@media (min-width: 960px) {
-  .ws-form .right {
-    width: 49.0196078431%;
-    float: right;
-    margin-right: 0; } }
-
-.ws-form input[type="text"],
-.ws-form input[type="email"],
-.ws-form input[type="tel"],
-.ws-form input[type="name"],
-.ws-form input[type="url"],
-.ws-form input[type="search"],
-.ws-form input[type="date"],
-.ws-form input[type="number"],
-.ws-form textarea {
-  display: block;
-  width: 100%;
-  background-color: #b3b7bf;
-  border: 0;
-  padding: 0.8em;
-  max-height: 50px;
-  color: #323c53; }
-  .ws-form input[type="text"]:focus,
-  .ws-form input[type="email"]:focus,
-  .ws-form input[type="tel"]:focus,
-  .ws-form input[type="name"]:focus,
-  .ws-form input[type="url"]:focus,
-  .ws-form input[type="search"]:focus,
-  .ws-form input[type="date"]:focus,
-  .ws-form input[type="number"]:focus,
-  .ws-form textarea:focus {
-    background-color: #f2f2f4;
-    outline: none; }
-  .ws-form input[type="text"]::-webkit-input-placeholder,
-  .ws-form input[type="email"]::-webkit-input-placeholder,
-  .ws-form input[type="tel"]::-webkit-input-placeholder,
-  .ws-form input[type="name"]::-webkit-input-placeholder,
-  .ws-form input[type="url"]::-webkit-input-placeholder,
-  .ws-form input[type="search"]::-webkit-input-placeholder,
-  .ws-form input[type="date"]::-webkit-input-placeholder,
-  .ws-form input[type="number"]::-webkit-input-placeholder,
-  .ws-form textarea::-webkit-input-placeholder {
-    color: #777d8d; }
-  .ws-form input[type="text"]::-moz-placeholder,
-  .ws-form input[type="email"]::-moz-placeholder,
-  .ws-form input[type="tel"]::-moz-placeholder,
-  .ws-form input[type="name"]::-moz-placeholder,
-  .ws-form input[type="url"]::-moz-placeholder,
-  .ws-form input[type="search"]::-moz-placeholder,
-  .ws-form input[type="date"]::-moz-placeholder,
-  .ws-form input[type="number"]::-moz-placeholder,
-  .ws-form textarea::-moz-placeholder {
-    color: #777d8d; }
-  .ws-form input[type="text"]:-moz-placeholder,
-  .ws-form input[type="email"]:-moz-placeholder,
-  .ws-form input[type="tel"]:-moz-placeholder,
-  .ws-form input[type="name"]:-moz-placeholder,
-  .ws-form input[type="url"]:-moz-placeholder,
-  .ws-form input[type="search"]:-moz-placeholder,
-  .ws-form input[type="date"]:-moz-placeholder,
-  .ws-form input[type="number"]:-moz-placeholder,
-  .ws-form textarea:-moz-placeholder {
-    color: #777d8d; }
-  .ws-form input[type="text"]:-ms-input-placeholder,
-  .ws-form input[type="email"]:-ms-input-placeholder,
-  .ws-form input[type="tel"]:-ms-input-placeholder,
-  .ws-form input[type="name"]:-ms-input-placeholder,
-  .ws-form input[type="url"]:-ms-input-placeholder,
-  .ws-form input[type="search"]:-ms-input-placeholder,
-  .ws-form input[type="date"]:-ms-input-placeholder,
-  .ws-form input[type="number"]:-ms-input-placeholder,
-  .ws-form textarea:-ms-input-placeholder {
-    color: #777d8d; }
-
-.ws-form .field {
-  margin-bottom: 0.8em; }
-
-.ws-form .field-complex:before,
-.ws-form .field-complex:after {
-  content: "";
-  display: table; }
-
-.ws-form .field-complex:after {
-  clear: both; }
-
-.ws-form .field-complex .field-left {
-  margin-bottom: 0.8em; }
-  @media (min-width: 768px) {
-    .ws-form .field-complex .field-left {
-      width: 48%;
+.ws-form {
+  /* A hack to fix the br tags that get inserted 
+	 * from the [worldstrides-form] shortcode.
+	 * TO-DO: Delete if shortcode can be fixed */
+  /* --------------------------------------- */ }
+  .ws-form:before,
+  .ws-form:after {
+    content: "";
+    display: table; }
+  .ws-form:after {
+    clear: both; }
+  .ws-form label.block {
+    display: block; }
+  .ws-form label.hide {
+    display: none; }
+  .ws-placeholder .ws-form label.no-placeholder {
+    display: none; }
+  .ws-form br {
+    display: none; }
+  .ws-form .form-title {
+    margin: 0 0 1em;
+    font-weight: lighter; }
+  @media (min-width: 960px) {
+    .ws-form .left {
+      width: 49.0196078431%;
       float: left;
-      margin-right: 4%;
-      margin-bottom: 0; } }
-
-@media (min-width: 768px) {
-  .ws-form .field-complex .field-right {
-    width: 48%;
-    float: right;
-    margin-right: 0; } }
-
-.ws-form .help-text {
-  font-size: 14px; }
+      margin-right: 1.9607843137%; } }
+  @media (min-width: 960px) {
+    .ws-form .right {
+      width: 49.0196078431%;
+      float: right;
+      margin-right: 0; } }
+  .ws-form input[type="text"],
+  .ws-form input[type="email"],
+  .ws-form input[type="tel"],
+  .ws-form input[type="name"],
+  .ws-form input[type="url"],
+  .ws-form input[type="search"],
+  .ws-form input[type="date"],
+  .ws-form input[type="number"],
+  .ws-form textarea {
+    display: block;
+    width: 100%;
+    background-color: #b3b7bf;
+    border: 0;
+    padding: 0.8em;
+    max-height: 50px;
+    color: #323c53; }
+    .ws-form input[type="text"]:focus,
+    .ws-form input[type="email"]:focus,
+    .ws-form input[type="tel"]:focus,
+    .ws-form input[type="name"]:focus,
+    .ws-form input[type="url"]:focus,
+    .ws-form input[type="search"]:focus,
+    .ws-form input[type="date"]:focus,
+    .ws-form input[type="number"]:focus,
+    .ws-form textarea:focus {
+      background-color: #f2f2f4;
+      outline: none; }
+    .ws-form input[type="text"]::-webkit-input-placeholder,
+    .ws-form input[type="email"]::-webkit-input-placeholder,
+    .ws-form input[type="tel"]::-webkit-input-placeholder,
+    .ws-form input[type="name"]::-webkit-input-placeholder,
+    .ws-form input[type="url"]::-webkit-input-placeholder,
+    .ws-form input[type="search"]::-webkit-input-placeholder,
+    .ws-form input[type="date"]::-webkit-input-placeholder,
+    .ws-form input[type="number"]::-webkit-input-placeholder,
+    .ws-form textarea::-webkit-input-placeholder {
+      color: #777d8d; }
+    .ws-form input[type="text"]::-moz-placeholder,
+    .ws-form input[type="email"]::-moz-placeholder,
+    .ws-form input[type="tel"]::-moz-placeholder,
+    .ws-form input[type="name"]::-moz-placeholder,
+    .ws-form input[type="url"]::-moz-placeholder,
+    .ws-form input[type="search"]::-moz-placeholder,
+    .ws-form input[type="date"]::-moz-placeholder,
+    .ws-form input[type="number"]::-moz-placeholder,
+    .ws-form textarea::-moz-placeholder {
+      color: #777d8d; }
+    .ws-form input[type="text"]:-moz-placeholder,
+    .ws-form input[type="email"]:-moz-placeholder,
+    .ws-form input[type="tel"]:-moz-placeholder,
+    .ws-form input[type="name"]:-moz-placeholder,
+    .ws-form input[type="url"]:-moz-placeholder,
+    .ws-form input[type="search"]:-moz-placeholder,
+    .ws-form input[type="date"]:-moz-placeholder,
+    .ws-form input[type="number"]:-moz-placeholder,
+    .ws-form textarea:-moz-placeholder {
+      color: #777d8d; }
+    .ws-form input[type="text"]:-ms-input-placeholder,
+    .ws-form input[type="email"]:-ms-input-placeholder,
+    .ws-form input[type="tel"]:-ms-input-placeholder,
+    .ws-form input[type="name"]:-ms-input-placeholder,
+    .ws-form input[type="url"]:-ms-input-placeholder,
+    .ws-form input[type="search"]:-ms-input-placeholder,
+    .ws-form input[type="date"]:-ms-input-placeholder,
+    .ws-form input[type="number"]:-ms-input-placeholder,
+    .ws-form textarea:-ms-input-placeholder {
+      color: #777d8d; }
+  .ws-form .field {
+    margin-bottom: 0.8em; }
+  .ws-form .field-complex:before,
+  .ws-form .field-complex:after {
+    content: "";
+    display: table; }
+  .ws-form .field-complex:after {
+    clear: both; }
+  .ws-form .field-complex .field-left {
+    margin-bottom: 0.8em; }
+    @media (min-width: 768px) {
+      .ws-form .field-complex .field-left {
+        width: 48%;
+        float: left;
+        margin-right: 4%;
+        margin-bottom: 0; } }
+  @media (min-width: 768px) {
+    .ws-form .field-complex .field-right {
+      width: 48%;
+      float: right;
+      margin-right: 0; } }
+  .ws-form .help-text {
+    font-size: 14px; }
 
 .learn-more {
   margin-top: 4em;
@@ -8131,7 +8124,7 @@ a.text-color-link {
 
 #jrange {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   right: 5vw;
   top: 0px; }
   #jrange.has-dates .mask {
@@ -9447,7 +9440,7 @@ section:after {
       .explore-tool .results-count {
         position: absolute;
         bottom: 100%;
-        width: 270px;
+        width: 290px;
         padding: 0.5em 1em 0.5em 1em;
         background-color: #323c53;
         margin-left: 233px;
@@ -9476,7 +9469,7 @@ section:after {
         display: block;
         position: absolute;
         bottom: 0;
-        margin: 0 0 0 503px;
+        margin: 0 0 0 523px;
         background-color: #323c53;
         padding: 0.5em 1em 0.5em 0.5em;
         border: 0;
@@ -9498,19 +9491,21 @@ section:after {
   background: #323c53;
   color: #777d8d;
   font-size: 16px;
+  background-image: url(../images/ripple.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
   /* Filters (mobile and desktop)
 	 * ------------------------------------------------------------- */
   /* Desktop Current Filters
 	 * ------------------------------------------------------------- */
   /* Filter Menu
 	 * ------------------------------------------------------------- */ }
-  .explore-filters.filter-menus-closed .filter-menus {
-    transition: max-height 400ms ease-out; }
-    @media screen and (min-width: 768px) {
-      .explore-filters.filter-menus-closed .filter-menus {
-        max-height: 0; } }
-  .explore-filters.filter-menus-closed ~ .explore-filters-toggle .icon-arrow-up:before {
-    content: "\e617"; }
+  .explore-filters.results-loaded {
+    background-image: none; }
+    .explore-filters.results-loaded .filter-menus {
+      opacity: 1; }
+      .ws-no-opacity .explore-filters.results-loaded .filter-menus {
+        visibility: visible; }
   .explore-filters a {
     color: #FFF;
     font-weight: 600; }
@@ -9525,7 +9520,10 @@ section:after {
     height: auto;
     max-height: 1000px;
     overflow: hidden;
-    transition: max-height 400ms ease-in; }
+    opacity: 0;
+    transition: opacity 300ms ease; }
+    .ws-no-opacity .explore-filters .filter-menus {
+      visibility: hidden; }
   .explore-filters .traveler-filters,
   .explore-filters .interests-filters,
   .explore-filters .destination-filters {
@@ -10559,6 +10557,47 @@ section:after {
 .list-tag-no-link {
   color: #fff;
   font-size: 0.75em; }
+
+/* Programs containers
+ * -------------------------------------- */
+.programs-container {
+  position: relative;
+  margin-bottom: 5em; }
+  .programs-container.count-9-plus {
+    padding-top: 506.25%;
+    height: 0; }
+    @media (min-width: 768px) {
+      .programs-container.count-9-plus {
+        padding-top: 120%; } }
+    @media (min-width: 960px) {
+      .programs-container.count-9-plus {
+        padding-top: 63%; } }
+    .programs-container.count-9-plus .toggle-all {
+      display: block; }
+    .programs-container.count-9-plus .programs-list {
+      position: absolute; }
+  .programs-container.show-all {
+    height: auto;
+    padding-top: 0; }
+    .programs-container.show-all .programs-list {
+      position: relative; }
+  .programs-container .toggle-all {
+    display: none;
+    position: absolute;
+    bottom: -40px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    color: #fb901d; }
+    .programs-container .toggle-all:hover {
+      color: #1a1a1a; }
+
+.programs-list {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
 
 .itinerary-pricing {
   background-color: #323c53;

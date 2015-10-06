@@ -55,6 +55,14 @@ label {
 		}
 	}
 
+	/* A hack to fix the br tags that get inserted 
+	 * from the [worldstrides-form] shortcode.
+	 * TO-DO: Delete if shortcode can be fixed */
+	br {
+		display: none;
+	}
+	/* --------------------------------------- */
+
 	.form-title {
 		margin: 0 0 1em;
 		font-weight: lighter;
