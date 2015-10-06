@@ -74,11 +74,9 @@
 				jQuery('#get-info-Product option').not('.'+role).hide();
 
 				if('stu' === role ) {
-					jQuery('.hide-if-student').addClass('hidden');
-					jQuery('.show-if-student').not('.hide-if-context').removeClass('hidden');
+					jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
 				} else {
-					jQuery('.hide-if-student').not('.hide-if-context').removeClass('hidden');
-					jQuery('.show-if-student').addClass('hidden');
+					jQuery('.hidden-for-student').not('.hide-if-context').removeClass('hidden');
 				}
 			});
 		})(jQuery('select#get-info-Title'));

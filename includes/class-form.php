@@ -63,7 +63,9 @@ class WS_Form {
 		return $output;
 	}
 
-
+	public function get_worldstrides_form() {
+		
+	}
 
 }
 
