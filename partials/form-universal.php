@@ -41,15 +41,21 @@
 
 			</li>
 
-			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field hide-if-student" title="I have a Tour Scheduled">
-				<label>I have a tour scheduled:</label>
-				&nbsp;<wbr>
-				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
-				<label for="tour-yes">Yes</label>
-				&nbsp;
-				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
-				<label for="tour-no">No</label>
-			</li>
+			<?php
+			/**
+			 *
+			 *			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field hide-if-student" title="I have a Tour Scheduled">
+			 *				<label>I have a tour scheduled:</label>
+			 *				 &nbsp;<wbr>
+			 *				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
+			 *				<label for="tour-yes">Yes</label>
+			 *				&nbsp;
+			 *				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
+			 *				<label for="tour-no">No</label>
+			 *			</li>
+			 */
+			?>
+
 
 			<?php get_template_part('partials/form','filters'); ?>
 

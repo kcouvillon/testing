@@ -53,12 +53,6 @@
 				}
 			});
 
-
-
-
-
-
-
 	};
 
 	function universalLead() {

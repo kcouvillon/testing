@@ -129,7 +129,7 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 	if(!empty($child_interests)) : ?>
 
 <li id="interest-detail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
-	<label for="get-info-moredetail-<?php echo $interest->slug; ?>">I want to learn more about</label>
+	<label for="get-info-moredetail-<?php echo $interest->slug; ?>">Visitors to this page are generally interested in:</label>
 	<select id="get-info-moredetail-<?php echo $interest->slug; ?>" name="mkto_wsInterestDetail" title="-<?php echo 'Specific Interest within ' . $interest->name; ?>">
 		<option value="">Select...</option>
 
@@ -154,6 +154,8 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 	<label for="get-info-Product">I want to learn more about</label>
 	<select id="get-info-Product" name="mkto_leadFormProduct">
 		<option value="" class='non stu par ele mse hse une'>Select...</option>
+		<option value='my upcoming WorldStrides tour' class='non stu par ele mse hse'>my upcoming WorldStrides tour</option>
+		<option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option>
 		<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
 		<option value='Science Themed Programs (K-12)' class='non stu par ele mse hse'>Science Themed Programs (K-12)</option>
 		<option value='Sports Tours' class='non stu par ele mse hse une'>Sports Tours</option>
