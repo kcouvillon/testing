@@ -8317,6 +8317,9 @@ a.text-color-link {
       float: right;
       margin-right: 0; } }
 
+.password-protected-page {
+  margin-top: 250px; }
+
 /* _page.scss
  * ----------------------------------------- */
 section:before,
