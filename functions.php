@@ -50,6 +50,7 @@ include WS_PATH . 'includes/class-metaboxes-collections.php';
 include WS_PATH . 'includes/class-metaboxes-divisions.php';
 include WS_PATH . 'includes/class-metaboxes-itineraries.php';
 include WS_PATH . 'includes/class-metaboxes-filter-endpoints.php';
+include WS_PATH . 'includes/class-metaboxes-resource-targets.php';
 include WS_PATH . 'includes/class-shortcodes.php';
 include WS_PATH . 'includes/class-taxos.php';
 
