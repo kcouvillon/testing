@@ -88,8 +88,8 @@ get_header(); ?>
 				<div class="ws-container">
 					<div class="section-header-content">
 						<nav class="breadcrumbs hide-print">
-							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
-							<span>Collections</span>>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>'"?>Home</a>>
+							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
 							<span><?php the_title(); ?></span>
 						</nav>
 						<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
@@ -263,47 +263,49 @@ get_header(); ?>
 						</div>
 					<?php endif; ?>
 				</header>
-				<ul <?php echo ( "on" === $calendar ) ? 'id="mix-container"' : ''; ?> class="programs-list list-unstyled clearfix">
 
-					<?php while ( $associated_itineraries->have_posts() ) : $associated_itineraries->the_post(); ?>
-						
-						<?php
-						$background = '';
-						$class = '';
-						$dates = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
-						$json_dates = '';
-						$title = get_the_title();
-						$url = get_the_permalink();
-						$meta_list = array( array( "name" => WS_Helpers::get_subtitle( $post->ID ) ) );
+				<div class="programs-container <?php echo ($associated_itineraries->post_count > 9) ? 'count-9-plus' : ''; ?>">
+					<ul <?php echo ( "on" === $calendar ) ? 'id="mix-container"' : ''; ?> class="programs-list list-unstyled clearfix">
 
-						if ( has_post_thumbnail( $post->ID ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-							$background = 'url(' . $featured[0] . ')';
-							$class = ' has-tile-image';
-						} else {
-							$class = ' ' . WS_Helpers::get_random_pattern('dark');
-						}
+						<?php while ( $associated_itineraries->have_posts() ) : $associated_itineraries->the_post(); ?>
+							
+							<?php
+							$background = '';
+							$class = '';
+							$dates = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
+							$json_dates = '';
+							$title = get_the_title();
+							$url = get_the_permalink();
+							$meta_list = array( array( "name" => WS_Helpers::get_subtitle( $post->ID, 'traveler' ) ) );
 
-						// Calculate dates for filtering
-						if ( $dates && is_array( $dates ) ) {
-							$i = 0;
-							while ( $i < count( $dates ) ) {
-								$start 	= strtotime( $dates[$i]["itinerary_details_date_start"] ) * 1000;
-								$end 	= strtotime( $dates[$i]["itinerary_details_date_end"] ) * 1000;
-								$dates[$i] = array( $start, $end );
-								$i++;
+							if ( has_post_thumbnail( $post->ID ) ) {
+								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+								$background = 'url(' . $featured[0] . ')';
+								$class = ' has-tile-image';
+							} else {
+								$class = ' ' . WS_Helpers::get_random_pattern('dark');
 							}
-							$json_dates = json_encode($dates);
-						} ?>
 
-						<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
-							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
-						</li>
+							// Calculate dates for filtering
+							if ( $dates && is_array( $dates ) ) {
+								$i = 0;
+								while ( $i < count( $dates ) ) {
+									$start 	= strtotime( $dates[$i]["itinerary_details_date_start"] ) * 1000;
+									$end 	= strtotime( $dates[$i]["itinerary_details_date_end"] ) * 1000;
+									$dates[$i] = array( $start, $end );
+									$i++;
+								}
+								$json_dates = json_encode($dates);
+							} ?>
 
-					<?php endwhile; ?>
-				</ul>
+							<li class="program tile tile-third available<?php echo $class; ?>" data-dates="<?php echo $json_dates; ?>" style="background-image: <?php echo $background; ?>;">
+								<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
+							</li>
 
-				<!-- <a class="program-all-link" href="">See All</a> -->
+						<?php endwhile; ?>
+					</ul>
+					<span class="toggle-all">See All</span>
+				</div>
 
 			</section>
 		<?php endif; ?>

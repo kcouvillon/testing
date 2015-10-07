@@ -90,7 +90,8 @@ get_header(); ?>
 					<div class="ws-container">
 						<div class="section-header-content">
 							<nav class="breadcrumbs hide-print">
-								<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore</a>>
+								<a href="<?php echo esc_url( home_url( '/' ) ); ?>'"?>Home</a>>
+								<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
 								<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
 							</nav>
 							<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
@@ -250,36 +251,39 @@ get_header(); ?>
 
 			<section class="section-content programs">
 				<h2 class="section-title ws-container">Collections</h2>
-				<ul class="programs-list list-unstyled clearfix">
-					<?php while ( $associated_collections->have_posts() ) : ?>
-						
-						<?php 
-						$associated_collections->the_post();
-						$background = '';
-						$title = get_the_title();
-						$url = get_the_permalink();
-						if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives' ) ) ) {
-							$meta_list = array(
-								array( 'name' => WS_Helpers::get_subtitle( $post->ID ) )
-							);
-						} else {
-							$meta_list = array();
-						}
-						if( has_post_thumbnail( $post->ID ) ) {
-							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
-							$background = 'url(' . $featured[0] . ')';
-							$class = ' has-tile-image';
-						} else {
-							$class = ' ' . WS_Helpers::get_random_pattern('dark');
-						}
-						?>
+				<div class="programs-container <?php echo ($associated_collections->post_count > 9) ? 'count-9-plus' : ''; ?>">
+					<ul class="programs-list list-unstyled clearfix">
+						<?php while ( $associated_collections->have_posts() ) : ?>
+							
+							<?php 
+							$associated_collections->the_post();
+							$background = '';
+							$title = get_the_title();
+							$url = get_the_permalink();
+							if ( ! in_array( $division_slug, array( 'discoveries', 'perspectives', 'on-stage' ) ) ) {
+								$meta_list = array(
+									array( 'name' => WS_Helpers::get_subtitle( $post->ID ) )
+								);
+							} else {
+								$meta_list = array();
+							}
+							if( has_post_thumbnail( $post->ID ) ) {
+								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+								$background = 'url(' . $featured[0] . ')';
+								$class = ' has-tile-image';
+							} else {
+								$class = ' ' . WS_Helpers::get_random_pattern('dark');
+							}
+							?>
 
-						<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
-							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>	
-						</li>
+							<li class="program tile tile-third<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
+								<?php include( locate_template( 'partials/tile-content.php' ) ); ?>	
+							</li>
 
-					<?php endwhile; ?>
-				</ul>
+						<?php endwhile; ?>
+					</ul>
+					<span class="toggle-all">See All</span>
+				</div>
 
 			</section>
 			<?php endif; ?>

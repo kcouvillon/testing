@@ -37,6 +37,7 @@ include WS_PATH . 'includes/class-admin-options.php';
 include WS_PATH . 'includes/class-collections.php';
 include WS_PATH . 'includes/class-comments.php';
 include WS_PATH . 'includes/class-cpts.php';
+include WS_PATH . 'includes/class-form.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
 include WS_PATH . 'includes/class-marketo-abstract-authenticate.php';
@@ -50,6 +51,7 @@ include WS_PATH . 'includes/class-metaboxes-custom-pages.php';
 include WS_PATH . 'includes/class-metaboxes-divisions.php';
 include WS_PATH . 'includes/class-metaboxes-itineraries.php';
 include WS_PATH . 'includes/class-metaboxes-filter-endpoints.php';
+include WS_PATH . 'includes/class-metaboxes-resource-targets.php';
 include WS_PATH . 'includes/class-shortcodes.php';
 include WS_PATH . 'includes/class-taxos.php';
 

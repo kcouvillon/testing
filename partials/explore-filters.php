@@ -12,7 +12,7 @@ $travelersArgs = array(
 	'hide_empty' => false
 	);
 $continentsArgs = array( 
-	'parent' => 6, // Destination
+	'parent' => 498, // Destination
 	'orderby' => 'term_order', 
 	'hide_empty' => false
 	);
@@ -71,14 +71,14 @@ $continents = get_terms( 'filter', $continentsArgs );
 
 						<li>
 							<a href="#faith-based" class="filter" data-filter-list=".interests-filters">
-								<i class="icon icon-faith-and-service"></i>
+								<i class="icon icon-faith-based"></i>
 								Faith-based
 							</a>
 						</li>
 
 						<li>
 							<a href="#service" class="filter" data-filter-list=".interests-filters">
-								<i class="icon icon-faith-and-service"></i>
+								<i class="icon icon-service"></i>
 								Service
 							</a>
 						</li>
