@@ -651,10 +651,10 @@
 	 * Parameters for the spinner: http://fgnass.github.io/spin.js/
 	 */
 	wsData.spinnerParams = {
-		  lines: 13 // The number of lines to draw
-		, length: 12 // The length of each line
-		, width: 5 // The line thickness
-		, radius: 9 // The radius of the inner circle
+		  lines: 9 // The number of lines to draw
+		, length: 8 // The length of each line
+		, width: 2 // The line thickness
+		, radius: 4 // The radius of the inner circle
 		, scale: 1 // Scales overall size of the spinner
 		, corners: 1 // Corner roundness (0..1)
 		, color: '#000' // #rgb or #rrggbb or array of colors
@@ -666,11 +666,11 @@
 		, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
 		, zIndex: 2e9 // The z-index (defaults to 2000000000)
 		, className: 'spinner' // The CSS class to assign to the spinner
-		, top: '50%' // Top position relative to parent
+		, top: '1.25em' // Top position relative to parent
 		, left: '50%' // Left position relative to parent
 		, shadow: false // Whether to render a shadow
 		, hwaccel: false // Whether to use hardware acceleration
-	//	, position: 'absolute' // Element positioning
+		, position: 'relative' // Element positioning
 	}
 
 	/**
@@ -801,7 +801,9 @@
 			var city = jQuery('#get-info-city');
 			var state = jQuery('#get-info-state');
 
-			var citySpinner = new Spinner(wsData.spinnerParams).spin(jQuery('#citySpinnerSpan')[0]);
+			// var citySpinner = new Spinner(wsData.spinnerParams).spin(jQuery('#citySpinnerSpan')[0]);
+			var citySpinner = new Spinner(wsData.spinnerParams);
+			jQuery('#citySpinnerSpan').after(citySpinner.spin().el);
 
 			//If they choose other for city or state, autocomplete is turned off. If they choose a different state,
 			//we want autocomplete to be back on. If they choose other, autocomplete will be disabled. We'll un-disable it. (not
