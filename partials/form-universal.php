@@ -91,7 +91,8 @@
 					</select>
 				</div>
 				<div class="field-right hide-if-student">
-					<label for="get-info-city" class="block no-placeholder"><span id="citySpinnerSpan"></span>School City</label>
+					<label for="get-info-city" class="block no-placeholder">School City</label>
+					<span id="citySpinnerSpan">   </span>
 					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" title="School City">
 				</div>
 			</li>

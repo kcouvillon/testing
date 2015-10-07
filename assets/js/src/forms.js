@@ -49,7 +49,7 @@
 		, left: '50%' // Left position relative to parent
 		, shadow: false // Whether to render a shadow
 		, hwaccel: false // Whether to use hardware acceleration
-		, position: 'absolute' // Element positioning
+	//	, position: 'absolute' // Element positioning
 	}
 
 	/**
@@ -180,7 +180,7 @@
 			var city = jQuery('#get-info-city');
 			var state = jQuery('#get-info-state');
 
-			var citySpinner = new Spinner(wsData.spinnerParams).spin(jQuery('#citySpinnerSpan'));
+			var citySpinner = new Spinner(wsData.spinnerParams).spin(jQuery('#citySpinnerSpan')[0]);
 
 			//If they choose other for city or state, autocomplete is turned off. If they choose a different state,
 			//we want autocomplete to be back on. If they choose other, autocomplete will be disabled. We'll un-disable it. (not
