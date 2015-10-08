@@ -7,6 +7,16 @@
  } else {
  	$title = sprintf(__("Thank you for your interest in our WorldStrides %s Tour! Please tell us a little more about yourself so we can get you sent to the right place."),$title);
  }
+
+
+  /**
+  * The Interests will just be hidden fields
+  */
+ $hide_if_context_classes ='hidden hide-if-context';
+ if(false===get_the_terms( $post_id, 'filter' )) {
+  	$hide_if_context_classes = 'hide-if-context'; // show these elements if there's no context
+ } 
+
 ?>
 
 <form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
@@ -41,21 +51,17 @@
 
 			</li>
 
-			<?php
-			/**
-			 *
-			 *			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" class="field hide-if-student" title="I have a Tour Scheduled">
-			 *				<label>I have a tour scheduled:</label>
-			 *				 &nbsp;<wbr>
-			 *				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
-			 *				<label for="tour-yes">Yes</label>
-			 *				&nbsp;
-			 *				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
-			 *				<label for="tour-no">No</label>
-			 *			</li>
-			 */
-			?>
-
+			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" 
+											 class="field hide-if-student" 
+											 title="I have a Tour Scheduled">
+				<label>I have a tour scheduled:</label>
+				 &nbsp;<wbr>
+				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
+				<label for="tour-yes">Yes</label>
+				&nbsp;
+				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
+				<label for="tour-no">No</label>
+			</li>
 
 			<?php get_template_part('partials/form','filters'); ?>
 
@@ -64,7 +70,6 @@
 				<label for="get-info-Product">I want to learn more about</label>
 				<select id="get-info-Product" name="mkto_leadFormProduct">
 					<option value="" class='non stu par ele mse hse une'>Select...</option>
-					<option value='my upcoming WorldStrides tour' class='non stu par ele mse hse'>my upcoming WorldStrides tour</option>
 					<!-- option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option -->
 					<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
 					<option value='Science Themed Programs (K-12)' class='non stu par ele mse hse'>Science Themed Programs (K-12)</option>

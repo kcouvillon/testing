@@ -67,6 +67,15 @@ class WS_Form {
 		
 	}
 
+	public static function slugs_from_terms( $terms ) {
+		if(false === $terms) return 'NO-WEBPAGE-CONTEXT-AVALIABLE';
+		$slugs = '';
+		foreach( $terms as $term ) {
+			$slugs .= $term->slug . ',';
+		}
+		return substr($slugs,0,strlen($slugs) - 1);
+	}
+
 }
 
 WS_Form::instance();	
