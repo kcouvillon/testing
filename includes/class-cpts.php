@@ -139,6 +139,14 @@ class WS_Custom_Post_Types {
 			)
 		);
 
+		register_extended_post_type( 'custom-page',
+			array(
+				'menu_icon' => 'dashicons-layout',
+				'has_archive' => false,
+				'rewrite'     => array( 'slug' => 'custom' ),
+			)
+		);
+
 		register_extended_post_type( 'why-ws',
 			array(
 				'menu_icon'         => 'dashicons-format-image',

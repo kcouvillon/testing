@@ -47,6 +47,7 @@ include WS_PATH . 'includes/class-marketo-upsert.php';
 include WS_PATH . 'includes/class-metaboxes.php';
 include WS_PATH . 'includes/class-metaboxes-blocks.php';
 include WS_PATH . 'includes/class-metaboxes-collections.php';
+include WS_PATH . 'includes/class-metaboxes-custom-pages.php';
 include WS_PATH . 'includes/class-metaboxes-divisions.php';
 include WS_PATH . 'includes/class-metaboxes-itineraries.php';
 include WS_PATH . 'includes/class-metaboxes-filter-endpoints.php';
@@ -407,3 +408,25 @@ function ws_head_add_schema() {
 <?php
 }
 add_action( 'wp_head', 'ws_head_add_schema' );
+
+function ws_password_form() {
+	global $post;
+	$label = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
+
+	ob_start(); ?>
+	<div class="ws-container password-protected-page">
+		<form action="<?php echo esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ); ?>" method="post">
+	        To view this protected post, enter the password below:
+	        <label for="<?php echo $label; ?>">Password: </label>
+			<input name="post_password" id="<?php echo $label; ?>" type="password" size="20" maxlength="20" />
+			<input type="submit" name="Submit" value="Submit" />
+	    </form>
+	</div>
+	<?php
+	$html = ob_get_contents();
+	ob_get_clean();
+
+	return $html;
+}
+
+add_filter( 'the_password_form', 'ws_password_form' );
