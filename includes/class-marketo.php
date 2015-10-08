@@ -187,19 +187,15 @@ class WS_Marketo {
 
 		print_r($lead);
 
-		echo '</pre>'; // DEBUGGING!
-		return; // DEBUGGING!
-
-		/////////////////////////////////////////////////////////////////////////////////////
-		////////////   SHORTCUT OUT - DEBUGGING  ////////////
-		/////////////////////////////////////////////////////////////////////////////////////
-
 		print_r("\ncalling WS_MktoUpsertLeads() ... \n");
 		
 		$upsert = new WS_MktoUpsertLeads();
 		$upsert->input = array($lead);
 		$upsert_result = $upsert->postData();
 		$upsert_obj = json_decode($upsert_result);
+
+		print_r("\n\nUpsert Result:\n");
+		print_r($upsert_result);
 
 		// alias the id:
 		$upsert_id = $upsert_obj->result[0]->id;
@@ -220,6 +216,13 @@ class WS_Marketo {
 		} else {
 			print_r("\n\nNOT calling WS_MktoAssociateLead() because lead is not new (not created) ...\n");
 		}
+
+		echo '</pre>'; // DEBUGGING!
+		return; // DEBUGGING!
+
+		/////////////////////////////////////////////////////////////////////////////////////
+		////////////   SHORTCUT OUT - DEBUGGING  ////////////
+		/////////////////////////////////////////////////////////////////////////////////////
 
 		print_r("\n\ncalling WS_MktoRequestCampaign() ...\n");
 		$request = new WS_MktoRequestCampaign();
