@@ -97,6 +97,7 @@
 				</div>
 			</li>
 			<li class="field hide-if-student">
+				<span id="schoolSpinnerSpan">   </span>
 				<label for="get-info-school" class="block no-placeholder">School Name</label>
 				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" title="School Name">
 			</li>

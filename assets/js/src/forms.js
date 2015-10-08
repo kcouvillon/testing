@@ -301,6 +301,9 @@
 			var city = jQuery('#get-info-city');
 			var state = jQuery('#get-info-state');
 
+			var schoolSpinner = new Spinner(wsData.spinnerParams);
+			jQuery('#schoolSpinnerSpan').after(schoolSpinner.spin().el);
+
 			jQuery.ajax({
 				url: wsData.mdrapi_base_url + 'city/'+ city.val() + '/state/' + state.val() + "'",
 				type: 'GET',
@@ -315,6 +318,8 @@
 					wsData.setSchoolAutoComplete();
 					school.val('').removeAttr('readonly');  // make school editable
 				}
+			}).always(function(){
+				schoolSpinner.stop();
 			});
 		}
 
