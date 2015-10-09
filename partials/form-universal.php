@@ -42,10 +42,12 @@
 			</li>
 
 			<li id="student-thanks" name="student-thanks" class="show-if-student hidden" title="Students, thanks for your interest.">
-				<p id="student-thanks-p1"> <?php _e("Thanks for visiting!  There&#39;s nothing more we need from you.", 'worldstrides'); ?>
+				<p id="student-thanks-p1"> 
+					<?php _e("Thanks for visiting!  Please let us know how we can help you.  ", 'worldstrides'); ?>
+					<?php _e("You can get the answers to most questions by accessing our <a href=\"/resource-center/\">Resource Center</a>.  ", 'worldstrides'); ?>
 				</p>
 				<p id="student-thanks-p2"> <?php _e("You can also visit all our social media sites and see what the excitement is all about.", 'worldstrides'); ?>
-					<?php _e(" Tell your friends about all these amazing places to visit.", 'worldstrides'); ?>
+					<?php _e(" Tell your friends about all these amazing places to visit!", 'worldstrides'); ?>
 				</p>
 				<?php get_template_part('partials/sociallinks'); ?>
 
@@ -150,6 +152,6 @@
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary hide-if-student" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary hide-if-student" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>

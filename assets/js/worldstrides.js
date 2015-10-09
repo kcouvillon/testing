@@ -709,21 +709,25 @@
 		 * Hide most of the form if it's a student
 		 */
 		(function(roleSelect){
+			wsData.toggleViewForStudent(this);
 			roleSelect.on('change',function(){
-				var role =  jQuery(this).children('option:selected').attr('data-value');
-				jQuery('#get-info-Product option').filter('.'+role).show();
-				jQuery('#get-info-Product option').not('.'+role).hide();
-
-				if('stu' === role ) {
-					jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
-					jQuery('.show-if-student').removeClass('hidden');
-				} else {
-					jQuery('.hidden-for-student').removeClass('hidden').removeClass( 'hidden-for-student' );
-					jQuery('.show-if-student').addClass('hidden');					
-				}
+				wsData.toggleViewForStudent(this);
 			});
 		})(jQuery('select#get-info-Title'));
 
+		wsData.toggleViewForStudent = function(titleEl) {
+			var role =  jQuery(titleEl).children('option:selected').attr('data-value');
+			jQuery('#get-info-Product option').filter('.'+role).show();
+			jQuery('#get-info-Product option').not('.'+role).hide();
+
+			if('stu' === role ) {
+				jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
+				jQuery('.show-if-student').removeClass('hidden');
+			} else {
+				jQuery('.hidden-for-student').removeClass('hidden').removeClass( 'hidden-for-student' );
+				jQuery('.show-if-student').addClass('hidden');					
+			}
+		}
 
 		jQuery('#current-context-name').on('click',function(){
 			jQuery('.hide-if-context').removeClass('hidden');
