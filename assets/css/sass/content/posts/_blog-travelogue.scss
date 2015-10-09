@@ -36,31 +36,63 @@
 		}
 
 		figure {
-			max-width: 100%;
 			width: 100% !important;
 			@include clearfix;
 			position: relative;
 
 			img {
-				@include span(full);
 				padding: 0;
+				margin: 0;
+				max-width: 100%;
+			}
 
-				@include susy-media($screen-sm) {
-					@include span(7 of 10 last);
+			&.alignleft {
+				img {
+					@include susy-media($screen-sm) {
+						@include span(7 of 10);
+					}
 				}
+				figcaption {
+					@include susy-media($screen-sm) {
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						text-align: right;
+						@include span(3 of 10 last);
+					}
+				}
+			}
+
+			&.aligncenter {
+				img {
+					margin: 0 auto;
+				}
+				figcaption {
+					text-align: center;
+				}
+			}
+
+			&.alignright {
+				img {
+					@include susy-media($screen-sm) {
+						@include span(7 of 10 last);
+					}
+				}
+				figcaption {
+					@include susy-media($screen-sm) {
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						@include span(3 of 10);
+					}
+				}
+
 			}
 		}
 
 		figcaption {
 			font-size: em(10);
 			text-align: left;
-
-			@include susy-media($screen-sm) {
-				position: absolute;
-				left: 0;
-				bottom: 0;
-				@include span(3 of 10);
-			}
 		}
 	}
 
