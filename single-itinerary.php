@@ -549,7 +549,7 @@ get_header(); ?>
 			<section class="clearfix ws-container learn-more">
 				<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 
-				<?php WS_Marketo::get_marketo_form( $post->ID ); ?>
+				<?php get_template_part('partials/form','universal'); ?>
 			</section>
 		</section>
 

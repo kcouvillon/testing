@@ -63,7 +63,7 @@ if(false !== $product_lines) :	// IF PRODUCT LINES ARE KNOWN -------------------
 			$product_line_maximizer = 'High School - International';
 			break;
 		} elseif ( 'capstone' == $division->slug ) {
-			$product_line_maximizer = 'Capstone'; // does not exist in Maximizer yet
+			$product_line_maximizer = 'University'; // does not exist in Maximizer yet
 			break;
 		} elseif ( 'on-stage' == $division->slug ) {
 			$product_line_maximizer = 'Performing';
@@ -85,16 +85,24 @@ if(false !== $product_lines) :	// IF PRODUCT LINES ARE KNOWN -------------------
 
 endif;	          // ENDIF PRODUCT LINES ARE KNOWN -----------------------------  ?>
 
+
 <li class="field hidden">
 	<input id="get-info-maxproductline" type="hidden" name="mkto_wsMaxProductLine" title="Product Line" value="<?php echo $product_line_maximizer; ?>">
+	<input id="get-info-websiteInterestFilters" type="hidden" name="mkto_websiteInterestFilters" value="<?php echo WS_Form::slugs_from_terms($filters); ?>" >
+	<input id="get-info-websiteProductLines" type="hidden" name="mkto_websiteProductLines" value="<?php echo WS_Form::slugs_from_terms($product_lines); ?>" >
+	<input id="get-info-websiteCollections" type="hidden" name="mkto_websiteCollections" value="<?php echo WS_Form::slugs_from_terms($collections); ?>" >
 </li>
+
+
+<?php 
+/* LOOP FOR MAIN INTEREST FILTERS
 
 <li id="interest" class="field">
 	<label class="hidden" for="get-info-interest">I am interested in </label>
 	<select type="hidden" id="get-info-interest" class="hidden" name="mkto_wsInterest" title="General Interest">
 		<option value="">Select...</option>
 
-<?php foreach ( $interests as $interest ) : /*START LOOP FOR MAIN SELECT LIST*/ ?>
+<?php foreach ( $interests as $interest ) : ?>
 
 		<option value="<?php echo $interest->slug; ?>"
 				class = "non stu par ele mse hse une"
@@ -102,7 +110,7 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 			<?php echo $interest->name; ?>
 		</option>
 
-<?php endforeach; /*END LOOP FOR MAIN SELECT LIST*/ ?>
+<?php endforeach; ?>
 
 		<option value="faith-and-service"
 				class = "non stu par ele mse hse une"
@@ -119,63 +127,39 @@ endif;	          // ENDIF PRODUCT LINES ARE KNOWN ----------------------------- 
 				class = "non stu par ele mse hse une">
 			I don't know yet
 		</option>
-
-
 	</select>
 </li>
 
-<?php foreach ( $interests as $interest ) : /*START LOOP FOR SUB-SELECT LISTS*/ 
+*/
+/* LOOP FOR SUB-SELECT LISTS
+
+ foreach ( $interests as $interest ) :  
 	$child_interests = get_terms( 'filter', array( 'parent' => $interest->term_id ) ); 
-	if(!empty($child_interests)) : ?>
+	if(!empty($child_interests)) :
 
-<li id="interest-detail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
-	<label for="get-info-moredetail-<?php echo $interest->slug; ?>">I want to learn more about</label>
-	<select id="get-info-moredetail-<?php echo $interest->slug; ?>" name="mkto_wsInterestDetail" title="-<?php echo 'Specific Interest within ' . $interest->name; ?>">
-		<option value="">Select...</option>
+	<li id="interest-detail-<?php echo $interest->slug; ?>" data-interest-parent-id="<?php echo $interest->term_id; ?>" class="field hidden">
+		<label for="get-info-moredetail-<?php echo $interest->slug; ?>">Visitors to this page are generally interested in:</label>
+		<select id="get-info-moredetail-<?php echo $interest->slug; ?>" name="mkto_wsInterestDetail" title="-<?php echo 'Specific Interest within ' . $interest->name; ?>">
+			<option value="">Select...</option>
 
-		<?php 
-		foreach ( $child_interests as $child_interest ) : ?>
+			<?php 
+			foreach ( $child_interests as $child_interest ) : ?>
 
-		<option value="#<?php echo $child_interest->slug; ?>" 
-				data-filter-list=".interests-filters">
-			<?php echo $child_interest->name; ?>
-		</option>
-		
-		<?php endforeach; ?>
+			<option value="#<?php echo $child_interest->slug; ?>" 
+					data-filter-list=".interests-filters">
+				<?php echo $child_interest->name; ?>
+			</option>
+			
+			<?php endforeach; ?>
 
-		<option value="Im not sure yet">I'm not sure yet</option>
-	</select>
-</li>
+			<option value="Im not sure yet">I'm not sure yet</option>
+		</select>
+	</li>
 
-<?php endif; ?>
-<?php endforeach; /*END LOOP FOR SUB-SELECT LISTS*/?>
+    endif; ?>
 
-<li id="product" class="field hide-if-student <?php echo $hide_if_context_classes; ?>">
-	<label for="get-info-Product">I want to learn more about</label>
-	<select id="get-info-Product" name="mkto_leadFormProduct">
-		<option value="" class='non stu par ele mse hse une'>Select...</option>
-		<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
-		<option value='Science Themed Programs (K-12)' class='non stu par ele mse hse'>Science Themed Programs (K-12)</option>
-		<option value='Sports Tours' class='non stu par ele mse hse une'>Sports Tours</option>
-		<option value='Undergraduate Tours' class='non stu par une'>Undergraduate Tours</option>
-		<option value='Graduate-Level Tours' class='non stu par une'>Graduate-Level Tours</option>
-		<option value="Music Festivals" class='non stu par ele mse hse une'>Music Festivals </option>
-		<option value="Concert and Performing Tours" class='non stu par ele mse hse une'>Concert and Performing Tours</option>
-		<option value="Marching Band Opportunities" class='non stu par ele mse hse une'>Marching Band Opportunities</option>
-		<option value="Dance-Cheer Opportunities" class='non stu par ele mse hse une'>Dance &amp; Cheer Opportunities</option>
-		<option value="Theatre Opportunities" class='non stu par ele mse hse une'>Theatre Opportunities</option>
-		<option value="Im not sure yet" class='non stu par ele mse hse une'>I'm not sure yet</option>
-	</select>
-</li>
+<?php endforeach; // END LOOP FOR SUB-SELECT LISTS
+?>
 
+*/
 
-<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
-	<label>I would travel:</label>
-	&nbsp;<wbr>
-	<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">
-	<label for="destination-us">within the U.S.</label>
-	<br class="visible-xs">
-	<input type="radio" name="mkto_USorAbroadDestination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
-	<label for="destination-abroad">outside of the U.S.</label>
-	<label for="mkto_USorAbroadDestination" class="error" style="display:none;"></label>
-</li>

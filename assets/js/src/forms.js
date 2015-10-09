@@ -14,12 +14,72 @@
 	jQuery(document).ready(function() {
 
 		if( jQuery('#get-info-form').length )  {
+			wsData.populateStates();
 			universalLead();
 			wsData.validateAndSubmitForm();
 		}
 
 	});
 
+	/**
+	 * Base URL for API calls
+	 */
+	wsData.mdrapi_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
+
+	/**
+	 * Parameters for the spinner: http://fgnass.github.io/spin.js/
+	 */
+	wsData.spinnerParams = {
+		  lines: 9 // The number of lines to draw
+		, length: 8 // The length of each line
+		, width: 2 // The line thickness
+		, radius: 4 // The radius of the inner circle
+		, scale: 1 // Scales overall size of the spinner
+		, corners: 1 // Corner roundness (0..1)
+		, color: '#000' // #rgb or #rrggbb or array of colors
+		, opacity: 0.25 // Opacity of the lines
+		, rotate: 0 // The rotation offset
+		, direction: 1 // 1: clockwise, -1: counterclockwise
+		, speed: 1 // Rounds per second
+		, trail: 60 // Afterglow percentage
+		, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+		, zIndex: 2e9 // The z-index (defaults to 2000000000)
+		, className: 'spinner' // The CSS class to assign to the spinner
+		, top: '1.25em' // Top position relative to parent
+		, left: '50%' // Left position relative to parent
+		, shadow: false // Whether to render a shadow
+		, hwaccel: false // Whether to use hardware acceleration
+		, position: 'relative' // Element positioning
+	}
+
+	/**
+	 * Digest and display JSON list of states
+	 */
+	wsData.populateStates = function (){
+
+
+			jQuery.ajax({
+				url: wsData.mdrapi_base_url + 'allStates/',
+				type: 'GET',
+				dataType: 'jsonp',
+				jsonp:'callback',
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log('Status: ' + textStatus); alert('Error: ' + errorThrown);
+				},
+				success:function(data){
+					var output = jQuery.parseJSON(data);
+					var numstates = output.length;
+					var statefield = jQuery('#get-info-state');
+					for(var i=0; i<numstates; i++){
+						statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
+					}
+
+
+
+				}
+			});
+
+	};
 
 	function universalLead() {
 		/**
@@ -34,11 +94,9 @@
 				jQuery('#get-info-Product option').not('.'+role).hide();
 
 				if('stu' === role ) {
-					jQuery('.hide-if-student').addClass('hidden');
-					jQuery('.show-if-student').not('.hide-if-context').removeClass('hidden');
+					jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
 				} else {
-					jQuery('.hide-if-student').not('.hide-if-context').removeClass('hidden');
-					jQuery('.show-if-student').addClass('hidden');
+					jQuery('.hidden-for-student').not('.hide-if-context').removeClass('hidden');
 				}
 			});
 		})(jQuery('select#get-info-Title'));
@@ -90,24 +148,6 @@
 			wsData.resetSchoolCitySchoolNameFields();
 		});
 
-		/**
-		 * Base URL for API calls
-		 */
-		wsData.mdrapi_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
-
-		/**
-		 * Digest and display JSON list of states
-		 */
-		wsData.populateStates = function (){
-			var numstates = wsData.states.length;
-			var statefield = jQuery('#get-info-state');
-			for(var i=0; i<numstates; i++){
-				statefield.append('<option value="'+wsData.states[i].abbrev+'">'+wsData.states[i].full+'</option>');
-			}
-		};
-		jQuery(document).ready(function() {
-			wsData.populateStates();
-		});
 
 		/**
 		 * (Re)set the ajax listeners to be connected to the State dropdown and City input
@@ -140,6 +180,10 @@
 			var city = jQuery('#get-info-city');
 			var state = jQuery('#get-info-state');
 
+			// var citySpinner = new Spinner(wsData.spinnerParams).spin(jQuery('#citySpinnerSpan')[0]);
+			var citySpinner = new Spinner(wsData.spinnerParams);
+			jQuery('#citySpinnerSpan').after(citySpinner.spin().el);
+
 			//If they choose other for city or state, autocomplete is turned off. If they choose a different state,
 			//we want autocomplete to be back on. If they choose other, autocomplete will be disabled. We'll un-disable it. (not
 			//the same as enabling it, in case you're wondering.
@@ -156,7 +200,7 @@
 				dataType: 'jsonp',
 				jsonp:'callback',
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert('Status: ' + textStatus); alert('Error: ' + errorThrown);
+					console.log('Status: ' + textStatus); alert('Error: ' + errorThrown);
 				},
 				success:function(data){
 					var output = jQuery.parseJSON(data);
@@ -168,6 +212,8 @@
 					wsData.setCityAutoComplete();
 					city.val('').removeAttr('readonly'); // make city editable
 				}
+			}).always(function(){
+				citySpinner.stop();
 			});
 		};
 		jQuery(document).ready(function() {
@@ -255,6 +301,9 @@
 			var city = jQuery('#get-info-city');
 			var state = jQuery('#get-info-state');
 
+			var schoolSpinner = new Spinner(wsData.spinnerParams);
+			jQuery('#schoolSpinnerSpan').after(schoolSpinner.spin().el);
+
 			jQuery.ajax({
 				url: wsData.mdrapi_base_url + 'city/'+ city.val() + '/state/' + state.val() + "'",
 				type: 'GET',
@@ -269,6 +318,8 @@
 					wsData.setSchoolAutoComplete();
 					school.val('').removeAttr('readonly');  // make school editable
 				}
+			}).always(function(){
+				schoolSpinner.stop();
 			});
 		}
 
@@ -497,264 +548,3 @@
 		 jQuery.ajax(options);
 	 }
  } )( jQuery );
-
-
-wsData.states =
-[
-	{
-		"full": "Alabama",
-		"abbrev": "AL"
-	},
-	{
-		"full": "Alaska",
-		"abbrev": "AK"
-	},
-	{
-		"full": "Arizona",
-		"abbrev": "AZ"
-	},
-	{
-		"full": "Arkansas",
-		"abbrev": "AR"
-	},
-	{
-		"full": "California",
-		"abbrev": "CA"
-	},
-	{
-		"full": "Colorado",
-		"abbrev": "CO"
-	},
-	{
-		"full": "Connecticut",
-		"abbrev": "CT"
-	},
-	{
-		"full": "Delaware",
-		"abbrev": "DE"
-	},
-	{
-		"full": "District of Columbia",
-		"abbrev": "DC"
-	},
-	{
-		"full": "Florida",
-		"abbrev": "FL"
-	},
-	{
-		"full": "Georgia",
-		"abbrev": "GA"
-	},
-	{
-		"full": "Hawaii",
-		"abbrev": "HI"
-	},
-	{
-		"full": "Idaho",
-		"abbrev": "ID"
-	},
-	{
-		"full": "Illinois",
-		"abbrev": "IL"
-	},
-	{
-		"full": "Indiana",
-		"abbrev": "IN"
-	},
-	{
-		"full": "Iowa",
-		"abbrev": "IA"
-	},
-	{
-		"full": "Kansas",
-		"abbrev": "KS"
-	},
-	{
-		"full": "Kentucky",
-		"abbrev": "KY"
-	},
-	{
-		"full": "Louisiana",
-		"abbrev": "LA"
-	},
-	{
-		"full": "Maine",
-		"abbrev": "ME"
-	},
-	{
-		"full": "Maryland",
-		"abbrev": "MD"
-	},
-	{
-		"full": "Massachusetts",
-		"abbrev": "MA"
-	},
-	{
-		"full": "Michigan",
-		"abbrev": "MI"
-	},
-	{
-		"full": "Minnesota",
-		"abbrev": "MN"
-	},
-	{
-		"full": "Mississippi",
-		"abbrev": "MS"
-	},
-	{
-		"full": "Missouri",
-		"abbrev": "MO"
-	},
-	{
-		"full": "Montana",
-		"abbrev": "MT"
-	},
-	{
-		"full": "Nebraska",
-		"abbrev": "NE"
-	},
-	{
-		"full": "Nevada",
-		"abbrev": "NV"
-	},
-	{
-		"full": "New Hampshire",
-		"abbrev": "NH"
-	},
-	{
-		"full": "New Jersey",
-		"abbrev": "NJ"
-	},
-	{
-		"full": "New Mexico",
-		"abbrev": "NM"
-	},
-	{
-		"full": "New York",
-		"abbrev": "NY"
-	},
-	{
-		"full": "North Carolina",
-		"abbrev": "NC"
-	},
-	{
-		"full": "North Dakota",
-		"abbrev": "ND"
-	},
-	{
-		"full": "Ohio",
-		"abbrev": "OH"
-	},
-	{
-		"full": "Oklahoma",
-		"abbrev": "OK"
-	},
-	{
-		"full": "Oregon",
-		"abbrev": "OR"
-	},
-	{
-		"full": "Pennsylvania",
-		"abbrev": "PA"
-	},
-	{
-		"full": "Rhode Island",
-		"abbrev": "RI"
-	},
-	{
-		"full": "South Carolina",
-		"abbrev": "SC"
-	},
-	{
-		"full": "South Dakota",
-		"abbrev": "SD"
-	},
-	{
-		"full": "Tennessee",
-		"abbrev": "TN"
-	},
-	{
-		"full": "Texas",
-		"abbrev": "TX"
-	},
-	{
-		"full": "Utah",
-		"abbrev": "UT"
-	},
-	{
-		"full": "Vermont",
-		"abbrev": "VT"
-	},
-	{
-		"full": "Virginia",
-		"abbrev": "VA"
-	},
-	{
-		"full": "Virgin Islands",
-		"abbrev": "VI"
-	},
-	{
-		"full": "Washington",
-		"abbrev": "WA"
-	},
-	{
-		"full": "West Virginia",
-		"abbrev": "WV"
-	},
-	{
-		"full": "Wisconsin",
-		"abbrev": "WI"
-	},
-	{
-		"full": "Wyoming",
-		"abbrev": "WY"
-	},
-	{
-		"full": "Alberta",
-		"abbrev": "AB"
-	},
-	{
-		"full": "British Columbia",
-		"abbrev": "BC"
-	},
-	{
-		"full": "Manitoba",
-		"abbrev": "MB"
-	},
-	{
-		"full": "New Brunswick",
-		"abbrev": "NB"
-	},
-	{
-		"full": "Newfoundland",
-		"abbrev": "NF"
-	},
-	{
-		"full": "Northwest Territories",
-		"abbrev": "NT"
-	},
-	{
-		"full": "Nova Scotia",
-		"abbrev": "NS"
-	},
-	{
-		"full": "Ontario",
-		"abbrev": "ON"
-	},
-	{
-		"full": "Prince Edward Island",
-		"abbrev": "PE"
-	},
-	{
-		"full": "Quebec",
-		"abbrev": "QC"
-	},
-	{
-		"full": "Saskatchewan",
-		"abbrev": "SK"
-	},
-	{
-		"full": "Yukon",
-		"abbrev": "YT"
-	}
-];

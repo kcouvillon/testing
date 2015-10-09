@@ -90,12 +90,6 @@ class WS_Marketo {
 	}
 
 	public static function get_marketo_form( $post_id ) {
-		?>
-		<section class="learn-more clearfix ws-container">
-			<?php get_template_part('partials/form','universal'); ?>
-		</section>		
-		<?php
-
 		/*
 		foreach ( $product_lines as $division ) {
 
@@ -124,6 +118,8 @@ class WS_Marketo {
 		*/
 		
 		// echo do_shortcode( "[marketo id=$form_id mdrapi=true]" );
+
+		echo do_shortcode( "[marketo id=1699 mdrapi=true]" ); // remove form_id logic -- just give the universal
 	}
 	
 	public static function submit_marketo_data() {
@@ -173,7 +169,7 @@ class WS_Marketo {
 				$lead->wsProduct = 'Middle School - Science';
 			} elseif ( 'Undergraduate Tours' == $lead->leadFormProduct || 
 					   'Graduate-Level Tours' ==  $lead->leadFormProduct ) {
-				$lead->wsProduct = 'Capstone'; // does not exist in Maximizer yet
+				$lead->wsProduct = 'University'; // does not exist in Maximizer yet
 			} elseif ( 'Music Festivals' == $lead->leadFormProduct ||
 					   'Concert and Performing Tours' == $lead->leadFormProduct ||
 					   'Marching Band Opportunities' == $lead->leadFormProduct ||
@@ -191,13 +187,6 @@ class WS_Marketo {
 
 		print_r($lead);
 
-		echo '</pre>'; // DEBUGGING!
-		return; // DEBUGGING!
-
-		/////////////////////////////////////////////////////////////////////////////////////
-		////////////   SHORTCUT OUT - DEBUGGING  ////////////
-		/////////////////////////////////////////////////////////////////////////////////////
-
 		print_r("\ncalling WS_MktoUpsertLeads() ... \n");
 		
 		$upsert = new WS_MktoUpsertLeads();
@@ -205,16 +194,31 @@ class WS_Marketo {
 		$upsert_result = $upsert->postData();
 		$upsert_obj = json_decode($upsert_result);
 
-		// alias the id:
-		$upsert_id = $upsert_obj->result[0]->id;
-		print_r("\n\nUpsert ID:\n");
-		print_r($upsert_id);
-
+		print_r("\n\nUpsert Result:\n");
+		print_r($upsert_result);
 
 		print_r("\n\nResult Status:\n");
 		// alias the status:
 		$upsert_status = $upsert_obj->result[0]->status;
 		print_r($upsert_status);
+
+
+		if( !$upsert_obj->success ){ // Upsert fails
+			print_r("\nFailed Upsert call means abort\n"); // DEBUGGING!
+			echo '</pre>'; // DEBUGGING!
+			return; // (NOT DEBUGGING, ABORT!)
+		}
+
+		if( !isset($upsert_obj->result[0]->id ) ){
+			print_r("\nUpsert call without a result id.  Lead already exists?  No id means abort.\n"); // DEBUGGING!
+			echo '</pre>'; // DEBUGGING!
+			return; // (NOT DEBUGGING, ABORT!)
+		}
+
+		// alias the id:
+		$upsert_id = $upsert_obj->result[0]->id;
+		print_r("\n\nUpsert ID:\n");
+		print_r($upsert_id);
 
 
 		if($upsert_status === 'created') {
@@ -224,6 +228,13 @@ class WS_Marketo {
 		} else {
 			print_r("\n\nNOT calling WS_MktoAssociateLead() because lead is not new (not created) ...\n");
 		}
+
+		echo '</pre>'; // DEBUGGING!
+		return; // DEBUGGING!
+
+		/////////////////////////////////////////////////////////////////////////////////////
+		////////////   SHORTCUT OUT - DEBUGGING  ////////////
+		/////////////////////////////////////////////////////////////////////////////////////
 
 		print_r("\n\ncalling WS_MktoRequestCampaign() ...\n");
 		$request = new WS_MktoRequestCampaign();
