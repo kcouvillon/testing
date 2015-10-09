@@ -304,7 +304,11 @@ get_header(); ?>
 				</div>
 
 				<div id="tour-highlights-data" data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
-				<div id="tour-highlights-map" class="hide-print"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+				<div id="tour-highlights-map" class="hide-print">
+					<!-- MAP - check assets/js/src/itinerary.js for map code -->					
+					<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;"></div>
+					<!-- ^^^ this div is a hack needed to fix page scrolling over maps on touch devices. -->
+				</div>
 
 			</section>
 
