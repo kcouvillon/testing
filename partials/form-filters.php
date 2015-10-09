@@ -63,7 +63,7 @@ if(false !== $product_lines) :	// IF PRODUCT LINES ARE KNOWN -------------------
 			$product_line_maximizer = 'High School - International';
 			break;
 		} elseif ( 'capstone' == $division->slug ) {
-			$product_line_maximizer = 'Capstone'; // does not exist in Maximizer yet
+			$product_line_maximizer = 'University'; // does not exist in Maximizer yet
 			break;
 		} elseif ( 'on-stage' == $division->slug ) {
 			$product_line_maximizer = 'Performing';

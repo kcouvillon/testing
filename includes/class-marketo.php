@@ -169,7 +169,7 @@ class WS_Marketo {
 				$lead->wsProduct = 'Middle School - Science';
 			} elseif ( 'Undergraduate Tours' == $lead->leadFormProduct || 
 					   'Graduate-Level Tours' ==  $lead->leadFormProduct ) {
-				$lead->wsProduct = 'Capstone'; // does not exist in Maximizer yet
+				$lead->wsProduct = 'University'; // does not exist in Maximizer yet
 			} elseif ( 'Music Festivals' == $lead->leadFormProduct ||
 					   'Concert and Performing Tours' == $lead->leadFormProduct ||
 					   'Marching Band Opportunities' == $lead->leadFormProduct ||
