@@ -113,23 +113,36 @@
 	</div>
 	<div class="right">
 		<ul class="form-fields list-unstyled">
-			<li class="field field-complex hide-if-student">
+			<li class="field field-complex">
 				<div class="field-left">
 					<label for="get-info-email" class="block no-placeholder">Email Address</label>	
 					<input id="get-info-email" type="email" name="mkto_Email" value="" placeholder="Email Address" title="Email Address">
 				</div>
-				<div class="field-right">
+				<div class="field-right hide-if-student">
 					<label for="get-info-phone" class="block no-placeholder">Phone Number</label>
 					<input id="get-info-phone" type="tel" name="mkto_Phone" value="" placeholder="Phone Number" title="Preferred Phone Number">
 				</div>
 			</li>
-			<li class="field field-complex hide-if-student">
-				<div class="field-left">
+			<li class="field field-complex">
+				<div class="field-left hide-if-student">
 					<label for="get-info-state" class="block no-placeholder">Select State...</label>
 					<select id="get-info-state" name="mkto_companyState" title="School State">
 						<option value="">Select State...</option>
 					</select>
 				</div>
+
+				<div class="field-left show-if-student show-if-parent">
+					<label for="get-info-question" class="block no-placeholder">Select Your Question...</label>
+					<select id="get-info-question" name="helpQuestion" title="What is Your Question?">
+						<option value="I have a question about an upcoming trip">I have a question about an upcoming trip.</option>
+						<option value="">Select Your Question...</option>
+						<option value="">Select Your Question...</option>
+						<option value="">Select Your Question...</option>
+						<option value="">Select Your Question...</option>
+						<option value="">Select Your Question...</option>
+					</select>
+				</div>
+
 				<div class="field-right hide-if-student">
 					<span id="citySpinnerSpan">   </span>
 					<label for="get-info-city" class="block no-placeholder">School City</label>
@@ -151,7 +164,8 @@
 		<input id="get-info-companyPhone" type="hidden" name="mkto_companyPhone" value="" >
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
+		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary hide-if-student" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>

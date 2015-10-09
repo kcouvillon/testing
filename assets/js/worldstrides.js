@@ -708,15 +708,9 @@
 		 * toggle wsProduct based on Role: stu (student) par (parent) ...
 		 * Hide most of the form if it's a student
 		 */
-		(function(roleSelect){
-			wsData.toggleViewForStudent(this);
-			roleSelect.on('change',function(){
-				wsData.toggleViewForStudent(this);
-			});
-		})(jQuery('select#get-info-Title'));
 
-		wsData.toggleViewForStudent = function(titleEl) {
-			var role =  jQuery(titleEl).children('option:selected').attr('data-value');
+		wsData.toggleViewForStudent = function() {
+			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
 			jQuery('#get-info-Product option').filter('.'+role).show();
 			jQuery('#get-info-Product option').not('.'+role).hide();
 
@@ -729,10 +723,15 @@
 			}
 		}
 
-		jQuery('#current-context-name').on('click',function(){
-			jQuery('.hide-if-context').removeClass('hidden');
-			jQuery(this).hide();
-		});
+		wsData.toggleViewForStudent();
+		jQuery('select#get-info-Title').on( 'change', wsData.toggleViewForStudent );
+
+		/**
+		 * Toggle the visibility of .show-if-parent fields
+		 * 
+		 * @TODO
+		 */
+
 
 		/**
 		 * Toggle the visibility of the wsProductDetail dropdowns
@@ -748,6 +747,14 @@
 					.removeClass('hidden'); 
 			});
 		})(jQuery('select#get-info-wsProduct'));
+
+
+		/**
+		 * When a student or parent chooses the "Help Question" $('#get-info-question')
+		 * move that into the hidden form_comments field $('#get-info-comment')
+		 * 
+		 * @TODO
+		 */
 
 
 		/**
@@ -1114,6 +1121,7 @@
 				mkto_companyState: "required",
 				mkto_companyCity: "required",
 				mkto_Company: "required",
+				helpQuestion: "required"
 			},
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
@@ -1129,6 +1137,7 @@
 				mkto_companyState: "What state is your school in?",
 				mkto_companyCity: "What city is your school in?",
 				mkto_Company: "What is the name of your school?",
+				helpQuestion: "Please tell us how we can help you."
 			},
 			invalidHandler: function(event, validator) {
 				jQuery('#invalid-message').show();

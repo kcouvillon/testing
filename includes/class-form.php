@@ -67,6 +67,10 @@ class WS_Form {
 		
 	}
 
+	/**
+	 * Make a comma-separated array of the slugs from the page terms:
+	 * eg: arts-and-sciences-programs,business-programs,nyu,other-professional-programs
+	 */
 	public static function slugs_from_terms( $terms ) {
 		if(false === $terms) return 'NO-WEBPAGE-CONTEXT-AVALIABLE';
 		$slugs = '';
@@ -74,6 +78,21 @@ class WS_Form {
 			$slugs .= $term->slug . ',';
 		}
 		return substr($slugs,0,strlen($slugs) - 1);
+	}
+
+	/**
+	 * Utility function.  Where are we???
+	 */
+	public static function current_page_url() {
+		$pageURL = 'http';
+		if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		$pageURL .= "://";
+		if ($_SERVER["SERVER_PORT"] != "80") {
+			$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+		} else {
+			$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		}
+		return $pageURL;		
 	}
 
 }
