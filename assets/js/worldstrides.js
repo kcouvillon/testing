@@ -716,8 +716,10 @@
 
 				if('stu' === role ) {
 					jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
+					jQuery('.show-if-student').removeClass('hidden');
 				} else {
-					jQuery('.hidden-for-student').not('.hide-if-context').removeClass('hidden');
+					jQuery('.hidden-for-student').removeClass('hidden').removeClass( 'hidden-for-student' );
+					jQuery('.show-if-student').addClass('hidden');					
 				}
 			});
 		})(jQuery('select#get-info-Title'));
