@@ -7862,6 +7862,7 @@ a.text-color-link {
       width: 66%; } }
 
 #tour-highlights-map {
+  position: relative;
   height: 300px;
   height: 50vw;
   width: 100%; }
@@ -7874,6 +7875,8 @@ a.text-color-link {
       right: 0;
       bottom: 0;
       width: 34%; } }
+  .ws-touchevents #tour-highlights-map {
+    z-index: -1; }
 
 .tour-itinerary {
   display: block;
@@ -8493,6 +8496,7 @@ section:after {
 
 .section-nav {
   position: relative;
+  z-index: 3000;
   background: #323c53;
   background-image: linear-gradient(transparent 0, transparent 54px, #b3b7bf 54px, #b3b7bf 55px, transparent 55px);
   border-bottom: 1px solid #283043; }
