@@ -197,16 +197,28 @@ class WS_Marketo {
 		print_r("\n\nUpsert Result:\n");
 		print_r($upsert_result);
 
-		// alias the id:
-		$upsert_id = $upsert_obj->result[0]->id;
-		print_r("\n\nUpsert ID:\n");
-		print_r($upsert_id);
-
-
 		print_r("\n\nResult Status:\n");
 		// alias the status:
 		$upsert_status = $upsert_obj->result[0]->status;
 		print_r($upsert_status);
+
+
+		if( !$upsert_obj->success ){ // Upsert fails
+			print_r("\nFailed Upsert call means abort\n"); // DEBUGGING!
+			echo '</pre>'; // DEBUGGING!
+			return; // (NOT DEBUGGING, ABORT!)
+		}
+
+		if( !isset($upsert_obj->result[0]->id ) ){
+			print_r("\nUpsert call without a result id.  Lead already exists?  No id means abort.\n"); // DEBUGGING!
+			echo '</pre>'; // DEBUGGING!
+			return; // (NOT DEBUGGING, ABORT!)
+		}
+
+		// alias the id:
+		$upsert_id = $upsert_obj->result[0]->id;
+		print_r("\n\nUpsert ID:\n");
+		print_r($upsert_id);
 
 
 		if($upsert_status === 'created') {
