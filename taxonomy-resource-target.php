@@ -3,10 +3,13 @@
  * Template for the blog categories
  */
 
- get_header();
+get_header();
 
- $title = get_queried_object()->name;
- ?>
+$title = get_queried_object()->name;
+
+$term_meta = Taxonomy_MetaData::get( 'resource-target', get_queried_object_id() );
+
+?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
@@ -33,8 +36,28 @@
 				<?php endwhile; ?>
 
 			<?php else : ?>
-				
+
+				<?php if ( ! empty( $term_meta['attached_blocks_before'] ) ) : ?>
+					<section class="ws-container ws-blocks tour-blocks-before print-page-break">
+					<?php foreach ( $term_meta['attached_blocks_before'] as $block_id ) : ?>
+
+						<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+					<?php endforeach; ?>
+					</section>
+				<?php endif; ?>
+
 				<?php get_template_part( 'partials/resources', 'child-terms-list' ); ?>
+
+				<?php if ( ! empty( $term_meta['attached_blocks_after'] ) ) : ?>
+					<section class="ws-container ws-blocks tour-blocks-after print-page-break">
+						<?php foreach ( $term_meta['attached_blocks_after'] as $block_id ) : ?>
+
+							<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+						<?php endforeach; ?>
+					</section>
+				<?php endif; ?>
 
 			<?php endif; ?>
 
