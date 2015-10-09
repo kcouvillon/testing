@@ -7508,28 +7508,14 @@ a.text-color-link {
   margin-top: 10px;
   margin-bottom: 20px; }
 
-@media (min-width: 768px) {
-  .travelogue .blog-single-wrap {
-    padding-right: 5vw; } }
-
-@media (min-width: 768px) {
-  .travelogue .blog-single-content {
-    width: 83.0065359477%;
-    float: right;
-    margin-right: 0; } }
-
-@media (min-width: 768px) {
-  .travelogue .entry-content > * {
-    max-width: 48.8188976378%;
-    float: left;
-    clear: left; } }
-
-@media (min-width: 768px) {
-  .travelogue .entry-content blockquote {
-    float: right;
-    margin: 100px 0;
-    max-width: 48.8188976378%;
-    padding: 0; } }
+.travelogue .entry-content blockquote {
+  color: #3076bc; }
+  @media (min-width: 768px) {
+    .travelogue .entry-content blockquote {
+      float: right;
+      margin: 0 0 1.5em 1.5em;
+      max-width: 48.8188976378%;
+      padding: 0; } }
 
 .travelogue .entry-content figure {
   max-width: 100%;
