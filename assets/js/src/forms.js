@@ -500,7 +500,7 @@
 				mkto_companyState: "required",
 				mkto_companyCity: "required",
 				mkto_Company: "required",
-				helpQuestion: "required"
+				mkto_iwanttoMarketingActivity: "required"
 			},
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
@@ -516,7 +516,7 @@
 				mkto_companyState: "What state is your school in?",
 				mkto_companyCity: "What city is your school in?",
 				mkto_Company: "What is the name of your school?",
-				helpQuestion: "Please tell us how we can help you."
+				mkto_iwanttoMarketingActivity: "Please tell us how we can help you."
 			},
 			invalidHandler: function(event, validator) {
 				jQuery('#invalid-message').show();

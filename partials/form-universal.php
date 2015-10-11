@@ -132,14 +132,15 @@
 				</div>
 
 				<div class="field-left show-if-student show-if-parent">
-					<label for="get-info-question" class="block no-placeholder">Select Your Question...</label>
-					<select id="get-info-question" name="helpQuestion" title="What is Your Question?">
-						<option value="I have a question about an upcoming trip">I have a question about an upcoming trip.</option>
-						<option value="">Select Your Question...</option>
-						<option value="">Select Your Question...</option>
-						<option value="">Select Your Question...</option>
-						<option value="">Select Your Question...</option>
-						<option value="">Select Your Question...</option>
+					<label for="get-info-question" class="block no-placeholder">Question for WorldStrides...?</label>
+					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" title="Question for WorldStrides...?">
+						<option value="">Question for WorldStrides...?</option>
+						<option value="I have a question about an upcoming trip.">I have a question about an upcoming trip.</option>
+						<option value="I have questions about how your trips work.">I have questions about how your trips work.</option>
+						<option value="I need to register for a trip.">I need to register for a trip.</option>
+						<option value="I need to make a payment.">I need to make a payment.</option>
+						<option value="I want to refer a teacher to lead a trip.">I want to refer a teacher to lead a trip.</option>
+						<option value="I am interested in leading a trip.">I am interested in leading a trip.</option>
 					</select>
 				</div>
 

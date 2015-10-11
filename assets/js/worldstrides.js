@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-10-09
+/*! WorldStrides - v0.1.0 - 2015-10-11
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1121,7 +1121,7 @@
 				mkto_companyState: "required",
 				mkto_companyCity: "required",
 				mkto_Company: "required",
-				helpQuestion: "required"
+				mkto_iwanttoMarketingActivity: "required"
 			},
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
@@ -1137,7 +1137,7 @@
 				mkto_companyState: "What state is your school in?",
 				mkto_companyCity: "What city is your school in?",
 				mkto_Company: "What is the name of your school?",
-				helpQuestion: "Please tell us how we can help you."
+				mkto_iwanttoMarketingActivity: "Please tell us how we can help you."
 			},
 			invalidHandler: function(event, validator) {
 				jQuery('#invalid-message').show();
