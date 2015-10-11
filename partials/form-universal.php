@@ -12,9 +12,11 @@
   /**
   * The Interests will just be hidden fields
   */
- $hide_if_context_classes ='hidden hide-if-context';
- if(false===get_the_terms( $post_id, 'filter' )) {
-  	$hide_if_context_classes = 'hide-if-context'; // show these elements if there's no context
+ $hide_if_context_classes ='hide-if-context';
+ $type_hidden_if_context = '';
+ if(false!==get_the_terms( $post_id, 'filter' )) {
+  	$hide_if_context_classes = 'hidden hide-if-context'; // hide these elements if there's a context
+  	$type_hidden_if_context = 'type="hidden"';
  } 
 
 ?>
@@ -70,7 +72,7 @@
 
 			<li id="product" class="field hide-if-student <?php echo $hide_if_context_classes; ?>">
 				<label for="get-info-Product">I want to learn more about</label>
-				<select id="get-info-Product" name="mkto_leadFormProduct">
+				<select id="get-info-Product" name="mkto_leadFormProduct" <?php echo $type_hidden_if_context; ?>>
 					<option value="" class='non stu par ele mse hse une'>Select...</option>
 					<!-- option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option -->
 					<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>

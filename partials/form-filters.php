@@ -36,5 +36,3 @@
 	<input id="get-info-websiteProductLines" type="hidden" name="mkto_websiteProductLines" value="<?php echo WS_Form::slugs_from_terms($product_lines); ?>" >
 	<input id="get-info-websiteCollections" type="hidden" name="mkto_websiteCollections" value="<?php echo WS_Form::slugs_from_terms($collections); ?>" >
 </li>
-
-<?php
