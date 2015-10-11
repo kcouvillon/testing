@@ -28,7 +28,7 @@
 			console.log(<?php echo "'Collections: " . json_encode($collections) . "'" ?>);
 		</script>
 
-<?php $product_line_maximizer = WS_Form::presubmit_max_product_from_context($product_lines); ?>
+<?php $product_line_maximizer = WS_Form::presubmit_max_product_from_context($product_lines,$filters,$collections); ?>
 
 <li class="field hidden">
 	<input id="get-info-maxproductline" type="hidden" name="mkto_wsMaxProductLine" title="Product Line" value="<?php echo $product_line_maximizer; ?>">

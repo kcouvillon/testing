@@ -56,7 +56,7 @@ class WS_Form {
 	 * See LEAD ROUTING LOGIC DIAGRAM:
 	 *  http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
 	 */
-	public static function presubmit_max_product_from_context($product_lines) {
+	public static function presubmit_max_product_from_context($product_lines, $filters, $collections) {
 		if(false === $product_lines) {	// IF PRODUCT LINES ARE UNKNOWN, SKIP IT
 			return 'Unknown';
 		}
@@ -86,7 +86,7 @@ class WS_Form {
 					$product_line_maximizer = 'Middle School - Science'; // Science if it's in that collection
 			}
 		}
-		return product_line_maximizer;
+		return $product_line_maximizer;
 	}
 
 	/**
