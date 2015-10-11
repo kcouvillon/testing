@@ -1,7 +1,7 @@
 <?php
 
  /**
-  * Populates hidden multi-select lists for form submission to Marketo.
+  * Populates hidden input fields for form submission to Marketo.
   * Provides filter information (interests, etc) as extra hidden data.
   * Borrows code from explore-filters.php.
   */

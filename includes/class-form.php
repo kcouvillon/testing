@@ -38,31 +38,12 @@ class WS_Form {
 	}
 
 	/**
-	 * Shortcode to generate WorldStrides custom form
+	 * Function to generate WorldStrides custom form
 	 *
-	 * @param $attributes array Shortcode attributes specified by author
+	 * @param $attributes array attributes specified by author
 	 *
 	 * @return string WorldStrides form embed
 	 */
-	public function worldstrides_form_shortcode( $attributes ) {
-
-		// Defaults can be set here
-		$attributes = shortcode_atts( array(
-			// No attributes defined yet
-		), $attributes, 'worldstrides-form' );
-		ob_start(); ?>
-
-		<section class="learn-more clearfix ws-container">
-			<?php get_template_part('partials/form','universal'); /* provide the universal form */ ?>
-		</section>
-
-		<?php 
-
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
-	}
-
 	public function get_worldstrides_form() {
 		
 	}
