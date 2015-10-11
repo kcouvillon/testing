@@ -1,6 +1,6 @@
 <?php
 /**
- * Form shortcode and business logic
+ * Form business logic and convenience function
  *
  * Class WS_Form
  */
@@ -50,9 +50,10 @@ class WS_Form {
 
 
 	/**
-	 * Determine maximizer product line from page context -- the product line term
+	 * Determine maximizer product line from page context -- terms
 	 * If there is Product-Line context on this page, it will pass through via a hidden field
 	 * ORDER, IN CASE OF TIES: Discoveries > Perspectives > Capstone > OnStage > Excel Sports
+	 * Itineraries in a science collection get sent to science ETS's
 	 * See LEAD ROUTING LOGIC DIAGRAM:
 	 *  http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
 	 */
@@ -88,6 +89,42 @@ class WS_Form {
 		}
 		return $product_line_maximizer;
 	}
+	/**
+	 * Determine the wsProduct from a combination of page and user-posted data
+	 * See LEAD ROUTING LOGIC DIAGRAM:
+	 *  http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
+	 */
+	public static function postsubmit_derive_product($lead) {
+		$wsProduct = '';
+		if(empty($lead->wsMaxProductLine)) { // Product Line was not available on the form page
+			if ( 'History-Culture Themed Programs (K-12)' == $lead->leadFormProduct ) {
+				if( !empty($lead->domesticOrInternational ) && 'us' == $lead->domesticOrInternational ) {
+					$wsProduct = 'Middle School - History'; // default to History
+				} else {
+					$wsProduct = 'High School - International'; // abroad means Perspectives Division
+				}
+			} elseif ( 'Science Themed Programs (K-12)' == $lead->leadFormProduct ) {
+				$wsProduct = 'Middle School - Science';
+			} elseif ( 'Undergraduate Tours' == $lead->leadFormProduct || 
+					   'Graduate-Level Tours' ==  $lead->leadFormProduct ) {
+				$wsProduct = 'University'; // does not exist in Maximizer yet
+			} elseif ( 'Music Festivals' == $lead->leadFormProduct ||
+					   'Concert and Performing Tours' == $lead->leadFormProduct ||
+					   'Marching Band Opportunities' == $lead->leadFormProduct ||
+					   'Dance-Cheer Opportunities' == $lead->leadFormProduct ||
+					   'Theatre Opportunities' == $lead->leadFormProduct ) {
+				$wsProduct = 'Performing';
+			} elseif ( 'Sports Tours' == $lead->leadFormProduct ) {
+				$wsProduct = 'Sports'; // does not exist in Maximizer yet
+			} else {
+				$wsProduct = 'Unknown';
+			}
+		} else {
+			$wsProduct = $lead->wsMaxProductLine;
+		}
+		return $wsProduct;
+	}
+
 
 	/**
 	 * Make a comma-separated array of the slugs from the page terms:
