@@ -48,6 +48,47 @@ class WS_Form {
 		
 	}
 
+
+	/**
+	 * Determine maximizer product line from page context -- the product line term
+	 * If there is Product-Line context on this page, it will pass through via a hidden field
+	 * ORDER, IN CASE OF TIES: Discoveries > Perspectives > Capstone > OnStage > Excel Sports
+	 * See LEAD ROUTING LOGIC DIAGRAM:
+	 *  http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
+	 */
+	public static function presubmit_max_product_from_context($product_lines) {
+		if(false === $product_lines) {	// IF PRODUCT LINES ARE UNKNOWN, SKIP IT
+			return 'Unknown';
+		}
+		foreach ( $product_lines as $division ) {
+			if ( 'discoveries' == $division->slug ) {
+				$product_line_maximizer = 'Middle School - History'; // default to History
+				break;
+			} elseif ( 'perspectives' == $division->slug ) {
+				$product_line_maximizer = 'High School - International';
+				break;
+			} elseif ( 'capstone' == $division->slug ) {
+				$product_line_maximizer = 'University'; // does not exist in Maximizer yet
+				break;
+			} elseif ( 'on-stage' == $division->slug ) {
+				$product_line_maximizer = 'Performing';
+				break;
+			} elseif ( 'excel-sports' == $division->slug ) {
+				$product_line_maximizer = 'Sports'; // does not exist in Maximizer yet
+				break;
+			} else {
+				$product_line_maximizer = 'Unknown';
+			}
+		}
+		if('Middle School - History' == $product_line_maximizer) {
+			foreach ( $collections as $collection) {
+				if ( 'science-discoveries' == $collection->slug )
+					$product_line_maximizer = 'Middle School - Science'; // Science if it's in that collection
+			}
+		}
+		return product_line_maximizer;
+	}
+
 	/**
 	 * Make a comma-separated array of the slugs from the page terms:
 	 * eg: arts-and-sciences-programs,business-programs,nyu,other-professional-programs
