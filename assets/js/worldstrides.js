@@ -724,7 +724,11 @@
 			}
 
 			if('par' == role) {
-
+				jQuery('.hide-if-parent').addClass('hidden').addClass('hidden-for-parent');
+				jQuery('.show-if-parent').removeClass('hidden');
+			} else {
+				jQuery('.hidden-for-parent').removeClass('hidden').removeClass('hidden-for-parent');
+				jQuery('.show-if-parent').addClass('hidden');
 			}
 		}
 

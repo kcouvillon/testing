@@ -67,7 +67,7 @@
 			// Render the "I want to learn about" and "domestic/international" questions if there is no context on the page
 			if(!$tour_context_exists) : ?>
 
-				<li id="product" class="field hide-if-student">
+				<li id="product" class="field hide-if-student hide-if-parent">
 					<label for="get-info-Product">I want to learn more about</label>
 					<select id="get-info-Product" name="mkto_leadFormProduct">
 						<option value="" class='non stu par ele mse hse une'>Select...</option>
@@ -87,7 +87,7 @@
 				</li>
 
 
-				<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student" title="Destination U.S. or Elsewhere?">
+				<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student hide-if-parent" title="Destination U.S. or Elsewhere?">
 					<label>I would travel:</label>
 					&nbsp;<wbr>
 					<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">
