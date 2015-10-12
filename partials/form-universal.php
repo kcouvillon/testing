@@ -10,14 +10,9 @@
 
 
   /**
-  * The Interests will just be hidden fields
+  * The Interests will not render if there is sufficient context
   */
- $hide_if_context_classes ='hide-if-context';
- $type_hidden_if_context = '';
- if(false!==get_the_terms( $post_id, 'filter' )) {
-  	$hide_if_context_classes = 'hidden hide-if-context'; // hide these elements if there's a context
-  	$type_hidden_if_context = 'type="hidden"';
- } 
+ $tour_context_exists = (false!==get_the_terms( $post_id, 'filter' ));
 
 ?>
 
@@ -67,39 +62,43 @@
 				<label for="tour-no">No</label>
 			</li>
 
-			<?php get_template_part('partials/form','filters'); ?>
+			<?php get_template_part('partials/form','filters'); // Add hidden information
+
+			// Render the "I want to learn about" and "domestic/international" questions if there is no context on the page
+			if(!$tour_context_exists) : ?>
+
+				<li id="product" class="field hide-if-student">
+					<label for="get-info-Product">I want to learn more about</label>
+					<select id="get-info-Product" name="mkto_leadFormProduct" <?php echo $type_hidden_if_context; ?>>
+						<option value="" class='non stu par ele mse hse une'>Select...</option>
+						<!-- option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option -->
+						<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
+						<option value='Science Themed Programs (K-12)' class='non stu par ele mse hse'>Science Themed Programs (K-12)</option>
+						<option value='Sports Tours' class='non stu par ele mse hse une'>Sports Tours</option>
+						<option value='Undergraduate Tours' class='non stu par une'>Undergraduate Tours</option>
+						<option value='Graduate-Level Tours' class='non stu par une'>Graduate-Level Tours</option>
+						<option value="Music Festivals" class='non stu par ele mse hse une'>Music Festivals </option>
+						<option value="Concert and Performing Tours" class='non stu par ele mse hse une'>Concert and Performing Tours</option>
+						<option value="Marching Band Opportunities" class='non stu par ele mse hse une'>Marching Band Opportunities</option>
+						<option value="Dance-Cheer Opportunities" class='non stu par ele mse hse une'>Dance &amp; Cheer Opportunities</option>
+						<option value="Theatre Opportunities" class='non stu par ele mse hse une'>Theatre Opportunities</option>
+						<option value="Im not sure yet" class='non stu par ele mse hse une'>I'm not sure yet</option>
+					</select>
+				</li>
 
 
-			<li id="product" class="field hide-if-student <?php echo $hide_if_context_classes; ?>">
-				<label for="get-info-Product">I want to learn more about</label>
-				<select id="get-info-Product" name="mkto_leadFormProduct" <?php echo $type_hidden_if_context; ?>>
-					<option value="" class='non stu par ele mse hse une'>Select...</option>
-					<!-- option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option -->
-					<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
-					<option value='Science Themed Programs (K-12)' class='non stu par ele mse hse'>Science Themed Programs (K-12)</option>
-					<option value='Sports Tours' class='non stu par ele mse hse une'>Sports Tours</option>
-					<option value='Undergraduate Tours' class='non stu par une'>Undergraduate Tours</option>
-					<option value='Graduate-Level Tours' class='non stu par une'>Graduate-Level Tours</option>
-					<option value="Music Festivals" class='non stu par ele mse hse une'>Music Festivals </option>
-					<option value="Concert and Performing Tours" class='non stu par ele mse hse une'>Concert and Performing Tours</option>
-					<option value="Marching Band Opportunities" class='non stu par ele mse hse une'>Marching Band Opportunities</option>
-					<option value="Dance-Cheer Opportunities" class='non stu par ele mse hse une'>Dance &amp; Cheer Opportunities</option>
-					<option value="Theatre Opportunities" class='non stu par ele mse hse une'>Theatre Opportunities</option>
-					<option value="Im not sure yet" class='non stu par ele mse hse une'>I'm not sure yet</option>
-				</select>
-			</li>
+				<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student" title="Destination U.S. or Elsewhere?">
+					<label>I would travel:</label>
+					&nbsp;<wbr>
+					<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">
+					<label for="destination-us">within the U.S.</label>
+					<br class="visible-xs">
+					<input type="radio" name="mkto_USorAbroadDestination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
+					<label for="destination-abroad">outside of the U.S.</label>
+					<label for="mkto_USorAbroadDestination" class="error" style="display:none;"></label>
+				</li>	
 
-
-			<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student <?php echo $hide_if_context_classes; ?>" title="Destination U.S. or Elsewhere?">
-				<label>I would travel:</label>
-				&nbsp;<wbr>
-				<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">
-				<label for="destination-us">within the U.S.</label>
-				<br class="visible-xs">
-				<input type="radio" name="mkto_USorAbroadDestination" id="destination-abroad" value="abroad" title="Outside of the U.S." style="white-space: nowrap;">
-				<label for="destination-abroad">outside of the U.S.</label>
-				<label for="mkto_USorAbroadDestination" class="error" style="display:none;"></label>
-			</li>			
+			<?php endif; ?>		
 
 			<li class="field field-complex hide-if-student">
 				<div class="field-left">
