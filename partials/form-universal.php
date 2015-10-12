@@ -12,7 +12,7 @@
   /**
   * The Interests will not render if there is sufficient context
   */
- $tour_context_exists = (false!==get_the_terms( $post_id, 'filter' ));
+ $tour_context_exists = (false!==get_the_terms( $post_id, 'product-line' ));
 
 ?>
 
@@ -27,7 +27,7 @@
 		<ul class="form-fields list-unstyled">
 			<li class="field">
 				<label for="get-info-Title">My role is</label>
-				<select id="get-info-Title" name="mkto_Title" title="Role">
+				<select id="get-info-Title" name="mkto_Title" title="Role" class="non stu par ele mse hse une">
 					<option data-value="non" value="">Select...</option>
 					<option data-value="stu" value="Student">Student</option>
 					<option data-value="par" value="Parent">Parent</option>
@@ -38,7 +38,7 @@
 				</select>
 			</li>
 
-			<li id="student-thanks" name="student-thanks" class="show-if-student hidden" title="Students, thanks for your interest.">
+			<li id="get-info-student-thanks-li" name="student-thanks" class="stu" title="Students, thanks for your interest.">
 				<p id="student-thanks-p1"> 
 					<?php _e("Thanks for visiting!  Please let us know how we can help you.  ", 'worldstrides'); ?>
 					<?php _e("You can get the answers to most questions by accessing our <a href=\"/resource-center/\">Resource Center</a>.  ", 'worldstrides'); ?>
@@ -51,7 +51,7 @@
 			</li>
 
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" 
-											 class="field hide-if-student" 
+											 class="field non ele mse hse une" 
 											 title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
 				 &nbsp;<wbr>
@@ -67,9 +67,9 @@
 			// Render the "I want to learn about" and "domestic/international" questions if there is no context on the page
 			if(!$tour_context_exists) : ?>
 
-				<li id="product" class="field hide-if-student hide-if-parent">
+				<li id="get-info-product-li" class="field non ele mse hse une">
 					<label for="get-info-Product">I want to learn more about</label>
-					<select id="get-info-Product" name="mkto_leadFormProduct">
+					<select id="get-info-Product" name="mkto_leadFormProduct" title="Learn More About" class="non ele mse hse une">
 						<option value="" class='non stu par ele mse hse une'>Select...</option>
 						<!-- option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option -->
 						<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
@@ -87,7 +87,7 @@
 				</li>
 
 
-				<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field hide-if-student hide-if-parent" title="Destination U.S. or Elsewhere?">
+				<li id="get-info-domestic-or-international" name="mkto_domesticOrInternational" class="field non ele mse hse une" title="Destination U.S. or Elsewhere?">
 					<label>I would travel:</label>
 					&nbsp;<wbr>
 					<input type="radio" name="mkto_USorAbroadDestination" id="destination-us" value="us" title="Within the U.S.">
@@ -100,41 +100,24 @@
 
 			<?php endif; ?>		
 
-			<li class="field field-complex hide-if-student">
+			<li id="get-info-name-li" class="field field-complex non par ele mse hse une">
 				<div class="field-left">
 					<label for="get-info-first-name" class="block no-placeholder">First Name</label>
-					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" title="First Name">
+					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" class="non par ele mse hse une" title="First Name">
 				</div>
 				<div class="field-right">
 					<label for="get-info-last-name" class="block no-placeholder">Last Name</label>
-					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" title="Last Name">
+					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" class="non par ele mse hse une" title="Last Name">
 				</div>
 			</li>
 		</ul>
 	</div>
 	<div class="right">
 		<ul class="form-fields list-unstyled">
-			<li class="field field-complex">
-				<div class="field-left">
-					<label for="get-info-email" class="block no-placeholder">Email Address</label>	
-					<input id="get-info-email" type="email" name="mkto_Email" value="" placeholder="Email Address" title="Email Address">
-				</div>
-				<div class="field-right hide-if-student">
-					<label for="get-info-phone" class="block no-placeholder">Phone Number</label>
-					<input id="get-info-phone" type="tel" name="mkto_Phone" value="" placeholder="Phone Number" title="Preferred Phone Number">
-				</div>
-			</li>
-			<li class="field field-complex">
-				<div class="field-left hide-if-student">
-					<label for="get-info-state" class="block no-placeholder">Select State...</label>
-					<select id="get-info-state" name="mkto_companyState" title="School State">
-						<option value="">Select State...</option>
-					</select>
-				</div>
-
-				<div class="field-left show-if-student show-if-parent">
+			<li class="field">
+				<div id="get-info-question-div" class="field-left stu par">
 					<label for="get-info-question" class="block no-placeholder">Question for WorldStrides...?</label>
-					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" title="Question for WorldStrides...?">
+					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" class="stu par" title="Question for WorldStrides...?">
 						<option value="">Question for WorldStrides...?</option>
 						<option value="I have a question about an upcoming trip.">I have a question about an upcoming trip.</option>
 						<option value="I have questions about how your trips work.">I have questions about how your trips work.</option>
@@ -142,21 +125,40 @@
 						<option value="I need to make a payment.">I need to make a payment.</option>
 						<option value="I want to refer a teacher to lead a trip.">I want to refer a teacher to lead a trip.</option>
 						<option value="I am interested in leading a trip.">I am interested in leading a trip.</option>
+						<option value="I want to raise funds for a trip.">I want to raise funds for a trip.</option>
+					</select>
+				</div>
+			</li>
+			<li class="field field-complex">
+				<div class="field-left">
+					<label for="get-info-email" class="block no-placeholder">Email Address</label>	
+					<input id="get-info-email" type="email" name="mkto_Email" value="" placeholder="Email Address" class="non stu par ele mse hse une" title="Email Address">
+				</div>
+				<div class="field-right hide-if-student">
+					<label for="get-info-phone" class="block no-placeholder">Phone Number</label>
+					<input id="get-info-phone" type="tel" name="mkto_Phone" value="" placeholder="Phone Number"  class="non par ele mse hse une" title="Preferred Phone Number">
+				</div>
+			</li>
+			<li class="field field-complex">
+				<div class="field-left non par ele mse hse une">
+					<label for="get-info-state" class="block no-placeholder">Select State...</label>
+					<select id="get-info-state" name="mkto_companyState" class="non par ele mse hse une" title="School State">
+						<option value="">Select State...</option>
 					</select>
 				</div>
 
-				<div class="field-right hide-if-student">
+				<div id="get-info-city-div" class="field-right non par ele mse hse une">
 					<span id="citySpinnerSpan">   </span>
 					<label for="get-info-city" class="block no-placeholder">School City</label>
-					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" title="School City">
+					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" class="non par ele mse hse une" title="School City">
 				</div>
 			</li>
-			<li class="field hide-if-student">
+			<li id="get-info-school-li" class="field non par ele mse hse une">
 				<span id="schoolSpinnerSpan">   </span>
 				<label for="get-info-school" class="block no-placeholder">School Name</label>
-				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" title="School Name">
+				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" class="non par ele mse hse une" title="School Name">
 			</li>
-			<li class="field hide-if-student">
+			<li id="get-info-comments-li" class="field non par ele mse hse une">
 				<label for="get-info-comment" class="block no-placeholder">Comments or Questions?</label>
 				<textarea id="get-info-comment" name="mkto_formcomments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" title="Comments or Questions"></textarea>
 			</li>
@@ -168,6 +170,6 @@
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary " title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>

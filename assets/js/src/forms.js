@@ -91,24 +91,9 @@
 
 		wsData.toggleViewForRole = function() {
 			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
-			jQuery('#get-info-Product option').filter('.'+role).show();
-			jQuery('#get-info-Product option').not('.'+role).hide();
-
-			if('stu' === role ) {
-				jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
-				jQuery('.show-if-student').removeClass('hidden');
-			} else {
-				jQuery('.hidden-for-student').removeClass('hidden').removeClass( 'hidden-for-student' );
-				jQuery('.show-if-student').addClass('hidden');					
-			}
-
-			if('par' == role) {
-				jQuery('.hide-if-parent').addClass('hidden').addClass('hidden-for-parent');
-				jQuery('.show-if-parent').removeClass('hidden');
-			} else {
-				jQuery('.hidden-for-parent').removeClass('hidden').removeClass('hidden-for-parent');
-				jQuery('.show-if-parent').addClass('hidden');
-			}
+			var getInfoChildren = jQuery('form#get-info-form [id^="get-info-"]');
+			getInfoChildren.filter('.'+role).show();
+			getInfoChildren.not('.'+role).hide();
 		}
 
 		wsData.toggleViewForRole();

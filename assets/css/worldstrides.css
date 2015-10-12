@@ -6303,13 +6303,13 @@ label {
     #current-context-name em:hover {
       color: #777d8d; }
 
-#student-thanks .social-icons li {
+#get-info-student-thanks-li .social-icons li {
   display: inline-block;
   font-size: 1.5em;
   margin-right: 10px; }
-  #student-thanks .social-icons li a {
+  #get-info-student-thanks-li .social-icons li a {
     color: #f2f2f4; }
-    #student-thanks .social-icons li a:hover {
+    #get-info-student-thanks-li .social-icons li a:hover {
       color: #fb901d; }
 
 .page-content .wp-smiley,
