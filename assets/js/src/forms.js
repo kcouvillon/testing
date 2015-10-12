@@ -86,55 +86,29 @@
 		 * Wire the Role (Title), wsProduct fields together
 		 * toggle wsProduct based on Role: stu (student) par (parent) ...
 		 * Hide most of the form if it's a student
+		 * Also toggle the visibility of .show-if-parent fields
 		 */
 
-		wsData.toggleViewForStudent = function() {
+		wsData.toggleViewForRole = function() {
 			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
 			jQuery('#get-info-Product option').filter('.'+role).show();
 			jQuery('#get-info-Product option').not('.'+role).hide();
 
 			if('stu' === role ) {
 				jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
-				jQuery('.show-if-student').not('.hide-if-context').removeClass('hidden');
+				jQuery('.show-if-student').removeClass('hidden');
 			} else {
 				jQuery('.hidden-for-student').removeClass('hidden').removeClass( 'hidden-for-student' );
 				jQuery('.show-if-student').addClass('hidden');					
 			}
+
+			if('par' == role) {
+
+			}
 		}
 
-		wsData.toggleViewForStudent();
-		jQuery('select#get-info-Title').on( 'change', wsData.toggleViewForStudent );
-
-		/**
-		 * Toggle the visibility of .show-if-parent fields
-		 * 
-		 * @TODO
-		 */
-
-
-		/**
-		 * Toggle the visibility of the wsProductDetail dropdowns
-		 */
-		(function(productSelect){
-			productSelect.on('change', function(){
-				var interestID = parseFloat(jQuery(this).children('option:selected').attr('data-interest-id'));
-				jQuery('li[id^="get-info-wsProductDetail"]')
-					.addClass('hidden')
-					.filter(function(){
-						return parseFloat(jQuery(this).attr('data-interest-parent-id'))===interestID;
-					})
-					.removeClass('hidden'); 
-			});
-		})(jQuery('select#get-info-wsProduct'));
-
-
-		/**
-		 * When a student or parent chooses the "Help Question" $('#get-info-question')
-		 * move that into the hidden form_comments field $('#get-info-comment')
-		 * 
-		 * @TODO
-		 */
-
+		wsData.toggleViewForRole();
+		jQuery('select#get-info-Title').on( 'change', wsData.toggleViewForRole );
 
 		/**
 		 * Make the submit button unclickable after first click

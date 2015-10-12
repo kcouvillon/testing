@@ -69,7 +69,7 @@
 
 				<li id="product" class="field hide-if-student">
 					<label for="get-info-Product">I want to learn more about</label>
-					<select id="get-info-Product" name="mkto_leadFormProduct" <?php echo $type_hidden_if_context; ?>>
+					<select id="get-info-Product" name="mkto_leadFormProduct">
 						<option value="" class='non stu par ele mse hse une'>Select...</option>
 						<!-- option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option -->
 						<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
