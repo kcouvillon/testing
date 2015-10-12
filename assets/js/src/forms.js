@@ -87,25 +87,30 @@
 		 * toggle wsProduct based on Role: stu (student) par (parent) ...
 		 * Hide most of the form if it's a student
 		 */
-		(function(roleSelect){
-			roleSelect.on('change',function(){
-				var role =  jQuery(this).children('option:selected').attr('data-value');
-				jQuery('#get-info-Product option').filter('.'+role).show();
-				jQuery('#get-info-Product option').not('.'+role).hide();
 
-				if('stu' === role ) {
-					jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
-				} else {
-					jQuery('.hidden-for-student').not('.hide-if-context').removeClass('hidden');
-				}
-			});
-		})(jQuery('select#get-info-Title'));
+		wsData.toggleViewForStudent = function() {
+			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
+			jQuery('#get-info-Product option').filter('.'+role).show();
+			jQuery('#get-info-Product option').not('.'+role).hide();
 
+			if('stu' === role ) {
+				jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
+				jQuery('.show-if-student').not('.hide-if-context').removeClass('hidden');
+			} else {
+				jQuery('.hidden-for-student').removeClass('hidden').removeClass( 'hidden-for-student' );
+				jQuery('.show-if-student').addClass('hidden');					
+			}
+		}
 
-		jQuery('#current-context-name').on('click',function(){
-			jQuery('.hide-if-context').removeClass('hidden');
-			jQuery(this).hide();
-		});
+		wsData.toggleViewForStudent();
+		jQuery('select#get-info-Title').on( 'change', wsData.toggleViewForStudent );
+
+		/**
+		 * Toggle the visibility of .show-if-parent fields
+		 * 
+		 * @TODO
+		 */
+
 
 		/**
 		 * Toggle the visibility of the wsProductDetail dropdowns
@@ -121,6 +126,14 @@
 					.removeClass('hidden'); 
 			});
 		})(jQuery('select#get-info-wsProduct'));
+
+
+		/**
+		 * When a student or parent chooses the "Help Question" $('#get-info-question')
+		 * move that into the hidden form_comments field $('#get-info-comment')
+		 * 
+		 * @TODO
+		 */
 
 
 		/**
@@ -487,6 +500,7 @@
 				mkto_companyState: "required",
 				mkto_companyCity: "required",
 				mkto_Company: "required",
+				mkto_iwanttoMarketingActivity: "required"
 			},
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
@@ -502,6 +516,7 @@
 				mkto_companyState: "What state is your school in?",
 				mkto_companyCity: "What city is your school in?",
 				mkto_Company: "What is the name of your school?",
+				mkto_iwanttoMarketingActivity: "Please tell us how we can help you."
 			},
 			invalidHandler: function(event, validator) {
 				jQuery('#invalid-message').show();

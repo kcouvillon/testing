@@ -156,34 +156,7 @@ class WS_Marketo {
 			}
 		}
 
-		// See LEAD ROUTING LOGIC DIAGRAM: http://worldstridesdev.org/blog/lead-routing-logic-for-marketo-to-maximizer/
-
-		if(empty($lead->wsMaxProductLine)) { // Product Line was not available on the form page
-			if ( 'History-Culture Themed Programs (K-12)' == $lead->leadFormProduct ) {
-				if( !empty($lead->domesticOrInternational ) && 'us' == $lead->domesticOrInternational ) {
-					$lead->wsProduct = 'Middle School - History'; // default to History
-				} else {
-					$lead->wsProduct = 'High School - International'; // abroad means Perspectives Division
-				}
-			} elseif ( 'Science Themed Programs (K-12)' == $lead->leadFormProduct ) {
-				$lead->wsProduct = 'Middle School - Science';
-			} elseif ( 'Undergraduate Tours' == $lead->leadFormProduct || 
-					   'Graduate-Level Tours' ==  $lead->leadFormProduct ) {
-				$lead->wsProduct = 'University'; // does not exist in Maximizer yet
-			} elseif ( 'Music Festivals' == $lead->leadFormProduct ||
-					   'Concert and Performing Tours' == $lead->leadFormProduct ||
-					   'Marching Band Opportunities' == $lead->leadFormProduct ||
-					   'Dance-Cheer Opportunities' == $lead->leadFormProduct ||
-					   'Theatre Opportunities' == $lead->leadFormProduct ) {
-				$lead->wsProduct = 'Performing';
-			} elseif ( 'Sports Tours' == $lead->leadFormProduct ) {
-				$lead->wsProduct = 'Sports'; // does not exist in Maximizer yet
-			} else {
-				$lead->wsProduct = 'Unknown';
-			}
-		} else {
-			$lead->wsProduct = $lead->wsMaxProductLine;
-		}
+		$lead->wsProduct = WS_Form::postsubmit_derive_product($lead);
 
 		print_r($lead);
 

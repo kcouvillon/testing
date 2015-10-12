@@ -12,9 +12,11 @@
   /**
   * The Interests will just be hidden fields
   */
- $hide_if_context_classes ='hidden hide-if-context';
- if(false===get_the_terms( $post_id, 'filter' )) {
-  	$hide_if_context_classes = 'hide-if-context'; // show these elements if there's no context
+ $hide_if_context_classes ='hide-if-context';
+ $type_hidden_if_context = '';
+ if(false!==get_the_terms( $post_id, 'filter' )) {
+  	$hide_if_context_classes = 'hidden hide-if-context'; // hide these elements if there's a context
+  	$type_hidden_if_context = 'type="hidden"';
  } 
 
 ?>
@@ -42,10 +44,12 @@
 			</li>
 
 			<li id="student-thanks" name="student-thanks" class="show-if-student hidden" title="Students, thanks for your interest.">
-				<p id="student-thanks-p1"> <?php _e("Thanks for visiting!  There&#39;s nothing more we need from you.", 'worldstrides'); ?>
+				<p id="student-thanks-p1"> 
+					<?php _e("Thanks for visiting!  Please let us know how we can help you.  ", 'worldstrides'); ?>
+					<?php _e("You can get the answers to most questions by accessing our <a href=\"/resource-center/\">Resource Center</a>.  ", 'worldstrides'); ?>
 				</p>
 				<p id="student-thanks-p2"> <?php _e("You can also visit all our social media sites and see what the excitement is all about.", 'worldstrides'); ?>
-					<?php _e(" Tell your friends about all these amazing places to visit.", 'worldstrides'); ?>
+					<?php _e(" Tell your friends about all these amazing places to visit!", 'worldstrides'); ?>
 				</p>
 				<?php get_template_part('partials/sociallinks'); ?>
 
@@ -68,7 +72,7 @@
 
 			<li id="product" class="field hide-if-student <?php echo $hide_if_context_classes; ?>">
 				<label for="get-info-Product">I want to learn more about</label>
-				<select id="get-info-Product" name="mkto_leadFormProduct">
+				<select id="get-info-Product" name="mkto_leadFormProduct" <?php echo $type_hidden_if_context; ?>>
 					<option value="" class='non stu par ele mse hse une'>Select...</option>
 					<!-- option value='referring a teacher to WorldStrides' class='non stu par ele mse hse'>referring a teacher to WorldStrides</option -->
 					<option value='History-Culture Themed Programs (K-12)' class='non stu par ele mse hse'>History &amp; Culture Themed Programs (K-12)</option>
@@ -111,23 +115,37 @@
 	</div>
 	<div class="right">
 		<ul class="form-fields list-unstyled">
-			<li class="field field-complex hide-if-student">
+			<li class="field field-complex">
 				<div class="field-left">
 					<label for="get-info-email" class="block no-placeholder">Email Address</label>	
 					<input id="get-info-email" type="email" name="mkto_Email" value="" placeholder="Email Address" title="Email Address">
 				</div>
-				<div class="field-right">
+				<div class="field-right hide-if-student">
 					<label for="get-info-phone" class="block no-placeholder">Phone Number</label>
 					<input id="get-info-phone" type="tel" name="mkto_Phone" value="" placeholder="Phone Number" title="Preferred Phone Number">
 				</div>
 			</li>
-			<li class="field field-complex hide-if-student">
-				<div class="field-left">
+			<li class="field field-complex">
+				<div class="field-left hide-if-student">
 					<label for="get-info-state" class="block no-placeholder">Select State...</label>
 					<select id="get-info-state" name="mkto_companyState" title="School State">
 						<option value="">Select State...</option>
 					</select>
 				</div>
+
+				<div class="field-left show-if-student show-if-parent">
+					<label for="get-info-question" class="block no-placeholder">Question for WorldStrides...?</label>
+					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" title="Question for WorldStrides...?">
+						<option value="">Question for WorldStrides...?</option>
+						<option value="I have a question about an upcoming trip.">I have a question about an upcoming trip.</option>
+						<option value="I have questions about how your trips work.">I have questions about how your trips work.</option>
+						<option value="I need to register for a trip.">I need to register for a trip.</option>
+						<option value="I need to make a payment.">I need to make a payment.</option>
+						<option value="I want to refer a teacher to lead a trip.">I want to refer a teacher to lead a trip.</option>
+						<option value="I am interested in leading a trip.">I am interested in leading a trip.</option>
+					</select>
+				</div>
+
 				<div class="field-right hide-if-student">
 					<span id="citySpinnerSpan">   </span>
 					<label for="get-info-city" class="block no-placeholder">School City</label>
@@ -149,7 +167,8 @@
 		<input id="get-info-companyPhone" type="hidden" name="mkto_companyPhone" value="" >
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
+		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="Get Info" class="btn btn-primary hide-if-student" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>
