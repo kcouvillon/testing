@@ -141,7 +141,7 @@
 						<option value="I have questions about how your trips work." class="stu par">I have questions about how your trips work.</option>
 						<option value="I need to register for a trip." class="stu par">I need to register for a trip.</option>
 						<option value="I need to make a payment." class="stu par">I need to make a payment.</option>
-						<option value="I want to refer a teacher to lead a trip." class="stu par">I want to refer a teacher to lead a trip.</option>
+						<!-- option value="I want to refer a teacher to lead a trip." class="stu par">I want to refer a teacher to lead a trip.</option -->
 						<option value="I am interested in leading a trip." class="par">I am interested in leading a trip.</option>
 						<option value="I want to raise funds for a trip." class="stu par">I want to raise funds for a trip.</option>
 					</select>
