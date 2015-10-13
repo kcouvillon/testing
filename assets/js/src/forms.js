@@ -56,29 +56,24 @@
 	 * Digest and display JSON list of states
 	 */
 	wsData.populateStates = function (){
-
-
-			jQuery.ajax({
-				url: wsData.mdrapi_base_url + 'allStates/',
-				type: 'GET',
-				dataType: 'jsonp',
-				jsonp:'callback',
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					console.log('Status: ' + textStatus); alert('Error: ' + errorThrown);
-				},
-				success:function(data){
-					var output = jQuery.parseJSON(data);
-					var numstates = output.length;
-					var statefield = jQuery('#get-info-state');
-					for(var i=0; i<numstates; i++){
-						statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
-					}
-
-
-
+		jQuery.ajax({
+			url: wsData.mdrapi_base_url + 'allStates/',
+			type: 'GET',
+			dataType: 'jsonp',
+			jsonp:'callback',
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log('Status: ' + textStatus); 
+				console.log('Error: ' + errorThrown);
+			},
+			success:function(data){
+				var output = jQuery.parseJSON(data);
+				var numstates = output.length;
+				var statefield = jQuery('#get-info-state');
+				for(var i=0; i<numstates; i++){
+					statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
 				}
-			});
-
+			}
+		});
 	};
 
 	function universalLead() {
@@ -88,16 +83,26 @@
 		 * Hide most of the form if it's a student
 		 * Also toggle the visibility of .show-if-parent fields
 		 */
-
-		wsData.toggleViewForRole = function() {
+		wsData.toggleViewForRole = function(selector) {
 			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
-			var getInfoChildren = jQuery('form#get-info-form [id^="get-info-"]');
+			var getInfoChildren = jQuery(selector);
 			getInfoChildren.filter('.'+role).show();
 			getInfoChildren.not('.'+role).hide();
 		}
 
-		wsData.toggleViewForRole();
-		jQuery('select#get-info-Title').on( 'change', wsData.toggleViewForRole );
+		wsData.toggleFieldViewForRole = function() {
+			wsData.toggleViewForRole('form#get-info-form [id^="get-info-"]'); // Selector for form fields that start #get-info
+		}
+
+		wsData.toggleProductViewForRole = function() {
+			wsData.toggleViewForRole('select#get-info-Product option');  // Selector for the Product (I want to learn..,) dropdown
+		}
+
+		wsData.toggleFieldViewForRole();
+		jQuery('select#get-info-Title').on( 'change', function() {
+			wsData.toggleFieldViewForRole(); 
+			wsData.toggleProductViewForRole();
+		});
 
 		/**
 		 * Make the submit button unclickable after first click
@@ -176,7 +181,8 @@
 				dataType: 'jsonp',
 				jsonp:'callback',
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					console.log('Status: ' + textStatus); alert('Error: ' + errorThrown);
+					console.log('Status: ' + textStatus); 
+					console.log('Error: ' + errorThrown);
 				},
 				success:function(data){
 					var output = jQuery.parseJSON(data);
@@ -286,7 +292,8 @@
 				dataType: 'jsonp',
 				jsonp:'callback',
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert('Status: ' + textStatus); alert('Error: ' + errorThrown);
+					console.log('Status: ' + textStatus); 
+					console.log('Error: ' + errorThrown);
 				},
 				success:function(data){
 					var output = jQuery.parseJSON(data);

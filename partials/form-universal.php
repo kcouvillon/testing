@@ -158,9 +158,9 @@
 				<label for="get-info-school" class="block no-placeholder">School Name</label>
 				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" class="non par ele mse hse une" title="School Name">
 			</li>
-			<li id="get-info-comments-li" class="field non par ele mse hse une">
+			<li id="get-info-comments-li" class="field non stu par ele mse hse une">
 				<label for="get-info-comment" class="block no-placeholder">Comments or Questions?</label>
-				<textarea id="get-info-comment" name="mkto_formcomments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" title="Comments or Questions"></textarea>
+				<textarea id="get-info-comment" name="mkto_formcomments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" class="non stu par ele mse hse une" title="Comments or Questions"></textarea>
 			</li>
 		</ul>
 
@@ -170,6 +170,6 @@
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary " title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary non stu par ele mse hse une" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>
