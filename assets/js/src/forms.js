@@ -98,10 +98,15 @@
 			wsData.toggleViewForRole('select#get-info-Product option');  // Selector for the Product (I want to learn..,) dropdown
 		}
 
+		wsData.toggleQuestionViewForRole = function() {
+			wsData.toggleViewForRole('select#get-info-question option');  // Selector for the Question (for students, parents)
+		}
+
 		wsData.toggleFieldViewForRole();
 		jQuery('select#get-info-Title').on( 'change', function() {
 			wsData.toggleFieldViewForRole(); 
 			wsData.toggleProductViewForRole();
+			wsData.toggleQuestionViewForRole();
 		});
 
 		/**
@@ -122,8 +127,8 @@
 			var city = jQuery('#get-info-city');
 			var state = jQuery('#get-info-state');
 
-			school.val('(Please choose your City first.)').attr('readonly','readonly');
-			city.val('(Choose State first.)').attr('readonly','readonly');
+			school.val('School (Please choose your City first.)').attr('readonly','readonly');
+			city.val('City (Choose State first.)').attr('readonly','readonly');
 		}
 		jQuery(document).ready(function() {
 			wsData.resetSchoolCitySchoolNameFields();

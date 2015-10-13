@@ -22,7 +22,7 @@
 	<div class="left">
 		<?php $phone = get_post_meta( $post->ID, 'itinerary_phone', true ); 
 			if (!empty($phone)) : ?>
-		<p>Rather call us on the phone? Reach us at: <?php echo $phone; ?></p>
+				<p>Rather call us on the phone? Reach us at: <?php echo $phone; ?></p>
 			<?php endif; ?>
 		<ul class="form-fields list-unstyled">
 			<li class="field">
@@ -47,7 +47,25 @@
 					<?php _e(" Tell your friends about all these amazing places to visit!", 'worldstrides'); ?>
 				</p>
 				<?php get_template_part('partials/sociallinks'); ?>
+			</li>
 
+			<li id="get-info-parent-hello-li" name="parent-hello" class="par" title="Parents, we are here to help.">
+				<p id="parent-hello-p1">
+					<?php _e("Questions?  We&apos;re here to help.  Just tell us a little about yourself and what you have questions about ", 'worldstrides'); ?>
+					<?php _e("and we&apos;ll be right with you.", 'worldstrides'); ?>
+				</p>
+
+				<?php 
+				$primary_phone_mssg = '';
+				if (!empty($phone)) : 
+					$primary_phone_mssg = sprintf(__("%s, or at our main toll-free number: "),$phone);
+				endif; ?>
+
+				<p id="parent-hello-p2">
+					<?php _e("You can also call us at ", 'worldstrides'); ?>
+					<?php echo $primary_phone_mssg; ?>
+					<?php _e("1-800-999-7676", 'worldstrides'); ?>
+				</p>
 			</li>
 
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" 
@@ -118,14 +136,14 @@
 				<div id="get-info-question-div" class="field-left stu par">
 					<label for="get-info-question" class="block no-placeholder">Question for WorldStrides...?</label>
 					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" class="stu par" title="Question for WorldStrides...?">
-						<option value="">Question for WorldStrides...?</option>
-						<option value="I have a question about an upcoming trip.">I have a question about an upcoming trip.</option>
-						<option value="I have questions about how your trips work.">I have questions about how your trips work.</option>
-						<option value="I need to register for a trip.">I need to register for a trip.</option>
-						<option value="I need to make a payment.">I need to make a payment.</option>
-						<option value="I want to refer a teacher to lead a trip.">I want to refer a teacher to lead a trip.</option>
-						<option value="I am interested in leading a trip.">I am interested in leading a trip.</option>
-						<option value="I want to raise funds for a trip.">I want to raise funds for a trip.</option>
+						<option value="" class="stu par">Question for WorldStrides...?</option>
+						<option value="I have a question about an upcoming trip." class="stu par">I have a question about an upcoming trip.</option>
+						<option value="I have questions about how your trips work." class="stu par">I have questions about how your trips work.</option>
+						<option value="I need to register for a trip." class="stu par">I need to register for a trip.</option>
+						<option value="I need to make a payment." class="stu par">I need to make a payment.</option>
+						<option value="I want to refer a teacher to lead a trip." class="stu par">I want to refer a teacher to lead a trip.</option>
+						<option value="I am interested in leading a trip." class="par">I am interested in leading a trip.</option>
+						<option value="I want to raise funds for a trip." class="stu par">I want to raise funds for a trip.</option>
 					</select>
 				</div>
 			</li>
@@ -142,21 +160,21 @@
 			<li class="field field-complex">
 				<div class="field-left non par ele mse hse une">
 					<label for="get-info-state" class="block no-placeholder">Select State...</label>
-					<select id="get-info-state" name="mkto_companyState" class="non par ele mse hse une" title="School State">
+					<select id="get-info-state" name="mkto_companyState" class="non stu par ele mse hse une" title="School State">
 						<option value="">Select State...</option>
 					</select>
 				</div>
 
-				<div id="get-info-city-div" class="field-right non par ele mse hse une">
+				<div id="get-info-city-div" class="field-right non stu par ele mse hse une">
 					<span id="citySpinnerSpan">   </span>
 					<label for="get-info-city" class="block no-placeholder">School City</label>
-					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" class="non par ele mse hse une" title="School City">
+					<input id="get-info-city" type="text" name="mkto_companyCity" value="" placeholder="School City" class="non stu par ele mse hse une" title="School City">
 				</div>
 			</li>
-			<li id="get-info-school-li" class="field non par ele mse hse une">
+			<li id="get-info-school-li" class="field non stu par ele mse hse une">
 				<span id="schoolSpinnerSpan">   </span>
 				<label for="get-info-school" class="block no-placeholder">School Name</label>
-				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" class="non par ele mse hse une" title="School Name">
+				<input id="get-info-school" type="text" name="mkto_Company" value="" placeholder="School Name" class="non stu par ele mse hse une" title="School Name">
 			</li>
 			<li id="get-info-comments-li" class="field non stu par ele mse hse une">
 				<label for="get-info-comment" class="block no-placeholder">Comments or Questions?</label>
