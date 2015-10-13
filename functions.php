@@ -47,7 +47,7 @@ include WS_PATH . 'includes/class-marketo-upsert.php';
 include WS_PATH . 'includes/class-metaboxes.php';
 include WS_PATH . 'includes/class-metaboxes-blocks.php';
 include WS_PATH . 'includes/class-metaboxes-collections.php';
-// include WS_PATH . 'includes/class-metaboxes-custom-pages.php';
+include WS_PATH . 'includes/class-metaboxes-custom-pages.php';
 include WS_PATH . 'includes/class-metaboxes-divisions.php';
 include WS_PATH . 'includes/class-metaboxes-itineraries.php';
 include WS_PATH . 'includes/class-metaboxes-filter-endpoints.php';
