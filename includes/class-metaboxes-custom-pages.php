@@ -34,20 +34,20 @@ class WS_Metaboxes_Custom_Pages {
 	 * Sets up actions and filters.
 	 */
 	protected function _init() {
-		add_action( 'cmb2_init', array( $this, 'itinerary_details' ) );
-		add_action( 'cmb2_init', array( $this, 'itinerary_highlights' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_details' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_highlights' ) );
 	}
 
 
 	/**
 	 * Itinerary Details box
 	 */
-	function itinerary_details() {
+	function custom_page_details() {
 
 		$prefix = 'itinerary_details_';
 
 		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
+			'id'           => 'custom_page_metabox',
 			'title'        => __( 'Itinerary Details', 'cmb2' ),
 			'object_types' => array( 'custom-page', ),
 		) );
@@ -163,7 +163,7 @@ class WS_Metaboxes_Custom_Pages {
 	/**
 	 * Field group for Itinerary Highlights
 	 */
-	function itinerary_highlights() {
+	function custom_page_highlights() {
 
 		$prefix = 'itinerary_highlights_';
 
@@ -171,7 +171,7 @@ class WS_Metaboxes_Custom_Pages {
 		 * Repeatable Field Groups
 		 */
 		$cmb_group = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
+			'id'           => 'custom_page_metabox',
 			'title'        => __( 'Highlights', 'cmb2' ),
 			'object_types' => array( 'custom-page', ),
 		) );
