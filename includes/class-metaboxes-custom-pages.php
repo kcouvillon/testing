@@ -36,6 +36,7 @@ class WS_Metaboxes_Custom_Pages {
 	protected function _init() {
 		add_action( 'cmb2_init', array( $this, 'custom_page_details' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_highlights' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_faculty' ) );
 	}
 
 
@@ -47,7 +48,7 @@ class WS_Metaboxes_Custom_Pages {
 		$prefix = 'itinerary_details_';
 
 		$cmb = new_cmb2_box( array(
-			'id'           => 'custom_page_metabox',
+			'id'           => 'custom_page_details_metabox',
 			'title'        => __( 'Itinerary Details', 'cmb2' ),
 			'object_types' => array( 'custom-page', ),
 		) );
@@ -171,7 +172,7 @@ class WS_Metaboxes_Custom_Pages {
 		 * Repeatable Field Groups
 		 */
 		$cmb_group = new_cmb2_box( array(
-			'id'           => 'custom_page_metabox',
+			'id'           => 'custom_page_highlights_metabox',
 			'title'        => __( 'Highlights', 'cmb2' ),
 			'object_types' => array( 'custom-page', ),
 		) );
@@ -220,6 +221,73 @@ class WS_Metaboxes_Custom_Pages {
 			'id' => $prefix . 'location',
 			'type' => 'pw_map',
 			// 'split_values' => true, // Save latitude and longitude as two separate fields
+		) );
+
+	}
+
+
+	/**
+	 * Field group for Itinerary Highlights
+	 */
+	function custom_page_faculty() {
+
+		$prefix = 'custom_page_faculty_';
+
+		/**
+		 * Repeatable Field Groups
+		 */
+		$cmb_group = new_cmb2_box( array(
+			'id'           => 'custom_page_faculty_metabox',
+			'title'        => __( 'Faculty', 'cmb2' ),
+			'object_types' => array( 'custom-page', ),
+		) );
+
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb_group->add_field( array(
+			'id'          => $prefix . 'list',
+			'type'        => 'group',
+			'options'     => array(
+				'group_title'   => __( 'Faculty Member {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Faculty Member', 'cmb2' ),
+				'remove_button' => __( 'Remove Faculty Member', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		/**
+		 * Group fields works the same, except ids only need
+		 * to be unique to the group. Prefix is not needed.
+		 *
+		 * The parent field's id needs to be passed as the first argument.
+		 */
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'       => __( 'Name', 'cmb2' ),
+			'id'         => 'name',
+			'type'       => 'text',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'       => __( 'Title', 'cmb2' ),
+			'id'         => 'title',
+			'type'       => 'text',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'       => __( 'Email', 'cmb2' ),
+			'id'         => 'email',
+			'type'       => 'text_email',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name'        => __( 'Description', 'cmb2' ),
+			'id'          => 'description',
+			'type'        => 'textarea_small',
+		) );
+
+		$cmb_group->add_group_field( $group_field_id, array(
+			'name' => __( 'Image', 'cmb2' ),
+			'id'   => 'image',
+			'type' => 'file',
 		) );
 
 	}
