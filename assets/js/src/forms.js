@@ -56,29 +56,24 @@
 	 * Digest and display JSON list of states
 	 */
 	wsData.populateStates = function (){
-
-
-			jQuery.ajax({
-				url: wsData.mdrapi_base_url + 'allStates/',
-				type: 'GET',
-				dataType: 'jsonp',
-				jsonp:'callback',
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					console.log('Status: ' + textStatus); alert('Error: ' + errorThrown);
-				},
-				success:function(data){
-					var output = jQuery.parseJSON(data);
-					var numstates = output.length;
-					var statefield = jQuery('#get-info-state');
-					for(var i=0; i<numstates; i++){
-						statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
-					}
-
-
-
+		jQuery.ajax({
+			url: wsData.mdrapi_base_url + 'allStates/',
+			type: 'GET',
+			dataType: 'jsonp',
+			jsonp:'callback',
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log('Status: ' + textStatus); 
+				console.log('Error: ' + errorThrown);
+			},
+			success:function(data){
+				var output = jQuery.parseJSON(data);
+				var numstates = output.length;
+				var statefield = jQuery('#get-info-state');
+				for(var i=0; i<numstates; i++){
+					statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
 				}
-			});
-
+			}
+		});
 	};
 
 	function universalLead() {
@@ -86,55 +81,33 @@
 		 * Wire the Role (Title), wsProduct fields together
 		 * toggle wsProduct based on Role: stu (student) par (parent) ...
 		 * Hide most of the form if it's a student
+		 * Also toggle the visibility of .show-if-parent fields
 		 */
-
-		wsData.toggleViewForStudent = function() {
+		wsData.toggleViewForRole = function(selector) {
 			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
-			jQuery('#get-info-Product option').filter('.'+role).show();
-			jQuery('#get-info-Product option').not('.'+role).hide();
-
-			if('stu' === role ) {
-				jQuery('.hide-if-student').addClass('hidden').addClass('hidden-for-student');
-				jQuery('.show-if-student').not('.hide-if-context').removeClass('hidden');
-			} else {
-				jQuery('.hidden-for-student').removeClass('hidden').removeClass( 'hidden-for-student' );
-				jQuery('.show-if-student').addClass('hidden');					
-			}
+			var getInfoChildren = jQuery(selector);
+			getInfoChildren.filter('.'+role).show();
+			getInfoChildren.not('.'+role).hide();
 		}
 
-		wsData.toggleViewForStudent();
-		jQuery('select#get-info-Title').on( 'change', wsData.toggleViewForStudent );
+		wsData.toggleFieldViewForRole = function() {
+			wsData.toggleViewForRole('form#get-info-form [id^="get-info-"]'); // Selector for form fields that start #get-info
+		}
 
-		/**
-		 * Toggle the visibility of .show-if-parent fields
-		 * 
-		 * @TODO
-		 */
+		wsData.toggleProductViewForRole = function() {
+			wsData.toggleViewForRole('select#get-info-Product option');  // Selector for the Product (I want to learn..,) dropdown
+		}
 
+		wsData.toggleQuestionViewForRole = function() {
+			wsData.toggleViewForRole('select#get-info-question option');  // Selector for the Question (for students, parents)
+		}
 
-		/**
-		 * Toggle the visibility of the wsProductDetail dropdowns
-		 */
-		(function(productSelect){
-			productSelect.on('change', function(){
-				var interestID = parseFloat(jQuery(this).children('option:selected').attr('data-interest-id'));
-				jQuery('li[id^="get-info-wsProductDetail"]')
-					.addClass('hidden')
-					.filter(function(){
-						return parseFloat(jQuery(this).attr('data-interest-parent-id'))===interestID;
-					})
-					.removeClass('hidden'); 
-			});
-		})(jQuery('select#get-info-wsProduct'));
-
-
-		/**
-		 * When a student or parent chooses the "Help Question" $('#get-info-question')
-		 * move that into the hidden form_comments field $('#get-info-comment')
-		 * 
-		 * @TODO
-		 */
-
+		wsData.toggleFieldViewForRole();
+		jQuery('select#get-info-Title').on( 'change', function() {
+			wsData.toggleFieldViewForRole(); 
+			wsData.toggleProductViewForRole();
+			wsData.toggleQuestionViewForRole();
+		});
 
 		/**
 		 * Make the submit button unclickable after first click
@@ -154,8 +127,8 @@
 			var city = jQuery('#get-info-city');
 			var state = jQuery('#get-info-state');
 
-			school.val('(Please choose your City first.)').attr('readonly','readonly');
-			city.val('(Choose State first.)').attr('readonly','readonly');
+			school.val('School (Please choose your City first.)').attr('readonly','readonly');
+			city.val('City (Choose State first.)').attr('readonly','readonly');
 		}
 		jQuery(document).ready(function() {
 			wsData.resetSchoolCitySchoolNameFields();
@@ -213,7 +186,8 @@
 				dataType: 'jsonp',
 				jsonp:'callback',
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					console.log('Status: ' + textStatus); alert('Error: ' + errorThrown);
+					console.log('Status: ' + textStatus); 
+					console.log('Error: ' + errorThrown);
 				},
 				success:function(data){
 					var output = jQuery.parseJSON(data);
@@ -323,7 +297,8 @@
 				dataType: 'jsonp',
 				jsonp:'callback',
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert('Status: ' + textStatus); alert('Error: ' + errorThrown);
+					console.log('Status: ' + textStatus); 
+					console.log('Error: ' + errorThrown);
 				},
 				success:function(data){
 					var output = jQuery.parseJSON(data);
