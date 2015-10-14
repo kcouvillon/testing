@@ -11,10 +11,11 @@ get_header(); ?>
 			<?php the_post(); ?>
 
 			<?php
-			$terms          = get_the_terms( $post->ID, '_collection' );
-			$term           = $terms[0];
-			$phone          = get_post_meta( $post->ID, 'itinerary_phone', true );
-			$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
+			$trip_id   = get_post_meta( $post->ID, 'itinerary_details_trip_id', true );
+			$request_info   = get_post_meta( $post->ID, 'itinerary_details_request_info', true );
+			$gift_of_education   = get_post_meta( $post->ID, 'itinerary_details_gift_of_ed', true );
+			$ifa_scholarship   = get_post_meta( $post->ID, 'itinerary_details_ifa_scholarship', true );
+			$for_parents   = get_post_meta( $post->ID, 'itinerary_details_for_parents', true );
 			?>
 
 			<?php
@@ -37,10 +38,8 @@ get_header(); ?>
 						<div class="section-header-content">
 
 							<nav class="breadcrumbs hide-print">
-								`							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
-								<?php if( ! empty( $term ) ) : ?>
-									<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
-								<?php endif; ?>
+								<a href="<?php echo esc_url( home_url( '/' ) ); ?>'"?>Home</a>>
+								<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
 								<span><?php the_title(); ?></span>
 							</nav>
 							<span class="print-only"><?php the_permalink(); ?></span>
@@ -54,14 +53,9 @@ get_header(); ?>
 
 							<?php the_content(); ?>
 
-							<?php if ( $phone ) : ?>
-								<p class="print-only">Call for more information: <?php echo $phone; ?></p>
-							<?php endif; ?>
 						</div>
 
 					</div>
-
-					<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
 				</header>
 
@@ -79,6 +73,22 @@ get_header(); ?>
 									$section_link ++; ?>">Highlights</a></li>
 							<?php endif; ?>
 
+							<?php $itinerary_description = get_post_meta( $post->ID, 'custom_page_itinerary_description', true ); ?>
+
+							<?php if ( ! empty( $itinerary_description ) ) : ?>
+								<li><a href="#section-<?php echo $section_link;
+									$section_link ++; ?>">Itinerary Description</a></li>
+							<?php endif; ?>
+
+							<?php $sections = get_post_meta( $post->ID, 'custom_page_sections_list', true ); ?>
+
+							<?php if ( ! empty( $sections ) ) : ?>
+								<?php foreach ( $sections as $section ) : ?>
+								<li><a href="#section-<?php echo $section_link;
+									$section_link ++; ?>"><?php echo $section['title']; ?></a></li>
+								<?php endforeach; ?>
+							<?php endif; ?>
+
 							<?php $faculty = get_post_meta( $post->ID, 'custom_page_faculty_list', true ); ?>
 
 							<?php if ( ! empty( $faculty ) ) : ?>
@@ -86,6 +96,12 @@ get_header(); ?>
 									$section_link ++; ?>">Faculty</a></li>
 							<?php endif; ?>
 						</ul>
+						<?php if ( $request_info && $trip_id ) : ?>
+							<form method="post" action="http://olr.worldstrides.net/scripts/cgiip.exe/RegisterOnline/OLRPassporttotravel.htm">
+								<input id="hidden_trip_id" type="hidden" name="tid" value="<?php echo (int) $trip_id; ?>">
+								<input id="cs_register_button" type="submit" class="btn btn-primary subnav-cta hide-print" value="Register Now" >
+							</form>
+						<?php endif; ?>
 					</div>
 				</nav>
 
@@ -96,6 +112,7 @@ get_header(); ?>
 					<?php
 					$number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true );
 					$date_list   = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
+					$price   = get_post_meta( $post->ID, 'itinerary_details_price', true );
 					if ( $date_list && count( $date_list ) >= 4 ) {
 						$column_count = 2;
 					} else {
@@ -137,6 +154,14 @@ get_header(); ?>
 
 							</ul>
 
+						<?php endif; ?>
+
+						<?php if ( $price ) : ?>
+							<div class="h3">Price: <?php echo esc_html( $price ); ?></div>
+						<?php endif; ?>
+
+						<?php if ( $trip_id ) : ?>
+							<div class="h3">Trip ID: <?php echo esc_html( $trip_id ); ?></div>
 						<?php endif; ?>
 					</div>
 
@@ -280,6 +305,39 @@ get_header(); ?>
 
 			<?php endif; ?>
 
+			<?php if ( ! empty ( $itinerary_description ) ) : ?>
+				<section class="ws-container custom-page-itinerary-description">
+					<h3>Itinerary Description</h3>
+
+					<?php echo apply_filters( 'the_content', $itinerary_description ); ?>
+
+				</section>
+			<?php endif; ?>
+
+			<?php if ( ! empty ( $sections ) ) : ?>
+				<?php foreach ( $sections as $section ) : ?>
+					<section class="ws-container custom-page-section">
+						<h3><?php echo $section['title']; ?></h3>
+
+						<?php if ( ! empty( $section['content'] ) ) : ?>
+							<p><?php echo $section['content']; ?></p>
+						<?php endif; ?>
+					</section>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
+			<?php if ( ! empty ( $ifa_scholarship ) ) : ?>
+				<section class="ws-container custom-page-itinerary-description">
+					<h3>International Financial Assistance Program</h3>
+
+					<p>
+						WorldStrides is committed to making international travel accessible for students.
+						<a href="">Read about applying for financial assistance</a> through the Foundation of International Education.
+					</p>
+
+				</section>
+			<?php endif; ?>
+
 			<?php if ( ! empty ( $faculty ) ) : ?>
 			<section class="ws-container custom-page-faculty">
 				<h3>Meet the Faculty</h3>
@@ -310,6 +368,38 @@ get_header(); ?>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</section>
+			<?php endif; ?>
+
+			<?php if ( ! empty ( $gift_of_education ) ) : ?>
+				<section class="ws-container custom-page-itinerary-description">
+					<h3>Gift of Education</h3>
+
+					<p>
+						Looking to fundraise? Personalize a <a href="">Gift of Education eCard</a> to request contributions from friends and family.
+						A great way to celebrate your birthday or holidays, and so much better than another ugly sweater!
+					</p>
+
+				</section>
+			<?php endif; ?>
+
+			<?php if ( ! empty ( $for_parents ) ) : ?>
+				<section class="ws-container custom-page-itinerary-description">
+					<h3>For Parents</h3>
+
+					<p>Thank you for considering this global opportunity for your students,
+						and for trusting us with the important responsibility of educating them.
+						In addition to building their resume and their network, we believe a
+						program like this builds essential perspective that will set them on a path to
+						becoming more global citizens!
+					</p>
+
+					<p>
+						We have chosen WorldStrides as an educational travel partner because of their reputation
+						for excellence in logistics, educational content, and most importantly, safety and security.
+						<a href="">Read more about WorldStrides</a>.
+					</p>
+
+				</section>
 			<?php endif; ?>
 
 		<?php else : ?>

@@ -37,6 +37,8 @@ class WS_Metaboxes_Custom_Pages {
 		add_action( 'cmb2_init', array( $this, 'custom_page_details' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_highlights' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_faculty' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_sections' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_itinerary' ) );
 	}
 
 
@@ -49,7 +51,7 @@ class WS_Metaboxes_Custom_Pages {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => 'custom_page_details_metabox',
-			'title'        => __( 'Itinerary Details', 'cmb2' ),
+			'title'        => __( 'Custom Page Details', 'cmb2' ),
 			'object_types' => array( 'custom-page', ),
 		) );
 
@@ -73,20 +75,31 @@ class WS_Metaboxes_Custom_Pages {
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'PDF', 'cmb2' ),
-			'id'   => 'itinerary_pdf',
-			'type' => 'file'
+			'name' => __( 'Price', 'cmb2' ),
+			'id'   => $prefix . 'price',
+			'type' => 'text_small'
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Phone Number', 'cmb2' ),
-			'id'   => 'itinerary_phone',
-			'type' => 'text'
+			'name' => __( 'Trip ID', 'cmb2' ),
+			'id'   => $prefix . 'trip_id',
+			'type' => 'text_small'
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Request Info Button', 'cmb2' ),
+			'id'   => $prefix . 'request_info',
+			'type' => 'radio_inline',
+			'default' => '0',
+			'options' => array(
+				'1' => __( 'Show', 'cmb' ),
+				'0'   => __( 'Hide', 'cmb' ),
+			),
 		) );
 
 		$cmb->add_field( array(
 			'name' => 'Duration',
-			'desc' => 'Number of days',
+			'desc' => 'This will override the dates selected below.',
 			'id' => $prefix . 'duration',
 			'type' => 'text_small'
 		) );
@@ -117,8 +130,8 @@ class WS_Metaboxes_Custom_Pages {
 
 		// Destinations / Activities
 		$cmb->add_field( array(
-			'name' => 'Features title',
-			'desc' => 'e.g. Destinations Visited, Optional Activites, etc.',
+			'name' => 'List title',
+			'desc' => 'e.g. Inclusions, Destinations Visited, etc.',
 			'id' => $prefix . 'features_title',
 			'type' => 'text'
 		) );
@@ -149,15 +162,36 @@ class WS_Metaboxes_Custom_Pages {
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Internal Trip ID', 'cmb2' ),
-			'id'   => $prefix . 'trip_id',
-			'type' => 'text_small'
+			'name' => __( 'Gift of Education', 'cmb2' ),
+			'id'   => $prefix . 'gift_of_ed',
+			'type' => 'radio_inline',
+			'default' => '0',
+			'options' => array(
+				'1' => __( 'Show', 'cmb' ),
+				'0'   => __( 'Hide', 'cmb' ),
+			),
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Old Url', 'cmb2' ),
-			'id'   => $prefix . 'old_url',
-			'type' => 'text_url'
+			'name' => __( 'IFA Scholarship', 'cmb2' ),
+			'id'   => $prefix . 'ifa_scholarship',
+			'type' => 'radio_inline',
+			'default' => '0',
+			'options' => array(
+				'1' => __( 'Show', 'cmb' ),
+				'0'   => __( 'Hide', 'cmb' ),
+			),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'For Parents', 'cmb2' ),
+			'id'   => $prefix . 'for_parents',
+			'type' => 'radio_inline',
+			'default' => '0',
+			'options' => array(
+				'1' => __( 'Show', 'cmb' ),
+				'0'   => __( 'Hide', 'cmb' ),
+			),
 		) );
 	}
 
@@ -290,6 +324,57 @@ class WS_Metaboxes_Custom_Pages {
 			'type' => 'file',
 		) );
 
+	}
+
+	function custom_page_itinerary() {
+		$prefix = 'custom_page_itinerary_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Itinerary Description', 'cmb2' ),
+			'object_types' => array( 'custom-page', ),
+			'show_names'   => false
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Itinerary Description',
+			'id' => $prefix . 'description',
+			'type' => 'wysiwyg'
+		) );
+	}
+
+	function custom_page_sections() {
+		$prefix = 'custom_page_sections_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Sections', 'cmb2' ),
+			'object_types' => array( 'custom-page', ),
+		) );
+
+		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
+		$group_field_id = $cmb->add_field( array(
+			'id'          => $prefix . 'list',
+			'type'        => 'group',
+			'options'     => array(
+				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Section', 'cmb2' ),
+				'remove_button' => __( 'Remove Section', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Title',
+			'id' => 'title',
+			'type' => 'text_medium'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Content',
+			'id' => 'content',
+			'type' => 'textarea'
+		) );
 	}
 
 }
