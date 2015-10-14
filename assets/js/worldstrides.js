@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-10-13
+/*! WorldStrides - v0.1.0 - 2015-10-14
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1283,7 +1283,7 @@
 		$slideshow, 
 		$slideshow_images;
 
-	if ( $( 'body' ).hasClass('single-itinerary') ) {
+	if ( $( 'body' ).hasClass('single-itinerary') || $( 'body' ).hasClass('single-custom-page') ) {
 
 		L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
 
