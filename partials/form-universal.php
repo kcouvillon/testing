@@ -142,7 +142,7 @@
 						<option value="I need to register for a trip." class="stu par">I need to register for a trip.</option>
 						<option value="I need to make a payment." class="stu par">I need to make a payment.</option>
 						<!-- option value="I want to refer a teacher to lead a trip." class="stu par">I want to refer a teacher to lead a trip.</option -->
-						<option value="I am interested in leading a trip." class="par">I am interested in leading a trip.</option>
+						<!-- option value="I am interested in leading a trip." class="par">I am interested in leading a trip.</option -->
 						<option value="I want to raise funds for a trip." class="stu par">I want to raise funds for a trip.</option>
 					</select>
 				</div>
@@ -188,6 +188,6 @@
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
 
-		<input id="get-info-submit" type="submit" name="ButtonAction" value="I&apos;m Done" class="btn btn-primary non stu par ele mse hse une" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
+		<input id="get-info-submit" type="submit" name="ButtonAction" value="Send Info" class="btn btn-primary non stu par ele mse hse une" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>
