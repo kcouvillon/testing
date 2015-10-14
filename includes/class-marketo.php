@@ -123,20 +123,24 @@ class WS_Marketo {
 	}
 	
 	public static function submit_marketo_data() {
+		$debug_submit = false;
 
- 		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
-		echo '<pre>';
-
-		// print_r( $_POST );
-
-		if( "" === trim($_POST['Email']) ) {
-			echo 'no email address submitted.';
-			echo '</pre>';
-			return;
+		if($debug_submit) {
+	 		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
+			echo '<pre>';
 		}
-		
-		print_r($_COOKIE['_mkto_trk']);
 
+		if($debug_submit) {
+			if( "" === trim($_POST['Email']) ) {
+				echo 'no email address submitted.';
+				echo '</pre>';
+				return;
+			}
+		}
+
+		if($debug_submit) {
+			print_r($_COOKIE['_mkto_trk']);
+		}
 		
 		$mkto_cookie = urlencode("mkto_trk=".$_COOKIE['_mkto_trk']); // use cookie for associate lead
 		
@@ -158,65 +162,86 @@ class WS_Marketo {
 
 		$lead->wsProduct = WS_Form::postsubmit_derive_product($lead);
 
-		print_r($lead);
-
-		print_r("\ncalling WS_MktoUpsertLeads() ... \n");
+		if($debug_submit) {
+			print_r($lead);
+			print_r("\ncalling WS_MktoUpsertLeads() ... \n");
+		}
 		
 		$upsert = new WS_MktoUpsertLeads();
 		$upsert->input = array($lead);
 		$upsert_result = $upsert->postData();
 		$upsert_obj = json_decode($upsert_result);
 
-		print_r("\n\nUpsert Result:\n");
-		print_r($upsert_result);
-
-		print_r("\n\nResult Status:\n");
+		if($debug_submit) {
+			print_r("\n\nUpsert Result:\n");
+			print_r($upsert_result);
+			print_r("\n\nResult Status:\n");
+		}
 		// alias the status:
 		$upsert_status = $upsert_obj->result[0]->status;
-		print_r($upsert_status);
+		if($debug_submit) {
+			print_r($upsert_status);
+		}
 
 
 		if( !$upsert_obj->success ){ // Upsert fails
-			print_r("\nFailed Upsert call means abort\n"); // DEBUGGING!
-			echo '</pre>'; // DEBUGGING!
+			if($debug_submit) {
+				print_r("\nFailed Upsert call means abort\n"); // DEBUGGING!
+				echo '</pre>'; // DEBUGGING!
+			}
 			return; // (NOT DEBUGGING, ABORT!)
 		}
 
 		if( !isset($upsert_obj->result[0]->id ) ){
-			print_r("\nUpsert call without a result id.  Lead already exists?  No id means abort.\n"); // DEBUGGING!
-			echo '</pre>'; // DEBUGGING!
+			if($debug_submit) {
+				print_r("\nUpsert call without a result id.  Lead already exists?  No id means abort.\n"); // DEBUGGING!
+				echo '</pre>'; // DEBUGGING!
+			}
 			return; // (NOT DEBUGGING, ABORT!)
 		}
 
 		// alias the id:
 		$upsert_id = $upsert_obj->result[0]->id;
-		print_r("\n\nUpsert ID:\n");
-		print_r($upsert_id);
-
+		if($debug_submit) {
+			print_r("\n\nUpsert ID:\n");
+			print_r($upsert_id);
+		}
 
 		if($upsert_status === 'created') {
 			$associate = new WS_MktoAssociateLead($upsert_id,$mkto_cookie);
-			print_r("\n\ncalling WS_MktoAssociateLead() ...\n");
-			print_r($associate->getData());
+			if($debug_submit) {
+				print_r("\n\ncalling WS_MktoAssociateLead() ...\n");
+				print_r($associate->getData());
+			}
 		} else {
-			print_r("\n\nNOT calling WS_MktoAssociateLead() because lead is not new (not created) ...\n");
+			if($debug_submit) {
+				print_r("\n\nNOT calling WS_MktoAssociateLead() because lead is not new (not created) ...\n");
+			}
 		}
 
-		echo '</pre>'; // DEBUGGING!
+		if($debug_submit) {
+			echo '</pre>'; // DEBUGGING!
+		}
 		return; // DEBUGGING!
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		////////////   SHORTCUT OUT - DEBUGGING  ////////////
 		/////////////////////////////////////////////////////////////////////////////////////
 
-		print_r("\n\ncalling WS_MktoRequestCampaign() ...\n");
+		if($debug_submit) {
+			print_r("\n\ncalling WS_MktoRequestCampaign() ...\n");
+		}
 		$request = new WS_MktoRequestCampaign();
 		$request_lead = new stdClass();
 		$request_lead->id = $upsert_id; // reuse the Lead ID from the Upsert call
 		$request->leads = array($request_lead);
-		print_r($request->postData());
+		if($debug_submit) {
+			print_r($request->postData());
+		}
 
-		echo '</pre>';
+		if($debug_submit) {
+			echo '</pre>';
+		}
 		// return what?;
 	}
 }
