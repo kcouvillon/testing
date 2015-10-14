@@ -12,7 +12,8 @@ get_header(); ?>
 
 			<?php
 			$trip_id   = get_post_meta( $post->ID, 'itinerary_details_trip_id', true );
-			$request_info   = get_post_meta( $post->ID, 'itinerary_details_request_info', true );
+			$register_now  = get_post_meta( $post->ID, 'itinerary_details_register_now', true );
+			$register_by  = get_post_meta( $post->ID, 'itinerary_details_register_by', true );
 			$gift_of_education   = get_post_meta( $post->ID, 'itinerary_details_gift_of_ed', true );
 			$ifa_scholarship   = get_post_meta( $post->ID, 'itinerary_details_ifa_scholarship', true );
 			$for_parents   = get_post_meta( $post->ID, 'itinerary_details_for_parents', true );
@@ -96,7 +97,7 @@ get_header(); ?>
 									$section_link ++; ?>">Faculty</a></li>
 							<?php endif; ?>
 						</ul>
-						<?php if ( $request_info && $trip_id ) : ?>
+						<?php if ( $register_now && $trip_id ) : ?>
 							<form method="post" action="http://olr.worldstrides.net/scripts/cgiip.exe/RegisterOnline/OLRPassporttotravel.htm">
 								<input id="hidden_trip_id" type="hidden" name="tid" value="<?php echo (int) $trip_id; ?>">
 								<input id="cs_register_button" type="submit" class="btn btn-primary subnav-cta hide-print" value="Register Now" >
@@ -162,6 +163,10 @@ get_header(); ?>
 
 						<?php if ( $trip_id ) : ?>
 							<div class="h3">Trip ID: <?php echo esc_html( $trip_id ); ?></div>
+						<?php endif; ?>
+
+						<?php if ( $register_by ) : ?>
+							<div class="h3">Register By: <?php echo esc_html( $register_by ); ?></div>
 						<?php endif; ?>
 					</div>
 

@@ -87,8 +87,8 @@ class WS_Metaboxes_Custom_Pages {
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Request Info Button', 'cmb2' ),
-			'id'   => $prefix . 'request_info',
+			'name' => __( 'Register Now Button', 'cmb2' ),
+			'id'   => $prefix . 'register_now',
 			'type' => 'radio_inline',
 			'default' => '0',
 			'options' => array(
@@ -96,6 +96,13 @@ class WS_Metaboxes_Custom_Pages {
 				'0'   => __( 'Hide', 'cmb' ),
 			),
 		) );
+
+		$cmb->add_field( array(
+			'name' => 'Register by',
+			'id' => $prefix . 'register_by',
+			'type' => 'text_date'
+		) );
+
 
 		$cmb->add_field( array(
 			'name' => 'Duration',
