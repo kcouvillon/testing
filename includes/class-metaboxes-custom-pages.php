@@ -36,9 +36,9 @@ class WS_Metaboxes_Custom_Pages {
 	protected function _init() {
 		add_action( 'cmb2_init', array( $this, 'custom_page_details' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_highlights' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_itinerary' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_faculty' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_sections' ) );
-		add_action( 'cmb2_init', array( $this, 'custom_page_itinerary' ) );
 	}
 
 
