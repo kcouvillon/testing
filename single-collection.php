@@ -276,7 +276,14 @@ get_header(); ?>
 							$json_dates = '';
 							$title = get_the_title();
 							$url = get_the_permalink();
-							$meta_list = array( array( "name" => WS_Helpers::get_subtitle( $post->ID, 'traveler' ) ) );
+
+							$meta_list = array();
+
+							foreach ( $terms as $term ) {
+								if ( in_array( $term->term_id, get_term_children( 222, 'filter' ) ) ) {
+									array_push( $meta_list, array( 'name' => $term->name ) );
+								}
+							}
 
 							if ( has_post_thumbnail( $post->ID ) ) {
 								$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
