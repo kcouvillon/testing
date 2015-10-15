@@ -226,18 +226,6 @@ get_header(); ?>
 				<?php endforeach; ?>
 			<?php endif; ?>
 
-			<?php if ( ! empty ( $ifa_scholarship ) ) : ?>
-				<section class="ws-container custom-page-itinerary-description">
-					<h3>International Financial Assistance Program</h3>
-
-					<p>
-						WorldStrides is committed to making international travel accessible for students.
-						<a href="">Read about applying for financial assistance</a> through the Foundation of International Education.
-					</p>
-
-				</section>
-			<?php endif; ?>
-
 			<?php if ( ! empty ( $faculty ) ) : ?>
 			<section class="ws-container custom-page-faculty">
 				<h3>Meet the Faculty</h3>
