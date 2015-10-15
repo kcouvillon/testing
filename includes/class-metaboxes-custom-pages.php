@@ -174,6 +174,17 @@ class WS_Metaboxes_Custom_Pages {
 				'0'   => __( 'Hide', 'cmb' ),
 			),
 		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'FAQ', 'cmb2' ),
+			'id'   => $prefix . 'faq',
+			'type' => 'radio_inline',
+			'default' => '0',
+			'options' => array(
+				'1' => __( 'Show', 'cmb' ),
+				'0'   => __( 'Hide', 'cmb' ),
+			),
+		) );
 	}
 
 	/**
