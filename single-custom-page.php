@@ -75,20 +75,18 @@ get_header(); ?>
 									$section_link ++; ?>">Highlights</a></li>
 							<?php endif; ?>
 
-							<?php $itinerary_description = get_post_meta( $post->ID, 'custom_page_itinerary_description', true ); ?>
+							<?php $itinerary_highlights = get_post_meta( $post->ID, 'custom_page_itinerary_highlights', true ); ?>
 
-							<?php if ( ! empty( $itinerary_description ) ) : ?>
+							<?php if ( ! empty( $itinerary_highlights ) ) : ?>
 								<li><a href="#section-<?php echo $section_link;
-									$section_link ++; ?>">Itinerary Description</a></li>
+									$section_link ++; ?>">Itinerary Highlights</a></li>
 							<?php endif; ?>
 
-							<?php $sections = get_post_meta( $post->ID, 'custom_page_sections_list', true ); ?>
+							<?php $custom_content = get_post_meta( $post->ID, 'custom_page_content', true ); ?>
 
-							<?php if ( ! empty( $sections ) ) : ?>
-								<?php foreach ( $sections as $section ) : ?>
+							<?php if ( ! empty( $custom_content ) ) : ?>
 								<li><a href="#section-<?php echo $section_link;
-									$section_link ++; ?>"><?php echo $section['title']; ?></a></li>
-								<?php endforeach; ?>
+									$section_link ++; ?>">Customized Content</a></li>
 							<?php endif; ?>
 
 							<?php $faculty = get_post_meta( $post->ID, 'custom_page_faculty_list', true ); ?>
@@ -214,61 +212,65 @@ get_header(); ?>
 
 			<?php $section_num = 1; // set first section number ?>
 
-			<?php if ( ! empty ( $itinerary_description ) ) : ?>
-				<section class="ws-container custom-page-itinerary-description">
-					<h3>Itinerary Description</h3>
+			<?php if ( ! empty ( $itinerary_highlights ) ) : ?>
+				<section class="ws-container custom-page-itinerary-highlights">
+					<h3>Itinerary Highlights</h3>
 
-					<?php echo apply_filters( 'the_content', $itinerary_description ); ?>
+					<?php echo apply_filters( 'the_content', $itinerary_highlights ); ?>
 
 				</section>
 			<?php endif; ?>
 
-			<?php if ( ! empty ( $sections ) ) : ?>
-				<?php foreach ( $sections as $section ) : ?>
-					<section class="ws-container custom-page-section">
-						<h3><?php echo $section['title']; ?></h3>
+			<?php if ( ! empty ( $custom_content ) ) : ?>
+				<section class="ws-container custom-page-section">
+					<h3>Customized Content</h3>
 
-						<?php if ( ! empty( $section['content'] ) ) : ?>
-							<p><?php echo $section['content']; ?></p>
-						<?php endif; ?>
-					</section>
-				<?php endforeach; ?>
+					<?php if ( ! empty( $custom_content ) ) : ?>
+						<p><?php echo $custom_content; ?></p>
+					<?php endif; ?>
+				</section>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $faculty ) ) : ?>
 			<section class="ws-container custom-page-faculty">
 				<h3>Meet the Faculty</h3>
 				<?php foreach ( $faculty as $faculty_member ) : ?>
-					<?php
-					$image_id  = $faculty_member['image_id'];
-					$image_src = wp_get_attachment_image_src( $image_id, 'medium' );
+					<div class="faculty-member">
+						<?php
+						$image_id  = $faculty_member['image_id'];
+						$image_src = wp_get_attachment_image_src( $image_id, 'thumbnail' );
 
-					if ( $image_src[0] ) :
-					?>
-						<img src="<?php echo $image_src[0]; ?>">
-					<?php endif; ?>
+						if ( $image_src[0] ) :
+						?>
+							<img src="<?php echo $image_src[0]; ?>">
+						<?php endif; ?>
 
-					<?php if ( ! empty( $faculty_member['name'] ) ) : ?>
-						<h4><?php echo $faculty_member['name']; ?></h4>
-					<?php endif; ?>
+						<div class="faculty-member-content">
+							<?php if ( ! empty( $faculty_member['name'] ) ) : ?>
+								<h4><?php echo $faculty_member['name']; ?></h4>
+							<?php endif; ?>
 
-					<?php if ( ! empty( $faculty_member['title'] ) ) : ?>
-						<span><?php echo $faculty_member['title']; ?></span>
-					<?php endif; ?>
+							<?php if ( ! empty( $faculty_member['title'] ) ) : ?>
+								<h5><?php echo $faculty_member['title']; ?></h5>
+							<?php endif; ?>
 
-					<?php if ( ! empty( $faculty_member['email'] ) ) : ?>
-						<span><?php echo $faculty_member['email']; ?></span>
-					<?php endif; ?>
+							<?php if ( ! empty( $faculty_member['email'] ) ) : ?>
+								<span class="email"><?php echo $faculty_member['email']; ?></span>
+							<?php endif; ?>
 
-					<?php if ( ! empty( $faculty_member['description'] ) ) : ?>
-						<p><?php echo $faculty_member['description']; ?></p>
-					<?php endif; ?>
+							<?php if ( ! empty( $faculty_member['description'] ) ) : ?>
+								<div class="description">
+									<?php echo $faculty_member['description']; ?>
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
 				<?php endforeach; ?>
 			</section>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $ifa_scholarship ) ) : ?>
-				<section class="ws-container custom-page-itinerary-description">
+				<section class="ws-container custom-page-itinerary-ifa">
 					<h3>International Financial Assistance Program</h3>
 
 					<p>

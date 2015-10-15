@@ -37,7 +37,7 @@ class WS_Metaboxes_Custom_Pages {
 		add_action( 'cmb2_init', array( $this, 'custom_page_details' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_itinerary' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_faculty' ) );
-		add_action( 'cmb2_init', array( $this, 'custom_page_sections' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_content' ) );
 	}
 
 
@@ -266,6 +266,23 @@ class WS_Metaboxes_Custom_Pages {
 		$cmb->add_field( array(
 			'name' => 'Itinerary Highlights',
 			'id' => $prefix . 'highlights',
+			'type' => 'wysiwyg'
+		) );
+	}
+
+	function custom_page_content() {
+		$prefix = 'custom_page_content_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Customized Content', 'cmb2' ),
+			'object_types' => array( 'custom-page', ),
+			'show_names'   => false
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Customized Content',
+			'id' => 'custom_page_content',
 			'type' => 'wysiwyg'
 		) );
 	}
