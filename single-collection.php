@@ -272,6 +272,7 @@ get_header(); ?>
 							<?php
 							$background = '';
 							$class = '';
+							$terms = get_the_terms( get_the_ID(), 'filter' );
 							$dates = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
 							$json_dates = '';
 							$title = get_the_title();
