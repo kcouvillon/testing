@@ -134,37 +134,12 @@ class WS_Metaboxes_Custom_Pages {
 			'type' => 'text_date'
 		) );
 
-		// Destinations / Activities
 		$cmb->add_field( array(
-			'name' => 'List title',
-			'desc' => 'e.g. Inclusions, Destinations Visited, etc.',
-			'id' => $prefix . 'features_title',
-			'type' => 'text'
-		) );
-
-		$cmb->add_field( array(
-			'name' => 'Features',
-			// 'desc' => 'List of destinations/activities',
+			'name' => 'Inclusions',
+			'desc' => 'Each inclusion should be its own row',
 			'id' => $prefix . 'features',
 			'type' => 'text',
 			'repeatable' => true
-		) );
-
-		// Timezone
-		$cmb->add_field( array(
-			'name' => 'Timezone',
-			'desc' => 'Set the itinerary timezone',
-			'id' => $prefix . 'timezone',
-			'type' => 'select_timezone',
-		) );
-
-		// Location (weather)
-		$cmb->add_field( array(
-			'name' => 'Weather Location',
-			'desc' => 'Drag the marker to set the exact location',
-			'id' => $prefix . 'weather_location',
-			'type' => 'pw_map',
-			// 'split_values' => true, // Save latitude and longitude as two separate fields
 		) );
 
 		$cmb->add_field( array(

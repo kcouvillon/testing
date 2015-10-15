@@ -175,7 +175,7 @@ get_header(); ?>
 					if ( ! empty( $features ) ) : ?>
 
 						<div class="tour-features">
-							<span class="h3"><i class="icon icon-pin"></i> <?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
+							<span class="h3"><i class="icon icon-pin"></i>Inclusions</span>
 
 							<div class="tour-feature-list">
 								<?php
@@ -188,47 +188,14 @@ get_header(); ?>
 
 					<?php endif; ?>
 
-					<div class="tour-weather hide-print">
+					<div class="tour-weather">
 
-						<?php
-						$weather = WS_Helpers::get_weather_data( $post->ID );
+						<?php // get info sessions stuff ?>
 
-						if ( is_object( $weather ) ) {
-
-							$temp = round( $weather->main->temp, 0 );
-							$icon = WS_Helpers::get_weather_icon( $weather->weather[0]->icon );
-
-						} else {
-
-							$temp = '—';
-							$icon = '';
-
-						} ?>
-
-						<span class="h3"><i class="icon icon-weather icon-<?php echo $icon; ?>"></i> Local Conditions</span>
+						<span class="h3">Info Session</span>
 
 						<div class="weather-content">
-
-							<div class="tour-local-weather">
-								<span><?php echo $temp; ?>&#8457;</span>
-								<span>Current Temp</span>
-							</div>
-
-							<?php $tz = get_post_meta( $post->ID, 'itinerary_details_timezone', true ); ?>
-
-							<?php if ( $tz ) : ?>
-								<?php if ( strrpos( $tz, 'UTC' ) !== false ) {
-									$tz         = substr( $tz, 3 ); // "UTC-5.5" -> "-5.5"
-									$local_time = WS_Helpers::get_local_time_by_offset( $tz );
-								} else {
-									$local_time = WS_Helpers::get_local_time_by_tz( $tz );
-								}
-								?>
-								<div class="tour-local-time">
-									<time><?php echo $local_time; ?></time>
-									<span>Current Time</span>
-								</div>
-							<?php endif; ?>
+						Info session text
 
 						</div>
 
