@@ -363,9 +363,11 @@ get_header(); ?>
 				</div>
 
 				<h2 class="h3"><?php echo apply_filters( 'the_title', get_post_meta( $post->ID, 'division_partnerships_small_title', true ) ); ?></h2>
-				<?php foreach ( $partnerships_small as $partnership ) : ?>
-					<h3 class="h5"><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
-				<?php endforeach;?>
+				<?php if ( ! empty( $partnerships_small ) ) : ?>
+					<?php foreach ( $partnerships_small as $partnership ) : ?>
+						<h3 class="h5"><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
+					<?php endforeach;?>
+				<?php endif; ?>
 
 				<a href="<?php echo esc_url( home_url( '/about/partnerships/' ) ); ?>" class="btn btn-primary">For more, visit Partnerships</a>
 			</section>
