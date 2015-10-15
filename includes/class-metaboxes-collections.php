@@ -205,12 +205,6 @@ class WS_Metaboxes_Collections {
 		) );
 
 		$cmb->add_group_field( $group_field_id, array(
-			'name' => 'Section Slug',
-			'id' => $prefix . 'slug',
-			'type' => 'text_medium'
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
 			'name'    => __( 'Attached Blocks', 'cmb2' ),
 			'desc'    => __( 'Drag blocks from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
 			'id'      => 'attached_blocks',
@@ -299,12 +293,6 @@ class WS_Metaboxes_Collections {
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Section Title',
 			'id' => $prefix . 'title',
-			'type' => 'text_medium'
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => 'Section Slug',
-			'id' => $prefix . 'slug',
 			'type' => 'text_medium'
 		) );
 
