@@ -222,7 +222,7 @@ class WS_Marketo {
 		if($debug_submit) {
 			echo '</pre>'; // DEBUGGING!
 		}
-		return; // DEBUGGING!
+		// return; // DEBUGGING!
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		////////////   SHORTCUT OUT - DEBUGGING  ////////////
