@@ -123,7 +123,7 @@ class WS_Marketo {
 	}
 	
 	public static function submit_marketo_data() {
-		$debug_submit = false;
+		$debug_submit = true;
 
 		if($debug_submit) {
 	 		echo '<h4>Post Data (processed by WS_Marketo::submit_marketo_data):</h4>';
@@ -222,7 +222,7 @@ class WS_Marketo {
 		if($debug_submit) {
 			echo '</pre>'; // DEBUGGING!
 		}
-		return; // DEBUGGING!
+		// return; // DEBUGGING!
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		////////////   SHORTCUT OUT - DEBUGGING  ////////////
