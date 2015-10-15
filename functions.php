@@ -430,3 +430,13 @@ function ws_password_form() {
 }
 
 add_filter( 'the_password_form', 'ws_password_form' );
+
+/**
+ * Tweak default meta boxes
+ *
+ * Remove slug metabox from Blocks
+ */
+function ws_default_meta_boxes() {
+	remove_meta_box( 'slugdiv', 'block', 'normal' );
+}
+add_action( 'add_meta_boxes', 'ws_default_meta_boxes' );
