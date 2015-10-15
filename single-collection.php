@@ -88,7 +88,7 @@ get_header(); ?>
 				<div class="ws-container">
 					<div class="section-header-content">
 						<nav class="breadcrumbs hide-print">
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>'"?>Home</a>>
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>>
 							<a href="<?php echo esc_url( home_url( '/explore/' ) ); ?>">Explore Educational Travel</a>>
 							<span><?php the_title(); ?></span>
 						</nav>
