@@ -30,6 +30,10 @@ if ( !empty ($parent_id) ) {
 					<span><?php echo $title; ?></span>
 				</nav>
 				<h1><?php echo $title; ?></h1>
+
+				<div class="description">
+					<?php echo apply_filters( 'the_content', term_description() ); ?>
+				</div>
 			</div>
 		</div>
 	</header>
