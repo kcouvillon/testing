@@ -96,26 +96,29 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 						<?php 
 						$division_page = get_page_by_path( $item['slug'] );
-						$meta_list = $item['meta'];
-						$url = get_the_permalink( $division_page->ID );
-						$title = apply_filters( 'the_title', $division_page->post_title );
 
-						if ( has_post_thumbnail( $division_page->ID ) ) {
-							$thumb_id = get_post_thumbnail_id( $division_page->ID );
-							$thumb_url_array = wp_get_attachment_image_src( $thumb_id, 'medium', true );
-							$background = $thumb_url_array[0];
-							$class = ' has-tile-image';
-						} else {
-							$background = get_template_directory_uri() . '/assets/images/src/patterns/ws_w_pattern' . ( ($count % 2 == 0 ) ? '5' : '8') . '.gif';
-							$class = ' no-tile-image';
-						}
-						?>
+						if ( $division_page ) :
+							$meta_list = $item['meta'];
+							$url = get_the_permalink( $division_page->ID );
+							$title = apply_filters( 'the_title', $division_page->post_title );
 
-						<li class="program tile tile-third<?php echo $class; ?>" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
-							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
-						</li>
+							if ( has_post_thumbnail( $division_page->ID ) ) {
+								$thumb_id = get_post_thumbnail_id( $division_page->ID );
+								$thumb_url_array = wp_get_attachment_image_src( $thumb_id, 'medium', true );
+								$background = $thumb_url_array[0];
+								$class = ' has-tile-image';
+							} else {
+								$background = get_template_directory_uri() . '/assets/images/src/patterns/ws_w_pattern' . ( ($count % 2 == 0 ) ? '5' : '8') . '.gif';
+								$class = ' no-tile-image';
+							}
+							?>
 
-						<?php $count++; ?>
+							<li class="program tile tile-third<?php echo $class; ?>" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
+								<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
+							</li>
+
+							<?php $count++; ?>
+						<?php endif; ?>
 					<?php endforeach; ?>
 				</ul>
 
