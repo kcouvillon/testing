@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-10-14
+/*! WorldStrides - v0.1.0 - 2015-10-15
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1154,6 +1154,7 @@
 			 success : function( responseText ) {
 				 // form.html('Your request has been submitted successfully - ' + responseText );
 				 form.html('<h2>Thanks for your interest in traveling with WorldStrides! One of our representatives will reach out to you very shortly. In the meantime, please feel free to continue <a href="/explore/">exploring</a> all the destinations on our site.</h2>');
+				 console.log(responseText);
 			 }
 		 };
 
