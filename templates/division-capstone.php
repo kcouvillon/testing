@@ -142,7 +142,7 @@ get_header(); ?>
 							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Team</a></li>
 						<?php endif; ?>
 						<?php if ( ! empty( $partnerships ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Partners</a></li>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Affiliations</a></li>
 						<?php endif; ?>
 
 						<?php if ( ! empty( $after_block_sections ) ) : ?>
