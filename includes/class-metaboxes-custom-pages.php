@@ -36,8 +36,8 @@ class WS_Metaboxes_Custom_Pages {
 	protected function _init() {
 		add_action( 'cmb2_init', array( $this, 'custom_page_details' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_itinerary' ) );
-		add_action( 'cmb2_init', array( $this, 'custom_page_faculty' ) );
 		add_action( 'cmb2_init', array( $this, 'custom_page_content' ) );
+		add_action( 'cmb2_init', array( $this, 'custom_page_faculty' ) );
 	}
 
 
@@ -284,40 +284,6 @@ class WS_Metaboxes_Custom_Pages {
 			'name' => 'Customized Content',
 			'id' => 'custom_page_content',
 			'type' => 'wysiwyg'
-		) );
-	}
-
-	function custom_page_sections() {
-		$prefix = 'custom_page_sections_';
-
-		$cmb = new_cmb2_box( array(
-			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Sections', 'cmb2' ),
-			'object_types' => array( 'custom-page', ),
-		) );
-
-		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
-		$group_field_id = $cmb->add_field( array(
-			'id'          => $prefix . 'list',
-			'type'        => 'group',
-			'options'     => array(
-				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
-				'add_button'    => __( 'Add Another Section', 'cmb2' ),
-				'remove_button' => __( 'Remove Section', 'cmb2' ),
-				'sortable'      => true, // beta
-			),
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => 'Section Title',
-			'id' => 'title',
-			'type' => 'text_medium'
-		) );
-
-		$cmb->add_group_field( $group_field_id, array(
-			'name' => 'Section Content',
-			'id' => 'content',
-			'type' => 'textarea'
 		) );
 	}
 
