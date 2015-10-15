@@ -17,6 +17,7 @@ get_header(); ?>
 			$gift_of_education   = get_post_meta( $post->ID, 'itinerary_details_gift_of_ed', true );
 			$ifa_scholarship   = get_post_meta( $post->ID, 'itinerary_details_ifa_scholarship', true );
 			$for_parents   = get_post_meta( $post->ID, 'itinerary_details_for_parents', true );
+			$faq   = get_post_meta( $post->ID, 'itinerary_details_faq', true );
 			?>
 
 			<?php
@@ -297,6 +298,17 @@ get_header(); ?>
 						We have chosen WorldStrides as an educational travel partner because of their reputation
 						for excellence in logistics, educational content, and most importantly, safety and security.
 						<a href="">Read more about WorldStrides</a>.
+					</p>
+
+				</section>
+			<?php endif; ?>
+
+			<?php if ( ! empty ( $faq ) ) : ?>
+				<section class="ws-container custom-page-faq">
+					<h3>FAQ</h3>
+
+					<p>Questions? <a href="<?php echo esc_url( home_url( '/resource-center/') ); ?>">Click here</a> to see answers
+						to commonly asked questions about WorldStrides educational travel programs for university students.
 					</p>
 
 				</section>
