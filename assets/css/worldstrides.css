@@ -8324,6 +8324,28 @@ a.text-color-link {
 .password-protected-page {
   margin-top: 250px; }
 
+.faculty-member {
+  margin-bottom: 1.9607843137%; }
+  .faculty-member:before,
+  .faculty-member:after {
+    content: "";
+    display: table; }
+  .faculty-member:after {
+    clear: both; }
+  .faculty-member img {
+    width: 15.0326797386%;
+    float: left;
+    margin-right: 1.9607843137%;
+    display: block; }
+  .faculty-member .faculty-member-content {
+    width: 83.0065359477%;
+    float: right;
+    margin-right: 0; }
+  .faculty-member h5 {
+    margin: 0; }
+  .faculty-member .description {
+    margin-top: 1.9607843137%; }
+
 /* _page.scss
  * ----------------------------------------- */
 section:before,

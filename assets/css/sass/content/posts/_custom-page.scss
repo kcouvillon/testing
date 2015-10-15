@@ -1,3 +1,22 @@
 .password-protected-page {
 	margin-top: 250px;
 }
+
+.faculty-member {
+	@include clearfix;
+	margin-bottom: gutter();
+
+	img {
+		@include span(2 of 12);
+		display: block;
+	}
+	.faculty-member-content {
+		@include span(10 of 12 last);
+	}
+	h5 {
+		margin: 0;
+	}
+	.description {
+		margin-top: gutter();
+	}
+}
