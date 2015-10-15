@@ -76,7 +76,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 			),
 			array(
 				'slug' => 'individual-travel-programs',
-				'meta' => array( array( 'name'=>'Individual Travel Programs' ) )
+				'meta' => array( array( 'name'=>'Individual' ) )
 			),
 		);
 
