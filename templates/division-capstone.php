@@ -366,6 +366,8 @@ get_header(); ?>
 				<?php foreach ( $partnerships_small as $partnership ) : ?>
 					<h3 class="h5"><a href="<?php echo $partnership['url']; ?>"><?php echo $partnership['title']; ?></a></h3>
 				<?php endforeach;?>
+
+				<a href="<?php echo esc_url( home_url( '/about/partnerships/' ) ); ?>" class="btn btn-primary">For more, visit Partnerships</a>
 			</section>
 		<?php endif; ?>
 
