@@ -258,8 +258,20 @@ get_header(); ?>
 			</section>
 			<?php endif; ?>
 
-			<?php if ( ! empty ( $gift_of_education ) ) : ?>
+			<?php if ( ! empty ( $ifa_scholarship ) ) : ?>
 				<section class="ws-container custom-page-itinerary-description">
+					<h3>International Financial Assistance Program</h3>
+
+					<p>
+						WorldStrides is committed to making international travel accessible for students.
+						<a href="">Read about applying for financial assistance</a> through the Foundation of International Education.
+					</p>
+
+				</section>
+			<?php endif; ?>
+
+			<?php if ( ! empty ( $gift_of_education ) ) : ?>
+				<section class="ws-container custom-page-gift-of-education">
 					<h3>Gift of Education</h3>
 
 					<p>
@@ -271,7 +283,7 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $for_parents ) ) : ?>
-				<section class="ws-container custom-page-itinerary-description">
+				<section class="ws-container custom-page-for-parents">
 					<h3>For Parents</h3>
 
 					<p>Thank you for considering this global opportunity for your students,
