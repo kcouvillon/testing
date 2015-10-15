@@ -187,18 +187,21 @@ get_header(); ?>
 
 					<?php endif; ?>
 
-					<div class="tour-weather">
+					<?php
+					$info_session = get_post_meta( $post->ID, 'itinerary_details_info_session', true );
+					if ( ! empty( $info_session ) ) : ?>
+						<div class="tour-weather">
 
-						<?php // get info sessions stuff ?>
+							<?php // get info sessions stuff ?>
 
-						<span class="h3">Info Session</span>
+							<span class="h3">Info Session</span>
 
-						<div class="weather-content">
-						Info session text
+							<div class="weather-content">
+								<?php echo apply_filters( 'the_content', $info_session ); ?>
+							</div>
 
 						</div>
-
-					</div>
+					<?php endif; ?>
 				</div>
 			</section>
 
