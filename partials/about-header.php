@@ -11,7 +11,7 @@ $about_page = get_page_by_path( 'about' );
 	<header class="section-header pattern-3">
 		<div class="ws-container">
 			<div class="section-header-content">
-				<h1 class="section-title"><?php echo apply_filters( 'the_title', $about_page->post_title ) ?></h1>
+				<h2 class="h1 section-title"><?php echo apply_filters( 'the_title', $about_page->post_title ) ?></h2>
 
 				<div class="description">
 					<?php echo apply_filters( 'the_content', $about_page->post_excerpt ) ?>

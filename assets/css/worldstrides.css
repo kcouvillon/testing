@@ -8588,7 +8588,7 @@ section:after {
         margin-right: -100%;
         clear: none; } }
 
-.about h2 {
+.about h2, .about .h2 {
   margin-bottom: 35px; }
 
 @media (min-width: 768px) {

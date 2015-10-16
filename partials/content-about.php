@@ -12,9 +12,9 @@
 
 	<?php if ( ! is_page( 'about' ) && ! is_archive() && ! is_search() ) : ?>
 		<header class="entry-header">
-			<h2 class="entry-title"><strong>
+			<h1 class="h2 entry-title"><strong>
 				<?php the_title(); ?>
-			</strong></h2>
+			</strong></h1>
 		</header>
 	<?php endif; ?>
 

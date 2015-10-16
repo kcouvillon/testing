@@ -13,7 +13,7 @@ get_header(); ?>
 		<div class="about-wrap">
 			<section class="about section-content">
 
-				<h2>Press Center</h2>
+				<h1 class="h2">Press Center</h1>
 
 				<?php if ( have_posts() ) : ?>
 
