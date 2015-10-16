@@ -1524,14 +1524,6 @@
 					})
 				
 				map.on('ready', function(){
-					// console.log(map);
-					// console.log(collection);
-					// $(collection.features).each(function(){
-					// 	console.log(this.properties.title);
-					// 	console.log(this.geometry.coordinates[0]);
-					// 	console.log(this.geometry.coordinates[1]);
-					// 	console.log('---');
-					// });
 					layer.setGeoJSON(collection);
 					map.fitBounds(layer.getBounds());
 				});
