@@ -293,13 +293,7 @@
 	}
 
 	.ws-touchevents & {
-		
-		.leaflet-tile-pane {
-			z-index: -1;
-		}
-		// .leaflet-objects-pane {
-		// 	z-index: -1;
-		// }
+		z-index: -1;
 	}
 }
 
