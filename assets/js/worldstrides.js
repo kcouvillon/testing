@@ -1467,14 +1467,20 @@
 			if ( data ) {
 
 				$(data).each(function(){
-					var point = {
+
+					var lon = parseFloat(this[prefix + 'coordinates']['longitude']),
+						lat = parseFloat(this[prefix + 'coordinates']['latitude']),
+						point;
+					
+					if ( !lon || !lat ) {
+						return;
+					}
+
+					point = {
 					  "type": "Feature",
 					  "geometry": {
 					    "type": "Point",
-					    "coordinates": [
-					      parseFloat(this[prefix + 'coordinates']['longitude']),
-					      parseFloat(this[prefix + 'coordinates']['latitude'])
-					    ]
+					    "coordinates": [lon,lat]
 					  },
 					  "properties": {
 					    "title": this.name,
@@ -1502,25 +1508,30 @@
 					.on('layeradd', function(e) {
 					    var marker = e.layer,
 					        feature = marker.feature;
-
 					    marker.setIcon(L.icon(feature.properties.icon));
 					})
 					.on('mouseover', function(e) {
 					    var marker = e.layer,
 					        feature = marker.feature;
-
 					    marker.openPopup();
 						marker.setIcon(L.icon(feature.properties.iconHover));
 					})
 					.on('mouseout', function(e) {
 					    var marker = e.layer,
 					        feature = marker.feature;
-
 						marker.closePopup();
 						marker.setIcon(L.icon(feature.properties.icon));
 					})
 				
 				map.on('ready', function(){
+					// console.log(map);
+					// console.log(collection);
+					// $(collection.features).each(function(){
+					// 	console.log(this.properties.title);
+					// 	console.log(this.geometry.coordinates[0]);
+					// 	console.log(this.geometry.coordinates[1]);
+					// 	console.log('---');
+					// });
 					layer.setGeoJSON(collection);
 					map.fitBounds(layer.getBounds());
 				});
