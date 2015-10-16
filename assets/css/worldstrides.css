@@ -7876,7 +7876,7 @@ a.text-color-link {
       right: 0;
       bottom: 0;
       width: 34%; } }
-  .ws-touchevents #tour-highlights-map {
+  .ws-touchevents #tour-highlights-map .leaflet-tile-pane {
     z-index: -1; }
 
 .tour-itinerary {
