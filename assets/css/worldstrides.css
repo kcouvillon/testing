@@ -10186,6 +10186,12 @@ section:after {
       font-size: 16px;
       margin: 1em 0; } }
 
+.ws-blocks-title {
+  padding: 0 5vw; }
+
+.block-title {
+  padding: 0 5vw; }
+
 .block-text {
   background: #f2f2f4;
   padding-top: 5vh;

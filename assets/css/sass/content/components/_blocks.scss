@@ -19,6 +19,14 @@
 	}
 }
 
+.ws-blocks-title {
+	padding: 0 5vw;
+}
+
+.block-title {
+	padding: 0 5vw;
+}
+
 .block-text {
 	@include clearfix;
 	background: $gray_lighter;

@@ -237,7 +237,7 @@ get_header(); ?>
 			<?php foreach ( $before_block_sections as $section ) : ?>
 				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 				<?php if ( ! empty( $section['division_blocks_before_title'] ) ) : ?>
-					<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['division_blocks_before_title'] ); ?></h2>
+					<h2 class="ws-blocks-title"><?php echo apply_filters( 'the_title', $section['division_blocks_before_title'] ); ?></h2>
 				<?php endif; ?>
 
 				<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
@@ -378,7 +378,7 @@ get_header(); ?>
 		<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 		<section class="ws-container ws-blocks tour-blocks-after">
 			<?php if ( ! empty( $section['division_blocks_after_title'] ) ) : ?>
-				<h2><?php echo apply_filters( 'the_title', $section['division_blocks_after_title'] ); ?></h2>
+				<h2 class="ws-blocks-title"><?php echo apply_filters( 'the_title', $section['division_blocks_after_title'] ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $section['attached_blocks'] ) ) : ?>
