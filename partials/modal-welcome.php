@@ -13,12 +13,13 @@ if( !isset( $ws_welcome_cookie ) && !isset( $_COOKIE['ws_welcome_cookie'] ) ) : 
         <h4 class="modal-title"><?php _e( 'Welcome to WorldStrides!', 'worldstrides' ); ?></h4>
       </div>
       <div class="modal-body">
-        <p><?php _e( 'WorldStrides is proud to announce its newly redesigned website. ', 'worldstrides' ); ?></p>
-        <p><?php _e( 'Here you will find everything you are looking for in one place, ', 'worldstrides' ); ?></p>
-        <p><?php _e( 'and what a beautiful new place it is! ', 'worldstrides' ); ?></p>
+        <p><?php _e( 'WorldStrides is proud to announce our newly redesigned website. ', 'worldstrides' ); ?></p>
+        <p><?php _e( 'Here you will find everything you are looking for in one place, ', 'worldstrides' ); ?>
+        <?php _e( 'and what a beautiful new place it is! ', 'worldstrides' ); ?></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary"><?php _e( 'Tell Me More', 'worldstrides' ); ?></button>
+      	<span id="tellMeSpinnerSpan">   </span>
+        <a id="tellMeLink" href="/2015/10/worldstrides-newly-redesigned-website/" role="button" class="btn btn-primary"><?php _e( 'Tell Me More', 'worldstrides' ); ?></a>
         <button type="button" class="btn btn-default" data-dismiss="modal"><?php _e( 'Got It', 'worldstrides' ); ?></button>
       </div>
     </div><!-- /.modal-content -->
@@ -28,6 +29,10 @@ if( !isset( $ws_welcome_cookie ) && !isset( $_COOKIE['ws_welcome_cookie'] ) ) : 
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#welcome-modal').modal('toggle');
+		jQuery('#tellMeLink').click(function(){
+			var tellMeSpinner = new Spinner(wsData.spinnerParams);
+			jQuery('#tellMeSpinnerSpan').after(tellMeSpinner.spin().el);
+		});
 	});
 </script>
 
