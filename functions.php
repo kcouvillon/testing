@@ -440,3 +440,16 @@ function ws_default_meta_boxes() {
 	remove_meta_box( 'slugdiv', 'block', 'normal' );
 }
 add_action( 'add_meta_boxes', 'ws_default_meta_boxes' );
+
+/**
+ * Alert users to the existence of the new website
+ */
+function ws_add_modal_welcome_cookie() {
+	$ws_welcome_cookie = setcookie( 'ws_welcome_cookie', true, time() + 60*60*24*365*10, '/' );
+}
+add_action( 'init', 'ws_add_modal_welcome_cookie', 10 ); // low priority
+
+function ws_add_modal_welcome() {
+	require_once( WS_PATH . 'partials/modal-welcome.php');
+}
+add_action( 'wp_footer', 'ws_add_modal_welcome', 10 ); // low priority

@@ -1,4 +1,7 @@
  <?php
+  /**
+   * Core HTML for the Lead Form
+   */
  $post_id = get_the_ID();
  $title = get_the_title( $post_id );
 
