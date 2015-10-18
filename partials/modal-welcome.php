@@ -10,14 +10,16 @@ if( !isset( $ws_welcome_cookie ) && !isset( $_COOKIE['ws_welcome_cookie'] ) ) : 
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title"><?php _e( 'Welcome to WorldStrides!', 'worldstrides' ); ?></h4>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+        <p><?php _e( 'WorldStrides is proud to announce its newly redesigned website. ', 'worldstrides' ); ?></p>
+        <p><?php _e( 'Here you will find everything you are looking for in one place, ', 'worldstrides' ); ?></p>
+        <p><?php _e( 'and what a beautiful new place it is! ', 'worldstrides' ); ?></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary"><?php _e( 'Tell Me More', 'worldstrides' ); ?></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><?php _e( 'Got It', 'worldstrides' ); ?></button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
