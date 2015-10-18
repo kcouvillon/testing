@@ -96,7 +96,7 @@ class WS_Form {
 	 */
 	public static function postsubmit_derive_product($lead) {
 		$wsProduct = '';
-		if(empty($lead->wsMaxProductLine)) { // Product Line was not available on the form page
+		if( empty($lead->wsMaxProductLine) || 'Unknown' == $lead->wsMaxProductLine ) { // no Product Line context on the form page
 			if ( 'History-Culture Themed Programs (K-12)' == $lead->leadFormProduct ) {
 				if( !empty($lead->domesticOrInternational ) && 'us' == $lead->domesticOrInternational ) {
 					$wsProduct = 'Middle School - History'; // default to History
