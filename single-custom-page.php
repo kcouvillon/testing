@@ -83,10 +83,11 @@ get_header(); ?>
 							<?php endif; ?>
 
 							<?php $custom_content = get_post_meta( $post->ID, 'custom_page_content', true ); ?>
+							<?php $custom_content_title = get_post_meta( $post->ID, 'custom_page_content_title', true ); ?>
 
 							<?php if ( ! empty( $custom_content ) ) : ?>
 								<li><a href="#section-<?php echo $section_link;
-									$section_link ++; ?>">Customized Content</a></li>
+									$section_link ++; ?>"><?php echo apply_filters( 'the_title ', $custom_content_title ); ?></a></li>
 							<?php endif; ?>
 
 							<?php $faculty = get_post_meta( $post->ID, 'custom_page_faculty_list', true ); ?>
@@ -189,12 +190,13 @@ get_header(); ?>
 
 					<?php
 					$info_session = get_post_meta( $post->ID, 'itinerary_details_info_session', true );
+					$info_session_title = get_post_meta( $post->ID, 'itinerary_details_info_session_title', true );
 					if ( ! empty( $info_session ) ) : ?>
 						<div class="tour-weather">
 
 							<?php // get info sessions stuff ?>
 
-							<span class="h3">Info Session</span>
+							<span class="h3"><?php echo apply_filters( 'the_title ', $info_session_title ); ?></span>
 
 							<div class="weather-content">
 								<?php echo apply_filters( 'the_content', $info_session ); ?>
@@ -226,7 +228,7 @@ get_header(); ?>
 
 			<?php if ( ! empty ( $custom_content ) ) : ?>
 				<section class="ws-container custom-page-section">
-					<h3>Customized Content</h3>
+					<h3><?php echo apply_filters( 'the_title ', $custom_content_title ); ?></h3>
 
 					<?php if ( ! empty( $custom_content ) ) : ?>
 						<p><?php echo $custom_content; ?></p>
@@ -300,17 +302,30 @@ get_header(); ?>
 				<section class="ws-container custom-page-for-parents">
 					<h3>For Parents</h3>
 
+					<?php
+					$faculty_count = count( $faculty );
+
+					// Deal with pluralization
+					if ( 1 === $faculty_count ) {
+						$word_1 = 'I';
+						$word_2 = 'me';
+					} else {
+						$word_1 = 'we';
+						$word_2 = 'us';
+					}
+					?>
+
 					<p>Thank you for considering this global opportunity for your students,
-						and for trusting us with the important responsibility of educating them.
-						In addition to building their resume and their network, we believe a
+						and for trusting <?php echo $word_2; ?> with the important responsibility of educating them.
+						In addition to building their resume and their network, <?php echo $word_1; ?> believe a
 						program like this builds essential perspective that will set them on a path to
 						becoming more global citizens!
 					</p>
 
 					<p>
-						We have chosen WorldStrides as an educational travel partner because of their reputation
+						<?php echo ucwords( $word_1 ); ?> have chosen WorldStrides as an educational travel partner because of their reputation
 						for excellence in logistics, educational content, and most importantly, safety and security.
-						<a href="">Read more about WorldStrides</a>.
+						<a href="/about/">Read more about WorldStrides</a>.
 					</p>
 
 				</section>

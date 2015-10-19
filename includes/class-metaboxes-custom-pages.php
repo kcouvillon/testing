@@ -143,9 +143,18 @@ class WS_Metaboxes_Custom_Pages {
 		) );
 
 		$cmb->add_field( array(
+			'name' => 'Info Session Title',
+			'id' => $prefix . 'info_session_title',
+			'type' => 'text_medium',
+			'default' => 'Info Session',
+			'description' => 'Override the default Info Session title'
+		) );
+
+		$cmb->add_field( array(
 			'name' => 'Info Session',
 			'id' => $prefix . 'info_session',
-			'type' => 'wysiwyg'
+			'type' => 'wysiwyg',
+			'default' => 'Learn more about this program at our upcoming info session:<br>5PM, Monday, September 5<br>WorldStrides Hall<br>Room 100<br>Pizza served!'
 		) );
 
 		$cmb->add_field( array(
@@ -269,10 +278,25 @@ class WS_Metaboxes_Custom_Pages {
 			'show_names'   => false
 		) );
 
+		$itinerary_defaults  = "<p><em>To read more of our itinerary, click &ldquo;Register Now&rdquo; to view the registration portal.</em></p>";
+		$itinerary_defaults .= "<p><strong>City 1</strong><br>";
+		$itinerary_defaults .= "<em>_ days, _ nights</em></p>";
+		$itinerary_defaults .= "<ul>";
+		$itinerary_defaults .= "<li><strong>Attraction 1</strong>: Description</li>";
+		$itinerary_defaults .= "<li><strong>Attraction 2</strong>: Description</li>";
+		$itinerary_defaults .= "</ul>";
+		$itinerary_defaults .= "<p><strong>City 2</strong><br>";
+		$itinerary_defaults .= "<em>_ days, _ nights</em></p>";
+		$itinerary_defaults .= "<ul>";
+		$itinerary_defaults .= "<li><strong>Attraction 1</strong>: Description</li>";
+		$itinerary_defaults .= "<li><strong>Attraction 2</strong>: Description</li>";
+		$itinerary_defaults .= "</ul>";
+
 		$cmb->add_field( array(
 			'name' => 'Itinerary Highlights',
 			'id' => $prefix . 'highlights',
-			'type' => 'wysiwyg'
+			'type' => 'wysiwyg',
+			'default' => $itinerary_defaults
 		) );
 	}
 
@@ -283,13 +307,21 @@ class WS_Metaboxes_Custom_Pages {
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Customized Content', 'cmb2' ),
 			'object_types' => array( 'custom-page', ),
-			'show_names'   => false
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Customized Content Title',
+			'id' => 'custom_page_content_title',
+			'type' => 'text_medium',
+			'default' => 'Customized Content',
+			'description' => 'Override the default customized content title'
 		) );
 
 		$cmb->add_field( array(
 			'name' => 'Customized Content',
 			'id' => 'custom_page_content',
-			'type' => 'wysiwyg'
+			'type' => 'wysiwyg',
+			'default' => 'Meet with the team at four China-based companies to see firsthand what its like to do business in China and get an interactive, up-close look at professional life in this dynamic environment. Our visits will be customized for West Texas A&amp;M.'
 		) );
 	}
 
