@@ -53,6 +53,8 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'home_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_select_programs' ) );
 		add_action( 'cmb2_init',  array( $this, 'home_blocks' ) );
+		add_action( 'cmb2_init',  array( $this, 'explore_select_itineraries' ) );
+		add_action( 'cmb2_init',  array( $this, 'explore_select_collections' ) );
 	}
 
 	/**
@@ -1001,6 +1003,75 @@ class WS_Metaboxes {
 			)
 		) );
 
+	}
+
+	/**
+	 * Explore: display select itinearies
+	 */
+	function explore_select_itineraries() {
+
+		$prefix = 'explore_itineraries_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Select Itineraries', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array(
+				'key' => 'explore', 'value' => ''
+			),
+			'show_names'   => false
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Select itineraries', 'cmb2' ),
+			'desc'    => __( 'Drag Itineraries from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'explore_attached_itineraries',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 300,
+					'order' => 'ASC',
+					'post_type' => array( 'itinerary' ),
+				),
+			)
+		) );
+	}
+
+
+	/**
+	 * Explore: display select collections
+	 */
+	function explore_select_collections() {
+
+		$prefix = 'explore_collections_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Select Collections', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array(
+				'key' => 'explore', 'value' => ''
+			),
+			'show_names'   => false
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Select collections', 'cmb2' ),
+			'desc'    => __( 'Drag Collections from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'explore_attached_collections',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 300,
+					'order' => 'ASC',
+					'post_type' => array( 'collection' ),
+				),
+			)
+		) );
 	}
 
 }
