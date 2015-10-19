@@ -3,7 +3,7 @@
   * Modal window that appears once to welcome users -- checks a cookie to avoid reappearing.
   */
 
-if( !isset( $ws_welcome_cookie ) && !isset( $_COOKIE['ws_welcome_cookie'] ) ) : ?>
+if( !isset( $_COOKIE['ws_welcome_cookie'] ) || intval($_COOKIE['ws_welcome_cookie']) < 3 ) : ?>
 
 <div id="welcome-modal" class="modal fade">
   <div class="modal-dialog">
