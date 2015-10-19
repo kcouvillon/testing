@@ -450,7 +450,7 @@ function ws_add_modal_welcome_cookie() {
 function ws_add_modal_welcome() {
 	require_once( WS_PATH . 'partials/modal-welcome.php');
 }
-if ( strtotime('31 March 2016') > strtotime('now') ) {
+if ( strtotime('30 November 2015') > strtotime('now') ) {
 	add_action( 'init', 'ws_add_modal_welcome_cookie', 10 ); // low priority (10)
 	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 ); 
 }
