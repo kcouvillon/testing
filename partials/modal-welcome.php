@@ -35,7 +35,7 @@ if( !isset( $_COOKIE['ws_welcome_cookie'] ) || intval($_COOKIE['ws_welcome_cooki
       wsData.debugCookie('ws_welcome_cookie');
     <?php endif; ?>
 
-    wsData.wsData.incrementCookie('ws_welcome_cookie');
+    wsData.incrementCookie('ws_welcome_cookie');
 
     <?php if ( $debug ) : ?>
       console.log('DEBUG: After drop/increment ws_welcome_cookie');
