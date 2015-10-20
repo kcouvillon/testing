@@ -28,6 +28,7 @@ if( !isset( $_COOKIE['ws_welcome_cookie'] ) || intval($_COOKIE['ws_welcome_cooki
 
 <script type="text/javascript">
 	jQuery(document).ready(function() {
+    wsData.debugCookie('ws_welcome_cookie');
 		jQuery('#welcome-modal').modal('toggle');
 		jQuery('#tellMeLink').click(function(){
 			var tellMeSpinner = new Spinner(wsData.spinnerParams);
