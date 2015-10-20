@@ -26,9 +26,22 @@ if( !isset( $_COOKIE['ws_welcome_cookie'] ) || intval($_COOKIE['ws_welcome_cooki
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<?php $debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG; ?>
+
 <script type="text/javascript">
 	jQuery(document).ready(function() {
-    wsData.debugCookie('ws_welcome_cookie');
+    <?php if ( $debug ) : ?>
+      console.log('DEBUG: Before drop/increment ws_welcome_cookie');
+      wsData.debugCookie('ws_welcome_cookie');
+    <?php endif; ?>
+
+    wsData.wsData.incrementCookie('ws_welcome_cookie');
+
+    <?php if ( $debug ) : ?>
+      console.log('DEBUG: After drop/increment ws_welcome_cookie');
+      wsData.debugCookie('ws_welcome_cookie');
+    <?php endif; ?>
+
 		jQuery('#welcome-modal').modal('toggle');
 		jQuery('#tellMeLink').click(function(){
 			var tellMeSpinner = new Spinner(wsData.spinnerParams);

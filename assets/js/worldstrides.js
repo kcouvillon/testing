@@ -1557,7 +1557,12 @@
 	// for one-time-modals
 
 	wsData.incrementCookie = function(cookiename) {
-		'code here!';
+		var currentcookie = wsData.getCookie(cookiename);
+		if ( "" === currentcookie || isNaN( parseInt(currentcookie)) ) {
+			return wsData.setCookie(cookiename,1);
+		} else {
+			return wsData.setCookie(cookiename,parseInt(currentcookie)+1);
+		}
 	}
 
 	wsData.setCookie = function(cookiename,cvalue,exyears) {
@@ -1566,6 +1571,7 @@
 	    d.setTime(d.getTime() + (exyears*365*24*60*60*1000));
 	    var expires = "expires="+d.toUTCString();
 	    document.cookie = cookiename + "=" + cvalue + "; " + expires;
+	    return cvalue;
 	}
 
 	wsData.getCookie = function(cookiename) {
