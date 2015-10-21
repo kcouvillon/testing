@@ -158,15 +158,15 @@ get_header(); ?>
 						<?php endif; ?>
 
 						<?php if ( $price ) : ?>
-							<div class="h3">Price: <?php echo esc_html( $price ); ?></div>
+							<div class="h4">Price: <?php echo esc_html( $price ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( $trip_id ) : ?>
-							<div class="h3">Trip ID: <?php echo esc_html( $trip_id ); ?></div>
+							<div class="h4">Trip ID: <?php echo esc_html( $trip_id ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( $register_by ) : ?>
-							<div class="h3">Register By: <?php echo esc_html( $register_by ); ?></div>
+							<div class="h4">Register By: <?php echo esc_html( $register_by ); ?></div>
 						<?php endif; ?>
 					</div>
 
