@@ -192,13 +192,13 @@ get_header(); ?>
 					$info_session = get_post_meta( $post->ID, 'itinerary_details_info_session', true );
 					$info_session_title = get_post_meta( $post->ID, 'itinerary_details_info_session_title', true );
 					if ( ! empty( $info_session ) ) : ?>
-						<div class="tour-weather">
+						<div class="tour-info-session">
 
 							<?php // get info sessions stuff ?>
 
 							<span class="h3"><?php echo apply_filters( 'the_title ', $info_session_title ); ?></span>
 
-							<div class="weather-content">
+							<div class="info-session-content">
 								<?php echo apply_filters( 'the_content', $info_session ); ?>
 							</div>
 

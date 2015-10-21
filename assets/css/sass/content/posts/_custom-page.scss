@@ -20,3 +20,21 @@
 		margin-top: gutter();
 	}
 }
+
+.tour-info-session {
+	@include span(full);
+
+	@include susy-media($screen-sm) {
+		@include span(4 last);
+		float: left;
+	}
+	@include susy-media($screen-lg) {
+		@include span(3 last);
+		@include push(1);
+		float: left;
+	}
+
+	.info-session-content {
+		margin-left: 0;
+	}
+}

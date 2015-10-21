@@ -8346,6 +8346,27 @@ a.text-color-link {
   .faculty-member .description {
     margin-top: 1.9607843137%; }
 
+.tour-info-session {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 768px) {
+    .tour-info-session {
+      width: 32.0261437908%;
+      float: right;
+      margin-right: 0;
+      float: left; } }
+  @media (min-width: 1200px) {
+    .tour-info-session {
+      width: 23.5294117647%;
+      float: right;
+      margin-right: 0;
+      margin-left: 8.4967320261%;
+      float: left; } }
+  .tour-info-session .info-session-content {
+    margin-left: 0; }
+
 /* _page.scss
  * ----------------------------------------- */
 section:before,
