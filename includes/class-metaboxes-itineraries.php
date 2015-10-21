@@ -396,18 +396,18 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'Blog Post', 'cmb2' ),
+			'title'        => __( 'Blog Posts', 'cmb2' ),
 			'object_types' => array( 'itinerary', ),
 		) );
 
 		$cmb->add_field( array(
-			'name'        => __( 'Blog post' ),
-			'id'          => 'related_blog_post',
+			'name'        => __( 'Related blog posts' ),
+			'id'          => 'related_blog_posts',
 			'type'        => 'post_search_text', // This field type
 			// post type also as array
 			'post_type'   => 'post',
 			// checkbox/radio, used in the modal view to select the post type
-			'select_type' => 'radio'
+			'select_type' => 'checkbox'
 		) );
 	}
 }
