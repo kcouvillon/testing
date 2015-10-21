@@ -29,7 +29,7 @@ get_header(); ?>
 			} else {
 				$class = ' pattern-' . rand( 3, 9 );
 			} ?>
-			<section class="primary-section">
+			<section class="custom-page primary-section">
 				<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 
 					<div class="mobile-hero">
@@ -158,15 +158,15 @@ get_header(); ?>
 						<?php endif; ?>
 
 						<?php if ( $price ) : ?>
-							<div class="h3">Price: <?php echo esc_html( $price ); ?></div>
+							<div class="h4">Price: <?php echo esc_html( $price ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( $trip_id ) : ?>
-							<div class="h3">Trip ID: <?php echo esc_html( $trip_id ); ?></div>
+							<div class="h4">Trip ID: <?php echo esc_html( $trip_id ); ?></div>
 						<?php endif; ?>
 
 						<?php if ( $register_by ) : ?>
-							<div class="h3">Register By: <?php echo esc_html( $register_by ); ?></div>
+							<div class="h4">Register By: <?php echo esc_html( $register_by ); ?></div>
 						<?php endif; ?>
 					</div>
 
@@ -192,13 +192,13 @@ get_header(); ?>
 					$info_session = get_post_meta( $post->ID, 'itinerary_details_info_session', true );
 					$info_session_title = get_post_meta( $post->ID, 'itinerary_details_info_session_title', true );
 					if ( ! empty( $info_session ) ) : ?>
-						<div class="tour-weather">
+						<div class="tour-info-session">
 
 							<?php // get info sessions stuff ?>
 
 							<span class="h3"><?php echo apply_filters( 'the_title ', $info_session_title ); ?></span>
 
-							<div class="weather-content">
+							<div class="info-session-content">
 								<?php echo apply_filters( 'the_content', $info_session ); ?>
 							</div>
 

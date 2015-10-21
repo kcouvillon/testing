@@ -8346,6 +8346,38 @@ a.text-color-link {
   .faculty-member .description {
     margin-top: 1.9607843137%; }
 
+.tour-info-session {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+  @media (min-width: 768px) {
+    .tour-info-session {
+      width: 32.0261437908%;
+      float: right;
+      margin-right: 0;
+      float: left; } }
+  @media (min-width: 1200px) {
+    .tour-info-session {
+      width: 23.5294117647%;
+      float: right;
+      margin-right: 0;
+      margin-left: 8.4967320261%;
+      float: left; } }
+  .tour-info-session .info-session-content {
+    margin-left: 0; }
+
+.transparent-header.has-featured-image .custom-page.primary-section .section-header {
+  min-height: 0;
+  padding-bottom: 40px;
+  padding-top: 100px; }
+
+.has-featured-image .custom-page.primary-section .section-header-content {
+  margin: 2em 0 0; }
+
+.custom-page.primary-section .section-title {
+  font-size: 2.2em; }
+
 /* _page.scss
  * ----------------------------------------- */
 section:before,
