@@ -729,7 +729,12 @@
 				jQuery('#get-info-gradeLevel').val( 'NA' ); // Parents, Students, Unselected, no grade
 				return;
 			} else {
-				jQuery('#get-info-gradeLevel').val( jQuery('select#get-info-Title').children('option:selected').text() );
+				var chosenlevel = jQuery('select#get-info-Title').children('option:selected').text();
+				var firstspace = chosenlevel.indexOf(' ');
+				if( -1 !== firstspace ) {
+					chosenlevel = chosenlevel.slice( 0, firstspace );
+				}
+				jQuery('#get-info-gradeLevel').val( chosenlevel );
 			}
 
 		}
