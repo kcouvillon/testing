@@ -26,7 +26,13 @@ get_header(); ?>
 
 				<?php the_content(); ?>
 
-				<form action="http://wsdev01/scripts/cgiip.exe/registeronline/default.htm" method="post" class="ws-form">
+				<form 
+				id="register-form"
+				action="http://wsdev01/scripts/cgiip.exe/registeronline/default.htm"
+				data-have-id-action="http://wsdev01/scripts/cgiip.exe/registeronline/default.htm"
+				data-no-id-action="http://www.educationaltravel.com/Login/tabid/78/type/enroll/Default?returnurl=/default.aspx"
+				method="post" 
+				class="ws-form">
 					
 					<ul class="fields list-unstyled">
 <!-- 						<li>
@@ -38,15 +44,15 @@ get_header(); ?>
 							<input type="name" class="payment-field last-name" name="last_name" id="payment-last-name">
 						</li>
  -->
- 						<li>
+ 						<li id="payment-trip-id-li">
 							<label for="payment-trip-id">Trip ID</label>
 							<input type="text" class="payment-field trip-id" name="tripnumber" id="payment-trip-id">
-							<span class="help-text">Still can&apos;t find your Trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span>
+							<!-- <span class="help-text">Still can&apos;t find your Trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span> -->
 						</li>
 						<li>
 							<div>
 								<div style="float:left; margin-right: 15px; height: 30px;"><input type="checkbox" id="have-username"></div>
-								<div id="have-username-label"><span>My registration materials included a username and password instead.</label></div>
+								<div id="have-username-label"><span><?php _e('My registration materials included a username and password instead of a Trip ID.', 'worldstrides'); ?></label></div>
 							</div>
 						</li>
 					</ul>
