@@ -8367,6 +8367,17 @@ a.text-color-link {
   .tour-info-session .info-session-content {
     margin-left: 0; }
 
+.transparent-header.has-featured-image .custom-page.primary-section .section-header {
+  min-height: 0;
+  padding-bottom: 40px;
+  padding-top: 100px; }
+
+.has-featured-image .custom-page.primary-section .section-header-content {
+  margin: 2em 0 0; }
+
+.custom-page.primary-section .section-title {
+  font-size: 2.2em; }
+
 /* _page.scss
  * ----------------------------------------- */
 section:before,

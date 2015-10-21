@@ -29,7 +29,7 @@ get_header(); ?>
 			} else {
 				$class = ' pattern-' . rand( 3, 9 );
 			} ?>
-			<section class="primary-section">
+			<section class="custom-page primary-section">
 				<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 
 					<div class="mobile-hero">
