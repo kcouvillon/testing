@@ -102,11 +102,23 @@
 			wsData.toggleViewForRole('select#get-info-question option');  // Selector for the Question (for students, parents)
 		}
 
+		wsData.populateHiddenGradeLevelField = function() {
+			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
+			if( 'non'=== role || 'stu' === role || 'par' === role ) {
+				jQuery('#get-info-gradeLevel').val( 'NA' ); // Parents, Students, Unselected, no grade
+				return;
+			} else {
+				jQuery('#get-info-gradeLevel').val( jQuery('select#get-info-Title').children('option:selected').text() );
+			}
+
+		}
+
 		wsData.toggleFieldViewForRole();
 		jQuery('select#get-info-Title').on( 'change', function() {
 			wsData.toggleFieldViewForRole(); 
 			wsData.toggleProductViewForRole();
 			wsData.toggleQuestionViewForRole();
+			wsData.populateHiddenGradeLevelField();
 		});
 
 		/**

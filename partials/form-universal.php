@@ -185,6 +185,8 @@
 			</li>
 		</ul>
 
+		<input id="get-info-gradeLevel" type="hidden" name="mkto_Grades__c" value="" >
+
 		<input id="get-info-companyMDRPID" type="hidden" name="mkto_companyMDRPID" value="" >
 		<input id="get-info-companyPhone" type="hidden" name="mkto_companyPhone" value="" >
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
