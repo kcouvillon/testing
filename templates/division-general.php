@@ -62,6 +62,8 @@ if ( 'discoveries' == $division_slug ) {
 	$division_target = 'Capstone';
 } elseif ( 'on-stage' == $division_slug ) {
 	$division_target = 'Performing Arts';
+} elseif ( 'sports' == $division_slug ) {
+	$division_target = 'Sports';
 } else {
 	$division_target = get_the_title();
 }
