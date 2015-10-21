@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-10-18
+/*! WorldStrides - v0.1.0 - 2015-10-21
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -723,11 +723,23 @@
 			wsData.toggleViewForRole('select#get-info-question option');  // Selector for the Question (for students, parents)
 		}
 
+		wsData.populateHiddenGradeLevelField = function() {
+			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
+			if( 'non'=== role || 'stu' === role || 'par' === role ) {
+				jQuery('#get-info-gradeLevel').val( 'NA' ); // Parents, Students, Unselected, no grade
+				return;
+			} else {
+				jQuery('#get-info-gradeLevel').val( jQuery('select#get-info-Title').children('option:selected').text() );
+			}
+
+		}
+
 		wsData.toggleFieldViewForRole();
 		jQuery('select#get-info-Title').on( 'change', function() {
 			wsData.toggleFieldViewForRole(); 
 			wsData.toggleProductViewForRole();
 			wsData.toggleQuestionViewForRole();
+			wsData.populateHiddenGradeLevelField();
 		});
 
 		/**
@@ -1551,6 +1563,45 @@
 	
 
  } )( jQuery, window );
+( function( jQuery) {
+	'use strict';
+
+	// for one-time-modals
+
+	wsData.incrementCookie = function(cookiename) {
+		var currentcookie = wsData.getCookie(cookiename);
+		if ( "" === currentcookie || isNaN( parseInt(currentcookie)) ) {
+			return wsData.setCookie(cookiename,1);
+		} else {
+			return wsData.setCookie(cookiename,parseInt(currentcookie)+1);
+		}
+	}
+
+	wsData.setCookie = function(cookiename,cvalue,exyears) {
+		exyears = typeof exyears !== 'undefined' ?  exyears : 10;
+	    var d = new Date();
+	    d.setTime(d.getTime() + (exyears*365*24*60*60*1000));
+	    var expires = "expires="+d.toUTCString();
+	    document.cookie = cookiename + "=" + cvalue + "; " + expires;
+	    return cvalue;
+	}
+
+	wsData.getCookie = function(cookiename) {
+	    var name = cookiename + "=";
+	    var ca = document.cookie.split(';');
+	    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i];
+	        while (c.charAt(0)==' ') c = c.substring(1);
+	        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+	    }
+	    return "";
+	}
+
+	wsData.debugCookie = function(cookiename) {
+		console.log('DEBUG: Cookie ' + cookiename + ' is: ' + wsData.getCookie(cookiename));
+	}
+
+ } )( jQuery );
 ( function( $, window, undefined ) {
 	'use strict';
 

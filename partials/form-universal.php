@@ -34,10 +34,10 @@
 					<option data-value="non" value="">Select...</option>
 					<option data-value="stu" value="Student">Student</option>
 					<option data-value="par" value="Parent">Parent</option>
-					<option data-value="ele" value="Teacher">Elementary School Educator</option>
-					<option data-value="mse" value="Teacher">Middle School Educator</option>
-					<option data-value="hse" value="Teacher">High School Educator</option>
-					<option data-value="une" value="Teacher">College / University Educator</option>
+					<option data-value="ele" value="A Teacher">Elementary School Educator</option>
+					<option data-value="mse" value="A Teacher">Middle School Educator</option>
+					<option data-value="hse" value="A Teacher">High School Educator</option>
+					<option data-value="une" value="A Teacher">College / University Educator</option>
 				</select>
 			</li>
 
@@ -184,6 +184,8 @@
 				<textarea id="get-info-comment" name="mkto_formcomments" rows="3" cols="30" style="max-height: none;" placeholder="Comments or Questions?" class="non stu par ele mse hse une" title="Comments or Questions"></textarea>
 			</li>
 		</ul>
+
+		<input id="get-info-gradeLevel" type="hidden" name="mkto_Grades__c" value="" >
 
 		<input id="get-info-companyMDRPID" type="hidden" name="mkto_companyMDRPID" value="" >
 		<input id="get-info-companyPhone" type="hidden" name="mkto_companyPhone" value="" >

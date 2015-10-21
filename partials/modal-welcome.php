@@ -3,7 +3,7 @@
   * Modal window that appears once to welcome users -- checks a cookie to avoid reappearing.
   */
 
-if( !isset( $ws_welcome_cookie ) && !isset( $_COOKIE['ws_welcome_cookie'] ) ) : ?>
+if( !isset( $_COOKIE['ws_welcome_cookie'] ) || intval($_COOKIE['ws_welcome_cookie']) < 3 ) : ?>
 
 <div id="welcome-modal" class="modal fade">
   <div class="modal-dialog">
@@ -26,8 +26,22 @@ if( !isset( $ws_welcome_cookie ) && !isset( $_COOKIE['ws_welcome_cookie'] ) ) : 
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<?php $debug = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG; ?>
+
 <script type="text/javascript">
 	jQuery(document).ready(function() {
+    <?php if ( $debug ) : ?>
+      console.log('DEBUG: Before drop/increment ws_welcome_cookie');
+      wsData.debugCookie('ws_welcome_cookie');
+    <?php endif; ?>
+
+    wsData.incrementCookie('ws_welcome_cookie');
+
+    <?php if ( $debug ) : ?>
+      console.log('DEBUG: After drop/increment ws_welcome_cookie');
+      wsData.debugCookie('ws_welcome_cookie');
+    <?php endif; ?>
+
 		jQuery('#welcome-modal').modal('toggle');
 		jQuery('#tellMeLink').click(function(){
 			var tellMeSpinner = new Spinner(wsData.spinnerParams);
