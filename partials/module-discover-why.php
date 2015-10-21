@@ -8,10 +8,12 @@ $text = ( isset( $options['discovery_why_text'] ) ? $options['discovery_why_text
 <div class="discover-why">
 	<div class="discover-why-cta">
 		<span class="h2"><?php echo apply_filters( 'the_content', $text ) ?></span>
-		<button class="btn btn-primary">Discover Why</button>
+		<a href="<?php echo esc_url( home_url( '/why-worldstrides/' ) ); ?>" class="btn btn-primary">Discover Why</a>
 	</div>
 
-	<div class="discover-why-img" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
+	<?php if ( $background ) : ?>
+		<div class="discover-why-img" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
+	<?php endif; ?>
 
 	</div>
 </div>
