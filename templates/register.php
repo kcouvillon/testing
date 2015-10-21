@@ -26,7 +26,7 @@ get_header(); ?>
 
 				<?php the_content(); ?>
 
-				<form class="ws-form">
+				<form action="http://wsdev01/scripts/cgiip.exe/registeronline/default.htm" method="post" class="ws-form">
 					
 					<ul class="fields list-unstyled">
 <!-- 						<li>
@@ -40,7 +40,7 @@ get_header(); ?>
  -->
  						<li>
 							<label for="payment-trip-id">Trip ID</label>
-							<input type="text" class="payment-field trip-id" name="trip_id" id="payment-trip-id">
+							<input type="text" class="payment-field trip-id" name="tripnumber" id="payment-trip-id">
 							<span class="help-text">Still can&apos;t find your Trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span>
 						</li>
 						<li>
@@ -50,7 +50,7 @@ get_header(); ?>
 							</div>
 						</li>
 					</ul>
-
+					<input id="hidden-eqh" type="hidden" name="eqh" value="yes" >
 					<footer>
 						<input type="submit" value="Get Started" class="btn btn-primary">
 					</footer>
