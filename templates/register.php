@@ -29,7 +29,7 @@ get_header(); ?>
 				<form class="ws-form">
 					
 					<ul class="fields list-unstyled">
-						<li>
+<!-- 						<li>
 							<label for="payment-first-name">First Name</label>
 							<input type="name" class="payment-field first-name" name="first_name" id="payment-first-name">
 						</li>
@@ -37,15 +37,22 @@ get_header(); ?>
 							<label for="payment-last-name">Last Name</label>
 							<input type="name" class="payment-field last-name" name="last_name" id="payment-last-name">
 						</li>
-						<li>
+ -->
+ 						<li>
 							<label for="payment-trip-id">Trip ID</label>
 							<input type="text" class="payment-field trip-id" name="trip_id" id="payment-trip-id">
-							<span class="help-text">Don’t know your trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span>
+							<span class="help-text">Still can&apos;t find your Trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span>
+						</li>
+						<li>
+							<div>
+								<div style="float:left; margin-right: 15px; height: 30px;"><input type="checkbox" id="have-username"></div>
+								<div id="have-username-label"><span>My registration materials included a username and password instead.</label></div>
+							</div>
 						</li>
 					</ul>
 
 					<footer>
-						<input type="submit" value="Make a Payment" class="btn btn-primary">
+						<input type="submit" value="Get Started" class="btn btn-primary">
 					</footer>
 
 				</form>
