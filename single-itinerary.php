@@ -545,6 +545,62 @@ get_header(); ?>
 			// }
 		?>
 
+		<?php wp_reset_query(); ?>
+
+		<?php $blog_post_ids = array_map( 'intval', explode( ',', get_post_meta( $post->ID, 'related_blog_posts', true) ) ); ?>
+		<?php if ( $blog_post_ids ) : ?>
+			<?php
+			$blog_posts = new WP_Query( array(
+				'post_type' => 'post',
+				'post__in' => $blog_post_ids,
+				'posts_per_page' => 3,
+				'no_found_rows' => true,
+				'update_post_term_cache' => false,
+				'update_post_meta_cache' => false,
+			));
+			?>
+
+			<?php if ( $blog_posts->have_posts() ) : ?>
+				<section class="home-section blog">
+					<div class="ws-container">
+						<h2 class="section-title"><a class="text-color-link" href="<?php echo home_url('/blog/'); ?>">Related Stories from the WorldStrides Blog</a></h2>
+					</div>
+
+					<?php $sidebar_open = false; ?>
+
+					<div class="blog-wrap">
+						<?php $count = 0; ?>
+						<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
+
+					<?php if ( 0 == $count ) : ?>
+						<section class="section-one <?php if ( 1 == $blog_posts->post_count) { echo "only"; } ?>">
+							<?php get_template_part( 'partials/content', 'blog' ); ?>
+						</section>
+					<?php endif; ?>
+
+					<?php if ( 1 == $count ) : ?>
+						<aside class="sidebar">
+							<?php $sidebar_open = true; ?>
+							<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
+							<?php endif; ?>
+
+							<?php if ( 2 == $count ) : ?>
+								<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
+							<?php endif; ?>
+
+							<?php $count++; ?>
+							<?php endwhile; ?>
+
+							<?php if ( $sidebar_open ) : ?>
+						</aside>
+					<?php endif; ?>
+
+					</div>
+
+				</section>
+			<?php endif; ?>
+		<?php endif; ?>
+
 		<section class="clearfix ws-container learn-more hide-print">
 			<section class="clearfix ws-container learn-more">
 				<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>

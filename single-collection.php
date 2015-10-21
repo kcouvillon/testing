@@ -337,11 +337,14 @@ get_header(); ?>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<?php $display_blog = get_post_meta( $post->ID, 'collection_options_blog', true); ?>
-		<?php if ( 'on' == $display_blog ) : ?>
+		<?php wp_reset_query(); ?>
+
+		<?php $blog_post_ids = array_map( 'intval', explode( ',', get_post_meta( $post->ID, 'related_blog_posts', true) ) ); ?>
+		<?php if ( $blog_post_ids ) : ?>
 			<?php
 			$blog_posts = new WP_Query( array(
 				'post_type' => 'post',
+				'post__in' => $blog_post_ids,
 				'posts_per_page' => 3,
 				'no_found_rows' => true,
 				'update_post_term_cache' => false,
@@ -352,7 +355,7 @@ get_header(); ?>
 			<?php if ( $blog_posts->have_posts() ) : ?>
 				<section class="home-section blog">
 					<div class="ws-container">
-						<h2 class="section-title"><a class="text-color-link" href="<?php echo home_url('/blog/'); ?>">Latest Stories from the WorldStrides Blog</a></h2>
+						<h2 class="section-title"><a class="text-color-link" href="<?php echo home_url('/blog/'); ?>">Related Stories from the WorldStrides Blog</a></h2>
 					</div>
 
 					<?php $sidebar_open = false; ?>
@@ -362,7 +365,7 @@ get_header(); ?>
 						<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
 							<?php if ( 0 == $count ) : ?>
-								<section class="section-one">
+								<section class="section-one <?php if ( 1 == $blog_posts->post_count) { echo "only"; } ?>">
 									<?php get_template_part( 'partials/content', 'blog' ); ?>
 								</section>
 							<?php endif; ?>

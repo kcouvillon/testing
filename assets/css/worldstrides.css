@@ -7227,6 +7227,10 @@ a.text-color-link {
         margin-right: 1.9230769231%;
         padding-right: 0;
         margin-right: 0; } }
+  .blog .blog-wrap .section-one.only, .single .blog-wrap .section-one.only {
+    width: 100%; }
+    .blog .blog-wrap .section-one.only .entry-content, .single .blog-wrap .section-one.only .entry-content {
+      max-width: 870px; }
 
 .blog .post, .single .post {
   position: relative;

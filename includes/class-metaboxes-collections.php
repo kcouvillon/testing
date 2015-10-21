@@ -41,6 +41,7 @@ class WS_Metaboxes_Collections {
 		add_action( 'cmb2_init',  array( $this, 'collection_itineraries' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_blocks_after' ) );
 		add_action( 'cmb2_init',  array( $this, 'collection_additional_info' ) );
+		add_action( 'cmb2_init',  array( $this, 'collection_blog_posts' ) );
 	}
 
 	/**
@@ -77,18 +78,6 @@ class WS_Metaboxes_Collections {
 		$cmb->add_field( array(
 			'name'             => 'Discover Why module',
 			'id'               => 'discover_why',
-			'type'             => 'select',
-			'show_option_none' => false,
-			'default'          => 'On',
-			'options'          => array(
-				'on' => __( 'On', 'cmb' ),
-				'off'   => __( 'Off', 'cmb' ),
-			),
-		) );
-
-		$cmb->add_field( array(
-			'name'             => 'Blog module',
-			'id'               => 'blog',
 			'type'             => 'select',
 			'show_option_none' => false,
 			'default'          => 'On',
@@ -357,6 +346,30 @@ class WS_Metaboxes_Collections {
 			'type' => 'textarea_small',
 		) );
 
+	}
+
+	/**
+	 * Featured blog posts
+	 */
+	function collection_blog_posts() {
+
+		$prefix = 'collection_blog_post_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Blog Posts', 'cmb2' ),
+			'object_types' => array( 'collection', ),
+		) );
+
+		$cmb->add_field( array(
+			'name'        => __( 'Related blog posts' ),
+			'id'          => 'related_blog_posts',
+			'type'        => 'post_search_text', // This field type
+			// post type also as array
+			'post_type'   => 'post',
+			// checkbox/radio, used in the modal view to select the post type
+			'select_type' => 'checkbox'
+		) );
 	}
 }
 
