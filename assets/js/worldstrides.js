@@ -1620,12 +1620,17 @@
 	jQuery('#have-username')
 	.change( function() {
 		jQuery('#payment-trip-id-li').toggle();
-		if( jQuery('#have-username').prop('checked') ) {
-			jQuery('form#register-form').attr('action',jQuery('form#register-form').attr('data-have-id-action'));
+		var regform = jQuery('form#register-form');
+		var noidaction = regform.attr('data-no-id-action')
+		var haveidaction = regform.attr('data-have-id-action')
+		if( regform.attr('action') === noidaction ) {
+			regform.attr('action', haveidaction);
 		} else {
-			jQuery('form#register-form').attr('action',jQuery('form#register-form').attr('data-no-id-action'));
+			regform.attr('action', noidaction);
 		}
 	});
+
+
 
  } )( jQuery );	
 
