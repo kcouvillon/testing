@@ -365,7 +365,7 @@ get_header(); ?>
 						<?php while ( $blog_posts->have_posts() ) : $blog_posts->the_post(); ?>
 
 							<?php if ( 0 == $count ) : ?>
-								<section class="section-one">
+								<section class="section-one <?php if ( 1 == $blog_posts->post_count) { echo "only"; } ?>">
 									<?php get_template_part( 'partials/content', 'blog' ); ?>
 								</section>
 							<?php endif; ?>

@@ -38,7 +38,10 @@
 				margin-right: 0;
 			}
 		}
-
+		.section-one.only {
+			width: 100%;
+			.entry-content { max-width: 870px; }
+		}
 	}
 
 	.post {
