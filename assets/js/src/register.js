@@ -20,8 +20,9 @@
 	.change( function() {
 		jQuery('#payment-trip-id-li').toggle();
 		var regform = jQuery('form#register-form');
-		var noidaction = regform.attr('data-no-id-action')
-		var haveidaction = regform.attr('data-have-id-action')
+		var noidaction = regform.attr('data-no-id-action');
+		var haveidaction = regform.attr('data-have-id-action');
+		// toggle the regform action
 		if( regform.attr('action') === noidaction ) {
 			regform.attr('action', haveidaction);
 		} else {
