@@ -57,21 +57,27 @@ get_header(); ?>
 
 				<?php endforeach; ?>
 
-				<section class="international-programs">
-					<h3>International Programs</h3>
+				<?php if (false): // Remove the International Programs, as of 10/22/2015
+				?>
 
-					<?php $programs = get_post_meta( $post->ID, 'about_offices_program_list', true ); ?>
+					<section class="international-programs">
+						<h3>International Programs</h3>
 
-					<?php foreach ( $programs as $program ) : ?>
-					<div class="program">
-						<p><strong><?php echo apply_filters( 'the_title', $program['title'] ); ?></strong></p>
-						<?php echo apply_filters( 'the_content', $program['phone'] ); ?>
-						<?php echo apply_filters( 'the_content', $program['address'] ); ?>
-					</div>
-					<?php endforeach; ?>
-				</section>
+						<?php $programs = get_post_meta( $post->ID, 'about_offices_program_list', true ); ?>
+
+						<?php foreach ( $programs as $program ) : ?>
+						<div class="program">
+							<p><strong><?php echo apply_filters( 'the_title', $program['title'] ); ?></strong></p>
+							<?php echo apply_filters( 'the_content', $program['phone'] ); ?>
+							<?php echo apply_filters( 'the_content', $program['address'] ); ?>
+						</div>
+						<?php endforeach; ?>
+					</section>
+
+				<?php endif; ?>
 
 			</section>
+
 
 			<?php get_template_part( 'partials/module', 'contact' ) ?>
 
