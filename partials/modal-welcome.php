@@ -6,11 +6,11 @@
 if( !isset( $_COOKIE['ws_sessiond_hi'])) :
   if( !isset( $_COOKIE['ws_hi'] ) || intval($_COOKIE['ws_hi']) < 3 ) : ?>
 
-  <div id="welcome-modal" class="modal fade">
+  <div id="welcome-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-keyboard="true" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title"><?php _e( 'Welcome to our new website!', 'worldstrides' ); ?></h4>
         </div>
         <div class="modal-body">
