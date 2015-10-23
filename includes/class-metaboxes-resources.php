@@ -49,7 +49,7 @@ class WS_Metaboxes_Resources {
 
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
-			'title'        => __( 'After Blocks', 'cmb2' ),
+			'title'        => __( 'Blocks', 'cmb2' ),
 			'object_types' => array( 'resource', ),
 		) );
 
