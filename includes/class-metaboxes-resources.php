@@ -4,9 +4,9 @@
  *
  * There's a lot of similarity with Collections, and it could probably be reengineered to avoid duplication.
  *
- * Class WS_Resource_targets
+ * Class WS_Resources
  */
-class WS_Metaboxes_Resource_targets {
+class WS_Metaboxes_Resources {
 	/**
 	 * Instance of this class, if it has been created.
 	 *
@@ -110,4 +110,4 @@ class WS_Metaboxes_Resource_targets {
 	}
 }
 
-WS_Metaboxes_Resource_targets::instance();
+WS_Metaboxes_Resources::instance();
