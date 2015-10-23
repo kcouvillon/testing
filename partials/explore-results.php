@@ -14,7 +14,7 @@ if ( ! empty ( $select_itineraries_ids ) ) {
 		'posts_per_page' => 50,
 		'no_found_rows'          => true,
 		'post__in' => $select_itineraries_ids,
-		'order' => 'ASC'
+		'orderby' => 'post__in'
 	);
 
 	$select_itineraries = new WP_Query( $select_itinerary_args );
@@ -49,7 +49,7 @@ if ( ! empty ( $select_collections_ids ) ) {
 		'posts_per_page' => 50,
 		'no_found_rows'          => true,
 		'post__in' => $select_collections_ids,
-		'order' => 'ASC'
+		'orderby' => 'post__in'
 	);
 
 	$select_collections = new WP_Query( $select_collections_args );

@@ -13,8 +13,8 @@ if ( ( $post->ID == '844' || 'smithsonian' == $itinerary_type ) && ! isset( $res
 	$show_smithsonian = false;
 }
 
-if ( is_singular( 'collection' ) ) {
-	// On collections, open itinerary in new tab 
+if ( is_single( '1147' ) ) {
+	// On heritage collection (id: 1147), open itinerary in new tab
 	// to preserve results from date selection. 
 	$target = "_blank";
 } else {
