@@ -121,14 +121,14 @@
 
 			<?php endif; ?>		
 
-			<li id="get-info-name-li" class="field field-complex non par ele mse hse une">
+			<li id="get-info-name-li" class="field field-complex non stu par ele mse hse une">
 				<div class="field-left">
 					<label for="get-info-first-name" class="block no-placeholder">First Name</label>
-					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" class="non par ele mse hse une" title="First Name">
+					<input id="get-info-first-name" type="text" name="mkto_FirstName" value="" placeholder="First Name" class="non stu par ele mse hse une" title="First Name">
 				</div>
 				<div class="field-right">
 					<label for="get-info-last-name" class="block no-placeholder">Last Name</label>
-					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" class="non par ele mse hse une" title="Last Name">
+					<input id="get-info-last-name" type="text" name="mkto_LastName" value="" placeholder="Last Name" class="non stu par ele mse hse une" title="Last Name">
 				</div>
 			</li>
 		</ul>
