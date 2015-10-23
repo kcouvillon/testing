@@ -28,6 +28,16 @@ $term_meta = Taxonomy_MetaData::get( 'resource-target', get_queried_object_id() 
 
 				<h2>Questions About</h2>
 
+				<?php if ( ! empty( $term_meta['attached_blocks_before'] ) ) : ?>
+					<section class="ws-container ws-blocks tour-blocks-before print-page-break">
+						<?php foreach ( $term_meta['attached_blocks_before'] as $block_id ) : ?>
+
+							<?php echo WS_Helpers::get_content_block( $block_id ); ?>
+
+						<?php endforeach; ?>
+					</section>
+				<?php endif; ?>
+
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -37,28 +47,18 @@ $term_meta = Taxonomy_MetaData::get( 'resource-target', get_queried_object_id() 
 
 			<?php else : ?>
 
-				<?php if ( ! empty( $term_meta['attached_blocks_before'] ) ) : ?>
-					<section class="ws-container ws-blocks tour-blocks-before print-page-break">
-					<?php foreach ( $term_meta['attached_blocks_before'] as $block_id ) : ?>
+				<?php get_template_part( 'partials/resources', 'child-terms-list' ); ?>
+
+			<?php endif; ?>
+
+			<?php if ( ! empty( $term_meta['attached_blocks_after'] ) ) : ?>
+				<section class="ws-container ws-blocks tour-blocks-after print-page-break">
+					<?php foreach ( $term_meta['attached_blocks_after'] as $block_id ) : ?>
 
 						<?php echo WS_Helpers::get_content_block( $block_id ); ?>
 
 					<?php endforeach; ?>
-					</section>
-				<?php endif; ?>
-
-				<?php get_template_part( 'partials/resources', 'child-terms-list' ); ?>
-
-				<?php if ( ! empty( $term_meta['attached_blocks_after'] ) ) : ?>
-					<section class="ws-container ws-blocks tour-blocks-after print-page-break">
-						<?php foreach ( $term_meta['attached_blocks_after'] as $block_id ) : ?>
-
-							<?php echo WS_Helpers::get_content_block( $block_id ); ?>
-
-						<?php endforeach; ?>
-					</section>
-				<?php endif; ?>
-
+				</section>
 			<?php endif; ?>
 
 		<?php else : ?>
