@@ -8328,6 +8328,12 @@ a.text-color-link {
 .password-protected-page {
   margin-top: 250px; }
 
+.custom-page-faculty {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+
 .faculty-member {
   margin-bottom: 1.9607843137%; }
   .faculty-member:before,
@@ -8371,6 +8377,18 @@ a.text-color-link {
   .tour-info-session .info-session-content {
     margin-left: 0; }
 
+.custom-page-itinerary-highlights {
+  width: 66.0130718954%;
+  float: left;
+  margin-right: 1.9607843137%;
+  float: left; }
+
+.custom-page-itinerary-meta {
+  width: 32.0261437908%;
+  float: right;
+  margin-right: 0;
+  float: left; }
+
 .transparent-header.has-featured-image .custom-page.primary-section .section-header {
   min-height: 0;
   padding-bottom: 40px;
@@ -8381,6 +8399,36 @@ a.text-color-link {
 
 .custom-page.primary-section .section-title {
   font-size: 2.2em; }
+
+.custom-page-content {
+  width: 100%;
+  float: left;
+  margin-left: 0;
+  margin-right: 0; }
+
+.custom-page-itinerary-ifa {
+  width: 49.0196078431%;
+  float: left;
+  margin-right: 1.9607843137%;
+  float: left; }
+
+.custom-page-gift-of-education {
+  width: 49.0196078431%;
+  float: right;
+  margin-right: 0;
+  float: left; }
+
+.custom-page-for-parents {
+  width: 49.0196078431%;
+  float: left;
+  margin-right: 1.9607843137%;
+  float: left; }
+
+.custom-page-faq {
+  width: 49.0196078431%;
+  float: right;
+  margin-right: 0;
+  float: left; }
 
 /* _page.scss
  * ----------------------------------------- */

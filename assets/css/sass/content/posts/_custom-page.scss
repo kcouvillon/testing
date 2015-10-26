@@ -2,6 +2,9 @@
 	margin-top: 250px;
 }
 
+.custom-page-faculty {
+	@include span(full);
+}
 .faculty-member {
 	@include clearfix;
 	margin-bottom: gutter();
@@ -39,6 +42,16 @@
 	}
 }
 
+.custom-page-itinerary-highlights {
+	@include span(8);
+	float: left;
+}
+
+.custom-page-itinerary-meta {
+	@include span(4 last);
+	float: left;
+}
+
 .custom-page.primary-section {
 	.section-header {
 		.transparent-header.has-featured-image & {
@@ -55,4 +68,23 @@
 	.section-title {
 		font-size: 2.2em;
 	}
+}
+.custom-page-content {
+	@include span(full);
+}
+.custom-page-itinerary-ifa {
+	@include span(6);
+	float: left;
+}
+.custom-page-gift-of-education {
+	@include span(6 last);
+	float: left;
+}
+.custom-page-for-parents {
+	@include span(6);
+	float: left;
+}
+.custom-page-faq {
+	@include span(6 last);
+	float: left;
 }

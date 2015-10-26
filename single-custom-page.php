@@ -157,17 +157,6 @@ get_header(); ?>
 
 						<?php endif; ?>
 
-						<?php if ( $price ) : ?>
-							<div class="h4">Price: <?php echo esc_html( $price ); ?></div>
-						<?php endif; ?>
-
-						<?php if ( $trip_id ) : ?>
-							<div class="h4">Trip ID: <?php echo esc_html( $trip_id ); ?></div>
-						<?php endif; ?>
-
-						<?php if ( $register_by ) : ?>
-							<div class="h4">Register By: <?php echo esc_html( $register_by ); ?></div>
-						<?php endif; ?>
 					</div>
 
 					<?php
@@ -226,8 +215,24 @@ get_header(); ?>
 				</section>
 			<?php endif; ?>
 
+			<?php if ( $price || $trip_id || $register_by ) : ?>
+				<section class="ws-container custom-page-meta">
+					<?php if ( $price ) : ?>
+						<div class="price"><span class="h4">Price:</span> <?php echo esc_html( $price ); ?></div>
+					<?php endif; ?>
+
+					<?php if ( $trip_id ) : ?>
+						<div class="trip-id"><span class="h4">Trip ID:</span> <?php echo esc_html( $trip_id ); ?></div>
+					<?php endif; ?>
+
+					<?php if ( $register_by ) : ?>
+						<div class="register-by"><span class="h4">Register By:</span> <?php echo esc_html( $register_by ); ?></div>
+					<?php endif; ?>
+				</section>
+			<?php endif; ?>
+
 			<?php if ( ! empty ( $custom_content ) ) : ?>
-				<section class="ws-container custom-page-section">
+				<section class="ws-container custom-page-content">
 					<h3><?php echo apply_filters( 'the_title ', $custom_content_title ); ?></h3>
 
 					<?php if ( ! empty( $custom_content ) ) : ?>
