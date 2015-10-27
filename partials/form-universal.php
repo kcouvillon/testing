@@ -37,7 +37,8 @@
 					<option data-value="ele" value="A Teacher">Elementary School Educator</option>
 					<option data-value="mse" value="A Teacher">Middle School Educator</option>
 					<option data-value="hse" value="A Teacher">High School Educator</option>
-					<option data-value="une" value="A Teacher">College / University Educator</option>
+					<option data-value="une" value="A Teacher">Undergraduate Educator</option>
+					<option data-value="une" value="A Teacher">Graduate Educator</option>
 				</select>
 			</li>
 
