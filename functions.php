@@ -101,7 +101,10 @@ add_action( 'after_setup_theme', 'ws_setup' );
 function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
-	wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+	// wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+	wp_register_script( 'angular', get_template_directory_uri() . '/assets/js/vendor/angular.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'angular-route', get_template_directory_uri() . '/assets/js/vendor/angular-route.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'explore', get_template_directory_uri() . '/explore/explore.js', array(), WS_VERSION, true );
 
 	wp_enqueue_script( 'jquery' );
 
@@ -117,7 +120,16 @@ function ws_scripts_styles() {
 	}
 
 	if ( is_page_template( 'templates/explore.php' ) ) {
-		wp_enqueue_script( 'mixitup' );
+		// wp_enqueue_script( 'mixitup' );
+		wp_enqueue_script( 'angular' );
+		wp_enqueue_script( 'angular-route' );
+		wp_enqueue_script( 'explore' );
+		wp_localize_script( 'explore',
+			'wsExplore',
+			array(
+				'path' => get_template_directory_uri() . '/explore'
+			)
+		);
 	}
 
 	wp_enqueue_script( 'jquery-ui-autocomplete' ); // used on form submissions, available on all pages

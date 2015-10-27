@@ -48,9 +48,9 @@
 				</div>
 			</div>
 
-			<?php get_template_part('partials/explore', 'filters'); ?>		
-
-			<?php get_template_part('partials/explore', 'results') ?>
+			<div ng-view></div>
+			<?php //get_template_part('partials/explore', 'filters'); ?>		
+			<?php //get_template_part('partials/explore', 'results') ?>
 
 		</section>
 
