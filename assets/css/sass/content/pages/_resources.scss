@@ -246,3 +246,12 @@
 		@include span(4 last);
 	}
 }
+
+header.entry-header > a {
+	color: $gray_darker;
+}
+
+article.open > header.entry-header > a {
+	color: #ffffff;
+	font-weight: bold;
+}

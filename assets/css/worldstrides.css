@@ -9385,6 +9385,13 @@ section:after {
       float: right;
       margin-right: 0; } }
 
+header.entry-header > a {
+  color: #424c61; }
+
+article.open > header.entry-header > a {
+  color: #ffffff;
+  font-weight: bold; }
+
 /* _home.scss
  * ----------------------------------- */
 @media screen and (max-width: 767px) {
