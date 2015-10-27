@@ -9337,6 +9337,9 @@ section:after {
       float: right;
       margin-right: 0; } }
 
+header.entry-header > a {
+  color: #424c61; }
+
 /* _home.scss
  * ----------------------------------- */
 @media screen and (max-width: 767px) {
