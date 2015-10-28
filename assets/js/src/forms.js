@@ -19,6 +19,11 @@
 			wsData.validateAndSubmitForm();
 		}
 
+		// LISTENER FOR COMMENT PRE-FILL
+		jQuery('a[id^="comment-btn-"]').click( function() {
+			jQuery('#get-info-comment').val(jQuery(this).attr('data-form-comment'));
+		});
+
 	});
 
 	/**

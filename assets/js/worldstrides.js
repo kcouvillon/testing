@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-10-27
+/*! WorldStrides - v0.1.0 - 2015-10-28
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -639,6 +639,11 @@
 			universalLead();
 			wsData.validateAndSubmitForm();
 		}
+
+		// LISTENER FOR COMMENT PRE-FILL
+		jQuery('a[id^="comment-btn-"]').click( function() {
+			jQuery('#get-info-comment').val(jQuery(this).attr('data-form-comment'));
+		});
 
 	});
 
