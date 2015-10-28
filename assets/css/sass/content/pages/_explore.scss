@@ -509,23 +509,24 @@
 		margin-bottom: 4em;
 		overflow: hidden;
 		&.no-results {
-		margin-bottom: 0;
-		visibility: hidden;
-		height: 0; }
+			margin-bottom: 0;
+			visibility: hidden;
+			height: 0; 
+		}
 		
-		&.show-previews {
-			.tile:not(.preview-tile) {
-				position: absolute;
-				top: 0;
-				z-index: -1;
-				visibility: hidden;
-			}
-		}
-		&.show-all {
-			.tile:not(.preview-tile) {
+		// &.show-previews {
+		// 	.tile:not(.preview-tile) {
+		// 		position: absolute;
+		// 		top: 0;
+		// 		z-index: -1;
+		// 		visibility: hidden;
+		// 	}
+		// }
+		// &.show-all {
+		// 	.tile:not(.preview-tile) {
 				
-			}	
-		}
+		// 	}	
+		// }
 
 		.results {
 			@media screen and ( min-width: $screen-sm ) {
@@ -547,7 +548,7 @@
 	}
 
 	.tile {
-		display: none; // Required for 'mixItUp' JS filtering plugin
+		// display: none; // Required for 'mixItUp' JS filtering plugin
 	    height: auto;
 	    padding: 0;
 	    margin: 0 0 0.4em;

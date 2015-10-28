@@ -71,7 +71,24 @@ exploreApp.service('Itineraries', function($q, $http){
 
 });
 
-var ExploreController = function(Terms, Itineraries){
+exploreApp.service('Collections', function($q, $http){
+
+	var _this = this;
+
+	_this.getAll = function(){
+		return $q(function(resolve, reject){
+			$http.get(wsTheme.explore + "/collections.json")
+				.then(function(response){
+					resolve(response);
+				}, function(error){
+					reject(error);
+				});
+		});
+	}
+
+});
+
+var ExploreController = function(Terms, Itineraries, Collections){
 
 	var _this = this;
 
@@ -81,9 +98,16 @@ var ExploreController = function(Terms, Itineraries){
 	_this.travelers;
 	_this.interests;
 	_this.itineraries;
+	_this.collections;
 
 	Itineraries.getAll().then(function(response){
 		_this.itineraries = response.data;
+	}, function(error){
+		console.log(error);
+	});
+
+	Collections.getAll().then(function(response){
+		_this.collections = response.data;
 	}, function(error){
 		console.log(error);
 	});
@@ -98,5 +122,29 @@ var ExploreController = function(Terms, Itineraries){
 	});
 
 };
-ExploreController.$inject = ['Terms', 'Itineraries'];
+
+ExploreController.showChildTerms = function(){
+
+
+
+}
+
+
+
+
+ExploreController.$inject = ['Terms', 'Itineraries', 'Collections'];
 exploreApp.controller('ExploreController', ExploreController);
+
+
+
+
+
+
+
+
+
+
+
+
+
+

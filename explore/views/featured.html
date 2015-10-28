@@ -150,6 +150,34 @@ Results
 
 <section id="explore-results" class="explore-results section-content">
 
+	<div class="collections show-previews" ng-show="ctrl.collections">
+		<header class="results-header">
+			<h2>Collections</h2>
+		</header>
+		<div class="results clearfix">
+
+			<article ng-repeat="collection in ctrl.collections" class="tile tile-third" style="background-image:url( {{ collection.featured_image.attachment_meta.sizes.medium.url }} );" >
+				<a href="{{ collection.link }}" ng-show="collection.featured_image">
+					<img src="{{ collection.featured_image.attachment_meta.sizes.medium.url }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
+				</a>
+				<div class="tile-content">
+					<ul class="meta list-unstyled" ng-show="collection.terms.filter">
+						<li class="list-tag-no-link" ng-repeat="term in collection.terms.filter">
+							{{ term.name }}
+						</li>	
+					</ul>
+					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
+					<h3 class="h2 tile-title">{{ collection.title }}</h3>
+				</div>
+
+				<a class="tile-link" href="{{ collection.link }}"><span class="hide">Go to {{ collection.title }}</span></a>
+			</article>
+	
+		</div>
+		<a href="#toggle-results" class="toggle-results">See All Collections</a>
+	</div>
+
 	<div class="itineraries show-previews" ng-show="ctrl.itineraries">
 		<header class="results-header">
 			<h2>Itineraries</h2>
