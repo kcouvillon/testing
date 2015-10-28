@@ -9717,14 +9717,20 @@ section:after {
       .explore-filters .filter-menu .menu-container {
         display: block !important; } }
     .explore-filters .filter-menu .terms-list {
-      position: relative;
-      visibility: visible; }
+      position: absolute;
+      z-index: -1;
+      visibility: hidden; }
+      .explore-filters .filter-menu .terms-list.visible {
+        position: relative;
+        z-index: auto;
+        visibility: visible; }
       .explore-filters .filter-menu .terms-list a {
         position: relative;
         display: block;
         padding: 1em 0;
         line-height: 1.2em;
-        border-top: 1px solid #424c61; }
+        border-top: 1px solid #424c61;
+        cursor: pointer; }
         .explore-filters .filter-menu .terms-list a.inactive {
           color: #5b6375; }
       .explore-filters .filter-menu .terms-list.terms-list-child .term-list-toggle {
@@ -9739,10 +9745,6 @@ section:after {
         color: #4fa9e5; }
         .explore-filters .filter-menu .terms-list.terms-list-child li.parent-term a .icon {
           color: #FFF; }
-      .explore-filters .filter-menu .terms-list.invisible {
-        position: absolute;
-        z-index: -1;
-        visibility: hidden; }
     @media screen and (min-width: 768px) {
       .explore-filters .filter-menu.traveler-menu {
         width: 26%;
@@ -9788,11 +9790,9 @@ section:after {
     @media screen and (min-width: 1200px) {
       .explore-filters .filter-menu.destination-menu {
         width: 50%; } }
-    .explore-filters .filter-menu.destination-menu .terms-list.invisible .destination-graphic {
-      transform: scale(0.8);
-      opacity: 0; }
-    .explore-filters .filter-menu.destination-menu .terms-list.invisible.destinations-parent .destination-graphic {
-      transform: scale(1.2); }
+    .explore-filters .filter-menu.destination-menu .terms-list.visible .destination-graphic {
+      transform: scale(1);
+      opacity: 1; }
     .explore-filters .filter-menu.destination-menu .destinations-child .terms {
       position: relative;
       z-index: 1;
@@ -9828,8 +9828,8 @@ section:after {
       display: block;
       width: 100%;
       margin: 1em 0;
-      transform: scale(1);
-      opacity: 1;
+      transform: scale(0.8);
+      opacity: 0;
       transition: all 300ms ease-out; }
     @media screen and (min-width: 1200px) {
       .explore-filters .filter-menu.destination-menu .terms {

@@ -16,7 +16,7 @@
 				<div class="traveler-filters hide-sm toggle" data-target=".traveler-menu-container"></div>
 
 				<div class="traveler-menu-container menu-container closed">
-					<ul class="terms-list list-unstyled clearfix">
+					<ul class="terms-list list-unstyled clearfix visible">
 						
 						<li ng-repeat="traveler in ctrl.travelers">
 							<a href="#{{traveler.slug}}" class="filter" data-filter-list=".traveler-filters">{{traveler.name}}</a>
@@ -33,10 +33,10 @@
 
 				<div class="interests-menu-container menu-container closed">
 
-					<ul id="interests-parent" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
+					<ul id="interests-parent" ng-class="{visible: ctrl.showInterestsList == 'interests-parent'}" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
 						
 						<li ng-repeat="interest in ctrl.interests">
-							<a href="#{{interest.slug}}" class="term-list-toggle parent-term parent-interest">
+							<a ng-click="ctrl.showTermList('interest', interest.slug)" class="term-list-toggle parent-term parent-interest">
 								<i class="icon icon-{{interest.slug}}"></i>
 								{{interest.name}}
 								<i class="icon icon-arrow-right"></i>
@@ -59,25 +59,22 @@
 
 					</ul>
 
-					<!-- <?php foreach ( $interests as $interest ) : ?> -->
 						
-						<ul id="$interest->slug" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
-							
-							<li class="parent-term"><a class="parent-interest">
-								<i class="icon icon-$interest->slug"></i>
-								$interest->name</a>
-							</li>
+					<ul id="{{interest.slug}}" ng-repeat="interest in ctrl.interests"  ng-class="{visible: ctrl.showInterestsList == interest.slug}" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
+						
+						<li class="parent-term">
+							<a class="parent-interest">
+								<i class="icon icon-{{interest.slug}}"></i> {{interest.name}}
+							</a>
+						</li>
 
-							<!-- <?php $child_interests = get_terms( 'filter', array( 'parent' => $interest->term_id ) );
-							foreach ( $child_interests as $child_interest ) : ?> -->
+						<li ng-repeat="child in interest.children">
+							<a href="#{{child.slug}}" class="filter" data-filter-list=".interests-filters">{{child.name}}</a>
+						</li>
+						
+						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
+					</ul>
 
-							<li><a href="#$child_interest->slug" class="filter" data-filter-list=".interests-filters">$child_interest->name</a></li>
-							
-							<!-- <?php endforeach; ?> -->
-							<a href="#interests-parent" class="term-list-toggle">« Back to Interests</a>
-						</ul>
-
-					<!-- <?php endforeach; ?> -->
 
 				</div>
 
@@ -90,7 +87,7 @@
 				
 				<div class="destination-menu-container menu-container closed">
 
-					<ul id="destinations-parent" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
+					<ul id="destinations-parent" ng-class="{visible: ctrl.showDestinationsList == 'destinations-parent'}" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
 						<li class="destination-map">
 							<span class="destination-graphic">
 								<img src="{{ctrl.wsTheme.path}}/assets/images/map-global.png" alt="Global"/>
@@ -99,35 +96,28 @@
 						<li>
 							<ul class="terms list-unstyled clearfix">
 								<li ng-repeat="continent in ctrl.continents">
-									<a href="#{{continent.slug}}" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters">{{continent.name}}</a>
+									<a ng-click="ctrl.showTermList('destination', continent.slug)" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters">{{continent.name}}</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
-
-					<!-- <?php foreach ( $continents as $continent ) : ?> -->
 						
-						<ul id="$continent->slug" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
-							<li class="destination-map">
-								$continent->name
-								<span class="destination-graphic">
-									<!-- <img src="<?php echo get_template_directory_uri() . '/assets/images/map-' . $continent->slug . '.png'; ?>" alt="<?php echo $continent->name; ?>"/> -->
-								</span>
-							</li>
-							<li>
-								<ul class="terms list-unstyled clearfix">
-									<!-- <?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id ) );
-									foreach ( $destinations as $destination ) : ?> -->
-
-									<li><a href="#$destination->slug" class="filter" data-filter-list=".destination-filters">$destination->name</a></li>
-									
-									<!-- <?php endforeach; ?> -->
-								</ul>
-							</li>
-							<a href="#destinations-parent" class="term-list-toggle">« Back to Destinations</a>
-						</ul>
-
-					<!-- <?php endforeach; ?> -->
+					<ul id="{{continent.slug}}" ng-repeat="continent in ctrl.continents" ng-class="{visible: ctrl.showDestinationsList == continent.slug}" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
+						<li class="destination-map">
+							{{continent.name}}
+							<span class="destination-graphic">
+								<img src="{{ctrl.wsTheme.path}}/assets/images/map-{{continent.slug}}.png" alt="{{continent.name}}"/>
+							</span>
+						</li>
+						<li>
+							<ul class="terms list-unstyled clearfix">
+								<li ng-repeat="child in continent.children">
+									<a href="{{child.slug}}" class="filter" data-filter-list=".destination-filters">{{child.name}}</a>
+								</li>
+							</ul>
+						</li>
+						<a ng-click="ctrl.showTermList('destination', 'destinations-parent')" class="term-list-toggle">« Back to Destinations</a>
+					</ul>
 
 				</div>
 

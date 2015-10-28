@@ -27,11 +27,7 @@ exploreApp.service('Terms', function($q, $http){
 	_this.getAll = function( taxonomy ){
 		return $q(function(resolve, reject){
 			$http.get(wsTheme.explore + "/" + taxonomy + ".json")
-				.then(function(response){
-					resolve(response);
-				}, function(error){
-					reject(error);
-				});
+				.then(resolve, reject);
 		});
 	};
 
@@ -42,10 +38,17 @@ exploreApp.service('Terms', function($q, $http){
 		var children = [],
 			parentType = ( typeof parent == 'string' ) ? 'slug' : 'ID';
 
-		angular.forEach(data, function(value, key){
-			if ( value.parent && value.parent[parentType] == parent ) {
-				if ( value.ID !== 384 ) // extra check to exclude faith-based & service
-					children.push(value);
+		angular.forEach(data, function(term, key){
+			if ( term.parent && term.parent[parentType] == parent ) {
+				if ( term.ID !== 384 ) { // extra check to exclude faith-based & service
+					term.children = [];
+					angular.forEach(data, function(childTerm, key){
+						if ( childTerm.parent && childTerm.parent.ID == term.ID ) {
+							term.children.push(childTerm);
+						}
+					});
+					children.push(term);
+				}
 			}
 		});
 
@@ -61,11 +64,7 @@ exploreApp.service('Itineraries', function($q, $http){
 	_this.getAll = function(){
 		return $q(function(resolve, reject){
 			$http.get(wsTheme.explore + "/itineraries.json")
-				.then(function(response){
-					resolve(response);
-				}, function(error){
-					reject(error);
-				});
+				.then(resolve, reject);
 		});
 	}
 
@@ -78,11 +77,7 @@ exploreApp.service('Collections', function($q, $http){
 	_this.getAll = function(){
 		return $q(function(resolve, reject){
 			$http.get(wsTheme.explore + "/collections.json")
-				.then(function(response){
-					resolve(response);
-				}, function(error){
-					reject(error);
-				});
+				.then(resolve,reject);
 		});
 	}
 
@@ -94,11 +89,13 @@ var ExploreController = function(Terms, Itineraries, Collections){
 
 	_this.loading = true;
 	_this.wsTheme = wsTheme;
-	_this.continents;
 	_this.travelers;
 	_this.interests;
+	_this.continents;
 	_this.itineraries;
 	_this.collections;
+	_this.showInterestsList = 'interests-parent';
+	_this.showDestinationsList = 'destinations-parent';
 
 	Itineraries.getAll().then(function(response){
 		_this.itineraries = response.data;
@@ -113,9 +110,9 @@ var ExploreController = function(Terms, Itineraries, Collections){
 	});
 
 	Terms.getAll('filters').then(function(response){
-		_this.continents = Terms.getChildrenOf('destination', response.data);
 		_this.travelers = Terms.getChildrenOf('traveler', response.data);
 		_this.interests = Terms.getChildrenOf('interest', response.data);
+		_this.continents = Terms.getChildrenOf('destination', response.data);
 		_this.loading = false;
 	}, function(error){
 		console.log(error);
@@ -123,10 +120,12 @@ var ExploreController = function(Terms, Itineraries, Collections){
 
 };
 
-ExploreController.showChildTerms = function(){
-
-
-
+ExploreController.prototype.showTermList = function( list, term ){
+	if ( list == 'interest' ) {
+		this.showInterestsList = term;
+	} else if ( list == 'destination' ) {
+		this.showDestinationsList = term;
+	}
 }
 
 
