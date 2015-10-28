@@ -9605,21 +9605,12 @@ section:after {
   background: #323c53;
   color: #777d8d;
   font-size: 16px;
-  background-image: url(../images/ripple.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
   /* Filters (mobile and desktop)
 	 * ------------------------------------------------------------- */
   /* Desktop Current Filters
 	 * ------------------------------------------------------------- */
   /* Filter Menu
 	 * ------------------------------------------------------------- */ }
-  .explore-filters.results-loaded {
-    background-image: none; }
-    .explore-filters.results-loaded .filter-menus {
-      opacity: 1; }
-      .ws-no-opacity .explore-filters.results-loaded .filter-menus {
-        visibility: visible; }
   .explore-filters a {
     color: #FFF;
     font-weight: 600; }
@@ -9633,11 +9624,7 @@ section:after {
     margin: 0;
     height: auto;
     max-height: 1000px;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 300ms ease; }
-    .ws-no-opacity .explore-filters .filter-menus {
-      visibility: hidden; }
+    overflow: hidden; }
   .explore-filters .traveler-filters,
   .explore-filters .interests-filters,
   .explore-filters .destination-filters {
