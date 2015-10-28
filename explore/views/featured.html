@@ -1,8 +1,8 @@
 <nav class="explore-filters">
 
-	<img src="http://ws.local/wp-content/themes/worldstrides/assets/images/ripple.svg" ng-show="loading" />
+	<img src="http://ws.local/wp-content/themes/worldstrides/assets/images/ripple.svg" ng-show="ctrl.loading" />
 
-	<div class="ws-container">
+	<div class="ws-container" ng-hide="ctrl.loading">
 	
 		<ul class="current-filters list-unstyled clearfix">
 			<li class="traveler-filters"></li>
@@ -16,10 +16,12 @@
 				<div class="traveler-filters hide-sm toggle" data-target=".traveler-menu-container"></div>
 
 				<div class="traveler-menu-container menu-container closed">
-					<ul class="terms-list list-unstyled clearfix">
-						<!-- <?php foreach ( $travelers as $traveler ) : ?> -->
-						<li><a href="#$traveler->slug" class="filter" data-filter-list=".traveler-filters">$traveler->name</a></li>
-						<!-- <?php endforeach; ?> -->
+					<ul class="terms-list list-unstyled clearfix visible">
+						
+						<li ng-repeat="traveler in ctrl.travelers">
+							<a href="#{{traveler.slug}}" class="filter" data-filter-list=".traveler-filters">{{traveler.name}}</a>
+						</li>
+						
 					</ul>
 				</div>
 
@@ -31,15 +33,15 @@
 
 				<div class="interests-menu-container menu-container closed">
 
-					<ul id="interests-parent" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
+					<ul id="interests-parent" ng-class="{visible: ctrl.showInterestsList == 'interests-parent'}" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
 						
-						<!-- <?php foreach ( $interests as $interest ) : ?> -->
-						<li><a href="#<?php echo $interest->slug; ?>" class="term-list-toggle parent-term parent-interest">
-							<i class="icon icon-<?php echo $interest->slug; ?>"></i>
-							<?php echo $interest->name; ?>
-							<i class="icon icon-arrow-right"></i>
-							</a></li>
-						<!-- <?php endforeach; ?> -->
+						<li ng-repeat="interest in ctrl.interests">
+							<a ng-click="ctrl.showTermList('interest', interest.slug)" class="term-list-toggle parent-term parent-interest">
+								<i class="icon icon-{{interest.slug}}"></i>
+								{{interest.name}}
+								<i class="icon icon-arrow-right"></i>
+							</a>
+						</li>
 
 						<li>
 							<a href="#faith-based" class="filter" data-filter-list=".interests-filters">
@@ -57,25 +59,22 @@
 
 					</ul>
 
-					<!-- <?php foreach ( $interests as $interest ) : ?> -->
 						
-						<ul id="$interest->slug" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
-							
-							<li class="parent-term"><a class="parent-interest">
-								<i class="icon icon-$interest->slug"></i>
-								$interest->name</a>
-							</li>
+					<ul id="{{interest.slug}}" ng-repeat="interest in ctrl.interests"  ng-class="{visible: ctrl.showInterestsList == interest.slug}" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
+						
+						<li class="parent-term">
+							<a class="parent-interest">
+								<i class="icon icon-{{interest.slug}}"></i> {{interest.name}}
+							</a>
+						</li>
 
-							<!-- <?php $child_interests = get_terms( 'filter', array( 'parent' => $interest->term_id ) );
-							foreach ( $child_interests as $child_interest ) : ?> -->
+						<li ng-repeat="child in interest.children">
+							<a href="#{{child.slug}}" class="filter" data-filter-list=".interests-filters">{{child.name}}</a>
+						</li>
+						
+						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
+					</ul>
 
-							<li><a href="#$child_interest->slug" class="filter" data-filter-list=".interests-filters">$child_interest->name</a></li>
-							
-							<!-- <?php endforeach; ?> -->
-							<a href="#interests-parent" class="term-list-toggle">« Back to Interests</a>
-						</ul>
-
-					<!-- <?php endforeach; ?> -->
 
 				</div>
 
@@ -88,44 +87,37 @@
 				
 				<div class="destination-menu-container menu-container closed">
 
-					<ul id="destinations-parent" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
+					<ul id="destinations-parent" ng-class="{visible: ctrl.showDestinationsList == 'destinations-parent'}" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
 						<li class="destination-map">
 							<span class="destination-graphic">
-								<!-- <img src="<?php echo get_template_directory_uri() . '/assets/images/map-global.png'; ?>" alt="Global"/> -->
+								<img src="{{ctrl.wsTheme.path}}/assets/images/map-global.png" alt="Global"/>
 							</span>
 						</li>
 						<li>
 							<ul class="terms list-unstyled clearfix">
-								<!-- <?php foreach ( $continents as $continent ) : ?> -->
-								<li><a href="#$continent->slug" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters">$continent->name</a></li>
-								<!-- <?php endforeach; ?> -->
+								<li ng-repeat="continent in ctrl.continents">
+									<a ng-click="ctrl.showTermList('destination', continent.slug)" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters">{{continent.name}}</a>
+								</li>
 							</ul>
 						</li>
 					</ul>
-
-					<!-- <?php foreach ( $continents as $continent ) : ?> -->
 						
-						<ul id="$continent->slug" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
-							<li class="destination-map">
-								$continent->name
-								<span class="destination-graphic">
-									<!-- <img src="<?php echo get_template_directory_uri() . '/assets/images/map-' . $continent->slug . '.png'; ?>" alt="<?php echo $continent->name; ?>"/> -->
-								</span>
-							</li>
-							<li>
-								<ul class="terms list-unstyled clearfix">
-									<!-- <?php $destinations = get_terms( 'filter', array( 'parent' => $continent->term_id ) );
-									foreach ( $destinations as $destination ) : ?> -->
-
-									<li><a href="#$destination->slug" class="filter" data-filter-list=".destination-filters">$destination->name</a></li>
-									
-									<!-- <?php endforeach; ?> -->
-								</ul>
-							</li>
-							<a href="#destinations-parent" class="term-list-toggle">« Back to Destinations</a>
-						</ul>
-
-					<!-- <?php endforeach; ?> -->
+					<ul id="{{continent.slug}}" ng-repeat="continent in ctrl.continents" ng-class="{visible: ctrl.showDestinationsList == continent.slug}" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
+						<li class="destination-map">
+							{{continent.name}}
+							<span class="destination-graphic">
+								<img src="{{ctrl.wsTheme.path}}/assets/images/map-{{continent.slug}}.png" alt="{{continent.name}}"/>
+							</span>
+						</li>
+						<li>
+							<ul class="terms list-unstyled clearfix">
+								<li ng-repeat="child in continent.children">
+									<a href="{{child.slug}}" class="filter" data-filter-list=".destination-filters">{{child.name}}</a>
+								</li>
+							</ul>
+						</li>
+						<a ng-click="ctrl.showTermList('destination', 'destinations-parent')" class="term-list-toggle">« Back to Destinations</a>
+					</ul>
 
 				</div>
 
@@ -138,9 +130,72 @@
 
 </nav>
 
-<!-- <div class="explore-filters-toggle ws-container">
-	<a href="#explore-results"><span class="collections-count">Collections</span> and <span class="itineraries-count">Itineraries</span>.</a>
-</div> -->
 
+<!--
+############################################################################
+Results
+############################################################################
+-->
+
+
+<section id="explore-results" class="explore-results section-content">
+
+	<div class="collections show-previews" ng-show="ctrl.collections">
+		<header class="results-header">
+			<h2>Collections</h2>
+		</header>
+		<div class="results clearfix">
+
+			<article ng-repeat="collection in ctrl.collections" class="tile tile-third" style="background-image:url( {{ collection.featured_image.attachment_meta.sizes.medium.url }} );" >
+				<a href="{{ collection.link }}" ng-show="collection.featured_image">
+					<img src="{{ collection.featured_image.attachment_meta.sizes.medium.url }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
+				</a>
+				<div class="tile-content">
+					<ul class="meta list-unstyled" ng-show="collection.terms.filter">
+						<li class="list-tag-no-link" ng-repeat="term in collection.terms.filter">
+							{{ term.name }}
+						</li>	
+					</ul>
+					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
+					<h3 class="h2 tile-title">{{ collection.title }}</h3>
+				</div>
+
+				<a class="tile-link" href="{{ collection.link }}"><span class="hide">Go to {{ collection.title }}</span></a>
+			</article>
+	
+		</div>
+		<a href="#toggle-results" class="toggle-results">See All Collections</a>
+	</div>
+
+	<div class="itineraries show-previews" ng-show="ctrl.itineraries">
+		<header class="results-header">
+			<h2>Itineraries</h2>
+		</header>
+		<div class="results clearfix">
+
+			<article ng-repeat="itinerary in ctrl.itineraries" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image.attachment_meta.sizes.medium.url }} );" >
+				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
+					<img src="{{ itinerary.featured_image.attachment_meta.sizes.medium.url }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
+				</a>
+				<div class="tile-content">
+					<ul class="meta list-unstyled" ng-show="itinerary.terms.filter">
+						<li class="list-tag-no-link" ng-repeat="term in itinerary.terms.filter">
+							{{ term.name }}
+						</li>	
+					</ul>
+					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
+					<h3 class="h2 tile-title">{{ itinerary.title }}</h3>
+				</div>
+
+				<a class="tile-link" href="{{ itinerary.link }}"><span class="hide">Go to {{ itinerary.title }}</span></a>
+			</article>
+	
+		</div>
+		<a href="#toggle-results" class="toggle-results">See All Itineraries</a>
+	</div>
+
+</section>
 
 

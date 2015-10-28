@@ -126,9 +126,10 @@ function ws_scripts_styles() {
 		wp_enqueue_script( 'angular-route' );
 		wp_enqueue_script( 'explore' );
 		wp_localize_script( 'explore',
-			'wsExplore',
+			'wsTheme',
 			array(
-				'path' => get_template_directory_uri() . '/explore'
+				'path' => get_template_directory_uri(),
+				'explore' => get_template_directory_uri() . '/explore'
 			)
 		);
 	}

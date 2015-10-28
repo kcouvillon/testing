@@ -9605,21 +9605,12 @@ section:after {
   background: #323c53;
   color: #777d8d;
   font-size: 16px;
-  background-image: url(../images/ripple.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
   /* Filters (mobile and desktop)
 	 * ------------------------------------------------------------- */
   /* Desktop Current Filters
 	 * ------------------------------------------------------------- */
   /* Filter Menu
 	 * ------------------------------------------------------------- */ }
-  .explore-filters.results-loaded {
-    background-image: none; }
-    .explore-filters.results-loaded .filter-menus {
-      opacity: 1; }
-      .ws-no-opacity .explore-filters.results-loaded .filter-menus {
-        visibility: visible; }
   .explore-filters a {
     color: #FFF;
     font-weight: 600; }
@@ -9633,11 +9624,7 @@ section:after {
     margin: 0;
     height: auto;
     max-height: 1000px;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 300ms ease; }
-    .ws-no-opacity .explore-filters .filter-menus {
-      visibility: hidden; }
+    overflow: hidden; }
   .explore-filters .traveler-filters,
   .explore-filters .interests-filters,
   .explore-filters .destination-filters {
@@ -9730,14 +9717,20 @@ section:after {
       .explore-filters .filter-menu .menu-container {
         display: block !important; } }
     .explore-filters .filter-menu .terms-list {
-      position: relative;
-      visibility: visible; }
+      position: absolute;
+      z-index: -1;
+      visibility: hidden; }
+      .explore-filters .filter-menu .terms-list.visible {
+        position: relative;
+        z-index: auto;
+        visibility: visible; }
       .explore-filters .filter-menu .terms-list a {
         position: relative;
         display: block;
         padding: 1em 0;
         line-height: 1.2em;
-        border-top: 1px solid #424c61; }
+        border-top: 1px solid #424c61;
+        cursor: pointer; }
         .explore-filters .filter-menu .terms-list a.inactive {
           color: #5b6375; }
       .explore-filters .filter-menu .terms-list.terms-list-child .term-list-toggle {
@@ -9752,10 +9745,6 @@ section:after {
         color: #4fa9e5; }
         .explore-filters .filter-menu .terms-list.terms-list-child li.parent-term a .icon {
           color: #FFF; }
-      .explore-filters .filter-menu .terms-list.invisible {
-        position: absolute;
-        z-index: -1;
-        visibility: hidden; }
     @media screen and (min-width: 768px) {
       .explore-filters .filter-menu.traveler-menu {
         width: 26%;
@@ -9801,11 +9790,9 @@ section:after {
     @media screen and (min-width: 1200px) {
       .explore-filters .filter-menu.destination-menu {
         width: 50%; } }
-    .explore-filters .filter-menu.destination-menu .terms-list.invisible .destination-graphic {
-      transform: scale(0.8);
-      opacity: 0; }
-    .explore-filters .filter-menu.destination-menu .terms-list.invisible.destinations-parent .destination-graphic {
-      transform: scale(1.2); }
+    .explore-filters .filter-menu.destination-menu .terms-list.visible .destination-graphic {
+      transform: scale(1);
+      opacity: 1; }
     .explore-filters .filter-menu.destination-menu .destinations-child .terms {
       position: relative;
       z-index: 1;
@@ -9841,8 +9828,8 @@ section:after {
       display: block;
       width: 100%;
       margin: 1em 0;
-      transform: scale(1);
-      opacity: 1;
+      transform: scale(0.8);
+      opacity: 0;
       transition: all 300ms ease-out; }
     @media screen and (min-width: 1200px) {
       .explore-filters .filter-menu.destination-menu .terms {
@@ -9878,12 +9865,6 @@ section:after {
     margin-bottom: 0;
     visibility: hidden;
     height: 0; }
-  .explore-results .collections.show-previews .tile:not(.preview-tile),
-  .explore-results .itineraries.show-previews .tile:not(.preview-tile) {
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    visibility: hidden; }
   @media screen and (min-width: 768px) {
     .explore-results .collections .results,
     .explore-results .itineraries .results {
@@ -9899,7 +9880,6 @@ section:after {
   text-align: center; }
 
 .explore-results .tile {
-  display: none;
   height: auto;
   padding: 0;
   margin: 0 0 0.4em;
