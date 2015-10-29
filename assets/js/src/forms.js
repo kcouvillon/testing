@@ -29,7 +29,7 @@
 	/**
 	 * Base URL for API calls
 	 */
-	wsData.mdrapi_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
+	wsData.mdrapi_base_url = "https://apis.worldstrides.com/mdrapi/v1/";
 
 	/**
 	 * Parameters for the spinner: http://fgnass.github.io/spin.js/
