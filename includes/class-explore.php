@@ -84,11 +84,28 @@ class WS_Explore {
 				$img_id        = get_post_thumbnail_id();
 				$img           = wp_get_attachment_image_src( $img_id, 'large' );
 				$post_type     = get_post_type();
+				$terms = get_the_terms( get_the_ID(), 'filter' );
+				$term_list = array();
+				$meta_list = array();
+
+				foreach ( $terms as $term ) {
+					array_push( $term_list, array(
+						'name' => $term->name,
+						'slug' => $term->slug
+					) );
+
+					if ( in_array( $term->term_id, get_term_children( 222, 'filter' ) ) ) {
+						array_push( $meta_list, array( 'name' => $term->name ) );
+					}
+				}
 
 				$filter_data[$post_type][] = array(
 					'title' => get_the_title(),
 					'featured_image'  => esc_url( $img[0] ),
-					'link' => get_the_permalink()
+					'link' => get_the_permalink(),
+					'filter' => $term_list,
+					'meta' => $meta_list
+
 				);
 			}
 			wp_reset_postdata();
