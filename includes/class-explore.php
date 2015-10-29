@@ -184,8 +184,15 @@ class WS_Explore {
 				$img       = wp_get_attachment_image_src( $img_id, 'large' );
 				$post_type = get_post_type();
 				$terms     = get_the_terms( get_the_ID(), 'filter' );
+				$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 				$term_list = array();
 				$meta_list = array();
+
+				if ( '844' == $post->ID || 'smithsonian' == $itinerary_type ) {
+					$smithsonian = true;
+				} else {
+					$smithsonian = false;
+				}
 
 				if ( $terms ) {
 					foreach ( $terms as $term ) {
@@ -205,8 +212,8 @@ class WS_Explore {
 					'featured_image' => esc_url( $img[0] ),
 					'link'           => get_the_permalink(),
 					'filter'         => $term_list,
-					'meta'           => $meta_list
-
+					'meta'           => $meta_list,
+					'smithsonian' => $smithsonian
 				);
 			}
 			wp_reset_postdata();
