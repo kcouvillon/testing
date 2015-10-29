@@ -38,13 +38,16 @@ class WS_Explore {
 		add_action( 'template_redirect', array( $this, 'filter_requests' ) );
 	}
 
+	/**
+	 * Create endpoints for ws-api calls
+	 */
 	public function explore_endpoints() {
 		add_rewrite_tag( '%api-filters%', '([^&]+)' );
 		add_rewrite_rule( 'ws-api/v1/explore/results/([^&]+)/?', 'index.php?api-filters=$matches[1]', 'top' );
 	}
 
 	/**
-	 *
+	 * Provide a json array of Itineraries and Collections for a ws-api endpoint request
 	 */
 	public static function filter_requests() {
 
