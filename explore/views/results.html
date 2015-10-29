@@ -99,7 +99,7 @@
 					<ul id="destinations-parent" ng-class="{visible: ctrl.showDestinationsList == 'destinations-parent'}" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
 						<li class="destination-map">
 							<span class="destination-graphic">
-								<img src="{{ctrl.wsTheme.path}}/assets/images/map-global.png" alt="Global"/>
+								<img src="{{ctrl.WS.theme}}/assets/images/map-global.png" alt="Global"/>
 							</span>
 						</li>
 						<li>
@@ -115,7 +115,7 @@
 						<li class="destination-map">
 							<span ng-bind-html="continent.name"></span>
 							<span class="destination-graphic">
-								<img src="{{ctrl.wsTheme.path}}/assets/images/map-{{continent.slug}}.png" alt="{{continent.name}}"/>
+								<img src="{{ctrl.WS.theme}}/assets/images/map-{{continent.slug}}.png" alt="{{continent.name}}"/>
 							</span>
 						</li>
 						<li>
@@ -155,13 +155,13 @@ Results
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections" class="tile tile-third" style="background-image:url( {{ collection.featured_image.attachment_meta.sizes.medium.url }} );" >
+			<article ng-repeat="collection in ctrl.collections" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
-					<img src="{{ collection.featured_image.attachment_meta.sizes.medium.url }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
+					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
 				</a>
 				<div class="tile-content">
-					<ul class="meta list-unstyled" ng-show="collection.terms.filter">
-						<li class="list-tag-no-link" ng-repeat="term in collection.terms.filter" ng-bind-html="term.name"></li>
+					<ul class="meta list-unstyled" ng-show="collection.meta">
+						<li class="list-tag-no-link" ng-repeat="term in collection.meta" ng-bind-html="term.name"></li>
 					</ul>
 					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
@@ -181,13 +181,13 @@ Results
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="itinerary in ctrl.itineraries" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image.attachment_meta.sizes.medium.url }} );" >
+			<article ng-repeat="itinerary in ctrl.itineraries" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
 				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
-					<img src="{{ itinerary.featured_image.attachment_meta.sizes.medium.url }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
+					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 				</a>
 				<div class="tile-content">
-					<ul class="meta list-unstyled" ng-show="itinerary.terms.filter">
-						<li class="list-tag-no-link" ng-repeat="term in itinerary.terms.filter" ng-bind-html="term.name"></li>	
+					<ul class="meta list-unstyled" ng-show="itinerary.meta">
+						<li class="list-tag-no-link" ng-repeat="term in itinerary.meta" ng-bind-html="term.name"></li>	
 					</ul>
 					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->

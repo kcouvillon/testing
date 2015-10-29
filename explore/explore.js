@@ -3,8 +3,18 @@ var exploreApp = angular.module('exploreApp', ['ngRoute', 'ngSanitize']);
 exploreApp.config([ '$routeProvider', function($routeProvider){
 
 	$routeProvider
-		.when('/:filters', {
-			templateUrl: wsTheme.explore + '/views/results.html',
+		.when('/featured', {
+			templateUrl: WS.explore + '/views/results.html',
+			controller: 'ExploreController',
+			controllerAs: 'ctrl'
+		})
+		// .when('/:filters', {
+		// 	templateUrl: WS.explore + '/views/results.html',
+		// 	controller: 'ExploreController',
+		// 	controllerAs: 'ctrl'
+		// })
+		.when('/:travelers/:interests/:destinations', {
+			templateUrl: WS.explore + '/views/results.html',
 			controller: 'ExploreController',
 			controllerAs: 'ctrl'
 		})
@@ -21,7 +31,7 @@ exploreApp.service('Terms', function($q, $http){
 
 	_this.getAll = function( taxonomy ){
 		return $q(function(resolve, reject){
-			$http.get(wsTheme.explore + "/" + taxonomy + ".json")
+			$http.get(WS.explore + "/" + taxonomy + ".json")
 				.then(resolve, reject);
 		});
 	};
@@ -52,7 +62,7 @@ exploreApp.service('Terms', function($q, $http){
 
 });
 
-exploreApp.service('Itineraries', function($q, $http){
+exploreApp.service('Posts', function($q, $http){
 
 	var _this = this;
 
@@ -60,10 +70,10 @@ exploreApp.service('Itineraries', function($q, $http){
 		return $q(function(resolve, reject){
 			var deferred, url;
 			if ( filters == 'featured' ) {
-				deferred = $http.get(wsTheme.explore + "/itineraries.json");
+				deferred = $http.get(WS.explore + '/posts.json');
 			} else {
 				// parse filters and build url
-				url = wsTheme.explore + "/itineraries.json";
+				url = WS.exploreApi + '/' + filters;
 				deferred = $http.get(url);
 			}
 			deferred.then(resolve, reject);
@@ -72,26 +82,27 @@ exploreApp.service('Itineraries', function($q, $http){
 
 });
 
-exploreApp.service('Collections', function($q, $http){
-
-	var _this = this;
-
-	_this.getAll = function(){
-		return $q(function(resolve, reject){
-			$http.get(wsTheme.explore + "/collections.json")
-				.then(resolve,reject);
-		});
-	}
-
-});
-
-var ExploreController = function(Terms, Itineraries, Collections, $route){
+var ExploreController = function(Terms, Posts, $route){
 
 	var _this = this,
-		filters = $route.current.params.filters;
+		route = $route.current.params,
+		query;
+
+	if ( Object.keys(route).length > 0 ) {
+		query = [];
+		angular.forEach(route, function(value, key){
+			if ( value !== 'all-destinations' && value !== 'all-interests' && value !== 'all-travelers' )
+				query.push(value);
+		});
+		query = query.join(',');
+	} else {
+		query = 'featured';
+	}
+
+	console.log(query);
 
 	_this.loading = true;
-	_this.wsTheme = wsTheme;
+	_this.WS = WS;
 	_this.travelers;
 	_this.interests;
 	_this.continents;
@@ -100,14 +111,10 @@ var ExploreController = function(Terms, Itineraries, Collections, $route){
 	_this.showInterestsList = 'interests-parent';
 	_this.showDestinationsList = 'destinations-parent';
 
-	Itineraries.get(filters).then(function(response){
-		_this.itineraries = response.data;
-	}, function(error){
-		console.log(error);
-	});
-
-	Collections.getAll().then(function(response){
-		_this.collections = response.data;
+	Posts.get(query).then(function(response){
+		_this.itineraries = response.data.data.itinerary;
+		_this.collections = response.data.data.collection;
+		_this.loading = false;
 	}, function(error){
 		console.log(error);
 	});
@@ -116,7 +123,6 @@ var ExploreController = function(Terms, Itineraries, Collections, $route){
 		_this.travelers = Terms.getChildrenOf('traveler', response.data);
 		_this.interests = Terms.getChildrenOf('interest', response.data);
 		_this.continents = Terms.getChildrenOf('destination', response.data);
-		_this.loading = false;
 	}, function(error){
 		console.log(error);
 	});
@@ -143,7 +149,7 @@ ExploreController.prototype.toggleFilterMenu = function( menu ) {
 
 
 
-ExploreController.$inject = ['Terms', 'Itineraries', 'Collections', '$route'];
+ExploreController.$inject = ['Terms', 'Posts', '$route'];
 exploreApp.controller('ExploreController', ExploreController);
 
 

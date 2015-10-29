@@ -128,10 +128,11 @@ function ws_scripts_styles() {
 		wp_enqueue_script( 'angular-sanitize' );
 		wp_enqueue_script( 'explore' );
 		wp_localize_script( 'explore',
-			'wsTheme',
+			'WS',
 			array(
-				'path' => get_template_directory_uri(),
-				'explore' => get_template_directory_uri() . '/explore'
+				'theme' => get_template_directory_uri(),
+				'explore' => get_template_directory_uri() . '/explore',
+				'exploreApi' => site_url() . '/ws-api/v1/explore/results'
 			)
 		);
 	}
