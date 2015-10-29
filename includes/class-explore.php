@@ -67,7 +67,7 @@ class WS_Explore {
 
 		$args = array(
 			'post_type'      => array( 'itinerary', 'collection' ),
-			'posts_per_page' => 200, // very large, but better than -1
+			'posts_per_page' => 300, // very large, but better than -1
 			'tax_query'      => array(
 				array(
 					'taxonomy' => 'filter',
@@ -87,12 +87,21 @@ class WS_Explore {
 			while ( $query_data->have_posts() ) {
 				$query_data->the_post();
 
+				global $post;
+
 				$img_id        = get_post_thumbnail_id();
 				$img           = wp_get_attachment_image_src( $img_id, 'large' );
 				$post_type     = get_post_type();
 				$terms = get_the_terms( get_the_ID(), 'filter' );
+				$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 				$term_list = array();
 				$meta_list = array();
+
+				if ( '844' == $post->ID || 'smithsonian' == $itinerary_type ) {
+					$smithsonian = true;
+				} else {
+					$smithsonian = false;
+				}
 
 				foreach ( $terms as $term ) {
 					array_push( $term_list, array(
@@ -110,8 +119,8 @@ class WS_Explore {
 					'featured_image'  => esc_url( $img[0] ),
 					'link' => get_the_permalink(),
 					'filter' => $term_list,
-					'meta' => $meta_list
-
+					'meta' => $meta_list,
+					'smithsonian' => $smithsonian
 				);
 			}
 			wp_reset_postdata();
