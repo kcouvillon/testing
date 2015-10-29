@@ -158,6 +158,8 @@ class WS_Explore {
 	 */
 	public static function explore_featured() {
 
+		global $post;
+		
 		$explore_id = 47;
 
 		$select_itineraries_ids = get_post_meta( $explore_id, 'explore_attached_itineraries', true );
