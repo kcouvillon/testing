@@ -60,33 +60,43 @@ class WS_Explore {
 		$filter_data = array();
 
 		$args = array(
-			'post_type' => 'itinerary',
+			'post_type'      => 'itinerary',
 			'posts_per_page' => 200, // very large, but better than -1
-			'tax_query' => array(
+			'tax_query'      => array(
 				array(
 					'taxonomy' => 'filter',
-					'field'	   => 'slug',
+					'field'    => 'slug',
 					'terms'    => $filters,
 					'operator' => 'AND'
 				)
 			),
-			'no_found_rows'          => true,
-			'orderby' => 'title',
-			'order' => 'ASC'
+			'no_found_rows'  => true,
+			'orderby'        => 'title',
+			'order'          => 'ASC'
 		);
 
 		$query_data = new WP_Query( $args );
 
-		if ( $query_data->have_posts() ) : while ( $query_data->have_posts() ) : $query_data->the_post();
-			$img_id = get_post_thumbnail_id();
-			$img = wp_get_attachment_image_src( $img_id, 'medium' );
-			$filter_data[] = array(
-				'link'  => esc_url( $img[0] ),
-				'title' => get_the_title(),
-			);
-		endwhile; wp_reset_postdata(); endif;
+		if ( $query_data->have_posts() ) {
+			while ( $query_data->have_posts() ) {
+				$query_data->the_post();
 
-		wp_send_json( $filter_data );
+				$img_id        = get_post_thumbnail_id();
+				$img           = wp_get_attachment_image_src( $img_id, 'medium' );
+				$filter_data[] = array(
+					'link'  => esc_url( $img[0] ),
+					'title' => get_the_title(),
+				);
+			}
+			wp_reset_postdata();
+
+			wp_send_json_success( $filter_data );
+
+		} else {
+
+			wp_send_json_error( $filter_data );
+
+		}
 	}
 }
 
