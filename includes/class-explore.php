@@ -116,7 +116,7 @@ class WS_Explore {
 			}
 			wp_reset_postdata();
 
-			wp_send_json_success( $filter_data );
+			wp_send_json( $filter_data );
 
 		} else {
 			// This messed up the whole site...
@@ -128,7 +128,7 @@ class WS_Explore {
 	}
 
 	/**
-	 * Provide a json array of Itineraries and Collections for a ws-api endpoint request
+	 * Handle how to route requests to ws-api/v1/data/
 	 */
 	public static function api_data_handler() {
 
@@ -139,10 +139,13 @@ class WS_Explore {
 
 		if ( 'featured' === $api_data ) {
 			WS_Explore::explore_featured();
+		} elseif ( 'filters' === $api_data ) {
+			WS_Explore::explore_filters();
 		}
 	}
+
 	/**
-	 * Provide a json array of Itineraries and Collections for a ws-api endpoint request
+	 * Provide a json array of featured Itineraries and Collections for a ws-api endpoint request
 	 */
 	public static function explore_featured() {
 
@@ -199,11 +202,61 @@ class WS_Explore {
 			}
 			wp_reset_postdata();
 
-			wp_send_json_success( $data );
+			wp_send_json( $data );
 
 		}
 
 		return;
+	}
+
+	/**
+	 * Generate the list of filters to use at the top of the Explore page
+	 */
+	public static function explore_filters() {
+		$interests_args = array(
+			'parent' => 11, // Interest
+			'orderby' => 'term_order',
+			'hide_empty' => false,
+			'exclude' => 384 // Faith Based & Service
+		);
+		$travelers_args = array(
+			'parent' => 222, // Traveler
+			'orderby' => 'term_order',
+			'hide_empty' => false
+		);
+		$destinations_args = array(
+			'parent' => 498, // Destination
+			'orderby' => 'term_order',
+			'hide_empty' => false
+		);
+		$travelers  = get_terms( 'filter', $travelers_args );
+		$interests  = get_terms( 'filter', $interests_args );
+		$destinations = get_terms( 'filter', $destinations_args );
+
+		$data = array();
+
+		// base level
+		$data['travelers']['root'] = $travelers;
+		$data['interests']['root'] = $interests;
+		$data['destinations']['root'] = $destinations;
+
+		// get children
+		foreach ( $interests as $interest ) {
+			$children = get_terms( 'filter', array( 'parent' => $interest->term_id ) );
+			foreach ( $children as $child ) {
+				$data['interests']['children'][] = $child;
+			}
+		}
+
+		foreach ( $destinations as $destination ) {
+			$children = get_terms( 'filter', array( 'parent' => $destination->term_id ) );
+			foreach ( $children as $child ) {
+				$data['destinations']['children'][] = $child;
+			}
+		}
+
+		wp_send_json( $data );
+
 	}
 }
 
