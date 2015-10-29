@@ -82,10 +82,11 @@ class WS_Explore {
 				$query_data->the_post();
 
 				$img_id        = get_post_thumbnail_id();
-				$img           = wp_get_attachment_image_src( $img_id, 'medium' );
+				$img           = wp_get_attachment_image_src( $img_id, 'large' );
 				$filter_data[] = array(
-					'link'  => esc_url( $img[0] ),
 					'title' => get_the_title(),
+					'featured_image'  => esc_url( $img[0] ),
+					'link' => get_the_permalink()
 				);
 			}
 			wp_reset_postdata();
