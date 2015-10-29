@@ -65,7 +65,7 @@ get_header(); ?>
 					</div>
 
 				</div>
-				
+
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
 			</header>
@@ -86,7 +86,7 @@ get_header(); ?>
 						<?php
 						// Get Before Blocks
 						$before_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
-						
+
 						<?php if ( ! empty( $before_block_sections ) ) : ?>
 							<?php foreach ( $before_block_sections as $section ) : ?>
 								<?php if ( ! empty ( $section['title'] ) ) : ?>
@@ -106,7 +106,7 @@ get_header(); ?>
 						<?php
 						// Get After Blocks
 						$after_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
-						
+
 						<?php if ( ! empty( $after_block_sections ) ) : ?>
 							<?php foreach ( $after_block_sections as $section ) : ?>
 								<?php if ( ! empty ( $section['title'] ) ) : ?>
@@ -148,12 +148,12 @@ get_header(); ?>
 					<?php elseif ( $date_list ) : ?>
 
 						<div class="h3"><i class="icon icon-calendar"></i> Dates</div>
-						
+
 						<ul class="date-list <?php echo 'columns-'.$column_count; ?> list-unstyled clearfix">
-							<?php 
+							<?php
 							$count = 0;
 							foreach ( $date_list as $list ) : ?>
-								
+
 								<?php
 								$start = $list['itinerary_details_date_start'];
 								$end   = $list['itinerary_details_date_end'];
@@ -195,7 +195,7 @@ get_header(); ?>
 
 				<div class="tour-weather hide-print">
 
-					<?php 
+					<?php
 					$weather = WS_Helpers::get_weather_data( $post->ID );
 
 					if ( is_object( $weather ) ) {
@@ -236,7 +236,7 @@ get_header(); ?>
 						<?php endif; ?>
 
 					</div>
-					
+
 				</div>
 			</div>
 		</section>
@@ -244,7 +244,7 @@ get_header(); ?>
 		<section class="tour-sharing hide-print">
 			<?php $pdf = get_post_meta( $post->ID, 'itinerary_pdf' ); ?>
 			<ul class="sharing-links list-unstyled">
-				<li><a href="<?php echo 'mailto:?subject=Here\'s a WorldStrides trip you might really like: '.rawurlencode(get_the_title()).'&body=I thought you might find this trip interesting. Looks like a lot of fun to me!%0D%0A%0D%0A'.urlencode(get_the_permalink()); ?>"><i class="icon icon-email"></i> Email Itinerary</a></li>
+				<li><a href="<?php echo 'mailto:?subject=Here\'s a WorldStrides trip you might really like: ' . esc_html( get_the_title() ) . '&body=I thought you might find this trip interesting. Looks like a lot of fun to me!%0D%0A%0D%0A' . esc_url( get_the_permalink() ); ?>"><i class="icon icon-email"></i> Email Itinerary</a></li>
 				<li><a href="javascript:window.print()"><i class="icon icon-print"></i> Print Itinerary</a></li>
 				<?php if ( $pdf ) : ?>
 				<li><a href="<?php echo $pdf[0]; ?>"><i class="icon icon-pdf"></i> Download PDF</a></li>
@@ -265,7 +265,7 @@ get_header(); ?>
 		</section>
 
 		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
-			<?php 
+			<?php
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
@@ -275,9 +275,9 @@ get_header(); ?>
 				<div class="tour-highlights-slider cycle-slideshow"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
-					
+
 					<div class="cycle-overlay js-only"></div>
-					
+
 					<?php if ( count($highlights) > 1 ) : ?>
 					<div class="cycle-prev"></div>
 					<div class="cycle-next"></div>
@@ -297,7 +297,7 @@ get_header(); ?>
 							<p><?php echo $highlight['caption']; ?></p>
 						</div>
 					<?php } ?>
-					
+
 					<?php if ( count($highlights) > 1 ) : ?>
 					<div class="cycle-pager"></div>
 					<?php endif; ?>
@@ -539,7 +539,7 @@ get_header(); ?>
 			<?php endforeach; ?>
 		<?php endif; ?>
 
-		<?php 
+		<?php
 			// if ( has_term('perspectives', 'product-line') ) {
 			// 	echo get_template_part('partials/itinerary', 'pricing');
 			// }
@@ -612,4 +612,4 @@ get_header(); ?>
 	</main>
 </div>
 
-<?php get_footer(); ?>
+<?php get_footer();
