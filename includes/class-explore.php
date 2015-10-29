@@ -60,7 +60,7 @@ class WS_Explore {
 		$filter_data = array();
 
 		$args = array(
-			'post_type'      => 'itinerary',
+			'post_type'      => array( 'itinerary', 'collection' ),
 			'posts_per_page' => 200, // very large, but better than -1
 			'tax_query'      => array(
 				array(
@@ -83,11 +83,12 @@ class WS_Explore {
 
 				$img_id        = get_post_thumbnail_id();
 				$img           = wp_get_attachment_image_src( $img_id, 'large' );
-				$filter_data[] = array(
+				$post_type     = get_post_type();
+
+				$filter_data[$post_type][] = array(
 					'title' => get_the_title(),
 					'featured_image'  => esc_url( $img[0] ),
-					'link' => get_the_permalink(),
-					'post_type' => get_post_type()
+					'link' => get_the_permalink()
 				);
 			}
 			wp_reset_postdata();
