@@ -37,6 +37,7 @@ include WS_PATH . 'includes/class-admin-options.php';
 include WS_PATH . 'includes/class-collections.php';
 include WS_PATH . 'includes/class-comments.php';
 include WS_PATH . 'includes/class-cpts.php';
+include WS_PATH . 'includes/class-explore.php';
 include WS_PATH . 'includes/class-form.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
