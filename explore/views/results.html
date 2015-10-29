@@ -1,6 +1,14 @@
+<div class="explore-utility">
+	<div class="ws-container">
+		<span class="search-by">Select filters to narrow your search</span>
+		<a class="results-count" href="#explore-results">See {{ ctrl.collections.length }} Collections and {{ ctrl.itineraries.length }} Itineraries <i class="icon icon-arrow-down"></i></a>
+		<a class="clear-all" href="#clear-filters"><i class="icon icon-small-close"></i> Clear filters</a>
+	</div>
+</div>
+
 <nav class="explore-filters">
 
-	<img src="http://ws.local/wp-content/themes/worldstrides/assets/images/ripple.svg" ng-show="ctrl.loading" />
+	<img src="http://ws.local/wp-content/themes/worldstrides/assets/images/ripple.svg" ng-show="ctrl.loading" class="loader" />
 
 	<div class="ws-container" ng-hide="ctrl.loading">
 	
@@ -13,13 +21,13 @@
 		<ul class="filter-menus open list-unstyled clearfix">
 
 			<li class="filter-menu traveler-menu">
-				<div class="traveler-filters hide-sm toggle" data-target=".traveler-menu-container"></div>
+				<div class="traveler-filters hide-sm toggle" ng-click="ctrl.toggleFilterMenu('.traveler-menu-container')"></div>
 
 				<div class="traveler-menu-container menu-container closed">
 					<ul class="terms-list list-unstyled clearfix visible">
 						
-						<li ng-repeat="traveler in ctrl.travelers">
-							<a href="#{{traveler.slug}}" class="filter" data-filter-list=".traveler-filters">{{traveler.name}}</a>
+						<li ng-repeat="traveler in ctrl.travelers" class="term">
+							<a href="#{{traveler.slug}}" class="filter" data-filter-list=".traveler-filters" ng-bind-html="traveler.name"></a>
 						</li>
 						
 					</ul>
@@ -29,28 +37,28 @@
 			</li>
 
 			<li class="filter-menu interests-menu">
-				<div class="interests-filters toggle hide-sm" data-target=".interests-menu-container"></div>
+				<div class="interests-filters toggle hide-sm" ng-click="ctrl.toggleFilterMenu('.interests-menu-container')"></div>
 
 				<div class="interests-menu-container menu-container closed">
 
 					<ul id="interests-parent" ng-class="{visible: ctrl.showInterestsList == 'interests-parent'}" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
 						
-						<li ng-repeat="interest in ctrl.interests">
+						<li ng-repeat="interest in ctrl.interests" class="term">
 							<a ng-click="ctrl.showTermList('interest', interest.slug)" class="term-list-toggle parent-term parent-interest">
 								<i class="icon icon-{{interest.slug}}"></i>
-								{{interest.name}}
+								<span ng-bind-html="interest.name"></span>
 								<i class="icon icon-arrow-right"></i>
 							</a>
 						</li>
 
-						<li>
+						<li class="term">
 							<a href="#faith-based" class="filter" data-filter-list=".interests-filters">
 								<i class="icon icon-faith-based"></i>
 								Faith-based
 							</a>
 						</li>
 
-						<li>
+						<li class="term">
 							<a href="#service" class="filter" data-filter-list=".interests-filters">
 								<i class="icon icon-service"></i>
 								Service
@@ -62,14 +70,15 @@
 						
 					<ul id="{{interest.slug}}" ng-repeat="interest in ctrl.interests"  ng-class="{visible: ctrl.showInterestsList == interest.slug}" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
 						
-						<li class="parent-term">
+						<li class="parent-term term">
 							<a class="parent-interest">
-								<i class="icon icon-{{interest.slug}}"></i> {{interest.name}}
+								<i class="icon icon-{{interest.slug}}"></i>
+								<span ng-bind-html="interest.name"></span>
 							</a>
 						</li>
 
-						<li ng-repeat="child in interest.children">
-							<a href="#{{child.slug}}" class="filter" data-filter-list=".interests-filters">{{child.name}}</a>
+						<li ng-repeat="child in interest.children" class="term">
+							<a href="#{{child.slug}}" class="filter" data-filter-list=".interests-filters" ng-bind-html="child.name">{{child.name}}</a>
 						</li>
 						
 						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
@@ -83,7 +92,7 @@
 			
 
 			<li class="filter-menu destination-menu">
-				<div class="destination-filters toggle hide-sm" data-target=".destination-menu-container"></div>
+				<div class="destination-filters toggle hide-sm" ng-click="ctrl.toggleFilterMenu('.destination-menu-container')"></div>
 				
 				<div class="destination-menu-container menu-container closed">
 
@@ -95,8 +104,8 @@
 						</li>
 						<li>
 							<ul class="terms list-unstyled clearfix">
-								<li ng-repeat="continent in ctrl.continents">
-									<a ng-click="ctrl.showTermList('destination', continent.slug)" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters">{{continent.name}}</a>
+								<li ng-repeat="continent in ctrl.continents" class="term">
+									<a ng-click="ctrl.showTermList('destination', continent.slug)" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters" ng-bind-html="continent.name"></a>
 								</li>
 							</ul>
 						</li>
@@ -104,15 +113,15 @@
 						
 					<ul id="{{continent.slug}}" ng-repeat="continent in ctrl.continents" ng-class="{visible: ctrl.showDestinationsList == continent.slug}" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
 						<li class="destination-map">
-							{{continent.name}}
+							<span ng-bind-html="continent.name"></span>
 							<span class="destination-graphic">
 								<img src="{{ctrl.wsTheme.path}}/assets/images/map-{{continent.slug}}.png" alt="{{continent.name}}"/>
 							</span>
 						</li>
 						<li>
 							<ul class="terms list-unstyled clearfix">
-								<li ng-repeat="child in continent.children">
-									<a href="{{child.slug}}" class="filter" data-filter-list=".destination-filters">{{child.name}}</a>
+								<li ng-repeat="child in continent.children" class="term">
+									<a href="{{child.slug}}" class="filter" data-filter-list=".destination-filters" ng-bind-html="child.name"></a>
 								</li>
 							</ul>
 						</li>
@@ -152,13 +161,11 @@ Results
 				</a>
 				<div class="tile-content">
 					<ul class="meta list-unstyled" ng-show="collection.terms.filter">
-						<li class="list-tag-no-link" ng-repeat="term in collection.terms.filter">
-							{{ term.name }}
-						</li>	
+						<li class="list-tag-no-link" ng-repeat="term in collection.terms.filter" ng-bind-html="term.name"></li>
 					</ul>
 					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
-					<h3 class="h2 tile-title">{{ collection.title }}</h3>
+					<h3 class="h2 tile-title" ng-bind-html="collection.title"></h3>
 				</div>
 
 				<a class="tile-link" href="{{ collection.link }}"><span class="hide">Go to {{ collection.title }}</span></a>
@@ -180,13 +187,11 @@ Results
 				</a>
 				<div class="tile-content">
 					<ul class="meta list-unstyled" ng-show="itinerary.terms.filter">
-						<li class="list-tag-no-link" ng-repeat="term in itinerary.terms.filter">
-							{{ term.name }}
-						</li>	
+						<li class="list-tag-no-link" ng-repeat="term in itinerary.terms.filter" ng-bind-html="term.name"></li>	
 					</ul>
 					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
-					<h3 class="h2 tile-title">{{ itinerary.title }}</h3>
+					<h3 class="h2 tile-title" ng-bind-html="itinerary.title"></h3>
 				</div>
 
 				<a class="tile-link" href="{{ itinerary.link }}"><span class="hide">Go to {{ itinerary.title }}</span></a>

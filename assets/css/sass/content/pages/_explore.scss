@@ -157,6 +157,14 @@
 	background: $navy;
 	color: $gray;
 	font-size: 16px;
+	min-height: 200px;
+
+	.loader {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -16px 0 0 -16px;
+	}
 
 	a {
 		color: #FFF;
@@ -176,7 +184,7 @@
 		display: block;
 		margin: 0;
 		height: auto;
-		max-height: 1000px;
+		// max-height: 1000px;
 		overflow: hidden;
 	}
 
@@ -254,238 +262,264 @@
 			width: 50%; }
 		}
 	}
+}
+
+/* Filter Menu
+ * ------------------------------------------------------------- */
+.filter-menu {
+	position: relative;
+	border-bottom: 1px solid $gray_darker;
+	@media screen and (min-width: $screen-sm) {
+		border-bottom: 0;
+	}
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	.toggle {
+		cursor: pointer;
+	}
+
+	.menu-container {
+		&.closed {
+			& ~ .arrow:before {
+			    content: "\e617"; // arrow down
+			}
+			.terms-list a {
+				border: 0;
+				@media screen and (min-width: $screen-sm) {
+					border-top: 1px solid $gray_darker;
+				}
+			}
+			.term {
+				height: 0;
+				@media screen and (min-width: $screen-sm) {
+					height: auto;
+				}
+			}
+			.destination-map {
+				display: none;
+				@media screen and (min-width: $screen-sm) {
+					display: block;
+				}
+			}
+		}
+		&.open {
+			& ~ .arrow:before {
+			    content: "\e605"; // close
+			}	
+		}
+	}
+
+	ul {
+		margin: 0;
+		&:last-child {
+			margin-bottom: 0.5em;
+		}
+		@media screen and (min-width: $screen-sm) {
+			display: block;
+		}
+	}
+
+	.terms-list {
+		position: absolute;
+		z-index: -1;
+		visibility: hidden;
+		&.visible {
+			position: relative;
+			z-index: auto;
+			visibility: visible;
+		}
+
+		a {
+			position: relative;
+			display: block;
+			padding: 1em 0;
+			line-height: 1.2em;
+			border-top: 1px solid $gray_darker;
+			cursor: pointer;
+			&.inactive {
+				color: $gray_dark;	
+			}
+		}
+
+		&.terms-list-parent {
+			@media screen and (min-width: $screen-sm) {
+				// border-top: 1px solid $gray_darker;
+				// border-bottom: 1px solid $gray_darker;
+			}
+		}
+
+		&.terms-list-child {
+			.term-list-toggle {
+			    display: block;
+			    clear: both;
+			    font-size: 12px;
+			    color: $blue;
+			    margin: 0 0 2em;
+			    &:hover {
+			    	color: #FFF;
+			    }
+			}
+
+			li.parent-term a {
+				color: $blue;
+				.icon {
+					color: #FFF;
+				}
+			}
+		}
+	}
+
+	.term {
+		overflow: hidden;
+		height: 52px;
+		transition: height 300ms ease;
+		@media screen and (min-width: $screen-sm) {
+			height: auto;
+		}
+	}
+
+	/* Traveler Menu
+	** --------------------------------------------------- */
+	&.traveler-menu {
+		@media screen and (min-width: $screen-sm) {
+		width: 26%;
+		float: left;
+		padding-right: 1%; }
+		@media screen and (min-width: $screen-lg) {
+		width: 20%; }
+	}
 
 	/* Filter Menu
-	 * ------------------------------------------------------------- */
-	.filter-menu {
-		position: relative;
-		border-bottom: 1px solid $gray_darker;
+	** --------------------------------------------------- */
+	&.interests-menu {
 		@media screen and (min-width: $screen-sm) {
-			border-bottom: 0;
-		}
-		&:last-child {
-			border-bottom: 0;
-		}
+		width: 44%;
+		float: left;
+		padding-right: 1%;
+		padding-left: 1%; }
+		@media screen and (min-width: $screen-md) {
+		width: 39%; }
+		@media screen and (min-width: $screen-lg) {
+		width: 30%; }
 
-		ul {
-			margin: 0;
-			&:last-child {
-				margin-bottom: 0.5em;
+		.terms-list a {
+			padding: 1em 0 1em 55px;
+			.icon {
+				font-size: 2.1em;
+			    margin: -19px 0 0;
+			    color: #FFF;
+			    position: absolute;
+			    left: 0;
+			    top: 50%;
 			}
-			@media screen and (min-width: $screen-sm) {
-				display: block;
-			}
-		}
 
-		.menu-container {
-			&.closed {
-				display: none;
-				& ~ .arrow:before {
-				    content: "\e617"; // arrow down
-				}	
-			}
-			&.open {
-				& ~ .arrow:before {
-				    content: "\e605"; // close
-				}	
-			}
-			@media screen and (min-width: $screen-sm) {
-				display: block !important;
-			}
-		}
-
-		.terms-list {
-			position: absolute;
-			z-index: -1;
-			visibility: hidden;
-			&.visible {
+			.icon-arrow-right {
 				position: relative;
-				z-index: auto;
-				visibility: visible;
+				font-size: em(12);
+				margin-bottom: 0;
+				margin-left: 1em;
 			}
+		}
+	}
 
-			a {
-				position: relative;
-				display: block;
-				padding: 1em 0;
-				line-height: 1.2em;
-				border-top: 1px solid $gray_darker;
-				cursor: pointer;
-				&.inactive {
-					color: $gray_dark;	
-				}
-			}
+	/* Destination Menu
+	** --------------------------------------------------- */
+	&.destination-menu {
+		@media screen and (min-width: $screen-sm) {
+		width: 30%;
+		float: left;
+		padding-left: 1%; }
+		@media screen and (min-width: $screen-md) {
+		width: 35%; }
+		@media screen and (min-width: $screen-lg) {
+		width: 50%; }
 
-			&.terms-list-parent {
-				@media screen and (min-width: $screen-sm) {
-					// border-top: 1px solid $gray_darker;
-					// border-bottom: 1px solid $gray_darker;
-				}
-			}
-
-			&.terms-list-child {
-				.term-list-toggle {
-				    display: block;
-				    clear: both;
-				    font-size: 12px;
-				    color: $blue;
-				    margin: 0 0 2em;
-				    &:hover {
-				    	color: #FFF;
-				    }
-				}
-
-				li.parent-term a {
-					color: $blue;
-					.icon {
-						color: #FFF;
-					}
-				}
+		.terms-list.visible {				
+			.destination-graphic {
+				transform: scale(1);
+				opacity: 1;
 			}
 		}
 
+		.destinations-child .terms {
+			position: relative;
+			z-index: 1;
+			-webkit-columns: 2;
+			-webkit-column-width: 120px;
+			-webkit-column-gap: 0;
+			-moz-columns: 2;
+			-moz-column-width: 120px;
+			-moz-column-gap: 0;
+			columns: 2;
+			column-width: 120px;
+			column-gap: 0;
 
-		/* Traveler Menu
-		** --------------------------------------------------- */
-		&.traveler-menu {
-			@media screen and (min-width: $screen-sm) {
-			width: 26%;
-			float: left;
-			padding-right: 1%; }
-			@media screen and (min-width: $screen-lg) {
-			width: 20%; }
-		}
-
-		/* Filter Menu
-		** --------------------------------------------------- */
-		&.interests-menu {
-			@media screen and (min-width: $screen-sm) {
-			width: 44%;
-			float: left;
-			padding-right: 1%;
-			padding-left: 1%; }
-			@media screen and (min-width: $screen-md) {
-			width: 39%; }
-			@media screen and (min-width: $screen-lg) {
-			width: 30%; }
-
-			.terms-list a {
-				padding: 1em 0 1em 55px;
-				.icon {
-					font-size: 2.1em;
-				    margin: -19px 0 0;
-				    color: #FFF;
-				    position: absolute;
-				    left: 0;
-				    top: 50%;
-				}
-
-				.icon-arrow-right {
-					position: relative;
-					font-size: em(12);
-					margin-bottom: 0;
-					margin-left: 1em;
-				}
-			}
-		}
-
-		/* Destination Menu
-		** --------------------------------------------------- */
-		&.destination-menu {
-			@media screen and (min-width: $screen-sm) {
-			width: 30%;
-			float: left;
-			padding-left: 1%; }
-			@media screen and (min-width: $screen-md) {
-			width: 35%; }
-			@media screen and (min-width: $screen-lg) {
-			width: 50%; }
-
-			.terms-list.visible {				
-				.destination-graphic {
-					transform: scale(1);
-					opacity: 1;
-				}
+			li {
+				-webkit-column-break-inside: avoid;
+				page-break-inside: avoid;
+				break-inside: avoid;
 			}
 
-			.destinations-child .terms {
-				position: relative;
-				z-index: 1;
-				-webkit-columns: 2;
-				-webkit-column-width: 120px;
-				-webkit-column-gap: 0;
-				-moz-columns: 2;
-				-moz-column-width: 120px;
-				-moz-column-gap: 0;
-				columns: 2;
-				column-width: 120px;
-				column-gap: 0;
-
-				li {
-					-webkit-column-break-inside: avoid;
-					page-break-inside: avoid;
-					break-inside: avoid;
-				}
-
-				@at-root {
-					.ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms {
-						li {
-							@media screen and (min-width: $screen-md) {
-								width: 50%;
-								float: left;
-							}
+			@at-root {
+				.ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms {
+					li {
+						@media screen and (min-width: $screen-md) {
+							width: 50%;
+							float: left;
 						}
 					}
 				}
 			}
-
-			.destination-map {
-				color: #FFF;
-				font-weight: 700;
-				text-align: center;
-				color: $blue;
-				@media screen and (min-width: $screen-lg) {
-					width: 50%;
-					float: left;
-					padding: 0.8em 20px 0 0;
-					border-top: 1px solid $gray_darker;
-				}
-			}
-
-			.destination-graphic {
-				display: block;
-				width: 100%;
-				margin: 1em 0;
-				transform: scale(0.8);
-				opacity: 0;
-				transition: all 300ms ease-out;
-			}
-
-			.terms {
-				@media screen and (min-width: $screen-lg) {
-					width: 50%;
-					float: right;
-				}
-			}
 		}
 
-		& > .arrow {
-			position: absolute;
-			z-index: 0;
-			top: 1.3em;
-			right: 1em;
+		.destination-map {
 			color: #FFF;
+			font-weight: 700;
+			text-align: center;
+			color: $blue;
+			@media screen and (min-width: $screen-lg) {
+				width: 50%;
+				float: left;
+				padding: 0.8em 20px 0 0;
+				border-top: 1px solid $gray_darker;
+			}
 		}
 
-		.filter-menu-toggle {
-			position: absolute;
-		    top: 0;
-		    right: 0;
-		    padding: 1em;
-		    @media screen and (min-width: $screen-sm) {
-		    	display: none;
-		    }
+		.destination-graphic {
+			display: block;
+			width: 100%;
+			margin: 1em 0;
+			transform: scale(0.8);
+			opacity: 0;
+			transition: all 300ms ease-out;
 		}
+
+		.terms {
+			@media screen and (min-width: $screen-lg) {
+				width: 50%;
+				float: right;
+			}
+		}
+	}
+
+	& > .arrow {
+		position: absolute;
+		z-index: 0;
+		top: 1.3em;
+		right: 1em;
+		color: #FFF;
+	}
+
+	.filter-menu-toggle {
+		position: absolute;
+	    top: 0;
+	    right: 0;
+	    padding: 1em;
+	    @media screen and (min-width: $screen-sm) {
+	    	display: none;
+	    }
 	}
 }
 

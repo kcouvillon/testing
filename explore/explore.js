@@ -1,15 +1,10 @@
-var exploreApp = angular.module('exploreApp', ['ngRoute']);
+var exploreApp = angular.module('exploreApp', ['ngRoute', 'ngSanitize']);
 
 exploreApp.config([ '$routeProvider', function($routeProvider){
 
 	$routeProvider
-		.when('/featured', {
-			templateUrl: wsTheme.explore + '/views/featured.html',
-			controller: 'ExploreController',
-			controllerAs: 'ctrl'
-		})
 		.when('/:filters', {
-			templateUrl: wsTheme.explore + '/views/filters.html',
+			templateUrl: wsTheme.explore + '/views/results.html',
 			controller: 'ExploreController',
 			controllerAs: 'ctrl'
 		})
@@ -61,10 +56,17 @@ exploreApp.service('Itineraries', function($q, $http){
 
 	var _this = this;
 
-	_this.getAll = function(){
+	_this.get = function( filters ){
 		return $q(function(resolve, reject){
-			$http.get(wsTheme.explore + "/itineraries.json")
-				.then(resolve, reject);
+			var deferred, url;
+			if ( filters == 'featured' ) {
+				deferred = $http.get(wsTheme.explore + "/itineraries.json");
+			} else {
+				// parse filters and build url
+				url = wsTheme.explore + "/itineraries.json";
+				deferred = $http.get(url);
+			}
+			deferred.then(resolve, reject);
 		});
 	}
 
@@ -83,9 +85,10 @@ exploreApp.service('Collections', function($q, $http){
 
 });
 
-var ExploreController = function(Terms, Itineraries, Collections){
+var ExploreController = function(Terms, Itineraries, Collections, $route){
 
-	var _this = this;
+	var _this = this,
+		filters = $route.current.params.filters;
 
 	_this.loading = true;
 	_this.wsTheme = wsTheme;
@@ -97,7 +100,7 @@ var ExploreController = function(Terms, Itineraries, Collections){
 	_this.showInterestsList = 'interests-parent';
 	_this.showDestinationsList = 'destinations-parent';
 
-	Itineraries.getAll().then(function(response){
+	Itineraries.get(filters).then(function(response){
 		_this.itineraries = response.data;
 	}, function(error){
 		console.log(error);
@@ -128,10 +131,19 @@ ExploreController.prototype.showTermList = function( list, term ){
 	}
 }
 
+ExploreController.prototype.toggleFilterMenu = function( menu ) {
+	var menu = angular.element(menu);
+	if ( menu.hasClass('closed') ) {
+		menu.removeClass('closed');
+	} else {
+		menu.addClass('closed');
+	}
+}
 
 
 
-ExploreController.$inject = ['Terms', 'Itineraries', 'Collections'];
+
+ExploreController.$inject = ['Terms', 'Itineraries', 'Collections', '$route'];
 exploreApp.controller('ExploreController', ExploreController);
 
 
