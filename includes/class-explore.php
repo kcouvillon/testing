@@ -35,7 +35,7 @@ class WS_Explore {
 	 */
 	protected function _init() {
 		add_action( 'init', array( $this, 'explore_endpoints' ) );
-		add_action( 'template_redirect', array( $this, 'filters' ) );
+		add_action( 'template_redirect', array( $this, 'filter_requests' ) );
 	}
 
 	public function explore_endpoints() {
@@ -46,7 +46,7 @@ class WS_Explore {
 	/**
 	 *
 	 */
-	public static function filters() {
+	public static function filter_requests() {
 
 		global $wp_query;
 
@@ -86,7 +86,8 @@ class WS_Explore {
 				$filter_data[] = array(
 					'title' => get_the_title(),
 					'featured_image'  => esc_url( $img[0] ),
-					'link' => get_the_permalink()
+					'link' => get_the_permalink(),
+					'post_type' => get_post_type()
 				);
 			}
 			wp_reset_postdata();
