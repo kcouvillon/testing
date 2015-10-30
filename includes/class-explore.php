@@ -165,6 +165,9 @@ class WS_Explore {
 		$select_itineraries_ids = get_post_meta( $explore_id, 'explore_attached_itineraries', true );
 		$select_collections_ids = get_post_meta( $explore_id, 'explore_attached_collections', true );
 
+		$select_itineraries_ids = ( is_array($select_itineraries_ids) ) ? $select_itineraries_ids : array();
+		$select_collections_ids = ( is_array($select_collections_ids) ) ? $select_collections_ids : array();
+
 		$query_ids = array_merge( $select_itineraries_ids, $select_collections_ids );
 
 		$args = array(

@@ -145,8 +145,8 @@ var ExploreController = function(Terms, Posts, $route){
 	}
 
 	Posts.get(query).then(function(response){
-		_this.itineraries = response.data.data.itinerary;
-		_this.collections = response.data.data.collection;
+		_this.itineraries = response.data.itinerary;
+		_this.collections = response.data.collection;
 		_this.loading = false;
 	}, function(error){
 		console.log(error);
