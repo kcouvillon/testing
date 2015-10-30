@@ -170,7 +170,7 @@ Results
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections" ng-class="ctrl.postClass(collection.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
+			<article ng-repeat="collection in ctrl.collections | limitTo : ctrl.collectionsLimit" ng-class="ctrl.postClass(collection.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
 				</a>
@@ -187,7 +187,9 @@ Results
 			</article>
 	
 		</div>
-		<a href="#toggle-results" class="toggle-results" ng-show="ctrl.collections.length > 3">See All Collections</a>
+		<span ng-click="ctrl.toggleLimit('collections', 3, 500)" class="toggle-results" ng-show="ctrl.collections.length > 3">
+			<ng-pluralize count="ctrl.collectionsLimit" when="{'3':'See All Collections', '500':'Hide'}"></ng-pluralize>
+		</span>
 	</div>
 
 	<div class="itineraries show-previews" ng-show="ctrl.itineraries.length">
@@ -196,7 +198,7 @@ Results
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="itinerary in ctrl.itineraries" ng-class="ctrl.postClass(itinerary.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
+			<article ng-repeat="itinerary in ctrl.itineraries | limitTo : ctrl.itinerariesLimit" ng-class="ctrl.postClass(itinerary.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
 				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 				</a>
@@ -213,7 +215,9 @@ Results
 			</article>
 	
 		</div>
-		<a href="#toggle-results" class="toggle-results" ng-show="ctrl.itineraries.length > 9">See All Itineraries</a>
+		<span ng-click="ctrl.toggleLimit('itineraries', 9, 500)" class="toggle-results" ng-show="ctrl.itineraries.length > 9">
+			<ng-pluralize count="ctrl.itinerariesLimit" when="{'9':'See All Itineraries', '500':'Hide'}"></ng-pluralize>
+		</span>
 	</div>
 
 </section>

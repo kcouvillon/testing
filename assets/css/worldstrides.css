@@ -9897,7 +9897,11 @@ section:after {
 .explore-results .toggle-results {
   display: block;
   margin: 1em 0 0;
-  text-align: center; }
+  text-align: center;
+  cursor: pointer;
+  color: #fb901d; }
+  .explore-results .toggle-results:hover {
+    color: #1a1a1a; }
 
 .explore-results .tile {
   height: auto;

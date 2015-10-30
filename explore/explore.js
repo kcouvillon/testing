@@ -127,15 +127,15 @@ var ExploreController = function(Terms, Posts, $route, $location){
 		$location.path('/featured');
 	}
 
-	console.log($location);
-
 	_this.WS = WS;
 	_this.$route = $route;
 
 	_this.loading = true;
 	_this.hasFilters = (Object.keys($route.current.params).length > 0) ? true : false;
 	_this.itineraries = [];
+	_this.itinerariesLimit = 9;
 	_this.collections = [];
+	_this.collectionsLimit = 3;
 	_this.showInterestsList = 'interests-parent';
 	_this.showDestinationsList = 'destinations-parent';
 
@@ -234,6 +234,14 @@ ExploreController.prototype.postClass = function( array, key ) {
 		classArray.push( 'filter-' + object[key] );
 	});
 	return classArray.join(' ');
+}
+
+ExploreController.prototype.toggleLimit = function( source, min, max ) {
+	if ( this[source + 'Limit'] > min ) {
+		this[source + 'Limit'] = min;
+	} else {
+		this[source + 'Limit'] = max;
+	}
 }
 
 
