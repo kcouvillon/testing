@@ -19,6 +19,45 @@ exploreApp.config([ '$routeProvider', function($routeProvider){
 
 }]);
 
+exploreApp.directive('termHref', function($route) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+
+   		function getUrl( slug, filterGroup ) {
+			var params = angular.copy($route.current.params),
+				keys = Object.keys(params),
+				url = '';
+			
+			if ( Object.keys(params).length > 0 ) {
+				if ( params[filterGroup].indexOf('all-') > -1 ) {
+					params[filterGroup] = slug;
+				} else if ( params[filterGroup].indexOf(slug) > -1 ) {
+					params[filterGroup] = params[filterGroup];
+				} else {
+					params[filterGroup] += ',' + slug;
+				}
+				url = '#/' + params[keys[0]] +'/'+ params[keys[1]] +'/'+ params[keys[2]];	
+			} else {
+				params = {
+					travelers: 'all-travelers',
+					interests: 'all-interests',
+					destinations: 'all-destinations'
+				};
+				params[filterGroup] = slug;
+				url = '#/' + params.travelers +'/'+ params.interests +'/'+ params.destinations;
+			}
+
+			return url;
+		}
+
+		var hrefData = attrs.termHref.split(','),
+			url = getUrl( hrefData[0], hrefData[1] );
+		element.attr('href', url);
+    }
+  }
+});
+
 exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
@@ -64,55 +103,17 @@ exploreApp.service('Posts', function($q, $http){
 		return $q(function(resolve, reject){
 			var deferred, url;
 			if ( filters == 'featured' ) {
-				deferred = $http.get(WS.explore + '/posts.json');
+				url = WS.exploreApi + '/data/' + filters;
+				deferred = $http.get(url);
 			} else {
 				// parse filters and build url
-				url = WS.exploreApi + '/' + filters;
+				url = WS.exploreApi + '/results/' + filters;
 				deferred = $http.get(url);
 			}
 			deferred.then(resolve, reject);
 		});
 	}
 
-});
-
-exploreApp.directive('termHref', function($route) {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
-
-   		function getUrl( slug, filterGroup ) {
-			var params = angular.copy($route.current.params),
-				keys = Object.keys(params),
-				url = '';
-			
-			if ( Object.keys(params).length > 0 ) {
-				if ( params[filterGroup].indexOf('all-') > -1 ) {
-					params[filterGroup] = slug;
-				} else if ( params[filterGroup].indexOf(slug) > -1 ) {
-					params[filterGroup] = params[filterGroup];
-				} else {
-					params[filterGroup] += ',' + slug;
-				}
-				url = '#/' + params[keys[0]] +'/'+ params[keys[1]] +'/'+ params[keys[2]];	
-			} else {
-				params = {
-					travelers: 'all-travelers',
-					interests: 'all-interests',
-					destinations: 'all-destinations'
-				};
-				params[filterGroup] = slug;
-				url = '#/' + params.travelers +'/'+ params.interests +'/'+ params.destinations;
-			}
-
-			return url;
-		}
-
-		var hrefData = attrs.termHref.split(','),
-			url = getUrl( hrefData[0], hrefData[1] );
-		element.attr('href', url);
-    }
-  }
 });
 
 var ExploreController = function(Terms, Posts, $route){

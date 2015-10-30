@@ -132,7 +132,7 @@ function ws_scripts_styles() {
 			array(
 				'theme' => get_template_directory_uri(),
 				'explore' => get_template_directory_uri() . '/explore',
-				'exploreApi' => site_url() . '/ws-api/v1/explore/results'
+				'exploreApi' => site_url() . '/ws-api/v1/explore'
 			)
 		);
 	}
