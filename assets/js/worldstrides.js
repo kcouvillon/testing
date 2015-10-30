@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-10-28
+/*! WorldStrides - v0.1.0 - 2015-10-29
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -650,7 +650,7 @@
 	/**
 	 * Base URL for API calls
 	 */
-	wsData.mdrapi_base_url = "http://apis.worldstrides.com/mdrapi/v1/";
+	wsData.mdrapi_base_url = "https://apis.worldstrides.com/mdrapi/v1/";
 
 	/**
 	 * Parameters for the spinner: http://fgnass.github.io/spin.js/
