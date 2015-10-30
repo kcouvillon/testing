@@ -115,7 +115,6 @@
 	}
 
 	.clear-all {
-		display: none;
 	    padding: 1em 0;
 	    color: $orange;
 	    font-size: 14px;
@@ -134,17 +133,10 @@
 		    padding: 0.5em 1em 0.5em 0.5em;
 		    border: 0;
 		    border-left: 1px solid $gray_darker;
-		    transform: translateY(105%);
 		}
 
 		.icon {
 			vertical-align: middle; 
-		}
-	}
-	&.has-filter .clear-all {
-		display: block;
-		@media screen and ( min-width: $screen-sm ) {
-			transform: translateY(0);
 		}
 	}
 }

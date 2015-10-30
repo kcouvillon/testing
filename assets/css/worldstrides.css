@@ -9569,7 +9569,6 @@ section:after {
           padding-right: 0;
           padding-left: 15px; } }
   .explore-tool .clear-all {
-    display: none;
     padding: 1em 0;
     color: #fb901d;
     font-size: 14px;
@@ -9587,15 +9586,9 @@ section:after {
         background-color: #323c53;
         padding: 0.5em 1em 0.5em 0.5em;
         border: 0;
-        border-left: 1px solid #424c61;
-        transform: translateY(105%); } }
+        border-left: 1px solid #424c61; } }
     .explore-tool .clear-all .icon {
       vertical-align: middle; }
-  .explore-tool.has-filter .clear-all {
-    display: block; }
-    @media screen and (min-width: 768px) {
-      .explore-tool.has-filter .clear-all {
-        transform: translateY(0); } }
 
 /* Explore Filters
  * ------------------------------------------------------------- */

@@ -2,7 +2,7 @@
 	<div class="ws-container">
 		<span class="search-by">Select filters to narrow your search</span>
 		<a class="results-count" href="#explore-results">See {{ ctrl.collections.length }} Collections and {{ ctrl.itineraries.length }} Itineraries <i class="icon icon-arrow-down"></i></a>
-		<a class="clear-all" href="#clear-filters"><i class="icon icon-small-close"></i> Clear filters</a>
+		<a class="clear-all" href="#/" ng-show="ctrl.hasFilters" ><i class="icon icon-small-close"></i> Clear filters</a>
 	</div>
 </div>
 
@@ -27,7 +27,7 @@
 					<ul class="terms-list list-unstyled clearfix visible">
 						
 						<li ng-repeat="traveler in ctrl.travelers" class="term">
-							<a href="#{{traveler.slug}}" class="filter" data-filter-list=".traveler-filters" ng-bind-html="traveler.name"></a>
+							<a term-href="{{traveler.slug}},travelers" class="filter" data-filter-list=".traveler-filters" ng-bind-html="traveler.name"></a>
 						</li>
 						
 					</ul>
@@ -52,14 +52,14 @@
 						</li>
 
 						<li class="term">
-							<a href="#faith-based" class="filter" data-filter-list=".interests-filters">
+							<a term-href="faith-based,interests" class="filter" data-filter-list=".interests-filters">
 								<i class="icon icon-faith-based"></i>
 								Faith-based
 							</a>
 						</li>
 
 						<li class="term">
-							<a href="#service" class="filter" data-filter-list=".interests-filters">
+							<a term-href="service,interests" class="filter" data-filter-list=".interests-filters">
 								<i class="icon icon-service"></i>
 								Service
 							</a>
@@ -78,7 +78,7 @@
 						</li>
 
 						<li ng-repeat="child in interest.children" class="term">
-							<a href="#{{child.slug}}" class="filter" data-filter-list=".interests-filters" ng-bind-html="child.name">{{child.name}}</a>
+							<a term-href="{{child.slug}},interests" class="filter" data-filter-list=".interests-filters" ng-bind-html="child.name">{{child.name}}</a>
 						</li>
 						
 						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
@@ -121,7 +121,7 @@
 						<li>
 							<ul class="terms list-unstyled clearfix">
 								<li ng-repeat="child in continent.children" class="term">
-									<a href="{{child.slug}}" class="filter" data-filter-list=".destination-filters" ng-bind-html="child.name"></a>
+									<a term-href="{{child.slug}},destinations" class="filter" data-filter-list=".destination-filters" ng-bind-html="child.name"></a>
 								</li>
 							</ul>
 						</li>
