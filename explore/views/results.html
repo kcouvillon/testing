@@ -151,7 +151,7 @@ Results
 
 	<div class="collections show-previews" ng-show="ctrl.collections.length">
 		<header class="results-header">
-			<h2>{{ ctrl.collections.length }} Collections</h2>
+			<h2><ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize></h2>
 		</header>
 		<div class="results clearfix">
 
@@ -172,12 +172,12 @@ Results
 			</article>
 	
 		</div>
-		<a href="#toggle-results" class="toggle-results">See All Collections</a>
+		<a href="#toggle-results" class="toggle-results" ng-show="ctrl.collections.length > 3">See All Collections</a>
 	</div>
 
 	<div class="itineraries show-previews" ng-show="ctrl.itineraries.length">
 		<header class="results-header">
-			<h2>{{ ctrl.itineraries.length }} Itineraries</h2>
+			<h2><ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize></h2>
 		</header>
 		<div class="results clearfix">
 
@@ -198,7 +198,7 @@ Results
 			</article>
 	
 		</div>
-		<a href="#toggle-results" class="toggle-results">See All Itineraries</a>
+		<a href="#toggle-results" class="toggle-results" ng-show="ctrl.itineraries.length > 9">See All Itineraries</a>
 	</div>
 
 </section>
