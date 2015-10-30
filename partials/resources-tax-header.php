@@ -19,7 +19,7 @@ if ( !empty ($parent_id) ) {
 	$background = '';
 	$term_options = get_option( 'taxonomy_metadata_resource-target_' . get_queried_object_id() );
 
-	if ( array_key_exists( 'feature_image', $term_options )) {
+	if ( is_array( $term_options) && array_key_exists( 'feature_image', $term_options )) {
 		$featured   = wp_get_attachment_image_src( $term_options['feature_image_id'], 'hero' );
 		$background = 'url(' . $featured[0] . ')';
 		$class = 'resource-target-feature-bg';
