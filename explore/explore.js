@@ -62,35 +62,11 @@ exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
 
-	_this.getAll = function( taxonomy ){
+	_this.get = function(){
 		return $q(function(resolve, reject){
-			$http.get(WS.explore + "/" + taxonomy + ".json")
+			$http.get(WS.exploreApi + "/data/filters/")
 				.then(resolve, reject);
 		});
-	};
-
-	_this.getChildrenOf = function( parent, data ){
-		if ( !parent || !data )
-			return false;
-
-		var children = [],
-			parentType = ( typeof parent == 'string' ) ? 'slug' : 'ID';
-
-		angular.forEach(data, function(term, key){
-			if ( term.parent && term.parent[parentType] == parent ) {
-				if ( term.ID !== 384 ) { // extra check to exclude faith-based & service
-					term.children = [];
-					angular.forEach(data, function(childTerm, key){
-						if ( childTerm.parent && childTerm.parent.ID == term.ID ) {
-							term.children.push(childTerm);
-						}
-					});
-					children.push(term);
-				}
-			}
-		});
-
-		return children;
 	};
 
 });
@@ -146,22 +122,20 @@ var ExploreController = function(Terms, Posts, $route){
 	}
 
 	Posts.get(query).then(function(response){
-		_this.itineraries = response.data.itinerary;
-		_this.collections = response.data.collection;
+		_this.itineraries = response.data.itinerary || [];
+		_this.collections = response.data.collection || [];
 		_this.loading = false;
 	}, function(error){
 		console.log(error);
 	});
 
-	Terms.getAll('filters').then(function(response){
-		_this.travelers = Terms.getChildrenOf('traveler', response.data);
-		_this.interests = Terms.getChildrenOf('interest', response.data);
-		_this.continents = Terms.getChildrenOf('destination', response.data);
+	Terms.get().then(function(response){
+		_this.travelers = response.data.travelers;
+		_this.interests = response.data.interests;
+		_this.continents = response.data.destinations;
 	}, function(error){
 		console.log(error);
 	});
-
-	// console.log(_this.formatUrl('china', 'destinations'));
 
 };
 
