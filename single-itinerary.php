@@ -115,7 +115,12 @@ get_header(); ?>
 							<?php endforeach; ?>
 						<?php endif; ?>
 
-					</ul>
+						<?php $associated_resources = get_post_meta( $post->ID, 'attached_resources', true); ?>
+						<?php if ( ! empty( $associated_resources ) ) : ?>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+						<?php endif; ?>
+
+						</ul>
 
 					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta hide-print">Request Info</a>
 				</div>
@@ -557,6 +562,55 @@ get_header(); ?>
 			// }
 		?>
 
+		<?php wp_reset_query(); ?>
+
+
+		<?php if ( $associated_resources ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+			<section class="section-content resources">
+				<h2 class="section-title">Have Questions? We Have Answers.</h2>
+
+				<ul class="resources-list list-unstyled clearfix">
+
+					<?php foreach ( $associated_resources as $resource_id ) : ?>
+
+						<?php
+						$resource = get_post( $resource_id );
+						$background = '';
+						$targets = wp_get_object_terms( $resource_id, 'resource-target' );
+						$target_parents = array();
+						$title = apply_filters( 'the_title', $resource->post_title );
+						$url = get_the_permalink( $resource_id );
+						$meta_list = array();
+
+						foreach ( $targets as $target ) {
+							if ( 'Featured' != $target->name ) {
+								$parent = WS_Helpers::get_term_top_most_parent( $target->term_id, 'resource-target' );
+								if ( ! in_array( $parent->term_id, $target_parents ) ) {
+									$target_parents[] = $parent->term_id;
+									array_push( $meta_list, array( "name" => $parent->name, "url" => home_url( '/resources/' . $parent->slug . '/' ) ) );
+								}
+							}
+						}
+
+						if( has_post_thumbnail( $resource_id ) ) {
+							$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $resource_id ), 'medium' );
+							$background = 'url(' . $featured[0] . ')';
+							$class = '';
+						} else {
+							$class = ' ' . WS_Helpers::get_random_pattern('dark');
+						} ?>
+
+						<li class="resource tile tile-third <?php echo $class; ?>" style="background-image: <?php echo $background; ?>">
+							<?php include( locate_template( 'partials/tile-content.php' ) ); ?>
+						</li>
+
+					<?php endforeach; ?>
+					<?php $resource = null; ?>
+				</ul>
+
+			</section>
+		<?php endif; ?>
 		<?php wp_reset_query(); ?>
 
 		<?php $blog_post_ids = array_map( 'intval', explode( ',', get_post_meta( $post->ID, 'related_blog_posts', true) ) ); ?>
