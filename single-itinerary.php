@@ -287,14 +287,26 @@ get_header(); ?>
 						<?php
 							$image_id = $highlight['image_id'];
 							$image_src = wp_get_attachment_image_src( $image_id, 'tour-highlights' );
+
+							if ( array_key_exists( 'title', $highlight ) ) {
+								$highlight_title = $highlight['title'];
+							} else {
+								$highlight_title = '';
+							}
+
+							if ( array_key_exists( 'caption', $highlight ) ) {
+								$highlight_caption = $highlight['caption'];
+							} else {
+								$highlight_caption = '';
+							}
 						?>
 						<img src="<?php echo $image_src[0]; ?>"
 						     alt=""
-						     data-cycle-title="<?php echo $highlight['title']; ?>"
-						     data-cycle-desc="<?php echo $highlight['caption']; ?>">
+						     data-cycle-title="<?php echo $highlight_title; ?>"
+						     data-cycle-desc="<?php echo $highlight_caption; ?>">
 						<div class="no-js-content">
-							<h4><?php echo $highlight['title']; ?></h4>
-							<p><?php echo $highlight['caption']; ?></p>
+							<h4><?php echo $highlight_title; ?></h4>
+							<p><?php echo $highlight_caption; ?></p>
 						</div>
 					<?php } ?>
 
