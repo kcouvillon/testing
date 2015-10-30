@@ -13,9 +13,24 @@
 	<div class="ws-container" ng-hide="ctrl.loading">
 	
 		<ul class="current-filters list-unstyled clearfix">
-			<li class="traveler-filters"></li>
-			<li class="interests-filters"></li>
-			<li class="destination-filters"></li>
+			<li class="traveler-filters">
+				<a term-href="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.travelers.active">
+					<span ng-bind-html="traveler.name"></span>
+					<i class="icon icon-small-close remove-filter"></i>
+				</a>
+			</li>
+			<li class="interests-filters">
+				<a term-href="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.interests.active">
+					<span ng-bind-html="interest.name"></span>
+					<i class="icon icon-small-close remove-filter"></i>
+				</a>
+			</li>
+			<li class="destination-filters">
+				<a term-href="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.destinations.active">
+					<span ng-bind-html="destination.name"></span>
+					<i class="icon icon-small-close remove-filter"></i>
+				</a>
+			</li>
 		</ul>
 		
 		<ul class="filter-menus open list-unstyled clearfix">
@@ -26,8 +41,8 @@
 				<div class="traveler-menu-container menu-container closed">
 					<ul class="terms-list list-unstyled clearfix visible">
 						
-						<li ng-repeat="traveler in ctrl.travelers" class="term">
-							<a term-href="{{traveler.slug}},travelers" class="filter" data-filter-list=".traveler-filters" ng-bind-html="traveler.name"></a>
+						<li ng-repeat="traveler in ctrl.travelers.terms" class="term">
+							<a term-href="{{traveler.slug}},travelers" class="filter" ng-bind-html="traveler.name"></a>
 						</li>
 						
 					</ul>
@@ -43,7 +58,7 @@
 
 					<ul id="interests-parent" ng-class="{visible: ctrl.showInterestsList == 'interests-parent'}" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
 						
-						<li ng-repeat="interest in ctrl.interests" class="term">
+						<li ng-repeat="interest in ctrl.interests.terms" class="term">
 							<a ng-click="ctrl.showTermList('interest', interest.slug)" class="term-list-toggle parent-term parent-interest">
 								<i class="icon icon-{{interest.slug}}"></i>
 								<span ng-bind-html="interest.name"></span>
@@ -59,7 +74,7 @@
 						</li>
 
 						<li class="term">
-							<a term-href="service,interests" class="filter" data-filter-list=".interests-filters">
+							<a term-href="service,interests" class="filter">
 								<i class="icon icon-service"></i>
 								Service
 							</a>
@@ -68,7 +83,7 @@
 					</ul>
 
 						
-					<ul id="{{interest.slug}}" ng-repeat="interest in ctrl.interests"  ng-class="{visible: ctrl.showInterestsList == interest.slug}" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
+					<ul id="{{interest.slug}}" ng-repeat="interest in ctrl.interests.terms"  ng-class="{visible: ctrl.showInterestsList == interest.slug}" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
 						
 						<li class="parent-term term">
 							<a class="parent-interest">
@@ -78,7 +93,7 @@
 						</li>
 
 						<li ng-repeat="child in interest.children" class="term">
-							<a term-href="{{child.slug}},interests" class="filter" data-filter-list=".interests-filters" ng-bind-html="child.name">{{child.name}}</a>
+							<a term-href="{{child.slug}},interests" class="filter" ng-bind-html="child.name">{{child.name}}</a>
 						</li>
 						
 						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
@@ -104,24 +119,24 @@
 						</li>
 						<li>
 							<ul class="terms list-unstyled clearfix">
-								<li ng-repeat="continent in ctrl.continents" class="term">
-									<a ng-click="ctrl.showTermList('destination', continent.slug)" class="filter term-list-toggle parent-term parent-destination" data-filter-list=".destination-filters" ng-bind-html="continent.name"></a>
+								<li ng-repeat="destination in ctrl.destinations.terms" class="term">
+									<a ng-click="ctrl.showTermList('destination', destination.slug)" class="filter term-list-toggle parent-term parent-destination" ng-bind-html="destination.name"></a>
 								</li>
 							</ul>
 						</li>
 					</ul>
 						
-					<ul id="{{continent.slug}}" ng-repeat="continent in ctrl.continents" ng-class="{visible: ctrl.showDestinationsList == continent.slug}" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
+					<ul id="{{destination.slug}}" ng-repeat="destination in ctrl.destinations.terms" ng-class="{visible: ctrl.showDestinationsList == destination.slug}" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
 						<li class="destination-map">
-							<span ng-bind-html="continent.name"></span>
+							<span ng-bind-html="destination.name"></span>
 							<span class="destination-graphic">
-								<img src="{{ctrl.WS.theme}}/assets/images/map-{{continent.slug}}.png" alt="{{continent.name}}"/>
+								<img src="{{ctrl.WS.theme}}/assets/images/map-{{destination.slug}}.png" alt="{{destination.name}}"/>
 							</span>
 						</li>
 						<li>
 							<ul class="terms list-unstyled clearfix">
-								<li ng-repeat="child in continent.children" class="term">
-									<a term-href="{{child.slug}},destinations" class="filter" data-filter-list=".destination-filters" ng-bind-html="child.name"></a>
+								<li ng-repeat="child in destination.children" class="term">
+									<a term-href="{{child.slug}},destinations" class="filter" ng-bind-html="child.name"></a>
 								</li>
 							</ul>
 						</li>

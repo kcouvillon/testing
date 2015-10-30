@@ -24,20 +24,42 @@ exploreApp.directive('termHref', function($route) {
     restrict: 'A',
     link: function(scope, element, attrs) {
 
-   		function getUrl( slug, filterGroup ) {
+   		function getUrl( slug, filterGroup, method ) {
+   			// if ( !method || !slug || !filterGroup )
+   			// 	console.log('Error: missing "method", "slug", or "filterGroup" arguments in "term-href" directive'); return;
+
 			var params = angular.copy($route.current.params),
 				keys = Object.keys(params),
+				filterGroupArray,
 				url = '';
+
+			if ( !method )
+				method = 'add';
 			
 			if ( Object.keys(params).length > 0 ) {
-				if ( params[filterGroup].indexOf('all-') > -1 ) {
-					params[filterGroup] = slug;
-				} else if ( params[filterGroup].indexOf(slug) > -1 ) {
-					params[filterGroup] = params[filterGroup];
-				} else {
-					params[filterGroup] += ',' + slug;
+				
+				filterGroupArray = params[filterGroup].split(',');
+
+				if ( method == 'add' ){
+					if ( params[filterGroup].indexOf('all-') > -1 ) {
+						params[filterGroup] = slug;
+					} else if ( params[filterGroup].indexOf(slug) > -1 ) {
+						params[filterGroup] = params[filterGroup];
+					} else {
+						params[filterGroup] += ',' + slug;
+					}
+
+				} else if ( method == 'subtract' ) {
+					if ( filterGroupArray.length > 1 ) {
+						filterGroupArray.splice(filterGroupArray.indexOf(slug), 1);
+						params[filterGroup] = filterGroupArray.join(',');
+					} else {
+						params[filterGroup] = 'all-' + filterGroup;
+					}
 				}
-				url = '#/' + params[keys[0]] +'/'+ params[keys[1]] +'/'+ params[keys[2]];	
+
+				url = '#/' + params[keys[0]] +'/'+ params[keys[1]] +'/'+ params[keys[2]];
+
 			} else {
 				params = {
 					travelers: 'all-travelers',
@@ -52,7 +74,12 @@ exploreApp.directive('termHref', function($route) {
 		}
 
 		var hrefData = attrs.termHref.split(','),
-			url = getUrl( hrefData[0], hrefData[1] );
+			url;
+
+		angular.forEach(hrefData, function(value, key){
+			hrefData[key] = value.trim();
+		});
+		url = getUrl( hrefData[0], hrefData[1], hrefData[2] );
 		element.attr('href', url);
     }
   }
@@ -102,9 +129,6 @@ var ExploreController = function(Terms, Posts, $route){
 	_this.hasFilters = (Object.keys(route).length > 0) ? true : false;
 	_this.WS = WS;
 	_this.$route = $route;
-	_this.travelers;
-	_this.interests;
-	_this.continents;
 	_this.itineraries = [];
 	_this.collections = [];
 	_this.showInterestsList = 'interests-parent';
@@ -130,9 +154,18 @@ var ExploreController = function(Terms, Posts, $route){
 	});
 
 	Terms.get().then(function(response){
-		_this.travelers = response.data.travelers;
-		_this.interests = response.data.interests;
-		_this.continents = response.data.destinations;
+		_this.travelers = {
+			terms: response.data.travelers,
+			active: []
+		}
+		_this.interests = {
+			terms: response.data.interests,
+			active: []
+		}
+		_this.destinations = {
+			terms: response.data.destinations,
+			active: []
+		}
 	}, function(error){
 		console.log(error);
 	});
