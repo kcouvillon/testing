@@ -104,6 +104,7 @@
 						<option value="Marching Band Opportunities" class='non stu par ele mse hse une'>Marching Band Opportunities</option>
 						<option value="Dance-Cheer Opportunities" class='non stu par ele mse hse une'>Dance &amp; Cheer Opportunities</option>
 						<option value="Theatre Opportunities" class='non stu par ele mse hse une'>Theatre Opportunities</option>
+						<option value="Individual Travel Opportunities" class='non stu par ele mse hse une'>Individual Travel Opportunities</option>
 						<option value="Im not sure yet" class='non stu par ele mse hse une'>I'm not sure yet</option>
 					</select>
 				</li>
