@@ -257,24 +257,25 @@ class WS_Explore {
 		$data = array();
 
 		// base level
-		$data['travelers']['root'] = $travelers;
-		$data['interests']['root'] = $interests;
-		$data['destinations']['root'] = $destinations;
+		$data['travelers'] = $travelers;
+		$data['interests'] = $interests;
+		$data['destinations'] = $destinations;
 
 		// get children
+		$i = 0;
 		foreach ( $interests as $interest ) {
 			$children = get_terms( 'filter', array( 'parent' => $interest->term_id ) );
-			foreach ( $children as $child ) {
-				$data['interests']['children'][] = $child;
-			}
+			$data['interests'][$i]->children = $children;
+			$i++;
 		}
 
+		$i = 0;
 		foreach ( $destinations as $destination ) {
 			$children = get_terms( 'filter', array( 'parent' => $destination->term_id ) );
-			foreach ( $children as $child ) {
-				$data['destinations']['children'][] = $child;
-			}
+			$data['destinations'][$i]->children = $children;
+			$i++;
 		}
+
 
 		wp_send_json( $data );
 
