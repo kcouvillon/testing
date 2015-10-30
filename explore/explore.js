@@ -119,31 +119,42 @@ exploreApp.service('Posts', function($q, $http){
 
 });
 
-var ExploreController = function(Terms, Posts, $route){
+var ExploreController = function(Terms, Posts, $route, $location){
 
-	var _this = this,
-		route = $route.current.params,
-		query;
+	var _this = this, query;
 
-	_this.loading = true;
-	_this.hasFilters = (Object.keys(route).length > 0) ? true : false;
+	if ( $location.$$url == "/all-travelers/all-interests/all-destinations" ) {
+		$location.path('/featured');
+	}
+
+	console.log($location);
+
 	_this.WS = WS;
 	_this.$route = $route;
+
+	_this.loading = true;
+	_this.hasFilters = (Object.keys($route.current.params).length > 0) ? true : false;
 	_this.itineraries = [];
 	_this.collections = [];
 	_this.showInterestsList = 'interests-parent';
 	_this.showDestinationsList = 'destinations-parent';
 
-	if ( Object.keys(route).length > 0 ) {
-		query = [];
-		angular.forEach(route, function(value, key){
-			if ( value !== 'all-destinations' && value !== 'all-interests' && value !== 'all-travelers' )
-				query.push(value);
-		});
-		query = query.join(',');
-	} else {
-		query = 'featured';
-	}
+	query = _this.getQuery();
+
+	Terms.get().then(function(response){
+		_this.travelers = {
+			terms: response.data.travelers
+		}
+		_this.interests = {
+			terms: response.data.interests
+		}
+		_this.destinations = {
+			terms: response.data.destinations
+		}
+		_this.activeFilters = _this.getActiveFilters();
+	}, function(error){
+		console.log(error);
+	});
 
 	Posts.get(query).then(function(response){
 		_this.itineraries = response.data.itinerary || [];
@@ -153,23 +164,51 @@ var ExploreController = function(Terms, Posts, $route){
 		console.log(error);
 	});
 
-	Terms.get().then(function(response){
-		_this.travelers = {
-			terms: response.data.travelers,
-			active: []
-		}
-		_this.interests = {
-			terms: response.data.interests,
-			active: []
-		}
-		_this.destinations = {
-			terms: response.data.destinations,
-			active: []
-		}
-	}, function(error){
-		console.log(error);
-	});
+};
 
+ExploreController.prototype.getQuery = function(){
+	var route = this.$route.current.params,
+		queryArray, queryString;
+
+	if ( Object.keys(route).length > 0 ) {
+		queryArray = [];
+		angular.forEach(route, function(value, key){
+			if ( value !== 'all-destinations' && value !== 'all-interests' && value !== 'all-travelers' ){
+				queryArray.push(value);
+			}
+		});
+		queryString = queryArray.join(',');
+	} else {
+		queryString = 'featured';
+	}
+
+	return queryString;
+};
+
+ExploreController.prototype.getActiveFilters = function(){
+	var route = this.$route.current.params,
+		active = {
+			travelers: [],
+			interests: [],
+			destinations: []
+		};
+
+	if ( Object.keys(route).length > 0 ) {
+		angular.forEach(route, function(value, key){
+			if ( value !== 'all-destinations' && value !== 'all-interests' && value !== 'all-travelers' ){
+				value = value.split(',');
+				angular.forEach(value, function(term){
+					term = {
+						name: term.split('-').join(' '),
+						slug: term
+					};
+					active[key].push(term);
+				});
+			}
+		});
+	}
+
+	return active;
 };
 
 ExploreController.prototype.showTermList = function( list, term ){
@@ -189,9 +228,17 @@ ExploreController.prototype.toggleFilterMenu = function( menu ) {
 	}
 };
 
+ExploreController.prototype.postClass = function( array, key ) {
+	var classArray = [];
+	angular.forEach(array, function(object){
+		classArray.push( 'filter-' + object[key] );
+	});
+	return classArray.join(' ');
+}
 
 
-ExploreController.$inject = ['Terms', 'Posts', '$route'];
+
+ExploreController.$inject = ['Terms', 'Posts', '$route', '$location'];
 exploreApp.controller('ExploreController', ExploreController);
 
 

@@ -14,19 +14,19 @@
 	
 		<ul class="current-filters list-unstyled clearfix">
 			<li class="traveler-filters">
-				<a term-href="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.travelers.active">
+				<a term-href="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.activeFilters.travelers">
 					<span ng-bind-html="traveler.name"></span>
 					<i class="icon icon-small-close remove-filter"></i>
 				</a>
 			</li>
 			<li class="interests-filters">
-				<a term-href="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.interests.active">
+				<a term-href="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.activeFilters.interests">
 					<span ng-bind-html="interest.name"></span>
 					<i class="icon icon-small-close remove-filter"></i>
 				</a>
 			</li>
 			<li class="destination-filters">
-				<a term-href="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.destinations.active">
+				<a term-href="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
 					<span ng-bind-html="destination.name"></span>
 					<i class="icon icon-small-close remove-filter"></i>
 				</a>
@@ -42,7 +42,7 @@
 					<ul class="terms-list list-unstyled clearfix visible">
 						
 						<li ng-repeat="traveler in ctrl.travelers.terms" class="term">
-							<a term-href="{{traveler.slug}},travelers" class="filter" ng-bind-html="traveler.name"></a>
+							<a term-href="{{traveler.slug}},travelers" class="filter term-{{traveler.slug}}" ng-bind-html="traveler.name"></a>
 						</li>
 						
 					</ul>
@@ -67,14 +67,14 @@
 						</li>
 
 						<li class="term">
-							<a term-href="faith-based,interests" class="filter" data-filter-list=".interests-filters">
+							<a term-href="faith-based,interests" class="filter term-{{interest.slug}}">
 								<i class="icon icon-faith-based"></i>
 								Faith-based
 							</a>
 						</li>
 
 						<li class="term">
-							<a term-href="service,interests" class="filter">
+							<a term-href="service,interests" class="filter term-{{interest.slug}}">
 								<i class="icon icon-service"></i>
 								Service
 							</a>
@@ -93,7 +93,7 @@
 						</li>
 
 						<li ng-repeat="child in interest.children" class="term">
-							<a term-href="{{child.slug}},interests" class="filter" ng-bind-html="child.name">{{child.name}}</a>
+							<a term-href="{{child.slug}},interests" class="filter term-{{interest.slug}}" ng-bind-html="child.name">{{child.name}}</a>
 						</li>
 						
 						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
@@ -120,7 +120,7 @@
 						<li>
 							<ul class="terms list-unstyled clearfix">
 								<li ng-repeat="destination in ctrl.destinations.terms" class="term">
-									<a ng-click="ctrl.showTermList('destination', destination.slug)" class="filter term-list-toggle parent-term parent-destination" ng-bind-html="destination.name"></a>
+									<a ng-click="ctrl.showTermList('destination', destination.slug)" class="filter term-{{destination.slug}} term-list-toggle parent-term parent-destination" ng-bind-html="destination.name"></a>
 								</li>
 							</ul>
 						</li>
@@ -136,7 +136,7 @@
 						<li>
 							<ul class="terms list-unstyled clearfix">
 								<li ng-repeat="child in destination.children" class="term">
-									<a term-href="{{child.slug}},destinations" class="filter" ng-bind-html="child.name"></a>
+									<a term-href="{{child.slug}},destinations" class="filter term-{{destination.slug}}" ng-bind-html="child.name"></a>
 								</li>
 							</ul>
 						</li>
@@ -170,7 +170,7 @@ Results
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
+			<article ng-repeat="collection in ctrl.collections" ng-class="ctrl.postClass(collection.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
 				</a>
@@ -196,7 +196,7 @@ Results
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="itinerary in ctrl.itineraries" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
+			<article ng-repeat="itinerary in ctrl.itineraries" ng-class="ctrl.postClass(itinerary.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
 				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 				</a>
