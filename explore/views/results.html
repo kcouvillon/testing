@@ -1,7 +1,7 @@
 <div class="explore-utility">
 	<div class="ws-container">
 		<span class="search-by">Select filters to narrow your search</span>
-		<a class="results-count" href="#explore-results">See {{ ctrl.collections.length }} Collections and {{ ctrl.itineraries.length }} Itineraries <i class="icon icon-arrow-down"></i></a>
+		<a class="results-count" href="#explore-results">See <span ng-bind-html="ctrl.collections.length"></span> Collections and <span ng-bind-html="ctrl.itineraries.length"></span> Itineraries <i class="icon icon-arrow-down"></i></a>
 		<a class="clear-all" href="#/" ng-show="ctrl.hasFilters" ><i class="icon icon-small-close"></i> Clear filters</a>
 	</div>
 </div>
@@ -149,9 +149,9 @@ Results
 
 <section id="explore-results" class="explore-results section-content">
 
-	<div class="collections show-previews" ng-show="ctrl.collections">
+	<div class="collections show-previews" ng-show="ctrl.collections.length">
 		<header class="results-header">
-			<h2>Collections</h2>
+			<h2>{{ ctrl.collections.length }} Collections</h2>
 		</header>
 		<div class="results clearfix">
 
@@ -175,9 +175,9 @@ Results
 		<a href="#toggle-results" class="toggle-results">See All Collections</a>
 	</div>
 
-	<div class="itineraries show-previews" ng-show="ctrl.itineraries">
+	<div class="itineraries show-previews" ng-show="ctrl.itineraries.length">
 		<header class="results-header">
-			<h2>Itineraries</h2>
+			<h2>{{ ctrl.itineraries.length }} Itineraries</h2>
 		</header>
 		<div class="results clearfix">
 

@@ -129,8 +129,8 @@ var ExploreController = function(Terms, Posts, $route){
 	_this.travelers;
 	_this.interests;
 	_this.continents;
-	_this.itineraries;
-	_this.collections;
+	_this.itineraries = [];
+	_this.collections = [];
 	_this.showInterestsList = 'interests-parent';
 	_this.showDestinationsList = 'destinations-parent';
 

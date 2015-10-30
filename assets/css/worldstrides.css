@@ -9762,7 +9762,8 @@ section:after {
     transition: height 300ms ease; }
     @media screen and (min-width: 768px) {
       .filter-menu .term {
-        height: auto; } }
+        height: auto;
+        overflow: visible; } }
   @media screen and (min-width: 768px) {
     .filter-menu.traveler-menu {
       width: 26%;

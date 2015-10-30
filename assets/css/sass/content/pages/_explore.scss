@@ -369,6 +369,7 @@
 		transition: height 300ms ease;
 		@media screen and (min-width: $screen-sm) {
 			height: auto;
+			overflow: visible;
 		}
 	}
 
