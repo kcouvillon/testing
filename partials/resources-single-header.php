@@ -5,7 +5,16 @@
 ?>
 
 <section class="primary-section">
-	<header class="section-header resources-header <?php echo WS_Helpers::get_random_pattern(); ?>">
+	<?php
+	$background = '';
+	if ( has_post_thumbnail() ) {
+		$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
+		$background = 'url(' . $featured[0] . ')';
+		$class = '';
+	} else {
+		$class = ' pattern-' . rand( 3, 9 );
+	} ?>
+	<header class="section-header resources-header <?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 		<div class="ws-container">
 			<div class="section-header-content">
 				<nav class="breadcrumbs">
