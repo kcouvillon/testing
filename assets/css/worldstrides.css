@@ -9567,8 +9567,11 @@ section:after {
       @media screen and (min-width: 768px) {
         .explore-tool .results-count .icon {
           padding-right: 0;
-          padding-left: 15px; } }
+          padding-left: 15px;
+          padding-top: 5px;
+          font-size: 12px; } }
   .explore-tool .clear-all {
+    display: block;
     padding: 1em 0;
     color: #fb901d;
     font-size: 14px;
@@ -9579,7 +9582,6 @@ section:after {
       color: white; }
     @media screen and (min-width: 768px) {
       .explore-tool .clear-all {
-        display: block;
         position: absolute;
         bottom: 0;
         margin: 0 0 0 523px;
@@ -9722,8 +9724,6 @@ section:after {
     content: "\e605"; }
   .filter-menu ul {
     margin: 0; }
-    .filter-menu ul:last-child {
-      margin-bottom: 0.5em; }
     @media screen and (min-width: 768px) {
       .filter-menu ul {
         display: block; } }

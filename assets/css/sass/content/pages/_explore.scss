@@ -110,11 +110,14 @@
 			@media screen and ( min-width: $screen-sm ) {
 				padding-right: 0;
 				padding-left: 15px;
+				padding-top: 5px;
+				font-size: 12px;
 			}
 	    }
 	}
 
 	.clear-all {
+		display: block;
 	    padding: 1em 0;
 	    color: $orange;
 	    font-size: 14px;
@@ -125,7 +128,6 @@
 	    	color: white;
 	    }
 	    @media screen and ( min-width: $screen-sm ) {
-		    display: block;
 		    position: absolute;
 		    bottom: 0;
 		    margin: 0 0 0 523px;
@@ -305,9 +307,6 @@
 
 	ul {
 		margin: 0;
-		&:last-child {
-			margin-bottom: 0.5em;
-		}
 		@media screen and (min-width: $screen-sm) {
 			display: block;
 		}
