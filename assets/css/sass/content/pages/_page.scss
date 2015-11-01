@@ -98,6 +98,14 @@ section {
     line-height: 1em;
 }
 
+
+.archive.tax-resource-target .primary-section .section-header-content,
+.archive.tax-resource-target .primary-section .section-header-content .breadcrumbs {
+	color: #fff;
+	a { color: #fff; }
+	@extend %overlay-text;
+}
+
 .section-header-content {
 	color: $gray_base;
 	margin-top: 10%;

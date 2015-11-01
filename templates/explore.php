@@ -40,17 +40,9 @@
 
 		<section class="explore-tool">
 
-			<div class="explore-utility">
-				<div class="ws-container">
-					<span class="search-by">Select filters to narrow your search</span>
-					<a class="results-count" href="#explore-results">See <span class="collections-count">Collections</span> and <span class="itineraries-count">Itineraries</span>&nbsp;<i class="icon icon-arrow-down"></i></a>
-					<a href="#clear-filters" class="clear-all"><i class="icon icon-small-close"></i> Clear filters</a>
-				</div>
-			</div>
-
-			<?php get_template_part('partials/explore', 'filters'); ?>		
-
-			<?php get_template_part('partials/explore', 'results') ?>
+			<div ng-view></div>
+			<?php //get_template_part('partials/explore', 'filters'); ?>		
+			<?php //get_template_part('partials/explore', 'results') ?>
 
 		</section>
 

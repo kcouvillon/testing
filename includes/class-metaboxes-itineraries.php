@@ -39,6 +39,7 @@ class WS_Metaboxes_Itineraries {
 		add_action( 'cmb2_init',  array( $this, 'itinerary_blocks_before' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_days' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_blocks_after' ) );
+		add_action( 'cmb2_init',  array( $this, 'itinerary_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_blog_post' ) );
 	}
 
@@ -381,6 +382,43 @@ class WS_Metaboxes_Itineraries {
 				'query_args'      => array( // override the get_posts args
 					'posts_per_page' => -1,
 					'post_type' => 'block',
+				),
+			)
+		) );
+
+	}
+
+	/**
+	 * Resources to display
+	 */
+	function itinerary_resources() {
+
+		$prefix = 'itinerary_resources_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Resources', 'cmb2' ),
+			'object_types' => array( 'itinerary', )
+		) );
+
+		$cmb->add_field( array(
+			'name'       => __( 'Title', 'cmb2' ),
+			'id'         => $prefix . 'title',
+			'type'       => 'text',
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Attached Resources', 'cmb2' ),
+			'desc'    => __( 'Drag Resources from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
+			'id'      => 'attached_resources',
+			'type'    => 'custom_attached_posts',
+			'options' => array(
+				'show_thumbnails' => true,  // Show thumbnails on the left
+				'filter_boxes'    => true,  // Show a text box for filtering the results
+				'query_args'      => array( // override the get_posts args
+					'posts_per_page' => 100,
+					'post_type' => 'resource',
 				),
 			)
 		) );

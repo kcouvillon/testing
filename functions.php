@@ -37,6 +37,7 @@ include WS_PATH . 'includes/class-admin-options.php';
 include WS_PATH . 'includes/class-collections.php';
 include WS_PATH . 'includes/class-comments.php';
 include WS_PATH . 'includes/class-cpts.php';
+include WS_PATH . 'includes/class-explore.php';
 include WS_PATH . 'includes/class-form.php';
 include WS_PATH . 'includes/class-helpers.php';
 include WS_PATH . 'includes/class-marketo.php';
@@ -101,7 +102,11 @@ add_action( 'after_setup_theme', 'ws_setup' );
 function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
-	wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+	// wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
+	wp_register_script( 'angular', get_template_directory_uri() . '/assets/js/vendor/angular.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'angular-route', get_template_directory_uri() . '/assets/js/vendor/angular-route.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'angular-sanitize', get_template_directory_uri() . '/assets/js/vendor/angular-sanitize.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'explore', get_template_directory_uri() . '/explore/explore.js', array(), WS_VERSION, true );
 
 	wp_enqueue_script( 'jquery' );
 
@@ -117,7 +122,19 @@ function ws_scripts_styles() {
 	}
 
 	if ( is_page_template( 'templates/explore.php' ) ) {
-		wp_enqueue_script( 'mixitup' );
+		// wp_enqueue_script( 'mixitup' );
+		wp_enqueue_script( 'angular' );
+		wp_enqueue_script( 'angular-route' );
+		wp_enqueue_script( 'angular-sanitize' );
+		wp_enqueue_script( 'explore' );
+		wp_localize_script( 'explore',
+			'WS',
+			array(
+				'theme' => get_template_directory_uri(),
+				'explore' => get_template_directory_uri() . '/explore',
+				'exploreApi' => site_url() . '/ws-api/v1/explore'
+			)
+		);
 	}
 
 	wp_enqueue_script( 'jquery-ui-autocomplete' ); // used on form submissions, available on all pages

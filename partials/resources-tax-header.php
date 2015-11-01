@@ -15,7 +15,18 @@ if ( !empty ($parent_id) ) {
 
 
 <section class="primary-section">
-	<header class="section-header resources-header pattern-8">
+	<?php
+	$background = '';
+	$term_options = get_option( 'taxonomy_metadata_resource-target_' . get_queried_object_id() );
+
+	if ( is_array( $term_options) && array_key_exists( 'feature_image', $term_options )) {
+		$featured   = wp_get_attachment_image_src( $term_options['feature_image_id'], 'hero' );
+		$background = 'url(' . $featured[0] . ')';
+		$class = 'resource-target-feature-bg';
+	} else {
+		$class = ' pattern-' . rand( 3, 9 );
+	} ?>
+	<header class="section-header resource-header <?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 		<div class="ws-container">
 			<div class="section-header-content">
 				<nav class="breadcrumbs">
