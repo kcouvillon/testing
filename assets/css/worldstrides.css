@@ -8132,7 +8132,7 @@ a.text-color-link {
 
 #jrange {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   right: 5vw;
   top: 0px; }
   #jrange.has-dates .mask {
@@ -10641,6 +10641,7 @@ article.open > header.entry-header > a {
     background-size: cover; }
   .tile > a {
     position: absolute;
+    z-index: 2;
     top: 0;
     left: 0;
     width: 100%;
