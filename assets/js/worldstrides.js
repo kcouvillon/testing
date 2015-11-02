@@ -716,10 +716,11 @@
 		jQuery('#get-info-form').validate({
 			submitHandler: function(form) {
 				wsData.formSpinner = new Spinner(wsData.spinnerParams);
-				wsData.formSpinner.opts.radius = 300;
-				wsData.formSpinner.opts.length = 30;
+				wsData.formSpinner.opts.lines = 30;
+				wsData.formSpinner.opts.radius = 150;
+				wsData.formSpinner.opts.length = 60;
 				wsData.formSpinner.opts.width = 10;
-				wsData.formSpinner.opts.top = '3em';
+				wsData.formSpinner.opts.top = '14em';
 				jQuery('#getinfoform-spinner-span').after(wsData.formSpinner.spin().el);
 				wsData.ajaxFormSubmit(jQuery(form));
 				if(event.preventDefault) { event.preventDefault(); }
@@ -796,6 +797,7 @@
 				 // form.html('Your request has been submitted successfully - ' + responseText );
 				 form.html('<h2>Thanks for your interest in traveling with WorldStrides! One of our representatives will reach out to you very shortly. In the meantime, please feel free to continue <a href="/explore/">exploring</a> all the destinations on our site.</h2>');
 				 console.log(responseText);
+				 wsData.formSpinner.stop();
 			 }
 		 };
 
