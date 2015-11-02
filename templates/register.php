@@ -28,8 +28,8 @@ get_header(); ?>
 
 				<form 
 				id="register-form"
-				action="https://olr.worldstrides.net/scripts/cgiip.exe/registeronline/default.htm"
-				data-have-id-action="https://olr.worldstrides.net/scripts/cgiip.exe/registeronline/default.htm"
+				action="http://wsdev01/scripts/cgiip.exe/registeronline/default.htm"
+				data-have-id-action="http://wsdev01/scripts/cgiip.exe/registeronline/default.htm"
 				data-no-id-action="http://www.educationaltravel.com/Login/tabid/78/type/enroll/Default?returnurl=/default.aspx"
 				method="post" 
 				class="ws-form">
