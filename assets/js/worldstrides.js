@@ -715,6 +715,12 @@
 	wsData.validateAndSubmitForm = function() {
 		jQuery('#get-info-form').validate({
 			submitHandler: function(form) {
+				wsData.formSpinner = new Spinner(wsData.spinnerParams);
+				formSpinner.opts.radius = 300;
+				formSpinner.opts.length = 30;
+				formSpinner.opts.width = 10;
+				formSpinner.opts.top = '3em';
+				jQuery('#getinfoform-spinner-span').after(formSpinner.spin().el);
 				wsData.ajaxFormSubmit(jQuery(form));
 				if(event.preventDefault) { event.preventDefault(); }
 				event.returnValue = false; // IE9
