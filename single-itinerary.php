@@ -277,7 +277,7 @@ get_header(); ?>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
 
 				<h3 class="slideshow-header">Highlights</h3>
-				<div class="tour-highlights-slider cycle-slideshow"
+				<div class="tour-highlights-slider"
 					data-cycle-auto-height="container"
 					data-cycle-fx="scrollHorz">
 
@@ -321,7 +321,9 @@ get_header(); ?>
 				</div>
 
 				<div id="tour-highlights-data" data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
-				<div id="tour-highlights-map" class="hide-print"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+				<div class="tour-highlights-map-wrap" class="hide-print">
+					<div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+				</div>
 
 			</section>
 

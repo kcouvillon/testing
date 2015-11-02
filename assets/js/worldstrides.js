@@ -918,7 +918,8 @@
 		init_coords,
 		marker_data,
 		$slideshow, 
-		$slideshow_images;
+		$slideshow_images,
+		sizeInvalidated = false;
 
 	if ( $( 'body' ).hasClass('single-itinerary') || $( 'body' ).hasClass('single-custom-page') ) {
 
@@ -929,9 +930,9 @@
 			// Browser events
 			$('body')
 				.on('click', '.toggle-dates', function(e){
-					if ( $( '.date-list' ).hasClass( 'all-dates' ) ) {
+					if ( $( '.date-list' ).hasClass('all-dates') ) {
 						$( '.date-range.hidden-dates' ).slideUp();
-						$( '.date-list' ).removeClass( 'all-dates' );
+						$( '.date-list' ).removeClass('all-dates');
 					} else {
 						$( '.date-range.hidden-dates' ).slideDown();
 						$( '.date-list' ).addClass('all-dates');
@@ -961,16 +962,46 @@
 				// Assign variables
 				init_coords = $('.tour-highlights').data('location'),
 				marker_data = $('#tour-highlights-data').data('highlights'),
-				$slideshow  = $('.cycle-slideshow'),
+				$slideshow  = $('.tour-highlights-slider').cycle().on('cycle-before', cycleBefore ),
 				$slideshow_images = $slideshow.find('img').toArray();
 				
 				if ( marker_data ) {
 
-					// Slide show events
-					$slideshow
-						.on('cycle-initialized', cycleInit )
-						.on('cycle-before', cycleBefore );
-						
+					// Format marker data into geoJSON
+					var collection = returnGeoJSON( marker_data );
+
+					// Setup Map and Layer
+					map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
+						scrollWheelZoom: false,
+						dragging: false,
+						zoomControl: false,
+						center: [ parseFloat(init_coords.latitude), parseFloat(init_coords.longitude) ],
+						zoom: 13
+					});
+					layer = L.mapbox.featureLayer(collection).addTo(map);
+
+					// Map Events
+					map
+						.on('ready resize', function(){
+							map.invalidateSize();
+							map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ], maxZoom: 16 } );
+						});
+
+					// Layer Events
+					layer
+						.on('layeradd', function(e) {
+						    var marker = e.layer,
+						        feature = marker.feature;
+
+							if ( feature.properties.id == 0 ) {
+								marker.setIcon(L.icon(feature.properties.iconHover));
+							} else {
+								marker.setIcon(L.icon(feature.properties.icon));	
+							}
+						})
+						.on('click', function(e){
+							$slideshow.cycle( 'goto', e.layer.feature.properties.id );
+						});
 				}
 			}
 
@@ -1019,47 +1050,7 @@
 		return collection;
 	}
 
-	function cycleInit( event, optionHash ){
-		
-		// Format marker data into geoJSON
-		var collection = returnGeoJSON( marker_data );
-
-		// Setup Map and Layer
-		map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
-			scrollWheelZoom: false,
-			dragging: false,
-			zoomControl: false,
-			center: [ parseFloat(init_coords.latitude), parseFloat(init_coords.longitude) ],
-			zoom: 13
-		});
-		layer = L.mapbox.featureLayer(collection).addTo(map);
-
-		// Map Events
-		map
-			.on('ready resize', function(){
-				map.invalidateSize();
-				map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ], maxZoom: 16 } );
-			});
-
-		// Layer Events
-		layer
-			.on('layeradd', function(e) {
-			    var marker = e.layer,
-			        feature = marker.feature;
-
-				if ( feature.properties.id == 0 ) {
-					marker.setIcon(L.icon(feature.properties.iconHover));
-				} else {
-					marker.setIcon(L.icon(feature.properties.icon));	
-				}
-			})
-			.on('click', function(e){
-				$slideshow.cycle( 'goto', e.layer.feature.properties.id );
-			});
-	}
-
 	function cycleBefore( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
-		
 		var marker_id = $slideshow_images.indexOf(incomingSlideEl);
 		
 		layer.eachLayer(function (layer) {
@@ -1071,6 +1062,13 @@
 			}
 
 		});
+
+		// Check to make sure map is displaying properly
+		if ( !sizeInvalidated ) {
+			map.invalidateSize();
+			map.fitBounds( layer.getBounds(), { padding: [ 30, 30 ], maxZoom: 16 } );
+			sizeInvalidated = true;
+		}
 	}
 
  } )( jQuery );
