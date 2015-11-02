@@ -242,6 +242,7 @@
 .tour-highlights {
 	position: relative;
 	max-width: 1500px;
+	min-height: 100px;
 	margin: 0 auto;
 }
 .tour-highlights-print {
@@ -269,6 +270,8 @@
 
 .tour-highlights-slider {
 	@include span(full no-gutters);
+	position: relative;
+	z-index: 1;
 
 	@include susy-media($screen-sm) {
 		@include span(8 no-gutters);
@@ -276,25 +279,32 @@
 	}
 }
 
-#tour-highlights-map {
+.tour-highlights-map-wrap {
 	position: relative;
+	z-index: 2;
 	height: 300px;
 	height: 50vw;
 	width: 100%;
 
 	@include susy-media($screen-sm) {
 		display: block;
-		position: absolute !important;
-		height: auto;
+		position: absolute;
 		top: 0;
 		right: 0;
-		bottom: 0;
+		height: 100%;
 		width: 34%;
 	}
 
 	.ws-touchevents & {
 		z-index: -1;
 	}
+}
+
+#tour-highlights-map {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 
 .tour-itinerary {

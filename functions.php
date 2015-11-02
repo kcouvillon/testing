@@ -103,9 +103,9 @@ function ws_scripts_styles() {
 	$postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
 	// wp_register_script( 'mixitup', get_template_directory_uri() . '/assets/js/vendor/jquery.mixitup.min.js', array(), WS_VERSION, true );
-	wp_register_script( 'angular', get_template_directory_uri() . '/assets/js/vendor/angular.min.js', array(), WS_VERSION, false );
-	wp_register_script( 'angular-route', get_template_directory_uri() . '/assets/js/vendor/angular-route.min.js', array(), WS_VERSION, false );
-	wp_register_script( 'angular-sanitize', get_template_directory_uri() . '/assets/js/vendor/angular-sanitize.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'angular', get_template_directory_uri() . '/explore/angular.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'angular-route', get_template_directory_uri() . '/explore/angular-route.min.js', array(), WS_VERSION, false );
+	wp_register_script( 'angular-sanitize', get_template_directory_uri() . '/explore/angular-sanitize.min.js', array(), WS_VERSION, false );
 	wp_register_script( 'explore', get_template_directory_uri() . '/explore/explore.js', array(), WS_VERSION, true );
 
 	wp_enqueue_script( 'jquery' );
