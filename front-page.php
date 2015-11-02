@@ -56,7 +56,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 		$data = array(
 			array(
 				'slug' => 'discoveries',
-				'meta' => array( array( 'name'=>'Middle School' ) )
+				'meta' => array( array( 'name'=>'Elementary &amp; Middle' ) )
 			),
 			array(
 				'slug' => 'perspectives',
@@ -64,7 +64,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 			),
 			array(
 				'slug' => 'capstone',
-				'meta' => array( array( 'name'=>'University' ) )
+				'meta' => array( array( 'name'=>'Undergrad &amp; Postgrad' ) )
 			),
 			array(
 				'slug' => 'on-stage',
