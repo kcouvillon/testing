@@ -263,6 +263,7 @@ get_header(); ?>
 					<?php while ( $associated_collections->have_posts() ) : ?>
 						
 						<?php 
+						$resource = null; // <-- set this to null so tile-content.php partial outputs smithsonian logo
 						$associated_collections->the_post();
 						$background = '';
 						$title = get_the_title();
