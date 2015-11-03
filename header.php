@@ -70,7 +70,9 @@ if ( is_singular( 'post' ) ) {
 	<header id="masthead" class="site-header" role="banner">
 		<div class="ws-container">
 			<div class="logo hide-print"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo.png' ); ?>" alt="Worldstrides" width="216" height="46" /></a></div>
-			<div class="print-logo print-only"><span class="icon icon-shield"></span> Worldstrides</div>
+			<div class="print-logo print-only">
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo-black.png' ); ?>" width="175" />
+			</div>
 			<a href="#mobile-nav" class="menu-toggle"><i class="icon icon-menu"></i><span class="hide">Menu</span></a>
 
 			<nav id="site-navigation" class="main-navigation hide-print" role="navigation">
