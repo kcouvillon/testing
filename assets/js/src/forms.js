@@ -481,12 +481,18 @@
 	wsData.validateAndSubmitForm = function() {
 		jQuery('#get-info-form').validate({
 			submitHandler: function(form) {
+				wsData.waitLogo = new Image();
+				wsData.waitLogo.src = '/wp-content/themes/worldstrides/assets/images/WSC_logoVert-460x460.jpg';
+				wsData.waitLogo.style.position = "relative";
+				wsData.waitLogo.style.left = '-50%';
+				wsData.waitLogo.style.borderRadius = '50%';
 				wsData.formSpinner = new Spinner(wsData.spinnerParams);
 				wsData.formSpinner.opts.lines = 30;
 				wsData.formSpinner.opts.radius = 150;
 				wsData.formSpinner.opts.length = 60;
 				wsData.formSpinner.opts.width = 10;
 				wsData.formSpinner.opts.top = '14em';
+				jQuery('#getinfoform-logo-div').append(wsData.waitLogo);
 				jQuery('#getinfoform-spinner-span').after(wsData.formSpinner.spin().el);
 				wsData.ajaxFormSubmit(jQuery(form));
 				if(event.preventDefault) { event.preventDefault(); }
@@ -564,6 +570,7 @@
 				 form.html('<h2>Thanks for your interest in traveling with WorldStrides! One of our representatives will reach out to you very shortly. In the meantime, please feel free to continue <a href="/explore/">exploring</a> all the destinations on our site.</h2>');
 				 console.log(responseText);
 				 wsData.formSpinner.stop();
+				 wsData.waitLogo.style.visibility = 'hidden';
 			 }
 		 };
 
