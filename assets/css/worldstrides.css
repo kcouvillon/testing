@@ -6860,7 +6860,8 @@ a.text-color-link {
       padding-bottom: 2.375em; } }
   @media only print {
     .site-header {
-      padding: 0; } }
+      padding: 0;
+      position: relative !important; } }
   .site-header a {
     color: #fff; }
     .site-header a:hover {
