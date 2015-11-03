@@ -15,6 +15,13 @@ get_header(); ?>
 		$term  = $terms[0];
 		$phone = get_post_meta( $post->ID, 'itinerary_phone', true );
 		$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
+
+		$itinerary_title = get_post_meta( $post->ID, 'itinerary_title', true );
+		if ( $itinerary_title ) {
+			$itinerary_title = apply_filters( 'the_title', $itinerary_title );
+		} else {
+			$itinerary_title = 'Itinerary';
+		}
 		?>
 
 		<?php
@@ -100,7 +107,7 @@ get_header(); ?>
 						$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true ); ?>
 
 						<?php if ( ! empty( $itinerary ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Itinerary</a></li>
+							<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
 						<?php endif; ?>
 
 						<?php

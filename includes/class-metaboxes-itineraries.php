@@ -289,6 +289,13 @@ class WS_Metaboxes_Itineraries {
 			'object_types' => array( 'itinerary', ),
 		) );
 
+		$cmb->add_field( array(
+			'name' => __( 'Section title', 'cmb2' ),
+			'desc' => __( 'Override default "Itinerary" in nav', 'cmb2' ),
+			'id'   => 'itinerary_title',
+			'type' => 'text'
+		) );
+
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
 		$day_group = $cmb->add_field( array(
 			'id'          => $prefix . 'list',
