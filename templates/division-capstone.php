@@ -296,7 +296,12 @@ get_header(); ?>
 
 			<div id="office-map"></div>
 			<div id="offices-json" data-prefix="division_locations_" style="display: none;">
-				<?php echo json_encode( get_post_meta( $post->ID, 'division_locations_list', true ) ); ?>
+				<?php // echo json_encode( get_post_meta( $post->ID, 'division_locations_list', true ) ); ?>
+				<?php
+				$location_list_raw = get_post_meta( $post->ID, 'division_locations_csv_list', true );
+				$location_list = array_map( "str_getcsv",  preg_replace('/\s+/', '', explode("\n", $location_list_raw ) ) );
+				print json_encode( $location_list );
+				?>
 			</div>
 
 		</section>
