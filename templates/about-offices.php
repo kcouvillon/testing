@@ -13,8 +13,8 @@ get_header(); ?>
 
 		<?php the_post(); ?>
 
-		<div id="office-map"></div>
-		<div id="offices-json" data-prefix="about_offices_locations_" style="display: none;">
+		<div id="ws-map" class="office-map"></div>
+		<div id="map-json" data-prefix="about_offices_locations_" style="display: none;">
 			<?php echo json_encode( get_post_meta( $post->ID, 'about_offices_locations_list', true ) ); ?>
 		</div>
 
