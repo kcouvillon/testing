@@ -206,8 +206,8 @@ Results
 					<ul class="meta list-unstyled" ng-show="itinerary.meta">
 						<li class="list-tag-no-link" ng-repeat="term in itinerary.meta" ng-bind-html="term.name"></li>	
 					</ul>
-					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
+					<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="itinerary.smithsonian" />
+					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="itinerary.smithsonian" />
 					<h3 class="h2 tile-title" ng-bind-html="itinerary.title"></h3>
 				</div>
 
