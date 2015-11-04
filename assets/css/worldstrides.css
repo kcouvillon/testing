@@ -9635,6 +9635,10 @@ article.open > header.entry-header > a {
   @media screen and (min-width: 768px) {
     .explore-filters .hide-sm {
       display: none; } }
+  .explore-filters .ws-container {
+    transition: opacity 300ms ease; }
+    .explore-filters .ws-container.loading {
+      opacity: 0.3; }
   .explore-filters .filter-menus {
     display: block;
     margin: 0;

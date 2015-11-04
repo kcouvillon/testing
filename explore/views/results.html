@@ -2,7 +2,7 @@
 	<div class="ws-container">
 		<span class="search-by">Select filters to narrow your search</span>
 		<a class="results-count" href="#explore-results">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></a>
-		<a class="clear-all" href="#/" ng-show="ctrl.hasFilters" ><i class="icon icon-small-close"></i> Clear filters</a>
+		<a class="clear-all" href="#/" ng-show="ctrl.activeFilters" ><i class="icon icon-small-close"></i> Clear filters</a>
 	</div>
 </div>
 
@@ -10,7 +10,7 @@
 
 	<img src="http://ws.local/wp-content/themes/worldstrides/assets/images/ripple.svg" ng-show="ctrl.loading" class="loader" />
 
-	<div class="ws-container" ng-hide="ctrl.loading">
+	<div class="ws-container" ng-class="{ loading: ctrl.loading }" ng-show="ctrl.terms.loaded">
 	
 		<ul class="current-filters list-unstyled clearfix">
 			<li class="traveler-filters">
@@ -41,7 +41,7 @@
 				<div class="traveler-menu-container menu-container closed">
 					<ul class="terms-list list-unstyled clearfix visible">
 						
-						<li ng-repeat="traveler in ctrl.travelers.terms" class="term">
+						<li ng-repeat="traveler in ctrl.terms.travelers" class="term">
 							<a term-href="{{traveler.slug}},travelers" class="filter term-{{traveler.slug}}" ng-bind-html="traveler.name"></a>
 						</li>
 						
@@ -56,9 +56,9 @@
 
 				<div class="interests-menu-container menu-container closed">
 
-					<ul id="interests-parent" ng-class="{visible: ctrl.showInterestsList == 'interests-parent'}" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
+					<ul id="interests-parent" ng-class="{visible: ctrl.visibleInterestsList == 'interests-parent'}" class="interests-parent terms-list-parent terms-list list-unstyled clearfix">
 						
-						<li ng-repeat="interest in ctrl.interests.terms" class="term">
+						<li ng-repeat="interest in ctrl.terms.interests" class="term">
 							<a ng-click="ctrl.showTermList('interest', interest.slug)" class="term-list-toggle parent-term parent-interest">
 								<i class="icon icon-{{interest.slug}}"></i>
 								<span ng-bind-html="interest.name"></span>
@@ -83,7 +83,7 @@
 					</ul>
 
 						
-					<ul id="{{interest.slug}}" ng-repeat="interest in ctrl.interests.terms"  ng-class="{visible: ctrl.showInterestsList == interest.slug}" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
+					<ul id="{{interest.slug}}" ng-repeat="interest in ctrl.terms.interests"  ng-class="{visible: ctrl.visibleInterestsList == interest.slug}" class="interests-child terms-list-child terms-list list-unstyled clearfix invisible">
 						
 						<li class="parent-term term">
 							<a class="parent-interest">
@@ -111,7 +111,7 @@
 				
 				<div class="destination-menu-container menu-container closed">
 
-					<ul id="destinations-parent" ng-class="{visible: ctrl.showDestinationsList == 'destinations-parent'}" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
+					<ul id="destinations-parent" ng-class="{visible: ctrl.visibleDestinationsList == 'destinations-parent'}" class="destinations-parent terms-list-parent terms-list list-unstyled clearfix">
 						<li class="destination-map">
 							<span class="destination-graphic">
 								<img src="{{ctrl.WS.theme}}/assets/images/map-global.png" alt="Global"/>
@@ -119,14 +119,14 @@
 						</li>
 						<li>
 							<ul class="terms list-unstyled clearfix">
-								<li ng-repeat="destination in ctrl.destinations.terms" class="term">
+								<li ng-repeat="destination in ctrl.terms.destinations" class="term">
 									<a ng-click="ctrl.showTermList('destination', destination.slug)" class="filter term-{{destination.slug}} term-list-toggle parent-term parent-destination" ng-bind-html="destination.name"></a>
 								</li>
 							</ul>
 						</li>
 					</ul>
 						
-					<ul id="{{destination.slug}}" ng-repeat="destination in ctrl.destinations.terms" ng-class="{visible: ctrl.showDestinationsList == destination.slug}" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
+					<ul id="{{destination.slug}}" ng-repeat="destination in ctrl.terms.destinations" ng-class="{visible: ctrl.visibleDestinationsList == destination.slug}" class="destinations-child terms-list-child terms-list list-unstyled clearfix invisible">
 						<li class="destination-map">
 							<span ng-bind-html="destination.name"></span>
 							<span class="destination-graphic">
@@ -163,6 +163,8 @@ Results
 
 
 <section id="explore-results" class="explore-results section-content">
+
+	<div class="alert text-center" ng-show="ctrl.postsError">Sorry, an error has occurred. Try <a href="/explore">reloading</a> the page.</div>
 
 	<div class="collections show-previews" ng-show="ctrl.collections.length">
 		<header class="results-header">

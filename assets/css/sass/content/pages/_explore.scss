@@ -175,6 +175,13 @@
 		}
 	}
 
+	.ws-container {
+		transition: opacity 300ms ease;
+		&.loading {
+			opacity: 0.3;
+		}
+	}
+
 	.filter-menus {
 		display: block;
 		margin: 0;

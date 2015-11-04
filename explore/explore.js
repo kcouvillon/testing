@@ -13,6 +13,9 @@ exploreApp.config([ '$routeProvider', function($routeProvider){
 			controller: 'ExploreController',
 			controllerAs: 'ctrl'
 		})
+		.when('/all-travelers/all-interests/all-destinations', {
+			redirectTo: '/featured'
+		})
 		.otherwise({
 			redirectTo: '/featured'
 		});
@@ -89,6 +92,13 @@ exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
 
+	_this.data = {
+		travelers: null,
+		interests: null,
+		destinations: null,
+		loaded: false
+	};
+
 	_this.get = function(){
 		return $q(function(resolve, reject){
 			$http.get(WS.exploreApi + "/data/filters/")
@@ -123,45 +133,39 @@ var ExploreController = function(Terms, Posts, $route, $location){
 
 	var _this = this, query;
 
-	if ( $location.$$url == "/all-travelers/all-interests/all-destinations" ) {
-		$location.path('/featured');
-	}
-
 	_this.WS = WS;
 	_this.$route = $route;
 
 	_this.loading = true;
-	_this.hasFilters = (Object.keys($route.current.params).length > 0) ? true : false;
+	_this.terms = Terms.data;
+	_this.activeFilters = _this.getActiveFilters();
 	_this.itineraries = [];
 	_this.itinerariesLimit = 9;
 	_this.collections = [];
 	_this.collectionsLimit = 3;
-	_this.showInterestsList = 'interests-parent';
-	_this.showDestinationsList = 'destinations-parent';
+	_this.visibleInterestsList = 'interests-parent';
+	_this.visibleDestinationsList = 'destinations-parent';
 
 	query = _this.getQuery();
 
-	Terms.get().then(function(response){
-		_this.travelers = {
-			terms: response.data.travelers
-		}
-		_this.interests = {
-			terms: response.data.interests
-		}
-		_this.destinations = {
-			terms: response.data.destinations
-		}
-		_this.activeFilters = _this.getActiveFilters();
-	}, function(error){
-		console.log(error);
-	});
+	if ( !Terms.data.loaded ) {
+		Terms.get().then(function(response){
+			Terms.data = response.data;
+			Terms.data.loaded = true;
+			_this.terms = Terms.data;
+		}, function(error){
+			throw error;
+		});
+	}
 
 	Posts.get(query).then(function(response){
 		_this.itineraries = response.data.itinerary || [];
 		_this.collections = response.data.collection || [];
 		_this.loading = false;
 	}, function(error){
-		console.log(error);
+		_this.loading = false;
+		_this.postsError = true;
+		throw error;
 	});
 
 };
@@ -194,6 +198,7 @@ ExploreController.prototype.getActiveFilters = function(){
 		};
 
 	if ( Object.keys(route).length > 0 ) {
+
 		angular.forEach(route, function(value, key){
 			if ( value !== 'all-destinations' && value !== 'all-interests' && value !== 'all-travelers' ){
 				value = value.split(',');
@@ -206,16 +211,20 @@ ExploreController.prototype.getActiveFilters = function(){
 				});
 			}
 		});
+
+		return active;
+
+	} else {
+		return false;
 	}
 
-	return active;
 };
 
 ExploreController.prototype.showTermList = function( list, term ){
 	if ( list == 'interest' ) {
-		this.showInterestsList = term;
+		this.visibleInterestsList = term;
 	} else if ( list == 'destination' ) {
-		this.showDestinationsList = term;
+		this.visibleDestinationsList = term;
 	}
 };
 
