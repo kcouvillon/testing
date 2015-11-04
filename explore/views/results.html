@@ -1,7 +1,7 @@
 <div class="explore-utility">
 	<div class="ws-container">
 		<span class="search-by">Select filters to narrow your search</span>
-		<a class="results-count" href="#explore-results">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></a>
+		<span class="results-count" ng-click="ctrl.smoothScroll('#explore-results')">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></span>
 		<a class="clear-all" href="#/" ng-show="ctrl.activeFilters" ><i class="icon icon-small-close"></i> Clear filters</a>
 	</div>
 </div>

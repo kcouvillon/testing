@@ -261,6 +261,11 @@ ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	}
 };
 
+ExploreController.prototype.smoothScroll = function(target) {
+	var top = jQuery(target).offset().top;
+	jQuery('html, body').animate({scrollTop: top});
+}
+
 ExploreController.$inject = ['Terms', 'Posts', '$route'];
 exploreApp.controller('ExploreController', ExploreController);
 

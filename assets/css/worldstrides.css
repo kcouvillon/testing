@@ -9564,7 +9564,8 @@ article.open > header.entry-header > a {
     font-size: 14px;
     font-weight: 700;
     border-top: 1px solid #424c61;
-    color: #4fa9e5; }
+    color: #4fa9e5;
+    cursor: pointer; }
     .explore-tool .results-count:hover {
       color: white; }
     @media screen and (min-width: 768px) {
