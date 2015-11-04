@@ -89,41 +89,41 @@ exploreApp.service('Posts', function($q, $http){
 
 var ExploreController = function(Terms, Posts, $route){
 
-	var _this = this, query;
+	var ctrl = this, query;
 
-	_this.WS = WS;
-	_this.$route = $route;
+	ctrl.WS = WS;
+	ctrl.$route = $route;
 
-	_this.loading = true;
-	_this.terms = Terms.data;
-	_this.activeFilters = _this.getActiveFilters();
-	_this.itineraries = [];
-	_this.itinerariesLimit = 9;
-	_this.collections = [];
-	_this.collectionsLimit = 3;
-	_this.visibleInterestsList = 'interests-parent';
-	_this.visibleDestinationsList = 'destinations-parent';
+	ctrl.loading = true;
+	ctrl.terms = Terms.data;
+	ctrl.activeFilters = ctrl.getActiveFilters();
+	ctrl.itineraries = [];
+	ctrl.itinerariesLimit = 9;
+	ctrl.collections = [];
+	ctrl.collectionsLimit = 3;
+	ctrl.visibleInterestsList = 'interests-parent';
+	ctrl.visibleDestinationsList = 'destinations-parent';
 
-	query = _this.getQuery();
+	query = ctrl.getQuery();
 
 	if ( !Terms.data.loaded ) {
 		Terms.get().then(function(response){
 			Terms.data = response.data;
 			Terms.data.loaded = true;
-			_this.terms = Terms.data;
+			ctrl.terms = Terms.data;
 		}, function(error){
 			throw error;
 		});
 	}
 
 	Posts.get(query).then(function(response){
-		_this.itineraries = response.data.itinerary || [];
-		_this.collections = response.data.collection || [];
-		_this.availableFilters = response.data.availableFilters || [];
-		_this.loading = false;
+		ctrl.itineraries = response.data.itinerary || [];
+		ctrl.collections = response.data.collection || [];
+		ctrl.availableFilters = response.data.availableFilters || [];
+		ctrl.loading = false;
 	}, function(error){
-		_this.loading = false;
-		_this.postsError = true;
+		ctrl.loading = false;
+		ctrl.postsError = true;
 		throw error;
 	});
 
@@ -259,10 +259,12 @@ ExploreController.prototype.postClass = function( array, key ) {
 };
 
 ExploreController.prototype.toggleLimit = function( source, min, max ) {
-	if ( this[source + 'Limit'] > min ) {
-		this[source + 'Limit'] = min;
+	var ctrl = this;
+
+	if ( ctrl[source + 'Limit'] >= max ) {
+		ctrl[source + 'Limit'] = min;
 	} else {
-		this[source + 'Limit'] = max;
+		ctrl[source + 'Limit'] = ctrl[source + 'Limit'] + min;
 	}
 };
 

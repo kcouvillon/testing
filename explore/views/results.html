@@ -202,8 +202,9 @@
 			</article>
 	
 		</div>
-		<span ng-click="ctrl.toggleLimit('collections', 3, 500)" class="toggle-results" ng-show="ctrl.collections.length > 3">
-			<ng-pluralize count="ctrl.collectionsLimit" when="{'3':'See All Collections', '500':'Hide'}"></ng-pluralize>
+		<span ng-click="ctrl.toggleLimit('collections', 3, ctrl.collections.length)" class="toggle-results" ng-show="ctrl.collections.length > 3">
+			<span ng-hide="ctrl.collectionsLimit >= ctrl.collections.length">Show More Collections</span>
+			<span ng-show="ctrl.collectionsLimit >= ctrl.collections.length">Hide</span>
 		</span>
 	</div>
 
@@ -230,8 +231,9 @@
 			</article>
 	
 		</div>
-		<span ng-click="ctrl.toggleLimit('itineraries', 9, 500)" class="toggle-results" ng-show="ctrl.itineraries.length > 9">
-			<ng-pluralize count="ctrl.itinerariesLimit" when="{'9':'See All Itineraries', '500':'Hide'}"></ng-pluralize>
+		<span ng-click="ctrl.toggleLimit('itineraries', 9, ctrl.itineraries.length)" class="toggle-results" ng-show="ctrl.itineraries.length > 9">
+			<span ng-hide="ctrl.itinerariesLimit >= ctrl.itineraries.length">Show More Itineraries</span>
+			<span ng-show="ctrl.itinerariesLimit >= ctrl.itineraries.length">Hide</span>
 		</span>
 	</div>
 
