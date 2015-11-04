@@ -19,13 +19,14 @@ exploreApp.config([ '$routeProvider', function($routeProvider){
 
 }]);
 
-exploreApp.directive('termHref', ['$location', function($location) {
+exploreApp.directive('filterLink', ['$location', function($location) {
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
-			var hrefData = attrs.termHref.split(','), 
+			var hrefData = attrs.filterLink.split(','), 
 				url;
 
+			// Only check available filters when NOT on the featured page
 			if ( $location.$$path !== '/featured' ){
 				scope.$watch('ctrl.availableFilters', function(newValue, oldValue){
 					if ( newValue && newValue.indexOf( hrefData[0] ) == -1 ) {
@@ -86,7 +87,7 @@ exploreApp.service('Posts', function($q, $http){
 
 });
 
-var ExploreController = function(Terms, Posts, $route, $location){
+var ExploreController = function(Terms, Posts, $route){
 
 	var _this = this, query;
 
@@ -119,7 +120,6 @@ var ExploreController = function(Terms, Posts, $route, $location){
 		_this.itineraries = response.data.itinerary || [];
 		_this.collections = response.data.collection || [];
 		_this.availableFilters = response.data.availableFilters || [];
-		console.log(_this.availableFilters);
 		_this.loading = false;
 	}, function(error){
 		_this.loading = false;
@@ -266,9 +266,7 @@ ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	}
 };
 
-
-
-ExploreController.$inject = ['Terms', 'Posts', '$route', '$location'];
+ExploreController.$inject = ['Terms', 'Posts', '$route'];
 exploreApp.controller('ExploreController', ExploreController);
 
 

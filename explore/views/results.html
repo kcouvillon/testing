@@ -6,6 +6,8 @@
 	</div>
 </div>
 
+<!-- Filters ##################################################### -->
+
 <nav class="explore-filters">
 
 	<img src="http://ws.local/wp-content/themes/worldstrides/assets/images/ripple.svg" ng-show="ctrl.loading" class="loader" />
@@ -14,19 +16,19 @@
 
 		<ul class="current-filters list-unstyled clearfix">
 			<li class="traveler-filters">
-				<a term-href="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.activeFilters.travelers">
+				<a filter-link="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.activeFilters.travelers">
 					<span ng-bind-html="traveler.name"></span>
 					<i class="icon icon-small-close remove-filter"></i>
 				</a>
 			</li>
 			<li class="interests-filters">
-				<a term-href="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.activeFilters.interests">
+				<a filter-link="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.activeFilters.interests">
 					<span ng-bind-html="interest.name"></span>
 					<i class="icon icon-small-close remove-filter"></i>
 				</a>
 			</li>
 			<li class="destination-filters">
-				<a term-href="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
+				<a filter-link="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
 					<span ng-bind-html="destination.name"></span>
 					<i class="icon icon-small-close remove-filter"></i>
 				</a>
@@ -36,13 +38,18 @@
 		<ul class="filter-menus open list-unstyled clearfix">
 
 			<li class="filter-menu traveler-menu">
-				<div class="traveler-filters hide-sm toggle" ng-click="ctrl.toggleFilterMenu('.traveler-menu-container')"></div>
+				<div class="traveler-filters hide-sm toggle" ng-click="ctrl.toggleFilterMenu('.traveler-menu-container')">
+					<a filter-link="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.activeFilters.travelers">
+						<span ng-bind-html="traveler.name"></span>
+						<i class="icon icon-small-close remove-filter"></i>
+					</a>
+				</div>
 
 				<div class="traveler-menu-container menu-container closed">
 					<ul class="terms-list list-unstyled clearfix visible">
 						
 						<li ng-repeat="traveler in ctrl.terms.travelers" class="term">
-							<a term-href="{{traveler.slug}},travelers" class="filter term-{{traveler.slug}}" ng-bind-html="traveler.name"></a>
+							<a filter-link="{{traveler.slug}},travelers" class="filter term-{{traveler.slug}}" ng-bind-html="traveler.name"></a>
 						</li>
 						
 					</ul>
@@ -52,7 +59,12 @@
 			</li>
 
 			<li class="filter-menu interests-menu">
-				<div class="interests-filters toggle hide-sm" ng-click="ctrl.toggleFilterMenu('.interests-menu-container')"></div>
+				<div class="interests-filters hide-sm toggle" ng-click="ctrl.toggleFilterMenu('.interests-menu-container')">
+					<a filter-link="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.activeFilters.interests">
+						<span ng-bind-html="interest.name"></span>
+						<i class="icon icon-small-close remove-filter"></i>
+					</a>
+				</div>
 
 				<div class="interests-menu-container menu-container closed">
 
@@ -67,14 +79,14 @@
 						</li>
 
 						<li class="term">
-							<a term-href="faith-based,interests" class="filter term-{{interest.slug}}">
+							<a filter-link="faith-based,interests" class="filter term-{{interest.slug}}">
 								<i class="icon icon-faith-based"></i>
 								Faith-based
 							</a>
 						</li>
 
 						<li class="term">
-							<a term-href="service,interests" class="filter term-{{interest.slug}}">
+							<a filter-link="service,interests" class="filter term-{{interest.slug}}">
 								<i class="icon icon-service"></i>
 								Service
 							</a>
@@ -93,7 +105,7 @@
 						</li>
 
 						<li ng-repeat="child in interest.children" class="term">
-							<a term-href="{{child.slug}},interests" class="filter term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
+							<a filter-link="{{child.slug}},interests" class="filter term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
 						</li>
 						
 						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
@@ -107,7 +119,12 @@
 			
 
 			<li class="filter-menu destination-menu">
-				<div class="destination-filters toggle hide-sm" ng-click="ctrl.toggleFilterMenu('.destination-menu-container')"></div>
+				<div class="destination-filters toggle hide-sm" ng-click="ctrl.toggleFilterMenu('.destination-menu-container')">
+					<a filter-link="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
+						<span ng-bind-html="destination.name"></span>
+						<i class="icon icon-small-close remove-filter"></i>
+					</a>
+				</div>
 				
 				<div class="destination-menu-container menu-container closed">
 
@@ -136,7 +153,7 @@
 						<li>
 							<ul class="terms list-unstyled clearfix">
 								<li ng-repeat="child in destination.children" class="term">
-									<a term-href="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
+									<a filter-link="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
 								</li>
 							</ul>
 						</li>
@@ -155,11 +172,7 @@
 </nav>
 
 
-<!--
-############################################################################
-Results
-############################################################################
--->
+<!-- Results ##################################################### -->
 
 
 <section id="explore-results" class="explore-results section-content">
