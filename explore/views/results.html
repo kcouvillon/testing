@@ -11,7 +11,7 @@
 	<img src="http://ws.local/wp-content/themes/worldstrides/assets/images/ripple.svg" ng-show="ctrl.loading" class="loader" />
 
 	<div class="ws-container" ng-class="{ loading: ctrl.loading }" ng-show="ctrl.terms.loaded">
-	
+
 		<ul class="current-filters list-unstyled clearfix">
 			<li class="traveler-filters">
 				<a term-href="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.activeFilters.travelers">
@@ -93,7 +93,7 @@
 						</li>
 
 						<li ng-repeat="child in interest.children" class="term">
-							<a term-href="{{child.slug}},interests" class="filter term-{{interest.slug}}" ng-bind-html="child.name">{{child.name}}</a>
+							<a term-href="{{child.slug}},interests" class="filter term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
 						</li>
 						
 						<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to Interests</a>
@@ -136,7 +136,7 @@
 						<li>
 							<ul class="terms list-unstyled clearfix">
 								<li ng-repeat="child in destination.children" class="term">
-									<a term-href="{{child.slug}},destinations" class="filter term-{{destination.slug}}" ng-bind-html="child.name"></a>
+									<a term-href="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
 								</li>
 							</ul>
 						</li>
@@ -164,7 +164,7 @@ Results
 
 <section id="explore-results" class="explore-results section-content">
 
-	<div class="alert text-center" ng-show="ctrl.postsError">Sorry, an error has occurred. Try <a href="/explore">reloading</a> the page.</div>
+	<div class="alert text-center" ng-show="ctrl.postsError">Sorry, an error has occurred. Try <a href="#/">reloading</a> the page.</div>
 
 	<div class="collections show-previews" ng-show="ctrl.collections.length">
 		<header class="results-header">

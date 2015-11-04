@@ -9629,9 +9629,13 @@ article.open > header.entry-header > a {
     margin: -16px 0 0 -16px; }
   .explore-filters a {
     color: #FFF;
-    font-weight: 600; }
+    font-weight: 600;
+    cursor: pointer; }
     .explore-filters a:hover {
       color: #4fa9e5; }
+    .explore-filters a.disabled {
+      color: #777d8d;
+      cursor: default; }
   @media screen and (min-width: 768px) {
     .explore-filters .hide-sm {
       display: none; } }
@@ -9761,8 +9765,7 @@ article.open > header.entry-header > a {
       display: block;
       padding: 1em 0;
       line-height: 1.2em;
-      border-top: 1px solid #424c61;
-      cursor: pointer; }
+      border-top: 1px solid #424c61; }
       .filter-menu .terms-list a.inactive {
         color: #5b6375; }
     .filter-menu .terms-list.terms-list-child .term-list-toggle {

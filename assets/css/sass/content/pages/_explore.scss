@@ -164,8 +164,13 @@
 	a {
 		color: #FFF;
 		font-weight: 600;
+		cursor: pointer;
 		&:hover {
 			color: $blue;
+		}
+		&.disabled {
+			color: $gray;
+			cursor: default;
 		}
 	}
 
@@ -336,7 +341,6 @@
 			padding: 1em 0;
 			line-height: 1.2em;
 			border-top: 1px solid $gray_darker;
-			cursor: pointer;
 			&.inactive {
 				color: $gray_dark;	
 			}

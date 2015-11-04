@@ -84,6 +84,9 @@ class WS_Explore {
 		$query_data = new WP_Query( $args );
 
 		if ( $query_data->have_posts() ) {
+
+			$available_filters = array();
+
 			while ( $query_data->have_posts() ) {
 				$query_data->the_post();
 
@@ -109,6 +112,10 @@ class WS_Explore {
 						'slug' => $term->slug
 					) );
 
+					if ( !in_array($term->slug, $available_filters) ){
+						array_push($available_filters, $term->slug);
+					}
+
 					if ( in_array( $term->term_id, get_term_children( 222, 'filter' ) ) ) {
 						array_push( $meta_list, array( 'name' => $term->name ) );
 					}
@@ -123,6 +130,9 @@ class WS_Explore {
 					'smithsonian' => $smithsonian
 				);
 			}
+
+			$filter_data['availableFilters'] = $available_filters;
+
 			wp_reset_postdata();
 
 			wp_send_json( $filter_data );

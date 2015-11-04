@@ -13,80 +13,37 @@ exploreApp.config([ '$routeProvider', function($routeProvider){
 			controller: 'ExploreController',
 			controllerAs: 'ctrl'
 		})
-		.when('/all-travelers/all-interests/all-destinations', {
-			redirectTo: '/featured'
-		})
 		.otherwise({
 			redirectTo: '/featured'
 		});
 
 }]);
 
-exploreApp.directive('termHref', function($route) {
-  return {
-    restrict: 'A',
-    link: function(scope, element, attrs) {
+exploreApp.directive('termHref', ['$location', function($location) {
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			var hrefData = attrs.termHref.split(','), 
+				url;
 
-   		function getUrl( slug, filterGroup, method ) {
-   			// if ( !method || !slug || !filterGroup )
-   			// 	console.log('Error: missing "method", "slug", or "filterGroup" arguments in "term-href" directive'); return;
-
-			var params = angular.copy($route.current.params),
-				keys = Object.keys(params),
-				filterGroupArray,
-				url = '';
-
-			if ( !method )
-				method = 'add';
-			
-			if ( Object.keys(params).length > 0 ) {
-				
-				filterGroupArray = params[filterGroup].split(',');
-
-				if ( method == 'add' ){
-					if ( params[filterGroup].indexOf('all-') > -1 ) {
-						params[filterGroup] = slug;
-					} else if ( params[filterGroup].indexOf(slug) > -1 ) {
-						params[filterGroup] = params[filterGroup];
-					} else {
-						params[filterGroup] += ',' + slug;
+			if ( $location.$$path !== '/featured' ){
+				scope.$watch('ctrl.availableFilters', function(newValue, oldValue){
+					if ( newValue && newValue.indexOf( hrefData[0] ) == -1 ) {
+						element
+							.attr('href', '')
+							.addClass('disabled');
 					}
-
-				} else if ( method == 'subtract' ) {
-					if ( filterGroupArray.length > 1 ) {
-						filterGroupArray.splice(filterGroupArray.indexOf(slug), 1);
-						params[filterGroup] = filterGroupArray.join(',');
-					} else {
-						params[filterGroup] = 'all-' + filterGroup;
-					}
-				}
-
-				url = '#/' + params[keys[0]] +'/'+ params[keys[1]] +'/'+ params[keys[2]];
-
-			} else {
-				params = {
-					travelers: 'all-travelers',
-					interests: 'all-interests',
-					destinations: 'all-destinations'
-				};
-				params[filterGroup] = slug;
-				url = '#/' + params.travelers +'/'+ params.interests +'/'+ params.destinations;
+				});
 			}
 
-			return url;
+			angular.forEach(hrefData, function(value, key){
+				hrefData[key] = value.trim();
+			});
+			url = scope.ctrl.getUrl( hrefData[0], hrefData[1], hrefData[2] );
+			element.attr('href', url);
 		}
-
-		var hrefData = attrs.termHref.split(','),
-			url;
-
-		angular.forEach(hrefData, function(value, key){
-			hrefData[key] = value.trim();
-		});
-		url = getUrl( hrefData[0], hrefData[1], hrefData[2] );
-		element.attr('href', url);
-    }
-  }
-});
+	};
+}]);
 
 exploreApp.service('Terms', function($q, $http){
 
@@ -161,6 +118,8 @@ var ExploreController = function(Terms, Posts, $route, $location){
 	Posts.get(query).then(function(response){
 		_this.itineraries = response.data.itinerary || [];
 		_this.collections = response.data.collection || [];
+		_this.availableFilters = response.data.availableFilters || [];
+		console.log(_this.availableFilters);
 		_this.loading = false;
 	}, function(error){
 		_this.loading = false;
@@ -169,6 +128,61 @@ var ExploreController = function(Terms, Posts, $route, $location){
 	});
 
 };
+
+ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
+	// if ( !method || !slug || !filterGroup )
+	// 	console.log('Error: missing "method", "slug", or "filterGroup" arguments in "term-href" directive'); return;
+
+	var params = angular.copy(this.$route.current.params),
+		keys = Object.keys(params),
+		filterGroupArray,
+		url = '';
+
+	if ( !method )
+		method = 'add';
+	
+	if ( keys.length > 0 ) {
+		
+		filterGroupArray = params[filterGroup].split(',');
+
+		if ( method == 'add' ){
+			if ( params[filterGroup].indexOf('all-') > -1 ) {
+				params[filterGroup] = slug;
+			} else if ( params[filterGroup].indexOf(slug) > -1 ) {
+				params[filterGroup] = params[filterGroup];
+			} else {
+				params[filterGroup] += ',' + slug;
+			}
+
+		} else if ( method == 'subtract' ) {
+			if ( filterGroupArray.length > 1 ) {
+				filterGroupArray.splice(filterGroupArray.indexOf(slug), 1);
+				params[filterGroup] = filterGroupArray.join(',');
+			} else {
+				params[filterGroup] = 'all-' + filterGroup;
+			}
+		}
+
+		if ( params[keys[0]] == 'all-'+keys[0] &&
+			 params[keys[1]] == 'all-'+keys[1] &&
+			 params[keys[2]] == 'all-'+keys[2] ) {
+			url = '#/featured';
+		} else {
+			url = '#/' + params[keys[0]] +'/'+ params[keys[1]] +'/'+ params[keys[2]];
+		}
+
+	} else {
+		params = {
+			travelers: 'all-travelers',
+			interests: 'all-interests',
+			destinations: 'all-destinations'
+		};
+		params[filterGroup] = slug;
+		url = '#/' + params.travelers +'/'+ params.interests +'/'+ params.destinations;
+	}
+
+	return url;
+}
 
 ExploreController.prototype.getQuery = function(){
 	var route = this.$route.current.params,
@@ -217,7 +231,6 @@ ExploreController.prototype.getActiveFilters = function(){
 	} else {
 		return false;
 	}
-
 };
 
 ExploreController.prototype.showTermList = function( list, term ){
@@ -243,7 +256,7 @@ ExploreController.prototype.postClass = function( array, key ) {
 		classArray.push( 'filter-' + object[key] );
 	});
 	return classArray.join(' ');
-}
+};
 
 ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	if ( this[source + 'Limit'] > min ) {
@@ -251,7 +264,7 @@ ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	} else {
 		this[source + 'Limit'] = max;
 	}
-}
+};
 
 
 
