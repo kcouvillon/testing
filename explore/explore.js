@@ -255,6 +255,7 @@ ExploreController.prototype.toggleLimit = function( source, min, max ) {
 
 	if ( ctrl[source + 'Limit'] >= max ) {
 		ctrl[source + 'Limit'] = min;
+		jQuery('html, body').animate({ scrollTop: jQuery('.'+source).offset().top });
 	} else {
 		ctrl[source + 'Limit'] = ctrl[source + 'Limit'] + min;
 	}
