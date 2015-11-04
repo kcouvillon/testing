@@ -9998,6 +9998,21 @@ article.open > header.entry-header > a {
         font-size: 29px;
         color: #FFF; } }
 
+.explore-results .tile.ng-enter,
+.explore-results .tile.ng-leave {
+  transition: all 400ms ease;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap; }
+
+.explore-results .tile.ng-leave.ng-leave-active,
+.explore-results .tile.ng-enter {
+  opacity: 0; }
+
+.explore-results .tile.ng-enter.ng-enter-active,
+.explore-results .tile.ng-leave {
+  opacity: 1; }
+
 .explore-results .results.fail .no-results {
   display: block; }
 

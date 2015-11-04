@@ -1,4 +1,4 @@
-var exploreApp = angular.module('exploreApp', ['ngRoute', 'ngSanitize']);
+var exploreApp = angular.module('exploreApp', ['ngRoute', 'ngSanitize', 'ngAnimate']);
 
 exploreApp.config([ '$routeProvider', function($routeProvider){
 

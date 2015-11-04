@@ -544,20 +544,6 @@
 			visibility: hidden;
 			height: 0; 
 		}
-		
-		// &.show-previews {
-		// 	.tile:not(.preview-tile) {
-		// 		position: absolute;
-		// 		top: 0;
-		// 		z-index: -1;
-		// 		visibility: hidden;
-		// 	}
-		// }
-		// &.show-all {
-		// 	.tile:not(.preview-tile) {
-				
-		// 	}	
-		// }
 
 		.results {
 			@media screen and ( min-width: $screen-sm ) {
@@ -668,6 +654,26 @@
 			}
 		}
 	}
+
+	// angular animations *** //
+	.tile.ng-enter, 
+	.tile.ng-leave { 
+		transition: all 400ms ease;
+		overflow: hidden;
+		text-overflow: clip;
+		white-space: nowrap;
+	} 
+	 
+	.tile.ng-leave.ng-leave-active,
+	.tile.ng-enter {
+		opacity: 0;
+	}
+	 
+	.tile.ng-enter.ng-enter-active, 
+	.tile.ng-leave {
+		opacity: 1;
+	}
+	// *** //
 
 	.results {
 		&.fail {
