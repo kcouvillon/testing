@@ -185,7 +185,7 @@
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections | limitTo : ctrl.collectionsLimit" ng-class="ctrl.postClass(collection.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
+			<article ng-repeat="collection in ctrl.collections | limitTo : ctrl.collectionsLimit" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
 				</a>
@@ -214,7 +214,7 @@
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="itinerary in ctrl.itineraries | limitTo : ctrl.itinerariesLimit" ng-class="ctrl.postClass(itinerary.filter, 'slug')" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
+			<article ng-repeat="itinerary in ctrl.itineraries | limitTo : ctrl.itinerariesLimit" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
 				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 				</a>

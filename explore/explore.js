@@ -250,14 +250,6 @@ ExploreController.prototype.toggleFilterMenu = function( menu ) {
 	}
 };
 
-ExploreController.prototype.postClass = function( array, key ) {
-	var classArray = [];
-	angular.forEach(array, function(object){
-		classArray.push( 'filter-' + object[key] );
-	});
-	return classArray.join(' ');
-};
-
 ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	var ctrl = this;
 
