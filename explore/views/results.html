@@ -187,14 +187,14 @@
 
 			<article ng-repeat="collection in ctrl.collections | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
-					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
+					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm collection-image" />
 				</a>
 				<div class="tile-content">
 					<ul class="meta list-unstyled" ng-show="collection.meta">
 						<li class="list-tag-no-link" ng-repeat="term in collection.meta" ng-bind-html="term.name"></li>
 					</ul>
-					<!-- <img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-					<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" /> -->
+					<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="collection.smithsonian" />
+					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="collection.smithsonian" />
 					<h3 class="h2 tile-title" ng-bind-html="collection.title"></h3>
 				</div>
 
