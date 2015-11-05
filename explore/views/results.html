@@ -179,13 +179,13 @@
 
 	<div class="alert text-center" ng-show="ctrl.postsError">Sorry, an error has occurred. Try <a href="#/">reloading</a> the page.</div>
 
-	<div class="collections show-previews" ng-show="ctrl.collections.length">
+	<div class="collections" ng-show="ctrl.collections.length">
 		<header class="results-header">
 			<h2><ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize></h2>
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections | limitTo : ctrl.collectionsLimit" class="tile tile-third" style="background-image:url( {{ collection.featured_image }} );" >
+			<article ng-repeat="collection in ctrl.collections | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm itinerary-image" />
 				</a>
@@ -208,13 +208,13 @@
 		</span>
 	</div>
 
-	<div class="itineraries show-previews" ng-show="ctrl.itineraries.length">
+	<div class="itineraries" ng-show="ctrl.itineraries.length">
 		<header class="results-header">
 			<h2><ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize></h2>
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="itinerary in ctrl.itineraries | limitTo : ctrl.itinerariesLimit" class="tile tile-third" style="background-image:url( {{ itinerary.featured_image }} );" >
+			<article ng-repeat="itinerary in ctrl.itineraries | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
 				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 				</a>
