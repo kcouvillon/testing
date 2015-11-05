@@ -18,6 +18,7 @@
  $tour_context_exists = (false!==get_the_terms( $post_id, 'product-line' ));
 
 ?>
+<div id="getinfoform-logo-div" style="position: absolute; left: 50%;"></div>
 <span id="getinfoform-spinner-span"> </span>
 <form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
 	<input id="get-info-action" type="hidden" name="mkto_action" value="data_to_marketo">
