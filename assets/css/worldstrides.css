@@ -10697,16 +10697,24 @@ article.open > header.entry-header > a {
 
 .smithsonian-image {
   display: none;
-  margin: 0.4em 0 0.7em;
-  max-width: 250px; }
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  max-width: 120px; }
   @media screen and (min-width: 768px) {
     .smithsonian-image {
       display: block; } }
+  @media screen and (min-width: 960px) {
+    .smithsonian-image {
+      left: 1.5em; } }
+  @media screen and (min-width: 1200px) {
+    .smithsonian-image {
+      max-width: 150px; } }
 
 .smithsonian-image-mobile {
   display: block;
   margin: 0 0 0.5em;
-  max-width: 200px; }
+  max-width: 100px; }
   @media screen and (min-width: 768px) {
     .smithsonian-image-mobile {
       display: none; } }

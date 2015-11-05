@@ -189,12 +189,12 @@
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm collection-image" />
 				</a>
+				<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="collection.smithsonian" />
 				<div class="tile-content">
+					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="collection.smithsonian" />
 					<ul class="meta list-unstyled" ng-show="collection.meta">
 						<li class="list-tag-no-link" ng-repeat="term in collection.meta" ng-bind-html="term.name"></li>
 					</ul>
-					<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="collection.smithsonian" />
-					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="collection.smithsonian" />
 					<h3 class="h2 tile-title" ng-bind-html="collection.title"></h3>
 				</div>
 
@@ -218,12 +218,12 @@
 				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 				</a>
+				<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="itinerary.smithsonian" />
 				<div class="tile-content">
+					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="itinerary.smithsonian" />
 					<ul class="meta list-unstyled" ng-show="itinerary.meta">
 						<li class="list-tag-no-link" ng-repeat="term in itinerary.meta" ng-bind-html="term.name"></li>	
 					</ul>
-					<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="itinerary.smithsonian" />
-					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="itinerary.smithsonian" />
 					<h3 class="h2 tile-title" ng-bind-html="itinerary.title"></h3>
 				</div>
 
