@@ -255,6 +255,16 @@ class WS_Metaboxes_Divisions {
 			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/division-capstone.php' ),
 		) );
 
+		$cmb->add_field( array(
+			'name' => __( 'CSV List', 'worldstrides' ),
+			'id'   => $prefix . 'csv_list',
+			'type' => 'textarea',
+			'description' => 'City, Latitude, Longitude'
+			// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
+		) );
+
+		/*
+
 		// $group_field_id is the field id string
 		$group_field_id = $cmb->add_field( array(
 			'id'      => $prefix . 'list',
@@ -278,9 +288,11 @@ class WS_Metaboxes_Divisions {
 		$cmb->add_group_field( $group_field_id, array(
 			'name' => 'Location',
 			'id' => $prefix . 'coordinates',
-			'type' => 'pw_map',
+			'type' => 'text',
 			// 'split_values' => true, // Save latitude and longitude as two separate fields
 		) );
+
+		*/
 	}
 
 	/**

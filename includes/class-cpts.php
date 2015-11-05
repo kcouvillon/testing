@@ -144,6 +144,7 @@ class WS_Custom_Post_Types {
 				'menu_icon' => 'dashicons-layout',
 				'has_archive' => false,
 				'rewrite'     => array( 'slug' => 'custom' ),
+				'capability_type' => 'post'
 			)
 		);
 

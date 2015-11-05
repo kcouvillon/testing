@@ -263,6 +263,7 @@ get_header(); ?>
 					<?php while ( $associated_collections->have_posts() ) : ?>
 						
 						<?php 
+						$resource = null; // <-- set this to null so tile-content.php partial outputs smithsonian logo
 						$associated_collections->the_post();
 						$background = '';
 						$title = get_the_title();
@@ -294,9 +295,14 @@ get_header(); ?>
 
 			<h2 class="section-title ws-container">Global Reach</h2>
 
-			<div id="office-map"></div>
-			<div id="offices-json" data-prefix="division_locations_" style="display: none;">
-				<?php echo json_encode( get_post_meta( $post->ID, 'division_locations_list', true ) ); ?>
+			<div id="ws-map" class="locations-map"></div>
+			<div id="map-json" data-prefix="division_locations_" style="display: none;">
+				<?php // echo json_encode( get_post_meta( $post->ID, 'division_locations_list', true ) ); ?>
+				<?php
+				$location_list_raw = get_post_meta( $post->ID, 'division_locations_csv_list', true );
+				$location_list = array_map( "str_getcsv", explode("\n", $location_list_raw ) );
+				print json_encode( $location_list );
+				?>
 			</div>
 
 		</section>

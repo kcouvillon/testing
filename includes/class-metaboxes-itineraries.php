@@ -89,7 +89,7 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_field( array(
 			'name' => 'Duration',
-			'desc' => 'Number of days',
+			'desc' => 'A date range or number of days',
 			'id' => $prefix . 'duration',
 			'type' => 'text_small'
 		) );
@@ -287,6 +287,13 @@ class WS_Metaboxes_Itineraries {
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Itinerary Days', 'cmb2' ),
 			'object_types' => array( 'itinerary', ),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Section title', 'cmb2' ),
+			'desc' => __( 'Override default "Itinerary" in nav', 'cmb2' ),
+			'id'   => 'itinerary_title',
+			'type' => 'text'
 		) );
 
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'

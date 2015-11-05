@@ -6860,7 +6860,8 @@ a.text-color-link {
       padding-bottom: 2.375em; } }
   @media only print {
     .site-header {
-      padding: 0; } }
+      padding: 0;
+      position: relative !important; } }
   .site-header a {
     color: #fff; }
     .site-header a:hover {
@@ -9109,14 +9110,6 @@ section:after {
     .example .entry-content {
       margin-right: 1em; } }
 
-#office-map {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
-  padding: 40% 0 0; }
-
 .office:before,
 .office:after {
   content: "";
@@ -9571,7 +9564,8 @@ article.open > header.entry-header > a {
     font-size: 14px;
     font-weight: 700;
     border-top: 1px solid #424c61;
-    color: #4fa9e5; }
+    color: #4fa9e5;
+    cursor: pointer; }
     .explore-tool .results-count:hover {
       color: white; }
     @media screen and (min-width: 768px) {
@@ -9610,7 +9604,7 @@ article.open > header.entry-header > a {
         bottom: 0;
         margin: 0 0 0 523px;
         background-color: #323c53;
-        padding: 0.5em 1em 0.5em 0.5em;
+        padding: 0.5em 1em;
         border: 0;
         border-left: 1px solid #424c61; } }
     .explore-tool .clear-all .icon {
@@ -9624,7 +9618,7 @@ article.open > header.entry-header > a {
   background: #323c53;
   color: #777d8d;
   font-size: 16px;
-  min-height: 200px;
+  min-height: 170px;
   /* Filters (mobile and desktop)
 	 * ------------------------------------------------------------- */
   /* Desktop Current Filters
@@ -9636,12 +9630,20 @@ article.open > header.entry-header > a {
     margin: -16px 0 0 -16px; }
   .explore-filters a {
     color: #FFF;
-    font-weight: 600; }
+    font-weight: 600;
+    cursor: pointer; }
     .explore-filters a:hover {
       color: #4fa9e5; }
+    .explore-filters a.disabled {
+      color: #777d8d;
+      cursor: default; }
   @media screen and (min-width: 768px) {
     .explore-filters .hide-sm {
       display: none; } }
+  .explore-filters .ws-container {
+    transition: opacity 300ms ease; }
+    .explore-filters .ws-container.loading {
+      opacity: 0.3; }
   .explore-filters .filter-menus {
     display: block;
     margin: 0;
@@ -9764,8 +9766,7 @@ article.open > header.entry-header > a {
       display: block;
       padding: 1em 0;
       line-height: 1.2em;
-      border-top: 1px solid #424c61;
-      cursor: pointer; }
+      border-top: 1px solid #424c61; }
       .filter-menu .terms-list a.inactive {
         color: #5b6375; }
     .filter-menu .terms-list.terms-list-child .term-list-toggle {
@@ -9813,7 +9814,7 @@ article.open > header.entry-header > a {
     .filter-menu.interests-menu .terms-list a .icon {
       font-size: 2.1em;
       margin: -19px 0 0;
-      color: #FFF;
+      color: inherit;
       position: absolute;
       left: 0;
       top: 50%; }
@@ -9997,6 +9998,21 @@ article.open > header.entry-header > a {
       .explore-results .tile .tile-title {
         font-size: 29px;
         color: #FFF; } }
+
+.explore-results .tile.ng-enter,
+.explore-results .tile.ng-leave {
+  transition: all 400ms ease;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap; }
+
+.explore-results .tile.ng-leave.ng-leave-active,
+.explore-results .tile.ng-enter {
+  opacity: 0; }
+
+.explore-results .tile.ng-enter.ng-enter-active,
+.explore-results .tile.ng-leave {
+  opacity: 1; }
 
 .explore-results .results.fail .no-results {
   display: block; }
@@ -10681,16 +10697,24 @@ article.open > header.entry-header > a {
 
 .smithsonian-image {
   display: none;
-  margin: 0.4em 0 0.7em;
-  max-width: 250px; }
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  max-width: 120px; }
   @media screen and (min-width: 768px) {
     .smithsonian-image {
       display: block; } }
+  @media screen and (min-width: 960px) {
+    .smithsonian-image {
+      left: 1.5em; } }
+  @media screen and (min-width: 1200px) {
+    .smithsonian-image {
+      max-width: 150px; } }
 
 .smithsonian-image-mobile {
   display: block;
   margin: 0 0 0.5em;
-  max-width: 200px; }
+  max-width: 100px; }
   @media screen and (min-width: 768px) {
     .smithsonian-image-mobile {
       display: none; } }
@@ -10981,6 +11005,14 @@ article.open > header.entry-header > a {
     #mobile-nav .secondary-nav li a {
       display: block;
       padding: 0.4em 0; }
+
+#ws-map {
+  display: block;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 5vw;
+  padding: 40% 0 0; }
 
 .site-footer {
   border-top: 1px solid #e3e3e3;
