@@ -93,16 +93,20 @@ var ExploreController = function(Terms, Posts, $route){
 
 	ctrl.WS = WS;
 	ctrl.$route = $route;
-
 	ctrl.loading = true;
+	// Filters
 	ctrl.terms = Terms.data;
 	ctrl.activeFilters = ctrl.getActiveFilters();
+	ctrl.visibleInterestsList = 'interests-parent';
+	ctrl.visibleDestinationsList = 'destinations-parent';
+	// Results
 	ctrl.itineraries = [];
 	ctrl.itinerariesLimit = 9;
 	ctrl.collections = [];
 	ctrl.collectionsLimit = 3;
-	ctrl.visibleInterestsList = 'interests-parent';
-	ctrl.visibleDestinationsList = 'destinations-parent';
+	if ( Object.keys($route.current.params).length === 0 ) {
+		ctrl.isFeatured = true;
+	}
 
 	query = ctrl.getQuery();
 
