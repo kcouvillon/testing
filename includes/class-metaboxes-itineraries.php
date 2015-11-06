@@ -89,7 +89,7 @@ class WS_Metaboxes_Itineraries {
 
 		$cmb->add_field( array(
 			'name' => 'Duration',
-			'desc' => 'Number of days',
+			'desc' => 'A date range or number of days',
 			'id' => $prefix . 'duration',
 			'type' => 'text_small'
 		) );
