@@ -133,6 +133,9 @@
 		}
 	}
 
+	/* onSelectFunc()
+	 * sets 'cur' and 'prv' variables based on selected dates.
+	 * --------------------------------------------------------- */
 	function onSelectFunc( dateText, inst ) {
 		var d1, d2;
 
@@ -148,8 +151,14 @@
 			d2 = $.datepicker.formatDate( 'M d', new Date(Math.max(prv,cur)), {} );
 			$('.mask-text').text('From '+d1+' to '+d2);
 		}
+
+		console.log(prv, cur);
 	}
 
+	/* onAfterUpdateFunc()
+	 * Draws custom buttons and layout after each date selection.
+	 * applyDatesFunc() initiated here.
+	 * --------------------------------------------------------- */
 	function onAfterUpdateFunc( dateText, inst ) {
 		$('#jrange .ui-datepicker').prepend('<div class="calendar-title">Select a range from the available dates</div>');
 		$('<button type="button" class="ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all" data-handler="hide" data-event="click">Apply</button>')
@@ -164,21 +173,39 @@
 			});
 	}
 
+	/* applyDatesFunc()
+	 * applies selected dates and filters results
+	 * --------------------------------------------------------- */
 	function applyDatesFunc() { 
 		$('#jrange').removeClass('open');
 		$('#jrange .datepicker').hide();
 
-		if ( prv !== -1 && cur !== -1 ) {
+		// No dates selected
+		if ( prv == -1 && cur == -1 ) {
 			
+			$('#jrange').removeClass('has-dates');
+
+		} else {
 			$('#jrange').addClass('has-dates');
 			
-			$('.program.tile').each(function(i){
+			$('.program.tile').each(function(){
 				var i = 0, 
 					isAvailable = false,
-					dates = $(this).data('dates');
+					dates = $(this).data('dates'),
+					offset = 0,
+					tileDate1, tileDate2;
 
+				// Walk thru each tile's date array and see if their values fall within our range
 				while( i < dates.length ) {
-					if ( dates[i][0] >= Math.min(prv,cur) && dates[i][1] <= Math.max(prv,cur) ) {
+
+					// do some equalizing here. we need to account for timezone offsets
+					tileDate1 = new Date(dates[i][0]);
+					tileDate2 = new Date(dates[i][1]);
+					offset = tileDate1.getTimezoneOffset() * 60 * 1000; // offset in milliseconds
+					tileDate1 = tileDate1.getTime() + offset;
+					tileDate2 = tileDate2.getTime() + offset;
+					
+					if ( tileDate1 >= Math.min(prv,cur) && tileDate2 <= Math.max(prv,cur) ) {
 						isAvailable = true;
 						break;
 					}
@@ -191,9 +218,6 @@
 					$(this).removeClass('available');
 				}
 			});
-
-		} else {
-			$('#jrange').removeClass('has-dates');
 		}
 
 		$('#mix-container').mixItUp('filter', '.available');
