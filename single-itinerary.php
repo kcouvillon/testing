@@ -389,7 +389,12 @@ get_header(); ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 			<section class="tour-itinerary">
 
-				<h2>Your Adventure, Day by Day</h2>
+				<?php
+				if ( ! $itinerary_title ) {
+					$itinerary_title = "Your Adventure, Day by Day";
+				}
+				?>
+				<h2><?php echo $itinerary_title; ?></h2>
 
 				<?php $count = 0; ?>
 
