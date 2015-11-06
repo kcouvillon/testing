@@ -198,14 +198,17 @@
 				// Walk thru each tile's date array and see if their values fall within our range
 				while( i < dates.length ) {
 
-					// do some equalizing here. we need to account for timezone offsets
+					// get time from each array of dates and equalize for timezone offsets
 					tileDate1 = new Date(dates[i][0]);
 					tileDate2 = new Date(dates[i][1]);
 					offset = tileDate1.getTimezoneOffset() * 60 * 1000; // offset in milliseconds
 					tileDate1 = tileDate1.getTime() + offset;
 					tileDate2 = tileDate2.getTime() + offset;
 					
-					if ( tileDate1 >= Math.min(prv,cur) && tileDate2 <= Math.max(prv,cur) ) {
+					// See if either of the tiledates fall within the selected date range.
+					if ( tileDate1 >= Math.min(prv,cur) && tileDate1 <= Math.max(prv,cur) ||
+						 tileDate2 >= Math.min(prv,cur) && tileDate2 <= Math.max(prv,cur) ) {
+						
 						isAvailable = true;
 						break;
 					}
