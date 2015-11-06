@@ -22,6 +22,10 @@ if ( is_single( '1147' ) ) {
 }
 ?>
 
+<?php if ( $show_smithsonian ) : ?>
+	<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
+<?php endif; ?>
+
 <div class="tile-content">
 	
 	<?php if ( !empty( $meta_list ) ) : ?>
@@ -40,13 +44,6 @@ if ( is_single( '1147' ) ) {
 		<?php endforeach; ?>
 
 	</ul>
-	<?php endif; ?>
-
-	<?php if ( is_page('explore') && $show_smithsonian ) : ?>
-		<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
-		<img class="smithsonian-image-mobile" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small-gray.png' ); ?>" />
-	<?php elseif ( $show_smithsonian ) : ?>
-		<img class="smithsonian-image" alt="smithsonian" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/smithsonian-small.png' ); ?>" />
 	<?php endif; ?>
 	
 	<h3 class="h2 tile-title"><?php echo $title; ?></h3>
