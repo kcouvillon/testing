@@ -390,7 +390,7 @@ get_header(); ?>
 			<section class="tour-itinerary">
 
 				<?php
-				if ( ! $itinerary_title ) {
+				if ( ! $itinerary_title || 'Itinerary' === $itinerary_type ) {
 					$itinerary_title = "Your Adventure, Day by Day";
 				}
 				?>
