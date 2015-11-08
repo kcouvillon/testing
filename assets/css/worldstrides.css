@@ -6146,6 +6146,7 @@ select {
   cursor: pointer;
   border-radius: 0;
   -webkit-appearance: none;
+  line-height: 1.1;
   padding: 0.8em 3em 0.8em 0.8em; }
   @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     select {
