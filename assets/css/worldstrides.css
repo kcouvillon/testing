@@ -9965,6 +9965,11 @@ article.open > header.entry-header > a {
       .explore-results .tile .itinerary-image,
       .explore-results .tile .collection-image {
         display: none; } }
+  .explore-results .tile .smithsonian-image {
+    display: none; }
+    @media screen and (min-width: 768px) {
+      .explore-results .tile .smithsonian-image {
+        display: block; } }
   .explore-results .tile .tile-content {
     position: static;
     float: right;
@@ -10696,7 +10701,6 @@ article.open > header.entry-header > a {
     color: #FFF; }
 
 .smithsonian-image {
-  display: none;
   position: absolute;
   top: 1em;
   left: 1em;

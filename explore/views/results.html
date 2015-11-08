@@ -1,7 +1,8 @@
 <div class="explore-utility">
 	<div class="ws-container">
 		<span class="search-by">Select filters to narrow your search</span>
-		<span class="results-count" ng-click="ctrl.smoothScroll('#explore-results')">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></span>
+		<span ng-hide="ctrl.isFeatured" class="results-count" ng-click="ctrl.smoothScroll('#explore-results')">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></span>
+		<span ng-show="ctrl.isFeatured" class="results-count" ng-click="ctrl.smoothScroll('#explore-results')">Featured Collections and Itineraries <i class="icon icon-arrow-down"></i></span>
 		<a class="clear-all" href="#/" ng-show="ctrl.activeFilters" >Clear filters</a>
 	</div>
 </div>
@@ -181,7 +182,8 @@
 
 	<div class="collections" ng-show="ctrl.collections.length">
 		<header class="results-header">
-			<h2><ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize></h2>
+			<h2 ng-hide="ctrl.isFeatured"><ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize></h2>
+			<h2 ng-show="ctrl.isFeatured">Featured Collections</h2>
 		</header>
 		<div class="results clearfix">
 
@@ -210,7 +212,8 @@
 
 	<div class="itineraries" ng-show="ctrl.itineraries.length">
 		<header class="results-header">
-			<h2><ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize></h2>
+			<h2 ng-hide="ctrl.isFeatured"><ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize></h2>
+			<h2 ng-show="ctrl.isFeatured">Featured Itineraries</h2>
 		</header>
 		<div class="results clearfix">
 

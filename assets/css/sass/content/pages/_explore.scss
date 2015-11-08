@@ -610,6 +610,13 @@
 			}
 	    }
 
+	    .smithsonian-image {
+	    	display: none;
+	    	@media screen and ( min-width: $screen-sm ) {
+				display: block;
+			}
+	    }
+
 		.tile-content {
 			position: static;
 			float: right;
