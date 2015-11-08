@@ -3,7 +3,7 @@ body {
 	background-repeat: no-repeat;
 }
 
-.logo, .mobile-hero {
+.logo, .mobile-hero, .section-header-content, .icon-menu {
 	visibility: hidden;
 }
 
@@ -15,4 +15,5 @@ body {
 #ielt9popupimg {
 	position: relative;
 	left: -50%;
+	z-index: 1000;
 }
