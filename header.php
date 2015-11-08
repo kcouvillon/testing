@@ -12,7 +12,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="x-ua-compatible" content="IE=edge" >
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/assets/css/worldstrides-ie-lt9.css'; ?>">
+		<script src="<?php echo get_template_directory_uri() . '/assets/js/worldstrides-ie-lt9.js'; ?>"></script>
+	<![endif]-->
+	
 	<!-- Some really intense (but necessary) Favicon code -->
 	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri() . '/assets/images/favicons/apple-touch-icon-57x57.png'; ?>">
 	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri() . '/assets/images/favicons/apple-touch-icon-60x60.png'; ?>">
