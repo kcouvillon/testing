@@ -43,7 +43,7 @@
 				</select>
 			</li>
 
-			<li id="get-info-student-thanks-li" name="student-thanks" class="stu" title="Students, thanks for your interest.">
+			<li id="get-info-student-thanks-li" name="student-thanks" class="hidden stu" title="Students, thanks for your interest.">
 				<p id="student-thanks-p1"> 
 					<?php _e("Thanks for visiting!  Please let us know how we can help you.  ", 'worldstrides'); ?>
 					<?php _e("You can get the answers to most questions by accessing our <a href=\"/resource-center/\">Resource Center</a>.  ", 'worldstrides'); ?>
@@ -54,7 +54,7 @@
 				<?php get_template_part('partials/sociallinks'); ?>
 			</li>
 
-			<li id="get-info-parent-hello-li" name="parent-hello" class="par" title="Parents, we are here to help.">
+			<li id="get-info-parent-hello-li" name="parent-hello" class="hidden par" title="Parents, we are here to help.">
 				<p id="parent-hello-p1">
 					<?php _e("Questions?  We&apos;re here to help.  Just tell us a little about yourself and what you have questions about ", 'worldstrides'); ?>
 					<?php _e("and we&apos;ll be right with you.", 'worldstrides'); ?>
@@ -139,7 +139,7 @@
 	<div class="right">
 		<ul class="form-fields list-unstyled">
 			<li class="field">
-				<div id="get-info-question-div" class="field-left stu par">
+				<div id="get-info-question-div" class="field-left hidden stu par">
 					<label for="get-info-question" class="block no-placeholder">Question for WorldStrides...?</label>
 					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" class="stu par" title="Question for WorldStrides...?">
 						<option value="" class="stu par">Question for WorldStrides...?</option>
