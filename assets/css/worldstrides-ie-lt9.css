@@ -1,13 +1,18 @@
-html {
-	min-height: 100%;
-}
 body {
 	background-image: url('/wp-content/themes/worldstrides/assets/images/worldstrides-ie-fallback.png');
 	background-repeat: no-repeat;
-	height: 706px;
-	overflow: hidden;
 }
 
 .logo, .mobile-hero {
 	visibility: hidden;
+}
+
+#iediv {
+	position: absolute;
+	left: 50%;
+}
+
+#ielt9popupimg {
+	position: relative;
+	left: -50%;
 }

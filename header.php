@@ -14,6 +14,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<!--[if lt IE 9]>
 		<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/assets/css/worldstrides-ie-lt9.css'; ?>">
+		<script src="<?php echo get_template_directory_uri() . '/assets/js/worldstrides-ie-lt9.js'; ?>"></script>
 	<![endif]-->
 	
 	<!-- Some really intense (but necessary) Favicon code -->
