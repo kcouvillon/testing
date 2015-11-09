@@ -278,9 +278,11 @@ get_header(); ?>
 
 							$meta_list = array();
 
-							foreach ( $terms as $term ) {
-								if ( in_array( $term->term_id, get_term_children( 222, 'filter' ) ) ) {
-									array_push( $meta_list, array( 'name' => $term->name ) );
+							if ( is_array( $terms ) ) {
+								foreach ( $terms as $term ) {
+									if ( in_array( $term->term_id, get_term_children( 222, 'filter' ) ) ) {
+										array_push( $meta_list, array( 'name' => $term->name ) );
+									}
 								}
 							}
 
