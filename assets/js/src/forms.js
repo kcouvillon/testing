@@ -138,7 +138,9 @@
 		 */
 		if( undefined !== wsData.passedInRole ){
 			if( jQuery('select#get-info-Title option:contains("' + wsData.passedInRole + '")').length > 0 ){
-				jQuery('select#get-info-Title').val( wsData.passedInRole );
+				console.log('DEBBUGGING: wsData.passedInRole = ' + wsData.passedInRole);
+				wsData.passedInRole = wsData.passedInRole.replace(/\s/g,'&nbsp;');
+				jQuery('select#get-info-Title option').filter(function () { return jQuery(this).html().indexOf(wsData.passedInRole) !== -1; }).prop('selected',true)
 				wsData.toggleAll();
 			}
 		}

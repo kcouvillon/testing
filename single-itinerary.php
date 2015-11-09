@@ -34,11 +34,6 @@ get_header(); ?>
 			$class = ' pattern-' . rand( 3, 9 );
 		} ?>
 
-		<?php
-			$product_lines = get_the_terms( $post->ID, 'product-line' );
-			$product_line = $product_lines[0];
-		?>
-
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 
@@ -49,14 +44,8 @@ get_header(); ?>
 				<div class="ws-container">
 					<div class="section-header-content">
 
-						<nav class="breadcrumbs hide-print">
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>>
-							<a href="<?php echo esc_url( home_url( '/' . $product_line->slug . '/' ) ); ?>"><?php echo $product_line->name; ?> Educational Travel</a>>
-							<?php if( ! empty( $term ) ) : ?>
-								<a href="<?php echo esc_url( home_url( '/collections/' . $term->slug . '/' ) ); ?>"><?php echo $term->name; ?></a>>
-							<?php endif; ?>
-							<span><?php the_title(); ?></span>
-						</nav>
+						<?php get_template_part('partials/breadcrumbs'); ?>
+						
 						<span class="print-only"><?php the_permalink(); ?></span>
 						<h1><?php the_title(); ?></h1>
 
