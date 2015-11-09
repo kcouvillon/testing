@@ -372,6 +372,7 @@ get_header(); ?>
 
 			<?php if ( 'on' == $additional_info_request_box ) : ?>
 				<?php get_template_part( 'partials/module', 'request-info' ); ?>
+				<?php // get_template_part( 'partials/form', 'universal' ); ?>
 			<?php endif; ?>
 
 			<?php if ( $additional_info_text && $additional_info_email_title && $additional_info_email_text ) : ?>

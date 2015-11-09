@@ -384,13 +384,24 @@
 
 		}
 
-		wsData.toggleFieldViewForRole();
-		jQuery('select#get-info-Title').on( 'change', function() {
+		wsData.toggleAll = function() {
 			wsData.toggleFieldViewForRole(); 
 			wsData.toggleProductViewForRole();
 			wsData.toggleQuestionViewForRole();
-			wsData.populateHiddenGradeLevelField();
-		});
+			wsData.populateHiddenGradeLevelField();			
+		}
+
+		wsData.toggleFieldViewForRole();
+		jQuery('select#get-info-Title').on( 'change', wsData.toggleAll );
+
+		/**
+		 * Preload the role based on a post variable, if available
+		 */
+		if( undefined !== wsData.passedInRole ){
+			if( jQuery('select#get-info-Title option:contains("' + wsData.passedInRole + '")').length > 0 ){
+				jQuery('select#get-info-Title').val( wsData.passedInRole );
+			}
+		}
 
 		/**
 		 * Make the submit button unclickable after first click
