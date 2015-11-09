@@ -91,10 +91,9 @@ get_header(); ?>
 					</div>
 					<div class="ws-container">
 						<div class="section-header-content">
-							<nav class="breadcrumbs hide-print">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>>
-								<span><?php echo apply_filters( 'the_title', $division_target ); ?></span>
-							</nav>
+
+							<?php get_template_part('partials/breadcrumbs', 'division'); ?>
+
 							<h1><?php echo apply_filters( 'the_title', $display_title ); ?></h1>
 
 							<?php $subtitle = get_post_meta( $post->ID, 'division_options_subtitle', true ); ?>
