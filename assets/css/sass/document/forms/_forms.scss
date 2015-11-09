@@ -25,6 +25,7 @@ select {
   cursor: pointer;
   border-radius: 0;
   -webkit-appearance: none;
+  line-height: 1.1;
   padding: 0.8em 3em 0.8em 0.8em;
   &:hover, &:focus {
   	background-color: $gray_lighter;
@@ -174,6 +175,7 @@ label {
 }
 
 #get-info-student-thanks-li {
+	margin-bottom: 55px;
 	.social-icons {
 		li {
 			display: inline-block;

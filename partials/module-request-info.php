@@ -6,13 +6,20 @@ $text = ( isset( $options['request_info_text'] ) ? $options['request_info_text']
 ?>
 <div class="blog-single-cta" style="background-image:<?php echo 'url(' . $background . ')'; ?>;">
 	<span class="h2"><?php echo apply_filters( 'the_content', $text ) ?></span>
-	<form>
-		<label for="selectMenu">I am a</label>
-		<select id="selectMenu">
-			<option value="/request-info/?type=parent">Parent</option>
-			<option value="/request-info/?type=traveler">Traveler</option>
-			<option value="/request-info/?type=teacher">Teacher</option>
+	<form id="module-request-info-form" action="/request-info/" method="post">
+		<label for="selectMenu">My role is</label>
+		<select id="selectMenu" name="role" title="Role">
+			<option value="">Select...</option>
+			<option value="Student">Student</option>
+			<option value="Parent">Parent</option>
+			<option value="Elementary School Educator">Elementary School Educator</option>
+			<option value="Middle School Educator">Middle School Educator</option>
+			<option value="High School Educator">High School Educator</option>
+			<option value="Undergraduate Educator">Undergraduate Educator</option>
+			<option value="Graduate Educator">Graduate Educator</option>
+			<option value="Other">Other</option>
 		</select>
-		<input type="submit" class="btn btn-primary" value="Get the Info" onclick="window.open(selectMenu.options[selectMenu.selectedIndex].value)">
+		<input type="hidden" id="wsurl" name="wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
+		<input type="submit" class="btn btn-primary" value="Get the Info">
 	</form>
 </div>

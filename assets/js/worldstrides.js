@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-11-06
+/*! WorldStrides - v0.1.0 - 2015-11-08
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -352,7 +352,7 @@
 		wsData.toggleViewForRole = function(selector) {
 			var role =  jQuery('select#get-info-Title').children('option:selected').attr('data-value');
 			var getInfoChildren = jQuery(selector);
-			getInfoChildren.filter('.'+role).show();
+			getInfoChildren.filter('.'+role).show().removeClass('hidden');
 			getInfoChildren.not('.'+role).hide();
 		}
 
@@ -384,13 +384,25 @@
 
 		}
 
-		wsData.toggleFieldViewForRole();
-		jQuery('select#get-info-Title').on( 'change', function() {
+		wsData.toggleAll = function() {
 			wsData.toggleFieldViewForRole(); 
 			wsData.toggleProductViewForRole();
 			wsData.toggleQuestionViewForRole();
-			wsData.populateHiddenGradeLevelField();
-		});
+			wsData.populateHiddenGradeLevelField();			
+		}
+
+		wsData.toggleFieldViewForRole();
+		jQuery('select#get-info-Title').on( 'change', wsData.toggleAll );
+
+		/**
+		 * Preload the role based on a post variable, if available
+		 */
+		if( undefined !== wsData.passedInRole ){
+			if( jQuery('select#get-info-Title option:contains("' + wsData.passedInRole + '")').length > 0 ){
+				jQuery('select#get-info-Title').val( wsData.passedInRole );
+				wsData.toggleAll();
+			}
+		}
 
 		/**
 		 * Make the submit button unclickable after first click

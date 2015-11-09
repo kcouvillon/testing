@@ -22,7 +22,7 @@
 <span id="getinfoform-spinner-span"> </span>
 <form id="get-info-form" action="" class="ws-form" title="Get More Information About WorldStrides">
 	<input id="get-info-action" type="hidden" name="mkto_action" value="data_to_marketo">
-		<h2 class="form-title"><?php echo $title; ?></h2>
+	<h2 class="form-title"><?php echo $title; ?></h2>
 	<div class="left">
 		<?php $phone = get_post_meta( $post->ID, 'itinerary_phone', true ); 
 			if (!empty($phone)) : ?>
@@ -40,10 +40,11 @@
 					<option data-value="hse" value="A Teacher">High School Educator</option>
 					<option data-value="une" value="A Teacher">Undergraduate Educator</option>
 					<option data-value="une" value="A Teacher">Graduate Educator</option>
+					<option data-value="non" value="A Teacher">Other</option>
 				</select>
 			</li>
 
-			<li id="get-info-student-thanks-li" name="student-thanks" class="stu" title="Students, thanks for your interest.">
+			<li id="get-info-student-thanks-li" name="student-thanks" class="hidden stu" title="Students, thanks for your interest.">
 				<p id="student-thanks-p1"> 
 					<?php _e("Thanks for visiting!  Please let us know how we can help you.  ", 'worldstrides'); ?>
 					<?php _e("You can get the answers to most questions by accessing our <a href=\"/resource-center/\">Resource Center</a>.  ", 'worldstrides'); ?>
@@ -54,7 +55,7 @@
 				<?php get_template_part('partials/sociallinks'); ?>
 			</li>
 
-			<li id="get-info-parent-hello-li" name="parent-hello" class="par" title="Parents, we are here to help.">
+			<li id="get-info-parent-hello-li" name="parent-hello" class="hidden par" title="Parents, we are here to help.">
 				<p id="parent-hello-p1">
 					<?php _e("Questions?  We&apos;re here to help.  Just tell us a little about yourself and what you have questions about ", 'worldstrides'); ?>
 					<?php _e("and we&apos;ll be right with you.", 'worldstrides'); ?>
@@ -139,7 +140,7 @@
 	<div class="right">
 		<ul class="form-fields list-unstyled">
 			<li class="field">
-				<div id="get-info-question-div" class="field-left stu par">
+				<div id="get-info-question-div" class="field-left hidden stu par">
 					<label for="get-info-question" class="block no-placeholder">Question for WorldStrides...?</label>
 					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" class="stu par" title="Question for WorldStrides...?">
 						<option value="" class="stu par">Question for WorldStrides...?</option>
@@ -194,7 +195,20 @@
 		<input id="get-info-companyPhone" type="hidden" name="mkto_companyPhone" value="" >
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
-		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
+		<?php 
+			$current_page_url = WS_Form::current_page_url();
+			global $post;
+			if( "request-info" === $post->post_name && !empty($_POST["wsurl"]) ) {
+				$current_page_url = $_POST["wsurl"];
+			}
+
+			if( "request-info" === $post->post_name && !empty($_POST["role"]) ) {
+				$current_post_role = $_POST["role"];
+				echo "<script>console.log('DEBUGGING: POST role is $current_post_role')</script>";
+				echo "<script>wsData.passedInRole = '$current_post_role';</script>";
+			}
+		 ?>
+		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo $current_page_url; ?>" >
 
 		<input id="get-info-submit" type="submit" name="ButtonAction" value="Send Info" class="btn btn-primary non stu par ele mse hse une" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
