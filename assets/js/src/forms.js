@@ -138,7 +138,8 @@
 		 */
 		if( undefined !== wsData.passedInRole ){
 			if( jQuery('select#get-info-Title option:contains("' + wsData.passedInRole + '")').length > 0 ){
-				jQuery('select#get-info-Title').val( wsData.passedInRole );
+				console.log('DEBBUGGING: wsData.passedInRole = ' + wsData.passedInRole);
+				jQuery('select#get-info-Title option').filter(function () { return jQuery(this).html() === wsData.passedInRole; }).prop('selected',true)
 				wsData.toggleAll();
 			}
 		}

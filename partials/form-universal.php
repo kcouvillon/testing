@@ -35,11 +35,11 @@
 					<option data-value="non" value="">Select...</option>
 					<option data-value="stu" value="Student">Student</option>
 					<option data-value="par" value="Parent">Parent</option>
-					<option data-value="ele" value="A Teacher">Elementary School Educator</option>
-					<option data-value="mse" value="A Teacher">Middle School Educator</option>
-					<option data-value="hse" value="A Teacher">High School Educator</option>
-					<option data-value="une" value="A Teacher">Undergraduate Educator</option>
-					<option data-value="une" value="A Teacher">Graduate Educator</option>
+					<option data-value="ele" value="A Teacher">Elementary&nbsp;School&nbsp;Educator</option>
+					<option data-value="mse" value="A Teacher">Middle&nbsp;School&nbsp;Educator</option>
+					<option data-value="hse" value="A Teacher">High&nbsp;School&nbsp;Educator</option>
+					<option data-value="une" value="A Teacher">Undergraduate&nbsp;Educator</option>
+					<option data-value="une" value="A Teacher">Graduate&nbsp;Educator</option>
 					<option data-value="non" value="A Teacher">Other</option>
 				</select>
 			</li>

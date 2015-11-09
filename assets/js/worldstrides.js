@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-11-08
+/*! WorldStrides - v0.1.0 - 2015-11-09
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -399,7 +399,8 @@
 		 */
 		if( undefined !== wsData.passedInRole ){
 			if( jQuery('select#get-info-Title option:contains("' + wsData.passedInRole + '")').length > 0 ){
-				jQuery('select#get-info-Title').val( wsData.passedInRole );
+				console.log('DEBBUGGING: wsData.passedInRole = ' + wsData.passedInRole);
+				jQuery('select#get-info-Title option').filter(function () { return jQuery(this).html() === wsData.passedInRole; }).prop('selected',true)
 				wsData.toggleAll();
 			}
 		}
