@@ -139,6 +139,7 @@
 		if( undefined !== wsData.passedInRole ){
 			if( jQuery('select#get-info-Title option:contains("' + wsData.passedInRole + '")').length > 0 ){
 				jQuery('select#get-info-Title').val( wsData.passedInRole );
+				wsData.toggleAll;
 			}
 		}
 
