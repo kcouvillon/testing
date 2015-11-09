@@ -12,11 +12,11 @@ $text = ( isset( $options['request_info_text'] ) ? $options['request_info_text']
 			<option value="">Select...</option>
 			<option value="Student">Student</option>
 			<option value="Parent">Parent</option>
-			<option value="Elementary&nbsp;School&nbsp;Educator">Elementary&nbsp;School&nbsp;Educator</option>
-			<option value="Middle&nbsp;School&nbsp;Educator">Middle&nbsp;School&nbsp;Educator</option>
-			<option value="High&nbsp;School&nbsp;Educator">High&nbsp;School&nbsp;Educator</option>
-			<option value="Undergraduate&nbsp;Educator">Undergraduate&nbsp;Educator</option>
-			<option value="Graduate&nbsp;Educator">Graduate&nbsp;Educator</option>
+			<option value="Elementary">Elementary&nbsp;School&nbsp;Educator</option>
+			<option value="Middle">Middle&nbsp;School&nbsp;Educator</option>
+			<option value="High">High&nbsp;School&nbsp;Educator</option>
+			<option value="Undergraduate">Undergraduate&nbsp;Educator</option>
+			<option value="Graduate">Graduate&nbsp;Educator</option>
 			<option value="Other">Other</option>
 		</select>
 		<input type="hidden" id="wsurl" name="wsurl" value="<?php echo WS_Form::current_page_url(); ?>" >
