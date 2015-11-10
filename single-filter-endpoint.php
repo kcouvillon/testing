@@ -69,7 +69,7 @@ $associated_itineraries = new WP_Query( array(
 			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
-			$class = ' pattern-' . rand( 1, 9 );
+			$class = ' ' . WS_Helpers::get_random_pattern() . ' ';
 		} ?>
 		<section class="primary-section">
 			<header class="section-header<?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
