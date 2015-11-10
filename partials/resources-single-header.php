@@ -12,7 +12,7 @@
 		$background = 'url(' . $featured[0] . ')';
 		$class = '';
 	} else {
-		$class = ' pattern-' . rand( 3, 9 );
+		$class = ' ' . WS_Helpers::get_random_pattern() . ' ';
 	} ?>
 	<header class="section-header resources-header <?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 		<div class="ws-container">
