@@ -7019,6 +7019,11 @@ a.text-color-link {
     margin-right: 20px; }
     .quick-access li:last-child {
       margin-right: 0; }
+    .quick-access li.prominent-link a {
+      color: #fb901d;
+      font-size: .9em; }
+      .quick-access li.prominent-link a:hover {
+        color: #e17604; }
     .quick-access li.primary-link a {
       color: #5b6375;
       font-weight: bold; }
