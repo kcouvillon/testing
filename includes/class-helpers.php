@@ -358,7 +358,7 @@ class WS_Helpers {
 
 			$location = get_post_meta( $post_id, 'itinerary_details_weather_location', true );
 
-			if ( is_array( $location ) ) {
+			if ( is_array( $location ) && ( '' !== $location['latitude'] && '' !== $location['longitude']) ) {
 
 				$latitude = $location['latitude'];
 				$longitude = $location['longitude'];
