@@ -9476,8 +9476,7 @@ article.open > header.entry-header > a {
       .register-and-payment .section-content {
         width: 66.0130718954%;
         float: left;
-        margin-right: 1.9607843137%;
-        padding-right: 30%; } }
+        margin-right: 1.9607843137%; } }
   .register-and-payment .fields li {
     margin-bottom: 1em; }
   .register-and-payment .ws-form .btn, .register-and-payment .ws-form .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.mktoButton, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap .register-and-payment .ws-form button.mktoButton {
@@ -9502,6 +9501,8 @@ article.open > header.entry-header > a {
         width: 32.0261437908%;
         float: right;
         margin-right: 0; } }
+  .register-and-payment #payment-trip-id-li {
+    max-width: 300px; }
 
 /* Explore
  * ------------------------------------------------------------- */
