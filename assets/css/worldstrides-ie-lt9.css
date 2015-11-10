@@ -1,19 +1,35 @@
 body {
 	background-image: url('/wp-content/themes/worldstrides/assets/images/worldstrides-ie-fallback.png');
 	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
-.logo, .mobile-hero, .section-header-content, .icon-menu {
-	visibility: hidden;
+.logo, .ws-container, .mobile-hero, .icon-menu, .site-footer, {
+	visibility: hidden !important;
+}
+
+.footer-navigation, .site-info, .footer-logo, .section-header-content, {
+	display: none !important;
 }
 
 #iediv {
 	position: absolute;
 	left: 50%;
+	z-index: 1000;
 }
+
+#iebgimg {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 999;
+	border: none;
+}
+
 
 #ielt9popupimg {
 	position: relative;
 	left: -50%;
 	z-index: 1000;
+	border: none;
 }

@@ -141,8 +141,10 @@ function ws_scripts_styles() {
 
 	wp_enqueue_script( 'jquery-ui-autocomplete' ); // used on form submissions, available on all pages
 	
-	wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
-	wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
+	if ( !is_page( 'ie-fallback' ) ) {
+		wp_enqueue_script( 'ws', get_template_directory_uri() . "/assets/js/worldstrides{$postfix}.js", array( 'jquery' ), WS_VERSION, true );
+		wp_enqueue_style( 'ws', get_template_directory_uri() . "/assets/css/worldstrides{$postfix}.css", array(), WS_VERSION );
+	}
 
 	wp_localize_script( "ws",
 		'worldstrides_ajax',
