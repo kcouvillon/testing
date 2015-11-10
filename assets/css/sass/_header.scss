@@ -195,6 +195,18 @@
 			margin-right: 0;
 		}
 
+		&.prominent-link {
+			a {
+				color: $color_link;
+				font-size: .9em;
+				font-weight: bold;
+
+				&:hover {
+					color: $color_link_hover;
+				}
+			}
+		}
+
 		&.primary-link {
 			a {
 				color: $gray_dark;

@@ -45,8 +45,7 @@ get_header(); ?>
 						</li>
  -->
  						<li id="payment-trip-id-li">
-							<label for="payment-trip-id">Trip ID</label>
-							<input type="text" class="payment-field trip-id" name="tripnumber" id="payment-trip-id">
+							<input type="text" class="payment-field trip-id" name="tripnumber" title="Trip ID" placeholder="Trip ID" id="payment-trip-id">
 							<!-- <span class="help-text">Still can&apos;t find your Trip ID? <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" target="_blank">Call customer service</a></span> -->
 						</li>
 						<li>
