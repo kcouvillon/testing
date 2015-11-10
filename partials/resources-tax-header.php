@@ -24,7 +24,7 @@ if ( !empty ($parent_id) ) {
 		$background = 'url(' . $featured[0] . ')';
 		$class = 'resource-target-feature-bg';
 	} else {
-		$class = ' pattern-' . rand( 3, 9 );
+		$class = ' ' . WS_Helpers::get_random_pattern() . ' ';
 	} ?>
 	<header class="section-header resource-header <?php echo $class; ?>" style="background-image: <?php echo $background; ?>;">
 		<div class="ws-container">
