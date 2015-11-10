@@ -131,7 +131,7 @@ class WS_Form {
 	 * eg: arts-and-sciences-programs,business-programs,nyu,other-professional-programs
 	 */
 	public static function slugs_from_terms( $terms ) {
-		if(false === $terms) return 'NO-WEBPAGE-CONTEXT-AVALIABLE';
+		if(false === $terms) return 'COULD-NOT-DETERMINE-FROM-PAGE';
 		$slugs = '';
 		foreach( $terms as $term ) {
 			$slugs .= $term->slug . ',';

@@ -3,8 +3,7 @@
   * Modal window that appears once to welcome users -- checks a cookie to avoid reappearing.
   */
 
-if( !isset( $_COOKIE['ws_sessiond_hi'])) :
-  if( !isset( $_COOKIE['ws_hi'] ) || intval($_COOKIE['ws_hi']) < 3 ) : ?>
+  if( !isset( $_COOKIE['ws_hi'] ) ) : ?>
 
   <div id="welcome-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
@@ -34,16 +33,16 @@ if( !isset( $_COOKIE['ws_sessiond_hi'])) :
       <?php if ( $debug ) : ?>
         console.log('DEBUG: Before drop/increment ws_hi');
         wsData.debugCookie('ws_hi');
-        wsData.debugCookie('ws_sessiond_hi');
+        // wsData.debugCookie('ws_sessiond_hi');
       <?php endif; ?>
 
       wsData.incrementCookie('ws_hi');
-      wsData.sessionCookie('ws_sessiond_hi');
+      // wsData.sessionCookie('ws_sessiond_hi');
 
       <?php if ( $debug ) : ?>
         console.log('DEBUG: After drop/increment ws_hi');
         wsData.debugCookie('ws_hi');
-        wsData.debugCookie('ws_sessiond_hi');
+        // wsData.debugCookie('ws_sessiond_hi');
       <?php endif; ?>
 
   		jQuery('#welcome-modal').modal('toggle');
@@ -56,4 +55,3 @@ if( !isset( $_COOKIE['ws_sessiond_hi'])) :
 
    <?php
   endif;
-endif;
