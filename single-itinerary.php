@@ -31,7 +31,7 @@ get_header(); ?>
 			$background = 'url(' . $featured[0] . ')';
 			$class = '';
 		} else {
-			$class = ' pattern-' . WS_Helpers::get_random_pattern() . ' ';
+			$class = ' ' . WS_Helpers::get_random_pattern() . ' ';
 		} ?>
 
 		<section class="primary-section">
