@@ -167,14 +167,27 @@ was one of the reasons we ended up being able to attach things in places they we
 
 ### Misc
 
-* Libraries - we made use of John Blackbourn's [Extended CPTs](https://github.com/johnbillion/extended-cpts) and 
-[Extended Taxos](https://github.com/johnbillion/extended-taxos) libraries (John is a former release lead for WordPress). 
-The libraries make for much simpler implementation of cpts and taxos, as well as adding in additional features. It also 
-makes it fairly easy to create custom admin column layouts for the various cpts. Worth checking for updates here
-occasionally.
 * Helper functions - there's a class that provides a number of utility helper functions. This can be quite useful
 when a partial doesn't suit the implementation.
 
 ### Custom Post Types and Taxonomies
 
-Todo: Outline the various custom post types and taxonomies (in particular the shadow taxonomy used for Collections).
+All post types are declared in `class-cpts.php` and taxonomies in `class-taxos.php`.
+
+We made use of John Blackbourn's [Extended CPTs](https://github.com/johnbillion/extended-cpts) and 
+[Extended Taxos](https://github.com/johnbillion/extended-taxos) libraries (John is a former release lead for WordPress). 
+The libraries make for much simpler implementation of cpts and taxos, as well as adding in additional features. It also 
+makes it fairly easy to create custom admin column layouts for the various cpts. Worth checking for updates here
+occasionally.
+
+Most of the post types and taxonomies are fairly straight-forward, with two exceptions:
+
+* Filters - this taxonomy serves the explore tool, and allows for faster lookup than using post meta. Traditional term
+archive pages shouldn't exist for these terms. The destination, interest and traveler post types serve as the filter
+endpoint. On each of these endpoint pages, the associated filter must be explicitly specified. This also allowed for filter 
+points to exist that don't necessarily have an endpoint.
+* \_Collections - this is a 'shadow taxonomy', which serves a similar purpose to filters, in helping to create efficient 
+queries for collections of itineraries. Where the shadow part comes in, is when a collection post is created, a term 
+with the same name is created in this taxonomy (so it doesn't have to be explicitly specified). This logic can be 
+found in `class-collections.php`. The one caveat is if a collection is renamed, and the slug changes. In this instance,
+the \_collection slug may need to be manually renamed (see Collection notes in WP-Help).
