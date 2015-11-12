@@ -285,7 +285,7 @@ get_header(); ?>
 
 					<p>
 						WorldStrides is committed to making international travel accessible for students.
-						<a href="">Read about applying for financial assistance</a> through the Foundation of International Education.
+						<a href="https://fundraising.worldstrides.com/international-financial-assistance-program/">Read about applying for financial assistance</a> through the Foundation of International Education.
 					</p>
 
 				</section>
@@ -296,7 +296,7 @@ get_header(); ?>
 					<h3>Gift of Education</h3>
 
 					<p>
-						Looking to fundraise? Personalize a <a href="">Gift of Education eCard</a> to request contributions from friends and family.
+						Looking to fundraise? Personalize a <a href="https://resources.worldstrides.com/capstone-gift-of-education/">Gift of Education eCard</a> to request contributions from friends and family.
 						A great way to celebrate your birthday or holidays, and so much better than another ugly sweater!
 					</p>
 
@@ -330,7 +330,7 @@ get_header(); ?>
 					<p>
 						<?php echo ucwords( $word_1 ); ?> have chosen WorldStrides as an educational travel partner because of their reputation
 						for excellence in logistics, educational content, and most importantly, safety and security.
-						<a href="/about/">Read more about WorldStrides</a>.
+						<a href="/why-worldstrides/">Read more about WorldStrides</a>.
 					</p>
 
 				</section>
@@ -340,7 +340,7 @@ get_header(); ?>
 				<section class="ws-container custom-page-faq">
 					<h3>FAQ</h3>
 
-					<p>Questions? <a href="<?php echo esc_url( home_url( '/resource-center/') ); ?>">Click here</a> to see answers
+					<p>Questions? <a href="<?php echo esc_url( home_url( '/resources/university-students/') ); ?>">Click here</a> to see answers
 						to commonly asked questions about WorldStrides educational travel programs for university students.
 					</p>
 
