@@ -13,14 +13,14 @@
           <h4 class="modal-title"><?php _e( 'Welcome to our new website!', 'worldstrides' ); ?></h4>
         </div>
         <div class="modal-body">
-          <p><?php _e( 'Every single page is designed to do one thing: ', 'worldstrides' ); ?>
-          <?php _e( 'Bring you closer to the most unforgettable educational ', 'worldstrides' ); ?>
-          <?php _e( 'travel experience of your life. ', 'worldstrides' ); ?></p>
+          <p><?php _e( 'We&apos;ve re-designed everything to make it even easier ', 'worldstrides' ); ?>
+          <?php _e( 'to discover the unique opportunities we offer ', 'worldstrides' ); ?>
+          <?php _e( 'to explore and broaden your world.  Enjoy!', 'worldstrides' ); ?></p>
         </div>
         <div class="modal-footer">
         	<span id="tellMeSpinnerSpan">   </span>
           <a id="tellMeLink" href="/2015/10/worldstrides-newly-redesigned-website/" role="button" class="btn btn-primary"><?php _e( 'Learn More', 'worldstrides' ); ?></a>
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?php _e( 'Let&apos;s go!', 'worldstrides' ); ?></button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"><?php _e( 'Thanks', 'worldstrides' ); ?></button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
