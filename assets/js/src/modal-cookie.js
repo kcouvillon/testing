@@ -30,4 +30,16 @@
 		console.log('DEBUG: Cookie ' + cookiename + ' is: ' + Cookies.get(cookiename));
 	}
 
+	wsData.checkCookie = function(cookiename){
+		if (Cookies.get(cookiename)){
+			//Cookie exists
+			return true;
+		}
+		else {
+			//Cookie does not exist
+			return false;
+		}
+
+	}
+
  } )( jQuery );
