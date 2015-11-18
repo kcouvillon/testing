@@ -124,15 +124,40 @@ All of the front-end stuff is located in the assets folder.
 
 #### CSS/SASS
 
-SCSS partials are compiled into a minified css file. At some point, it's probably worth auditing this for
-duplication or unused css, to reduce the size of the generated files
+SCSS partials are compiled into a minified css file. At some point, it's probably worth auditing this for duplication or unused css, to reduce the size of the generated files.
 
-The grid system used is [Susy](http://susy.oddbird.net/).
+**[Bourbon](http://bourbon.io/)** is a SASS library of mixins and functions useful for writing cleaner styles. The files inside the `/bourbon` directory should never be edited.
+
+The grid system used is **[Susy](http://susy.oddbird.net/)**. Same as above, do not edit the files inside the `/susy` directory.
+
+Most of the global styles for the site are found within the `/document` directory while styles for specific content is found within the `/content` directory.
+
+##### CSS 3 Properties
+
+**Flexbox**
+The Flexbox layout is commonly used in the Worldstrides theme to achieve layouts between blocks of content that might not otherwise be possible without a lot of cumbersome html and css. One of the most useful aspects of flexbox is the ability to center or distribute items within their container even as the dimensions of the item or container change. [CSS-Tricks offers a complete guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+
+**rem units**
+"rem" stands for "root em" which means that any properties using rem units will draw from the font-size of the root element: `html`. Regular ems differ in that their size is relative to their parent element. The rem unit can be used on any property that defines a size (width, height, font-size, etc) and is useful in creating responsive websites that need to scale. [Link](https://developer.mozilla.org/en/docs/Web/CSS/font-size#Rems).
+
+**vh and vw units**
+The "vh" and "vw" units stand for "vertical-height" and "vertical-width", respectively. These are helpful in defining width and height properties for elements that should scale with the browser window. 1vh or 1vw is equal to 1% of the browser height or browser width. An example of this property in use on the Worldstrides site is in the variable `$size_container_padding: 5vw;`. This variable defines the padding around `.ws-container` elements which means they should be 5% of the browser width.
+
 
 #### JavaScript
 
 Currently, all scripts in the vendor and src folders are compiled into one minified JavaScript file. At some point
 this could be re-engineered to only concatenate some of the files, and enqueue others solely as needed.
+
+**Modernizr** is a script that puts css classes on the html element signifying whether certain features are available in the users browser. We use these classes to provide fallbacks and progressive enhancement in the CSS. Modernizr can also be used in javascript with the `Modernizr` object. Refer to the [Modernizr site](https://modernizr.com/) for more info.
+
+**MixItUp** is a jquery plugin that gives sorting and filtering capabilities to collections of elements. We use it primarily on the Heritage Festivals Collection to filter itineraries by date range. See the [MixItUp site](https://mixitup.kunkalabs.com/) for more info.
+
+### Explore Tool
+
+The Explore tool is built with [AngularJs](https://docs.angularjs.org/guide), a client-side application framework. The template for the explore page is still a .php file located in the `/templates/` directory but Angular provides the filter, itinerary, and collection results for the page. You'll see around line 43 a `<div ng-view></div>` element which indicates this is where Angular takes over.
+
+The angular controllers and views that populate the Explore page are found within the `/explore/` directory in the root of theme. `explore.js` contains all the controllers, directives, and services as well as the app configuration. `views/results.html` containes the template for the results which gets populated by the controllers. Refer to the [Angular Guide](https://docs.angularjs.org/guide) for more information.
 
 ### CMB2
 
