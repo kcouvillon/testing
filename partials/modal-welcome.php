@@ -30,26 +30,29 @@
 
   <script type="text/javascript">
   	jQuery(document).ready(function() {
-      <?php if ( $debug ) : ?>
-        console.log('DEBUG: Before drop/increment ws_hi');
-        wsData.debugCookie('ws_hi');
-        // wsData.debugCookie('ws_sessiond_hi');
-      <?php endif; ?>
+      //Check if cookie exists
+      if (!wsData.checkCookie('ws_hi')){
+        <?php if ( $debug ) : ?>
+          console.log('DEBUG: Before drop/increment ws_hi');
+          wsData.debugCookie('ws_hi');
+          // wsData.debugCookie('ws_sessiond_hi');
+        <?php endif; ?>
 
-      wsData.incrementCookie('ws_hi');
-      // wsData.sessionCookie('ws_sessiond_hi');
+        wsData.incrementCookie('ws_hi');
+        // wsData.sessionCookie('ws_sessiond_hi');
 
-      <?php if ( $debug ) : ?>
-        console.log('DEBUG: After drop/increment ws_hi');
-        wsData.debugCookie('ws_hi');
-        // wsData.debugCookie('ws_sessiond_hi');
-      <?php endif; ?>
+        <?php if ( $debug ) : ?>
+          console.log('DEBUG: After drop/increment ws_hi');
+          wsData.debugCookie('ws_hi');
+          // wsData.debugCookie('ws_sessiond_hi');
+        <?php endif; ?>
 
-  		jQuery('#welcome-modal').modal('toggle');
-  		jQuery('#tellMeLink').click(function(){
-  			var tellMeSpinner = new Spinner(wsData.spinnerParams);
-  			jQuery('#tellMeSpinnerSpan').after(tellMeSpinner.spin().el);
-  		});
+    		jQuery('#welcome-modal').modal('toggle');
+    		jQuery('#tellMeLink').click(function(){
+    			var tellMeSpinner = new Spinner(wsData.spinnerParams);
+    			jQuery('#tellMeSpinnerSpan').after(tellMeSpinner.spin().el);
+    		});
+      }
   	});
   </script>
 
