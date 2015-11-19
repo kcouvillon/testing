@@ -19,7 +19,7 @@
         </div>
         <div class="modal-footer">
         	<span id="tellMeSpinnerSpan">   </span>
-          <a id="tellMeLink" href="/2015/10/worldstrides-newly-redesigned-website/" role="button" class="btn btn-primary"><?php _e( 'Learn More', 'worldstrides' ); ?></a>
+          <a id="tellMeLink" href="/2015/11/worldstrides-newly-redesigned-website/" role="button" class="btn btn-primary"><?php _e( 'Learn More', 'worldstrides' ); ?></a>
           <button type="button" class="btn btn-default" data-dismiss="modal"><?php _e( 'Thanks', 'worldstrides' ); ?></button>
         </div>
       </div><!-- /.modal-content -->
