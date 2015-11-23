@@ -89,6 +89,20 @@ class WS_Form {
 		}
 		return $product_line_maximizer;
 	}
+
+	/**
+	 * Determine data from GET params (URL)
+	 * Example, wsmedium, wsdesc ...
+	 * See: https://worldstridesdev.org/blog/worldstrides-landing-page-referral-api/
+	 */
+	public static function presubmit_get_wsparams($param) {
+		$paramval = '';
+		if( !empty($_GET[$param]) ) {
+			$paramval = $_GET[$param];
+		}		
+		return $paramval;
+	}
+
 	/**
 	 * Determine the wsProduct from a combination of page and user-posted data
 	 * See LEAD ROUTING LOGIC DIAGRAM:

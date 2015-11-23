@@ -195,6 +195,10 @@
 		<input id="get-info-companyPhone" type="hidden" name="mkto_companyPhone" value="" >
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
+
+		<input id="get-info-wsmedium" type="hidden" name="mkto_wsmedium" value="<?php echo WS_Form::presubmit_get_wsparams('wsmedium'); ?>" >
+		<input id="get-info-wsdesc" type="hidden" name="mkto_wsdesc" value="<?php echo WS_Form::presubmit_get_wsparams('wsdesc'); ?>" >
+
 		<?php 
 			$current_page_url = WS_Form::current_page_url();
 			global $post;
@@ -204,8 +208,6 @@
 
 			if( "request-info" === $post->post_name && !empty($_POST["role"]) ) {
 				$current_post_role = $_POST["role"];
-				echo "<script>console.log('DEBUGGING: POST role is $current_post_role')</script>";
-				echo "<script>wsData.passedInRole = '$current_post_role';</script>";
 			}
 		 ?>
 		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo $current_page_url; ?>" >
