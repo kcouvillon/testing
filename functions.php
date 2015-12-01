@@ -471,3 +471,11 @@ function ws_add_modal_welcome() {
 if ( strtotime('30 November 2015') > strtotime('now') ) {
 	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 ); 
 }
+
+/**
+ * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin
+ */
+add_filter( 'srm_max_redirects', 'dbx_srm_max_redirects' );
+function dbx_srm_max_redirects() {
+    return 300;
+}
