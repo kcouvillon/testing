@@ -75,7 +75,7 @@
 			</li>
 
 			<li id="get-info-tour-scheduled" name="mkto_areyouCurrentlyScheduledforaWorldStridestrip" 
-											 class="field non ele mse hse une" 
+											 class="field non stu par ele mse hse une" 
 											 title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
 				 &nbsp;<wbr>
