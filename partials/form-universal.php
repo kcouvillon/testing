@@ -145,7 +145,7 @@
 					<select id="get-info-question" name="mkto_iwanttoMarketingActivity" class="stu par" title="Question for WorldStrides...?">
 						<option value="" class="stu par">Question for WorldStrides...?</option>
 						<option value="I have a question about an upcoming trip." class="stu par">I have a question about an upcoming trip.</option>
-						<option value="I have questions about how your trips work." class="stu par">I have questions about how your trips work.</option>
+						<option value="I am interested in taking a trip with WorldStrides." class="stu par">I am interested in taking a trip with WorldStrides.</option>
 						<option value="I need to register for a trip." class="stu par">I need to register for a trip.</option>
 						<option value="I need to make a payment." class="stu par">I need to make a payment.</option>
 						<!-- option value="I want to refer a teacher to lead a trip." class="stu par">I want to refer a teacher to lead a trip.</option -->
