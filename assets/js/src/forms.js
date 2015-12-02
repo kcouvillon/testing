@@ -524,7 +524,7 @@
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
 				mkto_leadFormProduct: "&nbsp; Please tell us what kind of travel interests you.",
-				mkto_areyouCurrentlyScheduledforaWorldStridestrip: "&nbsp; Please tell us if you already have a trip."
+				mkto_areyouCurrentlyScheduledforaWorldStridestrip: "&nbsp; Please tell us if you already have a trip.",
 				mkto_USorAbroadDestination: "&nbsp; Please tell us: U.S. or outside the U.S.?",
 				mkto_FirstName: "Please provide your First Name.",
 				mkto_LastName: "Please provide your Last Name.",
