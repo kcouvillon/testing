@@ -95,8 +95,8 @@ class WS_Form {
 	 * Example, wsmedium, wsdesc ...
 	 * See: https://worldstridesdev.org/blog/worldstrides-landing-page-referral-api/
 	 */
-	public static function presubmit_get_wsparams($param) {
-		$paramval = '';
+	public static function presubmit_get_wsparams($param,$default='') {
+		$paramval = $default;
 		if( !empty($_GET[$param]) ) {
 			$paramval = $_GET[$param];
 		}		
