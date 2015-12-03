@@ -84,6 +84,7 @@
 				&nbsp;
 				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
+				<label for="mkto_TourScheduled" class="error" style="display:none;"></label>
 			</li>
 
 			<?php get_template_part('partials/form','filters'); // Add hidden information
@@ -202,14 +203,18 @@
 		<?php 
 			$current_page_url = WS_Form::current_page_url();
 			global $post;
-			if( "request-info" === $post->post_name && !empty($_POST["wsurl"]) ) {
-				$current_page_url = $_POST["wsurl"];
+			if( false !== strpos($current_page_url,'request-info') && !empty($_POST["wsurl"]) ) {
+				$current_page_url = $_POST["wsurl"] . '#via/request-info/';
 			}
 
-			if( "request-info" === $post->post_name && !empty($_POST["role"]) ) {
+			if( false !== strpos($current_page_url,'request-info') && !empty($_POST["role"]) ) {
 				$current_post_role = $_POST["role"];
 			}
 		 ?>
+		<script>
+		  'use strict';
+		  wsData.passedInRole = '<?php echo isset($current_post_role) ? $current_post_role : 'undefined'; ?>';
+		</script>
 		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo $current_page_url; ?>" >
 
 		<input id="get-info-submit" type="submit" name="ButtonAction" value="Send Info" class="btn btn-primary non stu par ele mse hse une" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
