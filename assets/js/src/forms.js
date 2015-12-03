@@ -495,18 +495,12 @@
 	wsData.validateAndSubmitForm = function() {
 		jQuery('#get-info-form').validate({
 			submitHandler: function(form) {
-				// wsData.waitLogo = new Image();
-				// wsData.waitLogo.src = '/wp-content/themes/worldstrides/assets/images/WSC_logoVert-460x460.jpg';
-				// wsData.waitLogo.style.position = "relative";
-				// wsData.waitLogo.style.left = '-50%';
-				// wsData.waitLogo.style.borderRadius = '50%';
 				wsData.formSpinner = new Spinner(wsData.spinnerParams);
 				wsData.formSpinner.opts.lines = 30;
 				wsData.formSpinner.opts.radius = 150;
 				wsData.formSpinner.opts.length = 60;
 				wsData.formSpinner.opts.width = 10;
 				wsData.formSpinner.opts.top = '14em';
-				// jQuery('#getinfoform-logo-div').append(wsData.waitLogo);
 				jQuery('#getinfoform-spinner-span').after(wsData.formSpinner.spin().el);
 				wsData.ajaxFormSubmit(jQuery(form));
 				if(event.preventDefault) { event.preventDefault(); }
@@ -516,6 +510,7 @@
 			rules: {
 				mkto_Title: "required",
 				mkto_leadFormProduct: "required",
+				mkto_areyouCurrentlyScheduledforaWorldStridestrip: "required",
 				mkto_FirstName: "required",
 				mkto_USorAbroadDestination: "required",
 				mkto_LastName: "required",
@@ -529,6 +524,7 @@
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
 				mkto_leadFormProduct: "&nbsp; Please tell us what kind of travel interests you.",
+				mkto_areyouCurrentlyScheduledforaWorldStridestrip: "&nbsp; Please tell us if you already have a trip.",
 				mkto_USorAbroadDestination: "&nbsp; Please tell us: U.S. or outside the U.S.?",
 				mkto_FirstName: "Please provide your First Name.",
 				mkto_LastName: "Please provide your Last Name.",
