@@ -763,6 +763,7 @@
 				wsData.formSpinner.opts.width = 10;
 				wsData.formSpinner.opts.top = '14em';
 				jQuery('#getinfoform-spinner-span').after(wsData.formSpinner.spin().el);
+				jQuery('#invalid-message').hide();
 				wsData.ajaxFormSubmit(jQuery(form));
 				if(event.preventDefault) { event.preventDefault(); }
 				event.returnValue = false; // IE9
