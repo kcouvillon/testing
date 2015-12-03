@@ -23,14 +23,20 @@ get_header(); ?>
 
 		<section class="register-payment-section ws-container">
 			<div class="section-content">
-
-				<?php the_content(); ?>
-
-				<form 
-				id="register-form"
+				<?php the_content();
+					$register_id_url = defined( 'WORLDSTRIDES_ID_REG_URL' ) ? WORLDSTRIDES_ID_REG_URL : '';
+					$register_noid_url = defined( 'WORLDSTRIDES_NOID_REG_URL' ) ? WORLDSTRIDES_NOID_REG_URL : '';
+				?>
+				<!-- 
 				action="https://olr.worldstrides.net/scripts/cgiip.exe/registeronline/default.htm"
 				data-have-id-action="https://olr.worldstrides.net/scripts/cgiip.exe/registeronline/default.htm"
 				data-no-id-action="http://www.educationaltravel.com/Login/tabid/78/type/enroll/Default?returnurl=/default.aspx"
+				-->
+				<form 
+				id="register-form"
+				action="<?php echo($register_id_url); ?>"
+				data-have-id-action="<?php echo($register_id_url); ?>"
+				data-no-id-action="<?php echo($register_noid_url); ?>"
 				method="post" 
 				class="ws-form">
 					
