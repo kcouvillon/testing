@@ -136,7 +136,7 @@
 		/**
 		 * Preload the role based on a post variable, if available
 		 */
-		if( undefined !== wsData.passedInRole ){
+		if( undefined !== wsData.passedInRole && 'undefined' !== wsData.passedInRole ){
 			if( jQuery('select#get-info-Title option:contains("' + wsData.passedInRole + '")').length > 0 ){
 				console.log('DEBBUGGING: wsData.passedInRole = ' + wsData.passedInRole);
 				wsData.passedInRole = wsData.passedInRole.replace(/\s/g,'&nbsp;');
