@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-12-02
+/*! WorldStrides - v0.1.0 - 2015-12-03
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -771,7 +771,7 @@
 			rules: {
 				mkto_Title: "required",
 				mkto_leadFormProduct: "required",
-				mkto_areyouCurrentlyScheduledforaWorldStridestrip: "required",
+				mkto_TourScheduled: "required",
 				mkto_FirstName: "required",
 				mkto_USorAbroadDestination: "required",
 				mkto_LastName: "required",
@@ -785,7 +785,7 @@
 			messages: {
 				mkto_Title: "&nbsp; (important!)",
 				mkto_leadFormProduct: "&nbsp; Please tell us what kind of travel interests you.",
-				mkto_areyouCurrentlyScheduledforaWorldStridestrip: "&nbsp; Please tell us if you already have a trip.",
+				mkto_TourScheduled: "&nbsp; Please tell us if you already have a trip.",
 				mkto_USorAbroadDestination: "&nbsp; Please tell us: U.S. or outside the U.S.?",
 				mkto_FirstName: "Please provide your First Name.",
 				mkto_LastName: "Please provide your Last Name.",
