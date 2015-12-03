@@ -84,6 +84,7 @@
 				&nbsp;
 				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
 				<label for="tour-no">No</label>
+				<label for="mkto_TourScheduled" class="error" style="display:none;"></label>
 			</li>
 
 			<?php get_template_part('partials/form','filters'); // Add hidden information
