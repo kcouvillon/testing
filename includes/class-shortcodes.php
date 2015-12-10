@@ -41,6 +41,7 @@ class WS_Shortcodes {
 		add_shortcode( 'formstack', array( $this, 'formstack' ) );
 		add_shortcode( 'columns', array( $this, 'columns' ) );
 		add_shortcode( 'column', array( $this, 'column' ) );
+		add_shortcode( 'powerreviews', array( $this, 'powerreviews' ) );
 	}
 
 	/**
@@ -204,6 +205,71 @@ class WS_Shortcodes {
 
 		return $html;
 	}
+
+
+	/**
+	 * Creates a powerreviews shortcode
+	 *
+	 * @return html content for a powerreviews
+	 *
+	 * @todo REFACTOR - JS include should be elsewhere!
+	 */
+	public static function powerreviews( $atts, $content = "" ) {
+		$atts = shortcode_atts( array(
+			'pr_page_id' => ''
+		), $atts, 'powerreviews' );
+
+		if('' === $atts['pr_page_id'] ) {
+			return '';
+		}
+
+		ob_start(); ?>
+			
+			<div class="powerreviews">
+				<?php echo $content; ?>
+				<script type="text/javascript" src="https://wsreviews:reviewsINprogress@reviews.worldstrides.com/pwr/engine/js/full.js">
+				</script>
+				<script type="text/javascript">
+					'use strict';
+					var pr_locale="en_US";
+					var pr_page_id= <?php echo '"' . $atts['pr_page_id'] . '"'; ?> ;
+					var pr_write_review='https://reviews.worldstrides.com/write_a_review.html?pr_page_id=' + pr_page_id;
+					var pr_zip_location="https://wsreviews:reviewsINprogress@reviews.worldstrides.com/";
+					// var pr_ask_question = pr_write_review + pr_page_id + "&appName=askQuestion";
+					// var pr_answer_question = pr_write_review + pr_page_id + "&appName=answerQuestion&questionId=@@@QUESTION_ID@@@";
+				</script>
+				<div class="pr_snippet_product">
+					<script type="text/javascript">
+						'use strict';
+						POWERREVIEWS.display.snippet(document);
+					</script>
+				</div>
+				<div id="pr_review_summary" class="pr_review_summary hidden"> 
+					<script type="text/javascript">
+						'use strict';
+						POWERREVIEWS.display.engine(document);
+
+						// document.getElementById("pr_review_summary").addEventListener("click", function() {
+						// document.getElementById("pr-snippet-read-link-washington__dc__programs").addEventListener("click", function() {
+						//	document.getElementById("pr_review_summary").className = "pr_review_summary";
+						// });
+
+						document.querySelector('body').addEventListener('click', function(event) {
+						  if (event.target.className === 'pr-snippet-link') {
+						    document.getElementById("pr_review_summary").className = "pr_review_summary"; // remove hidden class
+						  }
+						});
+					</script> 
+				</div>
+			</div>
+
+		<?php
+		$html = ob_get_contents();
+		ob_get_clean();
+
+		return $html;
+	}
+
 }
 
 WS_Shortcodes::instance();
