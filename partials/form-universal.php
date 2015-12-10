@@ -79,10 +79,10 @@
 											 title="I have a Tour Scheduled">
 				<label>I have a tour scheduled:</label>
 				 &nbsp;<wbr>
-				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="yes" title="Yes">
+				<input type="radio" name="mkto_TourScheduled" id="tour-yes" value="true" title="Yes">
 				<label for="tour-yes">Yes</label>
 				&nbsp;
-				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="no" title="No">
+				<input type="radio" name="mkto_TourScheduled" id="tour-no" value="false" title="No">
 				<label for="tour-no">No</label>
 				<label for="mkto_TourScheduled" class="error" style="display:none;"></label>
 			</li>
