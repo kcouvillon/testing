@@ -76,6 +76,21 @@ class WS_Metaboxes_Collections {
 		) );
 
 		$cmb->add_field( array(
+			'name'             => 'Collection Priority',
+			'id'               => 'post_priority',
+			'type'             => 'text',
+			'default'          => '50',
+			'desc' => '1 = highest priority. 100 = lowest. Default 50.',
+			'type' => 'text',
+			'attributes' => array(
+				'type' => 'number',
+				'min' => '1',
+				'max' => '100',
+				'step' => '1',
+			),
+		) );
+
+		$cmb->add_field( array(
 			'name'             => 'Discover Why module',
 			'id'               => 'discover_why',
 			'type'             => 'select',

@@ -105,7 +105,7 @@
 							</a>
 						</li>
 
-						<li ng-repeat="child in interest.children" class="term">
+						<li ng-repeat="child in interest.children" class="child-term term">
 							<a filter-link="{{child.slug}},interests" class="filter term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
 						</li>
 						
@@ -118,7 +118,6 @@
 				<span class="arrow icon-arrow-up hide-sm"></span>
 			</li>
 			
-
 			<li class="filter-menu destination-menu">
 				<div class="destination-filters toggle hide-sm" ng-click="ctrl.toggleFilterMenu('.destination-menu-container')">
 					<a filter-link="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
@@ -154,7 +153,7 @@
 						</li>
 						<li>
 							<ul class="terms list-unstyled clearfix">
-								<li ng-repeat="child in destination.children" class="term">
+								<li ng-repeat="child in destination.children" class="child-term term">
 									<a filter-link="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
 								</li>
 							</ul>
@@ -187,7 +186,7 @@
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
+			<article ng-repeat="collection in ctrl.collections | orderBy : ['priority', 'title'] | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm collection-image" />
 				</a>
@@ -217,7 +216,7 @@
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="itinerary in ctrl.itineraries | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
+			<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
 				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 				</a>
