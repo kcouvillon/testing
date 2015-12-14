@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-12-10
+/*! WorldStrides - v0.1.0 - 2015-12-14
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -664,7 +664,16 @@
 						jQuery("#schoolError").show();
 
 					}}
-			});//end autocomplete})
+			}) //end autocomplete})
+			.blur(function() {
+				if( wsData.completingSchoolInfo && wsData.completingSchoolInfo === 'now' ) {
+					return;
+				}
+				wsData.completingSchoolInfo = 'now';
+				jQuery('.ui-menu-item').filter(':contains("'+ jQuery('#get-info-school').val() +'")').trigger('click');
+				jQuery('#get-info-comment').focus();
+				wsData.completingSchoolInfo = 'done';
+			});
 
 		}
 
