@@ -1,7 +1,6 @@
 <div class="explore-utility">
 	<div class="ws-container">
 		<span class="search-by">Select filters to narrow your search</span>
-		<span ng-hide="ctrl.isFeatured" class="results-count" ng-click="ctrl.smoothScroll('#explore-results')">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></span>
 		<span ng-show="ctrl.isFeatured" class="results-count" ng-click="ctrl.smoothScroll('#explore-results')">Featured Collections and Itineraries <i class="icon icon-arrow-down"></i></span>
 		<a class="clear-all" href="#/" ng-show="ctrl.activeFilters" >Clear filters</a>
 	</div>
@@ -175,6 +174,8 @@
 		</ul>
 
 	</div>
+
+	<span class="results-count visible" ng-hide="ctrl.loading" stick-to-bottom ng-click="ctrl.smoothScroll('#explore-results', -81)">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></span>
 
 </nav>
 

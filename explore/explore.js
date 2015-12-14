@@ -66,6 +66,26 @@ exploreApp.directive('sticky', function(){
 	};
 });
 
+exploreApp.directive('stickToBottom', function(){
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			var $window = jQuery(window),
+				$resultsCount = angular.element('.results-count'),
+				$results = jQuery('.explore-results');
+
+			$window.on('scroll', function(){
+				var scrollTop = $window.scrollTop();
+				if ( scrollTop >= $results.offset().top - 500 ) {
+					$resultsCount.removeClass('visible');
+				} else {
+					$resultsCount.addClass('visible');
+				}
+			});
+		}	
+	};
+});
+
 exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
@@ -285,8 +305,11 @@ ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	}
 };
 
-ExploreController.prototype.smoothScroll = function(target) {
+ExploreController.prototype.smoothScroll = function(target, offset) {
 	var top = jQuery(target).offset().top;
+	if ( offset ) {
+		top = top + offset;
+	}
 	jQuery('html, body').animate({scrollTop: top});
 }
 
