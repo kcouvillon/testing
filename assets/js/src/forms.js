@@ -403,7 +403,16 @@
 						jQuery("#schoolError").show();
 
 					}}
-			});//end autocomplete})
+			}) //end autocomplete})
+			.blur(function() {
+				if( wsData.completingSchoolInfo && wsData.completingSchoolInfo === 'now' ) {
+					return;
+				}
+				wsData.completingSchoolInfo = 'now';
+				jQuery('.ui-menu-item').filter(':contains("'+ jQuery('#get-info-school').val() +'")').trigger('click');
+				jQuery('#get-info-comment').focus();
+				wsData.completingSchoolInfo = 'done';
+			});
 
 		}
 

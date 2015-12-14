@@ -244,6 +244,7 @@ class WS_Shortcodes {
 						POWERREVIEWS.display.snippet(document);
 					</script>
 				</div>
+				<div id="pr_loading_wait" class="hidden">Please Wait for Reviews to Load...</div>
 				<div id="pr_review_summary" class="pr_review_summary hidden"> 
 					<script type="text/javascript">
 						'use strict';
@@ -256,7 +257,11 @@ class WS_Shortcodes {
 
 						document.querySelector('body').addEventListener('click', function(event) {
 						  if (event.target.className === 'pr-snippet-link') {
-						    document.getElementById("pr_review_summary").className = "pr_review_summary"; // remove hidden class
+						  	if( document.getElementById("pr-review-sort") ) {
+							    document.getElementById("pr_review_summary").className = "pr_review_summary"; // remove hidden class
+						  	} else{
+							    document.getElementById("pr_loading_wait").className = ""; // remove hidden class
+						  	}
 						  }
 						});
 					</script> 
