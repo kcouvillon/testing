@@ -367,7 +367,6 @@
 			}
 
 			li.parent-term a {
-				color: $blue;
 				.icon {
 					color: #FFF;
 				}
@@ -379,6 +378,10 @@
 		overflow: hidden;
 		height: 52px;
 		transition: height 300ms ease;
+		&.child-term a {
+			font-weight: 400;
+			color: tint($navy, 75%);
+		}
 		@media screen and (min-width: $screen-sm) {
 			height: auto;
 			overflow: visible;
@@ -410,7 +413,7 @@
 		width: 30%; }
 
 		.terms-list a {
-			padding: 1em 0 1em 55px;
+			padding: 1em 0 1em 45px;
 			.icon {
 				font-size: 2.1em;
 			    margin: -19px 0 0;
@@ -480,10 +483,9 @@
 		}
 
 		.destination-map {
-			color: #FFF;
+			color: white;
 			font-weight: 700;
 			text-align: center;
-			color: $blue;
 			@media screen and (min-width: $screen-lg) {
 				width: 50%;
 				float: left;
@@ -538,7 +540,6 @@
 
 	.collections,
 	.itineraries {
-		margin-bottom: 4em;
 		overflow: hidden;
 		&.no-results {
 			margin-bottom: 0;

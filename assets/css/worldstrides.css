@@ -9787,14 +9787,15 @@ article.open > header.entry-header > a {
       margin: 0 0 2em; }
       .filter-menu .terms-list.terms-list-child .term-list-toggle:hover {
         color: #FFF; }
-    .filter-menu .terms-list.terms-list-child li.parent-term a {
-      color: #4fa9e5; }
-      .filter-menu .terms-list.terms-list-child li.parent-term a .icon {
-        color: #FFF; }
+    .filter-menu .terms-list.terms-list-child li.parent-term a .icon {
+      color: #FFF; }
   .filter-menu .term {
     overflow: hidden;
     height: 52px;
     transition: height 300ms ease; }
+    .filter-menu .term.child-term a {
+      font-weight: 400;
+      color: #ccced4; }
     @media screen and (min-width: 768px) {
       .filter-menu .term {
         height: auto;
@@ -9820,7 +9821,7 @@ article.open > header.entry-header > a {
     .filter-menu.interests-menu {
       width: 30%; } }
   .filter-menu.interests-menu .terms-list a {
-    padding: 1em 0 1em 55px; }
+    padding: 1em 0 1em 45px; }
     .filter-menu.interests-menu .terms-list a .icon {
       font-size: 2.1em;
       margin: -19px 0 0;
@@ -9868,10 +9869,9 @@ article.open > header.entry-header > a {
         width: 50%;
         float: left; } }
   .filter-menu.destination-menu .destination-map {
-    color: #FFF;
+    color: white;
     font-weight: 700;
-    text-align: center;
-    color: #4fa9e5; }
+    text-align: center; }
     @media screen and (min-width: 1200px) {
       .filter-menu.destination-menu .destination-map {
         width: 50%;
@@ -9912,7 +9912,6 @@ article.open > header.entry-header > a {
 
 .explore-results .collections,
 .explore-results .itineraries {
-  margin-bottom: 4em;
   overflow: hidden; }
   .explore-results .collections.no-results,
   .explore-results .itineraries.no-results {
