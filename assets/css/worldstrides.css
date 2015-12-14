@@ -9624,15 +9624,11 @@ article.open > header.entry-header > a {
  * ------------------------------------------------------------- */
 .explore-filters {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   background: #323c53;
   color: #777d8d;
   font-size: 16px;
-  min-height: 170px;
-  /* Filters (mobile and desktop)
-	 * ------------------------------------------------------------- */
-  /* Desktop Current Filters
-	 * ------------------------------------------------------------- */ }
+  min-height: 170px; }
   .explore-filters .loader {
     position: absolute;
     top: 50%;
@@ -9659,67 +9655,106 @@ article.open > header.entry-header > a {
     margin: 0;
     height: auto;
     overflow: hidden; }
-  .explore-filters .traveler-filters,
-  .explore-filters .interests-filters,
-  .explore-filters .destination-filters {
-    padding: 1em 0;
-    position: relative;
-    z-index: 1; }
-    .explore-filters .traveler-filters:before,
-    .explore-filters .interests-filters:before,
-    .explore-filters .destination-filters:before {
+
+/* Filters (mobile and desktop)
+ * ------------------------------------------------------------- */
+.traveler-filters,
+.interests-filters,
+.destination-filters {
+  padding: 1em 0;
+  position: relative;
+  z-index: 1; }
+  .traveler-filters:before,
+  .interests-filters:before,
+  .destination-filters:before {
+    display: block;
+    color: white; }
+    @media (min-width: 768px) {
+      .traveler-filters:before,
+      .interests-filters:before,
+      .destination-filters:before {
+        color: #777d8d; } }
+
+.interests-filters:before {
+  content: "Interests"; }
+
+@media screen and (min-width: 768px) {
+  .current-filters .interests-filters {
+    width: 44%;
+    float: left;
+    padding-right: 1%;
+    padding-left: 1%; } }
+
+@media screen and (min-width: 960px) {
+  .current-filters .interests-filters {
+    width: 39%; } }
+
+@media screen and (min-width: 1200px) {
+  .current-filters .interests-filters {
+    width: 30%; } }
+
+.traveler-filters:before {
+  content: "Traveler"; }
+
+@media screen and (min-width: 768px) {
+  .current-filters .traveler-filters {
+    width: 26%;
+    float: left;
+    padding-right: 1%; } }
+
+@media screen and (min-width: 1200px) {
+  .current-filters .traveler-filters {
+    width: 20%; } }
+
+.destination-filters:before {
+  content: "Destination"; }
+
+@media screen and (min-width: 768px) {
+  .current-filters .destination-filters {
+    width: 30%;
+    float: left;
+    padding-left: 1%; } }
+
+@media screen and (min-width: 960px) {
+  .current-filters .destination-filters {
+    width: 35%; } }
+
+@media screen and (min-width: 1200px) {
+  .current-filters .destination-filters {
+    width: 50%; } }
+
+/* Desktop Current Filters
+ * ------------------------------------------------------------- */
+.current-filters {
+  display: none;
+  margin: 0; }
+  @media screen and (min-width: 768px) {
+    .current-filters {
       display: block;
-      color: white; }
-      @media (min-width: 768px) {
-        .explore-filters .traveler-filters:before,
-        .explore-filters .interests-filters:before,
-        .explore-filters .destination-filters:before {
-          color: #777d8d; } }
-  .explore-filters .interests-filters:before {
-    content: "Interests"; }
-  .explore-filters .traveler-filters:before {
-    content: "Traveler"; }
-  .explore-filters .destination-filters:before {
-    content: "Destination"; }
-  .explore-filters ul.current-filters {
-    display: none;
-    margin: 0; }
-    @media screen and (min-width: 768px) {
-      .explore-filters ul.current-filters {
-        display: block; } }
-    .explore-filters ul.current-filters li {
-      padding: 1em 0; }
-    @media screen and (min-width: 768px) {
-      .explore-filters ul.current-filters .traveler-filters {
-        width: 26%;
-        float: left;
-        padding-right: 1%; } }
-    @media screen and (min-width: 1200px) {
-      .explore-filters ul.current-filters .traveler-filters {
-        width: 20%; } }
-    @media screen and (min-width: 768px) {
-      .explore-filters ul.current-filters .interests-filters {
-        width: 44%;
-        float: left;
-        padding-right: 1%;
-        padding-left: 1%; } }
-    @media screen and (min-width: 960px) {
-      .explore-filters ul.current-filters .interests-filters {
-        width: 39%; } }
-    @media screen and (min-width: 1200px) {
-      .explore-filters ul.current-filters .interests-filters {
-        width: 30%; } }
-    @media screen and (min-width: 768px) {
-      .explore-filters ul.current-filters .destination-filters {
-        width: 30%;
-        float: left;
-        padding-left: 1%; } }
-    @media screen and (min-width: 960px) {
-      .explore-filters ul.current-filters .destination-filters {
-        width: 35%; } }
-    @media screen and (min-width: 1200px) {
-      .explore-filters ul.current-filters .destination-filters {
-        width: 50%; } }
+      min-height: 81px; } }
+  .current-filters li {
+    padding: 1em 0; }
+
+.current-filters-bar {
+  position: relative;
+  width: 100%;
+  background: #323c53;
+  border-bottom: 1px solid #323c53; }
+  .fixed .current-filters-bar {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-bottom-color: #424c61; }
+
+.select-filter-link {
+  display: none;
+  font-weight: 700;
+  cursor: pointer; }
+  .select-filter-link:hover {
+    color: white; }
+  .fixed .select-filter-link {
+    display: inline; }
 
 /* Filter Menu
  * ------------------------------------------------------------- */

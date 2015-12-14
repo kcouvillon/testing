@@ -46,6 +46,26 @@ exploreApp.directive('filterLink', ['$location', function($location) {
 	};
 }]);
 
+exploreApp.directive('sticky', function(){
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			var $window = jQuery(window),
+				$currentFilters = angular.element('.current-filters'),
+				currentFiltersTop = $currentFilters.offset().top;		
+
+			$window.on('scroll', function(){
+				var scrollTop = $window.scrollTop();
+				if ( scrollTop >= currentFiltersTop ) {
+					$currentFilters.addClass('fixed');
+				} else {
+					$currentFilters.removeClass('fixed');
+				}
+			});
+		}	
+	};
+});
+
 exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;

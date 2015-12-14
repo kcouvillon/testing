@@ -9,32 +9,39 @@
 
 <!-- Filters ##################################################### -->
 
-<nav class="explore-filters">
+<nav id="explore-filters" class="explore-filters">
 
 	<img src="{{ctrl.WS.theme}}/assets/images/ripple.svg" ng-show="ctrl.loading" class="loader" />
 
-	<div class="ws-container" ng-class="{ loading: ctrl.loading }" ng-show="ctrl.terms.loaded">
+	<div class="current-filters" sticky>
+		<div class="current-filters-bar clearfix">
+			<div class="ws-container">
+				<div class="traveler-filters">
+					<a filter-link="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.activeFilters.travelers">
+						<span ng-bind-html="traveler.name"></span>
+						<i class="icon icon-small-close remove-filter"></i>
+					</a>
+					<span class="select-filter-link" ng-hide="ctrl.activeFilters.travelers.length" ng-click="ctrl.smoothScroll('#explore-filters')">Select</span>
+				</div>
+				<div class="interests-filters">
+					<a filter-link="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.activeFilters.interests">
+						<span ng-bind-html="interest.name"></span>
+						<i class="icon icon-small-close remove-filter"></i>
+					</a>
+					<span class="select-filter-link" ng-hide="ctrl.activeFilters.interests.length" ng-click="ctrl.smoothScroll('#explore-filters')">Select</span>
+				</div>
+				<div class="destination-filters">
+					<a filter-link="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
+						<span ng-bind-html="destination.name"></span>
+						<i class="icon icon-small-close remove-filter"></i>
+					</a>
+					<span class="select-filter-link" ng-hide="ctrl.activeFilters.destinations.length" ng-click="ctrl.smoothScroll('#explore-filters')">Select</span>
+				</div>
+			</div>
+		</div>
+	</div>
 
-		<ul class="current-filters list-unstyled clearfix">
-			<li class="traveler-filters">
-				<a filter-link="{{traveler.slug}},travelers,subtract" class="active-filter" ng-repeat="traveler in ctrl.activeFilters.travelers">
-					<span ng-bind-html="traveler.name"></span>
-					<i class="icon icon-small-close remove-filter"></i>
-				</a>
-			</li>
-			<li class="interests-filters">
-				<a filter-link="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.activeFilters.interests">
-					<span ng-bind-html="interest.name"></span>
-					<i class="icon icon-small-close remove-filter"></i>
-				</a>
-			</li>
-			<li class="destination-filters">
-				<a filter-link="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
-					<span ng-bind-html="destination.name"></span>
-					<i class="icon icon-small-close remove-filter"></i>
-				</a>
-			</li>
-		</ul>
+	<div class="ws-container" ng-class="{ loading: ctrl.loading }" ng-show="ctrl.terms.loaded">
 		
 		<ul class="filter-menus open list-unstyled clearfix">
 
