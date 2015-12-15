@@ -139,6 +139,24 @@ function ws_scripts_styles() {
 		);
 	}
 
+	// Custom code to hide the word Protected from protected posts
+	if ( is_singular( 'custom-page') ) {
+		function the_title_trim($title) {
+			$title = esc_attr($title);
+			$findthese = array(
+				'#Protected:#',
+				'#Private:#'
+			);
+			$replacewith = array(
+				'', // What to replace "Protected:" with
+				'' // What to replace "Private:" with
+			);
+			$title = preg_replace($findthese, $replacewith, $title);
+			return $title;
+		}
+		add_filter('the_title', 'the_title_trim');		
+	}
+
 	wp_enqueue_script( 'jquery-ui-autocomplete' ); // used on form submissions, available on all pages
 	
 	if ( !is_page( 'ie-fallback' ) ) {
