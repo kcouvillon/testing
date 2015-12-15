@@ -9843,8 +9843,11 @@ article.open > header.entry-header > a {
       margin: 0 0 2em; }
       .filter-menu .terms-list.terms-list-child .term-list-toggle:hover {
         color: #FFF; }
-    .filter-menu .terms-list.terms-list-child li.parent-term a .icon {
-      color: #FFF; }
+    .filter-menu .terms-list.terms-list-child li.parent-term a {
+      cursor: default;
+      color: white; }
+      .filter-menu .terms-list.terms-list-child li.parent-term a .icon {
+        color: white; }
   .filter-menu .term {
     overflow: hidden;
     height: 52px;

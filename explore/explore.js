@@ -28,7 +28,7 @@ exploreApp.directive('filterLink', ['$location', function($location) {
 			// Only check available filters when NOT on the featured page
 			if ( $location.$$path !== '/featured' ){
 				scope.$watch('ctrl.availableFilters', function(newValue, oldValue){
-					if ( newValue && newValue.indexOf( hrefData[0] ) == -1 ) {
+					if ( newValue && newValue.indexOf( hrefData[0] ) == -1 && !element.hasClass('active-filter') ) {
 						element
 							.attr('href', '')
 							.addClass('disabled');

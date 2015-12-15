@@ -429,8 +429,10 @@
 			}
 
 			li.parent-term a {
+				cursor: default;
+				color: white;
 				.icon {
-					color: #FFF;
+					color: white;
 				}
 			}
 		}
