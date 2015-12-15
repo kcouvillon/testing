@@ -9668,6 +9668,19 @@ article.open > header.entry-header > a {
       .destination-filters:before {
         color: #777d8d; } }
 
+.traveler-filters:before {
+  content: "Travelers"; }
+
+@media screen and (min-width: 768px) {
+  .current-filters .traveler-filters {
+    width: 26%;
+    float: left;
+    padding-right: 1%; } }
+
+@media screen and (min-width: 1200px) {
+  .current-filters .traveler-filters {
+    width: 20%; } }
+
 .interests-filters:before {
   content: "Interests"; }
 
@@ -9686,21 +9699,8 @@ article.open > header.entry-header > a {
   .current-filters .interests-filters {
     width: 30%; } }
 
-.traveler-filters:before {
-  content: "Traveler"; }
-
-@media screen and (min-width: 768px) {
-  .current-filters .traveler-filters {
-    width: 26%;
-    float: left;
-    padding-right: 1%; } }
-
-@media screen and (min-width: 1200px) {
-  .current-filters .traveler-filters {
-    width: 20%; } }
-
 .destination-filters:before {
-  content: "Destination"; }
+  content: "Destinations"; }
 
 @media screen and (min-width: 768px) {
   .current-filters .destination-filters {
@@ -9741,13 +9741,10 @@ article.open > header.entry-header > a {
     border-bottom-color: #424c61; }
 
 .select-filter-link {
-  display: none;
   font-weight: 700;
   cursor: pointer; }
   .select-filter-link:hover {
     color: white; }
-  .fixed .select-filter-link {
-    display: inline; }
 
 /* Filter Menu
  * ------------------------------------------------------------- */

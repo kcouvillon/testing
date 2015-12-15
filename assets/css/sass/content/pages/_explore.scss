@@ -208,6 +208,19 @@
 		}
 	}
 }
+.traveler-filters {
+	&:before {
+		content: "Travelers";
+	}
+	.current-filters & {
+		@media screen and (min-width: $screen-sm) {
+		width: 26%;
+		float: left;
+		padding-right: 1%; }
+		@media screen and (min-width: $screen-lg) {
+		width: 20%; }
+	}
+}
 .interests-filters {
 	&:before {
 		content: "Interests";
@@ -224,22 +237,9 @@
 		width: 30%; }
 	}
 }
-.traveler-filters {
-	&:before {
-		content: "Traveler";
-	}
-	.current-filters & {
-		@media screen and (min-width: $screen-sm) {
-		width: 26%;
-		float: left;
-		padding-right: 1%; }
-		@media screen and (min-width: $screen-lg) {
-		width: 20%; }
-	}
-}
 .destination-filters {
 	&:before {
-		content: "Destination";
+		content: "Destinations";
 	}
 	.current-filters & {
 		@media screen and (min-width: $screen-sm) {
@@ -283,14 +283,14 @@
 }
 
 .select-filter-link {
-	display: none;
+	// display: none;
 	font-weight: 700;
 	cursor: pointer;
 	&:hover {
 		color: white;
 	}
 	.fixed & {
-		display: inline;
+		// display: inline;
 	}
 }
 
