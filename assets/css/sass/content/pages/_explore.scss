@@ -306,7 +306,7 @@
 	width: 100%;
 	background: $navy;
 	border-bottom: 1px solid $navy;
-	.fixed & {
+	&.fixed {
 		position: fixed;
 		z-index: 1;
 		top: 0;

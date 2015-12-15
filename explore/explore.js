@@ -51,14 +51,15 @@ exploreApp.directive('sticky', function(){
 		link: function(scope, element, attrs) {
 			var $window = jQuery(window),
 				$currentFilters = angular.element('.current-filters'),
+				$currentFiltersBar = angular.element('.current-filters-bar'),
 				currentFiltersTop = $currentFilters.offset().top;		
 
 			$window.on('scroll', function(){
 				var scrollTop = $window.scrollTop();
 				if ( scrollTop >= currentFiltersTop ) {
-					$currentFilters.addClass('fixed');
+					$currentFiltersBar.addClass('fixed');
 				} else {
-					$currentFilters.removeClass('fixed');
+					$currentFiltersBar.removeClass('fixed');
 				}
 			});
 		}	
@@ -93,9 +94,15 @@ exploreApp.directive('filterMenusToggle', function(){
 		link: function(scope, element, attrs) {
 			element.click(function(e){
 				e.preventDefault();
-				var target = attrs.href;
-				angular.element(target).toggleClass('active').slideToggle();
-				element.toggleClass('target-active');
+				if ( element.parent().hasClass('fixed') ) {
+					var top = angular.element('#explore-filters').offset().top;
+					angular.element('#filter-menus-container').addClass('active').slideDown();
+					element.addClass('target-active');
+					angular.element('html, body').animate({scrollTop: top});
+				} else {
+					angular.element('#filter-menus-container').toggleClass('active').slideToggle();
+					element.toggleClass('target-active');
+				}
 			})
 		}
 	};
