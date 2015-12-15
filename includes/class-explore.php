@@ -148,7 +148,6 @@ class WS_Explore {
 		} else {
 			// This messed up the whole site...
 			// wp_send_json_error( $filter_data );
-
 		}
 
 		return;

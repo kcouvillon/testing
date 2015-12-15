@@ -9632,9 +9632,9 @@ article.open > header.entry-header > a {
     font-weight: 600;
     cursor: pointer; }
     .explore-filters a:hover {
-      color: #4fa9e5; }
+      color: #fb901d; }
     .explore-filters a.disabled {
-      color: #777d8d;
+      color: #777d8d !important;
       cursor: default; }
   @media screen and (min-width: 768px) {
     .explore-filters .hide-sm {
@@ -9821,6 +9821,8 @@ article.open > header.entry-header > a {
     .filter-menu .term.child-term a {
       font-weight: 400;
       color: #ccced4; }
+      .filter-menu .term.child-term a:hover {
+        color: #fb901d; }
     @media screen and (min-width: 768px) {
       .filter-menu .term {
         height: auto;

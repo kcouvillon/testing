@@ -16,7 +16,6 @@ exploreApp.config([ '$routeProvider', function($routeProvider){
 		.otherwise({
 			redirectTo: '/featured'
 		});
-
 }]);
 
 exploreApp.directive('filterLink', ['$location', function($location) {
@@ -70,13 +69,15 @@ exploreApp.directive('stickToBottom', function(){
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
-			var $window = jQuery(window),
+			var $window = angular.element(window),
 				$resultsCount = angular.element('.results-count'),
-				$results = jQuery('.explore-results');
+				$results = angular.element('.explore-results');
 
 			$window.on('scroll', function(){
-				var scrollTop = $window.scrollTop();
-				if ( scrollTop >= $results.offset().top - 500 ) {
+				var scrollTop = $window.scrollTop(),
+					threshold = $results.offset().top - 500;
+				
+				if ( scrollTop >= threshold ) {
 					$resultsCount.removeClass('visible');
 				} else {
 					$resultsCount.addClass('visible');
@@ -103,7 +104,6 @@ exploreApp.service('Terms', function($q, $http){
 				.then(resolve, reject);
 		});
 	};
-
 });
 
 exploreApp.service('Posts', function($q, $http){
@@ -124,21 +124,25 @@ exploreApp.service('Posts', function($q, $http){
 			deferred.then(resolve, reject);
 		});
 	}
-
 });
 
-var ExploreController = function(Terms, Posts, $route){
+exploreApp.service('ChildMenus', function(){
+	this.active = {
+		interest: 'interests-parent',
+		destination: 'destinations-parent'
+	};
+});
+
+var ExploreController = function(Terms, Posts, ChildMenus, $route){
 
 	var ctrl = this, query;
-
 	ctrl.WS = WS;
 	ctrl.$route = $route;
 	ctrl.loading = true;
 	// Filters
 	ctrl.terms = Terms.data;
 	ctrl.activeFilters = ctrl.getActiveFilters();
-	ctrl.visibleInterestsList = 'interests-parent';
-	ctrl.visibleDestinationsList = 'destinations-parent';
+	ctrl.activeChildMenus = ChildMenus.active;
 	// Results
 	ctrl.itineraries = [];
 	ctrl.itinerariesLimit = 9;
@@ -171,12 +175,17 @@ var ExploreController = function(Terms, Posts, $route){
 		throw error;
 	});
 
+	ctrl.showTermList = function( list, term ){
+		ChildMenus.active[list] = term;
+	};
+	ctrl.clearFilters = function(){
+		ChildMenus.active.interest = 'interests-parent';
+		ChildMenus.active.destination = 'destinations-parent';
+	};
+
 };
 
 ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
-	// if ( !method || !slug || !filterGroup )
-	// 	console.log('Error: missing "method", "slug", or "filterGroup" arguments in "term-href" directive'); return;
-
 	var params = angular.copy(this.$route.current.params),
 		keys = Object.keys(params),
 		filterGroupArray,
@@ -226,7 +235,7 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 	}
 
 	return url;
-}
+};
 
 ExploreController.prototype.getQuery = function(){
 	var route = this.$route.current.params,
@@ -277,14 +286,6 @@ ExploreController.prototype.getActiveFilters = function(){
 	}
 };
 
-ExploreController.prototype.showTermList = function( list, term ){
-	if ( list == 'interest' ) {
-		this.visibleInterestsList = term;
-	} else if ( list == 'destination' ) {
-		this.visibleDestinationsList = term;
-	}
-};
-
 ExploreController.prototype.toggleFilterMenu = function( menu ) {
 	var menu = angular.element(menu);
 	if ( menu.hasClass('closed') ) {
@@ -311,9 +312,9 @@ ExploreController.prototype.smoothScroll = function(target, offset) {
 		top = top + offset;
 	}
 	jQuery('html, body').animate({scrollTop: top});
-}
+};
 
-ExploreController.$inject = ['Terms', 'Posts', '$route'];
+ExploreController.$inject = ['Terms', 'Posts', 'ChildMenus', '$route'];
 exploreApp.controller('ExploreController', ExploreController);
 
 

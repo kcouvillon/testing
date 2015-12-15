@@ -162,10 +162,10 @@
 		font-weight: 600;
 		cursor: pointer;
 		&:hover {
-			color: $blue;
+			color: $orange;
 		}
 		&.disabled {
-			color: $gray;
+			color: $gray !important;
 			cursor: default;
 		}
 	}
@@ -403,6 +403,9 @@
 		&.child-term a {
 			font-weight: 400;
 			color: tint($navy, 75%);
+			&:hover {
+				color: $orange;
+			}
 		}
 		@media screen and (min-width: $screen-sm) {
 			height: auto;
