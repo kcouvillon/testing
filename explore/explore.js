@@ -87,6 +87,51 @@ exploreApp.directive('stickToBottom', function(){
 	};
 });
 
+exploreApp.directive('filterMenusToggle', function(){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs) {
+			element.click(function(e){
+				e.preventDefault();
+				var target = attrs.href;
+				angular.element(target).toggleClass('active').slideToggle();
+				element.toggleClass('target-active');
+			})
+		}
+	};
+});
+
+exploreApp.directive('selectFilterLink', function(){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs) {
+			element.click(function(e){
+				e.preventDefault();
+				angular.element('#filter-menus-container').addClass('active').slideDown();
+				angular.element('.filter-menus-toggle').addClass('target-active');
+			})
+		}
+	};
+});
+
+exploreApp.directive('smoothScroll', function(){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs) {
+			element.click(function(e){
+				e.preventDefault();
+				var target = attrs.scrollTarget,
+					offset = parseInt(attrs.scrollOffset),
+					top = angular.element(target).offset().top;
+				if ( offset ) {
+					top = top + offset;
+				}
+				angular.element('html, body').animate({scrollTop: top});
+			})
+		}
+	};
+});
+
 exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
@@ -304,14 +349,6 @@ ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	} else {
 		ctrl[source + 'Limit'] = ctrl[source + 'Limit'] + min;
 	}
-};
-
-ExploreController.prototype.smoothScroll = function(target, offset) {
-	var top = jQuery(target).offset().top;
-	if ( offset ) {
-		top = top + offset;
-	}
-	jQuery('html, body').animate({scrollTop: top});
 };
 
 ExploreController.$inject = ['Terms', 'Posts', 'ChildMenus', '$route'];

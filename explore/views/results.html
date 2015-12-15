@@ -19,28 +19,27 @@
 						<span ng-bind-html="traveler.name"></span>
 						<i class="icon icon-small-close remove-filter"></i>
 					</a>
-					<span class="select-filter-link" ng-hide="ctrl.activeFilters.travelers.length" ng-click="ctrl.smoothScroll('#explore-filters')">Select</span>
+					<span scroll-target="#explore-filters" class="smooth-scroll select-filter-link" ng-hide="ctrl.activeFilters.travelers.length" >Select</span>
 				</div>
 				<div class="interests-filters">
 					<a filter-link="{{interest.slug}},interests,subtract" class="active-filter" ng-repeat="interest in ctrl.activeFilters.interests">
 						<span ng-bind-html="interest.name"></span>
 						<i class="icon icon-small-close remove-filter"></i>
 					</a>
-					<span class="select-filter-link" ng-hide="ctrl.activeFilters.interests.length" ng-click="ctrl.smoothScroll('#explore-filters')">Select</span>
+					<span scroll-target="#explore-filters" class="smooth-scroll select-filter-link" ng-hide="ctrl.activeFilters.interests.length" >Select</span>
 				</div>
 				<div class="destination-filters">
 					<a filter-link="{{destination.slug}},destinations,subtract" class="active-filter" ng-repeat="destination in ctrl.activeFilters.destinations">
 						<span ng-bind-html="destination.name"></span>
 						<i class="icon icon-small-close remove-filter"></i>
 					</a>
-					<span class="select-filter-link" ng-hide="ctrl.activeFilters.destinations.length" ng-click="ctrl.smoothScroll('#explore-filters')">Select</span>
+					<span scroll-target="#explore-filters" class="smooth-scroll select-filter-link" ng-hide="ctrl.activeFilters.destinations.length" >Select</span>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="ws-container" ng-class="{ loading: ctrl.loading }" ng-show="ctrl.terms.loaded">
-		
+	<div id="filter-menus-container" class="ws-container active" ng-class="{ loading: ctrl.loading }" ng-show="ctrl.terms.loaded">
 		<ul class="filter-menus open list-unstyled clearfix">
 
 			<li class="filter-menu traveler-menu">
@@ -172,12 +171,18 @@
 
 				<span class="arrow icon-arrow-up hide-sm"></span>
 			</li>
-
 		</ul>
-
 	</div>
 
-	<span class="results-count visible" ng-hide="ctrl.loading" stick-to-bottom ng-click="ctrl.smoothScroll('#explore-results', -81)">See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize> and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize> <i class="icon icon-arrow-down"></i></span>
+	<a href="#filter-menus-container" class="filter-menus-toggle target-active" title="Toggle filter menus"><i class="icon-toggle"></i></a>
+
+	<div scroll-target="#explore-results" scroll-offset="-81" class="smooth-scroll results-count visible" ng-hide="ctrl.loading" stick-to-bottom>
+		<div class="ws-container">
+			See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize>
+			and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize>
+			<i class="icon icon-arrow-down"></i>
+		</div>
+	</div>
 
 </nav>
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * WorldStrides
  * http://www.worldstrides.com
@@ -6525,112 +6526,112 @@ p {
   -moz-osx-font-smoothing: grayscale; }
 
 .icon-faith-based:before {
-  content: "\e623"; }
+  content: ""; }
 
 .icon-sports:before {
-  content: "\e622"; }
+  content: ""; }
 
 .icon-shield:before {
-  content: "\e621"; }
+  content: ""; }
 
 .icon-service:before {
-  content: "\e61c"; }
+  content: ""; }
 
 .icon-professional:before {
-  content: "\e61d"; }
+  content: ""; }
 
 .icon-science-and-technology:before {
-  content: "\e61e"; }
+  content: ""; }
 
 .icon-history-culture-and-language:before {
-  content: "\e61f"; }
+  content: ""; }
 
 .icon-performing:before {
-  content: "\e620"; }
+  content: ""; }
 
 .icon-arrow-down:before {
-  content: "\e617"; }
+  content: ""; }
 
 .icon-arrow-left:before {
-  content: "\e618"; }
+  content: ""; }
 
 .icon-arrow-right:before {
-  content: "\e619"; }
+  content: ""; }
 
 .icon-arrow-up:before {
-  content: "\e61a"; }
+  content: ""; }
 
 .icon-small-close:before {
-  content: "\e61b"; }
+  content: ""; }
 
 .icon-print:before {
-  content: "\e615"; }
+  content: ""; }
 
 .icon-email:before {
-  content: "\e613"; }
+  content: ""; }
 
 .icon-pdf:before {
-  content: "\e614"; }
+  content: ""; }
 
 .icon-calendar:before {
-  content: "\e608"; }
+  content: ""; }
 
 .icon-pin:before {
-  content: "\e609"; }
+  content: ""; }
 
 .icon-sun:before {
-  content: "\e60a"; }
+  content: ""; }
 
 .icon-moon:before {
-  content: "\e60b"; }
+  content: ""; }
 
 .icon-cloudy:before {
-  content: "\e60c"; }
+  content: ""; }
 
 .icon-cloud2:before {
-  content: "\e611"; }
+  content: ""; }
 
 .icon-cloud:before {
-  content: "\e60d"; }
+  content: ""; }
 
 .icon-lightning:before {
-  content: "\e60e"; }
+  content: ""; }
 
 .icon-rainy:before {
-  content: "\e60f"; }
+  content: ""; }
 
 .icon-snowy:before {
-  content: "\e610"; }
+  content: ""; }
 
 .icon-mist:before {
-  content: "\e612"; }
+  content: ""; }
 
 .icon-close:before {
-  content: "\e605"; }
+  content: ""; }
 
 .icon-menu:before {
-  content: "\e606"; }
+  content: ""; }
 
 .icon-search:before {
-  content: "\e607"; }
+  content: ""; }
 
 .icon-instagram:before {
-  content: "\e601"; }
+  content: ""; }
 
 .icon-facebook:before {
-  content: "\e604"; }
+  content: ""; }
 
 .icon-pinterest:before {
-  content: "\e602"; }
+  content: ""; }
 
 .icon-twitter:before {
-  content: "\e603"; }
+  content: ""; }
 
 .icon-youtube:before {
-  content: "\e616"; }
+  content: ""; }
 
 .icon-linkedin:before {
-  content: "\e600"; }
+  content: ""; }
 
 .blog-social-links {
   margin-bottom: 1em; }
@@ -9571,11 +9572,9 @@ article.open > header.entry-header > a {
   .explore-tool .results-count {
     display: block;
     padding: 0.75em 0;
-    font-size: 1.2em;
     background-color: #3076bc;
     color: white;
     cursor: pointer;
-    text-align: center;
     width: 100%;
     transition: all 300ms ease; }
     .explore-tool .results-count:hover {
@@ -9584,12 +9583,32 @@ article.open > header.entry-header > a {
       .explore-tool .results-count {
         position: fixed;
         bottom: -75px;
-        left: 0; }
+        left: 0;
+        text-align: center;
+        font-size: 1.2em; }
         .explore-tool .results-count.visible {
           bottom: 0; } }
     .explore-tool .results-count .icon {
-      padding-left: 5px;
-      font-size: 16px; }
+      margin: 0.35em 1em 0 5px;
+      font-size: 16px;
+      float: right; }
+      @media screen and (min-width: 768px) {
+        .explore-tool .results-count .icon {
+          float: none;
+          margin-right: 0; } }
+  .explore-tool .filter-menus-toggle {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 2.5vw;
+    margin: -12px -8px 0 0; }
+    @media screen and (min-width: 768px) {
+      .explore-tool .filter-menus-toggle {
+        display: block; } }
+    .explore-tool .filter-menus-toggle .icon-toggle:before {
+      content: ""; }
+    .explore-tool .filter-menus-toggle.target-active .icon-toggle:before {
+      content: ""; }
   .explore-tool .clear-all {
     display: block;
     padding: 1em 0;
@@ -9614,6 +9633,10 @@ article.open > header.entry-header > a {
 
 /* Explore Filters
  * ------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  #filter-menus-container {
+    display: block !important; } }
+
 .explore-filters {
   position: relative;
   z-index: 3;
@@ -9621,6 +9644,9 @@ article.open > header.entry-header > a {
   color: #777d8d;
   font-size: 16px;
   min-height: 170px; }
+  @media screen and (min-width: 768px) {
+    .explore-filters {
+      min-height: 0; } }
   .explore-filters .loader {
     position: absolute;
     z-index: 2;
