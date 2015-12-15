@@ -385,7 +385,10 @@
 		position: relative;
 		font-size: em(12);
 		float: right;
-	    margin: 0.35em 0 0;
+	    margin: 0.35em 1.5em 0 0;
+	    @media screen and (min-width: $screen-sm) {
+			margin-right: 0;
+		}
 	}
 
 	.terms-list {
@@ -409,13 +412,6 @@
 			}
 		}
 
-		&.terms-list-parent {
-			@media screen and (min-width: $screen-sm) {
-				// border-top: 1px solid $gray_darker;
-				// border-bottom: 1px solid $gray_darker;
-			}
-		}
-
 		&.terms-list-child {
 			.term-list-toggle {
 			    display: block;
@@ -423,6 +419,9 @@
 			    font-size: 12px;
 			    color: $blue;
 			    margin: 0 0 2em;
+			    @media screen and (max-width: $screen-sm - 1) {
+			    	padding-left: 0;
+			    }
 			    &:hover {
 			    	color: #FFF;
 			    }
@@ -433,6 +432,14 @@
 				color: white;
 				.icon {
 					color: white;
+				}
+				.icon-arrow-down {
+					margin: 0.35em 1.5em 0 0;
+					font-size: 0.75em;
+					float: right;
+					@media screen and (min-width: $screen-sm) {
+						margin-right: 0;
+					}
 				}
 			}
 		}

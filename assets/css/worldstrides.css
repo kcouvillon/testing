@@ -9818,7 +9818,10 @@ article.open > header.entry-header > a {
     position: relative;
     font-size: 0.75em;
     float: right;
-    margin: 0.35em 0 0; }
+    margin: 0.35em 1.5em 0 0; }
+    @media screen and (min-width: 768px) {
+      .filter-menu .icon-arrow-right {
+        margin-right: 0; } }
   .filter-menu .terms-list {
     position: absolute;
     z-index: -1;
@@ -9841,6 +9844,9 @@ article.open > header.entry-header > a {
       font-size: 12px;
       color: #4fa9e5;
       margin: 0 0 2em; }
+      @media screen and (max-width: 767px) {
+        .filter-menu .terms-list.terms-list-child .term-list-toggle {
+          padding-left: 0; } }
       .filter-menu .terms-list.terms-list-child .term-list-toggle:hover {
         color: #FFF; }
     .filter-menu .terms-list.terms-list-child li.parent-term a {
@@ -9848,6 +9854,13 @@ article.open > header.entry-header > a {
       color: white; }
       .filter-menu .terms-list.terms-list-child li.parent-term a .icon {
         color: white; }
+      .filter-menu .terms-list.terms-list-child li.parent-term a .icon-arrow-down {
+        margin: 0.35em 1.5em 0 0;
+        font-size: 0.75em;
+        float: right; }
+        @media screen and (min-width: 768px) {
+          .filter-menu .terms-list.terms-list-child li.parent-term a .icon-arrow-down {
+            margin-right: 0; } }
   .filter-menu .term {
     overflow: hidden;
     height: 52px;

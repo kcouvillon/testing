@@ -139,6 +139,26 @@ exploreApp.directive('smoothScroll', function(){
 	};
 });
 
+exploreApp.directive('toggleFilterMenu', ['ChildMenus', function(ChildMenus){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs){
+			element.click(function(e){
+				e.preventDefault();
+				var target = attrs.toggleMenu,
+					$menu = angular.element(target);
+				if ( $menu.hasClass('closed') ) {
+					$menu.removeClass('closed');
+					ChildMenus.active.dropdown = target;
+				} else {
+					$menu.addClass('closed');
+					ChildMenus.active.dropdown = '';
+				}
+			});
+		}
+	};
+}])
+
 exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
@@ -180,6 +200,7 @@ exploreApp.service('Posts', function($q, $http){
 
 exploreApp.service('ChildMenus', function(){
 	this.active = {
+		dropdown: '',
 		interest: 'interests-parent',
 		destination: 'destinations-parent'
 	};
@@ -335,15 +356,6 @@ ExploreController.prototype.getActiveFilters = function(){
 
 	} else {
 		return false;
-	}
-};
-
-ExploreController.prototype.toggleFilterMenu = function( menu ) {
-	var menu = angular.element(menu);
-	if ( menu.hasClass('closed') ) {
-		menu.removeClass('closed');
-	} else {
-		menu.addClass('closed');
 	}
 };
 
