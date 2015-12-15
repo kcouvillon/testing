@@ -80,7 +80,7 @@
 							<a filter-link="{{interest.slug}},interests" ng-click="ctrl.showTermList('interest', interest.slug)" class="term-list-toggle parent-term parent-interest">
 								<i class="icon icon-{{interest.slug}}"></i>
 								<span ng-bind-html="interest.name"></span>
-								<i class="icon icon-arrow-right"></i>
+								<i class="icon-arrow-right"></i>
 							</a>
 						</li>
 
@@ -142,7 +142,10 @@
 						<li>
 							<ul class="terms list-unstyled clearfix">
 								<li ng-repeat="destination in ctrl.terms.destinations" class="term">
-									<a filter-link="{{destination.slug}},destinations" ng-click="ctrl.showTermList('destination', destination.slug)" class="filter term-{{destination.slug}} term-list-toggle parent-term parent-destination" ng-bind-html="destination.name"></a>
+									<a filter-link="{{destination.slug}},destinations" ng-click="ctrl.showTermList('destination', destination.slug)" class="filter term-{{destination.slug}} term-list-toggle parent-term parent-destination">
+										<span ng-bind-html="destination.name"></span>
+										<i class="icon-arrow-right"></i>
+									</a>
 								</li>
 							</ul>
 						</li>

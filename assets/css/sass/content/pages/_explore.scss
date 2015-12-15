@@ -348,6 +348,13 @@
 		}
 	}
 
+	.icon-arrow-right {
+		position: relative;
+		font-size: em(12);
+		float: right;
+	    margin: 0.35em 0 0;
+	}
+
 	.terms-list {
 		position: absolute;
 		z-index: -1;
@@ -446,13 +453,6 @@
 			    position: absolute;
 			    left: 0;
 			    top: 50%;
-			}
-
-			.icon-arrow-right {
-				position: relative;
-				font-size: em(12);
-				margin-bottom: 0;
-				margin-left: 1em;
 			}
 		}
 	}
