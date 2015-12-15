@@ -177,6 +177,7 @@ A few notes:
 to help achieve that. There is no native term meta, so it makes use of the options table (which gets loaded on every page). 
 Term meta is on the WordPress roadmap for version 4.4/4.5, and would be worth changing over when the implementation gets settled.
 * Adding fields to the "home" page (front-page.php) required a custom function that can be found in functions.php
+* The ordering of metaboxes is sequential, so anything in `class-metaboxes.php` would get loaded before, say, `class-metaboxes-itineraries.php` because that class gets called later. This is just for organization. The 'object_types' parameter specifies which post types, pages, etc., each CMB will appear on.
 
 #### Addons
 These are additional fields beyond the CMB2 standards. Similarly, it's worth checking to see if there are updates to these.
