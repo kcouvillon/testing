@@ -61,7 +61,7 @@ get_header(); ?>
 
 				</header>
 
-				<nav class="section-nav hide-print">
+				<nav id="section-nav" class="section-nav hide-print">
 					<div class="ws-container">
 						<ul class="section-menu">
 							<?php
@@ -105,6 +105,13 @@ get_header(); ?>
 						<?php endif; ?>
 					</div>
 				</nav>
+
+				<?php if ( has_post_thumbnail() ) : ?>
+				<a href="#section-nav" class="content-cta">
+					<span class="hide">Skip to Content</span>
+					<i class="icon-arrow-down"></i>
+				</a>
+				<?php endif; ?>
 
 			</section>
 

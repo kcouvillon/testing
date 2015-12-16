@@ -11098,6 +11098,31 @@ article.open > header.entry-header > a {
   max-width: 1000px;
   padding: 40% 0 0; }
 
+.content-cta {
+  position: fixed;
+  bottom: -40px;
+  opacity: 0;
+  width: 100%;
+  background: #3076bc;
+  text-align: center;
+  color: #FFF;
+  z-index: 3000;
+  padding: 0.5em 0;
+  line-height: 1em;
+  transition: all 300ms ease; }
+  .content-cta:hover {
+    background: #fb901d;
+    color: white; }
+  .content-cta:focus {
+    background: #3076bc;
+    color: #FFF; }
+    .content-cta:focus:hover {
+      background: #fb901d;
+      color: white; }
+  .content-cta.visible {
+    opacity: 1;
+    bottom: 0; }
+
 .site-footer {
   border-top: 1px solid #e3e3e3;
   position: relative;

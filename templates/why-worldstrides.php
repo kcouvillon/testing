@@ -34,7 +34,7 @@ get_header(); ?>
 				</div>
 			</header>
 
-			<nav class="section-nav">
+			<nav id="section-nav" class="section-nav">
 				<div class="ws-container">
 					<ul class="section-menu">
 						<?php foreach ( $sections as $section ) : ?>
@@ -45,6 +45,14 @@ get_header(); ?>
 					</ul>
 				</div>
 			</nav>
+
+			<?php if ( has_post_thumbnail() ) : ?>
+			<a href="#section-nav" class="content-cta">
+				<span class="hide">Skip to Content</span>
+				<i class="icon-arrow-down"></i>
+			</a>
+			<?php endif; ?>
+				
 		</section>
 
 		<?php foreach ( $sections as $section ) : ?>

@@ -1,0 +1,29 @@
+.content-cta {
+    position: fixed;
+    bottom: -40px;
+    opacity: 0;
+    width: 100%;
+    background: $blue_dark;
+    text-align: center;
+    color: #FFF;
+    z-index: 3000;
+    padding: 0.5em 0;
+    line-height: 1em;
+    transition: all 300ms ease;
+    &:hover {
+    	background: $orange;
+    	color: white;
+    }
+    &:focus {
+    	background: $blue_dark;
+	    color: #FFF;
+	    &:hover {
+	    	background: $orange;
+	    	color: white;
+	    }
+    }
+    &.visible {
+    	opacity: 1;
+    	bottom: 0;
+    }
+}

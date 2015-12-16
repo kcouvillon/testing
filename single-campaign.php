@@ -31,9 +31,17 @@ get_header(); ?>
 						<?php the_content(); ?>
 					</div>
 				</div>
+
+				<?php if ( has_post_thumbnail() ) : ?>
+				<a href="#campaign-content" class="content-cta">
+					<span class="hide">Skip to Content</span>
+					<i class="icon-arrow-down"></i>
+				</a>
+				<?php endif; ?>
+
 			</section>
 
-			<div class="campaign-single-wrap">				
+			<div id="campaign-content" class="campaign-single-wrap">				
 
 				<div class="campaign-single-content left">
 					<h2>We’re Psyched You Want To Refer Your Friends!</h2>
