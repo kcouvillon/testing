@@ -92,7 +92,7 @@
 		width: 100%;
 		transition: all 300ms ease;
 		&:hover {
-	    	background-color: darken($blue_dark, 10%);
+	    	background-color: $orange;
 	    }
 
 	    @media screen and ( min-width: $screen-sm ) {

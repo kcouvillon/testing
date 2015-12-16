@@ -9578,7 +9578,7 @@ article.open > header.entry-header > a {
     width: 100%;
     transition: all 300ms ease; }
     .explore-tool .results-count:hover {
-      background-color: #265c93; }
+      background-color: #fb901d; }
     @media screen and (min-width: 768px) {
       .explore-tool .results-count {
         position: fixed;
