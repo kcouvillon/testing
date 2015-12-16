@@ -9828,7 +9828,7 @@ article.open > header.entry-header > a {
     visibility: hidden; }
     .filter-menu .terms-list.visible {
       position: relative;
-      z-index: auto;
+      z-index: 0;
       visibility: visible; }
     .filter-menu .terms-list a {
       position: relative;
