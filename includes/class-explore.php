@@ -72,9 +72,7 @@ class WS_Explore {
 				array(
 					'taxonomy' => 'filter',
 					'field'    => 'slug',
-					'terms'    => $filters,
-					'operator' => 'AND',
-					'include_children' => false
+					'terms'    => $filters
 				)
 			),
 			'no_found_rows'  => true,
