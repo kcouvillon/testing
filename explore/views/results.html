@@ -177,9 +177,13 @@
 	</div>
 
 	<div scroll-target="#explore-results" scroll-offset="-81" class="smooth-scroll results-count visible" ng-hide="ctrl.loading" stick-to-bottom>
-		<div class="ws-container">
+		<div class="ws-container" ng-if="ctrl.isFeatured">
+			See Featured Collections &amp; Itineraries
+			<i class="icon icon-arrow-down"></i>
+		</div>
+		<div class="ws-container" ng-if="!ctrl.isFeatured">
 			See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize>
-			and <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize>
+			& <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize>
 			<i class="icon icon-arrow-down"></i>
 		</div>
 	</div>
