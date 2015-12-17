@@ -15,6 +15,7 @@
 	var $body = $(document.body),
 		$window = $(window),
 		$contentCta = $('.content-cta'),
+		$pageHeader = $('.primary-section'),
 		target, offset;
 
 	if ( $contentCta.length ) {
@@ -24,20 +25,24 @@
 
 		$(document).ready(function(){
 			setTimeout(function(){
-				$contentCta.addClass('visible');
+
+				var pageHeaderBottom = $pageHeader.outerHeight() + $pageHeader.offset().top;
+
+				if ( $pageHeader && ($window.height() <= pageHeaderBottom) ){
+					$contentCta.addClass('visible');
+
+					$window.on('scroll', function(){
+						var scrollTop = $window.scrollTop();
+						if ( scrollTop > 0 ) {
+							$contentCta.removeClass('visible');
+						} else {
+							$contentCta.addClass('visible');
+						}
+					});
+
+				}
 			}, 2500);
-		});
-
-		$window.on('scroll', function(){
-			var scrollTop = $window.scrollTop(),
-				top = $(target).offset().top + offset;
-
-			if ( scrollTop >= (top - 1) ) {
-				$contentCta.removeClass('visible');
-			} else {
-				$contentCta.addClass('visible');
-			}
-		});
+		});		
 
 		$body.on('click', '.content-cta', function(e){
 			e.preventDefault();
