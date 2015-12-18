@@ -164,21 +164,34 @@
 							<ul class="terms terms-list list-unstyled clearfix" ng-class="{ visible: ctrl.activeChildMenus.destinationChild == 'continent-'+destination.slug }">
 								<div class="column">
 									<li ng-repeat="child in destination.children" ng-if="$index <= destination.children.length/2" class="child-term term">
-										<a ng-if="child.children" filter-link="{{child.slug}},destinations" ng-click="ctrl.showTermList('destinationChild', 'country-'+child.slug)" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
+										<a ng-if="child.children" filter-link="{{child.slug}},destinations" ng-click="ctrl.showTermList('destinationChild', 'country-'+child.slug)" class="filter term-{{child.slug}}" >
+											<span ng-bind-html="child.name"></span>
+											<i class="icon-arrow-right"></i>
+										</a>
 										<a ng-if="!child.children" filter-link="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
 									</li>
 								</div>
 								<div class="column">
 									<li ng-repeat="child in destination.children" ng-if="$index > destination.children.length/2" class="child-term term">
-										<a ng-if="child.children" filter-link="{{child.slug}},destinations" ng-click="ctrl.showTermList('destinationChild', 'country-'+child.slug)" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
+										<a ng-if="child.children" filter-link="{{child.slug}},destinations" ng-click="ctrl.showTermList('destinationChild', 'country-'+child.slug)" class="filter term-{{child.slug}}" >
+											<span ng-bind-html="child.name"></span>
+											<i class="icon-arrow-right"></i>
+										</a>
 										<a ng-if="!child.children" filter-link="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
 									</li>
 								</div>
 							</ul>
 							<ul ng-if="child.children" ng-repeat="child in destination.children" class="terms term-{{child.slug}} terms-list list-unstyled clearfix" ng-class="{ visible: ctrl.activeChildMenus.destinationChild == 'country-'+child.slug }">
-								<li id="{{grandchild.slug}}" ng-repeat="grandchild in child.children" class="child-term term">
-									<a filter-link="{{grandchild.slug}},destinations" class="filter term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
-								</li>
+								<div class="column">
+									<li id="{{grandchild.slug}}" ng-repeat="grandchild in child.children" ng-if="$index <= child.children.length/2" class="child-term term">
+										<a filter-link="{{grandchild.slug}},destinations" class="filter term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
+									</li>
+								</div>
+								<div class="column">
+									<li id="{{grandchild.slug}}" ng-repeat="grandchild in child.children" ng-if="$index > child.children.length/2" class="child-term term">
+										<a filter-link="{{grandchild.slug}},destinations" class="filter term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
+									</li>
+								</div>
 								<a ng-click="ctrl.showTermList('destinationChild', 'continent-'+destination.slug)" class="term-list-toggle">« Back to {{destination.name}}</a>
 							</ul>
 						</li>

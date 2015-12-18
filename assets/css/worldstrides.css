@@ -9943,7 +9943,7 @@ article.open > header.entry-header > a {
     top: 0;
     right: 0;
     padding: 1em; }
-    @media screen and (min-width: 768px) {
+    @media (min-width: 768px) {
       .filter-menu .filter-menu-toggle {
         display: none; } }
 
@@ -9952,10 +9952,10 @@ article.open > header.entry-header > a {
 .filter-menu .column {
   width: 50%;
   float: left; }
-  @media screen and (min-width: 960px) {
+  @media (min-width: 768px) {
     .filter-menu .column {
       width: 100%; } }
-  @media screen and (min-width: 1200px) {
+  @media (min-width: 960px) {
     .filter-menu .column {
       width: 50%; } }
 
