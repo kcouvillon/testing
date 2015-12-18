@@ -299,12 +299,12 @@ class WS_Explore {
 
 		$i = 0;
 		foreach ( $destinations as $destination ) {
-			$children = get_terms( 'filter', array( 'parent' => $destination->term_id ) );
+			$children = get_terms( 'filter', array( 'parent' => $destination->term_id, 'hide_empty' => false ) );
 			if ( !empty( $children ) ) {
 				$data['destinations'][$i]->children = (array) $children;
 				$n = 0;
 				foreach ($children as $child) {
-					$grandchildren =  get_terms( 'filter', array( 'parent' => $child->term_id ) );
+					$grandchildren =  get_terms( 'filter', array( 'parent' => $child->term_id, 'hide_empty' => false ) );
 					if ( !empty( $grandchildren ) ) {
 						$data['destinations'][$i]->children[$n]->children = (array) $grandchildren;
 					}
