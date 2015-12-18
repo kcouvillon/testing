@@ -301,12 +301,12 @@ class WS_Explore {
 		foreach ( $destinations as $destination ) {
 			$children = get_terms( 'filter', array( 'parent' => $destination->term_id ) );
 			if ( !empty( $children ) ) {
-				$data['destinations'][$i]->children = $children;
+				$data['destinations'][$i]->children = (array) $children;
 				$n = 0;
 				foreach ($children as $child) {
 					$grandchildren =  get_terms( 'filter', array( 'parent' => $child->term_id ) );
 					if ( !empty( $grandchildren ) ) {
-						$data['destinations'][$i]->children[$n]->children = $grandchildren;
+						$data['destinations'][$i]->children[$n]->children = (array) $grandchildren;
 					}
 					$n++;
 				}

@@ -9529,9 +9529,13 @@ article.open > header.entry-header > a {
     .explore-tool .active-filter:hover {
       color: white; }
     .explore-tool .active-filter .icon {
+      display: none;
       margin-left: 5px;
       vertical-align: middle;
       cursor: pointer; }
+      @media (min-width: 768px) {
+        .explore-tool .active-filter .icon {
+          display: inline; } }
   .explore-tool .explore-utility {
     position: relative;
     z-index: 0;
@@ -9907,24 +9911,6 @@ article.open > header.entry-header > a {
   .filter-menu.destination-menu .terms-list.visible .destination-graphic {
     transform: scale(1);
     opacity: 1; }
-  .filter-menu.destination-menu .destinations-child .terms {
-    -webkit-columns: 2;
-    -webkit-column-width: 120px;
-    -webkit-column-gap: 0;
-    -moz-columns: 2;
-    -moz-column-width: 120px;
-    -moz-column-gap: 0;
-    columns: 2;
-    column-width: 120px;
-    column-gap: 0; }
-    .filter-menu.destination-menu .destinations-child .terms li {
-      -webkit-column-break-inside: avoid;
-      page-break-inside: avoid;
-      break-inside: avoid; }
-    @media screen and (min-width: 960px) {
-      .ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms li {
-        width: 50%;
-        float: left; } }
   .filter-menu.destination-menu .destination-map {
     color: white;
     font-weight: 700;
@@ -9961,17 +9947,36 @@ article.open > header.entry-header > a {
       .filter-menu .filter-menu-toggle {
         display: none; } }
 
+/* Explore Results
+ * --------------- */
+.filter-menu .column {
+  width: 50%;
+  float: left; }
+  @media screen and (min-width: 960px) {
+    .filter-menu .column {
+      width: 100%; } }
+  @media screen and (min-width: 1200px) {
+    .filter-menu .column {
+      width: 50%; } }
+
+/* Explore Results
+ * --------------- */
 .terms-list-child .term-list-toggle {
   display: block;
   clear: both;
   font-size: 12px;
   color: #4fa9e5;
-  margin: 0 0 2em; }
+  padding: 1em 0;
+  text-align: left; }
   @media screen and (max-width: 767px) {
     .terms-list-child .term-list-toggle {
       padding-left: 0; } }
   .terms-list-child .term-list-toggle:hover {
     color: #FFF; }
+
+@media (min-width: 1200px) {
+  .destinations-child .term-list-toggle {
+    text-align: center; } }
 
 .closed .term-list-toggle {
   display: none; }

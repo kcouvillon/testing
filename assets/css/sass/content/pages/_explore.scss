@@ -32,9 +32,13 @@
 			color: white;
 		}
 		.icon {
+			display: none;
 			margin-left: 5px;
 			vertical-align: middle;
 			cursor: pointer;
+			@include susy-media($screen-sm) {
+				display: inline;
+			}
 		}
 	}
 
@@ -504,37 +508,6 @@
 			}
 		}
 
-		.destinations-child .terms {
-			// position: relative;
-			// z-index: 1;
-			-webkit-columns: 2;
-			-webkit-column-width: 120px;
-			-webkit-column-gap: 0;
-			-moz-columns: 2;
-			-moz-column-width: 120px;
-			-moz-column-gap: 0;
-			columns: 2;
-			column-width: 120px;
-			column-gap: 0;
-
-			li {
-				-webkit-column-break-inside: avoid;
-				page-break-inside: avoid;
-				break-inside: avoid;
-			}
-
-			@at-root {
-				.ws-no-csscolumns .explore-filters .filter-menu.destination-menu .destinations-child .terms {
-					li {
-						@media screen and (min-width: $screen-md) {
-							width: 50%;
-							float: left;
-						}
-					}
-				}
-			}
-		}
-
 		.destination-map {
 			color: white;
 			font-weight: 700;
@@ -583,6 +556,23 @@
 	}
 }
 
+/* Explore Results
+ * --------------- */
+.column {
+	.filter-menu & {
+		width: 50%;
+		float: left;
+		@media screen and (min-width: $screen-md) {
+			width: 100%;
+		}
+		@media screen and (min-width: $screen-lg) {
+			width: 50%;
+		}
+	}
+}
+
+/* Explore Results
+ * --------------- */
 .term-list-toggle {
 
 	.terms-list-child & {
@@ -590,12 +580,18 @@
 	    clear: both;
 	    font-size: 12px;
 	    color: $blue;
-	    margin: 0 0 2em;
+	    padding: 1em 0;
+	    text-align: left;
 	    @media screen and (max-width: $screen-sm - 1) {
 	    	padding-left: 0;
 	    }
 	    &:hover {
 	    	color: #FFF;
+	    }
+	}
+	.destinations-child & {
+		@include susy-media($screen-lg) {
+	    	text-align: center;
 	    }
 	}
 

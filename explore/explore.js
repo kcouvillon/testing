@@ -157,7 +157,7 @@ exploreApp.directive('toggleFilterMenu', ['ChildMenus', function(ChildMenus){
 			});
 		}
 	};
-}])
+}]);
 
 exploreApp.service('Terms', function($q, $http){
 
