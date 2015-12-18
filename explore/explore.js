@@ -202,7 +202,8 @@ exploreApp.service('ChildMenus', function(){
 	this.active = {
 		dropdown: '',
 		interest: 'interests-parent',
-		destination: 'destinations-parent'
+		destination: 'destinations-parent',
+		destinationChild: ''
 	};
 });
 
@@ -249,11 +250,26 @@ var ExploreController = function(Terms, Posts, ChildMenus, $route){
 	});
 
 	ctrl.showTermList = function( list, term ){
-		ChildMenus.active[list] = term;
+		var filtersTop = angular.element('#explore-filters').offset().top;
+
+		// assign visible child menus
+		if ( typeof list == 'object' ) {
+			angular.forEach(list, function(value, key){
+				ChildMenus.active[key] = value;
+			});
+		} else {
+			ChildMenus.active[list] = term;
+		}
+
+		// scroll back to top of filters
+		if ( angular.element(window).scrollTop() > filtersTop ) {
+			angular.element(window).scrollTop( filtersTop );
+		}
 	};
 	ctrl.clearFilters = function(){
 		ChildMenus.active.interest = 'interests-parent';
 		ChildMenus.active.destination = 'destinations-parent';
+		ChildMenus.active.destinationChild = '';
 	};
 
 };

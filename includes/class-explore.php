@@ -291,14 +291,26 @@ class WS_Explore {
 		$i = 0;
 		foreach ( $interests as $interest ) {
 			$children = get_terms( 'filter', array( 'parent' => $interest->term_id ) );
-			$data['interests'][$i]->children = $children;
+			if ( !empty( $children ) ) {
+				$data['interests'][$i]->children = $children;
+			}
 			$i++;
 		}
 
 		$i = 0;
 		foreach ( $destinations as $destination ) {
 			$children = get_terms( 'filter', array( 'parent' => $destination->term_id ) );
-			$data['destinations'][$i]->children = $children;
+			if ( !empty( $children ) ) {
+				$data['destinations'][$i]->children = $children;
+				$n = 0;
+				foreach ($children as $child) {
+					$grandchildren =  get_terms( 'filter', array( 'parent' => $child->term_id ) );
+					if ( !empty( $grandchildren ) ) {
+						$data['destinations'][$i]->children[$n]->children = $grandchildren;
+					}
+					$n++;
+				}
+			}
 			$i++;
 		}
 

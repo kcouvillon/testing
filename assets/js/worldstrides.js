@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-12-17
+/*! WorldStrides - v0.1.0 - 2015-12-18
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
