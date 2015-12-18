@@ -1421,7 +1421,9 @@
 
 		// Resource Taxonomy Pages
 
-		$( sectionNav ).scrollToFixed();
+		$( sectionNav ).scrollToFixed({
+			marginTop: $('.quick-access').outerHeight()
+		});
 
 		setTimeout(function() {
 			$( '.resource-nav ul > li:first-child > a').trigger("click");

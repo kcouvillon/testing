@@ -52,7 +52,7 @@ exploreApp.directive('sticky', function(){
 			var $window = jQuery(window),
 				$currentFilters = angular.element('.current-filters'),
 				$currentFiltersBar = angular.element('.current-filters-bar'),
-				currentFiltersTop = $currentFilters.offset().top;		
+				currentFiltersTop = $currentFilters.offset().top - angular.element('.quick-access').outerHeight();		
 
 			$window.on('scroll', function(){
 				var scrollTop = $window.scrollTop();
@@ -94,8 +94,11 @@ exploreApp.directive('filterMenusToggle', function(){
 		link: function(scope, element, attrs) {
 			element.click(function(e){
 				e.preventDefault();
+				var filtersTop = angular.element('#explore-filters').offset().top,
+					offset = angular.element('.quick-access').outerHeight();
+
 				if ( element.parent().hasClass('fixed') ) {
-					var top = angular.element('#explore-filters').offset().top;
+					var top = filtersTop - offset;
 					angular.element('#filter-menus-container').addClass('active').slideDown();
 					element.addClass('target-active');
 					angular.element('html, body').animate({scrollTop: top});

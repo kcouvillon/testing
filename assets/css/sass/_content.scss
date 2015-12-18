@@ -1,6 +1,9 @@
 .content-area {
 	margin: 0;
 	width: 100%;
+	.has-featured-image & {
+		margin-top: 30px;
+	}
 }
 
 .site-main {
