@@ -9897,6 +9897,8 @@ article.open > header.entry-header > a {
       position: absolute;
       left: 0;
       top: 50%; }
+  .filter-menu.interests-menu .terms-list .child-term a {
+    padding-left: 55px; }
   @media screen and (min-width: 768px) {
     .filter-menu.destination-menu {
       width: 30%;
