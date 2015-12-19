@@ -7016,7 +7016,7 @@ a.text-color-link {
       position: fixed;
       width: 100%;
       top: 0;
-      z-index: 200;
+      z-index: 1100;
       background-color: white;
       border-bottom: 1px solid #eee; } }
   .quick-access li {
