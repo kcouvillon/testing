@@ -15,7 +15,8 @@
 		resourceQuestion = document.querySelectorAll( '.resource-question > .entry-header > a' ),
 		sectionNav = document.querySelectorAll( '.section-nav' ),
 		resourceNav = document.querySelectorAll( '.resource-nav' ),
-		resourceTitle = document.querySelectorAll( '.section-resource-questions h2');
+		resourceTitle = document.querySelectorAll( '.section-resource-questions h2'),
+		pageWidth = $(window).width();
 
 	$(document).ready(function() {
 
@@ -45,7 +46,7 @@
 		// Resource Taxonomy Pages
 
 		$( sectionNav ).scrollToFixed({
-			marginTop: $('.quick-access').outerHeight()
+			marginTop: ( $('.quick-access').css('display') == 'block' ) ? $('.quick-access').outerHeight() : 0
 		});
 
 		setTimeout(function() {

@@ -8654,6 +8654,9 @@ section:after {
     display: table; }
   .section-nav:after {
     clear: both; }
+  @media screen and (max-width: 767px) {
+    .section-nav.scroll-to-fixed-fixed {
+      top: 0 !important; } }
   .section-nav select {
     margin: 1em 0; }
   .about .section-nav {

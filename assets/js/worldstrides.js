@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-12-18
+/*! WorldStrides - v0.1.0 - 2015-12-19
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1392,7 +1392,8 @@
 		resourceQuestion = document.querySelectorAll( '.resource-question > .entry-header > a' ),
 		sectionNav = document.querySelectorAll( '.section-nav' ),
 		resourceNav = document.querySelectorAll( '.resource-nav' ),
-		resourceTitle = document.querySelectorAll( '.section-resource-questions h2');
+		resourceTitle = document.querySelectorAll( '.section-resource-questions h2'),
+		pageWidth = $(window).width();
 
 	$(document).ready(function() {
 
@@ -1422,7 +1423,7 @@
 		// Resource Taxonomy Pages
 
 		$( sectionNav ).scrollToFixed({
-			marginTop: $('.quick-access').outerHeight()
+			marginTop: ( $('.quick-access').css('display') == 'block' ) ? $('.quick-access').outerHeight() : 0
 		});
 
 		setTimeout(function() {
