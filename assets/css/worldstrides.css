@@ -7008,17 +7008,13 @@ a.text-color-link {
         clear: none; } }
 
 .quick-access {
-  display: block;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 5vw;
   display: none;
   text-align: right; }
   @media (min-width: 768px) {
     .quick-access {
       display: block;
       position: fixed;
+      width: 100%;
       top: 0;
       z-index: 200;
       background-color: white;
@@ -7045,9 +7041,17 @@ a.text-color-link {
     color: #777d8d; }
     .quick-access a:hover {
       color: #5b6375; }
+  .quick-access .menu-quick-access-container,
+  .quick-access .search-form {
+    display: block;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5vw; }
   .quick-access .search-form {
     display: none;
-    margin: 0.5em 0 0;
+    margin-top: 0.5em;
+    margin-bottom: 0;
     position: relative; }
     .quick-access .search-form.visible input.search-field,
     .quick-access .search-form.visible .icon-search,
@@ -7060,7 +7064,7 @@ a.text-color-link {
     .quick-access .search-form .icon-search {
       position: absolute;
       z-index: 1;
-      left: 0;
+      left: 5vw;
       top: 14px;
       font-size: 1.6em;
       opacity: 0;
@@ -7069,7 +7073,7 @@ a.text-color-link {
     .quick-access .search-form .close-search {
       position: absolute;
       z-index: 1;
-      right: 0;
+      right: 5vw;
       top: 14px;
       font-size: 1.6em;
       line-height: 28px;
