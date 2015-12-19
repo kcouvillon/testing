@@ -2,7 +2,9 @@
 	margin: 0;
 	width: 100%;
 	.has-featured-image & {
-		margin-top: 30px;
+		@include susy-media($screen-sm) {
+			margin-top: 30px;
+		}
 	}
 }
 

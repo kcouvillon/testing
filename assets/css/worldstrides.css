@@ -7126,8 +7126,9 @@ a.text-color-link {
 .content-area {
   margin: 0;
   width: 100%; }
-  .has-featured-image .content-area {
-    margin-top: 30px; }
+  @media (min-width: 768px) {
+    .has-featured-image .content-area {
+      margin-top: 30px; } }
 
 .site-main {
   margin: 0; }
