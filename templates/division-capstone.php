@@ -110,7 +110,7 @@ get_header(); ?>
 
 			</header>
 
-			<nav class="section-nav">
+			<nav id="section-nav" class="section-nav">
 				<div class="ws-container">
 					<ul class="section-menu hide-print">
 
@@ -156,6 +156,13 @@ get_header(); ?>
 					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta">Request Info</a>
 				</div>
 			</nav>
+
+			<?php if ( has_post_thumbnail() ) : ?>
+			<a href="#section-nav" class="content-cta">
+				<span class="hide">Skip to Content</span>
+				<i class="icon-arrow-down"></i>
+			</a>
+			<?php endif; ?>
 
 		</section>
 

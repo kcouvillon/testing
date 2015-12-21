@@ -1,6 +1,11 @@
 .content-area {
 	margin: 0;
 	width: 100%;
+	.has-featured-image & {
+		@include susy-media($screen-sm) {
+			margin-top: 30px;
+		}
+	}
 }
 
 .site-main {

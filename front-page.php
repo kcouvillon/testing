@@ -37,10 +37,15 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 			<?php get_template_part('partials/content', 'tooltips'); ?>
 
+			<a href="#why-content" data-scroll-offset="-30" class="content-cta">
+				<span class="hide">Skip to Content</span>
+				<i class="icon-arrow-down"></i>
+			</a>
+
 		</section>
 
 		<?php if ( ! empty( $associated_why_ws ) ) : ?>
-			<section class="section-content why-content">
+			<section id="why-content" class="section-content why-content">
 
 				<?php foreach ( $associated_why_ws as $why_ws ) : ?>
 

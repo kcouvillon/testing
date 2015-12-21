@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2015-12-14
+/*! WorldStrides - v0.1.0 - 2015-12-19
  * http://www.worldstrides.com
  * Copyright (c) 2015; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -229,6 +229,57 @@
 		} else {
 			$('.programs-container').removeClass('count-9-plus');
 		}
+	}
+
+})(jQuery, window);
+
+( function( $, window, undefined ) {
+
+	'use strict';
+
+	// Content CTAs
+
+	var $body = $(document.body),
+		$window = $(window),
+		$contentCta = $('.content-cta'),
+		$pageHeader = $('.primary-section'),
+		target, offset;
+
+	if ( $contentCta.length ) {
+
+		target = $contentCta.attr('href');
+		offset = $contentCta.data('scroll-offset') || 0;
+
+		$(document).ready(function(){
+			setTimeout(function(){
+
+				var pageHeaderBottom = $pageHeader.outerHeight() + $pageHeader.offset().top;
+
+				if ( $pageHeader && ($window.height() <= pageHeaderBottom) ){
+					$contentCta.addClass('visible');
+
+					$window.on('scroll', function(){
+						var scrollTop = $window.scrollTop();
+						if ( scrollTop > 0 ) {
+							$contentCta.removeClass('visible');
+						} else {
+							$contentCta.addClass('visible');
+						}
+					});
+
+				}
+			}, 2500);
+		});		
+
+		$body.on('click', '.content-cta', function(e){
+			e.preventDefault();
+			var top = $(target).offset().top;
+			if ( offset ) {
+				top = top + parseInt(offset);
+			}
+			$('html, body').animate({ scrollTop: top });
+		});
+
 	}
 
 })(jQuery, window);
@@ -868,8 +919,8 @@
 		$(document).ready(function(){
 
 			var $introHeader = $('#intro .section-header'),
-				offset = $('#quick-access-menu').innerHeight(),
-				winHeight = window.innerHeight - offset;
+				offset = $introHeader.offset().top,
+				winHeight = $(window).height() - offset;
 
 			$introHeader.css({
 				minHeight: winHeight + 'px'
@@ -1350,7 +1401,8 @@
 		resourceQuestion = document.querySelectorAll( '.resource-question > .entry-header > a' ),
 		sectionNav = document.querySelectorAll( '.section-nav' ),
 		resourceNav = document.querySelectorAll( '.resource-nav' ),
-		resourceTitle = document.querySelectorAll( '.section-resource-questions h2');
+		resourceTitle = document.querySelectorAll( '.section-resource-questions h2'),
+		pageWidth = $(window).width();
 
 	$(document).ready(function() {
 
@@ -1379,7 +1431,9 @@
 
 		// Resource Taxonomy Pages
 
-		$( sectionNav ).scrollToFixed();
+		$( sectionNav ).scrollToFixed({
+			marginTop: ( $('.quick-access').css('display') == 'block' ) ? $('.quick-access').outerHeight() : 0
+		});
 
 		setTimeout(function() {
 			$( '.resource-nav ul > li:first-child > a').trigger("click");

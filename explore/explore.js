@@ -16,7 +16,6 @@ exploreApp.config([ '$routeProvider', function($routeProvider){
 		.otherwise({
 			redirectTo: '/featured'
 		});
-
 }]);
 
 exploreApp.directive('filterLink', ['$location', function($location) {
@@ -29,7 +28,7 @@ exploreApp.directive('filterLink', ['$location', function($location) {
 			// Only check available filters when NOT on the featured page
 			if ( $location.$$path !== '/featured' ){
 				scope.$watch('ctrl.availableFilters', function(newValue, oldValue){
-					if ( newValue && newValue.indexOf( hrefData[0] ) == -1 ) {
+					if ( newValue && newValue.indexOf( hrefData[0] ) == -1 && !element.hasClass('active-filter') ) {
 						element
 							.attr('href', '')
 							.addClass('disabled');
@@ -42,6 +41,123 @@ exploreApp.directive('filterLink', ['$location', function($location) {
 			});
 			url = scope.ctrl.getUrl( hrefData[0], hrefData[1], hrefData[2] );
 			element.attr('href', url);
+		}
+	};
+}]);
+
+exploreApp.directive('sticky', function(){
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			var $window = jQuery(window),
+				$currentFilters = angular.element('.current-filters'),
+				$currentFiltersBar = angular.element('.current-filters-bar'),
+				currentFiltersTop = $currentFilters.offset().top - angular.element('.quick-access').outerHeight();		
+
+			$window.on('scroll', function(){
+				var scrollTop = $window.scrollTop();
+				if ( scrollTop >= currentFiltersTop ) {
+					$currentFiltersBar.addClass('fixed');
+				} else {
+					$currentFiltersBar.removeClass('fixed');
+				}
+			});
+		}	
+	};
+});
+
+exploreApp.directive('stickToBottom', function(){
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs) {
+			var $window = angular.element(window),
+				$resultsCount = angular.element('.results-count'),
+				$results = angular.element('.explore-results');
+
+			$window.on('scroll', function(){
+				var scrollTop = $window.scrollTop(),
+					threshold = $results.offset().top - 500;
+				
+				if ( scrollTop >= threshold ) {
+					$resultsCount.removeClass('visible');
+				} else {
+					$resultsCount.addClass('visible');
+				}
+			});
+		}	
+	};
+});
+
+exploreApp.directive('filterMenusToggle', function(){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs) {
+			element.click(function(e){
+				e.preventDefault();
+				var filtersTop = angular.element('#explore-filters').offset().top,
+					offset = angular.element('.quick-access').outerHeight();
+
+				if ( element.parent().hasClass('fixed') ) {
+					var top = filtersTop - offset;
+					angular.element('#filter-menus-container').addClass('active').slideDown();
+					element.addClass('target-active');
+					angular.element('html, body').animate({scrollTop: top});
+				} else {
+					angular.element('#filter-menus-container').toggleClass('active').slideToggle();
+					element.toggleClass('target-active');
+				}
+			})
+		}
+	};
+});
+
+exploreApp.directive('selectFilterLink', function(){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs) {
+			element.click(function(e){
+				e.preventDefault();
+				angular.element('#filter-menus-container').addClass('active').slideDown();
+				angular.element('.filter-menus-toggle').addClass('target-active');
+			})
+		}
+	};
+});
+
+exploreApp.directive('smoothScroll', function(){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs) {
+			element.click(function(e){
+				e.preventDefault();
+				var target = attrs.scrollTarget,
+					offset = parseInt(attrs.scrollOffset),
+					top = angular.element(target).offset().top;
+				if ( offset ) {
+					top = top + offset;
+				}
+				angular.element('html, body').animate({scrollTop: top});
+			})
+		}
+	};
+});
+
+exploreApp.directive('toggleFilterMenu', ['ChildMenus', function(ChildMenus){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs){
+			element.click(function(e){
+				e.preventDefault();
+				var target = attrs.toggleMenu,
+					$menu = angular.element(target);
+				if ( $menu.hasClass('closed') ) {
+					$menu.removeClass('closed');
+					ChildMenus.active.dropdown = target;
+				} else {
+					$menu.addClass('closed');
+					ChildMenus.active.dropdown = '';
+				}
+			});
 		}
 	};
 }]);
@@ -63,7 +179,6 @@ exploreApp.service('Terms', function($q, $http){
 				.then(resolve, reject);
 		});
 	};
-
 });
 
 exploreApp.service('Posts', function($q, $http){
@@ -84,21 +199,27 @@ exploreApp.service('Posts', function($q, $http){
 			deferred.then(resolve, reject);
 		});
 	}
-
 });
 
-var ExploreController = function(Terms, Posts, $route){
+exploreApp.service('ChildMenus', function(){
+	this.active = {
+		dropdown: '',
+		interest: 'interests-parent',
+		destination: 'destinations-parent',
+		destinationChild: ''
+	};
+});
+
+var ExploreController = function(Terms, Posts, ChildMenus, $route){
 
 	var ctrl = this, query;
-
 	ctrl.WS = WS;
 	ctrl.$route = $route;
 	ctrl.loading = true;
 	// Filters
 	ctrl.terms = Terms.data;
 	ctrl.activeFilters = ctrl.getActiveFilters();
-	ctrl.visibleInterestsList = 'interests-parent';
-	ctrl.visibleDestinationsList = 'destinations-parent';
+	ctrl.activeChildMenus = ChildMenus.active;
 	// Results
 	ctrl.itineraries = [];
 	ctrl.itinerariesLimit = 9;
@@ -131,12 +252,32 @@ var ExploreController = function(Terms, Posts, $route){
 		throw error;
 	});
 
+	ctrl.showTermList = function( list, term ){
+		var filtersTop = angular.element('#explore-filters').offset().top;
+
+		// assign visible child menus
+		if ( typeof list == 'object' ) {
+			angular.forEach(list, function(value, key){
+				ChildMenus.active[key] = value;
+			});
+		} else {
+			ChildMenus.active[list] = term;
+		}
+
+		// scroll back to top of filters
+		if ( angular.element(window).scrollTop() > filtersTop ) {
+			angular.element(window).scrollTop( filtersTop );
+		}
+	};
+	ctrl.clearFilters = function(){
+		ChildMenus.active.interest = 'interests-parent';
+		ChildMenus.active.destination = 'destinations-parent';
+		ChildMenus.active.destinationChild = '';
+	};
+
 };
 
 ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
-	// if ( !method || !slug || !filterGroup )
-	// 	console.log('Error: missing "method", "slug", or "filterGroup" arguments in "term-href" directive'); return;
-
 	var params = angular.copy(this.$route.current.params),
 		keys = Object.keys(params),
 		filterGroupArray,
@@ -186,7 +327,7 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 	}
 
 	return url;
-}
+};
 
 ExploreController.prototype.getQuery = function(){
 	var route = this.$route.current.params,
@@ -237,23 +378,6 @@ ExploreController.prototype.getActiveFilters = function(){
 	}
 };
 
-ExploreController.prototype.showTermList = function( list, term ){
-	if ( list == 'interest' ) {
-		this.visibleInterestsList = term;
-	} else if ( list == 'destination' ) {
-		this.visibleDestinationsList = term;
-	}
-};
-
-ExploreController.prototype.toggleFilterMenu = function( menu ) {
-	var menu = angular.element(menu);
-	if ( menu.hasClass('closed') ) {
-		menu.removeClass('closed');
-	} else {
-		menu.addClass('closed');
-	}
-};
-
 ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	var ctrl = this;
 
@@ -265,12 +389,7 @@ ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	}
 };
 
-ExploreController.prototype.smoothScroll = function(target) {
-	var top = jQuery(target).offset().top;
-	jQuery('html, body').animate({scrollTop: top});
-}
-
-ExploreController.$inject = ['Terms', 'Posts', '$route'];
+ExploreController.$inject = ['Terms', 'Posts', 'ChildMenus', '$route'];
 exploreApp.controller('ExploreController', ExploreController);
 
 

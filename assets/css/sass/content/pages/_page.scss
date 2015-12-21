@@ -223,6 +223,11 @@ section {
 	background: $gray-base;
 	background-image: linear-gradient( transparent 0, transparent 54px, $gray_light 54px, $gray_light 55px, transparent 55px);
 	border-bottom: 1px solid darken($gray_base, 5%);
+	&.scroll-to-fixed-fixed {
+		@media screen and (max-width: $screen-sm - 1) {
+			top: 0 !important;
+		}	
+	}
 
 	select {
 		margin: 1em 0;

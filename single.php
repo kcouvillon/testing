@@ -52,9 +52,17 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 				</div>
 				<?php endif; ?>
 			</div>
+
+			<?php if ( has_post_thumbnail() ) : ?>
+			<a href="#blog-content" class="content-cta">
+				<span class="hide">Skip to Content</span>
+				<i class="icon-arrow-down"></i>
+			</a>
+			<?php endif; ?>
+
 		</section>
 
-		<div class="blog-single-wrap">
+		<div id="blog-content" class="blog-single-wrap">
 
 			<div class="blog-single-content">
 

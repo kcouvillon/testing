@@ -73,7 +73,8 @@ class WS_Explore {
 					'taxonomy' => 'filter',
 					'field'    => 'slug',
 					'terms'    => $filters,
-					'operator' => 'AND'
+					'operator' => 'AND',
+					'include_children' => false
 				)
 			),
 			'no_found_rows'  => true,
@@ -92,13 +93,20 @@ class WS_Explore {
 
 				global $post;
 
-				$img_id        = get_post_thumbnail_id();
-				$img           = wp_get_attachment_image_src( $img_id, 'large' );
-				$post_type     = get_post_type();
-				$terms = get_the_terms( get_the_ID(), 'filter' );
+				$img_id        	= get_post_thumbnail_id();
+				$img           	= wp_get_attachment_image_src( $img_id, 'large' );
+				$post_type     	= get_post_type();
+				$terms 			= get_the_terms( get_the_ID(), 'filter' );
 				$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
-				$term_list = array();
-				$meta_list = array();
+				$priority		= get_post_meta($post->ID, 'post_priority');
+				$term_list 		= array();
+				$meta_list 		= array();
+
+				if ( count($priority) > 0 ) { 
+					$priority = intval($priority[0]); 
+				} else {
+					$priority = 50;
+				}
 
 				if ( '844' == $post->ID || 'smithsonian' == $itinerary_type ) {
 					$smithsonian = true;
@@ -122,12 +130,13 @@ class WS_Explore {
 				}
 
 				$filter_data[$post_type][] = array(
-					'title' => get_the_title(),
-					'featured_image'  => esc_url( $img[0] ),
-					'link' => get_the_permalink(),
-					'filter' => $term_list,
-					'meta' => $meta_list,
-					'smithsonian' => $smithsonian
+					'title' 		=> get_the_title(),
+					'featured_image'=> esc_url( $img[0] ),
+					'link' 			=> get_the_permalink(),
+					'filter' 		=> $term_list,
+					'meta' 			=> $meta_list,
+					'priority' 		=> $priority,
+					'smithsonian' 	=> $smithsonian
 				);
 			}
 
@@ -140,7 +149,6 @@ class WS_Explore {
 		} else {
 			// This messed up the whole site...
 			// wp_send_json_error( $filter_data );
-
 		}
 
 		return;
@@ -195,13 +203,20 @@ class WS_Explore {
 			while ( $query_data->have_posts() ) {
 				$query_data->the_post();
 
-				$img_id    = get_post_thumbnail_id();
-				$img       = wp_get_attachment_image_src( $img_id, 'large' );
-				$post_type = get_post_type();
-				$terms     = get_the_terms( get_the_ID(), 'filter' );
+				$img_id    		= get_post_thumbnail_id();
+				$img       		= wp_get_attachment_image_src( $img_id, 'large' );
+				$post_type 		= get_post_type();
+				$terms     		= get_the_terms( get_the_ID(), 'filter' );
+				$priority		= get_post_meta($post->ID, 'post_priority');
 				$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
-				$term_list = array();
-				$meta_list = array();
+				$term_list 		= array();
+				$meta_list 		= array();
+			
+				if ( count($priority) > 0 ) { 
+					$priority = intval($priority[0]); 
+				} else {
+					$priority = 50;
+				}
 
 				if ( '844' == $post->ID || 'smithsonian' == $itinerary_type ) {
 					$smithsonian = true;
@@ -227,6 +242,7 @@ class WS_Explore {
 					'featured_image' => esc_url( $img[0] ),
 					'link'           => get_the_permalink(),
 					'filter'         => $term_list,
+					'priority'		 => $priority,
 					'meta'           => $meta_list,
 					'smithsonian' => $smithsonian
 				);
@@ -275,14 +291,26 @@ class WS_Explore {
 		$i = 0;
 		foreach ( $interests as $interest ) {
 			$children = get_terms( 'filter', array( 'parent' => $interest->term_id ) );
-			$data['interests'][$i]->children = $children;
+			if ( !empty( $children ) ) {
+				$data['interests'][$i]->children = $children;
+			}
 			$i++;
 		}
 
 		$i = 0;
 		foreach ( $destinations as $destination ) {
-			$children = get_terms( 'filter', array( 'parent' => $destination->term_id ) );
-			$data['destinations'][$i]->children = $children;
+			$children = get_terms( 'filter', array( 'parent' => $destination->term_id, 'hide_empty' => false ) );
+			if ( !empty( $children ) ) {
+				$data['destinations'][$i]->children = (array) $children;
+				$n = 0;
+				foreach ($children as $child) {
+					$grandchildren =  get_terms( 'filter', array( 'parent' => $child->term_id, 'hide_empty' => false ) );
+					if ( !empty( $grandchildren ) ) {
+						$data['destinations'][$i]->children[$n]->children = (array) $grandchildren;
+					}
+					$n++;
+				}
+			}
 			$i++;
 		}
 
