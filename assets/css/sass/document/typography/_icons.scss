@@ -23,113 +23,150 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+$icon-faith-based: "\e623";
+$icon-sports: "\e622";
+$icon-shield: "\e621";
+$icon-service: "\e61c";
+$icon-professional: "\e61d";
+$icon-science-and-technology: "\e61e";
+$icon-history-culture-and-language: "\e61f";
+$icon-performing: "\e620";
+$icon-arrow-down: "\e617";
+$icon-arrow-left: "\e618";
+$icon-arrow-right: "\e619";
+$icon-arrow-up: "\e61a";
+$icon-small-close: "\e61b";
+$icon-print: "\e615";
+$icon-email: "\e613";
+$icon-pdf: "\e614";
+$icon-calendar: "\e608";
+$icon-pin: "\e609";
+$icon-sun: "\e60a";
+$icon-moon: "\e60b";
+$icon-cloudy: "\e60c";
+$icon-cloud2: "\e611";
+$icon-cloud: "\e60d";
+$icon-lightning: "\e60e";
+$icon-rainy: "\e60f";
+$icon-snowy: "\e610";
+$icon-mist: "\e612";
+$icon-close: "\e605";
+$icon-menu: "\e606";
+$icon-search: "\e607";
+$icon-instagram: "\e601";
+$icon-facebook: "\e604";
+$icon-pinterest: "\e602";
+$icon-twitter: "\e603";
+$icon-youtube: "\e616";
+$icon-linkedin: "\e600";
+
 .icon-faith-based:before {
-	content: "\e623";
+	content: $icon-faith-based;
 }
 .icon-sports:before {
-	content: "\e622";
+	content: $icon-sports;
 }
 .icon-shield:before {
-	content: "\e621";
+	content: $icon-shield;
 }
 .icon-service:before {
-	content: "\e61c";
+	content: $icon-service;
 }
 .icon-professional:before {
-	content: "\e61d";
+	content: $icon-professional;
 }
 .icon-science-and-technology:before {
-	content: "\e61e";
+	content: $icon-science-and-technology;
 }
 .icon-history-culture-and-language:before {
-	content: "\e61f";
+	content: $icon-history-culture-and-language;
 }
 .icon-performing:before {
-	content: "\e620";
+	content: $icon-performing;
 }
 .icon-arrow-down:before {
-	content: "\e617";
+	content: $icon-arrow-down;
 }
 .icon-arrow-left:before {
-	content: "\e618";
+	content: $icon-arrow-left;
 }
 .icon-arrow-right:before {
-	content: "\e619";
+	content: $icon-arrow-right;
 }
 .icon-arrow-up:before {
-	content: "\e61a";
+	content: $icon-arrow-up;
 }
 .icon-small-close:before {
-	content: "\e61b";
+	content: $icon-small-close;
 }
 .icon-print:before {
-	content: "\e615";
+	content: $icon-print;
 }
 .icon-email:before {
-	content: "\e613";
+	content: $icon-email;
 }
 .icon-pdf:before {
-	content: "\e614";
+	content: $icon-pdf;
 }
 .icon-calendar:before {
-	content: "\e608";
+	content: $icon-calendar;
 }
 .icon-pin:before {
-	content: "\e609";
+	content: $icon-pin;
 }
 .icon-sun:before {
-	content: "\e60a";
+	content: $icon-sun;
 }
 .icon-moon:before {
-	content: "\e60b";
+	content: $icon-moon;
 }
 .icon-cloudy:before {
-	content: "\e60c";
+	content: $icon-cloudy;
 }
 .icon-cloud2:before {
-	content: "\e611";
+	content: $icon-cloud2;
 }
 .icon-cloud:before {
-	content: "\e60d";
+	content: $icon-cloud;
 }
 .icon-lightning:before {
-	content: "\e60e";
+	content: $icon-lightning;
 }
 .icon-rainy:before {
-	content: "\e60f";
+	content: $icon-rainy;
 }
 .icon-snowy:before {
-	content: "\e610";
+	content: $icon-snowy;
 }
 .icon-mist:before {
-	content: "\e612";
+	content: $icon-mist;
 }
 .icon-close:before {
-	content: "\e605";
+	content: $icon-close;
 }
 .icon-menu:before {
-	content: "\e606";
+	content: $icon-menu;
 }
 .icon-search:before {
-	content: "\e607";
+	content: $icon-search;
 }
 .icon-instagram:before {
-	content: "\e601";
+	content: $icon-instagram;
 }
 .icon-facebook:before {
-	content: "\e604";
+	content: $icon-facebook;
 }
 .icon-pinterest:before {
-	content: "\e602";
+	content: $icon-pinterest;
 }
 .icon-twitter:before {
-	content: "\e603";
+	content: $icon-twitter;
 }
 .icon-youtube:before {
-	content: "\e616";
+	content: $icon-youtube;
 }
 .icon-linkedin:before {
-	content: "\e600";
+	content: $icon-linkedin;
 }
 
 

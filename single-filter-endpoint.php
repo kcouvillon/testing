@@ -240,7 +240,7 @@ $associated_itineraries = new WP_Query( array(
 						}
 						?>
 
-						<li class="program tile tile-third" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
+						<li class="program tile tile-third has-tile-image" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
 								<?php if( 'interest' === $post_type || 'destination' === $post_type ) : ?>
 								<ul class="meta list-unstyled list-tags">
@@ -284,7 +284,7 @@ $associated_itineraries = new WP_Query( array(
 						}
 						?>
 
-						<li class="program tile tile-third" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
+						<li class="program tile tile-third has-tile-image" style="background-image:<?php echo ' url(' . $background . ')'; ?>;">
 							<div class="tile-content">
 								<ul class="meta list-unstyled list-tags">
 									<?php if( 'interest' === $post_type ) : ?>

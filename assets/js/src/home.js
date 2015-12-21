@@ -16,8 +16,8 @@
 		$(document).ready(function(){
 
 			var $introHeader = $('#intro .section-header'),
-				offset = $('#quick-access-menu').innerHeight(),
-				winHeight = window.innerHeight - offset;
+				offset = $introHeader.offset().top,
+				winHeight = $(window).height() - offset;
 
 			$introHeader.css({
 				minHeight: winHeight + 'px'
