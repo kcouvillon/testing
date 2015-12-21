@@ -34,6 +34,7 @@ class WS_Metaboxes_Itineraries {
 	 * Sets up actions and filters.
 	 */
 	protected function _init() {
+		add_action( 'cmb2_init',  array( $this, 'itinerary_tile_synopsis' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_highlights' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_blocks_before' ) );
@@ -41,6 +42,28 @@ class WS_Metaboxes_Itineraries {
 		add_action( 'cmb2_init',  array( $this, 'itinerary_blocks_after' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_resources' ) );
 		add_action( 'cmb2_init',  array( $this, 'itinerary_blog_post' ) );
+	}
+
+	/**
+	 * Tile Synopsis box
+	 */
+	function itinerary_tile_synopsis() {
+
+		$prefix = 'itinerary_tile_synopsis_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Tile Synopsis', 'cmb2' ),
+			'object_types' => array( 'itinerary', ),
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Tile Synopsis', 'cmb2' ),
+			'desc' => __( 'The text for tiles on collections pages', 'cmb2' ),
+			'id' => 'itinerary_tile_synopsis_content',
+			'type' => 'textarea_small'
+		) );
+
 	}
 
 	/**
