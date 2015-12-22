@@ -497,3 +497,32 @@ add_filter( 'srm_max_redirects', 'dbx_srm_max_redirects' );
 function dbx_srm_max_redirects() {
     return 300;
 }
+
+/**
+ * Search the "Internal Trip ID" aka itinerary_details_trip_id
+ * For example, PUV for the Pura Vida trip
+ * https://codex.wordpress.org/Custom_Queries#Keyword_Search_in_Plugin_Table
+ * http://code.tutsplus.com/tutorials/create-a-simple-crm-in-wordpress-extending-wordpress-search-to-include-custom-fields--cms-22953
+ * @todo: make this functional
+ */
+// add_filter('posts_join', 'meta_threecode_search_join' );
+// add_filter('posts_where', 'meta_threecode_search_where' );
+// add_filter('posts_groupby', 'meta_threecode_search_groupby' );
+function meta_threecode_search_join( $join ) {
+    global $wp_query, $wpdb;
+
+    if (!empty($wp_query->query_vars['s'])) {
+    	$search_string = $wp_query->query_vars['s'];
+        $join .= "LEFT JOIN $wpdb->postmeta ON $wpdb->posts.ID = $wpdb->postmeta.post_id ";
+        $join .= "AND $wpdb->postmeta.meta_key = 'itinerary_details_trip_id' ";
+        $join .= "AND $wpdb->postmeta.meta_value LIKE '%%$search_string%%' ";
+    }
+
+    return $join;
+}
+function meta_threecode_search_where( $where ) {
+
+}
+function meta_threecode_search_groupby( $groupby ) {
+
+}
