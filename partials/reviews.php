@@ -48,6 +48,7 @@ foreach ( $powerreviews_pairs as $powerreviews_pair ) {
 ?>
 <div class="section-content">
 	<div class="ws-block block-single-col">
-		<?php echo do_shortcode('[powerreviews pr_page_id="' . $pr_page_id . '"]'); ?>
+		<?php // echo do_shortcode('[powerreviews pr_page_id="' . $pr_page_id . '"]'); ?>
+		<?php echo WS_PowerReviews::html_from_pr_page_id( $pr_page_id ); ?>
 	</div>
 </div>

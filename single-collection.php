@@ -409,7 +409,7 @@ get_header(); ?>
 		$additional_info_email_text = get_post_meta( $post->ID, 'additional_info_email_text', true );
 		?>
 
-		<?php // get_template_part('partials/reviews'); ?>
+		<?php get_template_part('partials/reviews'); ?>
 
 		<?php if ( 'on' == $additional_info_request_box ) : ?>
 			<?php get_template_part( 'partials/module', 'request-info' ); ?>
