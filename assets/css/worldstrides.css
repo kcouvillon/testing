@@ -9838,7 +9838,6 @@ article.open > header.entry-header > a {
   .filter-menu .icon-arrow-right {
     position: relative;
     font-size: 0.75em;
-    float: right;
     margin: 0.35em 1.5em 0 0; }
     @media screen and (min-width: 768px) {
       .filter-menu .icon-arrow-right {
