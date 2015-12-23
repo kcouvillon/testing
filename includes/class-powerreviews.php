@@ -90,7 +90,7 @@ class WS_PowerReviews {
 
 
 		// think backwards -- prepending the bottom scripts first:
-		// @todo - import these the proper WordPress way
+		// @todo - import these the proper WordPress way?
 
 		// @todo - make our own override css?
 		//$review_html .= <link rel="stylesheet" href="https://reviews.worldstrides.com/pwr/engine/merchant_styles2.css" type="text/css" id="prMerchantOverrideStylesheet">';
@@ -105,12 +105,9 @@ class WS_PowerReviews {
 		$review_html = '<link rel="stylesheet" href="//ui.powerreviews.com/stable/review-display/modern/styles.css" type="text/css" id="prBaseStylesheet">'  . $review_html;
 
 		// then adjust the hyperlinks to work properly:
-		$review_html = preg_replace( '/\/pwr/', self::$powerreviews_url . 'pwr', $review_html ); // prepend reviews.worldstrides.com 
+		$review_html = preg_replace( '/\/pwr/', self::$powerreviews_url . 'pwr', $review_html ); // prepend https://reviews.worldstrides.com 
 		$review_html = preg_replace( '/https:/', '', $review_html ); // make all includes start with '//' rather than 'https://'
 		$review_html .= '<script type="text/javascript">POWERREVIEWS.display.engine(document);</script>';
-
-
-
 
 		return $review_html;
 
