@@ -6398,6 +6398,29 @@ img {
 .gallery-caption {
   display: block; }
 
+/*--------------------------------------------------------------
+12.3 Reviews
+--------------------------------------------------------------*/
+.section-content.pr-ws-nopadding {
+  padding: 0px; }
+  .section-content.pr-ws-nopadding p, .section-content.pr-ws-nopadding span, .section-content.pr-ws-nopadding select {
+    font-family: "corpid", "Helvetica", "Arial", sans-serif;
+    font-size: 1em; }
+  .section-content.pr-ws-nopadding span.h3 {
+    font-size: 1.5em; }
+
+.pr-review-engine .pr-snapshot-consensus-value.pr-rounded {
+  background: #3076bc; }
+
+.block-text #pr-review-sort.pr-review-sort {
+  background: #323c53; }
+
+.block-text #pr-review-count.pr-review-count, .block-text p.pr-review-sort-by {
+  color: #FFF; }
+
+.pr-snapshot-head, .pr-review-faceoff, .pr-review-points, .pr-review-tools, .pr-review-author-location {
+  display: none; }
+
 /* Text meant only for screen readers. */
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
