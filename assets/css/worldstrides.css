@@ -10797,12 +10797,16 @@ article.open > header.entry-header > a {
 
 .tile-content {
   position: absolute;
-  /* bottom: 1em; */
   top: 7em;
   left: 1em; }
+  @media (min-width: 600px) {
+    .tile-content {
+      top: 4.5em; } }
+  @media (min-width: 768px) {
+    .tile-content {
+      top: 4.5em; } }
   @media (min-width: 960px) {
     .tile-content {
-      /* bottom: 1.5em; */
       left: 1.5em; } }
   .tile-content a {
     color: #FFF; }

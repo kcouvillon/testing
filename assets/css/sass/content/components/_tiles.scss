@@ -55,12 +55,16 @@
 
 .tile-content {
 	position: absolute;
-	/* bottom: 1em; */
 	top: 7em;
 	left: 1em;
 	@extend %overlay-text;
+	@include susy-media($screen-xs) {
+		top: 4.5em;
+	}
+	@include susy-media($screen-sm) {
+		top: 4.5em;
+	}
 	@include susy-media($screen-md) {
-		/* bottom: 1.5em; */
 		left: 1.5em;
 	}
 	a {
