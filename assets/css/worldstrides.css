@@ -10656,7 +10656,7 @@ article.open > header.entry-header > a {
   background: linear-gradient(rgba(0, 0, 0, 0.45) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.45) 100%); }
 
 .transparent-header .main-navigation, .blog .has-blog-image, .single .has-blog-image, .archive.tax-resource-target .primary-section .section-header-content,
-.archive.tax-resource-target .primary-section .section-header-content .breadcrumbs, .has-section-image .section-header-content, .slideshow-header, .cycle-overlay, .tile-content {
+.archive.tax-resource-target .primary-section .section-header-content .breadcrumbs, .has-section-image .section-header-content, .slideshow-header, .cycle-overlay, .tile-content, .tile-synopsis {
   text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.45), -5px -5px 20px rgba(0, 0, 0, 0.45); }
 
 .ws-tooltips {
@@ -10840,6 +10840,9 @@ article.open > header.entry-header > a {
 .list-tag-no-link {
   color: #fff;
   font-size: 0.75em; }
+
+.tile-synopsis {
+  color: #fff; }
 
 /* Programs containers
  * -------------------------------------- */

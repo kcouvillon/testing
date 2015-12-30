@@ -48,6 +48,11 @@ if ( is_single( '1147' ) ) {
 	
 	<h3 class="h2 tile-title"><?php echo $title; ?></h3>
 
+	<?php $tile_synopsis = get_post_meta( $post->ID, 'itinerary_tile_synopsis_content', true ); 
+	if ( $tile_synopsis && !empty( $tile_synopsis ) ) : ?>
+		<p class="tile-synopsis"><?php echo $tile_synopsis; ?></p>
+	<?php endif; ?>
+
 </div>
 
 <a class="tile-link" href="<?php echo esc_url( $url ); ?>" target="<?php echo esc_attr( $target ); ?>"><span class="hide">Go to <?php echo $title; ?></span></a>
