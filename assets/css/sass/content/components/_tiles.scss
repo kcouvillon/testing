@@ -55,12 +55,13 @@
 
 .tile-content {
 	position: absolute;
-	bottom: 1em;
+	top: 50%;
 	left: 1em;
+	margin-right: 1em;
 	@extend %overlay-text;
 	@include susy-media($screen-md) {
-		bottom: 1.5em;
 		left: 1.5em;
+		margin-right: 1.5em;
 	}
 	a {
 		color: #FFF;
@@ -94,8 +95,11 @@
 .tile-title {
 	color: #FFF;
 	margin: 0;
+	margin-bottom: 5px;
 	transition: color 250ms ease;
 	cursor: pointer;
+	font-size: 24px;
+	font-weight: 600;
 	
 	.tile:hover & {
 		color: $orange;
@@ -107,6 +111,18 @@
 	font-size: 0.75em;
 }
 
+.tile-synopsis {
+	line-height: 1.2em;
+	display: none;
+	color: #fff;
+	@extend %overlay-text;
+	@media screen and ( min-width: $screen-xs ) and ( max-width: $screen-sm ) {
+		display: block;
+	}
+	@media screen and ( min-width: $screen-lg ) {
+		display: block;
+	}
+}
 
 /* Programs containers
  * -------------------------------------- */

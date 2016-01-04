@@ -14,6 +14,7 @@ get_header(); ?>
 		$terms = get_the_terms( $post->ID, '_collection' );
 		$term  = $terms[0];
 		$phone = get_post_meta( $post->ID, 'itinerary_phone', true );
+		$is_itinerary = true;
 		$itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
 
 		$itinerary_title = get_post_meta( $post->ID, 'itinerary_title', true );
