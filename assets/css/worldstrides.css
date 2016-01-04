@@ -10833,6 +10833,7 @@ article.open > header.entry-header > a {
 .tile-title {
   color: #FFF;
   margin: 0;
+  margin-bottom: 5px;
   transition: color 250ms ease;
   cursor: pointer;
   font-size: 24px;
@@ -10845,6 +10846,7 @@ article.open > header.entry-header > a {
   font-size: 0.75em; }
 
 .tile-synopsis {
+  line-height: 1.2em;
   display: none;
   color: #fff; }
   @media screen and (min-width: 600px) and (max-width: 768px) {
