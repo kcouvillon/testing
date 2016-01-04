@@ -49,7 +49,7 @@ if ( is_single( '1147' ) ) {
 	<h3 class="h2 tile-title"><?php echo $title; ?></h3>
 
 	<?php $tile_synopsis = get_post_meta( $post->ID, 'itinerary_tile_synopsis_content', true ); 
-	if ( $tile_synopsis && !empty( $tile_synopsis ) ) : ?>
+	if ( $tile_synopsis && !empty( $tile_synopsis ) && !isset( $is_itinerary ) ) : ?>
 		<p class="tile-synopsis"><?php echo $tile_synopsis; ?></p>
 	<?php endif; ?>
 
