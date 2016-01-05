@@ -77,37 +77,40 @@ class WS_PowerReviews {
 			return '';
 		}
 
+
+		$review_html .= '<a name="pr-header-back-to-top-link"></a>';
+		
+		// @todo - import these the proper WordPress way?
+		// @todo - make our own override css?
+		//$review_html .= <link rel="stylesheet" href="https://reviews.worldstrides.com/pwr/engine/merchant_styles2.css" type="text/css" id="prMerchantOverrideStylesheet">';
+		// prepend PR styles CSS
+		$review_html .= '<link rel="stylesheet" href="//ui.powerreviews.com/stable/review-display/modern/styles.css" type="text/css" id="prBaseStylesheet">';
+		// prepend full.js script
+		$review_html .= '<script src="/pwr/engine/js/full.js"></script>';
+		// prepend widget.js script
+		$review_html .= '<script type="text/javascript" src="//static.powerreviews.com/widgets/v1/widget.js"></script>';
+		// prepend PR styles JS
+		$review_html .= '<script type="text/javascript" src="//ui.powerreviews.com/stable/review-display/modern/js/rd-styles.js"></script>';
+
 		try {
 			$review_uri = $product->inlinefiles->inlinefile;
 			$response = wp_remote_get( self::$powerreviews_url . $review_uri );
 			if( is_array($response) ) {
 				// $header = $response['headers']; // array of http header lines
-				$review_html = $response['body']; // use the content
+				$review_html .= $response['body']; // use the content
 			}
 		} catch ( Exception $e ) {
 			return ''; // PowerReviews XML parsing badly, eh?
 		}
 
 
-		// think backwards -- prepending the bottom scripts first:
-		// @todo - import these the proper WordPress way?
-
-		// @todo - make our own override css?
-		//$review_html .= <link rel="stylesheet" href="https://reviews.worldstrides.com/pwr/engine/merchant_styles2.css" type="text/css" id="prMerchantOverrideStylesheet">';
-
-		// prepend PR styles JS
-		$review_html = '<script type="text/javascript" src="//ui.powerreviews.com/stable/review-display/modern/js/rd-styles.js"></script>' . $review_html;
-		// prepend widget.js script
-		$review_html = '<script type="text/javascript" src="//static.powerreviews.com/widgets/v1/widget.js"></script>' . $review_html;
-		// prepend full.js script
-		$review_html = '<script src="/pwr/engine/js/full.js"></script>' . $review_html;
-		// prepend PR styles CSS
-		$review_html = '<link rel="stylesheet" href="//ui.powerreviews.com/stable/review-display/modern/styles.css" type="text/css" id="prBaseStylesheet">'  . $review_html;
-
 		// then adjust the hyperlinks to work properly:
 		$review_html = preg_replace( '/\/pwr/', self::$powerreviews_url . 'pwr', $review_html ); // prepend https://reviews.worldstrides.com 
 		$review_html = preg_replace( '/https:/', '', $review_html ); // make all includes start with '//' rather than 'https://'
-		$review_html .= '<script type="text/javascript">POWERREVIEWS.display.engine(document);</script>';
+		$review_html .= '<script type="text/javascript">';
+		$review_html .= '  POWERREVIEWS.display.engine(document);';
+		$review_html .= '  var pr_zip_location="' . self::$powerreviews_url . '";';
+		$review_html .= '</script>';
 
 		return $review_html;
 
