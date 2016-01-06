@@ -111,6 +111,7 @@ class WS_PowerReviews {
 		$review_html .= '  POWERREVIEWS.display.engine(document);';
 		$review_html .= '  var pr_zip_location="' . self::$powerreviews_url . '";';
 		$review_html .= '</script>';
+		$review_html .= '<a href="' . self::$powerreviews_url . 'reviews.php?pr_page_id=' . $pr_page_id . '">See all Reviews</a>';
 
 		return $review_html;
 
