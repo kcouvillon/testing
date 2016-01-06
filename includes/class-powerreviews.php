@@ -14,7 +14,7 @@ class WS_PowerReviews {
 
 	protected static $_xml = null;
 
-	public static $powerreviews_url = 'https://wsreviews:reviewsINprogress@reviews.worldstrides.com/';
+	public static $powerreviews_url = 'https://reviews.worldstrides.com/';
 
 	/**
 	 * Get the instance of this class, or set it up if it has not been setup yet.
@@ -79,7 +79,7 @@ class WS_PowerReviews {
 
 
 		$review_html .= '<a name="pr-header-back-to-top-link"></a>';
-		
+
 		// @todo - import these the proper WordPress way?
 		// @todo - make our own override css?
 		//$review_html .= <link rel="stylesheet" href="https://reviews.worldstrides.com/pwr/engine/merchant_styles2.css" type="text/css" id="prMerchantOverrideStylesheet">';
