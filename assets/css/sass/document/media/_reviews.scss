@@ -8,6 +8,8 @@
 
 	span.h3 {
 		font-size: 1.5em;
+		margin-top: 40px;
+		margin-bottom: 80px;
 	}
 }
 
@@ -23,7 +25,10 @@
 	 color: #FFF;
 }
 
-.pr-snapshot-head, .pr-review-faceoff, .pr-review-points, .pr-review-tools, .pr-review-author-location, .pr-page-count-wrapper > p.pr-nav-back-to-top {
+.pr-snapshot-head, .pr-review-faceoff, .pr-review-points, .pr-review-tools, .pr-review-author-location, .pr-page-count-wrapper > p.pr-nav-back-to-top, #pr-review-filtered-count.pr-review-count, #pr-review-count.pr-review-count {
 	display: none;
 }
 
+#pr-review-sort.pr-review-sort {
+	visibility: hidden;
+}
