@@ -68,7 +68,7 @@ class WS_PowerReviews {
 	/**
 	 * Pull out the associated HTML referred to in the XML
 	 */
-	public static function html_from_pr_page_id( $pr_page_id )  {
+	public static function html_from_pr_page_id( $pr_page_id, $page_title )  {
 		$review_uri = '';
 		$review_html = '';
 		$product = null;
@@ -77,8 +77,12 @@ class WS_PowerReviews {
 			return '';
 		}
 
+		$review_html .= '<div class="section-content pr-ws-nopadding">';
+		$review_html .= '	<div class="ws-block block-single-col">';
+		$review_html .= '		<div class="block-text">';
+		$review_html .= '			<span class="h3">What do teachers and students think of WorldStrides\' ' . $page_title . ' Tours?</span>';
 
-		$review_html .= '<a name="pr-header-back-to-top-link"></a>';
+		$review_html .= '				<a name="pr-header-back-to-top-link"></a>';
 
 		// @todo - import these the proper WordPress way?
 		// @todo - make our own override css?
@@ -112,6 +116,11 @@ class WS_PowerReviews {
 		$review_html .= '  var pr_zip_location="' . self::$powerreviews_url . '";';
 		$review_html .= '</script>';
 		$review_html .= '<a href="' . self::$powerreviews_url . 'reviews.php?pr_page_id=' . $pr_page_id . '">See all Reviews</a>';
+
+
+		$review_html .= '		</div> <!-- .block-text -->';
+		$review_html .= '	</div> <!-- .ws-block.block-single-col -->';
+		$review_html .= '</div> <!-- .section-content.pr-ws-nopadding -->';
 
 		return $review_html;
 
