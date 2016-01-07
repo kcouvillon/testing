@@ -43,7 +43,7 @@ class WS_PowerReviews {
 	 */
 	protected function parse_xml() {
 		
-		$response = wp_remote_get( self::$powerreviews_url . 'pwr/mx54y728/rawdata/review_data_summary.xml' );
+		$response = wp_remote_get( self::$powerreviews_url . 'pwr/dgw9fped/rawdata/review_data_summary.xml' );
 		if( is_array($response) ) {
 			// $header = $response['headers']; // array of http header lines
 			$body = $response['body']; // use the content
