@@ -45,9 +45,19 @@ foreach ( $powerreviews_pairs as $powerreviews_pair ) {
 		$pr_page_id = $powerreviews_pair['pr_page_id'];
 	}
 }
+
+$display_title = get_post_meta( $post->ID, 'general_display_title', true );
+if ( ! $display_title ) {
+	$display_title = get_the_title();
+}
+
 ?>
-<div class="section-content">
+<div class="section-content pr-ws-nopadding">
 	<div class="ws-block block-single-col">
-		<?php echo do_shortcode('[powerreviews pr_page_id="' . $pr_page_id . '"]'); ?>
+		<div class="block-text">
+			<span class="h3">What do teachers and students think of WorldStrides' <?php echo apply_filters( 'the_title', $display_title ); ?> Tours?</span>
+			<?php // echo do_shortcode('[powerreviews pr_page_id="' . $pr_page_id . '"]'); ?>
+			<?php echo WS_PowerReviews::html_from_pr_page_id( $pr_page_id ); ?>
+		</div>
 	</div>
 </div>

@@ -1,3 +1,34 @@
-.pr-review-faceoff {
+.section-content.pr-ws-nopadding {
+	padding: 0px;
+
+	p, span, select {
+		font-family: $font_main;
+		font-size: 1em;
+	}
+
+	span.h3 {
+		font-size: 1.5em;
+		margin-top: 40px;
+		margin-bottom: 80px;
+	}
+}
+
+.pr-review-engine .pr-snapshot-consensus-value.pr-rounded {
+	background: $blue-dark;
+}
+
+.block-text #pr-review-sort.pr-review-sort {
+	 background: $navy;
+}
+
+.block-text #pr-review-count.pr-review-count, .block-text p.pr-review-sort-by {
+	 color: #FFF;
+}
+
+.pr-snapshot-head, .pr-review-faceoff, .pr-review-points, .pr-review-tools, .pr-review-author-location, .pr-page-count-wrapper > p.pr-nav-back-to-top, #pr-review-filtered-count.pr-review-count, #pr-review-count.pr-review-count {
 	display: none;
+}
+
+#pr-review-sort.pr-review-sort {
+	visibility: hidden;
 }
