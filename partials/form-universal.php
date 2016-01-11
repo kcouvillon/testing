@@ -5,17 +5,18 @@
  $post_id = get_the_ID();
  $title = get_the_title( $post_id );
 
- if(false === get_the_terms( $post_id, 'product-line' )) { // different greeting based on context
- 	$title = __("Ready to Learn More About Traveling with WorldStrides?", "worldstrides");
+   /**
+  * The Interests will not render if there is sufficient context
+  */
+ $tour_context_exists = ( false !== get_the_terms( $post_id, 'product-line' ) && '/blog/' !== $_SERVER["REQUEST_URI"] );
+
+
+ if( !$tour_context_exists ) { // different greeting based on context
+ 	$title = __("Please fill out the form below and we will get in touch.", "worldstrides");
  } else {
  	$title = sprintf(__("Thank you for your interest in our WorldStrides %s Tour! Please tell us a little more about yourself so we can get you sent to the right place."),$title);
  }
 
-
-  /**
-  * The Interests will not render if there is sufficient context
-  */
- $tour_context_exists = (false!==get_the_terms( $post_id, 'product-line' ));
 
 ?>
 <div id="getinfoform-logo-div" style="position: absolute; left: 50%;"></div>
