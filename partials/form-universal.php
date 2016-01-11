@@ -198,8 +198,8 @@
  		<input id="get-info-companyAddress" type="hidden" name="mkto_companyAddress" value="" >
 		<input id="get-info-companyZipcode" type="hidden" name="mkto_companyZipcode" value="" >
 
-		<input id="get-info-wsmedium" type="hidden" name="mkto_wsmedium" value="<?php echo WS_Form::presubmit_get_wsparams('wsmedium','WEB'); ?>" >
-		<input id="get-info-wsdesc" type="hidden" name="mkto_wsdesc" value="<?php echo WS_Form::presubmit_get_wsparams('wsdesc'); ?>" >
+		<input id="get-info-wsmedium" type="hidden" name="mkto_wsmedium" value="<?php // echo WS_Form::presubmit_get_wsparams('wsmedium','WEB'); // servercaching fail ?>" >
+		<input id="get-info-wsdesc" type="hidden" name="mkto_wsdesc" value="<?php // echo WS_Form::presubmit_get_wsparams('wsdesc'); // servercaching fail ?>" >
 
 		<?php 
 			$current_page_url = WS_Form::current_page_url();

@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-01-06
+/*! WorldStrides - v0.1.0 - 2016-01-11
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -327,6 +327,7 @@
 
 		if( jQuery('#get-info-form').length )  {
 			wsData.populateStates();
+			wsData.populateLandingPageAPIValues( [ 'wsmedium', 'wsdesc' ] );
 			universalLead();
 			wsData.validateAndSubmitForm();
 		}
@@ -392,6 +393,26 @@
 			}
 		});
 	};
+
+	/**
+	 * Populate WorldStrides Landing Page API values:
+	 * https://worldstridesdev.org/blog/worldstrides-landing-page-referral-api/
+	 */
+	wsData.populateLandingPageAPIValues = function ( queryparams ) {
+		var qkey, qregx, qregxx, qval;
+		for (var i = queryparams.length - 1; i >= 0; i--) {
+			qval = '';
+			qkey = queryparams[i];
+			qregx = new RegExp( '\\??&?\\??' + qkey + '=' + '([A-Za-z]+)', 'i' );
+			qregxx = qregx.exec( location.href );
+			if( null !== qregxx && qregxx[1] ) {
+				qval = qregxx[1];
+				console.log( 'Looking for parameter: ' + qkey + '. Found: ' + qval );
+				// populate the corresponding hidden input:
+				jQuery('#get-info-' + qkey).val(qval);
+			}
+		};
+	}
 
 	function universalLead() {
 		/**
