@@ -321,7 +321,7 @@ class WS_Metaboxes_Custom_Pages {
 			'name' => 'Customized Content',
 			'id' => 'custom_page_content',
 			'type' => 'wysiwyg',
-			'default' => 'Meet with the team at four China-based companies to see firsthand what its like to do business in China and get an interactive, up-close look at professional life in this dynamic environment. Our visits will be customized for West Texas A&amp;M.'
+			'default' => ''
 		) );
 	}
 
