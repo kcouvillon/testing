@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-01-11
+/*! WorldStrides - v0.1.0 - 2016-01-14
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -403,7 +403,7 @@
 		for (var i = queryparams.length - 1; i >= 0; i--) {
 			qval = '';
 			qkey = queryparams[i];
-			qregx = new RegExp( '\\??&?\\??' + qkey + '=' + '([A-Za-z]+)', 'i' );
+			qregx = new RegExp( '\\??&?\\??' + qkey + '=' + '([A-Za-z0-9_]+)', 'i' );
 			qregxx = qregx.exec( location.href );
 			if( null !== qregxx && qregxx[1] ) {
 				qval = qregxx[1];

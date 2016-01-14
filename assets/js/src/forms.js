@@ -91,7 +91,7 @@
 		for (var i = queryparams.length - 1; i >= 0; i--) {
 			qval = '';
 			qkey = queryparams[i];
-			qregx = new RegExp( '\\??&?\\??' + qkey + '=' + '([A-Za-z]+)', 'i' );
+			qregx = new RegExp( '\\??&?\\??' + qkey + '=' + '([A-Za-z0-9_]+)', 'i' );
 			qregxx = qregx.exec( location.href );
 			if( null !== qregxx && qregxx[1] ) {
 				qval = qregxx[1];
