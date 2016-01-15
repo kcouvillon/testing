@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-01-14
+/*! WorldStrides - v0.1.0 - 2016-01-15
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -889,6 +889,8 @@
 	}
 
 	wsData.ajaxFormSubmit = function(form) {
+		 // send data to Google Analytics
+		 dataLayer.push({'event' : 'formSubmitted', 'formName' : 'Main Lead'});
 		 // setup AJAX options
 		 var formData = {};
 		 var elements = form.find('[id^="get-info-"]');
