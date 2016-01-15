@@ -890,7 +890,7 @@
 
 	wsData.ajaxFormSubmit = function(form) {
 		 // send data to Google Analytics
-		 dataLayer.push({'event' : 'formSubmitted', 'formName' : 'Main Lead'});
+		 dataLayer.push({'event' : 'formSubmitted', 'formName' : 'main_lead'});
 		 // setup AJAX options
 		 var formData = {};
 		 var elements = form.find('[id^="get-info-"]');
