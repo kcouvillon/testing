@@ -10,13 +10,7 @@
 		</form>
 	<?php endif; ?>
 
-	<h3>Explore by Tag</h3>
 
-	<?php $tags = get_terms( 'post_tag', array( 'hide_empty' => true ) ); ?>
-
-	<?php foreach ( $tags as $tag ) : ?>
-		<a class="btn btn-success" href="<?php echo get_tag_link( $tag->term_id ); ?>"><?php echo $tag->name; ?></a>
-	<?php endforeach; ?>
 
 	<h3>Explore by Category</h3>
 
@@ -29,6 +23,14 @@
 
 	<?php foreach ( $cats as $cat ) : ?>
 		<a class="btn btn-primary" href="<?php echo get_category_link( $cat->term_id ); ?>"><?php echo $cat->cat_name; ?></a>
+	<?php endforeach; ?>
+
+	<h3>Explore by Tag</h3>
+
+	<?php $tags = get_terms( 'post_tag', array( 'hide_empty' => true ) ); ?>
+
+	<?php foreach ( $tags as $tag ) : ?>
+		<a class="btn btn-success" href="<?php echo get_tag_link( $tag->term_id ); ?>"><?php echo $tag->name; ?></a>
 	<?php endforeach; ?>
 
 </div>

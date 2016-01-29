@@ -48,19 +48,7 @@ get_header(); ?>
 
 				<?php get_template_part( 'partials/content-blog-sidebar-search-tags' ); ?>
 
-				<?php if ( ! empty( $recent_highlights ) ) : ?>
 
-					<?php foreach( $recent_highlights as $recent_highlight ) : ?>
-
-						<?php $post = get_post( $recent_highlight ); ?>
-
-						<?php get_template_part( 'partials/content', 'blog-sidebar' ); ?>
-
-					<?php endforeach; ?>
-
-					<?php wp_reset_postdata(); ?>
-
-				<?php endif; ?>
 
 			</aside>
 
