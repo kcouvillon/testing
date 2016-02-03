@@ -235,7 +235,7 @@
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections | orderBy : ['priority', 'title'] | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
+			<article ng-repeat="collection in ctrl.collections | orderBy : ['-priority', 'title'] | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm collection-image" />
 				</a>
@@ -276,6 +276,9 @@
 						<li class="list-tag-no-link" ng-repeat="term in itinerary.meta" ng-bind-html="term.name"></li>	
 					</ul>
 					<h3 class="h2 tile-title" ng-bind-html="itinerary.title"></h3>
+                    <div class="hidden-xs hidden-sm">
+                        <span ng-repeat="feature in itinerary.features"><span class="label label-primary">{{ feature }}</span> </span>
+                    </div>
 				</div>
 
 				<a class="tile-link" href="{{ itinerary.link }}"><span class="hide">Go to {{ itinerary.title }}</span></a>
