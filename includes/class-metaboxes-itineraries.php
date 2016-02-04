@@ -102,13 +102,13 @@ class WS_Metaboxes_Itineraries {
 			'name'             => 'Itinerary Priority',
 			'id'               => 'post_priority',
 			'type'             => 'text',
-			'default'          => '50',
-			'desc' => '1 = highest priority. 100 = lowest. Default 50.',
+			'default'          => '50000',
+			'desc' => '100 = highest priority. 50000 = lowest. Default 50000.',
 			'type' => 'text',
 			'attributes' => array(
 				'type' => 'number',
 				'min' => '1',
-				'max' => '100',
+				'max' => '50000',
 				'step' => '1',
 			),
 		) );
