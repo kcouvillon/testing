@@ -235,7 +235,7 @@
 		</header>
 		<div class="results clearfix">
 
-			<article ng-repeat="collection in ctrl.collections | orderBy : ['-priority', 'title'] | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
+			<article ng-repeat="collection in ctrl.collections | orderBy : ['priority', 'title'] | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
 				<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm collection-image" />
 				</a>
