@@ -12,7 +12,14 @@ if (isset($_GET['wsmedium'])){
 $background = ( isset( $options['request_info_image'] ) ? $options['request_info_image'] : '' ); // can use image_id to get id
 $text = ( isset( $options['request_info_text'] ) ? $options['request_info_text'] : '' );
 
-$action_link = "/request-info/?src=" . $src . "&wsmedium=" . $wsmedium;
+if (isset($_GET['src']) && isset($_GET['wsmedium'])){
+	$action_link = "/request-info/?src=" . $src . "&wsmedium=" . $wsmedium;
+}
+
+else {
+	$action_link = "/request-info/";
+}
+
 
 ?>
 <div class="blog-single-cta" style="background-image:<?php echo 'url(' . $background . ')'; ?>;">

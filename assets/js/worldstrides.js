@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-02-01
+/*! WorldStrides - v0.1.0 - 2016-02-05
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -373,7 +373,7 @@
 	/**
 	 * Digest and display JSON list of states
 	 */
-	wsData.populateStates = function (){
+	wsData.populateStates = function (event){
 		jQuery.ajax({
 			url: wsData.mdrapi_base_url + 'allStates/',
 			type: 'GET',
@@ -526,7 +526,7 @@
 		 * Async call to the MDR API to get the list of cities
 		 */
 		wsData.mdrApiCities = {};
-		wsData.getCityList = function (){
+		wsData.getCityList = function (event){
 			//Erase values of city and school, in case they switch states.
 			//TODO: UNCOMMENT THIS: ws_resetSchoolCitySchoolNameFields();
 
@@ -651,7 +651,7 @@
 		 * Ajax call for populating school autocomplete
 		 */
 		wsData.mdrApiSchools = {};
-		wsData.getSchoolsFromCity = function(){
+		wsData.getSchoolsFromCity = function(event){
 			// find and alias members:
 			var school = jQuery('#get-info-school');
 			var city = jQuery('#get-info-city');
@@ -834,9 +834,9 @@
 
 	}
 
-	wsData.validateAndSubmitForm = function() {
+	wsData.validateAndSubmitForm = function(event) {
 		jQuery('#get-info-form').validate({
-			submitHandler: function(form) {
+			submitHandler: function(form,event) {
 				wsData.formSpinner = new Spinner(wsData.spinnerParams);
 				wsData.formSpinner.opts.lines = 30;
 				wsData.formSpinner.opts.radius = 150;
