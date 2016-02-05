@@ -276,12 +276,22 @@
 						<li class="list-tag-no-link" ng-repeat="term in itinerary.meta" ng-bind-html="term.name"></li>	
 					</ul>
 					<h3 class="h2 tile-title" ng-bind-html="itinerary.title"></h3>
-                    <div class="hidden-xs hidden-sm">
-                        <span ng-repeat="feature in itinerary.features"><span class="label label-primary">{{ feature }}</span> </span>
+                    <div class="visible-xs visible-sm">
+                        <ul class="meta list-unstyled" ng-show="itinerary.meta">
+                            <li class="list-tag-no-link">{{ itinerary.number_days }}</li>
+                            <li class="list-tag-no-link" ng-repeat="feature in itinerary.features">{{ feature }},</li>	
+                        </ul>
                     </div>
 				</div>
 
 				<a class="tile-link" href="{{ itinerary.link }}"><span class="hide">Go to {{ itinerary.title }}</span></a>
+
+                <div class="card_content hidden-xs hidden-sm">
+                        <h3 class="h2 tile-title"><i class="icon-service"></i> Trip Favorites</h3>
+                        <span class="label label-primary">{{ itinerary.number_days }}</span>
+                        <span ng-repeat="feature in itinerary.features"><span class="label label-warning">{{ feature }}</span> </span>
+                </div>
+
 			</article>
 	
 		</div>
@@ -294,3 +304,28 @@
 </section>
 
 
+<style>
+    .results article {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card_content {
+      background-color: rgba(255,255,255,0.5);
+      padding: 10px;
+      position: absolute;
+      top: -193px;
+      width: 100%;
+      transition: all 0.5s ease;
+    }
+
+    .card_content h3 {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+    }
+
+    .results article:hover .card_content {
+      background-color: rgba(255,255,255,0.8);
+      top: 0;
+    }
+</style>

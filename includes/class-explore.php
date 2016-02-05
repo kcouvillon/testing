@@ -102,6 +102,7 @@ class WS_Explore {
 				$term_list 		= array();
 				$meta_list 		= array();
 				$features       = get_post_meta( $post->ID, 'itinerary_details_features', true );
+                $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true );
 
 				if ( count($priority) > 0 ) { 
 					$priority = intval($priority[0]); 
@@ -138,7 +139,8 @@ class WS_Explore {
 					'meta' 			=> $meta_list,
 					'priority' 		=> $priority,
 					'smithsonian' 	=> $smithsonian,
-                    'features'      => $features
+                    'features'      => $features,
+                    'number_days'   => $number_days
 				);
 			}
 
@@ -214,6 +216,7 @@ class WS_Explore {
 				$term_list 		= array();
 				$meta_list 		= array();
                 $features       = get_post_meta( $post->ID, 'itinerary_details_features', true );
+                $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true );
 			
 				if ( count($priority) > 0 ) { 
 					$priority = intval($priority[0]); 
@@ -247,8 +250,9 @@ class WS_Explore {
 					'filter'         => $term_list,
 					'priority'		 => $priority,
 					'meta'           => $meta_list,
-					'smithsonian' => $smithsonian,
-                    'features'      => $features
+					'smithsonian'   => $smithsonian,
+                    'features'      => $features,
+                    'number_days'   => $number_days
 				);
 			}
 			wp_reset_postdata();
