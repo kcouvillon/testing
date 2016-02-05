@@ -1,12 +1,23 @@
 <?php
 $options = get_option( 'ws_options' );
 
+//Extract src and wsmedium from URL to pass to main form
+if (isset($_GET['src'])){
+	$src = htmlspecialchars($_GET['src']);
+}
+if (isset($_GET['wsmedium'])){
+	$wsmedium = htmlspecialchars($_GET['wsmedium']);
+}
+
 $background = ( isset( $options['request_info_image'] ) ? $options['request_info_image'] : '' ); // can use image_id to get id
 $text = ( isset( $options['request_info_text'] ) ? $options['request_info_text'] : '' );
+
+$action_link = "/request-info/?src=" . $src . "&wsmedium=" . $wsmedium;
+
 ?>
 <div class="blog-single-cta" style="background-image:<?php echo 'url(' . $background . ')'; ?>;">
 	<span class="h2"><?php echo apply_filters( 'the_content', $text ) ?></span>
-	<form id="module-request-info-form" action="/request-info/" method="post">
+	<form id="module-request-info-form" action="<?php echo $action_link ?>" method="post">
 		<label for="selectMenu">My role is</label>
 		<select id="selectMenu" name="role" title="Role">
 			<option value="">Select...</option>
