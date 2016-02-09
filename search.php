@@ -15,7 +15,11 @@ if ( 'post' == $post_type ) {
 	$stories = false;
 	$search_title = 'All WorldStrides';
 }
+
+
 ?>
+
+
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main search" role="main">
@@ -43,16 +47,30 @@ if ( 'post' == $post_type ) {
 
 			<section>
 
-			<?php if ( have_posts() ) : ?>
+			<?php if ( have_posts() || threecode_exists() ) : ?>
 
 				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in <?php echo $search_title; ?></h3>
 
+                <?php /* Three Code Loop */ ?>
+
+                <?php
+                      //Threecode Search
+                      foreach( threecode_search() as $row ) {
+                          setup_postdata($row);
+                          include 'partials/content-custom.php';
+                      }
+                ?>
+
+                <?php /* End Three Loop */ ?>
+
 				<?php /* Start the Loop */ ?>
+
+
 				<?php while ( have_posts() ) : the_post(); ?>
 
 						<?php get_template_part( 'partials/content', 'about' ) ?>
 
-				<?php endwhile; ?>
+				<?php endwhile; ?>       
 
 				<?php echo paginate_links(); ?>
 
