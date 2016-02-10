@@ -504,26 +504,73 @@ function dbx_srm_max_redirects() {
  * For example, PUV for the Pura Vida trip
  * https://codex.wordpress.org/Custom_Queries#Keyword_Search_in_Plugin_Table
  * http://code.tutsplus.com/tutorials/create-a-simple-crm-in-wordpress-extending-wordpress-search-to-include-custom-fields--cms-22953
- * @todo: make this functional
+ * @todo: make this functional -> See threscode_search() below
  */
-// add_filter('posts_join', 'meta_threecode_search_join' );
-// add_filter('posts_where', 'meta_threecode_search_where' );
-// add_filter('posts_groupby', 'meta_threecode_search_groupby' );
+//add_filter('posts_join', 'meta_threecode_search_join' );
+//add_filter('posts_where', 'meta_threecode_search_where' );
+//add_filter('posts_groupby', 'meta_threecode_search_groupby' );
+//add_filter('posts_orderby', 'meta_threecode_search_orderby' );
+
 function meta_threecode_search_join( $join ) {
     global $wp_query, $wpdb;
-
     if (!empty($wp_query->query_vars['s'])) {
     	$search_string = $wp_query->query_vars['s'];
-        $join .= "LEFT JOIN $wpdb->postmeta ON $wpdb->posts.ID = $wpdb->postmeta.post_id ";
-        $join .= "AND $wpdb->postmeta.meta_key = 'itinerary_details_trip_id' ";
-        $join .= "AND $wpdb->postmeta.meta_value LIKE '%%$search_string%%' ";
+        //$join = " LEFT JOIN " . $wpdb->postmeta . " ON " . $wpdb->posts . ".ID = " . $wpdb->postmeta . ".post_id ";
+        //$join .= "AND " . $wpdb->postmeta . ".meta_key  = 'itinerary_details_trip_id' ";
+        //$join .= "AND " . $wpdb->postmeta . ".meta_value like '%" . $search_string . "%'";
     }
-
     return $join;
 }
 function meta_threecode_search_where( $where ) {
-
+    return $where;
 }
 function meta_threecode_search_groupby( $groupby ) {
+    return $groupby;
+}
 
+function meta_threecode_search_orderby( $orderby ) {
+    return $orderby;
+}
+
+
+//Debug Show Variable Function
+function debug_show_var($vardata){
+    echo '<script language="javascript">';
+    echo 'alert("' . $vardata . '")';
+    echo '</script>';
+}
+
+
+//Threecode Exists
+function threecode_exists(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+        $search_string = $wp_query->query_vars['s'];
+
+        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.ID = b.post_id  WHERE b.meta_key  = 'itinerary_details_trip_id' AND b.meta_value = '$search_string'" );
+        if ($results == 0){
+            $exists = false;
+        }
+        else{
+            $exists = true;
+        }
+
+        return $exists;
+    }
+}
+
+
+//Threecode Search
+function threecode_search(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+        $search_string = $wp_query->query_vars['s'];
+
+        $qry = "SELECT * FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.ID = b.post_id  WHERE b.meta_key  = 'itinerary_details_trip_id' AND b.meta_value = '$search_string'";
+        $results = $wpdb->get_results( $qry );
+
+        wp_reset_query();
+
+        return $results;
+    }
 }
