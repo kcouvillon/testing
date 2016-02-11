@@ -222,7 +222,7 @@
 <!-- Results ##################################################### -->
 
 
-<section id="explore-results" class="explore-results section-content">
+<section id="explore-results" class="section-content">
 
 	<div class="alert text-center" ng-show="ctrl.postsError">Sorry, an error has occurred. Try <a href="#/">reloading</a> the page.</div>
 
@@ -236,12 +236,12 @@
 		<div class="results clearfix">
 
 			<article ng-repeat="collection in ctrl.collections | orderBy : ['priority', 'title'] | limitTo : ctrl.collectionsLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ collection.featured_image }} );" >
-				<a href="{{ collection.link }}" ng-show="collection.featured_image">
+				<!--<a href="{{ collection.link }}" ng-show="collection.featured_image">
 					<img src="{{ collection.featured_image }}" alt="{{ collection.title }}" class="hide-sm collection-image" />
-				</a>
+				</a>-->
 				<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="collection.smithsonian" />
 				<div class="tile-content">
-					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="collection.smithsonian" />
+					<!--<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="collection.smithsonian" />-->
 					<ul class="meta list-unstyled" ng-show="collection.meta">
 						<li class="list-tag-no-link" ng-repeat="term in collection.meta" ng-bind-html="term.name"></li>
 					</ul>
@@ -265,31 +265,34 @@
 		</header>
 		<div class="results clearfix">
 
-			<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
-				<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
+			<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image taphover" style="background-image:url( {{ itinerary.featured_image }} );" >
+				<!--<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 					<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
-				</a>
+				</a>-->
 				<img class="smithsonian-image" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small.png" ng-show="itinerary.smithsonian" />
 				<div class="tile-content">
-					<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="itinerary.smithsonian" />
+					<!--<img class="smithsonian-image-mobile" alt="smithsonian" src="{{ctrl.WS.theme}}/assets/images/smithsonian-small-gray.png" ng-show="itinerary.smithsonian" />-->
 					<ul class="meta list-unstyled" ng-show="itinerary.meta">
 						<li class="list-tag-no-link" ng-repeat="term in itinerary.meta" ng-bind-html="term.name"></li>	
 					</ul>
 					<h3 class="h2 tile-title" ng-bind-html="itinerary.title"></h3>
-                    <div class="visible-xs visible-sm">
+                    <!--<div class="visible-xs visible-sm">
                         <ul class="meta list-unstyled" ng-show="itinerary.meta">
                             <li class="list-tag-no-link">{{ itinerary.number_days }}</li>
                             <li class="list-tag-no-link" ng-repeat="feature in itinerary.features">{{ feature }},</li>	
                         </ul>
-                    </div>
+                    </div>-->
 				</div>
 
 				<a class="tile-link" href="{{ itinerary.link }}"><span class="hide">Go to {{ itinerary.title }}</span></a>
 
-                <div class="card_content hidden-xs hidden-sm">
-                        <h3 class="h2 tile-title"><i class="icon-service"></i> Trip Favorites</h3>
-                        <span class="label label-primary">{{ itinerary.number_days }}</span>
-                        <span ng-repeat="feature in itinerary.features"><span class="label label-warning">{{ feature }}</span> </span>
+                <div class="card_content">
+                        <div class="detail-summary">Trip Summary <small class="pull-right"><i>more info here</i></small></div>
+                        
+                        <span ng-show="itinerary.number_days != ''" class="label label-inverse"><i class="icon-calendar"></i> {{ itinerary.number_days }}</span>
+                        <span ng-repeat="feature in itinerary.features"><span class="label label-inverse"><i class="icon-pin"></i> {{ feature }}</span> </span>
+                        
+                        <a href="{{ itinerary.link }}" class="btn btn-xs btn-inverse text-center center-block mt10 text-uppercase visible-sm">view details</a>
                 </div>
 
 			</article>
@@ -304,6 +307,26 @@
 </section>
 
 
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $(document).on("touchstart", '.results article.taphover', function (e) {
+                "use strict"; //satisfy the code inspectors
+                var link = $(this); //preselect the link
+                if (link.hasClass('hover')) {
+                    return true;
+                } else {
+                    link.addClass("hover");
+                    $('.results article.taphover').not(this).removeClass("hover");
+                    e.preventDefault();
+                    return false; //extra, and to make sure the function has consistent return points
+                }
+            });
+        });
+    })(jQuery);
+</script>
+
+
 <style>
     .results article {
         overflow: hidden;
@@ -311,21 +334,44 @@
     }
 
     .card_content {
-      background-color: rgba(255,255,255,0.5);
+      background-color: rgba(0,0,0,0.2);
       padding: 10px;
       position: absolute;
       top: -193px;
       width: 100%;
-      transition: all 0.5s ease;
+      transition: all 0.5s 0.5s ease;
+      border-bottom: 1px solid #000;
+      border-top: 4px solid #fb901d;
     }
 
-    .card_content h3 {
-      font-size: 1.5em;
-      margin-bottom: 0.5em;
+    .card_content .detail-summary {
+      font-size: 1em;
+      margin: 0;
+      color: #fff;
+      font-weight: 400;
     }
 
-    .results article:hover .card_content {
-      background-color: rgba(255,255,255,0.8);
+
+    .results article.taphover:hover .card_content, .results article.taphover.hover .card_content {
+      background-color: rgba(0,0,0,0.6);
       top: 0;
+    }
+
+
+    .label-inverse {
+        background-color: #787878;
+        font-weight: 100;
+        border: 1px solid #000;
+    }
+
+    .btn-inverse {
+        background-color: #000;
+        color: #fff;
+        font-weight: 100;
+        border: 1px solid #787878;
+    }
+
+    .mt10 {
+        margin-top: 10px;
     }
 </style>
