@@ -499,16 +499,19 @@ class WS_Helpers {
 
 		if (!is_wp_error($terms)) {
 			$product_lines = array();
-			foreach ($terms as $term){
-				$product_lines[] = $term->name;
+			if (is_array($terms) || is_object($terms)){
+				foreach ($terms as $term){
+					$product_lines[] = $term->name;
+				}
 			}
+
 		}
 
 		//If no product lines make default Product line 'Other'
 		$group_tag = '';
 		if (count($product_lines) == 0){
 			//No product lines
-			$group_tag = 'Other';
+			$group_tag = 'Unknown';
 		}
 		//Multiple Product lines
 		else if (count($product_lines) > 1){
