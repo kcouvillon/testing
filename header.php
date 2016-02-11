@@ -57,6 +57,7 @@ if ( is_singular( 'post' ) ) {
 ?>
 
 <?php echo WS_Helpers::ws_google_tag_manager(); ?>
+<?php echo WS_HElpers::content_grouping();?>
 
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>

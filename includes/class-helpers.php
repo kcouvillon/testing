@@ -487,6 +487,57 @@ class WS_Helpers {
 		return 'pattern-' . $patterns[$random_key];
 
 	}
+
+	/**
+	 *
+	 * Content grouping code
+	 *
+	 */
+	public static function content_grouping(){
+		$post_id = get_the_ID();
+		$terms = get_the_terms($post_id, 'product-line');
+
+		if (!is_wp_error($terms)) {
+			$product_lines = array();
+			foreach ($terms as $term){
+				$product_lines[] = $term->name;
+			}
+		}
+
+		//If no product lines make default Product line 'Other'
+		$group_tag = '';
+		if (count($product_lines) == 0){
+			//No product lines
+			$group_tag = 'Other';
+		}
+		//Multiple Product lines
+		else if (count($product_lines) > 1){
+			$group_tag = 'Multi';
+		}
+		//1 Proudct line
+		else {
+			$group_tag = $product_lines[0];
+		}
+
+		ob_start();
+		?>
+		<script>
+			jQuery(document).ready(function(){
+				ga('create', 'UA-65576002-1', 'worldstrides.com 2.0');
+				ga('set', 'contentGroup1', '<?php echo $group_tag; ?>');
+				ga('send', 'pageview');
+			});
+
+		</script>
+<?php
+		$html = ob_get_contents();
+		ob_get_clean();
+
+		return $html;
+
+
+	}
+
 }
 
 WS_Helpers::instance();
