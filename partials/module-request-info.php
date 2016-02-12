@@ -5,8 +5,14 @@ $options = get_option( 'ws_options' );
 if (isset($_GET['src'])){
 	$src = htmlspecialchars($_GET['src']);
 }
+else {
+	$src = '';
+}
 if (isset($_GET['wsmedium'])){
 	$wsmedium = htmlspecialchars($_GET['wsmedium']);
+}
+else {
+	$wsmedium = '';
 }
 WS_Helpers::cache_test($src, $wsmedium);
 $background = ( isset( $options['request_info_image'] ) ? $options['request_info_image'] : '' ); // can use image_id to get id
