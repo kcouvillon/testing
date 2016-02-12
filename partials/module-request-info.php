@@ -4,9 +4,24 @@ $options = get_option( 'ws_options' );
 //Extract src and wsmedium from URL to pass to main form
 if (isset($_GET['src'])){
 	$src = htmlspecialchars($_GET['src']);
+	?>
+	<script>
+		jQuery(document).ready(function(){
+			console.log("SRC: <?php echo $src; ?>");
+		});
+	</script>
+<?php
 }
 if (isset($_GET['wsmedium'])){
 	$wsmedium = htmlspecialchars($_GET['wsmedium']);
+	?>
+	<script>
+		jQuery(document).ready(function(){
+			console.log("WSMEDIUM: <?php echo $wsmedium; ?>");
+		});
+	</script>
+<?php
+
 }
 
 $background = ( isset( $options['request_info_image'] ) ? $options['request_info_image'] : '' ); // can use image_id to get id
