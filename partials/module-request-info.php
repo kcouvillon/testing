@@ -24,7 +24,7 @@ else {
 ?>
 <div class="blog-single-cta" style="background-image:<?php echo 'url(' . $background . ')'; ?>;">
 	<span class="h2"><?php echo apply_filters( 'the_content', $text ) ?></span>
-	<form id="module-request-info-form" action="<?php echo $action_link ?>" method="post">
+	<form id="module-request-info-form" action="<?php echo $action_link; ?>" method="post">
 		<label for="selectMenu">My role is</label>
 		<select id="selectMenu" name="role" title="Role">
 			<option value="">Select...</option>

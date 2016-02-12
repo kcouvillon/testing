@@ -57,6 +57,7 @@ if ( is_singular( 'post' ) ) {
 ?>
 
 <?php echo WS_Helpers::ws_google_tag_manager(); ?>
+<script src='https://ssl.google-analytics.com/ga.js' type='text/javascript'>
 <?php echo WS_HElpers::content_grouping();?>
 
 <div id="page" class="site">
