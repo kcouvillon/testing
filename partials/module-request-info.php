@@ -1,31 +1,20 @@
 <?php
 $options = get_option( 'ws_options' );
 
-//Extract src and wsmedium from URL to pass to main form
-if (isset($_GET['src'])){
-	$src = htmlspecialchars($_GET['src']);
-}
-else {
-	$src = '';
-}
-if (isset($_GET['wsmedium'])){
-	$wsmedium = htmlspecialchars($_GET['wsmedium']);
-}
-else {
-	$wsmedium = '';
-}
-WS_Helpers::cache_test($src, $wsmedium);
 $background = ( isset( $options['request_info_image'] ) ? $options['request_info_image'] : '' ); // can use image_id to get id
 $text = ( isset( $options['request_info_text'] ) ? $options['request_info_text'] : '' );
 
-if (isset($_GET['src']) && isset($_GET['wsmedium'])){
-	$action_link = "/request-info/?src=" . $src . "&wsmedium=" . $wsmedium;
+$url_params = parse_url(WS_Form::current_page_url());
+if (isset($url_params['query'])){
+	parse_str($url_params['query'], $uri);
 }
 
+if (isset($uri['src']) && isset($uri['wsmedium'])){
+	$action_link = "/request-info/?src=" . $uri['src'] . "&wsmedium=" . $uri['wsmedium'];
+}
 else {
 	$action_link = "/request-info/";
 }
-
 
 ?>
 <div class="blog-single-cta" style="background-image:<?php echo 'url(' . $background . ')'; ?>;">

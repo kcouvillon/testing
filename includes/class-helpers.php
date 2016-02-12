@@ -507,7 +507,7 @@ class WS_Helpers {
 
 		}
 
-		//If no product lines make default Product line 'Other'
+		//If no product lines make default Product line 'Unknown'
 		$group_tag = '';
 		if (count($product_lines) == 0){
 			//No product lines
@@ -532,33 +532,13 @@ class WS_Helpers {
 			});
 
 		</script>
-<?php
+		<?php
 		$html = ob_get_contents();
 		ob_get_clean();
 
 		return $html;
 
-
 	}
-	/**
-	 * Debug Cache Module
-	 *
-	 * Use this to help debug potential caching issues
-	 */
-	public static function cache_test($src, $wsmedium){
-		?>
-		<script>
-			jQuery(document).ready(function(){
-								console.log("SRC: <?php echo $src;?>");
-				console.log("WSMEDIUM: <?php echo $wsmedium; ?>");
-			});
-		</script>
-	<?php
-
-
-	}
-
-
 
 }
 
