@@ -540,6 +540,25 @@ class WS_Helpers {
 
 
 	}
+	/**
+	 * Debug Cache Module
+	 *
+	 * Use this to help debug potential caching issues
+	 */
+	public static function cache_test($src, $wsmedium){
+		?>
+		<script>
+			jQuery(document).ready(function(){
+								console.log("SRC: <?php echo $src;?>");
+				console.log("WSMEDIUM: <?php echo $wsmedium; ?>");
+			});
+		</script>
+	<?php
+
+
+	}
+
+
 
 }
 
