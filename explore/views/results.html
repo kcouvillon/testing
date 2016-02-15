@@ -289,8 +289,8 @@
                 <div class="card_content">
                         <div class="detail-summary">Trip Summary <small class="pull-right"><i>more info here</i></small></div>
                         
-                        <span ng-show="itinerary.number_days != ''" class="label label-inverse"><i class="icon-calendar"></i> {{ itinerary.number_days }}</span>
-                        <span ng-repeat="feature in itinerary.features"><span class="label label-inverse"><i class="icon-pin"></i> {{ feature }}</span> </span>
+                        <span ng-show="itinerary.number_days != ''" style="font-size:8pt;color:#fff;"><i class="text-primary icon-calendar"></i> {{ itinerary.number_days }}</span>
+                        <span ng-repeat="feature in itinerary.features"><span  style="font-size:8pt;color:#fff;"><i class="text-primary icon-pin"></i> {{ feature }}</span> </span>
                         
                         <a href="{{ itinerary.link }}" class="btn btn-xs btn-inverse text-center center-block mt10 text-uppercase visible-sm">view details</a>
                 </div>
@@ -373,5 +373,9 @@
 
     .mt10 {
         margin-top: 10px;
+    }
+
+    .tile-conten table, ul {
+        margin: 0 0 0;
     }
 </style>
