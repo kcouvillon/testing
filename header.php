@@ -56,9 +56,14 @@ if ( is_singular( 'post' ) ) {
 }
 ?>
 
+<script>
+
+	window.dataLayer = window.dataLayer || [];
+	dataLayer.push({
+		'grouping': "<?php echo WS_Helpers::content_grouping();?>"
+	});
+</script>
 <?php echo WS_Helpers::ws_google_tag_manager(); ?>
-<script src='https://ssl.google-analytics.com/ga.js' type='text/javascript'>
-<?php echo WS_HElpers::content_grouping();?>
 
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_s' ); ?></a>

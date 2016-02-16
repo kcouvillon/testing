@@ -522,21 +522,7 @@ class WS_Helpers {
 			$group_tag = $product_lines[0];
 		}
 
-		ob_start();
-		?>
-		<script>
-			jQuery(document).ready(function(){
-				ga('create', 'UA-65576002-1', 'worldstrides.com 2.0');
-				ga('set', 'contentGroup1', '<?php echo $group_tag; ?>');
-				ga('send', 'pageview');
-			});
-
-		</script>
-		<?php
-		$html = ob_get_contents();
-		ob_get_clean();
-
-		return $html;
+		return $group_tag;
 
 	}
 
