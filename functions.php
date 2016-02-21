@@ -242,6 +242,17 @@ function ws_add_body_classes( $classes ) {
 add_filter( 'body_class', 'ws_add_body_classes' );
 
 /**
+ * Filter the except length to 20 characters.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 30;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+/**
  * Customize ellipsis after the_excerpt
  */
 function ws_new_excerpt_more( $more ) {

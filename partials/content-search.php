@@ -20,8 +20,16 @@ $postid = $row->post_id;
 	<div class="entry-content">
 		<?php
             the_excerpt($postid);
-			echo '<a href="'. get_the_permalink($postid) .'">Keep Reading</a>';
+			//echo '<a href="'. get_the_permalink($postid) .'">Keep Reading</a>';
 		?>
+        <p>
+            <a class="btn btn-success" href="#">12 days</a>
+            Paris, Nice, Normandy and Monaco
+        </p>
+        <p>
+            <div class="pull-right"><a href="#">See map</a></div>
+            <img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">
+        </p>
 	</div>
 
 	<footer class="entry-footer">
