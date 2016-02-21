@@ -15,11 +15,7 @@ if ( 'post' == $post_type ) {
 	$stories = false;
 	$search_title = 'All WorldStrides';
 }
-
-
 ?>
-
-
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main search" role="main">
@@ -57,7 +53,7 @@ if ( 'post' == $post_type ) {
                       //Threecode Search
                       foreach( threecode_search() as $row ) {
                           setup_postdata($row);
-                          include 'partials/content-custom.php';
+                          include 'partials/content-search.php';
                       }
                 ?>
 
@@ -66,11 +62,13 @@ if ( 'post' == $post_type ) {
 				<?php /* Start the Loop */ ?>
 
 
-				<?php while ( have_posts() ) : the_post(); ?>
-
-						<?php get_template_part( 'partials/content', 'about' ) ?>
-
-				<?php endwhile; ?>       
+				<?php
+                      //Custom Search
+                      foreach( ws_custom_search() as $row ) {
+                          setup_postdata($row);
+                          include 'partials/content-search.php';
+                      }
+                ?>    
 
 				<?php echo paginate_links(); ?>
 
@@ -82,15 +80,9 @@ if ( 'post' == $post_type ) {
 
 			</section>
 
-			<aside class="sidebar">
-
-				<?php get_template_part( 'partials/content', 'blog-sidebar-search-tags' ); ?>
-
-			</aside>
-
 		</div>
 
-		<section class="clearfix ws-container learn-more">
+		<!--<section class="clearfix ws-container learn-more">
 				<form action="#" class="ws-form">
 					<div class="left">
 						<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
@@ -145,7 +137,7 @@ if ( 'post' == $post_type ) {
 						<input type="submit" name="" value="Get Info" class="btn btn-primary" />
 					</div>
 				</form>
-		</section>
+		</section>-->
 
 	</main>
 </div>
