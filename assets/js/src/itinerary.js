@@ -19,7 +19,7 @@
 		$slideshow_images,
 		sizeInvalidated = false;
 
-	if ( $( 'body' ).hasClass('single-itinerary') || $( 'body' ).hasClass('single-custom-page') ) {
+	if ($('body').hasClass('single-itinerary') || $('body').hasClass('single-custom-page') || $('body').hasClass('search-results')) {
 
 		L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
 
