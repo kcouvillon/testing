@@ -43,7 +43,7 @@ if ( 'post' == $post_type ) {
 
 			<section>
 
-			<?php if ( have_posts() || threecode_exists() ) : ?>
+			<?php if ( ws_custom_exists() || threecode_exists() ) : ?>
 
 				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in <?php echo $search_title; ?></h3>
 
@@ -61,13 +61,13 @@ if ( 'post' == $post_type ) {
 
 				<?php /* Start the Loop */ ?>
 
-
 				<?php
                       //Custom Search
                       foreach( ws_custom_search() as $row ) {
                           setup_postdata($row);
                           include 'partials/content-search.php';
                       }
+
                 ?>    
 
 				<?php echo paginate_links(); ?>
@@ -79,6 +79,12 @@ if ( 'post' == $post_type ) {
 			<?php endif; ?>
 
 			</section>
+
+            <aside class="sidebar">
+
+				<?php get_template_part( 'partials/content', 'blog-sidebar-search-tags' ); ?>
+
+			</aside>
 
 		</div>
 

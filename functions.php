@@ -578,12 +578,30 @@ function temp_to_celsius( $degrees ){
 
 
 //*** WorldStrides Custom Search ***//
+
+function ws_custom_exists(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+        $search_string = $wp_query->query_vars['s'];
+
+        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.ID = b.post_id AND a.post_status = 'publish'  WHERE a.post_title like '%$search_string%'");
+        if ($results == 0){
+            $exists = false;
+        }
+        else{
+            $exists = true;
+        }
+
+        return $exists;
+    }
+}
+
 function ws_custom_search(){
     global $wpdb,$wp_query;
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
 
-        $qry = "SELECT DISTINCT p.* FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id  WHERE p.post_title like '%$search_string%'";
+        $qry = "SELECT * FROM $wpdb->posts WHERE post_status = 'publish' and post_type = 'itinerary' AND post_title like '%$search_string%'";
         $results = $wpdb->get_results( $qry );
 
         wp_reset_query();
