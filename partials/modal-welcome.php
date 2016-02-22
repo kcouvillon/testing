@@ -15,8 +15,8 @@
         <div class="modal-body">
           <p>
               <?php _e( 'WorldStrides computer systems will be undergoing planned maintenance ', 'worldstrides' ); ?>
-              <?php _e( 'from 4pm ET on Friday February 26th through approximately 6pm ET Sunday February 28th. ', 'worldstrides' ); ?>
-              <?php _e( 'Our program registration and payment systems will not be available during this timeframe. ', 'worldstrides' ); ?>
+              <?php _e( 'from 6pm ET on Friday February 26th through approximately 6pm ET Sunday February 28th. ', 'worldstrides' ); ?>
+              <?php _e( 'Our program registration, payment and account management systems will not be available during this timeframe. ', 'worldstrides' ); ?>
           </p>
           <p>
             <?php _e('If you have a scheduled payment due during the maintenance window, we request that you make the payment prior to the start of the maintenance timeframe. If this is not possible, please note that any payments due during the maintenance window will not be assessed late fees if made by 11:59 pm ET Monday February 29th.' , 'worldstrides'); ?>
