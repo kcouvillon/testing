@@ -10,16 +10,24 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-keyboard="true" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title"><?php _e( 'Welcome to our new website!', 'worldstrides' ); ?></h4>
+          <h4 class="modal-title"><?php _e( 'Maintenance Window', 'worldstrides' ); ?></h4>
         </div>
         <div class="modal-body">
-          <p><?php _e( 'We&apos;ve re-designed everything to make it even easier ', 'worldstrides' ); ?>
-          <?php _e( 'to discover the unique opportunities we offer ', 'worldstrides' ); ?>
-          <?php _e( 'to explore and broaden your world.  Enjoy!', 'worldstrides' ); ?></p>
+          <p><?php _e( 'WorldStrides computer systems will be undergoing planned maintenance ', 'worldstrides' ); ?>
+          <?php _e( 'from 4pm ET on Friday February 26th through 6pm ET Sunday February 28th. ', 'worldstrides' ); ?>
+          <?php _e( 'Our program registration and payment systems will not be available during this timeframe. ', 'worldstrides' ); ?></p>
+          <br />
+          <p>
+            <?php _e('If you have a scheduled payment due during the maintenance window, we request that you make the payment prior to the start of the maintenance timeframe. If this is not possible, please note that any payments due during the maintenance window will not be assessed late fees if made by Monday February 29th.' , 'worldstrides'); ?>
+          </p>
+          <br />
+          <p>
+            <?php _e('We apologize for this inconvenience.', 'worldstrides'); ?>
+          </p>
         </div>
         <div class="modal-footer">
         	<span id="tellMeSpinnerSpan">   </span>
-          <a id="tellMeLink" href="/2015/11/worldstrides-newly-redesigned-website/" role="button" class="btn btn-primary"><?php _e( 'Learn More', 'worldstrides' ); ?></a>
+          <!--<a id="tellMeLink" href="/2015/11/worldstrides-newly-redesigned-website/" role="button" class="btn btn-primary"><?php //_e( 'Learn More', 'worldstrides' ); ?></a> -->
           <button type="button" class="btn btn-default" data-dismiss="modal"><?php _e( 'Thanks', 'worldstrides' ); ?></button>
         </div>
       </div><!-- /.modal-content -->
@@ -38,7 +46,7 @@
           // wsData.debugCookie('ws_sessiond_hi');
         <?php endif; ?>
 
-        wsData.incrementCookie('ws_hi');
+        wsData.dayCookie('ws_hi');
         // wsData.sessionCookie('ws_sessiond_hi');
 
         <?php if ( $debug ) : ?>
