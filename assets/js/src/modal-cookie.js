@@ -45,9 +45,9 @@
 	wsData.dayCookie = function(cookiename){
 		var currentcookie = Cookies.get(cookiename);
 		if ( "" === currentcookie || isNaN( parseInt(currentcookie)) ) {
-			return Cookies.set(cookiename,'1',{ expires: 1 });
+			return Cookies.set(cookiename,'1',{ expires:.5 });
 		} else {
-			return Cookies.set(cookiename,parseInt(currentcookie)+1,{ expires: 1 });
+			return Cookies.set(cookiename,parseInt(currentcookie)+1,{ expires:.5 });
 		}
 
 	}
