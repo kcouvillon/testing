@@ -19,7 +19,7 @@
               <?php _e( 'Our program registration, payment and account management systems will not be available during this timeframe. ', 'worldstrides' ); ?>
           </p>
           <p>
-            <?php _e('If you have a scheduled payment due during the maintenance window, we request that you make the payment prior to the start of the maintenance timeframe. If this is not possible, please note that any payments due during the maintenance window will not be assessed late fees if made by 11:59 pm ET Monday February 29th.' , 'worldstrides'); ?>
+            <?php _e('If you need to register for a trip or make a payment, please do so before or following our scheduled maintenance.' , 'worldstrides'); ?>
           </p>
           <p>
             <?php _e('We apologize for this inconvenience.', 'worldstrides'); ?>
