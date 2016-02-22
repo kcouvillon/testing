@@ -15,7 +15,7 @@
         <div class="modal-body">
           <p>
               <?php _e( 'WorldStrides computer systems will be undergoing planned maintenance ', 'worldstrides' ); ?>
-              <?php _e( 'from 4pm ET on Friday February 26th through 6pm ET Sunday February 28th. ', 'worldstrides' ); ?>
+              <?php _e( 'from 4pm ET on Friday February 26th through approximately 6pm ET Sunday February 28th. ', 'worldstrides' ); ?>
               <?php _e( 'Our program registration and payment systems will not be available during this timeframe. ', 'worldstrides' ); ?>
           </p>
           <p>
