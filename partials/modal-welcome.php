@@ -19,7 +19,7 @@
               <?php _e( 'Our program registration, payment and account management systems will not be available during this timeframe. ', 'worldstrides' ); ?>
           </p>
           <p>
-            <?php _e('If you need to register for a trip or make a payment, please do so before or following our scheduled maintenance.' , 'worldstrides'); ?>
+            <?php _e('If you’re trying to register for a trip or make a payment and have an upcoming deadline during the maintenance, don’t worry! You’ll still be able to complete the process once service is restored.' , 'worldstrides'); ?>
           </p>
           <p>
             <?php _e('We apologize for this inconvenience.', 'worldstrides'); ?>
