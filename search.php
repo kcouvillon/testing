@@ -49,14 +49,6 @@ if ( 'post' == $post_type ) {
 
                 <?php /* Three Code Loop */ ?>
 
-			<section class="tour-highlights hide-print">
-
-				<div id="tour-highlights-data"></div>
-				<div class="tour-highlights-map-wrap" class="hide-print">
-					<div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
-				</div>
-
-			</section>
 
 
                 <?php
@@ -89,7 +81,7 @@ if ( 'post' == $post_type ) {
 
 			</section>
 
-            <aside class="sidebar">
+            <aside class="sidebar" style="position:relative;">
 
 				<?php get_template_part( 'partials/content', 'blog-sidebar-search-tags' ); ?>
 
@@ -156,5 +148,26 @@ if ( 'post' == $post_type ) {
 
 	</main>
 </div>
+
+  <div id="feature-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-keyboard="true" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Trip Features</h4>
+        </div>
+        <div class="modal-body">
+            <div style="display: block; height: 100%; width: 100%; z-index:2; position: relative;" class="hide-print">
+	            <div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
 
 <?php get_footer(); ?>
