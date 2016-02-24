@@ -28,10 +28,10 @@
         <?php $section_num = 1; // set first section number ?>
         <?php if ( 'no-destination' != $itinerary_type ) : ?>
 		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
-			<?php
+		<?php
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 		?>
-            <div id="result-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+            
             <div id="result-map-<?php echo $post->ID; ?>" data-location='<?php echo json_encode( $location ); ?>' data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
 
 		<?php endif; // tour highlights ?>

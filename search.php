@@ -49,6 +49,16 @@ if ( 'post' == $post_type ) {
 
                 <?php /* Three Code Loop */ ?>
 
+			<section class="tour-highlights hide-print">
+
+				<div id="tour-highlights-data"></div>
+				<div class="tour-highlights-map-wrap" class="hide-print">
+					<div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+				</div>
+
+			</section>
+
+
                 <?php
                       //Threecode Search
                       foreach( threecode_search() as $row ) {
