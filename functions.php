@@ -611,12 +611,12 @@ function ws_custom_search(){
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
 
-        $qry = "SELECT * FROM $wpdb->posts p WHERE p.post_status='publish' AND p.post_type IN ('itinerary') AND (p.post_title like '%$search_string%') ORDER BY p.ID ASC";
-        $post = $wpdb->get_results( $qry );
+        $qry = "SELECT * FROM $wpdb->posts p WHERE p.post_status='publish' AND p.post_title like '%$search_string%' LIMIT 10";
+        $row = $wpdb->get_results( $qry );
 
         wp_reset_query();
 
-        return $post;
+        return $row;
     }
 }
 

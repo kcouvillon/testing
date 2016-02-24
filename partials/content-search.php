@@ -3,6 +3,7 @@
  * Custom query content display for about pages
  */
  get_header();
+ $post = $row;
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php echo post_class(); ?>>
