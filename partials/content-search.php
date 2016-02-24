@@ -6,8 +6,11 @@
 $postid = $row->post_id;
 ?>
 
-<article id="post-<?php echo $postid ?>" <?php echo post_class(); ?>>
 
+
+
+<article id="post-<?php echo $postid ?>" <?php echo post_class(); ?>>
+        
         <?php  echo get_the_post_thumbnail( $postid, 'post-thumbnail' ); ?>
         
 		<header class="entry-header">
@@ -25,22 +28,15 @@ $postid = $row->post_id;
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 		?>
 
-
+        
         <?php $section_num = 1; // set first section number ?>
         <?php if ( 'no-destination' != $itinerary_type ) : ?>
 		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<?php
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
-			<section id="tour-highlights-<?php echo $location['latitude']; ?>" class="hide tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
-
-				<div id="tour-highlights-data" data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
-				<div class="tour-highlights-map-wrap" class="hide-print">
-					<div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
-				</div>
-
-
-			</section>
+            <div id="result-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+            <div id="result-map-<?php echo $post->ID; ?>" data-location='<?php echo json_encode( $location ); ?>' data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
 
 		<?php endif; // tour highlights ?>
 		<?php endif; // end no-destination check ?>
@@ -70,7 +66,7 @@ $postid = $row->post_id;
             
         </p>
         <p>
-            <div class="pull-right"><a href="#" onclick="ShowMap('<?php echo $location['latitude']; ?>')">See map <i class="icon icon-pin"></i></a></div>
+            <div class="pull-right"><a id="lnkShowMap" href="#" data-showmap="<?php echo $post->ID; ?>">See map <i class="icon icon-pin"></i></a></div>
             <img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">
         </p>
 	</div>
