@@ -3,25 +3,24 @@
  * Custom query content display for about pages
  */
  get_header();
-$postid = $row->post_id;
 ?>
 
-<article id="post-<?php echo $postid ?>" <?php echo post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php echo post_class(); ?>>
 
-        <?php  echo get_the_post_thumbnail( $postid, 'post-thumbnail' ); ?>
+        <?php the_post_thumbnail( 'thumbnail' ); ?>
         
 		<header class="entry-header">
 			<div class="entry-meta">
-                <time datetime=""><?php echo get_the_date( 'F j, Y', $postid ); ?></time>
-					<?php echo get_the_category_list($postid); ?>
+                <time datetime=""><?php the_time( 'F j, Y' ); ?></time>
+					<?php echo get_the_category_list(); ?>
 			</div>
-			<h3 class="entry-title"><a href="<?php echo get_the_permalink($postid) ?>"><?php echo get_the_title($postid) ?></a></h3>
+			<h3 class="entry-title"><a href="<?php echo get_the_permalink() ?>"><?php echo the_title() ?></a></h3>
 		</header>
 
 	<div class="entry-content">
 		<?php
-            the_excerpt($postid);
-			//echo '<a href="'. get_the_permalink($postid) .'">Keep Reading</a>';
+            the_excerpt();
+			//echo '<a href="'. get_the_permalink() .'">Keep Reading</a>';
 		?>
         <p>
             <?php $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true ); ?>
