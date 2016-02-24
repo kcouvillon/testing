@@ -112,7 +112,7 @@ function ws_scripts_styles() {
 
 	wp_enqueue_script( 'jquery' );
 
-	if ( is_page_template( 'templates/about-offices.php' ) || is_page_template( 'templates/division-capstone.php' ) || is_singular( 'itinerary' ) || is_singular( 'custom-page' ) ) {
+	if ( is_page_template( 'templates/about-offices.php' ) || is_page_template( 'templates/division-capstone.php' ) || is_singular( 'itinerary' ) || is_singular( 'custom-page' ) || is_search() ) {
 		wp_enqueue_style( 'mapbox-style', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css', array(), WS_VERSION );
 		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
 	}

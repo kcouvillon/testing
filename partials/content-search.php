@@ -32,8 +32,7 @@ $postid = $row->post_id;
 			<?php
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
-			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
+			<section id="tour-highlights-<?php echo $location['latitude']; ?>" class="hide tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
 
 				<div id="tour-highlights-data" data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
 				<div class="tour-highlights-map-wrap" class="hide-print">
@@ -42,28 +41,6 @@ $postid = $row->post_id;
 
 
 			</section>
-
-			<!-- Print-only version of tour highlights -->
-			<section class="tour-highlights-print print-only print-page-break">
-				<h3 class="h2">Tour Highlights</h3>
-				<ul class="list-unstyled">
-				<?php foreach ( $highlights as $highlight ) { ?>
-					<li>
-						<?php
-							$lon = $highlight['itinerary_highlights_location']['longitude'];
-							$lat = $highlight['itinerary_highlights_location']['latitude'];
-							$map_id = 'worldstrides.b898407f';
-							$pin = urlencode('http://wsbeta.co/wp-content/themes/worldstrides/assets/images/pin-orange.png');
-							$src = 'https://api.tiles.mapbox.com/v4/'.$map_id.'/url-'.$pin.'('.$lon.','.$lat.')/'.$lon.','.$lat.',8/250x120.png?access_token=pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
-						?>
-						<img src="<?php echo $src; ?>" width="250" height="120" />
-						<h4><strong><?php echo $highlight['title']; ?></strong></h4>
-						<p><?php echo $highlight['caption']; ?></p>
-					</li>
-				<?php } ?>
-				</ul>
-			</section>
-			<!-- // -->
 
 		<?php endif; // tour highlights ?>
 		<?php endif; // end no-destination check ?>
@@ -93,7 +70,7 @@ $postid = $row->post_id;
             
         </p>
         <p>
-            <div class="pull-right"><a href="#">See map</a></div>
+            <div class="pull-right"><a href="#" onclick="ShowMap('<?php echo $location['latitude']; ?>')">See map <i class="icon icon-pin"></i></a></div>
             <img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">
         </p>
 	</div>
@@ -102,3 +79,4 @@ $postid = $row->post_id;
 
 	</footer>
 </article>
+
