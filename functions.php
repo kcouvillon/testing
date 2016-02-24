@@ -607,16 +607,16 @@ function ws_custom_exists(){
 }
 
 function ws_custom_search(){
-    global $wpdb,$wp_query;
+    global $wpdb,$wp_query,$post;
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
 
-        $qry = "SELECT * FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id  WHERE p.post_title like '%$search_string%'";
-        $results = $wpdb->get_results( $qry );
+        $qry = "SELECT * FROM $wpdb->posts p WHERE p.post_status='publish' AND p.post_type IN ('itinerary') AND (p.post_title like '%$search_string%') ORDER BY p.ID ASC";
+        $post = $wpdb->get_results( $qry );
 
         wp_reset_query();
 
-        return $results;
+        return $post;
     }
 }
 

@@ -3,27 +3,23 @@
  * Custom query content display for about pages
  */
  get_header();
-$postid = $row->post_id;
 ?>
 
+<article id="post-<?php the_ID(); ?>" <?php echo post_class(); ?>>
 
-
-
-<article id="post-<?php echo $postid ?>" <?php echo post_class(); ?>>
-        
-        <?php  echo get_the_post_thumbnail( $postid, 'post-thumbnail' ); ?>
+        <?php the_post_thumbnail( 'thumbnail' ); ?>
         
 		<header class="entry-header">
 			<div class="entry-meta">
-                <time datetime=""><?php echo get_the_date( 'F j, Y', $postid ); ?></time>
-					<?php echo get_the_category_list($postid); ?>
+                <time datetime=""><?php the_time( 'F j, Y' ); ?></time>
+					<?php echo get_the_category_list(); ?>
 			</div>
-			<h3 class="entry-title"><a href="<?php echo get_the_permalink($postid) ?>"><?php echo get_the_title($postid) ?></a></h3>
+			<h3 class="entry-title"><a href="<?php echo get_the_permalink() ?>"><?php echo the_title() ?></a></h3>
 		</header>
 
 	<div class="entry-content">
 		<?php
-            the_excerpt($postid);
+            the_excerpt();
 			//echo '<a href="'. get_the_permalink($postid) .'">Keep Reading</a>';
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 		?>
@@ -34,7 +30,7 @@ $postid = $row->post_id;
 		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 			<?php
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
-			?>
+		?>
             <div id="result-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
             <div id="result-map-<?php echo $post->ID; ?>" data-location='<?php echo json_encode( $location ); ?>' data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
 

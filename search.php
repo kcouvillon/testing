@@ -61,14 +61,11 @@ if ( 'post' == $post_type ) {
 
 				<?php /* Start the Loop */ ?>
 
-				<?php
-                      //Custom Search
-                      foreach( ws_custom_search() as $row ) {
-                          setup_postdata($row);
-                          include 'partials/content-search.php';
-                      }
+				<?php while ( ws_custom_search() ) : the_post(); ?>
 
-                ?>    
+						<?php get_template_part( 'partials/content', 'search' ) ?>
+
+				<?php endwhile; ?>   
 
 				<?php echo paginate_links(); ?>
 
