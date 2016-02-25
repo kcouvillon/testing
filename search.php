@@ -15,6 +15,8 @@ if ( 'post' == $post_type ) {
 	$stories = false;
 	$search_title = 'All WorldStrides';
 }
+
+ 
 ?>
 
 <div id="primary" class="content-area">
@@ -79,7 +81,7 @@ if ( 'post' == $post_type ) {
                       }
                 ?>
 
-				<?php echo paginate_links(); ?>
+				<?php echo paginate_links( get_pagination() ); ?>
 
 			<?php else : ?>
 

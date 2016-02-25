@@ -594,7 +594,7 @@ function ws_custom_exists(){
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
 
-        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id  WHERE p.post_title like '%$search_string%'");
+        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p WHERE p.post_status='publish' AND p.post_title like '%$search_string%'");
         if ($results == 0){
             $exists = false;
         }
@@ -607,11 +607,32 @@ function ws_custom_exists(){
 }
 
 function ws_custom_search(){
-    global $wpdb,$wp_query,$post;
+    global $wpdb,$wp_query;
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
 
-        $qry = "SELECT * FROM $wpdb->posts p WHERE p.post_status='publish' AND p.post_title like '%$search_string%' LIMIT 10";
+        $offset = (get_current_page() - 1) * get_max_posts();
+        $fetch = get_max_posts();
+
+        $qry = "SELECT *,
+                CASE 
+                    WHEN p.post_type = 'itinerary' THEN 1
+                    WHEN p.post_type = 'resource' THEN 2
+                    WHEN p.post_type = 'post' THEN 3
+                    ELSE 4
+                END AS TypeSort
+                FROM $wpdb->posts p 
+                WHERE p.post_status='publish' 
+                AND (
+                    p.post_title like '%$search_string%'
+                    OR p.post_content like '%$search_string%'
+                    OR p.post_excerpt like '%$search_string%'
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' and b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' and b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' and b.meta_value like '%$search_string%')
+                    )
+                ORDER BY TypeSort ASC
+                LIMIT $offset,$fetch";
         $row = $wpdb->get_results( $qry );
 
         wp_reset_query();
@@ -620,19 +641,19 @@ function ws_custom_search(){
     }
 }
 
-//Get Main Post Data
-function ws_get_post($postid){
-    global $wpdb;
-    if (!empty($postid)) {
 
-        $qry = "SELECT * FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id  WHERE p.id = $postid";
-        $results = $wpdb->get_results( $qry );
+function ws_custom_count(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+        $search_string = $wp_query->query_vars['s'];
 
-        wp_reset_query();
+        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p WHERE p.post_status='publish' AND p.post_title like '%$search_string%'");
 
         return $results;
     }
 }
+
+
 
 //Get Country TODO
 function ws_get_country($postid){
@@ -648,44 +669,54 @@ function ws_get_country($postid){
     }
 }
 
-//Get Age Group TODO
-function ws_get_agegroup($postid){
-    global $wpdb;
-    if (!empty($postid)) {
 
-        $qry = "SELECT * as interest FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id AND pm.meta_key = 'age group' WHERE p.id = $postid";
-        $results = $wpdb->get_results( $qry );
 
-        wp_reset_query();
-
-        return $results;
+// Pagination
+function get_current_page(){
+    global $wp_query;
+    $currentpage = $wp_query->query_vars['paged'];
+    if ($currentpage == '') { 
+        $currentpage = 1;
     }
+    return $currentpage;
 }
 
-//Get Interest TODO
-function ws_get_interest($postid){
-    global $wpdb;
-    if (!empty($postid)) {
-
-        $qry = "SELECT * as interest FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id AND pm.meta_key = 'interest' WHERE p.id = $postid";
-        $results = $wpdb->get_results( $qry );
-
-        wp_reset_query();
-
-        return $results;
+function get_max_pages(){
+    global $wp_query;
+    $maxpages = 10;
+    $postcount = ws_custom_count();
+    $postmaxpages = CEIL($postcount/$maxpages);
+    if ($postmaxpages > $wp_query->max_num_pages) {
+        $postmaxpages = $wp_query->max_num_pages;
     }
+    return $postmaxpages;
 }
 
-//Get Duration
-function ws_get_duration($postid){
-    global $wpdb;
-    if (!empty($postid)) {
+function get_max_posts(){
+    $postmaxcount = get_option('posts_per_page');
+    return $postmaxcount;
+}
 
-        $qry = "SELECT LEFT(pm.meta_value,7) as duration FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id AND pm.meta_key = 'itinerary_details_duration' WHERE p.id = $postid";
-        $results = $wpdb->get_results( $qry );
+function get_pagination(){
+global $wp_query;
 
-        wp_reset_query();
+    $pagearray = array(
+	    'base'               => '%_%',
+	    'format'             => '?paged=%#%',
+	    'total'              => get_max_pages(),
+	    'current'            => get_current_page(),
+	    'show_all'           => false,
+	    'end_size'           => 1,
+	    'mid_size'           => 2,
+	    'prev_next'          => true,
+	    'prev_text'          => __('<< Previous'),
+	    'next_text'          => __('Next >>'),
+	    'type'               => 'plain',
+	    'add_args'           => false,
+	    'add_fragment'       => '',
+	    'before_page_number' => '',
+	    'after_page_number'  => ''
+        ); 
 
-        return $results;
-    }
+    return $pagearray;
 }
