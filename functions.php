@@ -248,9 +248,10 @@ add_filter( 'body_class', 'ws_add_body_classes' );
  * @return int (Maybe) modified excerpt length.
  */
 function wpdocs_custom_excerpt_length( $length ) {
-    return 20;
+    return 45;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
 
 /**
  * Customize ellipsis after the_excerpt

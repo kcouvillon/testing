@@ -19,10 +19,17 @@
 		</header>
 
 	<div class="entry-content">
-		<?php
-            the_excerpt();
+		
+
+        <?php
 			//echo '<a href="'. get_the_permalink($postid) .'">Keep Reading</a>';
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
+
+            if ( 'no-destination' != $itinerary_type && !empty( $highlights[0]['image'] ) ) {
+                echo '<p>' . wp_trim_words(get_the_excerpt(), 20) . '</p>';
+            } else {
+                the_excerpt();
+            }
 		?>
 
         
@@ -35,36 +42,39 @@
             
             <div id="result-map-<?php echo $post->ID; ?>" data-location='<?php echo json_encode( $location ); ?>' data-highlights='<?php echo esc_html(json_encode( $highlights )); ?>'></div>
 
-		<?php endif; // tour highlights ?>
-		<?php endif; // end no-destination check ?>
+            <p>
+                <?php $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true ); ?>
+                <?php if (!empty($number_days)) : ?>
+                    <a class="btn btn-sm btn-success" style="margin-right:20px;" href="#"><?php echo esc_html( $number_days ); ?></a>
+                <?php endif; ?>
 
-
-        <p>
-            <?php $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true ); ?>
-            <a class="btn btn-success" href="#"><?php echo esc_html( $number_days ); ?></a>
-            <?php
-			$features = get_post_meta( $post->ID, 'itinerary_details_features', true );
-			if ( ! empty( $features ) ) : ?>
-				<b>
                 <?php
-                    $i = 0;
-                    $len = count($features);
-					foreach ( $features as $feature ) {
-                        if ($i == $len - 1) {
-                            echo '<span>and ' . $feature . '</span>';
-                        } else {
-                            echo '<span>' . $feature . ', </span>';
-                        }
-                        $i++;
-					}
-				?>
-                </b>
-			<?php endif; ?>
+			    $features = get_post_meta( $post->ID, 'itinerary_details_features', true );
+			    if ( ! empty( $features ) ) : ?>
+				    <b>
+                    <?php
+                        $i = 0;
+                        $len = count($features);
+					    foreach ( $features as $feature ) {
+                            if ($i == $len - 1) {
+                                echo '<span>and ' . $feature . '</span>';
+                            } else {
+                                echo '<span>' . $feature . ', </span>';
+                            }
+                            $i++;
+					    }
+				    ?>
+                    </b>
+			    <?php endif; ?>
             
-        </p>
-        <p>
+            </p>
+            <p>
+       
             <div class="pull-right"><a id="lnkShowMap" href="#" data-showmap="<?php echo $post->ID; ?>">See map <i class="icon icon-pin"></i></a></div>
             <img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">
+
+        <?php endif; // tour highlights ?>
+        <?php endif; // end no-destination check ?>
         </p>
 	</div>
 
@@ -73,3 +83,8 @@
 	</footer>
 </article>
 
+<style>
+    .entry-content p {
+        margin: 0 0 0.95em;
+    }
+</style>
