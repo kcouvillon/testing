@@ -150,14 +150,14 @@ if ( 'post' == $post_type ) {
 </div>
 
   <div id="feature-modal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-keyboard="true" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Trip Features</h4>
         </div>
         <div class="modal-body">
-            <div style="display: block; height: 100%; width: 100%; z-index:2; position: relative;" class="hide-print">
+            <div style="height: 300px; width: 100%; z-index:2; position: relative;" class="hide-print">
 	            <div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
             </div>
         </div>
