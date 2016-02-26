@@ -10262,6 +10262,11 @@ article.open > header.entry-header > a {
   color: #4fa9e5;
   text-transform: capitalize; }
 
+@media screen and (min-width: 768px) {
+  #feature-modal .modal-dialog {
+    width: 900px !important;
+    height: 400px !important; } }
+
 .sitemap-section {
   font-size: 16px; }
   .sitemap-section header {

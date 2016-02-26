@@ -106,3 +106,9 @@
 	color: $color_link_tag;
 	text-transform: capitalize;
 }
+
+@media screen and (min-width: 768px) {
+	
+	#feature-modal .modal-dialog  {width:900px !important;height:400px !important;}
+
+}
