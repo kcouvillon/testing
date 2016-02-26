@@ -631,6 +631,56 @@ function ws_custom_search(){
                     OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' and b.meta_value like '%$search_string%')
                     OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' and b.meta_value like '%$search_string%')
                     OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' and b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+                                        JOIN wp_term_taxonomy tax3
+        	                                ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+        	                                ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax3
+        	                                ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+        	                                ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.ID IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.ID = rel.object_id
+		                                JOIN wp_term_taxonomy tax 
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+		                                JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+			                                AND term.name = 'Business'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+			                                AND term2.name like '%$search_string%')
                     )
                 ORDER BY TypeSort ASC
                 LIMIT $offset,$fetch";
