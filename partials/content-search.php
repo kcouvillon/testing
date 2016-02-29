@@ -23,6 +23,7 @@
 
         <?php
 			//echo '<a href="'. get_the_permalink($postid) .'">Keep Reading</a>';
+
             $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 
