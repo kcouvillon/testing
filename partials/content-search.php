@@ -4,7 +4,7 @@
  */
  get_header();
  $post = $row;
-?>
+ ?>
 
 <article id="post-<?php the_ID(); ?>" <?php echo post_class(); ?>>
 
@@ -27,10 +27,10 @@
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 
             if ( 'no-destination' != $itinerary_type && !empty( $highlights[0]['image'] ) ) {
-                echo '<p>' . wp_trim_words(get_the_excerpt(), 18) . ' <a href="'. get_the_permalink($postid) .'">read more</a></p>';
+                echo '<p>' . wp_trim_words(get_the_excerpt(), 18) . ' <a href="'. get_the_permalink($post->post_id) .'">read more</a></p>';
             } else {
                 the_excerpt();
-                echo '<a href="'. get_the_permalink($postid) .'">Read More</a>';
+                echo '<a href="'. get_the_permalink($post->post_id) .'">Read More</a>';
             }
 		?>
 
@@ -84,9 +84,3 @@
 
 	</footer>
 </article>
-
-<style>
-    .entry-content p {
-        margin: 0 0 0.95em;
-    }
-</style>

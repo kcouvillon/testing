@@ -10270,6 +10270,9 @@ article.open > header.entry-header > a {
     width: 900px !important;
     height: 400px !important; } }
 
+.entry-content p {
+  margin: 0 0 0.95em; }
+
 .sitemap-section {
   font-size: 16px; }
   .sitemap-section header {
