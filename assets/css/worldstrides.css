@@ -10273,6 +10273,9 @@ article.open > header.entry-header > a {
 .entry-content p {
   margin: 0 0 0.95em; }
 
+.entry-meta {
+  margin-top: 5px; }
+
 .sitemap-section {
   font-size: 16px; }
   .sitemap-section header {
