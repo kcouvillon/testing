@@ -7258,6 +7258,9 @@ a.text-color-link {
 .belt {
   margin-bottom: 3em; }
 
+.btn.nohover:hover, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.nohover.mktoButton:hover {
+  cursor: default !important; }
+
 @media (min-width: 600px) {
   .hentry .wp-post-image {
     width: 26.1363636364%;

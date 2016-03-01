@@ -22,15 +22,15 @@
 		
 
         <?php
-			//echo '<a href="'. get_the_permalink($postid) .'">Keep Reading</a>';
 
             $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 
             if ( 'no-destination' != $itinerary_type && !empty( $highlights[0]['image'] ) ) {
-                echo '<p>' . wp_trim_words(get_the_excerpt(), 20) . '</p>';
+                echo '<p>' . wp_trim_words(get_the_excerpt(), 18) . ' <a href="'. get_the_permalink($postid) .'">read more</a></p>';
             } else {
                 the_excerpt();
+                echo '<a href="'. get_the_permalink($postid) .'">Read More</a>';
             }
 		?>
 
@@ -47,7 +47,7 @@
             <p>
                 <?php $number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true ); ?>
                 <?php if (!empty($number_days)) : ?>
-                    <a class="btn btn-sm btn-success" style="margin-right:20px;" href="#"><?php echo esc_html( $number_days ); ?></a>
+                    <div class="btn btn-sm btn-success nohover" style="margin-right:20px;" href="#"><?php echo esc_html( $number_days ); ?></div>
                 <?php endif; ?>
 
                 <?php

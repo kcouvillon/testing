@@ -94,5 +94,9 @@
 	margin-bottom: 3em;
 }
 
+.btn.nohover:hover {
+    cursor:default !important;
+}
+
 @import "posts/post";
 @import "pages/page";
