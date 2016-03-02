@@ -45,23 +45,9 @@ if ( 'post' == $post_type ) {
 
 			<section>
 
-			<?php if ( ws_custom_exists() || threecode_exists() ) : ?>
+			<?php if ( ws_custom_exists() ) : ?>
 
 				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in <?php echo $search_title; ?></h3>
-
-                <?php /* Three Code Loop */ ?>
-
-
-
-                <?php
-                      //Threecode Search
-                      foreach( threecode_search() as $row ) {
-                          setup_postdata($row);
-                          include 'partials/content-search.php';
-                      }
-                ?>
-
-                <?php /* End Three Loop */ ?>
 
 				<?php /* Start the Loop */ ?>
 
