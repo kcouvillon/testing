@@ -28,7 +28,7 @@
             $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 
-            if ( 'no-destination' != $itinerary_type && !empty( $highlights[0]['image'] ) ) {
+            if ( 'no-destination' != $itinerary_type && !empty($highlights) && !empty( $highlights[0]['image'] ) ) {
                 echo '<p>' . wp_trim_words(get_the_excerpt(), 18) . ' <a href="'. get_the_permalink($post->ID) .'">read more</a></p>';
             } else {
                 the_excerpt();
