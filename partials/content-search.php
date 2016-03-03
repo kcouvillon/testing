@@ -39,7 +39,7 @@
         
         <?php $section_num = 1; // set first section number ?>
         <?php if ( 'no-destination' != $itinerary_type ) : ?>
-		<?php if ( ! empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
+		<?php if (!empty($highlights) && !empty( $highlights[0]['image'] ) ) : // have to check against a nested param (not just $highlights) ?>
 		<?php
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 		?>
