@@ -10,10 +10,20 @@
 
         <?php the_post_thumbnail( 'thumbnail' ); ?>
         
+        <?php
+
+            $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
+            $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
+        ?>
+
 		<header class="entry-header">
             <h3 class="entry-title"><a href="<?php echo get_the_permalink() ?>"><?php echo the_title() ?></a></h3>
 			<div class="entry-meta">
-                <!--<b><time datetime=""><?php the_time( 'F j, Y' ); ?></time></b>-->
+                <?php 
+                    if (empty($highlights)) {
+                        echo '<b><time datetime="">' .the_time( 'F j, Y' ) . '</time></b>';
+                    }
+                ?>
                 <b><?php echo get_post_meta( $post->ID, 'itinerary_subtitle', true ); ?></b>
 				<?php echo get_the_category_list(); ?>
 			</div>
@@ -25,13 +35,10 @@
 
         <?php
 
-            $itinerary_type = get_post_meta( $post->ID, 'itinerary_type', true );
-            $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
-
             if ( 'no-destination' != $itinerary_type && !empty($highlights) && !empty( $highlights[0]['image'] ) ) {
                 echo '<p>' . wp_trim_words(get_the_excerpt(), 18) . ' <a href="'. get_the_permalink($post->ID) .'">read more</a></p>';
             } else {
-                the_excerpt();
+                echo '<p>' . wp_trim_words(get_the_excerpt(), 35) . '</p>';
                 echo '<a href="'. get_the_permalink($post->ID) .'">Read More</a>';
             }
 		?>
