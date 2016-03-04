@@ -5,6 +5,7 @@
  get_header();
  $post = $row;
  ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
 
 <article id="post-<?php the_ID(); ?>" <?php echo post_class(); ?>>
 
@@ -22,6 +23,11 @@
 
 	<div class="entry-content">
 		
+    <?php if ( is_category() || is_archive() ) {
+     $excerpt =  the_excerpt();
+    } else {
+      $excerpt =  the_content();
+    } ?>
 
         <?php
 
@@ -29,7 +35,7 @@
             $highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
 
             if ( 'no-destination' != $itinerary_type && !empty( $highlights[0]['image'] ) ) {
-                echo '<p>' . wp_trim_words(get_the_excerpt(), 18) . ' <a href="'. get_the_permalink($post->ID) .'">read more</a></p>';
+                echo '<p>' . wp_trim_words($excerpt, 18) . ' <a href="'. get_the_permalink($post->ID) .'">read more</a></p>';
             } else {
                 the_excerpt();
                 echo '<a href="'. get_the_permalink($post->ID) .'">Read More</a>';
@@ -78,6 +84,8 @@
        
             <div class="pull-right"><a id="lnkShowMap" href="#" data-showmap="<?php echo $post->ID; ?>">See map <i class="icon icon-pin"></i></a></div>
             <img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">
+            <!-- echo get_pr_page_id($post->ID); -->            
+            <!--  echo WS_PowerReviewSnippet::html_from_pr_page_id( get_pr_page_id($post->ID) ); -->
 
         <?php endif; // tour highlights ?>
         <?php endif; // end no-destination check ?>
