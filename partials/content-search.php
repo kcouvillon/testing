@@ -6,11 +6,7 @@
  $post = $row;
  ?>
 
- <?php if ( is_category() || is_archive() ) {
-    $excerpt =  the_excerpt();
-   } else {
-     $excerpt =  the_content();
-   } ?>
+
 
 <article id="post-<?php the_ID(); ?>" <?php echo post_class(); ?>>
 
@@ -38,8 +34,12 @@
 
 	<div class="entry-content">
 		
-
-        <?php
+         <?php 
+            if ( is_category() || is_archive() ) {
+                $excerpt =  get_the_excerpt();
+            } else {
+                $excerpt =  get_the_content();
+            } 
 
             if ( 'no-destination' != $itinerary_type && !empty($highlights) && !empty( $highlights[0]['image'] ) ) {
                 echo '<p>' . wp_trim_words($excerpt, 18) . ' <a href="'. get_the_permalink($post->ID) .'">read more</a></p>';
