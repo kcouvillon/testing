@@ -1172,7 +1172,7 @@
 
 	}
 
-	if ($('body').hasClass('search-results')) {
+	if ($('body').hasClass('search-results') || $('body').hasClass('search-no-results')) {
 
 	    L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
 
