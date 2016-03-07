@@ -90,7 +90,7 @@
             <p>
        
             <div class="pull-right"><a id="lnkShowMap" href="#" data-showmap="<?php echo $post->ID; ?>">See map <i class="icon icon-pin"></i></a></div>
-            <img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">
+            <!--<img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">-->
 
         <?php endif; // tour highlights ?>
         <?php endif; // end no-destination check ?>

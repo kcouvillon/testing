@@ -7261,6 +7261,15 @@ a.text-color-link {
 .btn.nohover:hover, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.nohover.mktoButton:hover {
   cursor: default !important; }
 
+.nohover.btn-success:hover,
+.nohover.btn-success:focus,
+.nohover.btn-success.focus,
+.nohover.btn-success:active,
+.nohover.btn-success.active {
+  color: #ffffff;
+  background-color: #4fa9e5;
+  border-color: #4fa9e5; }
+
 @media (min-width: 600px) {
   .hentry .wp-post-image {
     width: 26.1363636364%;
@@ -10267,8 +10276,8 @@ article.open > header.entry-header > a {
 
 @media screen and (min-width: 768px) {
   #feature-modal .modal-dialog {
-    width: 900px !important;
-    height: 400px !important; } }
+    width: 400px !important;
+    height: 600px !important; } }
 
 .entry-content p {
   margin: 0 0 0.95em; }
