@@ -698,7 +698,7 @@ function ws_custom_search(){
                     WHEN p.post_type = 'post' THEN 4
                     ELSE 5
                 END AS TypeSort,
-                (SELECT b.meta_value FROM $wpdb->postmeta b WHERE b.meta_key = '_yoast_wpseo_linkdex' AND b.post_id = p.ID) as SeoIndex
+                (SELECT IFNULL(b.meta_value,100) FROM $wpdb->postmeta b WHERE b.meta_key = '_yoast_wpseo_linkdex' AND b.post_id = p.ID) as SeoIndex
                 FROM $wpdb->posts p 
                 WHERE p.post_status='publish' 
                 AND (
@@ -790,7 +790,81 @@ function ws_custom_count(){
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
 
-        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p WHERE p.post_status='publish' AND p.post_title like '%$search_string%'");
+        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p 
+                WHERE p.post_status='publish' 
+                AND (
+                    p.post_title like '%$search_string%'
+                    OR p.post_content like '%$search_string%'
+                    OR p.post_excerpt like '%$search_string%'
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND b.meta_value = '$search_string')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+                                        JOIN wp_term_taxonomy tax3
+        	                                ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+        	                                ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax3
+        	                                ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+        	                                ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.ID IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.ID = rel.object_id
+		                                JOIN wp_term_taxonomy tax 
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+		                                JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+			                                AND term.name = 'Business'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+			                                AND term2.name like '%$search_string%')
+                    OR p.ID IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.ID = rel.object_id
+		                                JOIN wp_term_taxonomy tax 
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+		                                JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+			                                AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+			                                AND term2.name = 'traveler')
+                    )");
 
         return $results;
     }
