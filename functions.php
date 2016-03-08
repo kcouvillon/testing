@@ -697,7 +697,8 @@ function ws_custom_search(){
                     WHEN p.post_type = 'resource' THEN 3
                     WHEN p.post_type = 'post' THEN 4
                     ELSE 5
-                END AS TypeSort
+                END AS TypeSort,
+                (SELECT b.meta_value FROM $wpdb->postmeta b WHERE b.meta_key = '_yoast_wpseo_linkdex' AND b.post_id = p.ID) as SeoIndex
                 FROM $wpdb->posts p 
                 WHERE p.post_status='publish' 
                 AND (
@@ -773,7 +774,7 @@ function ws_custom_search(){
         	                                ON tax2.parent = term2.term_id
 			                                AND term2.name = 'traveler')
                     )
-                ORDER BY TypeSort ASC
+                ORDER BY TypeSort ASC, SeoIndex ASC
                 LIMIT $offset,$fetch";
         $row = $wpdb->get_results( $qry );
 
