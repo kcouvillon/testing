@@ -66,3 +66,25 @@
 	}
 
 }
+
+.payment-page-div {
+
+    position: relative;
+
+    ul {
+        position: absolute;
+        top: 250px;
+        margin-left: 50px;
+        margin-right: 50px;
+
+        li {
+            font-size: 12pt;
+        }
+    }
+
+    a.btn {
+        position: absolute;
+        bottom: 30px;
+        left: 75px;
+    }
+}

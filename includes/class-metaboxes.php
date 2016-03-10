@@ -41,6 +41,7 @@ class WS_Metaboxes {
 		add_action( 'cmb2_init',  array( $this, 'bio_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'blog_details' ) );
 		add_action( 'cmb2_init',  array( $this, 'contact_fields' ) );
+        add_action( 'cmb2_init',  array( $this, 'payment_center_fields' ) );
 		add_action( 'cmb2_init',  array( $this, 'why_worldstrides_page_section_group' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_partnerships' ) );
 		add_action( 'cmb2_init',  array( $this, 'about_careers_benefits' ) );
@@ -240,6 +241,46 @@ class WS_Metaboxes {
 			'title'        => __( 'Contact Sections', 'cmb2' ),
 			'object_types' => array( 'page', ),
 			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/contact.php' ),
+			// 'show_names'   => false, // Show field names on the left
+		) );
+
+		$group_field_id = $cmb->add_field( array(
+			'id'      => $prefix . 'sections',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Section {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Section', 'cmb2' ),
+				'remove_button' => __( 'Remove Section', 'cmb2' ),
+				'sortable'      => true, // beta
+			),
+		) );
+		
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Title',
+			'id' => $prefix . 'section_title',
+			'type' => 'text'
+		) );
+
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Section Content',
+			'id' => $prefix . 'section_content',
+			'type' => 'wysiwyg'
+		) );
+
+	}
+
+	/**
+	 * Fields for the payment center page
+	 */
+	function payment_center_fields() {
+
+		$prefix = 'payment_center_fields_';
+
+		$cmb = new_cmb2_box( array(
+			'id'           => $prefix . 'metabox',
+			'title'        => __( 'Payment Center Sections', 'cmb2' ),
+			'object_types' => array( 'page', ),
+			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/payment-center.php' ),
 			// 'show_names'   => false, // Show field names on the left
 		) );
 

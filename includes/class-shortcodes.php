@@ -103,6 +103,8 @@ class WS_Shortcodes {
 
 		if ( 'blue' == $atts['color'] ) {
 			$class = 'btn-info';
+		} else if ( 'purple' == $atts['color'] ) {
+			$class = 'btn-majestic';
 		} else {
 			$class = 'btn-primary';
 		}
@@ -201,6 +203,7 @@ class WS_Shortcodes {
 
 		<?php
 		$html = ob_get_contents();
+        $html = do_shortcode( $html );
 		ob_get_clean();
 
 		return $html;

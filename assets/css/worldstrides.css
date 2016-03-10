@@ -2367,6 +2367,51 @@ fieldset[disabled] .btn-info.active {
   color: #4fa9e5;
   background-color: #ffffff; }
 
+.btn-majestic {
+  color: #ffffff;
+  background-color: #80379b;
+  border-color: #80379b; }
+
+.btn-majestic:hover,
+.btn-majestic:focus,
+.btn-majestic.focus,
+.btn-majestic:active,
+.btn-majestic.active,
+.open > .dropdown-toggle.btn-majestic {
+  color: #ffffff;
+  background-color: #512363;
+  border-color: #80379b; }
+
+.btn-majestic:active,
+.btn-majestic.active,
+.open > .dropdown-toggle.btn-majestic {
+  background-image: none; }
+
+.btn-majestic.disabled,
+.btn-majestic[disabled],
+fieldset[disabled] .btn-majestic,
+.btn-majestic.disabled:hover,
+.btn-majestic[disabled]:hover,
+fieldset[disabled] .btn-majestic:hover,
+.btn-majestic.disabled:focus,
+.btn-majestic[disabled]:focus,
+fieldset[disabled] .btn-majestic:focus,
+.btn-majestic.disabled.focus,
+.btn-majestic[disabled].focus,
+fieldset[disabled] .btn-majestic.focus,
+.btn-majestic.disabled:active,
+.btn-majestic[disabled]:active,
+fieldset[disabled] .btn-majestic:active,
+.btn-majestic.disabled.active,
+.btn-majestic[disabled].active,
+fieldset[disabled] .btn-majestic.active {
+  background-color: #512363;
+  border-color: #512363; }
+
+.btn-majestic .badge {
+  color: #80379b;
+  background-color: #ffffff; }
+
 .btn-warning {
   color: #ffffff;
   background-color: #3076bc;
@@ -9567,6 +9612,20 @@ article.open > header.entry-header > a {
         margin-right: 0; } }
   .register-and-payment #payment-trip-id-li {
     max-width: 300px; }
+
+.payment-page-div {
+  position: relative; }
+  .payment-page-div ul {
+    position: absolute;
+    top: 250px;
+    margin-left: 50px;
+    margin-right: 50px; }
+    .payment-page-div ul li {
+      font-size: 12pt; }
+  .payment-page-div a.btn {
+    position: absolute;
+    bottom: 30px;
+    left: 75px; }
 
 /* Explore
  * ------------------------------------------------------------- */
