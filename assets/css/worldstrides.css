@@ -9616,7 +9616,19 @@ article.open > header.entry-header > a {
 .payment-page-div {
   max-width: 395px;
   position: relative; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 360px) {
+    .payment-page-div ul {
+      position: absolute;
+      top: 185px;
+      margin-left: 25px;
+      margin-right: 25px; }
+      .payment-page-div ul li {
+        font-size: 9pt; }
+    .payment-page-div a.btn {
+      position: absolute;
+      bottom: 30px;
+      left: 25px; } }
+  @media screen and (min-width: 361px) and (max-width: 768px) {
     .payment-page-div ul {
       position: absolute;
       top: 250px;

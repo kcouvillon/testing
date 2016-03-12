@@ -72,7 +72,26 @@
     max-width: 395px;
     position: relative;
     
-    @media screen and (max-width: $screen-sm) {
+    @media screen and (max-width: 360px) {
+        ul {
+            position: absolute;
+            top: 185px;
+            margin-left: 25px;
+            margin-right: 25px;
+
+            li {
+                font-size: 9pt;
+            }
+        }
+
+        a.btn {
+            position: absolute;
+            bottom: 30px;
+            left: 25px;
+        }
+    }
+
+    @media screen and (min-width: 361px) and (max-width: $screen-sm) {
         ul {
             position: absolute;
             top: 250px;
