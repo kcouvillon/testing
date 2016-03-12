@@ -624,10 +624,10 @@ function ws_custom_search(){
                     ELSE 5
                 END AS TypeSort,
                 CASE 
-					WHEN p.post_type = 'itinerary' THEN (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID) 
-                    ELSE (SELECT IFNULL(b.meta_value,100) FROM $wpdb->postmeta b WHERE b.meta_key = '_yoast_wpseo_linkdex' AND b.post_id = p.ID)
+					WHEN p.post_type = 'itinerary' THEN (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID LIMIT 1) 
+                    ELSE (SELECT IFNULL(b.meta_value,100) FROM $wpdb->postmeta b WHERE b.meta_key = '_yoast_wpseo_linkdex' AND b.post_id = p.ID  LIMIT 1)
 				END as PostIndex,
-                 (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID)  as PostIndex2
+                 (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID  LIMIT 1)  as PostIndex2
                 FROM $wpdb->posts p 
                 WHERE p.post_status='publish' 
                 AND (
