@@ -612,7 +612,7 @@ function ws_custom_search(){
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
         $post_type = $wp_query->query_vars['post_type'];
-        //print $wp_query->query_vars['post_type'];
+        print $wp_query->query_vars['post_type'];
         
 
         $offset = (get_current_page() - 1) * get_max_posts();
@@ -633,7 +633,7 @@ function ws_custom_search(){
                  (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID  LIMIT 1)  as PostIndex2
                 FROM $wpdb->posts p 
                 WHERE p.post_status='publish' 
-                AND CASE WHEN '$post_type' = 'any' THEN 1=1 ELSE p.post_type = '$post_type' END
+                AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
                 AND (
                     p.post_title like '%$search_string%'
                     OR p.post_content like '%$search_string%'
@@ -726,7 +726,7 @@ function ws_custom_count(){
 
         $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p 
                 WHERE p.post_status='publish' 
-                AND CASE WHEN '$post_type' = 'any' THEN 1=1 ELSE p.post_type = '$post_type' END
+                AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
                 AND (
                     p.post_title like '%$search_string%'
                     OR p.post_content like '%$search_string%'
