@@ -68,23 +68,89 @@
 }
 
 .payment-page-div {
-
+    
+    max-width: 395px;
     position: relative;
+    
+    @media screen and (max-width: $screen-sm) {
+        ul {
+            position: absolute;
+            top: 250px;
+            margin-left: 50px;
+            margin-right: 50px;
 
-    ul {
-        position: absolute;
-        top: 250px;
-        margin-left: 50px;
-        margin-right: 50px;
+            li {
+                font-size: 12pt;
+            }
+        }
 
-        li {
-            font-size: 12pt;
+        a.btn {
+            position: absolute;
+            bottom: 30px;
+            left: 75px;
+        }
+    }	
+
+    @media screen and (min-width: $screen-sm) {
+        ul {
+            position: absolute;
+            top: 250px;
+            margin-left: 50px;
+            margin-right: 50px;
+
+            li {
+                font-size: 10pt;
+            }
+        }
+
+        a.btn {
+            position: absolute;
+            bottom: 30px;
+            left: 75px;
         }
     }
 
-    a.btn {
-        position: absolute;
-        bottom: 30px;
-        left: 75px;
-    }
+	@media screen and (min-width: $screen-md) {
+        ul {
+            position: absolute;
+            top: 200px;
+            margin-left: 25px;
+            margin-right: 25px;
+
+            li {
+                font-size: 10pt;
+            }
+        }
+
+        a.btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50px;
+        }
+	}
+	@media screen and (min-width: $screen-lg) {
+        ul {
+            position: absolute;
+            top: 250px;
+            margin-left: 30px;
+            margin-right: 30px;
+
+            li {
+                font-size: 12pt;
+            }
+        }
+
+        a.btn {
+            position: absolute;
+            bottom: 30px;
+            left: 75px;
+        } 
+	}
+}
+
+.payment-page-div {
+
+    
+
+
 }

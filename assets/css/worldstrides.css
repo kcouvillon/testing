@@ -9614,18 +9614,56 @@ article.open > header.entry-header > a {
     max-width: 300px; }
 
 .payment-page-div {
+  max-width: 395px;
   position: relative; }
-  .payment-page-div ul {
-    position: absolute;
-    top: 250px;
-    margin-left: 50px;
-    margin-right: 50px; }
-    .payment-page-div ul li {
-      font-size: 12pt; }
-  .payment-page-div a.btn {
-    position: absolute;
-    bottom: 30px;
-    left: 75px; }
+  @media screen and (max-width: 768px) {
+    .payment-page-div ul {
+      position: absolute;
+      top: 250px;
+      margin-left: 50px;
+      margin-right: 50px; }
+      .payment-page-div ul li {
+        font-size: 12pt; }
+    .payment-page-div a.btn {
+      position: absolute;
+      bottom: 30px;
+      left: 75px; } }
+  @media screen and (min-width: 768px) {
+    .payment-page-div ul {
+      position: absolute;
+      top: 250px;
+      margin-left: 50px;
+      margin-right: 50px; }
+      .payment-page-div ul li {
+        font-size: 10pt; }
+    .payment-page-div a.btn {
+      position: absolute;
+      bottom: 30px;
+      left: 75px; } }
+  @media screen and (min-width: 960px) {
+    .payment-page-div ul {
+      position: absolute;
+      top: 200px;
+      margin-left: 25px;
+      margin-right: 25px; }
+      .payment-page-div ul li {
+        font-size: 10pt; }
+    .payment-page-div a.btn {
+      position: absolute;
+      bottom: 10px;
+      left: 50px; } }
+  @media screen and (min-width: 1200px) {
+    .payment-page-div ul {
+      position: absolute;
+      top: 250px;
+      margin-left: 30px;
+      margin-right: 30px; }
+      .payment-page-div ul li {
+        font-size: 12pt; }
+    .payment-page-div a.btn {
+      position: absolute;
+      bottom: 30px;
+      left: 75px; } }
 
 /* Explore
  * ------------------------------------------------------------- */
