@@ -612,7 +612,7 @@ function ws_custom_search(){
     if (!empty($wp_query->query_vars['s'])) {
         $search_string = $wp_query->query_vars['s'];
         $post_type = $wp_query->query_vars['post_type'];
-        print $wp_query->query_vars['post_type'];
+        //print $wp_query->query_vars['post_type'];
         
 
         $offset = (get_current_page() - 1) * get_max_posts();
