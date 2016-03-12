@@ -13,7 +13,8 @@ get_header(); ?>
 			<header class="section-header pattern-3">
 				<div class="ws-container">
 					<div class="section-header-content">
-						<h1><?php the_title(); ?></h1>
+                        <h2 style="margin-bottom:0;">Welcome to the</h2>
+						<h1 style="margin-top:0;"><?php the_title(); ?></h1>
 					</div>
 				</div>
 			</header>
