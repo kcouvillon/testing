@@ -924,7 +924,7 @@ function get_pr_page_id($postid){
             }
         }
 
-        //$pr_page_id = 'washington-dc-programs';
+        $pr_page_id = 'washington-dc-programs';
         return $pr_page_id;
 }
 
