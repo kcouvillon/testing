@@ -909,18 +909,19 @@ function get_pr_page_id($postid){
         array( 'uri' =>	"/worldstrides/collections/discover-washington-d-c/",			    		'pr_page_id' =>	'washington-dc-programs' )
         );
 
+        $post_url = parse_url(get_permalink($postid), PHP_URL_PATH);
         $pr_page_id  = '';
 
         //get collection for itinerary        
         $collectionid = get_itinerary_collection($postid);
         $post_url = parse_url(get_permalink($collectionid), PHP_URL_PATH);
-        //print 'POSTID: ' . $postid . '<br><p>';
-        //print 'URL: ' . $post_url . '<br><p>';
+        print 'POSTID: ' . $postid . '<br><p>';
+        print 'URL: ' . $post_url . '<br><p>';
 
         foreach ( $powerreviews_pairs as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
-                //print 'MATCH: ' . $pr_page_id . '<br>';
+                print 'MATCH: ' . $pr_page_id . '<br>';
             }
         }
 
@@ -931,21 +932,22 @@ function get_pr_page_id($postid){
 
 function get_itinerary_collection($postid){
     global $wpdb,$wp_query;    
-    
-    //get collection based on postid
-    $collectionid = $wpdb->get_var( "SELECT p2.id
+   
+    $collectionid = $wpdb->get_var( "SELECT p2.ID
                                     FROM $wpdb->posts p
-		                                    join wp_term_relationships tr
-        	                                    on p.id = tr.object_id
-                                            join wp_term_taxonomy tx
+		                                    join $wpdb->term_relationships tr
+        	                                    on p.ID = tr.object_id
+                                            join $wpdb->term_taxonomy tx
         	                                    on tr.term_taxonomy_id = tx.term_taxonomy_id
                                                 and tx.taxonomy = '_collection'
-                                            join wp_terms tm
+                                            join $wpdb->terms tm
         	                                    on tx.term_id = tm.term_id
                                             join $wpdb->posts p2
         	                                    on tm.name = p2.post_title
                                                 and p2.post_type = 'collection'
-                                    WHERE p.id = $postid
+                                    WHERE p.ID = $postid
                                     LIMIT 1");
+
+    $collectionid = 844;
     return $collectionid;
 }
