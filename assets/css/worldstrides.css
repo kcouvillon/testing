@@ -10286,10 +10286,18 @@ article.open > header.entry-header > a {
   margin-top: 5px; }
 
 .spanFeatureText {
-  font-size: 10pt; }
+  font-size: 10pt;
+  line-height: 0.4; }
 
 .ds-pr-summary {
   float: left; }
+
+.pr-review-engine {
+  padding-left: 0; }
+
+.showMapLink {
+  float: right;
+  margin-top: 10px; }
 
 .sitemap-section {
   font-size: 16px; }
