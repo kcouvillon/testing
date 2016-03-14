@@ -925,7 +925,7 @@ function get_pr_page_id($postid){
             }
         }
 
-        $pr_page_id = 'washington-dc-programs';
+        //$pr_page_id = 'washington-dc-programs';
         return $pr_page_id;
 }
 
@@ -948,6 +948,6 @@ function get_itinerary_collection($postid){
                                     WHERE p.ID = $postid
                                     LIMIT 1");
 
-    $collectionid = 844;
+    //$collectionid = 844;
     return $collectionid;
 }
