@@ -935,12 +935,12 @@ function get_itinerary_collection($postid){
     //get collection based on postid
     $collectionid = $wpdb->get_var( "SELECT p2.ID
                                     FROM $wpdb->posts p
-		                                    join $wpdb->term_relationships tr
+		                                    join wp_term_relationships tr
         	                                    on p.ID = tr.object_id
-                                            join $wpdb->term_taxonomy tx
+                                            join wp_term_taxonomy tx
         	                                    on tr.term_taxonomy_id = tx.term_taxonomy_id
                                                 and tx.taxonomy = '_collection'
-                                            join $wpdb->terms tm
+                                            join wp_terms tm
         	                                    on tx.term_id = tm.term_id
                                             join $wpdb->posts p2
         	                                    on tm.name = p2.post_title
