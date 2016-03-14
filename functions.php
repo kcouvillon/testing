@@ -915,13 +915,13 @@ function get_pr_page_id($postid){
         //get collection for itinerary        
         $collectionid = get_itinerary_collection($postid);
         $post_url = parse_url(get_permalink($collectionid), PHP_URL_PATH);
-        print 'POSTID: ' . $postid . '<br><p>';
-        print 'URL: ' . $post_url . '<br><p>';
+        //print 'POSTID: ' . $postid . '<br><p>';
+        //print 'URL: ' . $post_url . '<br><p>';
 
         foreach ( $powerreviews_pairs as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
-                print 'MATCH: ' . $pr_page_id . '<br>';
+                //print 'MATCH: ' . $pr_page_id . '<br>';
             } else {
                 //print 'NOMATCH: ' . $powerreviews_pair['uri'] . '<br>';
             }
