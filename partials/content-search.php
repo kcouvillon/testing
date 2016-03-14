@@ -89,7 +89,7 @@
             </p>
             <p>
        
-            <div class="pull-right"><a id="lnkShowMap" href="#" data-showmap="<?php echo $post->ID; ?>">See map <i class="icon icon-pin"></i></a></div>
+            <div class="showMapLink"><a id="lnkShowMap" href="#" data-showmap="<?php echo $post->ID; ?>">See map <i class="icon icon-pin"></i></a></div>
             <!--<img src="http://localhost:8080/worldstrides/wp-content/uploads/rating.jpg">-->
             <!-- echo WS_PowerReviews::html_from_pr_page_id( get_pr_page_id($post->ID), apply_filters( 'the_title', $display_title ) ); -->
             <?php echo WS_PowerReviews::snip_from_pr_page_id( get_pr_page_id($post->ID)); ?>
