@@ -10292,7 +10292,7 @@ article.open > header.entry-header > a {
 .ds-pr-summary {
   float: left; }
 
-.pr-review-engine {
+[id^="pr-review-engine"] {
   padding-left: 0; }
 
 .showMapLink {
