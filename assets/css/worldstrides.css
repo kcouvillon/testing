@@ -10285,6 +10285,12 @@ article.open > header.entry-header > a {
 .entry-meta {
   margin-top: 5px; }
 
+.spanFeatureText {
+  font-size: 10pt; }
+
+.ds-pr-summary {
+  float: left; }
+
 .sitemap-section {
   font-size: 16px; }
   .sitemap-section header {
