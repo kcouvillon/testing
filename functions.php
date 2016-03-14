@@ -931,7 +931,8 @@ function get_pr_page_id($postid){
 
 function get_itinerary_collection($postid){
     global $wpdb,$wp_query;    
-   
+    
+    //get collection based on postid
     $collectionid = $wpdb->get_var( "SELECT p2.ID
                                     FROM $wpdb->posts p
 		                                    join $wpdb->term_relationships tr
