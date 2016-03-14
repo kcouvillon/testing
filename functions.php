@@ -924,7 +924,7 @@ function get_pr_page_id($postid){
             }
         }
 
-        $pr_page_id = 'washington-dc-programs';
+        //$pr_page_id = 'washington-dc-programs';
         return $pr_page_id;
 }
 
@@ -933,10 +933,10 @@ function get_itinerary_collection($postid){
     global $wpdb,$wp_query;    
     
     //get collection based on postid
-    $collectionid = $wpdb->get_var( "SELECT p2.ID
+    $collectionid = $wpdb->get_var( "SELECT p2.id
                                     FROM $wpdb->posts p
 		                                    join wp_term_relationships tr
-        	                                    on p.ID = tr.object_id
+        	                                    on p.id = tr.object_id
                                             join wp_term_taxonomy tx
         	                                    on tr.term_taxonomy_id = tx.term_taxonomy_id
                                                 and tx.taxonomy = '_collection'
@@ -945,7 +945,7 @@ function get_itinerary_collection($postid){
                                             join $wpdb->posts p2
         	                                    on tm.name = p2.post_title
                                                 and p2.post_type = 'collection'
-                                    WHERE p.ID = $postid
+                                    WHERE p.id = $postid
                                     LIMIT 1");
     return $collectionid;
 }
