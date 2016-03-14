@@ -946,6 +946,5 @@ function get_itinerary_collection($postid){
                                                 and p2.post_type = 'collection'
                                     WHERE p.ID = $postid
                                     LIMIT 1");
-
     return $collectionid;
 }
