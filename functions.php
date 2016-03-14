@@ -909,6 +909,35 @@ function get_pr_page_id($postid){
         array( 'uri' =>	"/collections/discover-washington-d-c/",			    		'pr_page_id' =>	'washington-dc-programs' )
         );
 
+        $powerreviews_pairs_local = array(
+        array( 'uri' =>	"/worldstrides/collections/smithsonian-university-travel-programs/",		'pr_page_id' =>	'smithsonian-university-travel-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/reliving-us-history/",						    'pr_page_id' =>	'history-themed-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/science-discoveries/",						    'pr_page_id' =>	'science-themed-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/american-performing-tours/",				    	'pr_page_id' =>	'american-performing-tours' ),
+        array( 'uri' =>	"/worldstrides/collections/dance-and-cheer-programs/",					    'pr_page_id' =>	'bowl-games-parades-dance' ),
+        array( 'uri' =>	"/worldstrides/collections/marching-band-programs/",						'pr_page_id' =>	'bowl-games-parades-marching-band' ),
+        array( 'uri' =>	"/worldstrides/collections/career-focused-programs/",					    'pr_page_id' =>	'career-focused-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/faith-based-concert-tours/",					    'pr_page_id' =>	'faith-based-concert-tours' ),
+        array( 'uri' =>	"/worldstrides/collections/festival-at-carnegie-hall/",				    	'pr_page_id' =>	'festival-carnegie-hall-elite-performing' ),
+        array( 'uri' =>	"/worldstrides/collections/festival-of-gold/",							    'pr_page_id' =>	'festival-gold-elite-performing' ),
+        array( 'uri' =>	"/worldstrides/collections/heritage-festivals/",							'pr_page_id' =>	'heritage-festivals' ),
+        array( 'uri' =>	"/worldstrides/collections/international-concert-tours/",			    	'pr_page_id' =>	'international-concert-tours' ),
+        array( 'uri' =>	"/worldstrides/collections/perspectives-on-central-and-eastern-europe/",	'pr_page_id' =>	'central-and-eastern-europe' ),
+        array( 'uri' =>	"/worldstrides/collections/italian-and-greek-influence/",			    	'pr_page_id' =>	'italy-and-greece' ),
+        array( 'uri' =>	"/worldstrides/collections/a-european-perspective/",						'pr_page_id' =>	'multiple-european-countries' ),
+        array( 'uri' =>	"/worldstrides/collections/french-and-spanish-influence/",			    	'pr_page_id' =>	'spain-and-france' ),
+        array( 'uri' =>	"/worldstrides/collections/focus-on-the-americas/",					    	'pr_page_id' =>	'americas' ),
+        array( 'uri' =>	"/worldstrides/collections/a-uk-perspective/",						    	'pr_page_id' =>	'britain-and-ireland' ),
+        array( 'uri' =>	"/worldstrides/collections/discover-colonial-history/",				    	'pr_page_id' =>	'discover-colonial-history' ),
+        array( 'uri' =>	"/worldstrides/collections/florida-science-discovery/",				    	'pr_page_id' =>	'florida-science-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/costa-rica-science-discovery/",			    	'pr_page_id' =>	'costa-rica-science-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/california-history-discovery/",			    	'pr_page_id' =>	'california-history-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/new-york-history-discovery/",					'pr_page_id' =>	'new-york-history-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/illinois-history-discovery/",					'pr_page_id' =>	'illinois-history-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/a-focus-on-christian-travel/",		    		'pr_page_id' =>	'a-focus-on-christian-travel' ),
+        array( 'uri' =>	"/worldstrides/collections/discover-washington-d-c/",			    		'pr_page_id' =>	'washington-dc-programs' )
+        );
+
         $post_url = parse_url(get_permalink($postid), PHP_URL_PATH);
         $pr_page_id  = '';
 
