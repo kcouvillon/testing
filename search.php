@@ -27,7 +27,7 @@ $(document).ready(function() {
     $(".pr-contents").remove();
     $(".pr-review-sort").remove();
     $(".pr-snapshot-consensus").remove();
-    $(".pr-snapshot-histogram").remove(); 
+    $("#pr-snapshot-histogram").remove(); 
 });
 </script>
 
