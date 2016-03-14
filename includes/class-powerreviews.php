@@ -157,20 +157,17 @@ class WS_PowerReviews {
                 $review_html .= '<div id="ds-pr-summary" class="ds-pr-summary">' . $summary . '</div>';
 
                 //$review_html .= '<script type="text/javascript">';
-
                 //$review_html .= 'var ratingsum = "Stars";';
                 //$review_html .= 'var element = document.getElementsByClassName("pr-snapshot-rating");';
                 //$review_html .= 'var element = document.getElementsByClassName("pr-review-wrap");';
-                //$review_html .= 'alert(element);';
+                //$review_html .= 'alert($review_uri);';
                 //$review_html .= 'element.parentNode.removeChild(element);';
                 //$review_html .= '</script>';
-                
 
 			}
 		} catch ( Exception $e ) {
 			return ''; // PowerReviews XML parsing badly, eh?
 		}
-
 
 		// then adjust the hyperlinks to work properly:
 		$review_html = preg_replace( '/\/pwr/', self::$powerreviews_url . 'pwr', $review_html ); // prepend https://reviews.worldstrides.com 
