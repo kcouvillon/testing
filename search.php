@@ -19,6 +19,17 @@ if ( 'post' == $post_type ) {
  
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $(".pr-review-wrap").remove();
+    $(".pr-contents").remove();
+    $(".pr-review-sort").remove();
+    $(".pr-snapshot-consensus").remove();
+});
+</script>
+
 <div id="primary" class="content-area">
 	<main id="main" class="site-main search" role="main">
 

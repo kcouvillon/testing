@@ -112,7 +112,7 @@ class WS_PowerReviewSnippet {
 		$review_html = preg_replace( '/\/pwr/', self::$powerreviews_url . 'pwr', $review_html ); // prepend https://reviews.worldstrides.com 
 		$review_html = preg_replace( '/https:/', '', $review_html ); // make all includes start with '//' rather than 'https://'
 		$review_html .= '<script type="text/javascript">';
-		$review_html .= '  POWERREVIEWS.display.engine(snippet);';
+		$review_html .= '  POWERREVIEWS.display.engine(document);';
 		$review_html .= '  var pr_zip_location="' . self::$powerreviews_url . '";';
 		$review_html .= '</script>';
 		$review_html .= '<a href="' . self::$powerreviews_url . 'reviews.php?pr_page_id=' . $pr_page_id . '">See all Reviews</a>';
