@@ -74,11 +74,11 @@
                         $len = count($features);
 					    foreach ( $features as $feature ) {
                             if ($i == $len - 1) {
-                                echo '<span> and ' . $feature . '</span>';
+                                echo '<span class="spanFeatureText"> and ' . $feature . '</span>';
                             } else if ($i == 0) {
-                                echo '<span>' . $feature . '</span>';
+                                echo '<span class="spanFeatureText">' . $feature . '</span>';
                             } else {
-                                echo '<span>, ' . $feature . '</span>';
+                                echo '<span class="spanFeatureText">, ' . $feature . '</span>';
                             }
                             $i++;
 					    }
