@@ -53,8 +53,6 @@ get_header(); ?>
 		
 		</div>
 
-		<?php get_template_part( 'partials/module', 'discover-why' ); ?>
-
 	</main>
 </div>
 
