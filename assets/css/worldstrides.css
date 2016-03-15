@@ -7252,6 +7252,18 @@ a.text-color-link {
 .belt {
   margin-bottom: 3em; }
 
+.btn.nohover:hover, .embedded-marketo-form .mktoForm .mktoButtonRow .mktoButtonWrap button.nohover.mktoButton:hover {
+  cursor: default !important; }
+
+.nohover.btn-success:hover,
+.nohover.btn-success:focus,
+.nohover.btn-success.focus,
+.nohover.btn-success:active,
+.nohover.btn-success.active {
+  color: #ffffff;
+  background-color: #4fa9e5;
+  border-color: #4fa9e5; }
+
 @media (min-width: 600px) {
   .hentry .wp-post-image {
     width: 26.1363636364%;
@@ -10255,6 +10267,31 @@ article.open > header.entry-header > a {
 .search-query {
   color: #4fa9e5;
   text-transform: capitalize; }
+
+@media screen and (min-width: 768px) {
+  #feature-modal .modal-dialog {
+    width: 400px !important;
+    height: 600px !important; } }
+
+.entry-content p {
+  margin: 0 0 0.95em; }
+
+.entry-meta {
+  margin-top: 5px; }
+
+.spanFeatureText {
+  font-size: 10pt;
+  line-height: 0.4; }
+
+.ds-pr-summary {
+  float: left; }
+
+.search-wrap [id^="pr-review-engine"] {
+  padding-left: 0 !important; }
+
+.showMapLink {
+  float: right;
+  margin-top: 10px; }
 
 .sitemap-section {
   font-size: 16px; }
