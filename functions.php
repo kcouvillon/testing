@@ -499,9 +499,9 @@ add_action( 'add_meta_boxes', 'ws_default_meta_boxes' );
 function ws_add_modal_welcome() {
 	require_once( WS_PATH . 'partials/modal-welcome.php');
 }
-if ( strtotime('30 November 2015') > strtotime('now') ) {
-	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 ); 
-}
+//if ( strtotime('28 February 2016') > strtotime('now') ) {
+//	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 );
+//}
 
 /**
  * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin

@@ -6068,9 +6068,6 @@ div.mktoFormRow * #companyAddress2 {
   border-radius: 0;
   font-weight: normal; }
 
-.modal-dialog {
-  width: 375px !important; }
-
 .modal-content {
   border: none !important;
   box-shadow: none !important;
@@ -6159,9 +6156,6 @@ div.mktoFormRow * #companyAddress2 {
   color: #000;
   border-radius: 0;
   font-weight: normal; }
-
-.modal-dialog {
-  width: 300px !important; }
 
 .modal-content {
   border: none !important;
