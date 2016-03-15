@@ -28,6 +28,7 @@ $(document).ready(function() {
     $(".pr-review-sort").remove();
     $(".pr-snapshot-consensus").remove();
     $('[id=pr-snapshot-histogram]').remove();
+    $(document).removeClass('pr-review-engine-max-width-560px');
 });
 </script>
 
