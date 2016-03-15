@@ -1084,7 +1084,7 @@
 		$slideshow_images,
 		sizeInvalidated = false;
 
-	if ( $( 'body' ).hasClass('single-itinerary') || $( 'body' ).hasClass('single-custom-page') ) {
+	if ($('body').hasClass('single-itinerary') || $('body').hasClass('single-custom-page')) {
 
 		L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
 
@@ -1170,6 +1170,70 @@
 
 		});
 
+	}
+
+	if ($('body').hasClass('search-results') || $('body').hasClass('search-no-results')) {
+
+	    L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
+
+	    $(document).ready(function () {
+
+	        $(document).on('click', '#lnkShowMap', function () {
+	            return showMap($(this).data('showmap'));
+	        });
+	    });
+
+	    function showMap(mapSectionName) {
+	        if ($('#tour-highlights-map').length > 0) {
+	            // Assign variables
+	            init_coords = $('#result-map-' + mapSectionName).data('location'),
+                marker_data = $('#result-map-' + mapSectionName).data('highlights');
+
+	            if (marker_data) {
+
+	                // Format marker data into geoJSON
+	                var collection = returnGeoJSON(marker_data);
+
+	                // remove map in case it already exists
+	                if (map != undefined) { map.remove(); }
+
+	                // Setup Map and Layer
+	                map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
+	                    scrollWheelZoom: false,
+	                    dragging: false,
+	                    zoomControl: false,
+	                    center: [parseFloat(init_coords.latitude), parseFloat(init_coords.longitude)],
+	                    zoom: 13
+	                });
+	                layer = L.mapbox.featureLayer(collection).addTo(map);
+
+	                // Map Events
+	                map
+                        .on('ready resize', function () {
+                            map.invalidateSize();
+                            map.fitBounds(layer.getBounds(), { padding: [30, 30], maxZoom: 16 });
+                        });
+
+	                // Layer Events
+	                layer
+                        .on('layeradd', function (e) {
+                            var marker = e.layer,
+                                feature = marker.feature;
+
+                            if (feature.properties.id == 0) {
+                                marker.setIcon(L.icon(feature.properties.iconHover));
+                            } else {
+                                marker.setIcon(L.icon(feature.properties.icon));
+                            }
+                        });
+	            }
+
+	            $('#feature-modal').modal('show');
+	            //$('#tour-highlights-map').show();
+	        }
+
+	        return false;
+	    }
 	}
 
 	function returnGeoJSON( array ) {
@@ -1409,6 +1473,16 @@
 		else {
 			//Cookie does not exist
 			return false;
+		}
+
+	}
+
+	wsData.dayCookie = function(cookiename){
+		var currentcookie = Cookies.get(cookiename);
+		if ( "" === currentcookie || isNaN( parseInt(currentcookie)) ) {
+			return Cookies.set(cookiename,'1',{ expires:.5 });
+		} else {
+			return Cookies.set(cookiename,parseInt(currentcookie)+1,{ expires:.5 });
 		}
 
 	}
