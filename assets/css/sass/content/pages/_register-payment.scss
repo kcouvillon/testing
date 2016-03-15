@@ -118,7 +118,7 @@
 
 	@media screen and (min-width: $screen-md) {
         ul {
-
+			top: 42% !important;
             li {
                 font-size: 10pt;
             }
@@ -132,11 +132,13 @@
 	}
 	@media screen and (min-width: $screen-lg) {
         ul {
+			top: 50% !important;
             li {
                 font-size: 12pt;
             }
         }
 	}
+
 
 }
 

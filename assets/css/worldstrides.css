@@ -9646,14 +9646,18 @@ article.open > header.entry-header > a {
       .payment-page-div ul li {
         font-size: 10pt; } }
   @media screen and (min-width: 960px) {
-    .payment-page-div ul li {
-      font-size: 10pt; }
+    .payment-page-div ul {
+      top: 42% !important; }
+      .payment-page-div ul li {
+        font-size: 10pt; }
     .payment-page-div a.btn {
       left: 30px;
       right: 30px; } }
   @media screen and (min-width: 1200px) {
-    .payment-page-div ul li {
-      font-size: 12pt; } }
+    .payment-page-div ul {
+      top: 50% !important; }
+      .payment-page-div ul li {
+        font-size: 12pt; } }
 
 /* Explore
  * ------------------------------------------------------------- */
