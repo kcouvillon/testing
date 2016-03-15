@@ -94,5 +94,19 @@
 	margin-bottom: 3em;
 }
 
+.btn.nohover:hover {
+    cursor:default !important;
+}
+
+.nohover.btn-success:hover,
+.nohover.btn-success:focus,
+.nohover.btn-success.focus,
+.nohover.btn-success:active,
+.nohover.btn-success.active {
+  color: #ffffff;
+  background-color: #4fa9e5;
+  border-color: #4fa9e5;
+}
+
 @import "posts/post";
 @import "pages/page";

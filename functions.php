@@ -112,7 +112,7 @@ function ws_scripts_styles() {
 
 	wp_enqueue_script( 'jquery' );
 
-	if ( is_page_template( 'templates/about-offices.php' ) || is_page_template( 'templates/division-capstone.php' ) || is_singular( 'itinerary' ) || is_singular( 'custom-page' ) ) {
+	if ( is_page_template( 'templates/about-offices.php' ) || is_page_template( 'templates/division-capstone.php' ) || is_singular( 'itinerary' ) || is_singular( 'custom-page' ) || is_search() ) {
 		wp_enqueue_style( 'mapbox-style', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css', array(), WS_VERSION );
 		wp_enqueue_script( 'mapbox', 'https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js', array(), WS_VERSION, true );
 	}
@@ -240,6 +240,18 @@ function ws_add_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'ws_add_body_classes' );
+
+/**
+ * Filter the except length to 20 characters.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 45;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
 
 /**
  * Customize ellipsis after the_excerpt
@@ -487,9 +499,9 @@ add_action( 'add_meta_boxes', 'ws_default_meta_boxes' );
 function ws_add_modal_welcome() {
 	require_once( WS_PATH . 'partials/modal-welcome.php');
 }
-if ( strtotime('30 November 2015') > strtotime('now') ) {
-	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 ); 
-}
+//if ( strtotime('28 February 2016') > strtotime('now') ) {
+//	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 );
+//}
 
 /**
  * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin
@@ -504,42 +516,29 @@ function dbx_srm_max_redirects() {
  * For example, PUV for the Pura Vida trip
  * https://codex.wordpress.org/Custom_Queries#Keyword_Search_in_Plugin_Table
  * http://code.tutsplus.com/tutorials/create-a-simple-crm-in-wordpress-extending-wordpress-search-to-include-custom-fields--cms-22953
- * @todo: make this functional -> See threscode_search() below
+ * @todo: make this functional
  */
-//add_filter('posts_join', 'meta_threecode_search_join' );
-//add_filter('posts_where', 'meta_threecode_search_where' );
-//add_filter('posts_groupby', 'meta_threecode_search_groupby' );
-//add_filter('posts_orderby', 'meta_threecode_search_orderby' );
-
+// add_filter('posts_join', 'meta_threecode_search_join' );
+// add_filter('posts_where', 'meta_threecode_search_where' );
+// add_filter('posts_groupby', 'meta_threecode_search_groupby' );
 function meta_threecode_search_join( $join ) {
     global $wp_query, $wpdb;
+
     if (!empty($wp_query->query_vars['s'])) {
     	$search_string = $wp_query->query_vars['s'];
-        //$join = " LEFT JOIN " . $wpdb->postmeta . " ON " . $wpdb->posts . ".ID = " . $wpdb->postmeta . ".post_id ";
-        //$join .= "AND " . $wpdb->postmeta . ".meta_key  = 'itinerary_details_trip_id' ";
-        //$join .= "AND " . $wpdb->postmeta . ".meta_value like '%" . $search_string . "%'";
+        $join .= "LEFT JOIN $wpdb->postmeta ON $wpdb->posts.ID = $wpdb->postmeta.post_id ";
+        $join .= "AND $wpdb->postmeta.meta_key = 'itinerary_details_trip_id' ";
+        $join .= "AND $wpdb->postmeta.meta_value LIKE '%%$search_string%%' ";
     }
+
     return $join;
 }
 function meta_threecode_search_where( $where ) {
-    return $where;
+
 }
 function meta_threecode_search_groupby( $groupby ) {
-    return $groupby;
+
 }
-
-function meta_threecode_search_orderby( $orderby ) {
-    return $orderby;
-}
-
-
-//Debug Show Variable Function
-function debug_show_var($vardata){
-    echo '<script language="javascript">';
-    echo 'alert("' . $vardata . '")';
-    echo '</script>';
-}
-
 
 //Threecode Exists
 function threecode_exists(){
@@ -573,4 +572,413 @@ function threecode_search(){
 
         return $results;
     }
+}
+
+
+//Temp Format
+function temp_format(){
+    global $wpdb;
+    $results = $wpdb->get_var( "SELECT option_value FROM $wpdb->options WHERE option_name = 'temperature_format'" );
+    $tempformat = $results;
+    return $tempformat;
+}
+
+function temp_to_celsius( $degrees ){
+    $degrees = (($degrees - 32) * 5/9 );
+    return $degrees;
+}
+
+
+//*** WorldStrides Custom Search ***//
+function ws_custom_exists(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+
+        $results = ws_custom_count();
+
+        if ($results == 0){
+            $exists = false;
+        }
+        else{
+            $exists = true;
+        }
+
+        return $exists;
+    }
+}
+
+function ws_custom_search(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+        $search_string = $wp_query->query_vars['s'];
+        $post_type = $wp_query->query_vars['post_type'];
+        //print $wp_query->query_vars['post_type'];
+        
+
+        $offset = (get_current_page() - 1) * get_max_posts();
+        $fetch = get_max_posts();
+
+        $qry = "SELECT *,
+                CASE 
+                    WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND b.meta_value = '$search_string') THEN 1
+                    WHEN p.post_type = 'itinerary' THEN 2
+                    WHEN p.post_type = 'resource' THEN 3
+                    WHEN p.post_type = 'post' THEN 4
+                    ELSE 5
+                END AS TypeSort,
+                CASE 
+					WHEN p.post_type = 'itinerary' THEN (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID LIMIT 1) 
+                    ELSE (SELECT IFNULL(b.meta_value,100) FROM $wpdb->postmeta b WHERE b.meta_key = '_yoast_wpseo_linkdex' AND b.post_id = p.ID  LIMIT 1)
+				END as PostIndex,
+                 (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID  LIMIT 1)  as PostIndex2
+                FROM $wpdb->posts p 
+                WHERE p.post_status='publish' 
+                AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
+                AND (
+                    p.post_title like '%$search_string%'
+                    OR p.post_content like '%$search_string%'
+                    OR p.post_excerpt like '%$search_string%'
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND b.meta_value = '$search_string')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+                                        JOIN wp_term_taxonomy tax3
+        	                                ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+        	                                ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax3
+        	                                ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+        	                                ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.ID IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.ID = rel.object_id
+		                                JOIN wp_term_taxonomy tax 
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+		                                JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+			                                AND term.name = 'Business'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+			                                AND term2.name like '%$search_string%')
+                    OR p.ID IN (SELECT p.ID
+                                FROM $wpdb->posts p
+		                                JOIN wp_term_relationships rel
+        	                                ON p.ID = rel.object_id
+		                                JOIN wp_term_taxonomy tax 
+        	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
+		                                JOIN wp_terms term
+        	                                ON tax.term_id = term.term_id
+			                                AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax2
+        	                                ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+        	                                ON tax2.parent = term2.term_id
+			                                AND term2.name = 'traveler')
+                    )
+                ORDER BY TypeSort ASC, PostIndex2 ASC
+                LIMIT $offset,$fetch";
+        $row = $wpdb->get_results( $qry );
+
+        wp_reset_query();
+
+        return $row;
+    }
+}
+
+
+function ws_custom_count(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+        $search_string = $wp_query->query_vars['s'];
+        $post_type = $wp_query->query_vars['post_type'];
+
+        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p 
+                WHERE p.post_status='publish' 
+                AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
+                AND (
+                    p.post_title like '%$search_string%'
+                    OR p.post_content like '%$search_string%'
+                    OR p.post_excerpt like '%$search_string%'
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND b.meta_value like '%$search_string%')
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND b.meta_value = '$search_string')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+                                        JOIN wp_term_relationships rel
+                                            ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+                                            ON tax.term_id = term.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax2
+                                            ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+                                            ON tax2.parent = term2.term_id
+                                        JOIN wp_term_taxonomy tax3
+                                            ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+                                            ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.Id IN (SELECT p.ID
+                                FROM $wpdb->posts p
+                                        JOIN wp_term_relationships rel
+                                            ON p.Id = rel.object_id
+                                        JOIN wp_term_taxonomy tax
+                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+                                            ON tax.term_id = term.term_id
+                                        JOIN wp_term_taxonomy tax2
+                                            ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+                                            ON tax2.parent = term2.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax3
+                                            ON term2.term_id = tax3.term_id
+                                        JOIN wp_terms term3
+                                            ON tax3.parent = term3.term_id
+                                            AND term3.name = 'Destination')
+                    OR p.ID IN (SELECT p.ID
+                                FROM $wpdb->posts p
+                                        JOIN wp_term_relationships rel
+                                            ON p.ID = rel.object_id
+                                        JOIN wp_term_taxonomy tax 
+                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+                                            ON tax.term_id = term.term_id
+                                            AND term.name = 'Business'
+                                        JOIN wp_term_taxonomy tax2
+                                            ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+                                            ON tax2.parent = term2.term_id
+                                            AND term2.name like '%$search_string%')
+                    OR p.ID IN (SELECT p.ID
+                                FROM $wpdb->posts p
+                                        JOIN wp_term_relationships rel
+                                            ON p.ID = rel.object_id
+                                        JOIN wp_term_taxonomy tax 
+                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
+                                        JOIN wp_terms term
+                                            ON tax.term_id = term.term_id
+                                            AND term.name like '%$search_string%'
+                                        JOIN wp_term_taxonomy tax2
+                                            ON term.term_id = tax2.term_id
+                                        JOIN wp_terms term2
+                                            ON tax2.parent = term2.term_id
+                                            AND term2.name = 'traveler')
+                    )");
+
+        //$results = wp_count_posts(ws_custom_search()); //can be used without paging
+
+        return $results;
+    }
+}
+
+
+
+//Get Country TODO
+function ws_get_country($postid){
+    global $wpdb;
+    if (!empty($postid)) {
+
+        $qry = "SELECT p.* FROM $wpdb->posts p JOIN $wpdb->postmeta pm ON p.ID = pm.post_id  WHERE p.id = $postid";
+        $results = $wpdb->get_results( $qry );
+
+        wp_reset_query();
+
+        return $results;
+    }
+}
+
+
+
+// Pagination
+function get_current_page(){
+    global $wp_query;
+    $currentpage = $wp_query->query_vars['paged'];
+    if ($currentpage == '') { 
+        $currentpage = 1;
+    }
+    return $currentpage;
+}
+
+function get_max_pages(){
+    global $wp_query;
+    $maxpages = 10;
+    $postcount = ws_custom_count();
+    $postmaxpages = CEIL($postcount/$maxpages);
+    if ($postmaxpages > $wp_query->max_num_pages) {
+        $postmaxpages = $wp_query->max_num_pages;
+    }
+    return $postmaxpages;
+}
+
+function get_max_posts(){
+    $postmaxcount = get_option('posts_per_page');
+    return $postmaxcount;
+}
+
+function get_pagination(){
+global $wp_query;
+
+    $pagearray = array(
+	    'base'               => '%_%',
+	    'format'             => '?paged=%#%',
+	    'total'              => get_max_pages(),
+	    'current'            => get_current_page(),
+	    'show_all'           => false,
+	    'end_size'           => 1,
+	    'mid_size'           => 2,
+	    'prev_next'          => true,
+	    'prev_text'          => __('<< Previous'),
+	    'next_text'          => __('Next >>'),
+	    'type'               => 'plain',
+	    'add_args'           => false,
+	    'add_fragment'       => '',
+	    'before_page_number' => '',
+	    'after_page_number'  => ''
+        ); 
+
+    return $pagearray;
+}
+
+
+//Get Review Data
+
+function get_pr_page_id($postid){
+
+    $powerreviews_pairs = array(
+        array( 'uri' =>	"/collections/smithsonian-university-travel-programs/",		'pr_page_id' =>	'smithsonian-university-travel-programs' ),
+        array( 'uri' =>	"/collections/reliving-us-history/",						    'pr_page_id' =>	'history-themed-programs' ),
+        array( 'uri' =>	"/collections/science-discoveries/",						    'pr_page_id' =>	'science-themed-programs' ),
+        array( 'uri' =>	"/collections/american-performing-tours/",				    	'pr_page_id' =>	'american-performing-tours' ),
+        array( 'uri' =>	"/collections/dance-and-cheer-programs/",					    'pr_page_id' =>	'bowl-games-parades-dance' ),
+        array( 'uri' =>	"/collections/marching-band-programs/",						'pr_page_id' =>	'bowl-games-parades-marching-band' ),
+        array( 'uri' =>	"/collections/career-focused-programs/",					    'pr_page_id' =>	'career-focused-programs' ),
+        array( 'uri' =>	"/collections/faith-based-concert-tours/",					    'pr_page_id' =>	'faith-based-concert-tours' ),
+        array( 'uri' =>	"/collections/festival-at-carnegie-hall/",				    	'pr_page_id' =>	'festival-carnegie-hall-elite-performing' ),
+        array( 'uri' =>	"/collections/festival-of-gold/",							    'pr_page_id' =>	'festival-gold-elite-performing' ),
+        array( 'uri' =>	"/collections/heritage-festivals/",							'pr_page_id' =>	'heritage-festivals' ),
+        array( 'uri' =>	"/collections/international-concert-tours/",			    	'pr_page_id' =>	'international-concert-tours' ),
+        array( 'uri' =>	"/collections/perspectives-on-central-and-eastern-europe/",	'pr_page_id' =>	'central-and-eastern-europe' ),
+        array( 'uri' =>	"/collections/italian-and-greek-influence/",			    	'pr_page_id' =>	'italy-and-greece' ),
+        array( 'uri' =>	"/collections/a-european-perspective/",						'pr_page_id' =>	'multiple-european-countries' ),
+        array( 'uri' =>	"/collections/french-and-spanish-influence/",			    	'pr_page_id' =>	'spain-and-france' ),
+        array( 'uri' =>	"/collections/focus-on-the-americas/",					    	'pr_page_id' =>	'americas' ),
+        array( 'uri' =>	"/collections/a-uk-perspective/",						    	'pr_page_id' =>	'britain-and-ireland' ),
+        array( 'uri' =>	"/collections/discover-colonial-history/",				    	'pr_page_id' =>	'discover-colonial-history' ),
+        array( 'uri' =>	"/collections/florida-science-discovery/",				    	'pr_page_id' =>	'florida-science-discovery' ),
+        array( 'uri' =>	"/collections/costa-rica-science-discovery/",			    	'pr_page_id' =>	'costa-rica-science-discovery' ),
+        array( 'uri' =>	"/collections/california-history-discovery/",			    	'pr_page_id' =>	'california-history-discovery' ),
+        array( 'uri' =>	"/collections/new-york-history-discovery/",					'pr_page_id' =>	'new-york-history-discovery' ),
+        array( 'uri' =>	"/collections/illinois-history-discovery/",					'pr_page_id' =>	'illinois-history-discovery' ),
+        array( 'uri' =>	"/collections/a-focus-on-christian-travel/",		    		'pr_page_id' =>	'a-focus-on-christian-travel' ),
+        array( 'uri' =>	"/collections/discover-washington-d-c/",			    		'pr_page_id' =>	'washington-dc-programs' )
+        );
+
+        $powerreviews_pairs_local = array(
+        array( 'uri' =>	"/worldstrides/collections/smithsonian-university-travel-programs/",		'pr_page_id' =>	'smithsonian-university-travel-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/reliving-us-history/",						    'pr_page_id' =>	'history-themed-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/science-discoveries/",						    'pr_page_id' =>	'science-themed-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/american-performing-tours/",				    	'pr_page_id' =>	'american-performing-tours' ),
+        array( 'uri' =>	"/worldstrides/collections/dance-and-cheer-programs/",					    'pr_page_id' =>	'bowl-games-parades-dance' ),
+        array( 'uri' =>	"/worldstrides/collections/marching-band-programs/",						'pr_page_id' =>	'bowl-games-parades-marching-band' ),
+        array( 'uri' =>	"/worldstrides/collections/career-focused-programs/",					    'pr_page_id' =>	'career-focused-programs' ),
+        array( 'uri' =>	"/worldstrides/collections/faith-based-concert-tours/",					    'pr_page_id' =>	'faith-based-concert-tours' ),
+        array( 'uri' =>	"/worldstrides/collections/festival-at-carnegie-hall/",				    	'pr_page_id' =>	'festival-carnegie-hall-elite-performing' ),
+        array( 'uri' =>	"/worldstrides/collections/festival-of-gold/",							    'pr_page_id' =>	'festival-gold-elite-performing' ),
+        array( 'uri' =>	"/worldstrides/collections/heritage-festivals/",							'pr_page_id' =>	'heritage-festivals' ),
+        array( 'uri' =>	"/worldstrides/collections/international-concert-tours/",			    	'pr_page_id' =>	'international-concert-tours' ),
+        array( 'uri' =>	"/worldstrides/collections/perspectives-on-central-and-eastern-europe/",	'pr_page_id' =>	'central-and-eastern-europe' ),
+        array( 'uri' =>	"/worldstrides/collections/italian-and-greek-influence/",			    	'pr_page_id' =>	'italy-and-greece' ),
+        array( 'uri' =>	"/worldstrides/collections/a-european-perspective/",						'pr_page_id' =>	'multiple-european-countries' ),
+        array( 'uri' =>	"/worldstrides/collections/french-and-spanish-influence/",			    	'pr_page_id' =>	'spain-and-france' ),
+        array( 'uri' =>	"/worldstrides/collections/focus-on-the-americas/",					    	'pr_page_id' =>	'americas' ),
+        array( 'uri' =>	"/worldstrides/collections/a-uk-perspective/",						    	'pr_page_id' =>	'britain-and-ireland' ),
+        array( 'uri' =>	"/worldstrides/collections/discover-colonial-history/",				    	'pr_page_id' =>	'discover-colonial-history' ),
+        array( 'uri' =>	"/worldstrides/collections/florida-science-discovery/",				    	'pr_page_id' =>	'florida-science-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/costa-rica-science-discovery/",			    	'pr_page_id' =>	'costa-rica-science-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/california-history-discovery/",			    	'pr_page_id' =>	'california-history-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/new-york-history-discovery/",					'pr_page_id' =>	'new-york-history-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/illinois-history-discovery/",					'pr_page_id' =>	'illinois-history-discovery' ),
+        array( 'uri' =>	"/worldstrides/collections/a-focus-on-christian-travel/",		    		'pr_page_id' =>	'a-focus-on-christian-travel' ),
+        array( 'uri' =>	"/worldstrides/collections/discover-washington-d-c/",			    		'pr_page_id' =>	'washington-dc-programs' )
+        );
+
+        $post_url = parse_url(get_permalink($postid), PHP_URL_PATH);
+        $pr_page_id  = '';
+
+        //get collection for itinerary        
+        $collectionid = get_itinerary_collection($postid);
+        $post_url = parse_url(get_permalink($collectionid), PHP_URL_PATH);
+        //print 'POSTID: ' . $postid . '<br><p>';
+        //print 'URL: ' . $post_url . '<br><p>';
+
+        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
+	        if( $post_url === $powerreviews_pair['uri'] ) {
+		        $pr_page_id = $powerreviews_pair['pr_page_id'];
+                //print 'MATCH: ' . $pr_page_id . '<br>';
+            } else {
+                //print 'NOMATCH: ' . $powerreviews_pair['uri'] . '<br>';
+            }
+        }
+
+        //$pr_page_id = 'washington-dc-programs';
+        return $pr_page_id;
+}
+
+
+function get_itinerary_collection($postid){
+    global $wpdb,$wp_query;    
+   
+    $collectionid = $wpdb->get_var( "SELECT p2.ID
+                                    FROM $wpdb->posts p
+		                                    join wp_term_relationships tr
+        	                                    on p.ID = tr.object_id
+                                            join wp_term_taxonomy tx
+        	                                    on tr.term_taxonomy_id = tx.term_taxonomy_id
+                                                and tx.taxonomy = '_collection'
+                                            join wp_terms tm
+        	                                    on tx.term_id = tm.term_id
+                                            join $wpdb->posts p2
+        	                                    on tm.name = p2.post_title
+                                                and p2.post_type = 'collection'
+                                    WHERE p.ID = $postid
+                                    LIMIT 1");
+
+    //$collectionid = 844;
+    return $collectionid;
 }

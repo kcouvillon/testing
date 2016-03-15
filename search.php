@@ -16,10 +16,21 @@ if ( 'post' == $post_type ) {
 	$search_title = 'All WorldStrides';
 }
 
-
+ 
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript">
 
+$(document).ready(function() {
+    $(".pr-review-wrap").remove();
+    $(".pr-contents").remove();
+    $(".pr-review-sort").remove();
+    $(".pr-snapshot-consensus").remove();
+    $('[id=pr-snapshot-histogram]').remove();
+    $('div.pr-review-engine-max-width-560px').removeClass('pr-review-engine-max-width-560px');
+});
+</script>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main search" role="main">
@@ -47,32 +58,21 @@ if ( 'post' == $post_type ) {
 
 			<section>
 
-			<?php if ( have_posts() || threecode_exists() ) : ?>
+			<?php if ( ws_custom_exists() ) : ?>
 
 				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in <?php echo $search_title; ?></h3>
 
-                <?php /* Three Code Loop */ ?>
+				<?php /* Start the Loop */ ?>
 
                 <?php
-                      //Threecode Search
-                      foreach( threecode_search() as $row ) {
+                      //Custom Search
+                      foreach( ws_custom_search() as $row ) {
                           setup_postdata($row);
-                          include 'partials/content-custom.php';
+                          include 'partials/content-search.php';
                       }
                 ?>
 
-                <?php /* End Three Loop */ ?>
-
-				<?php /* Start the Loop */ ?>
-
-
-				<?php while ( have_posts() ) : the_post(); ?>
-
-						<?php get_template_part( 'partials/content', 'about' ) ?>
-
-				<?php endwhile; ?>       
-
-				<?php echo paginate_links(); ?>
+				<?php echo paginate_links( get_pagination() ); ?>
 
 			<?php else : ?>
 
@@ -82,7 +82,7 @@ if ( 'post' == $post_type ) {
 
 			</section>
 
-			<aside class="sidebar">
+            <aside class="sidebar" style="position:relative;">
 
 				<?php get_template_part( 'partials/content', 'blog-sidebar-search-tags' ); ?>
 
@@ -90,7 +90,7 @@ if ( 'post' == $post_type ) {
 
 		</div>
 
-		<section class="clearfix ws-container learn-more">
+		<!--<section class="clearfix ws-container learn-more">
 				<form action="#" class="ws-form">
 					<div class="left">
 						<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
@@ -145,9 +145,30 @@ if ( 'post' == $post_type ) {
 						<input type="submit" name="" value="Get Info" class="btn btn-primary" />
 					</div>
 				</form>
-		</section>
+		</section>-->
 
 	</main>
 </div>
+
+  <div id="feature-modal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-keyboard="true" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Trip Features</h4>
+        </div>
+        <div class="modal-body">
+            <div style="height: 300px; width: 100%; z-index:2; position: relative;" class="hide-print">
+	            <div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
 
 <?php get_footer(); ?>

@@ -106,3 +106,35 @@
 	color: $color_link_tag;
 	text-transform: capitalize;
 }
+
+@media screen and (min-width: 768px) {
+	
+	#feature-modal .modal-dialog  {width:400px !important;height:600px !important;}
+
+}
+
+.entry-content p {
+    margin: 0 0 0.95em;
+}
+
+.entry-meta {
+    margin-top: 5px;
+}
+
+.spanFeatureText {
+    font-size: 10pt;
+    line-height:0.4;
+}
+
+.ds-pr-summary {
+    float: left;
+}
+
+.search-wrap [id^="pr-review-engine"] {
+    padding-left: 0 !important;
+}
+
+.showMapLink {
+    float: right;
+    margin-top: 10px;
+}

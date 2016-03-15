@@ -2,13 +2,13 @@
 /**
  * Add PowerReviews and related html
  *
- * Class WS_PowerReviews
+ * Class WS_PowerReviewSnippet
  */
-class WS_PowerReviews {
+class WS_PowerReviewSnippet {
 	/**
 	 * Instance of this class, if it has been created.
 	 *
-	 * @var WS_PowerReviews
+	 * @var WS_PowerReviewSnippet
 	 */
 	protected static $_instance = null;
 
@@ -19,7 +19,7 @@ class WS_PowerReviews {
 	/**
 	 * Get the instance of this class, or set it up if it has not been setup yet.
 	 *
-	 * @return WS_PowerReviews
+	 * @return WS_PowerReviewSnippet
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
@@ -126,63 +126,6 @@ class WS_PowerReviews {
 
 	}
 
-    	/**
-	 * Pull out the associated HTML referred to in the XML
-	 */
-	public static function snip_from_pr_page_id( $pr_page_id )  {
-		$review_uri = '';
-		$review_html = '';
-		$product = null;
-
-		if( !( $product = self::product_obj_from_pr_page_id( $pr_page_id ) ) ) {
-			return '';
-		}
-
-		$review_html .= '				<a name="pr-header-back-to-top-link"></a>';
-
-		$review_html .= '<link rel="stylesheet" href="//ui.powerreviews.com/stable/review-display/modern/styles.css" type="text/css" id="prBaseStylesheet">';
-		// prepend full.js script
-		$review_html .= '<script src="/pwr/engine/js/full.js"></script>';
-		// prepend widget.js script
-		$review_html .= '<script type="text/javascript" src="//static.powerreviews.com/widgets/v1/widget.js"></script>';
-		// prepend PR styles JS
-		$review_html .= '<script type="text/javascript" src="//ui.powerreviews.com/stable/review-display/modern/js/rd-styles.js"></script>';
-
-		try {
-			$review_uri = $product->inlinefiles->inlinefile;
-			$response = wp_remote_get( self::$powerreviews_url . $review_uri );
-			if( is_array($response) ) {
-				$summary = $response['body']; // use the content
-
-                $review_html .= '<div id="ds-pr-summary" class="ds-pr-summary">' . $summary . '</div>';
-
-                //$review_html .= '<script type="text/javascript">';
-                //$review_html .= 'var ratingsum = "Stars";';
-                //$review_html .= 'var element = document.getElementsByClassName("pr-snapshot-rating");';
-                //$review_html .= 'var element = document.getElementsByClassName("pr-review-wrap");';
-                //$review_html .= 'alert($review_uri);';
-                //$review_html .= 'element.parentNode.removeChild(element);';
-                //$review_html .= '</script>';
-
-			}
-		} catch ( Exception $e ) {
-			return ''; // PowerReviews XML parsing badly, eh?
-		}
-
-		// then adjust the hyperlinks to work properly:
-		$review_html = preg_replace( '/\/pwr/', self::$powerreviews_url . 'pwr', $review_html ); // prepend https://reviews.worldstrides.com 
-		$review_html = preg_replace( '/https:/', '', $review_html ); // make all includes start with '//' rather than 'https://'
-		$review_html .= '<script type="text/javascript">';
-		
-        //PowerReviews Get Review Script Insert
-        $review_html .= '  POWERREVIEWS.display.snippet(document);';
-		$review_html .= '  var pr_zip_location="' . self::$powerreviews_url . '";';
-		$review_html .= '</script>';
-
-		return $review_html;
-
-	}
-
 	protected static function product_obj_from_pr_page_id( $pr_page_id ) {
 		if( null === self::$_xml ) {
 			return false; // bail!
@@ -206,4 +149,4 @@ class WS_PowerReviews {
 
 }
 
-WS_PowerReviews::instance();
+WS_PowerReviewSnippet::instance();
