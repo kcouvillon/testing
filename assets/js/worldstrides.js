@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-03-15
+/*! WorldStrides - v0.1.0 - 2016-03-16
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1479,6 +1479,7 @@
 
 	wsData.dayCookie = function(cookiename){
 		var currentcookie = Cookies.get(cookiename);
+
 		if ( "" === currentcookie || isNaN( parseInt(currentcookie)) ) {
 			return Cookies.set(cookiename,'1',{ expires:.5 });
 		} else {
@@ -1486,8 +1487,19 @@
 		}
 
 	}
-
  } )( jQuery );
+( function( jQuery) {
+    //'use strict';
+
+    // for one-time-modals
+
+
+    wsData.ppcCookie = function (){
+        return Cookies.set('ws_first_url',"future_url", {expires:30});
+    }
+
+
+} )( jQuery );
 ( function( jQuery) {
 	'use strict';
 

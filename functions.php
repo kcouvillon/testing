@@ -503,6 +503,12 @@ function ws_add_modal_welcome() {
 //	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 );
 //}
 
+function PPC_cookie(){
+	require_once( WS_PATH . 'partials/ppc-tracking.php');
+}
+add_action('wp_footer', 'PPC_cookie', 10);
+
+
 /**
  * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin
  */
