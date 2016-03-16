@@ -1479,7 +1479,6 @@
 
 	wsData.dayCookie = function(cookiename){
 		var currentcookie = Cookies.get(cookiename);
-
 		if ( "" === currentcookie || isNaN( parseInt(currentcookie)) ) {
 			return Cookies.set(cookiename,'1',{ expires:.5 });
 		} else {
@@ -1487,15 +1486,16 @@
 		}
 
 	}
+
  } )( jQuery );
 ( function( jQuery) {
-    //'use strict';
+    'use strict';
 
     // for one-time-modals
 
 
-    wsData.ppcCookie = function (){
-        return Cookies.set('ws_first_url',"future_url", {expires:30});
+    wsData.ppcCookie = function (url){
+        return Cookies.set('ws_first_url',url, {expires:30});
     }
 
 

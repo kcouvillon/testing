@@ -7,7 +7,7 @@
 ?>
 <script type="text/javascript">
     jQuery(document).ready( function(){
-        wsData.ppcCookie();
+        wsData.ppcCookie(window.location.href);
     });
 
 </script>
