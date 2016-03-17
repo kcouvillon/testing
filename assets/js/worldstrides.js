@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-03-16
+/*! WorldStrides - v0.1.0 - 2016-03-17
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -337,6 +337,11 @@
 			jQuery('#get-info-comment').val(jQuery(this).attr('data-form-comment'));
 		});
 
+	});
+
+	jQuery(document).ready(function() {
+		//Assign cookie value client side to hidden field in form
+		jQuery('#get-info-wsfirst').val(Cookies.get('ws_first_url'));
 	});
 
 	 //Browser Detection for IE blur
@@ -1490,14 +1495,13 @@
  } )( jQuery );
 ( function( jQuery) {
     'use strict';
-
-    // for one-time-modals
-
+    //Wrap in if cookie does not exist block
 
     wsData.ppcCookie = function (url){
-        return Cookies.set('ws_first_url',url, {expires:30});
+        if (!Cookies.get('ws_first_url')){
+            return Cookies.set('ws_first_url',url, {expires:30});
+        }
     }
-
 
 } )( jQuery );
 ( function( jQuery) {
