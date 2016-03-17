@@ -218,6 +218,16 @@
 		</script>
 		<input id="get-info-wsurl" type="hidden" name="mkto_wsurl" value="<?php echo $current_page_url; ?>" >
 
+		<?php
+ 		if (!isset($_COOKIE['ws_first_url'])){?>
+		<input id="get-info-wsfirst" type="hidden" name="mkto_firstTouchURL" value="COOKIE NOT SET!"> <?php
+		}
+		else { ?>
+		<input id="get-info-wsfirst" type="hidden" name="mkto_firstTouchURL" value="<?php echo $_COOKIE['ws_first_url']; ?>"><?php
+		}
+ 		?>
+
+
 		<input id="get-info-submit" type="submit" name="ButtonAction" value="Send Info" class="btn btn-primary non stu par ele mse hse une" title="Get Information"> <div id="invalid-message" style="display:none;">Please correct the errors in this form</div>
 	</div>
 </form>
