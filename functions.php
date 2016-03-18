@@ -506,7 +506,7 @@ function ws_add_modal_welcome() {
 function PPC_cookie(){
 	require_once( WS_PATH . 'partials/ppc-tracking.php');
 }
-add_action('wp_footer', 'PPC_cookie', 50);
+add_action('wp_footer', 'PPC_cookie', 10);
 
 
 /**
