@@ -269,7 +269,7 @@ var ExploreController = function(Terms, Posts, ChildMenus, $route){
 			angular.element(window).scrollTop( filtersTop );
 		}
 	};
-	ctrl.clearFilters = function(){
+	ctrl.clearFilters = function () {
 		ChildMenus.active.interest = 'interests-parent';
 		ChildMenus.active.destination = 'destinations-parent';
 		ChildMenus.active.destinationChild = '';
@@ -306,6 +306,16 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 			} else {
 				params[filterGroup] = 'all-' + filterGroup;
 			}
+		} else if (method == 'subtractall') {
+		    
+		    if (filterGroupArray.length > 1) {
+		        filterGroupArray.splice(filterGroupArray.indexOf(slug), 1);
+		        params[filterGroup] = filterGroupArray.join(',');
+		    } else {
+		        params[filterGroup] = 'all-' + filterGroup;
+		    }
+            // because we're subtracting all, build other params above but then force in all-destinations to the 3rd param
+		    params[keys[2]] = 'all-' + keys[2];
 		}
 
 		if ( params[keys[0]] == 'all-'+keys[0] &&
@@ -329,7 +339,8 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 	return url;
 };
 
-ExploreController.prototype.getQuery = function(){
+ExploreController.prototype.getQuery = function () {
+    
 	var route = this.$route.current.params,
 		queryArray, queryString;
 
