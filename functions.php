@@ -607,20 +607,39 @@ function ws_custom_exists(){
     }
 }
 
-function ws_custom_search(){
+function ws_custom_search_query(){
     global $wpdb,$wp_query;
-    if (!empty($wp_query->query_vars['s'])) {
-        $search_string = $wp_query->query_vars['s'];
-        $post_type = $wp_query->query_vars['post_type'];
-        //print $wp_query->query_vars['post_type'];
-        
+    $search_string = $wp_query->query_vars['s'];
+    $post_type = $wp_query->query_vars['post_type'];       
 
-        $offset = (get_current_page() - 1) * get_max_posts();
-        $fetch = get_max_posts();
+    $offset = (get_current_page() - 1) * get_max_posts();
+    $fetch = get_max_posts();
+
+    //remove basic words array
+    $reserved_words = array("the", "if", "of", "I", "and", "an", "a", "or", "but", "who", "when", "why", "where", "what", "to", "two", "too");
+
+    //explode search string into separate search elements
+    $search_elements = explode(" ", $search_string);   
+
+    foreach ($search_elements as $search_element)
+    {
+        if (!in_array($search_element,$reserved_words))
+        {
+        $dyn_sql_three_code = $dyn_sql_three_code . " OR b.meta_value = '$search_element'";
+        $dyn_sql_post_title = $dyn_sql_post_title . " OR p.post_title like '%$search_element%'";
+        $dyn_sql_post_content = $dyn_sql_post_content . " OR p.post_content like '%$search_element%'";
+        $dyn_sql_post_excerpt = $dyn_sql_post_excerpt . " OR p.post_excerpt like '%$search_element%'";
+        $dyn_sql_post_meta_value = $dyn_sql_post_meta_value . " OR b.meta_value like '%$search_element%'";
+        $dyn_sql_term_name = $dyn_sql_term_name . " OR term.name like '%$search_element%'";
+        }
+    }
+
+        
+    //$qry = "SELECT * FROM $wpdb->posts LIMIT 10";
 
         $qry = "SELECT *,
                 CASE 
-                    WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND b.meta_value = '$search_string') THEN 1
+                    WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '$search_string' $dyn_sql_three_code)) THEN 1
                     WHEN p.post_type = 'itinerary' THEN 2
                     WHEN p.post_type = 'resource' THEN 3
                     WHEN p.post_type = 'post' THEN 4
@@ -635,13 +654,13 @@ function ws_custom_search(){
                 WHERE p.post_status='publish' 
                 AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
                 AND (
-                    p.post_title like '%$search_string%'
-                    OR p.post_content like '%$search_string%'
-                    OR p.post_excerpt like '%$search_string%'
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND b.meta_value like '%$search_string%')
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND b.meta_value like '%$search_string%')
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND b.meta_value like '%$search_string%')
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND b.meta_value = '$search_string')
+                    (p.post_title like '%$search_string%' $dyn_sql_post_title)
+                    OR (p.post_content like '%$search_string%' $dyn_sql_post_content)
+                    OR (p.post_excerpt like '%$search_string%' $dyn_sql_post_excerpt)
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND (b.meta_value like '%$search_string%' $dyn_sql_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND (b.meta_value like '%$search_string%' $dyn_sql_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND (b.meta_value like '%$search_string%' $dyn_sql_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '$search_string' $dyn_sql_three_code))
                     OR p.Id IN (SELECT p.ID
                                 FROM $wpdb->posts p
 		                                JOIN wp_term_relationships rel
@@ -650,7 +669,7 @@ function ws_custom_search(){
         	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
                                         JOIN wp_terms term
         	                                ON tax.term_id = term.term_id
-                                            AND term.name like '%$search_string%'
+                                            AND (term.name like '%$search_string%' $dyn_sql_term_name)
                                         JOIN wp_term_taxonomy tax2
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
@@ -672,7 +691,7 @@ function ws_custom_search(){
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
         	                                ON tax2.parent = term2.term_id
-                                            AND term.name like '%$search_string%'
+                                            AND (term.name like '%$search_string%' $dyn_sql_term_name)
                                         JOIN wp_term_taxonomy tax3
         	                                ON term2.term_id = tax3.term_id
                                         JOIN wp_terms term3
@@ -691,7 +710,7 @@ function ws_custom_search(){
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
         	                                ON tax2.parent = term2.term_id
-			                                AND term2.name like '%$search_string%')
+			                                AND (term2.name like '%$search_string%' $dyn_sql_term_name))
                     OR p.ID IN (SELECT p.ID
                                 FROM $wpdb->posts p
 		                                JOIN wp_term_relationships rel
@@ -700,15 +719,26 @@ function ws_custom_search(){
         	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
 		                                JOIN wp_terms term
         	                                ON tax.term_id = term.term_id
-			                                AND term.name like '%$search_string%'
+			                                AND (term.name like '%$search_string%'  $dyn_sql_term_name)
                                         JOIN wp_term_taxonomy tax2
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
         	                                ON tax2.parent = term2.term_id
 			                                AND term2.name = 'traveler')
-                    )
+                )
                 ORDER BY TypeSort ASC, PostIndex2 ASC
                 LIMIT $offset,$fetch";
+
+                //print $qry;
+                return $qry;
+}
+
+function ws_custom_search(){
+    global $wpdb,$wp_query;
+    if (!empty($wp_query->query_vars['s'])) {
+     
+        $qry = ws_custom_search_query();
+
         $row = $wpdb->get_results( $qry );
 
         wp_reset_query();
@@ -721,86 +751,9 @@ function ws_custom_search(){
 function ws_custom_count(){
     global $wpdb,$wp_query;
     if (!empty($wp_query->query_vars['s'])) {
-        $search_string = $wp_query->query_vars['s'];
-        $post_type = $wp_query->query_vars['post_type'];
 
-        $results = $wpdb->get_var( "SELECT COUNT(*) FROM $wpdb->posts p 
-                WHERE p.post_status='publish' 
-                AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
-                AND (
-                    p.post_title like '%$search_string%'
-                    OR p.post_content like '%$search_string%'
-                    OR p.post_excerpt like '%$search_string%'
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND b.meta_value like '%$search_string%')
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND b.meta_value like '%$search_string%')
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND b.meta_value like '%$search_string%')
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND b.meta_value = '$search_string')
-                    OR p.Id IN (SELECT p.ID
-                                FROM $wpdb->posts p
-                                        JOIN wp_term_relationships rel
-                                            ON p.Id = rel.object_id
-                                        JOIN wp_term_taxonomy tax
-                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
-                                        JOIN wp_terms term
-                                            ON tax.term_id = term.term_id
-                                            AND term.name like '%$search_string%'
-                                        JOIN wp_term_taxonomy tax2
-                                            ON term.term_id = tax2.term_id
-                                        JOIN wp_terms term2
-                                            ON tax2.parent = term2.term_id
-                                        JOIN wp_term_taxonomy tax3
-                                            ON term2.term_id = tax3.term_id
-                                        JOIN wp_terms term3
-                                            ON tax3.parent = term3.term_id
-                                            AND term3.name = 'Destination')
-                    OR p.Id IN (SELECT p.ID
-                                FROM $wpdb->posts p
-                                        JOIN wp_term_relationships rel
-                                            ON p.Id = rel.object_id
-                                        JOIN wp_term_taxonomy tax
-                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
-                                        JOIN wp_terms term
-                                            ON tax.term_id = term.term_id
-                                        JOIN wp_term_taxonomy tax2
-                                            ON term.term_id = tax2.term_id
-                                        JOIN wp_terms term2
-                                            ON tax2.parent = term2.term_id
-                                            AND term.name like '%$search_string%'
-                                        JOIN wp_term_taxonomy tax3
-                                            ON term2.term_id = tax3.term_id
-                                        JOIN wp_terms term3
-                                            ON tax3.parent = term3.term_id
-                                            AND term3.name = 'Destination')
-                    OR p.ID IN (SELECT p.ID
-                                FROM $wpdb->posts p
-                                        JOIN wp_term_relationships rel
-                                            ON p.ID = rel.object_id
-                                        JOIN wp_term_taxonomy tax 
-                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
-                                        JOIN wp_terms term
-                                            ON tax.term_id = term.term_id
-                                            AND term.name = 'Business'
-                                        JOIN wp_term_taxonomy tax2
-                                            ON term.term_id = tax2.term_id
-                                        JOIN wp_terms term2
-                                            ON tax2.parent = term2.term_id
-                                            AND term2.name like '%$search_string%')
-                    OR p.ID IN (SELECT p.ID
-                                FROM $wpdb->posts p
-                                        JOIN wp_term_relationships rel
-                                            ON p.ID = rel.object_id
-                                        JOIN wp_term_taxonomy tax 
-                                            ON rel.term_taxonomy_id = tax.term_taxonomy_id
-                                        JOIN wp_terms term
-                                            ON tax.term_id = term.term_id
-                                            AND term.name like '%$search_string%'
-                                        JOIN wp_term_taxonomy tax2
-                                            ON term.term_id = tax2.term_id
-                                        JOIN wp_terms term2
-                                            ON tax2.parent = term2.term_id
-                                            AND term2.name = 'traveler')
-                    )");
-
+        $qry = ws_custom_search_query();
+        $results = $wpdb->get_var( $qry );
         //$results = wp_count_posts(ws_custom_search()); //can be used without paging
 
         return $results;
@@ -947,7 +900,7 @@ function get_pr_page_id($postid){
         //print 'POSTID: ' . $postid . '<br><p>';
         //print 'URL: ' . $post_url . '<br><p>';
 
-        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
+        foreach ( $powerreviews_pairs_local as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
                 //print 'MATCH: ' . $pr_page_id . '<br>';
@@ -981,4 +934,8 @@ function get_itinerary_collection($postid){
 
     //$collectionid = 844;
     return $collectionid;
+}
+
+function message_box($message){
+    echo '<script>alert("' . $message . '");</script>';
 }
