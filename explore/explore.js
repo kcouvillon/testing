@@ -314,8 +314,8 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 		    } else {
 		        params[filterGroup] = 'all-' + filterGroup;
 		    }
-            // because we're subtracting all, build other params above but then force in all-destinations to the 3rd param
-		    params[keys[2]] = 'all-' + keys[2];
+            // because we're subtracting all, build other params above but then force in all-whatever to the appropriate param
+		    params[filterGroup] = 'all-' + filterGroup;
 		}
 
 		if ( params[keys[0]] == 'all-'+keys[0] &&

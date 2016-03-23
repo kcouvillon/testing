@@ -114,8 +114,7 @@
 							<li ng-repeat="child in interest.children" class="child-term term">
 								<a filter-link="{{child.slug}},interests" class="filter term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
 							</li>
-
-							<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to all Interests</a>
+                            <a filter-link="{{interest.slug}},interests,subtractall" ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to all Interests</a>
 						</ul>
 
 
