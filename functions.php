@@ -616,21 +616,21 @@ function ws_custom_search_query(){
     $fetch = get_max_posts();
 
     //remove basic words array
-    $reserved_words = array("the", "if", "of", "I", "and", "an", "a", "or", "but", "who", "when", "why", "where", "what", "to", "two", "too");
+    $stop_words = array("a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has", "he", "in", "is", "it", "its", "of", "on", "that", "the", "to", "was", "were", "where", "will", "with");
 
     //explode search string into separate search elements
     $search_elements = explode(" ", $search_string);   
 
     foreach ($search_elements as $search_element)
     {
-        if (!in_array($search_element,$reserved_words))
+        if (!in_array($search_element,$stop_words))
         {
-        $dyn_sql_three_code = $dyn_sql_three_code . " OR b.meta_value = '$search_element'";
-        $dyn_sql_post_title = $dyn_sql_post_title . " OR p.post_title like '%$search_element%'";
-        $dyn_sql_post_content = $dyn_sql_post_content . " OR p.post_content like '%$search_element%'";
-        $dyn_sql_post_excerpt = $dyn_sql_post_excerpt . " OR p.post_excerpt like '%$search_element%'";
-        $dyn_sql_post_meta_value = $dyn_sql_post_meta_value . " OR b.meta_value like '%$search_element%'";
-        $dyn_sql_term_name = $dyn_sql_term_name . " OR term.name like '%$search_element%'";
+            $dyn_sql_three_code = $dyn_sql_three_code . " OR b.meta_value = '$search_element'";
+            $dyn_sql_post_title = $dyn_sql_post_title . " OR p.post_title like '%$search_element%'";
+            $dyn_sql_post_content = $dyn_sql_post_content . " OR p.post_content like '%$search_element%'";
+            $dyn_sql_post_excerpt = $dyn_sql_post_excerpt . " OR p.post_excerpt like '%$search_element%'";
+            $dyn_sql_post_meta_value = $dyn_sql_post_meta_value . " OR b.meta_value like '%$search_element%'";
+            $dyn_sql_term_name = $dyn_sql_term_name . " OR term.name like '%$search_element%'";
         }
     }
 
@@ -900,7 +900,7 @@ function get_pr_page_id($postid){
         //print 'POSTID: ' . $postid . '<br><p>';
         //print 'URL: ' . $post_url . '<br><p>';
 
-        foreach ( $powerreviews_pairs_local as $powerreviews_pair ) {
+        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
                 //print 'MATCH: ' . $pr_page_id . '<br>';
