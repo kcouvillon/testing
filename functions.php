@@ -618,9 +618,18 @@ function ws_custom_search_query(){
     //remove basic words array
     $stop_words = array("a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has", "he", "in", "is", "it", "its", "of", "on", "that", "the", "to", "was", "were", "where", "will", "with");
 
+    //declare variables for sql
+    $dyn_sql_three_code = "";
+    $dyn_sql_post_title = "";
+    $dyn_sql_post_content = "";
+    $dyn_sql_post_excerpt = "";
+    $dyn_sql_post_meta_value = "";
+    $dyn_sql_term_name = "";
+
     //explode search string into separate search elements
     $search_elements = explode(" ", $search_string);   
 
+    //loop through each search element 
     foreach ($search_elements as $search_element)
     {
         if (!in_array($search_element,$stop_words))
@@ -900,7 +909,7 @@ function get_pr_page_id($postid){
         //print 'POSTID: ' . $postid . '<br><p>';
         //print 'URL: ' . $post_url . '<br><p>';
 
-        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
+        foreach ( $powerreviews_pairs_local as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
                 //print 'MATCH: ' . $pr_page_id . '<br>';
