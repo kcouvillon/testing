@@ -389,6 +389,30 @@ ExploreController.prototype.getActiveFilters = function(){
 	}
 };
 
+ExploreController.prototype.hasActiveFilter = function (slug, filterGroup) {
+    var route = this.$route.current.params,
+        result = false;
+
+    if (Object.keys(route).length > 0) {
+
+        angular.forEach(route, function (value, key) {
+            if (value !== 'all-destinations' && value !== 'all-interests' && value !== 'all-travelers') {
+                value = value.split(',');
+                angular.forEach(value, function (term) {
+                    if (filterGroup == key && slug == term) {
+                        result = true;
+                    }
+                });
+            }
+        });
+
+        return result;
+
+    } else {
+        return false;
+    }
+};
+
 ExploreController.prototype.toggleLimit = function( source, min, max ) {
 	var ctrl = this;
 
