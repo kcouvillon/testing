@@ -339,6 +339,11 @@
 
 	});
 
+	jQuery(document).ready(function() {
+		//Assign cookie value client side to hidden field in form
+		jQuery('#get-info-wsfirst').val(Cookies.get('ws_first_url'));
+	});
+
 	 //Browser Detection for IE blur
 	 //Got from: http://stackoverflow.com/questions/2400935/browser-detection-in-javascript
 	 navigator.Browser = (function(){
@@ -1486,6 +1491,17 @@
 		}
 
 	}
+
+ } )( jQuery );
+( function( jQuery) {
+    'use strict';
+   //Set cookie to grab the first URL that is visited
+    jQuery(document).ready(function(){
+            if (!Cookies.get('ws_first_url')){
+                return Cookies.set('ws_first_url',window.location.href, {expires:30});
+	}
+    });
+
 
  } )( jQuery );
 ( function( jQuery) {

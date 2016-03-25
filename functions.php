@@ -503,6 +503,7 @@ function ws_add_modal_welcome() {
 //	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 );
 //}
 
+
 /**
  * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin
  */
