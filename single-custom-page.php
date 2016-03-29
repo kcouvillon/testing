@@ -214,8 +214,9 @@ get_header(); ?>
 			<?php $section_num = 1; // set first section number ?>
 
 			<?php if ( ! empty ( $itinerary_highlights ) ) : ?>
-				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+
 				<section class="ws-container custom-page-itinerary-highlights">
+					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<h3>Itinerary Highlights</h3>
 
 					<?php echo apply_filters( 'the_content', $itinerary_highlights ); ?>
@@ -240,8 +241,8 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $custom_content ) ) : ?>
-				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-				<section class="ws-container custom-page-content">
+				<section class="ws-container custom-page-content" >
+					<a id="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<h3><?php echo apply_filters( 'the_title ', $custom_content_title ); ?></h3>
 
 					<?php if ( ! empty( $custom_content ) ) : ?>
@@ -251,8 +252,8 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $faculty ) ) : ?>
-			<a name="section-<?php echo $section_num; $section_num++;?>"></a>
 			<section class="ws-container custom-page-faculty">
+				<a id="section-<?php echo $section_num; $section_num++;?>"></a>
 				<h3>Meet the Faculty</h3>
 				<?php foreach ( $faculty as $faculty_member ) : ?>
 					<div class="faculty-member">
