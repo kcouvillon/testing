@@ -214,6 +214,7 @@ get_header(); ?>
 			<?php $section_num = 1; // set first section number ?>
 
 			<?php if ( ! empty ( $itinerary_highlights ) ) : ?>
+				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 				<section class="ws-container custom-page-itinerary-highlights">
 					<h3>Itinerary Highlights</h3>
 
@@ -239,6 +240,7 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $custom_content ) ) : ?>
+				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 				<section class="ws-container custom-page-content">
 					<h3><?php echo apply_filters( 'the_title ', $custom_content_title ); ?></h3>
 
@@ -249,6 +251,7 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $faculty ) ) : ?>
+			<a name="section-<?php echo $section_num; $section_num++;?>"></a>
 			<section class="ws-container custom-page-faculty">
 				<h3>Meet the Faculty</h3>
 				<?php foreach ( $faculty as $faculty_member ) : ?>
