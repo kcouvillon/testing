@@ -591,7 +591,7 @@ function temp_to_celsius( $degrees ){
 
 //*** WorldStrides Custom Search ***//
 function ws_custom_exists(){
-    global $wpdb,$wp_query, $wp_custom_search_count;
+    global $wpdb,$wp_query;
     if (!empty($wp_query->query_vars['s'])) {
 
         $results = ws_custom_count();
@@ -603,7 +603,6 @@ function ws_custom_exists(){
             $exists = true;
         }
 
-        $wp_custom_search_count = $results; //set count object to results count
         return $exists;
     }
 }
@@ -848,15 +847,15 @@ function ws_custom_search(){
 
 
 function ws_custom_count(){
-    global $wpdb,$wp_query;
+    global $wpdb,$wp_query, $wp_custom_search_count;
     if (!empty($wp_query->query_vars['s'])) {
 
         $qry = ws_custom_search_query("count");
         $results = $wpdb->get_var( $qry );
         //$results = wp_count_posts(ws_custom_search()); //can be used without paging
 
-        //$results = count($wp_custom_search_object);
-        //message_box($results);
+        $wp_custom_search_count = $results;
+        //message_box($wp_custom_search_count);
 
         return $results;
     }
@@ -892,12 +891,18 @@ function get_current_page(){
 
 function get_max_pages(){
     global $wp_query, $wp_custom_search_count;
-    $maxpages = 10;
-    $postcount = $wp_custom_search_count; // ws_custom_count();
+    $maxpages = 10; //max pages override $wp_query->max_num_pages
+    $postcount = $wp_custom_search_count; //ws_custom_count()
     $postmaxpages = CEIL($postcount/$maxpages);
-    if ($postmaxpages > $wp_query->max_num_pages) {
-        $postmaxpages = $wp_query->max_num_pages;
-    }
+    
+    message_box("PostCount: $postcount , MaxPages: $maxpages , PostMaxPages: $postmaxpages");
+
+    if ($postmaxpages > $maxpages) {
+        $postmaxpages = $maxpages;
+    } 
+
+    message_box("PostCount: $postcount , MaxPages: $maxpages , PostMaxPages: $postmaxpages");
+
     return $postmaxpages;
 }
 
