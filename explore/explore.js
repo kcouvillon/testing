@@ -278,7 +278,8 @@ var ExploreController = function(Terms, Posts, ChildMenus, $route){
 };
 
 ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
-	var params = angular.copy(this.$route.current.params),
+    var ctrl = this, query;
+    var params = angular.copy(this.$route.current.params),
 		keys = Object.keys(params),
 		filterGroupArray,
 		url = '';
@@ -290,10 +291,13 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 		
 		filterGroupArray = params[filterGroup].split(',');
 
-		if ( method == 'add' ){
+		if (method == 'add') {
+
+		    
+
 			if ( params[filterGroup].indexOf('all-') > -1 ) {
 				params[filterGroup] = slug;
-			} else if ( params[filterGroup].indexOf(slug) > -1 ) {
+			} else if (ctrl.hasActiveFilter(slug, filterGroup)) {
 				params[filterGroup] = params[filterGroup];
 			} else {
 				params[filterGroup] += ',' + slug;
