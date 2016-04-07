@@ -252,9 +252,18 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $faculty ) ) : ?>
+				<?php
+					$faculty_title = get_post_meta( $post->ID, 'faculty_title', true );
+				?>
 			<section class="ws-container custom-page-faculty">
 				<a id="section-<?php echo $section_num; $section_num++;?>"></a>
-				<h3>Meet the Faculty</h3>
+				<h3><?php if ($faculty_title != ''){
+						echo $faculty_title;
+					}
+					else {
+						echo "Meet the Faculty";
+					}?>
+				</h3>
 				<?php foreach ( $faculty as $faculty_member ) : ?>
 					<div class="faculty-member">
 						<?php
