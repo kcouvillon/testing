@@ -155,7 +155,7 @@ $(document).ready(function() {
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-keyboard="true" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Trip Features</h4>
+          <h4 class="modal-title">Itinerary Map</h4>
         </div>
         <div class="modal-body">
             <div style="height: 400px; width: 100%; z-index:2; position: relative;" class="hide-print">
