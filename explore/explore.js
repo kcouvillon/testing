@@ -162,6 +162,17 @@ exploreApp.directive('toggleFilterMenu', ['ChildMenus', function(ChildMenus){
 	};
 }]);
 
+exploreApp.directive('backImg', function () {
+    return function (scope, element, attrs) {
+        attrs.$observe('backImg', function (value) {
+            element.css({
+                'background-image': 'url(' + value + ')',
+                'background-size': 'cover'
+            });
+        });
+    };
+});
+
 exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
