@@ -158,7 +158,7 @@ $(document).ready(function() {
           <h4 class="modal-title">Trip Features</h4>
         </div>
         <div class="modal-body">
-            <div style="height: 300px; width: 100%; z-index:2; position: relative;" class="hide-print">
+            <div style="height: 400px; width: 100%; z-index:2; position: relative;" class="hide-print">
 	            <div id="tour-highlights-map"><!-- MAP - check assets/js/src/itinerary.js for map code --></div>
             </div>
         </div>
