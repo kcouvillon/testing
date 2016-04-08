@@ -277,7 +277,7 @@
 			</header>
 			<div class="results clearfix">
 
-				<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
+				<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" back-img="{{ itinerary.featured_image }}" >
 					<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 						<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 					</a>
