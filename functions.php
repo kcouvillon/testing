@@ -624,7 +624,8 @@ function ws_custom_search(){
                     WHEN p.post_type = 'itinerary' THEN 2
                     WHEN p.post_type = 'resource' THEN 3
                     WHEN p.post_type = 'post' THEN 4
-                    ELSE 5
+                    WHEN p.post_type = 'destination' THEN 5
+                    ELSE 6
                 END AS TypeSort,
                 CASE 
 					WHEN p.post_type = 'itinerary' THEN (SELECT IFNULL(b.meta_value,5000) FROM $wpdb->postmeta b WHERE b.meta_key = 'post_priority' AND b.post_id = p.ID LIMIT 1) 
@@ -947,7 +948,7 @@ function get_pr_page_id($postid){
         //print 'POSTID: ' . $postid . '<br><p>';
         //print 'URL: ' . $post_url . '<br><p>';
 
-        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
+        foreach ( $powerreviews_pairs_local as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
                 //print 'MATCH: ' . $pr_page_id . '<br>';
