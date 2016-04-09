@@ -615,7 +615,7 @@ function ws_custom_search_query($qry_type){
     $offset = (get_current_page() - 1) * get_max_posts();
     $fetch = get_max_posts();
 
-    //remove basic words array
+    //remove stop words array
     $stop_words = array("a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "has", "he", "in", "is", "it", "its", "of", "on", "that", "the", "to", "was", "were", "where", "will", "with");
 
     //declare variables for sql
@@ -836,7 +836,7 @@ function ws_custom_search_query($qry_type){
 function ws_custom_search(){
     global $wpdb,$wp_query;
     if (!empty($wp_query->query_vars['s'])) {
-     
+        message_box("search");
         $qry = ws_custom_search_query("search");
         $row = $wpdb->get_results( $qry );
         wp_reset_query();
@@ -881,27 +881,29 @@ function ws_get_country($postid){
 
 // Pagination
 function get_current_page(){
-    global $wp_query;
-    $currentpage = $wp_query->query_vars['paged'];
+    global $wp_query, $search_currentpage;
+    //$currentpage = $_GET['paged']; 
+    $wp_query->query_vars['paged'];
     if ($currentpage == '') { 
         $currentpage = 1;
     }
+
+    message_box($currentpage);
+
     return $currentpage;
 }
 
 function get_max_pages(){
     global $wp_query, $wp_custom_search_count;
-    $maxpages = 10; //max pages override $wp_query->max_num_pages
-    $postcount = $wp_custom_search_count; //ws_custom_count()
-    $postmaxpages = CEIL($postcount/$maxpages);
+    //$maxpages = 10; //max pages override $wp_query->max_num_pages
+    //$postcount = $wp_custom_search_count; //ws_custom_count()
+    //$postmaxpages = CEIL($postcount/$maxpages);
+
+    $postcount = $wp_custom_search_count;
+    $postmaxcount = get_max_posts();
+    $postmaxpages = CEIL($postcount/$postmaxcount);
     
-    message_box("PostCount: $postcount , MaxPages: $maxpages , PostMaxPages: $postmaxpages");
-
-    if ($postmaxpages > $maxpages) {
-        $postmaxpages = $maxpages;
-    } 
-
-    message_box("PostCount: $postcount , MaxPages: $maxpages , PostMaxPages: $postmaxpages");
+    //message_box("PostCount: $postcount , MaxPages: $maxpages , PostMaxPages: $postmaxpages");
 
     return $postmaxpages;
 }
@@ -1007,7 +1009,7 @@ function get_pr_page_id($postid){
         //print 'POSTID: ' . $postid . '<br><p>';
         //print 'URL: ' . $post_url . '<br><p>';
 
-        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
+        foreach ( $powerreviews_pairs_local as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
                 //print 'MATCH: ' . $pr_page_id . '<br>';
