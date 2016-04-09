@@ -10960,6 +10960,9 @@ article.open > header.entry-header > a {
   top: 50%;
   left: 1em;
   margin-right: 1em; }
+  @media screen and (max-width: 768px) {
+    .tile-content {
+      top: 35%; } }
   @media (min-width: 960px) {
     .tile-content {
       left: 1.5em;
@@ -10997,7 +11000,11 @@ article.open > header.entry-header > a {
   transition: color 250ms ease;
   cursor: pointer;
   font-size: 24px;
+  font-size: 1.7vw;
   font-weight: 600; }
+  @media screen and (max-width: 768px) {
+    .tile-title {
+      font-size: 18px; } }
   .tile:hover .tile-title {
     color: #fb901d; }
 
