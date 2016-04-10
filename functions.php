@@ -835,8 +835,9 @@ function ws_custom_search_query($qry_type){
 
 function ws_custom_search(){
     global $wpdb,$wp_query;
+    //message_box("search started");
     if (!empty($wp_query->query_vars['s'])) {
-        message_box("search");
+        //message_box("search available");
         $qry = ws_custom_search_query("search");
         $row = $wpdb->get_results( $qry );
         wp_reset_query();
@@ -1048,3 +1049,4 @@ function get_itinerary_collection($postid){
 function message_box($message){
     echo '<script>alert("' . $message . '");</script>';
 }
+
