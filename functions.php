@@ -591,6 +591,7 @@ function temp_to_celsius( $degrees ){
 
 //*** WorldStrides Custom Search ***//
 function ws_custom_exists(){
+    //message_box("search");
     global $wpdb,$wp_query;
     if (!empty($wp_query->query_vars['s'])) {
 
@@ -835,7 +836,7 @@ function ws_custom_search_query($qry_type){
 
 function ws_custom_search(){
     global $wpdb,$wp_query;
-    //message_box("search started");
+
     if (!empty($wp_query->query_vars['s'])) {
         //message_box("search available");
         $qry = ws_custom_search_query("search");
@@ -883,13 +884,13 @@ function ws_get_country($postid){
 // Pagination
 function get_current_page(){
     global $wp_query, $search_currentpage;
-    //$currentpage = $_GET['paged']; 
-    $wp_query->query_vars['paged'];
+    $currentpage = $_POST['pager']; // $wp_query->query_vars['paged']; //$currentpage = $_GET['paged']; 
+
     if ($currentpage == '') { 
         $currentpage = 1;
     }
 
-    message_box($currentpage);
+    //message_box($currentpage);
 
     return $currentpage;
 }
@@ -932,7 +933,8 @@ global $wp_query;
 	    'add_args'           => false,
 	    'add_fragment'       => '',
 	    'before_page_number' => '',
-	    'after_page_number'  => ''
+	    'after_page_number'  => '',
+        'paged'              => $paged
         ); 
 
     return $pagearray;

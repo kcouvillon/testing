@@ -21,6 +21,7 @@ if ( 'post' == $post_type ) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript">
+var pageNum = 1;
 
 $(document).ready(function() {
     $(".pr-review-wrap").remove();
@@ -28,15 +29,30 @@ $(document).ready(function() {
     $(".pr-review-sort").remove();
     $(".pr-snapshot-consensus").remove();
     $('[id=pr-snapshot-histogram]').remove();
-    $('div.pr-review-engine-max-width-560px').removeClass('pr-review-engine-max-width-560px');
+    $('div.pr-review-engine-max-width-560px').removeClass('pr-review-engine-max-width-560px'); 
+
 });
+
+    function pager(page) {
+        pageNum = page;
+        //$.blockUI( { message: "Searching..."} );
+	    jQuery.ajax({
+		    url : "#",
+		    type : 'post',
+            data: {"pager": page},
+		    success : function( response ) {
+			    jQuery('#page').html( response );
+                //$.unblockUI;
+		    }
+	    });
+    }
+
 </script>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main search" role="main">
 
 		<section class="search-header section-header">
-
 			<div class="ws-container">
 			
 				<form role="search" method="get" class="search-results-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -57,7 +73,6 @@ $(document).ready(function() {
 		<div class="search-wrap">
 
 			<section>
-
 			<?php if ( ws_custom_exists() ) : ?>
 
 				<h3 class="search-results-title"><span class="search-query"><?php the_search_query(); ?></span> in <?php echo $search_title; ?></h3>
@@ -72,7 +87,33 @@ $(document).ready(function() {
                       }
                 ?>
 
-				<?php echo paginate_links( get_pagination() ); ?>
+				<!-- echo paginate_links( get_pagination() ); -->
+                
+                <!-- Custom Paging -->
+                <div id="divPager">
+                    <?php 
+                    if ($_POST['pager'] <> ""){
+                        echo '<a href="#" id="pager" onclick="pager(1);" title="First"> << </a>';
+                    } 
+                    ?>
+                    <a href="#" id="pager" onclick="pager(1);">1</a> 
+                    <a href="#" id="pager" onclick="pager(2);">2</a>
+                    <a href="#" id="pager" onclick="pager(3);">3</a>
+                    <a href="#" id="pager" onclick="pager(4);">4</a>
+                    <a href="#" id="pager" onclick="pager(5);">5</a>
+                    <a href="#" id="pager" onclick="pager(6);">6</a>
+                    <a href="#" id="pager" onclick="pager(7);">7</a>
+                    <a href="#" id="pager" onclick="pager(8);">8</a>
+                    <a href="#" id="pager" onclick="pager(9);">9</a>
+                    <a href="#" id="pager" onclick="pager(10);">10</a>
+                    <a href="#" id="pager" onclick="pager(11);">11</a>
+                    <?php 
+                    if ($_POST['pager'] <> 11){
+                        echo '<a href="#" id="pager" onclick="pager(11);" title="Last"> >> </a>';
+                    } 
+                    ?>
+                </div>
+                <!-- End Custom Paging -->
 
 			<?php else : ?>
 
