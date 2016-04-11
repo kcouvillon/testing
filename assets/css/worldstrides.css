@@ -10963,6 +10963,9 @@ article.open > header.entry-header > a {
   @media screen and (max-width: 768px) {
     .tile-content {
       top: 55%; } }
+  @media screen and (max-width: 600px) {
+    .tile-content {
+      top: 45%; } }
   @media (min-width: 960px) {
     .tile-content {
       left: 1.5em;
@@ -11010,7 +11013,10 @@ article.open > header.entry-header > a {
       font-size: 2.7vw; } }
   @media screen and (max-width: 768px) {
     .tile-title {
-      font-size: 24px; } }
+      font-size: 3.7vw; } }
+  @media screen and (max-width: 600px) {
+    .tile-title {
+      font-size: 4.7vw; } }
   .tile:hover .tile-title {
     color: #fb901d; }
 
