@@ -59,7 +59,7 @@
 	left: 1em;
 	margin-right: 1em;
 	@media screen and ( max-width: $screen-sm ) {
-		top: 35%;
+		top: 55%;
 	}	
 	@extend %overlay-text;
 	@include susy-media($screen-md) {
@@ -104,9 +104,15 @@
 	font-size: 24px;
     font-size: 1.7vw;
 	font-weight: 600;
+	@media screen and ( max-width: $screen-lg ) {
+		font-size: 1.7vw;
+	}
+	@media screen and ( max-width: $screen-md) {
+		font-size: 2.7vw;
+	}
 	@media screen and ( max-width: $screen-sm ) {
-		font-size: 18px;
-	}	
+		font-size: 24px;
+	}
 	.tile:hover & {
 		color: $orange;
 	}
