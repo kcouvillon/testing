@@ -250,23 +250,23 @@
 		target = $contentCta.attr('href');
 		offset = $contentCta.data('scroll-offset') || 0;
 
-		$(document).ready(function(){
+		jQuery(document).ready(function(){
 			setTimeout(function(){
 
 				var pageHeaderBottom = $pageHeader.outerHeight() + $pageHeader.offset().top;
 
 				if ( $pageHeader && ($window.height() <= pageHeaderBottom) ){
-					$contentCta.addClass('visible');
+					jQuery('.content-cta').addClass('visible');
 
-					$window.scroll(function(){
+					jQuery(window).scroll(function(){
 						console.log('scrolling');
-						var scrollTop = $window.scrollTop();
+						var scrollTop = jQuery(window).scrollTop();
 						if ( scrollTop > 0 ) {
 							console.log('remove class');
-							$contentCta.removeClass('visible');
+							jQuery('.content-cta').removeClass('visible');
 						} else {
 							console.log('Add class');
-							$contentCta.addClass('visible');
+							jQuery('.content-cta').addClass('visible');
 						}
 					});
 

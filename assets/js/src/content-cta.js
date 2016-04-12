@@ -23,7 +23,7 @@
 		target = $contentCta.attr('href');
 		offset = $contentCta.data('scroll-offset') || 0;
 
-		$(document).ready(function(){
+		jQuery(document).ready(function(){
 			setTimeout(function(){
 
 				var pageHeaderBottom = $pageHeader.outerHeight() + $pageHeader.offset().top;
