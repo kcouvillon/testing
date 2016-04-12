@@ -10243,13 +10243,13 @@ article.open > header.entry-header > a {
         .explore-results .tile ul.meta li {
           color: #FFF; } }
   .explore-results .tile .tile-title {
-    font-weight: 300;
+    font-weight: 600;
     font-size: 1em;
     margin: 0;
     color: #1a1a1a; }
     @media screen and (min-width: 768px) {
       .explore-results .tile .tile-title {
-        font-size: 29px;
+        font-size: 24px;
         color: #FFF; } }
 
 .explore-results .tile.ng-enter,
@@ -11003,7 +11003,6 @@ article.open > header.entry-header > a {
   transition: color 250ms ease;
   cursor: pointer;
   font-size: 24px;
-  /* font-size: 1.7vw; */
   font-weight: 600; }
   @media screen and (max-width: 1200px) {
     .tile-title {
