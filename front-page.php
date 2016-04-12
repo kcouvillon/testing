@@ -17,25 +17,27 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 		<?php
 		$background = '';
 		if ( has_post_thumbnail( $post->ID ) ) {
-			$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
-			$background = 'url(' . $featured[0] . ')';
+		//	$featured   = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'hero' );
+		//	$background = 'url(' . $featured[0] . ')';
 		}
 		?>
 
 		<section id="intro" class="home-section primary-section">
-			
-			<header class="section-header" style="background-image: <?php echo $background; ?>;">
-				<div class="mobile-hero">
-					<?php the_post_thumbnail( 'large' ); ?>
-				</div>
+		<video width="100%" loop autoplay>
+			<source src="https://player.vimeo.com/external/138640955.hd.mp4?s=dece251a0d3663c86db7473ab23ef212f311ca1f&profile_id=119" type="video/mp4">
+			Nope
+		</video>
+			<div style="position: absolute; top: 200px; left: 200px; z-index:2;">
+			<header style="background-image: <?php //echo $background; ?>;">
 				<div class="ws-container">
 					<div class="section-header-content">
 						<?php the_content(); ?>
 					</div>
 				</div>
 			</header>
+			</div>
 
-			<?php get_template_part('partials/content', 'tooltips'); ?>
+
 
 			<a href="#why-content" data-scroll-offset="-30" class="content-cta">
 				<span class="hide">Skip to Content</span>
