@@ -28,7 +28,7 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 			Nope
 		</video>
 			<div style="position: absolute; top: 200px; left: 200px; z-index:2;">
-			<header style="background-image: <?php //echo $background; ?>;">
+			<header class="section-header" style="background-color:transparent; padding-top:0 !important; border-bottom:0">
 				<div class="ws-container">
 					<div class="section-header-content">
 						<?php the_content(); ?>
