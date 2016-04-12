@@ -503,6 +503,13 @@ function ws_add_modal_welcome() {
 //	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 );
 //}
 
+/**
+ * Adding the exit modal
+ */
+function ws_add_exit_modal() {
+	require_once( WS_PATH . 'partials/modal-exit.php');
+}
+add_action( 'wp_footer', 'ws_add_exit_modal' );
 
 /**
  * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin
