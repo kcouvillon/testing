@@ -32,10 +32,13 @@
 					$contentCta.addClass('visible');
 
 					$window.on('scroll', function(){
+						console.log('scrolling');
 						var scrollTop = $window.scrollTop();
 						if ( scrollTop > 0 ) {
+							console.log('remove class');
 							$contentCta.removeClass('visible');
 						} else {
+							console.log('Add class');
 							$contentCta.addClass('visible');
 						}
 					});
