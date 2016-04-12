@@ -253,9 +253,9 @@
 		jQuery(document).ready(function(){
 			setTimeout(function(){
 
-				var pageHeaderBottom = $pageHeader.outerHeight() + $pageHeader.offset().top;
+				var pageHeaderBottom = jQuery('.primary-section').outerHeight() + jQuery('.primary-section').offset().top;
 
-				if ( $pageHeader && ($window.height() <= pageHeaderBottom) ){
+				if ( jQuery('.primary-section') && (jQuery(window).height() <= pageHeaderBottom) ){
 					jQuery('.content-cta').addClass('visible');
 
 					jQuery(window).scroll(function(){
