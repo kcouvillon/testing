@@ -91,27 +91,7 @@ $(document).ready(function() {
                 
                 <!-- Custom Paging -->
                 <div id="divPager">
-                    <?php 
-                    if ($_POST['pager'] <> ""){
-                        echo '<a href="#" id="pager" onclick="pager(1);" title="First"> << </a>';
-                    } 
-                    ?>
-                    <a href="#" id="pager" onclick="pager(1);">1</a> 
-                    <a href="#" id="pager" onclick="pager(2);">2</a>
-                    <a href="#" id="pager" onclick="pager(3);">3</a>
-                    <a href="#" id="pager" onclick="pager(4);">4</a>
-                    <a href="#" id="pager" onclick="pager(5);">5</a>
-                    <a href="#" id="pager" onclick="pager(6);">6</a>
-                    <a href="#" id="pager" onclick="pager(7);">7</a>
-                    <a href="#" id="pager" onclick="pager(8);">8</a>
-                    <a href="#" id="pager" onclick="pager(9);">9</a>
-                    <a href="#" id="pager" onclick="pager(10);">10</a>
-                    <a href="#" id="pager" onclick="pager(11);">11</a>
-                    <?php 
-                    if ($_POST['pager'] <> 11){
-                        echo '<a href="#" id="pager" onclick="pager(11);" title="Last"> >> </a>';
-                    } 
-                    ?>
+                    <?php echo get_pager() ?>
                 </div>
                 <!-- End Custom Paging -->
 

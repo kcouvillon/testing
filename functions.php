@@ -940,6 +940,39 @@ global $wp_query;
     return $pagearray;
 }
 
+//Custom Pager
+function get_pager(){
+    global $wp_query;
+    $pager_links = "";
+    $max_pages = get_max_pages();
+    $page_num = 1;
+    $current_page = get_current_page();
+    $prev_page = $current_page - 1;
+    $next_page = $current_page + 1;
+
+    if ($current_page <> ""){
+        $pager_links = "<a href='#' id='pager' onclick='pager($prev_page);' title='Prev'> << </a>";
+    } 
+
+    while ( $page_num < $max_pages + 1)
+    {
+        if($page_num == $current_page)
+        {
+            $pager_links = $pager_links . " $page_num";
+        }
+        else
+        {
+            $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($page_num);'> $page_num</a>";
+        }
+        $page_num ++;
+    }
+
+    if ($current_page <> $max_pages){
+        $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($next_page);' title='Next'> >> </a>";
+    } 
+
+    return $pager_links;
+}
 
 //Get Review Data
 
@@ -1012,7 +1045,7 @@ function get_pr_page_id($postid){
         //print 'POSTID: ' . $postid . '<br><p>';
         //print 'URL: ' . $post_url . '<br><p>';
 
-        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
+        foreach ( $powerreviews_pairs_local as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
                 //print 'MATCH: ' . $pr_page_id . '<br>';
