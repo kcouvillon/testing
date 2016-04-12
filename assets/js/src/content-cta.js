@@ -29,17 +29,17 @@
 				var pageHeaderBottom = $pageHeader.outerHeight() + $pageHeader.offset().top;
 
 				if ( $pageHeader && ($window.height() <= pageHeaderBottom) ){
-					$contentCta.addClass('visible');
+					jQuery('.content-cta').addClass('visible');
 
-					$window.scroll(function(){
+					jQuery(window).scroll(function(){
 						console.log('scrolling');
-						var scrollTop = $window.scrollTop();
+						var scrollTop = jQuery(window).scrollTop();
 						if ( scrollTop > 0 ) {
 							console.log('remove class');
-							$contentCta.removeClass('visible');
+							jQuery('.content-cta').removeClass('visible');
 						} else {
 							console.log('Add class');
-							$contentCta.addClass('visible');
+							jQuery('.content-cta').addClass('visible');
 						}
 					});
 
