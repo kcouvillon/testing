@@ -258,7 +258,7 @@
 				if ( $pageHeader && ($window.height() <= pageHeaderBottom) ){
 					$contentCta.addClass('visible');
 
-					$window.on('scroll', function(){
+					$window.scroll(function(){
 						console.log('scrolling');
 						var scrollTop = $window.scrollTop();
 						if ( scrollTop > 0 ) {
