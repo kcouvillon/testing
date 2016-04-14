@@ -16,7 +16,7 @@ get_header(); ?>
 		<section class="section-content leadership-content">
 			<?php get_template_part( 'partials/content', 'about' ) ?>
 		</section>
-
+		<p>Programs</p>
 		<section class="section-content leadership">
 			<?php $associated_bios = get_post_meta( $post->ID, 'ws_attached_leadership_bios', true ); ?>
 
@@ -24,11 +24,23 @@ get_header(); ?>
 				<p>No leadership bios found.</p>
 			<?php endif; ?>
 
+
+			<?php
+				$program_count = 0;
+				$customer_contact_count = 0;
+				$shared_support_count = 0;
+			?>
+
+			<?php //NEED TO RUN MULTIPLE TIMES IN ORDER TO SPLIT BIOS UP INTO GROUPS ?>
+
 			<?php foreach ( $associated_bios as $bio_id ) : ?>
 				<?php $post = get_post( $bio_id ); ?>
 				<?php setup_postdata($post); ?>
 				<?php $position = get_post_meta( $post->ID, 'ws_bio_position', true ); ?>
-
+				<?php $group = get_post_meta( $post->ID, 'ws_bio_group', true ); ?>
+				<?php if ($group == 'programs') : ?>
+					<?php $program_count++; ?>
+					<div id="marker" style="display:none"></div>
 				<article <?php post_class(); ?>>
 					<header class="entry-header">
 						<?php if ( has_post_thumbnail() ) : ?>
@@ -66,9 +78,13 @@ get_header(); ?>
 						<a href="<?php the_permalink(); ?>">Read more about <?php the_title(); ?></a>
 					</footer>
 				</article>
+			<?php endif; ?>
 
 			<?php endforeach; wp_reset_postdata(); ?>
-		</section>
+			<?php if ($program_count > 0): ?>
+			<br><br>
+			<?php endif; ?>
+
 
 	</main>
 </div>

@@ -368,6 +368,18 @@ class WS_Metaboxes {
 			'id'   => 'ws_bio_position',
 			'type' => 'text_medium'
 		) );
+
+		$bio_details->add_field( array(
+			'name' => __('Group', 'cmb2'),
+			'id' => 'ws_bio_group',
+			'type' => 'select',
+			'show_option_none' => false,
+			'options' => array(
+				'programs' => __( 'Programs', 'cmb2'),
+				'customer_contact' => __( 'Customer Contacts', 'cmb2'),
+				'shared_support' => __( 'Shared Support', 'cmb2'),
+			),
+		) );
 	}
 
 	/**
