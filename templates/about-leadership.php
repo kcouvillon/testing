@@ -84,7 +84,7 @@ get_header(); ?>
 			<?php if ($program_count > 0): ?>
 			<br><br>
 			<?php endif; ?>
-			<p style="clear:both">Content</p>
+			<p style="font-size: 32px; font-weight:bold; clear:both">Customer Contacts</p>
 			<?php ////////////////////////////////////////////////////////////
 			//SECOND ITERATION ?>
 			<?php foreach ( $associated_bios as $bio_id ) : ?>
@@ -138,7 +138,7 @@ get_header(); ?>
 			<?php if ($customer_contact_count > 0 ): ?>
 
 			<?php endif; ?>
-			<p style="clear:both; font-size:18px">Shared</p>
+			<p style="font-size: 32px; font-weight:bold; clear:both">Shared Support</p>
 			<?php /////////////////////////////////////////////////////
 			/////////////////////THIRD ITERATION ?>
 			<!--<h2>Shared Support</h2>-->
