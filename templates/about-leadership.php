@@ -81,9 +81,6 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php endforeach; wp_reset_postdata(); ?>
-			<?php if ($program_count > 0): ?>
-			<br><br>
-			<?php endif; ?>
 			<p style="font-size: 32px; font-weight:bold; clear:both">Customer Contacts</p>
 			<?php ////////////////////////////////////////////////////////////
 			//SECOND ITERATION ?>
