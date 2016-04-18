@@ -24,8 +24,8 @@ $block_sections = get_post_meta( $post->ID, 'home_blocks_list', true );
 
 		<section id="intro" class="home-section primary-section">
 		<video width="100%" loop autoplay>
-			<source src="https://player.vimeo.com/external/138640955.hd.mp4?s=dece251a0d3663c86db7473ab23ef212f311ca1f&profile_id=119" type="video/mp4">
-			Nope
+			<source src="https://player.vimeo.com/external/163252479.hd.mp4?s=3321e4ef6b6e6effcbdec3dfe36cad04c77b33b0&profile_id=174" type="video/mp4">
+			Your browser does not support html videos.
 		</video>
 			<div style="position: absolute; top: 200px; left: 200px; z-index:2;">
 			<header class="section-header" style="background-color:transparent; padding-top:0 !important; border-bottom:0">
