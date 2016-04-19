@@ -31,7 +31,7 @@ get_header(); ?>
                     <?php setup_postdata($post); ?>
                     <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
                    
-                    <div class="col-md-4 col-sm-9  no-padding">
+                    <div class="col-md-4 no-padding">
                         <article <?php post_class(); ?>>
                             <header class="entry-header">
                                 <?php if (has_post_thumbnail()) : ?>
@@ -90,7 +90,7 @@ get_header(); ?>
                         <?php $post = get_post($bio_id); ?>
                         <?php setup_postdata($post); ?>
                         <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
-                        <div class="col-md-4 col-sm-9 no-padding">
+                        <div class="col-md-4 no-padding">
                             <article <?php post_class(); ?>>
                                 <header class="entry-header">
                                     <?php if (has_post_thumbnail()) : ?>
@@ -148,7 +148,7 @@ get_header(); ?>
                         <?php setup_postdata($post); ?>
                         <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
                        
-                        <div class="col-md-4 col-sm-9 no-padding">
+                        <div class="col-md-4 no-padding">
                             <article <?php post_class(); ?>>
                                 <header class="entry-header">
                                     <?php if (has_post_thumbnail()) : ?>
