@@ -8822,6 +8822,9 @@ section:after {
 .about h2, .about .h2 {
   margin-bottom: 35px; }
 
+.about .entry-content {
+  padding-right: 2em; }
+
 @media (min-width: 768px) {
   .about.section-content {
     width: 74.5098039216%;
@@ -9057,6 +9060,8 @@ section:after {
       position: absolute;
       top: 13%;
       left: -38px; }
+  .timeline .no-padding {
+    padding: 0; }
 
 .contact-wrap {
   position: relative; }

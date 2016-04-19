@@ -5,7 +5,7 @@
 	}
 
 	.entry-content {
-		// max-width: 670px;
+		padding-right:2em;
 	}
 
 	&.section-content {
@@ -246,5 +246,9 @@
 			top: 13%;
 			left: -38px;
 		}
+	}
+
+	.no-padding {
+		padding: 0;
 	}
 }
