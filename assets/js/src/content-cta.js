@@ -23,23 +23,23 @@
 		target = $contentCta.attr('href');
 		offset = $contentCta.data('scroll-offset') || 0;
 
-		jQuery(document).ready(function(){
+		$(document).ready(function(){
 			setTimeout(function(){
 
-				var pageHeaderBottom = jQuery('.primary-section').outerHeight() + jQuery('.primary-section').offset().top;
+				var pageHeaderBottom = $('.primary-section').outerHeight() + $('.primary-section').offset().top;
 
-				if ( jQuery('.primary-section') && (jQuery(window).height() <= pageHeaderBottom) ){
-					jQuery('.content-cta').addClass('visible');
+				if ( $pageHeader && ($window.height() <= pageHeaderBottom) ){
+					$contentCta.addClass('visible');
 
-					jQuery(window).scroll(function(){
+					$window.on('scroll', function(){
 						console.log('scrolling');
-						var scrollTop = jQuery(window).scrollTop();
+						var scrollTop = $window.scrollTop();
 						if ( scrollTop > 0 ) {
 							console.log('remove class');
-							jQuery('.content-cta').removeClass('visible');
+							$contentCta.removeClass('visible');
 						} else {
 							console.log('Add class');
-							jQuery('.content-cta').addClass('visible');
+							$contentCta.addClass('visible');
 						}
 					});
 
