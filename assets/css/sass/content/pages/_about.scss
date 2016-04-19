@@ -4,10 +4,6 @@
 		margin-bottom: 35px;
 	}
 
-	.entry-content {
-		padding-right:2em;
-	}
-
 	&.section-content {
 		
 		@include susy-media($screen-sm) {
@@ -247,8 +243,12 @@
 			left: -38px;
 		}
 	}
+}
 
-	.no-padding {
-		padding: 0;
-	}
+.no-padding {
+	padding: 0;
+}
+
+.bio-content {
+	padding-right: 2em;
 }

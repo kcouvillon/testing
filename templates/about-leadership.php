@@ -31,7 +31,7 @@ get_header(); ?>
                     <?php setup_postdata($post); ?>
                     <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
                    
-                    <div class="col-md-4 no-padding">
+                    <div class="col-md-4 col-sm-9  no-padding">
                         <article <?php post_class(); ?>>
                             <header class="entry-header">
                                 <?php if (has_post_thumbnail()) : ?>
@@ -55,7 +55,7 @@ get_header(); ?>
                                 <?php endif; ?>
                             </header>
 
-                            <div class="entry-content" style="padding-right:2em">
+                            <div class="bio-content">
                                 <?php
                                 if (get_the_excerpt()) {
                                     the_excerpt();
@@ -72,7 +72,7 @@ get_header(); ?>
                     </div>
 
                     <?php if ($bio_counter % 3 == 0): ?>
-                        <div style="clear:both"></div>
+                       <div style="clear:both"></div>
                     <?php endif; ?>
                 <?php endforeach; wp_reset_postdata(); ?>
 
@@ -84,15 +84,13 @@ get_header(); ?>
                 ?>
                 <?php if ($associated_customer_bios): ?>
                     <h2>Customer Contacts</h2>
-
                     <?php
                     foreach ($associated_customer_bios as $bio_id) : ?>
                         <?php $bio_counter++; ?>
                         <?php $post = get_post($bio_id); ?>
                         <?php setup_postdata($post); ?>
                         <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
-                        
-                        <div class="col-md-4 no-padding">
+                        <div class="col-md-4 col-sm-9 no-padding">
                             <article <?php post_class(); ?>>
                                 <header class="entry-header">
                                     <?php if (has_post_thumbnail()) : ?>
@@ -116,7 +114,7 @@ get_header(); ?>
                                     <?php endif; ?>
                                 </header>
 
-                                <div class="entry-content" style="padding-right:2em">
+                                <div class="bio-content">
                                     <?php
                                     if (get_the_excerpt()) {
                                         the_excerpt();
@@ -132,11 +130,10 @@ get_header(); ?>
                             </article>
                         </div>
                         <?php if ($bio_counter % 3 == 0): ?>
-                            <div style="clear:both"></div>
+                           <div style="clear:both"></div>
                         <?php endif; ?>
                     <?php endforeach; wp_reset_postdata(); ?>
                 <?php endif; ?>
-
                 <div style="clear:both"></div>
 
                 <?php
@@ -151,7 +148,7 @@ get_header(); ?>
                         <?php setup_postdata($post); ?>
                         <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
                        
-                        <div class="col-md-4 no-padding">
+                        <div class="col-md-4 col-sm-9 no-padding">
                             <article <?php post_class(); ?>>
                                 <header class="entry-header">
                                     <?php if (has_post_thumbnail()) : ?>
@@ -175,7 +172,7 @@ get_header(); ?>
                                     <?php endif; ?>
                                 </header>
 
-                                <div class="entry-content" style="padding-right:2em">
+                                <div class="bio-content">
                                     <?php
                                     if (get_the_excerpt()) {
                                         the_excerpt();
@@ -191,7 +188,7 @@ get_header(); ?>
                             </article>
                         </div>
                         <?php if ($bio_counter % 3 == 0): ?>
-                            <div style="clear:both"></div>
+                           <div style="clear:both"></div>
                         <?php endif; ?>
                     <?php endforeach;
                     wp_reset_postdata(); ?>
