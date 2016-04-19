@@ -10962,7 +10962,7 @@ article.open > header.entry-header > a {
   margin-right: 1em; }
   @media screen and (max-width: 768px) {
     .tile-content {
-      top: 55%; } }
+      top: 45%; } }
   @media screen and (max-width: 600px) {
     .tile-content {
       top: 45%; } }
@@ -11012,12 +11012,15 @@ article.open > header.entry-header > a {
       font-size: 2.7vw; } }
   @media screen and (max-width: 768px) {
     .tile-title {
-      font-size: 3.7vw; } }
+      font-size: 2.7vw; } }
   @media screen and (max-width: 600px) {
     .tile-title {
       font-size: 4.7vw; } }
   .tile:hover .tile-title {
     color: #fb901d; }
+
+.resource > .tile-content {
+  top: 35%; }
 
 .list-tag-no-link {
   color: #fff;

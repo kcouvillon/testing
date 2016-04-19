@@ -59,7 +59,7 @@
 	left: 1em;
 	margin-right: 1em;
 	@media screen and ( max-width: $screen-sm ) {
-		top: 55%;
+		top: 45%;
 	}
 	@media screen and ( max-width: $screen-xs ) {
 		top: 45%;
@@ -113,7 +113,7 @@
 		font-size: 2.7vw;
 	}
 	@media screen and ( max-width: $screen-sm ) {
-		font-size: 3.7vw;
+		font-size: 2.7vw;
 	}
 	@media screen and ( max-width: $screen-xs ) {
 		font-size: 4.7vw;
@@ -121,6 +121,10 @@
 	.tile:hover & {
 		color: $orange;
 	}
+}
+
+.resource > .tile-content {
+	top: 35%;
 }
 
 .list-tag-no-link {
