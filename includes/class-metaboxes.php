@@ -316,9 +316,9 @@ class WS_Metaboxes {
 	 */
 	function leadership_attached_bios() {
 
-		$meta_programs = new_cmb2_box( array(
-			'id'           => 'ws_attached_leadership_bios_programs_field',
-			'title'        => __( 'Attached "Programs" Leadership Bios', 'cmb2' ),
+		$meta_organizations = new_cmb2_box( array(
+			'id'           => 'ws_attached_leadership_bios_organization_field',
+			'title'        => __( 'Attached "Organization" Leadership Bios', 'cmb2' ),
 			'object_types' => array( 'page' ), // Post type
 			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-leadership.php' ),
 			'context'      => 'normal',
@@ -326,10 +326,10 @@ class WS_Metaboxes {
 			'show_names'   => false, // Show field names on the left
 		) );
 
-		$meta_programs->add_field( array(
-			'name'    => __( 'Attached "Programs" Bios', 'cmb2' ),
+		$meta_organizations->add_field( array(
+			'name'    => __( 'Attached "Organization" Bios', 'cmb2' ),
 			'desc'    => __( 'Drag bios from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
-			'id'      => 'ws_attached_leadership_programs_bios',
+			'id'      => 'ws_attached_leadership_organization_bios',
 			'type'    => 'custom_attached_posts',
 			'options' => array(
 				'show_thumbnails' => true,  // Show thumbnails on the left
@@ -349,9 +349,9 @@ class WS_Metaboxes {
 		) );
 
 		//////////////////////////////////////////////////
-		$meta_customer = new_cmb2_box( array(
-			'id'           => 'ws_attached_leadership_bios_customer_field',
-			'title'        => __( 'Attached "Customer Contacts" Leadership Bios', 'cmb2' ),
+		$meta_programs_regions = new_cmb2_box( array(
+			'id'           => 'ws_attached_leadership_bios_programs_regions_field',
+			'title'        => __( 'Attached "Programs and Regions" Leadership Bios', 'cmb2' ),
 			'object_types' => array( 'page' ), // Post type
 			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-leadership.php' ),
 			'context'      => 'normal',
@@ -359,10 +359,10 @@ class WS_Metaboxes {
 			'show_names'   => false, // Show field names on the left
 		) );
 
-		$meta_customer->add_field( array(
-			'name'    => __( 'Attached "Customer Contact" Bios', 'cmb2' ),
+		$meta_programs_regions->add_field( array(
+			'name'    => __( 'Attached "Programs and Regions" Bios', 'cmb2' ),
 			'desc'    => __( 'Drag bios from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
-			'id'      => 'ws_attached_leadership_customer_bios',
+			'id'      => 'ws_attached_leadership_programs_regions_bios',
 			'type'    => 'custom_attached_posts',
 			'options' => array(
 				'show_thumbnails' => true,  // Show thumbnails on the left
@@ -381,9 +381,9 @@ class WS_Metaboxes {
 			)
 		) );
 		//////////////////////////////////////////////////
-		$meta_shared = new_cmb2_box( array(
-			'id'           => 'ws_attached_leadership_bios_shared_field',
-			'title'        => __( 'Attached "Shared Support" Leadership Bios', 'cmb2' ),
+		$meta_support = new_cmb2_box( array(
+			'id'           => 'ws_attached_leadership_bios_support_field',
+			'title'        => __( 'Attached "Traveler Support" Leadership Bios', 'cmb2' ),
 			'object_types' => array( 'page' ), // Post type
 			'show_on'      => array( 'key' => 'page-template', 'value' => 'templates/about-leadership.php' ),
 			'context'      => 'normal',
@@ -391,10 +391,10 @@ class WS_Metaboxes {
 			'show_names'   => false, // Show field names on the left
 		) );
 
-		$meta_shared->add_field( array(
-			'name'    => __( 'Attached "Shared Support" Bios', 'cmb2' ),
+		$meta_support->add_field( array(
+			'name'    => __( 'Attached "Traveler Support" Bios', 'cmb2' ),
 			'desc'    => __( 'Drag bios from the left column to the right column to attach them to this page.<br />You may rearrange the order of the posts in the right column by dragging and dropping.', 'cmb2' ),
-			'id'      => 'ws_attached_leadership_shared_bios',
+			'id'      => 'ws_attached_leadership_support_bios',
 			'type'    => 'custom_attached_posts',
 			'options' => array(
 				'show_thumbnails' => true,  // Show thumbnails on the left

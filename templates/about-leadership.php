@@ -19,10 +19,10 @@ get_header(); ?>
 
             <section class="section-content">
                 <?php
-                $associated_bios = get_post_meta($post->ID, 'ws_attached_leadership_programs_bios', true);
+                $associated_bios = get_post_meta($post->ID, 'ws_attached_leadership_organization_bios', true);
                 if ($associated_bios): ?>
-                    <h2>Programs</h2>
-                <?php endif; ?>
+                    <h2>Organization</h2>
+
                 <?php
                 $bio_counter = 0;
                 foreach ($associated_bios as $bio_id) : ?>
@@ -75,15 +75,16 @@ get_header(); ?>
                        <div style="clear:both"></div>
                     <?php endif; ?>
                 <?php endforeach; wp_reset_postdata(); ?>
+                <?php endif; ?>
 
                 <div style="clear:both"></div>
 
                 <?php
                 $bio_counter = 0;
-                $associated_customer_bios = get_post_meta($post->ID, 'ws_attached_leadership_customer_bios', true);
+                $associated_customer_bios = get_post_meta($post->ID, 'ws_attached_leadership_programs_regions_bios', true);
                 ?>
                 <?php if ($associated_customer_bios): ?>
-                    <h2>Customer Contacts</h2>
+                    <h2>Programs and Regions</h2>
                     <?php
                     foreach ($associated_customer_bios as $bio_id) : ?>
                         <?php $bio_counter++; ?>
@@ -137,10 +138,10 @@ get_header(); ?>
                 <div style="clear:both"></div>
 
                 <?php
-                $associated_shared_bios = get_post_meta($post->ID, 'ws_attached_leadership_shared_bios', true);
+                $associated_shared_bios = get_post_meta($post->ID, 'ws_attached_leadership_support_bios', true);
                 $bio_counter = 0;
                 if ($associated_shared_bios):?>
-                    <h2>Shared Support</h2>
+                    <h2>Traveler Support</h2>
                     <?php
                     foreach ($associated_shared_bios as $bio_id) : ?>
                         <?php $bio_counter++; ?>
