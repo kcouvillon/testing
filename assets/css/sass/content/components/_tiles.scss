@@ -124,7 +124,13 @@
 }
 
 .resource > .tile-content {
+
 	top: 35%;
+
+	@media screen and ( max-width: $screen-sm ){
+		top: 45%;
+	}
+
 }
 
 .list-tag-no-link {

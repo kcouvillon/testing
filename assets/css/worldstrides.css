@@ -11021,6 +11021,9 @@ article.open > header.entry-header > a {
 
 .resource > .tile-content {
   top: 35%; }
+  @media screen and (max-width: 768px) {
+    .resource > .tile-content {
+      top: 45%; } }
 
 .list-tag-no-link {
   color: #fff;
