@@ -713,6 +713,10 @@
 					color: #FFF;
 				}
 			}
+
+			@media screen and ( max-width: $screen-lg ){
+				top: 40%;
+			}
 		}
 
 		ul.meta {

@@ -5,6 +5,7 @@
 
     'use strict';
 
+    //Remove <br> tags from in between images and captions
     $(document).ready(function(){
        jQuery('figure > br').remove(); 
     });

@@ -10236,6 +10236,9 @@ article.open > header.entry-header > a {
       @media screen and (min-width: 768px) {
         .explore-results .tile .tile-content a {
           color: #FFF; } }
+    @media screen and (max-width: 1200px) {
+      .explore-results .tile .tile-content {
+        top: 40%; } }
   .explore-results .tile ul.meta {
     margin: 0 0 0.5em;
     line-height: 1em; }
