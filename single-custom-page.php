@@ -98,7 +98,7 @@ get_header(); ?>
 							<?php endif; ?>
 						</ul>
 						<?php if ( $register_now && $trip_id ) : ?>
-							<form method="post" action="http://olr.worldstrides.net/scripts/cgiip.exe/RegisterOnline/OLRPassporttotravel.htm">
+							<form method="post" action="http://olr.worldstrides.net/scripts/cgiip.exe/RegisterOnline/OLRPassporttotravel.htm" target="_blank">
 								<input id="hidden_trip_id" type="hidden" name="tid" value="<?php echo (int) $trip_id; ?>">
 								<input id="cs_register_button" type="submit" class="btn btn-primary subnav-cta hide-print" value="Register Now" >
 							</form>
