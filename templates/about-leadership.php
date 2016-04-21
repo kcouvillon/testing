@@ -17,7 +17,21 @@ get_header(); ?>
                 <?php get_template_part('partials/content', 'about') ?>
             </section>
 
+            <section class="section-content leadership-content">
+                <?php //Add 3 columns that will ultimately be each "Group" bucket selection ?>
+                <div class="col-md-4" style="background:lightgrey; text-align: center">
+                    <div id="group1">Organization</div>
+                </div>
+                <div class="col-md-4" style="background:lightblue; text-align: center">
+                    <div id="group2">Programs and Regions</div>
+                </div>
+                <div class="col-md-4" style="background:lightcyan; text-align: center">
+                    <div id="group3">Traveler Support</div>
+                </div>
+            </section>
+
             <section class="section-content">
+                <div id="organization-bios">
                 <?php
                 $associated_bios = get_post_meta($post->ID, 'ws_attached_leadership_organization_bios', true);
                 if ($associated_bios): ?>
@@ -31,7 +45,7 @@ get_header(); ?>
                     <?php setup_postdata($post); ?>
                     <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
                    
-                    <div class="col-md-4 no-padding">
+                    <div class="col-md-4 leadership-padding">
                         <article <?php post_class(); ?>>
                             <header class="entry-header">
                                 <?php if (has_post_thumbnail()) : ?>
@@ -76,9 +90,10 @@ get_header(); ?>
                     <?php endif; ?>
                 <?php endforeach; wp_reset_postdata(); ?>
                 <?php endif; ?>
-
+                </div>
                 <div style="clear:both"></div>
 
+                <div id="programs-regions-bios">
                 <?php
                 $bio_counter = 0;
                 $associated_customer_bios = get_post_meta($post->ID, 'ws_attached_leadership_programs_regions_bios', true);
@@ -91,7 +106,7 @@ get_header(); ?>
                         <?php $post = get_post($bio_id); ?>
                         <?php setup_postdata($post); ?>
                         <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
-                        <div class="col-md-4 no-padding">
+                        <div class="col-md-4 leadership-padding">
                             <article <?php post_class(); ?>>
                                 <header class="entry-header">
                                     <?php if (has_post_thumbnail()) : ?>
@@ -135,8 +150,9 @@ get_header(); ?>
                         <?php endif; ?>
                     <?php endforeach; wp_reset_postdata(); ?>
                 <?php endif; ?>
+                </div>
                 <div style="clear:both"></div>
-
+                <div id="support-bios">
                 <?php
                 $associated_shared_bios = get_post_meta($post->ID, 'ws_attached_leadership_support_bios', true);
                 $bio_counter = 0;
@@ -149,7 +165,7 @@ get_header(); ?>
                         <?php setup_postdata($post); ?>
                         <?php $position = get_post_meta($post->ID, 'ws_bio_position', true); ?>
                        
-                        <div class="col-md-4 no-padding">
+                        <div class="col-md-4 leadership-padding">
                             <article <?php post_class(); ?>>
                                 <header class="entry-header">
                                     <?php if (has_post_thumbnail()) : ?>
@@ -191,9 +207,9 @@ get_header(); ?>
                         <?php if ($bio_counter % 3 == 0): ?>
                            <div style="clear:both"></div>
                         <?php endif; ?>
-                    <?php endforeach;
-                    wp_reset_postdata(); ?>
+                    <?php endforeach; wp_reset_postdata(); ?>
                 <?php endif; ?>
+                </div>
             </section>
         </main>
     </div>
