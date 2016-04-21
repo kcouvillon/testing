@@ -713,6 +713,10 @@
 					color: #FFF;
 				}
 			}
+
+			@media screen and ( max-width: $screen-lg ){
+				top: 40%;
+			}
 		}
 
 		ul.meta {
@@ -730,12 +734,12 @@
 		}
 
 		.tile-title {
-			font-weight: 300;
+			font-weight: 600;
 			font-size: 1em;
 			margin: 0;
 			color: $color_text_main;
 			@media screen and ( min-width: $screen-sm ) {
-				font-size: 29px;
+				font-size: 24px;
 				color: #FFF;
 			}
 		}
