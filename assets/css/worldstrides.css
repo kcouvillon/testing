@@ -6430,8 +6430,6 @@ img {
     margin-left: auto;
     margin-right: auto;
     padding: 0 5vw; }
-  .wp-caption .wp-caption-text {
-    margin: 0.8075em 0; }
 
 .wp-caption-text {
   text-align: center; }
@@ -7428,7 +7426,9 @@ a.text-color-link {
   max-width: 670px;
   margin-right: 1.9607843137%; }
   .blog .entry-content *:first-child, .single .entry-content *:first-child {
-    margin-top: 0 !important; }
+    margin-top: 0 !important;
+    padding: 0;
+    width: 100%; }
 
 .blog-pager {
   width: 100%;
@@ -7625,6 +7625,9 @@ a.text-color-link {
   .blog-single-meta .entry-author {
     margin: 0;
     margin-bottom: 1em; }
+
+blockquote {
+  font-size: 18px; }
 
 .postcard .primary-section {
   display: block;

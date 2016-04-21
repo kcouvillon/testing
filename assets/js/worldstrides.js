@@ -1,6 +1,16 @@
-/*! WorldStrides - v0.1.0 - 2016-04-08
+/*! WorldStrides - v0.1.0 - 2016-04-21
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
+( function( $, window, undefined ) {
+
+    'use strict';
+
+    $(document).ready(function(){
+       jQuery('figure > br').remove(); 
+    });
+    
+
+})(jQuery, window);
 ( function( $, window, undefined ) {
 
 	'use strict';
