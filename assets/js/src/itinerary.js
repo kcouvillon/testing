@@ -117,75 +117,75 @@
 	            return showMap($(this).data('showmap'), $(this).data('imagemap'));
 	        });
 	    });
-
-	    function showMap(mapSectionName, mapImageName) {
-
-	        // remove map in case it already exists
-	        if (map != undefined) { map.remove(); map = undefined; }
-	        // remove image in case it already exists
-	        $('#tour-highlights-map').attr('style', 'background-image: none; background-repeat:no-repeat;');
-
-            // check if custom map image exists and display it if so, otherwise fallback to the old mapbox api call
-	        $.get('./maps/maps_' + mapImageName + '.gif').done(function () {
-
-	            // load image into background
-                $('#tour-highlights-map').attr('style', 'background-image: url("./maps/maps_' + mapImageName + '.gif"); background-repeat:no-repeat;');
-
-            }).fail(function () {
-
-                if ($('#tour-highlights-map').length > 0) {
-                    // Assign variables
-                    init_coords = $('#result-map-' + mapSectionName).data('location'),
-                    marker_data = $('#result-map-' + mapSectionName).data('highlights');
-
-                    if (marker_data) {
-
-                        // Format marker data into geoJSON
-                        var collection = returnGeoJSON(marker_data);
-
-                        // remove map in case it already exists
-                        if (map != undefined) { map.remove(); }
-
-                        // Setup Map and Layer
-                        map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
-                            scrollWheelZoom: false,
-                            dragging: false,
-                            zoomControl: false,
-                            center: [parseFloat(init_coords.latitude), parseFloat(init_coords.longitude)],
-                            zoom: 13
-                        });
-                        layer = L.mapbox.featureLayer(collection).addTo(map);
-
-                        // Map Events
-                        map
-                            .on('ready resize', function () {
-                                map.invalidateSize();
-                                map.fitBounds(layer.getBounds(), { padding: [30, 30], maxZoom: 16 });
-                            });
-
-                        // Layer Events
-                        layer
-                            .on('layeradd', function (e) {
-                                var marker = e.layer,
-                                    feature = marker.feature;
-
-                                if (feature.properties.id == 0) {
-                                    marker.setIcon(L.icon(feature.properties.iconHover));
-                                } else {
-                                    marker.setIcon(L.icon(feature.properties.icon));
-                                }
-                            });
-                    }
-                }
-            })
-
-	        $('#feature-modal').modal('show');
-
-	        return false;
-	    }
 	}
 
-	function returnGeoJSON( array ) {
+	function showMap(mapSectionName, mapImageName) {
+
+	    // remove map in case it already exists
+	    if (map != undefined) { map.remove(); map = undefined; }
+	    // remove image in case it already exists
+	    $('#tour-highlights-map').attr('style', 'background-image: none; background-repeat:no-repeat;');
+
+	    // check if custom map image exists and display it if so, otherwise fallback to the old mapbox api call
+	    $.get('./maps/maps_' + mapImageName + '.gif').done(function () {
+
+	        // load image into background
+	        $('#tour-highlights-map').attr('style', 'background-image: url("./maps/maps_' + mapImageName + '.gif"); background-repeat:no-repeat;');
+
+	    }).fail(function () {
+
+	        if ($('#tour-highlights-map').length > 0) {
+	            // Assign variables
+	            init_coords = $('#result-map-' + mapSectionName).data('location'),
+                marker_data = $('#result-map-' + mapSectionName).data('highlights');
+
+	            if (marker_data) {
+
+	                // Format marker data into geoJSON
+	                var collection = returnGeoJSON(marker_data);
+
+	                // remove map in case it already exists
+	                if (map != undefined) { map.remove(); }
+
+	                // Setup Map and Layer
+	                map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
+	                    scrollWheelZoom: false,
+	                    dragging: false,
+	                    zoomControl: false,
+	                    center: [parseFloat(init_coords.latitude), parseFloat(init_coords.longitude)],
+	                    zoom: 13
+	                });
+	                layer = L.mapbox.featureLayer(collection).addTo(map);
+
+	                // Map Events
+	                map
+                        .on('ready resize', function () {
+                            map.invalidateSize();
+                            map.fitBounds(layer.getBounds(), { padding: [30, 30], maxZoom: 16 });
+                        });
+
+	                // Layer Events
+	                layer
+                        .on('layeradd', function (e) {
+                            var marker = e.layer,
+                                feature = marker.feature;
+
+                            if (feature.properties.id == 0) {
+                                marker.setIcon(L.icon(feature.properties.iconHover));
+                            } else {
+                                marker.setIcon(L.icon(feature.properties.icon));
+                            }
+                        });
+	            }
+	        }
+	    })
+
+	    $('#feature-modal').modal('show');
+
+	    return false;
+	}
+
+	function returnGeoJSON(array) {
 		var collection = {
 				"type": "FeatureCollection",
 				"features": []
