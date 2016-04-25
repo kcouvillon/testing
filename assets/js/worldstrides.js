@@ -48,10 +48,6 @@
         jQuery(this).toggleClass('select-state');
     });
 
-    //jQuery('.btn-leadership').click(function(){
-    //   jQuery(this).toggleClass('select-state');
-    //});
-
 })(jQuery,window);
 
 ( function( $, window, undefined ) {
