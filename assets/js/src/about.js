@@ -18,6 +18,11 @@
         jQuery('#programs-regions-bios').hide(1000);
         jQuery('#support-bios').hide(1000);
         jQuery('#organization-bios').show(1000);
+        
+        //Change button to "Selected" state
+        jQuery(this).toggleClass('select-state');
+        jQuery('#group2').removeClass('select-state');
+        jQuery('#group3').removeClass('select-state');
     });
 
     jQuery('#group2').click(function(){
@@ -25,6 +30,11 @@
         jQuery('#organization-bios').hide(1000);
         jQuery('#support-bios').hide(1000);
         jQuery('#programs-regions-bios').show(1000);
+
+        //Change button to "Selected" state
+        jQuery('#group1').removeClass('select-state');
+        jQuery(this).toggleClass('select-state');
+        jQuery('#group3').removeClass('select-state');
     });
 
     jQuery('#group3').click(function(){
@@ -32,6 +42,11 @@
         jQuery('#organization-bios').hide(1000);
         jQuery('#programs-regions-bios').hide(1000);
         jQuery('#support-bios').show(1000);
+
+        //Change button to "Selected" state
+        jQuery('#group1').removeClass('select-state');
+        jQuery('#group2').removeClass('select-state');
+        jQuery(this).toggleClass('select-state');
     });
 
 })(jQuery,window);

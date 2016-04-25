@@ -19,14 +19,14 @@ get_header(); ?>
 
             <section class="section-content leadership-content">
                 <?php //Add 3 columns that will ultimately be each "Group" bucket selection ?>
-                <div class="col-md-4" style="background:lightgrey; text-align: center">
-                    <div id="group1">Organization</div>
+                <div class="col-md-4" style="text-align: center">
+                    <div id="group1" class="btn btn-primary btn-leadership">Organization</div>
                 </div>
-                <div class="col-md-4" style="background:lightblue; text-align: center">
-                    <div id="group2">Programs and Regions</div>
+                <div class="col-md-4" style="text-align: center">
+                    <div id="group2" class="btn btn-primary btn-leadership">Programs and Regions</div>
                 </div>
-                <div class="col-md-4" style="background:lightcyan; text-align: center">
-                    <div id="group3">Traveler Support</div>
+                <div class="col-md-4" style="text-align: center">
+                    <div id="group3" class="btn btn-primary btn-leadership">Traveler Support</div>
                 </div>
             </section>
 
