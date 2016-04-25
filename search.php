@@ -19,33 +19,54 @@ if ( 'post' == $post_type ) {
  
 ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
 <script type="text/javascript">
 var pageNum = 1;
 
-$(document).ready(function() {
-    $(".pr-review-wrap").remove();
-    $(".pr-contents").remove();
-    $(".pr-review-sort").remove();
-    $(".pr-snapshot-consensus").remove();
-    $('[id=pr-snapshot-histogram]').remove();
-    $('div.pr-review-engine-max-width-560px').removeClass('pr-review-engine-max-width-560px'); 
+jQuery(document).ready(function() {
+    jQuery(".pr-review-wrap").remove();
+    jQuery(".pr-contents").remove();
+    jQuery(".pr-review-sort").remove();
+    jQuery(".pr-snapshot-consensus").remove();
+    jQuery('[id=pr-snapshot-histogram]').remove();
+    jQuery('div.pr-review-engine-max-width-560px').removeClass('pr-review-engine-max-width-560px'); 
 
 });
 
-    function pager(page) {
-        pageNum = page;
-        //$.blockUI( { message: "Searching..."} );
-	    jQuery.ajax({
-		    url : "#",
-		    type : 'post',
-            data: {"pager": page},
-		    success : function( response ) {
-			    jQuery('#page').html( response );
-                //$.unblockUI;
-		    }
+	function DoBlockUI(msg) {
+	    jQuery.blockUI({
+	        css: {
+	            border: 'none',
+	            padding: '25px',
+	            fontSize: '20pt',
+	            backgroundColor: '#000',
+	            '-webkit-border-radius': '10px',
+	            '-moz-border-radius': '10px',
+	            'border-radius': '10px',
+	            opacity: .7,
+	            color: '#fff'
+	        },
+	        message: msg
 	    });
-    }
+	}
+
+	function pager(page) {
+	    pageNum = page;
+	    DoBlockUI('Loading results...');
+	    jQuery.ajax({
+	        url: "#",
+	        type: 'post',
+	        data: { "pager": page },
+	        success: function (response) {
+	            jQuery('.search-wrap').html(jQuery(response).find('.search-wrap').html());
+	            jQuery.unblockUI();
+	        },
+	        error: function (jqXHR, textStatus, errorThrown) {
+	            jQuery.unblockUI();
+	            console.log(textStatus, errorThrown);
+	        }
+	    });
+	}
 
 </script>
 
