@@ -370,9 +370,17 @@ add_filter( 'wpseo_opengraph_author_facebook', 'ws_seo_og_filter_facebook_author
  * @param $template
  *
  * @return mixed
+ *
+ * WARNING - Filter will override searches pre-post (DLS)
  */
 function ws_filter_endpoints( $template ) {
-	$filter_types = array( 'destination', 'interest', 'traveler' );
+	global $wp_query;
+  if (empty($wp_query->query_vars['s'])) {
+    $filter_types = array( 'destination', 'interest', 'traveler' );
+  } else {
+    $filter_types = array( 'traveler' );
+  }
+  
 	$post_type    = get_post_type();
 
 	if ( ! in_array( $post_type, $filter_types ) ) {
@@ -381,6 +389,8 @@ function ws_filter_endpoints( $template ) {
 
 	return get_stylesheet_directory() . '/single-filter-endpoint.php';
 }
+
+
 add_filter( 'template_include', 'ws_filter_endpoints' );
 
 
@@ -838,7 +848,7 @@ function ws_custom_search(){
     global $wpdb,$wp_query;
 
     if (!empty($wp_query->query_vars['s'])) {
-        //message_box("search available");
+        //message_box("search started");
         $qry = ws_custom_search_query("search");
         $row = $wpdb->get_results( $qry );
         wp_reset_query();
@@ -1081,7 +1091,21 @@ function get_itinerary_collection($postid){
     return $collectionid;
 }
 
+//message box
 function message_box($message){
     echo '<script>alert("' . $message . '");</script>';
 }
+
+//search filter exclusions override
+function SearchFilter($query) {
+    if ($query->is_search) 
+    {
+        //$query->set('post_type', 'destination');
+        //$query->exclude_from_search('post_type', 'destination');
+        //message_box("Pre Post");
+    }
+        return $query;
+}
+
+//add_filter('pre_get_posts','SearchFilter'); //troubleshooting pre_post redirects
 
