@@ -8977,7 +8977,11 @@ section:after {
 
 .entry-position {
   margin-bottom: 1em;
-  display: block; }
+  display: block;
+  font-size: .95em; }
+
+.leader-name {
+  font-size: 1.675em !important; }
 
 .leadership-content p {
   max-width: 670px; }
@@ -9066,10 +9070,11 @@ section:after {
   padding-left: 15px; }
 
 .bio-content {
-  padding-right: 2em; }
+  padding-right: 2em;
+  font-size: .95em; }
 
 .btn-leadership {
-  width: 75%;
+  width: 85%;
   min-height: 50px;
   line-height: 35px;
   margin-top: .5em;
@@ -9078,6 +9083,9 @@ section:after {
 .select-state {
   background-color: #E17604;
   border-color: #E17604; }
+
+.more-link {
+  font-size: .95em; }
 
 .contact-wrap {
   position: relative; }
