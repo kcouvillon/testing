@@ -47,4 +47,7 @@
 			.removeClass('visible');
 	});
 
- } )( jQuery );
+
+
+ })(jQuery);
+

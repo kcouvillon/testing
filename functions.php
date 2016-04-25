@@ -960,25 +960,47 @@ function get_pager(){
     $prev_page = $current_page - 1;
     $next_page = $current_page + 1;
 
-    if ($current_page <> ""){
-        $pager_links = "<a href='#' id='pager' onclick='pager($prev_page);' title='Prev'> << </a>";
+    if ($current_page <> "1"){
+        $pager_links = "<a href='#' id='pager' onclick='pager($prev_page);' title='Prev'> << Previous </a>";
     } 
 
+    if($current_page > 2 && ($current_page - 2) > 1) {
+        $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($page_num);'> $page_num</a>";
+        if ($current_page != 4) {
+            $pager_links = $pager_links . " ... ";
+        }
+    }
     while ( $page_num < $max_pages + 1)
     {
-        if($page_num == $current_page)
+        if(($page_num >= ($current_page - 2)) && ($page_num <= ($current_page + 2)))
         {
-            $pager_links = $pager_links . " $page_num";
+            if($page_num == $current_page)
+            {
+                $pager_links = $pager_links . " $page_num";
+            }
+            else
+            {
+                $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($page_num);'> $page_num</a>";
+            }
         }
-        else
-        {
-            $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($page_num);'> $page_num</a>";
-        }
+
         $page_num ++;
     }
 
+    if($current_page < $max_pages) {
+        $page_num --;
+        if ($current_page < ($max_pages - 2)) {
+            if ($current_page != ($max_pages  - 3)) {
+                $pager_links = $pager_links . " ... ";
+            }
+            $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($page_num);'> $page_num</a>";
+        }
+
+        
+    }
+
     if ($current_page <> $max_pages){
-        $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($next_page);' title='Next'> >> </a>";
+        $pager_links = $pager_links . "<a href='#' id='pager' onclick='pager($next_page);' title='Next'> Next >> </a>";
     } 
 
     return $pager_links;
