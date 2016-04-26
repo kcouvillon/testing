@@ -381,7 +381,7 @@ function ws_filter_endpoints( $template ) {
     $filter_types = array( 'traveler' );
   }
   
-	$post_type    = get_post_type();
+	$post_type = get_post_type();
 
 	if ( ! in_array( $post_type, $filter_types ) ) {
 		return $template;
