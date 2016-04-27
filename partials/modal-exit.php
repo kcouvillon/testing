@@ -20,3 +20,18 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        ouibounce(false,  {
+            aggressive: true,
+            delay: 500,
+            callback: function() {
+                jQuery('#exit-modal').modal('show');
+                console.log("fired");
+            }
+        });
+    });
+
+</script>
