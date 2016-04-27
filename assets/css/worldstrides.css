@@ -6430,8 +6430,6 @@ img {
     margin-left: auto;
     margin-right: auto;
     padding: 0 5vw; }
-  .wp-caption .wp-caption-text {
-    margin: 0.8075em 0; }
 
 .wp-caption-text {
   text-align: center; }
@@ -7428,7 +7426,9 @@ a.text-color-link {
   max-width: 670px;
   margin-right: 1.9607843137%; }
   .blog .entry-content *:first-child, .single .entry-content *:first-child {
-    margin-top: 0 !important; }
+    margin-top: 0 !important;
+    padding: 0;
+    width: 100%; }
 
 .blog-pager {
   width: 100%;
@@ -7625,6 +7625,9 @@ a.text-color-link {
   .blog-single-meta .entry-author {
     margin: 0;
     margin-bottom: 1em; }
+
+blockquote {
+  font-size: 18px; }
 
 .postcard .primary-section {
   display: block;
@@ -10233,6 +10236,9 @@ article.open > header.entry-header > a {
       @media screen and (min-width: 768px) {
         .explore-results .tile .tile-content a {
           color: #FFF; } }
+    @media screen and (max-width: 1200px) {
+      .explore-results .tile .tile-content {
+        top: 40%; } }
   .explore-results .tile ul.meta {
     margin: 0 0 0.5em;
     line-height: 1em; }
@@ -10243,13 +10249,13 @@ article.open > header.entry-header > a {
         .explore-results .tile ul.meta li {
           color: #FFF; } }
   .explore-results .tile .tile-title {
-    font-weight: 300;
+    font-weight: 600;
     font-size: 1em;
     margin: 0;
     color: #1a1a1a; }
     @media screen and (min-width: 768px) {
       .explore-results .tile .tile-title {
-        font-size: 29px;
+        font-size: 24px;
         color: #FFF; } }
 
 .explore-results .tile.ng-enter,
@@ -10960,6 +10966,12 @@ article.open > header.entry-header > a {
   top: 50%;
   left: 1em;
   margin-right: 1em; }
+  @media screen and (max-width: 768px) {
+    .tile-content {
+      top: 45%; } }
+  @media screen and (max-width: 600px) {
+    .tile-content {
+      top: 45%; } }
   @media (min-width: 960px) {
     .tile-content {
       left: 1.5em;
@@ -10998,8 +11010,26 @@ article.open > header.entry-header > a {
   cursor: pointer;
   font-size: 24px;
   font-weight: 600; }
+  @media screen and (max-width: 1200px) {
+    .tile-title {
+      font-size: 1.7vw; } }
+  @media screen and (max-width: 960px) {
+    .tile-title {
+      font-size: 2.7vw; } }
+  @media screen and (max-width: 768px) {
+    .tile-title {
+      font-size: 2.7vw; } }
+  @media screen and (max-width: 600px) {
+    .tile-title {
+      font-size: 4.7vw; } }
   .tile:hover .tile-title {
     color: #fb901d; }
+
+.resource > .tile-content {
+  top: 35%; }
+  @media screen and (max-width: 768px) {
+    .resource > .tile-content {
+      top: 45%; } }
 
 .list-tag-no-link {
   color: #fff;

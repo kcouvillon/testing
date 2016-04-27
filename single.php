@@ -47,7 +47,9 @@ $blog_type = WS_Helpers::blog_type( $post->ID );
 							<span><?php echo get_the_title(); ?></span>
 						</nav>
 						<h1 itemprop="headline"><?php echo get_the_title(); ?></h1>
+						<?php if ( $post->post_type != 'post' ) : ?>
 						<span itemprop="description"><?php echo get_the_excerpt(); ?></span>
+						<?php endif; ?>
 					</div>
 				</div>
 				<?php endif; ?>
