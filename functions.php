@@ -503,6 +503,28 @@ function ws_add_modal_welcome() {
 //	add_action( 'wp_footer', 'ws_add_modal_welcome', 10 );
 //}
 
+//function ws_dc_modal(){
+	//require_once( WS_PATH . 'partials/modal-DC.php');
+//}
+
+function dc_modal_triggers(){
+	global $post;
+	$post_type = get_post_type($post);
+	$terms = wp_get_post_terms($post->ID,'product-line');
+	$discoveries_found = false;
+	foreach($terms as $term){
+		if ($term->name == 'Discoveries'){
+			$discoveries_found = true;
+		}
+	}
+	echo $post_type . " and " . $discoveries_found;
+	if ($post_type == 'collection' && $discoveries_found){
+		require_once( WS_PATH . 'partials/modal-DC.php');
+	}
+}
+//check_current_post();
+//add_action( 'wp_footer', 'ws_dc_modal', 10);
+add_action('wp_footer','dc_modal_triggers', 10);
 
 /**
  * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin
