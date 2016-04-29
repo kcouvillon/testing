@@ -134,6 +134,7 @@
 		@include susy-media($screen-sm) {
 		}
 	}
+	/*
 	.mktoButtonRow {
 		.mktoButtonWrap {
 			margin: 0 auto !important;
@@ -146,7 +147,8 @@
 				font-family: $font_main !important;
 			}
 		}
-	}
+
+	}*/
 }
 
 // Hard Overrides for Zipcode styles
@@ -202,4 +204,19 @@ div.mktoFormRow * #companyZipcode {
 // 	}
 // }
 
+
+.mktoButtonRow {
+	margin-left: 40% !important;
+}
+
+.mktoButtonWrap {
+	margin-left: 0 !important;
+}
+
+.mktoButton {
+	background: #FB901D !important;
+	border: none !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+}
 
