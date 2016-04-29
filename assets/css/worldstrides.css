@@ -5698,6 +5698,12 @@ div.mktoFormRow * #companyZipcode {
   box-shadow: none !important;
   text-shadow: none !important; }
 
+#Grades__c, #Subject__c, #areyouCurrentlyScheduledforaWorldStridestrip {
+  background-color: #ffffff;
+  border: #AAA;
+  border-style: solid;
+  border-width: 1px; }
+
 /*! jQuery UI - v1.11.4 - 2015-09-03
 * http://jqueryui.com
 * Includes: core.css, autocomplete.css, menu.css
