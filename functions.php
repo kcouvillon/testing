@@ -391,7 +391,7 @@ function ws_filter_endpoints( $template ) {
 }
 
 
-//add_filter( 'template_include', 'ws_filter_endpoints' );
+add_filter( 'template_include', 'ws_filter_endpoints' );
 
 
 /**
@@ -1077,7 +1077,7 @@ function get_pr_page_id($postid){
         //print 'POSTID: ' . $postid . '<br><p>';
         //print 'URL: ' . $post_url . '<br><p>';
 
-        foreach ( $powerreviews_pairs_local as $powerreviews_pair ) {
+        foreach ( $powerreviews_pairs as $powerreviews_pair ) {
 	        if( $post_url === $powerreviews_pair['uri'] ) {
 		        $pr_page_id = $powerreviews_pair['pr_page_id'];
                 //print 'MATCH: ' . $pr_page_id . '<br>';
