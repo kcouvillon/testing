@@ -125,7 +125,7 @@ get_header(); ?>
 
 						</ul>
 
-					<a href="<?php echo esc_url( home_url( '/request-info/' ) ); ?>" class="btn btn-primary subnav-cta hide-print">Request Info</a>
+					<a data-toggle="collapse" href="#collapseForm" class="btn btn-primary subnav-cta hide-print">Request Info</a>
 				</div>
 			</nav>
 
@@ -137,6 +137,12 @@ get_header(); ?>
 			<?php endif; ?>
 
 		</section>
+
+        <div class="collapse" id="collapseForm">
+		    <section class="clearfix ws-container learn-more hide-print">
+				    <?php get_template_part('partials/form','universal'); ?>
+		    </section>
+        </div>
 
 		<?php $section_num = 1; // set first section number ?>
 
@@ -689,4 +695,5 @@ get_header(); ?>
 	</main>
 </div>
 
-<?php get_footer();
+<?php get_footer(); ?>
+
