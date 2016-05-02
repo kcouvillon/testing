@@ -7,7 +7,7 @@
 
 if( !isset( $_COOKIE['ws_dc'] ) ) : ?>
 
-<div id="dc-modal" class="modal fade" tabindex="-1" style="margin-top: 75px">
+<div id="dc-modal" class="modal fade" tabindex="-1" style="margin-top: 75px; z-index: 9000">
     <div class="modal-dialog">
         <div class="modal-content dc-modal-content" style="border: black !important; border-style: solid !important; border-width: 5px !important;">
             <div class="modal-header" style="background: url('https://dev.worldstrides.com/wp-content/uploads/2016/04/dcpic_notext.jpg'); background-repeat: round; width:100%;">
@@ -34,6 +34,13 @@ if( !isset( $_COOKIE['ws_dc'] ) ) : ?>
         if (!Cookies.get('ws_dc')){
             Cookies.set('ws_dc', '1', { expires: 1 });
         }
+
+        setTimeout(function(){
+            //Centering Agree to terms field - Need to delay since modal needs to pop up
+            jQuery('.mktoFieldDescriptor').eq(7).addClass('mkto-center');
+        },1200);
+
+        
     });
 
 </script>

@@ -5689,8 +5689,43 @@ div.mktoFormRow * #companyZipcode {
 .mktoButtonRow {
   margin-left: 40% !important; }
 
+@media screen and (max-width: 768px) {
+  .mktoButtonRow {
+    margin-left: 27% !important; } }
+
+.mktoField {
+  width: 300px !important; }
+
+#contestConsenttoTC {
+  float: left !important;
+  width: 30px !important; }
+
 .mktoButtonWrap {
   margin-left: 0 !important; }
+
+[for=contestConsenttoTC] {
+  float: right !important;
+  width: 180px !important;
+  font-weight: normal !important; }
+
+.mkto-center {
+  margin-left: 30% !important; }
+
+.mktoCheckboxList {
+  width: 40px !important; }
+
+@media screen and (max-width: 768px) {
+  .mkto-center {
+    margin-left: 8% !important;
+    width: 100% !important; }
+  [for=contestConsenttoTC] {
+    float: right !important;
+    width: 84% !important;
+    font-weight: normal !important; }
+  [for=contestConsenttoTC] > a {
+    padding-left: 0 !important; }
+  .mktoField {
+    width: 100% !important; } }
 
 .mktoButton {
   background: #FB901D !important;
