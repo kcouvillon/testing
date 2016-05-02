@@ -37,7 +37,7 @@ if( !isset( $_COOKIE['ws_dc'] ) ) : ?>
 
         setTimeout(function(){
             //Centering Agree to terms field - Need to delay since modal needs to pop up
-            jQuery('.mktoFieldDescriptor').eq(7).addClass('mkto-center');
+            jQuery('.mktoFieldDescriptor').eq(10).addClass('mkto-center');
         },1200);
 
         

@@ -5733,7 +5733,7 @@ div.mktoFormRow * #companyZipcode {
   box-shadow: none !important;
   text-shadow: none !important; }
 
-#Grades__c, #Subject__c, #areyouCurrentlyScheduledforaWorldStridestrip {
+#Grades__c, #Subject__c, #areyouCurrentlyScheduledforaWorldStridestrip, #State {
   background-color: #ffffff;
   border: #AAA;
   border-style: solid;
