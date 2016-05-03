@@ -98,7 +98,7 @@ get_header(); ?>
 							<?php endif; ?>
 						</ul>
 						<?php if ( $register_now && $trip_id ) : ?>
-							<form method="post" action="http://olr.worldstrides.net/scripts/cgiip.exe/RegisterOnline/OLRPassporttotravel.htm">
+							<form method="post" action="http://olr.worldstrides.net/scripts/cgiip.exe/RegisterOnline/OLRPassporttotravel.htm" target="_blank">
 								<input id="hidden_trip_id" type="hidden" name="tid" value="<?php echo (int) $trip_id; ?>">
 								<input id="cs_register_button" type="submit" class="btn btn-primary subnav-cta hide-print" value="Register Now" >
 							</form>
@@ -214,7 +214,9 @@ get_header(); ?>
 			<?php $section_num = 1; // set first section number ?>
 
 			<?php if ( ! empty ( $itinerary_highlights ) ) : ?>
+
 				<section class="ws-container custom-page-itinerary-highlights">
+					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<h3>Itinerary Highlights</h3>
 
 					<?php echo apply_filters( 'the_content', $itinerary_highlights ); ?>
@@ -239,7 +241,8 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $custom_content ) ) : ?>
-				<section class="ws-container custom-page-content">
+				<section class="ws-container custom-page-content" >
+					<a id="section-<?php echo $section_num; $section_num++; ?>"></a>
 					<h3><?php echo apply_filters( 'the_title ', $custom_content_title ); ?></h3>
 
 					<?php if ( ! empty( $custom_content ) ) : ?>
@@ -249,8 +252,18 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty ( $faculty ) ) : ?>
+				<?php
+					$faculty_title = get_post_meta( $post->ID, 'faculty_title', true );
+				?>
 			<section class="ws-container custom-page-faculty">
-				<h3>Meet the Faculty</h3>
+				<a id="section-<?php echo $section_num; $section_num++;?>"></a>
+				<h3><?php if ($faculty_title != ''){
+						echo $faculty_title;
+					}
+					else {
+						echo "Meet the Faculty";
+					}?>
+				</h3>
 				<?php foreach ( $faculty as $faculty_member ) : ?>
 					<div class="faculty-member">
 						<?php

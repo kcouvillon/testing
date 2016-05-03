@@ -162,6 +162,17 @@ exploreApp.directive('toggleFilterMenu', ['ChildMenus', function(ChildMenus){
 	};
 }]);
 
+exploreApp.directive('backImg', function () {
+    return function (scope, element, attrs) {
+        attrs.$observe('backImg', function (value) {
+            element.css({
+                'background-image': 'url(' + value + ')',
+                'background-size': 'cover'
+            });
+        });
+    };
+});
+
 exploreApp.service('Terms', function($q, $http){
 
 	var _this = this;
@@ -269,7 +280,7 @@ var ExploreController = function(Terms, Posts, ChildMenus, $route){
 			angular.element(window).scrollTop( filtersTop );
 		}
 	};
-	ctrl.clearFilters = function(){
+	ctrl.clearFilters = function () {
 		ChildMenus.active.interest = 'interests-parent';
 		ChildMenus.active.destination = 'destinations-parent';
 		ChildMenus.active.destinationChild = '';
@@ -278,7 +289,8 @@ var ExploreController = function(Terms, Posts, ChildMenus, $route){
 };
 
 ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
-	var params = angular.copy(this.$route.current.params),
+    var ctrl = this, query;
+    var params = angular.copy(this.$route.current.params),
 		keys = Object.keys(params),
 		filterGroupArray,
 		url = '';
@@ -290,10 +302,13 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 		
 		filterGroupArray = params[filterGroup].split(',');
 
-		if ( method == 'add' ){
+		if (method == 'add') {
+
+		    
+
 			if ( params[filterGroup].indexOf('all-') > -1 ) {
 				params[filterGroup] = slug;
-			} else if ( params[filterGroup].indexOf(slug) > -1 ) {
+			} else if (ctrl.hasActiveFilter(slug, filterGroup)) {
 				params[filterGroup] = params[filterGroup];
 			} else {
 				params[filterGroup] += ',' + slug;
@@ -306,6 +321,16 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 			} else {
 				params[filterGroup] = 'all-' + filterGroup;
 			}
+		} else if (method == 'subtractall') {
+		    
+		    if (filterGroupArray.length > 1) {
+		        filterGroupArray.splice(filterGroupArray.indexOf(slug), 1);
+		        params[filterGroup] = filterGroupArray.join(',');
+		    } else {
+		        params[filterGroup] = 'all-' + filterGroup;
+		    }
+            // because we're subtracting all, build other params above but then force in all-whatever to the appropriate param
+		    params[filterGroup] = 'all-' + filterGroup;
 		}
 
 		if ( params[keys[0]] == 'all-'+keys[0] &&
@@ -329,7 +354,8 @@ ExploreController.prototype.getUrl = function( slug, filterGroup, method ) {
 	return url;
 };
 
-ExploreController.prototype.getQuery = function(){
+ExploreController.prototype.getQuery = function () {
+    
 	var route = this.$route.current.params,
 		queryArray, queryString;
 
@@ -376,6 +402,30 @@ ExploreController.prototype.getActiveFilters = function(){
 	} else {
 		return false;
 	}
+};
+
+ExploreController.prototype.hasActiveFilter = function (slug, filterGroup) {
+    var route = this.$route.current.params,
+        result = false;
+
+    if (Object.keys(route).length > 0) {
+
+        angular.forEach(route, function (value, key) {
+            if (value !== 'all-destinations' && value !== 'all-interests' && value !== 'all-travelers') {
+                value = value.split(',');
+                angular.forEach(value, function (term) {
+                    if (filterGroup == key && slug == term) {
+                        result = true;
+                    }
+                });
+            }
+        });
+
+        return result;
+
+    } else {
+        return false;
+    }
 };
 
 ExploreController.prototype.toggleLimit = function( source, min, max ) {
