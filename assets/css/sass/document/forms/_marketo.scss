@@ -134,6 +134,7 @@
 		@include susy-media($screen-sm) {
 		}
 	}
+	/*
 	.mktoButtonRow {
 		.mktoButtonWrap {
 			margin: 0 auto !important;
@@ -146,7 +147,8 @@
 				font-family: $font_main !important;
 			}
 		}
-	}
+
+	}*/
 }
 
 // Hard Overrides for Zipcode styles
@@ -202,4 +204,79 @@ div.mktoFormRow * #companyZipcode {
 // 	}
 // }
 
+//Washington DC Popup CSS rules to over-write Marketo
+
+.mktoButtonRow {
+	margin-left: 40% !important;
+}
+
+@media screen and (max-width: 768px){
+	.mktoButtonRow {
+		margin-left: 27% !important;
+	}
+}
+
+.mktoField{
+	width: 300px !important;
+}
+
+#contestConsenttoTC {
+	float: left !important;
+	width: 30px !important;
+}
+
+.mktoButtonWrap {
+	margin-left: 0 !important;
+}
+
+[for=contestConsenttoTC] {
+	float: right !important;
+	width: 200px !important;
+	font-weight: normal !important;
+}
+
+.mkto-center {
+	margin-left: 30% !important;
+}
+
+.mktoCheckboxList {
+	width: 40px !important;
+}
+
+@media screen and (max-width: 768px){
+	.mkto-center {
+	 	margin-left: 8% !important;
+ 		width: 100% !important;
+	}
+
+	[for=contestConsenttoTC] {
+		float: right !important;
+		width: 84% !important;
+		font-weight: normal !important;
+		//margin-left: 45% !important;
+	}
+
+	[for=contestConsenttoTC] > a {
+		padding-left: 0 !important;
+	}
+
+	.mktoField {
+		width: 100% !important;
+	}
+}
+
+
+.mktoButton {
+	background: #FB901D !important;
+	border: none !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+}
+
+#Grades__c, #Subject__c, #areyouCurrentlyScheduledforaWorldStridestrip , #State{
+	background-color: #ffffff;
+	border: #AAA;
+	border-style:solid;
+	border-width:1px;
+}
 
