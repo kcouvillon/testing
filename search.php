@@ -21,52 +21,56 @@ if ( 'post' == $post_type ) {
 
 
 <script type="text/javascript">
-var pageNum = 1;
+  var pageNum = 1;
 
-jQuery(document).ready(function() {
+  jQuery(document).ready(function() {
+    ReviewFormat();
+  });
+
+  function ReviewFormat(){
     jQuery(".pr-review-wrap").remove();
     jQuery(".pr-contents").remove();
     jQuery(".pr-review-sort").remove();
     jQuery(".pr-snapshot-consensus").remove();
     jQuery('[id=pr-snapshot-histogram]').remove();
-    jQuery('div.pr-review-engine-max-width-560px').removeClass('pr-review-engine-max-width-560px'); 
+    jQuery('div.pr-review-engine-max-width-560px').removeClass('pr-review-engine-max-width-560px');
+  }
 
-});
+  function DoBlockUI(msg) {
+  jQuery.blockUI({
+  css: {
+  border: 'none',
+  padding: '25px',
+  fontSize: '20pt',
+  backgroundColor: '#000',
+  '-webkit-border-radius': '10px',
+  '-moz-border-radius': '10px',
+  'border-radius': '10px',
+  opacity: .7,
+  color: '#fff'
+  },
+  message: msg
+  });
+  }
 
-	function DoBlockUI(msg) {
-	    jQuery.blockUI({
-	        css: {
-	            border: 'none',
-	            padding: '25px',
-	            fontSize: '20pt',
-	            backgroundColor: '#000',
-	            '-webkit-border-radius': '10px',
-	            '-moz-border-radius': '10px',
-	            'border-radius': '10px',
-	            opacity: .7,
-	            color: '#fff'
-	        },
-	        message: msg
-	    });
-	}
-
-	function pager(page) {
-	    pageNum = page;
-	    DoBlockUI('Loading results...');
-	    jQuery.ajax({
-	        url: "#",
-	        type: 'post',
-	        data: { "pager": page },
-	        success: function (response) {
-	            jQuery('.search-wrap').html(jQuery(response).find('.search-wrap').html());
-	            jQuery.unblockUI();
-	        },
-	        error: function (jqXHR, textStatus, errorThrown) {
-	            jQuery.unblockUI();
-	            console.log(textStatus, errorThrown);
-	        }
-	    });
-	}
+  function pager(page) {
+  pageNum = page;
+  DoBlockUI('Loading results...');
+    jQuery.ajax({
+    url: "#",
+    type: 'post',
+    data: { "pager": page },
+    success: function (response) {
+      jQuery('.search-wrap').html(jQuery(response).find('.search-wrap').html());
+      jQuery.unblockUI();
+      ReviewFormat();
+    },
+      error: function (jqXHR, textStatus, errorThrown) {
+      jQuery.unblockUI();
+      console.log(textStatus, errorThrown);
+    }
+    });
+  }
 
 </script>
 
