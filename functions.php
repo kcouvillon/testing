@@ -937,9 +937,9 @@ function get_current_page(){
     //    $currentpage = 1;
     //}
 
-    if (!empty($wp_query->query_vars['pager']))
+    if (!empty($_POST['pager']))
     {
-      $currentpage = $wp_query->query_vars['pager'];
+      $currentpage = $_POST['pager'];
     }
     else
     {
