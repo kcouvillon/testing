@@ -931,7 +931,7 @@ function ws_get_country($postid){
 // Pagination
 function get_current_page(){
     global $wp_query, $search_currentpage;
-    $currentpage = $_POST['pager']; // $wp_query->query_vars['paged']; //$currentpage = $_GET['paged']; 
+    $currentpage = $_POST['pagerX']; // $wp_query->query_vars['paged']; //$currentpage = $_GET['paged']; 
 
     if ($currentpage == '') { 
         $currentpage = 1;
@@ -998,7 +998,7 @@ function get_pager(){
     $next_page = $current_page + 1;
 
     if ($current_page <> "1"){
-        $pager_links = "<a href='#' id='pagerx' onclick='pager($prev_page);' title='Prev'> << Previous </a>";
+        $pager_links = "<a href='#' id='pager' onclick='pager($prev_page);' title='Prev'> << Previous </a>";
     } 
 
     if($current_page > 2 && ($current_page - 2) > 1) {
