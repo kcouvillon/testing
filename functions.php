@@ -931,7 +931,8 @@ function ws_get_country($postid){
 // Pagination
 function get_current_page(){
     global $wp_query, $search_currentpage;
-    $currentpage = $_POST['pagerX']; // $wp_query->query_vars['paged']; //$currentpage = $_GET['paged']; 
+    //$currentpage = $_POST['pager']; // $wp_query->query_vars['paged']; //$currentpage = $_GET['paged']; 
+    $currentpage = $wp_query->query_vars['pager'];
 
     if ($currentpage == '') { 
         $currentpage = 1;
