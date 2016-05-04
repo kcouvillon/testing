@@ -218,6 +218,15 @@ class WS_Metaboxes_Custom_Pages {
 			'object_types' => array( 'custom-page', ),
 		) );
 
+		//Add Customizable Faculty Title
+		$cmb_group->add_field( array(
+			'name' => 'Faculty Section Title',
+			'id' => 'faculty_title',
+			'type' => 'text_medium',
+			'default' => 'Meet the Faculty',
+			'description' => 'Override the default faculty title'
+		) );
+
 		// $group_field_id is the field id string, so in this case: $prefix . 'demo'
 		$group_field_id = $cmb_group->add_field( array(
 			'id'          => $prefix . 'list',

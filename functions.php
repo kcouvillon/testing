@@ -514,6 +514,43 @@ function ws_add_modal_welcome() {
 //}
 
 /**
+ * Adds modal for our Washington DC Contest 
+ */
+
+function dc_modal_triggers(){
+	global $post;
+	//Get post type of current page
+	$post_type = get_post_type($post);
+	
+	//Get product line term of current page
+	$terms = wp_get_post_terms($post->ID,'product-line');
+	
+	//Initialize test variables
+	$discoveries_found = false;
+	$educator_page_found = false;
+	
+	//Test to see if page is tagged with "Discoveries" as product line
+	foreach($terms as $term){
+		if ($term->name == 'Discoveries'){
+			$discoveries_found = true;
+		}
+	}
+	//Test to see if the page is "For Educators"
+	if (is_page('for-educators')){
+		$educator_page_found = true;
+
+	}
+	//For testing purposes
+	//echo $post_type . " and " . $discoveries_found . " and " . $educator_page_found;
+	
+	if (($post_type == 'collection' && $discoveries_found) || $educator_page_found){
+		require_once( WS_PATH . 'partials/modal-DC.php');
+	}
+}
+
+add_action('wp_footer','dc_modal_triggers', 10);
+
+/**
  * Extend the number of redirects we can create dynamically via Safe Redirect Mgr plugin
  */
 add_filter( 'srm_max_redirects', 'dbx_srm_max_redirects' );

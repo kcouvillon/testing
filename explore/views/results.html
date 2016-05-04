@@ -1,7 +1,7 @@
 <div class="explore-utility">
 		<div class="ws-container">
 			<span class="search-by">Select filters to narrow your search</span>
-			<a class="clear-all" href="#/" ng-click="ctrl.clearFilters()" ng-show="ctrl.activeFilters" >Clear filters</a>
+            <a class="clear-all" href="#/" ng-click="ctrl.clearFilters()" ng-show="ctrl.activeFilters">Clear filters</a>
 		</div>
 	</div>
 
@@ -85,17 +85,25 @@
 							</li>
 
 							<li class="term">
-								<a filter-link="faith-based,interests" class="filter term-{{interest.slug}}">
-									<i class="icon icon-faith-based"></i>
-									Faith-based
-								</a>
+                                <a ng-if="!ctrl.hasActiveFilter('faith-based','interests')" filter-link="faith-based,interests" class="filter term-{{interest.slug}}">
+                                    <i class="icon icon-faith-based"></i>
+                                    Faith-based
+                                </a>
+                                <a ng-if="ctrl.hasActiveFilter('faith-based','interests')" class="filter disabled term-{{interest.slug}}">
+                                    <i class="icon icon-faith-based"></i>
+                                    Faith-based
+                                </a>
 							</li>
 
 							<li class="term">
-								<a filter-link="service,interests" class="filter term-{{interest.slug}}">
-									<i class="icon icon-service"></i>
-									Service
-								</a>
+                                <a ng-if="!ctrl.hasActiveFilter('service','interests')" filter-link="service,interests" class="filter term-{{interest.slug}}">
+                                    <i class="icon icon-service"></i>
+                                    Service
+                                </a>
+                                <a ng-if="ctrl.hasActiveFilter('service','interests')" class="filter disabled term-{{interest.slug}}">
+                                    <i class="icon icon-service"></i>
+                                    Service
+                                </a>
 							</li>
 
 						</ul>
@@ -112,10 +120,11 @@
 							</li>
 
 							<li ng-repeat="child in interest.children" class="child-term term">
-								<a filter-link="{{child.slug}},interests" class="filter term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
-							</li>
+                                <a ng-if="!ctrl.hasActiveFilter(child.slug,'interests')" filter-link="{{child.slug}},interests" class="filter term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
+                                <a ng-if="ctrl.hasActiveFilter(child.slug,'interests')" class="filter disabled term-{{child.slug}}" ng-bind-html="child.name">{{child.name}}</a>
 
-							<a ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to all Interests</a>
+							</li>
+                            <a filter-link="{{interest.slug}},interests,subtractall" ng-click="ctrl.showTermList('interest', 'interests-parent')" class="term-list-toggle">« Back to all Interests</a>
 						</ul>
 
 
@@ -158,7 +167,7 @@
 								<span class="destination-graphic">
  								<img src="{{ctrl.WS.theme}}/assets/images/map-{{destination.slug}}.png" alt="{{destination.name}}"/>
  							</span>
-								<a ng-click="ctrl.showTermList({destination: 'destinations-parent', destinationChild: ''})" class="term-list-toggle">« Back to all Continents</a>
+                                <a filter-link="{{destination.slug}},destinations,subtractall" ng-click="ctrl.showTermList({destination: 'destinations-parent', destinationChild: ''})" class="term-list-toggle">« Back to all Continents</a>
 							</li>
 							<li>
 								<ul class="terms terms-list list-unstyled clearfix" ng-class="{ visible: ctrl.activeChildMenus.destinationChild == 'continent-'+destination.slug }">
@@ -168,7 +177,8 @@
 												<span ng-bind-html="child.name"></span>
 												<i class="icon-arrow-right"></i>
 											</a>
-											<a ng-if="!child.children" filter-link="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
+                                            <a ng-if="!child.children && !ctrl.hasActiveFilter(child.slug,'destinations')" filter-link="{{child.slug}} ,destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
+                                            <a ng-if="!child.children && ctrl.hasActiveFilter(child.slug,'destinations')" class="filter disabled term-{{child.slug}}" ng-bind-html="child.name"></a>
 										</li>
 									</div>
 									<div class="column">
@@ -177,22 +187,25 @@
 												<span ng-bind-html="child.name"></span>
 												<i class="icon-arrow-right"></i>
 											</a>
-											<a ng-if="!child.children" filter-link="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
+                                            <a ng-if="!child.children && !ctrl.hasActiveFilter(child.slug,'destinations')" filter-link="{{child.slug}},destinations" class="filter term-{{child.slug}}" ng-bind-html="child.name"></a>
+                                            <a ng-if="!child.children && ctrl.hasActiveFilter(child.slug,'destinations')" class="filter disabled term-{{child.slug}}" ng-bind-html="child.name"></a>
 										</li>
 									</div>
 								</ul>
 								<ul ng-if="child.children" ng-repeat="child in destination.children" class="terms term-{{child.slug}} terms-list list-unstyled clearfix" ng-class="{ visible: ctrl.activeChildMenus.destinationChild == 'country-'+child.slug }">
 									<div class="column">
 										<li id="{{grandchild.slug}}" ng-repeat="grandchild in child.children" ng-if="$index <= child.children.length/2" class="child-term term">
-											<a filter-link="{{grandchild.slug}},destinations" class="filter term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
+                                            <a ng-if="!ctrl.hasActiveFilter(grandchild.slug,'destinations')" filter-link="{{grandchild.slug}},destinations" class="filter term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
+                                            <a ng-if="ctrl.hasActiveFilter(grandchild.slug,'destinations')" class="filter disabled term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
 										</li>
 									</div>
 									<div class="column">
 										<li id="{{grandchild.slug}}" ng-repeat="grandchild in child.children" ng-if="$index > child.children.length/2" class="child-term term">
-											<a filter-link="{{grandchild.slug}},destinations" class="filter term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
+                                            <a ng-if="!ctrl.hasActiveFilter(grandchild.slug,'destinations')" filter-link="{{grandchild.slug}},destinations" class="filter term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
 										</li>
 									</div>
 									<a ng-click="ctrl.showTermList('destinationChild', 'continent-'+destination.slug)" class="term-list-toggle">« Back to {{destination.name}}</a>
+                                    <a ng-if="ctrl.hasActiveFilter(grandchild.slug,'destinations')" class="filter disabled term-{{grandchild.slug}}" ng-bind-html="grandchild.name"></a>
 								</ul>
 							</li>
 						</ul>
@@ -206,12 +219,11 @@
 
 		<div scroll-target="#explore-results" scroll-offset="-81" class="smooth-scroll results-count visible" ng-hide="ctrl.loading" stick-to-bottom>
 			<div class="ws-container" ng-if="ctrl.isFeatured">
-				See Featured Collections &amp; Itineraries
+				See Featured Itineraries
 				<i class="icon icon-arrow-down"></i>
 			</div>
 			<div class="ws-container" ng-if="!ctrl.isFeatured">
-				See <ng-pluralize count="ctrl.collections.length" when="{'one':'1 Collection', 'other':'{} Collections'}"></ng-pluralize>
-				& <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize>
+				See <ng-pluralize count="ctrl.itineraries.length" when="{'one':'1 Itinerary', 'other':'{} Itineraries'}"></ng-pluralize>
 				<i class="icon icon-arrow-down"></i>
 			</div>
 		</div>
@@ -265,7 +277,7 @@
 			</header>
 			<div class="results clearfix">
 
-				<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
+				<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" back-img="{{ itinerary.featured_image }}" >
 					<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 						<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 					</a>
