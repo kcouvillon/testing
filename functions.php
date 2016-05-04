@@ -961,7 +961,7 @@ function get_pager(){
     $next_page = $current_page + 1;
 
     if ($current_page <> "1"){
-        $pager_links = "<a href='#' id='pager' onclick='pager($prev_page);' title='Prev'> << Previous </a>";
+        $pager_links = "<a href='#' id='pager2' onclick='pager($prev_page);' title='Prev'> << Previous </a>";
     } 
 
     if($current_page > 2 && ($current_page - 2) > 1) {
