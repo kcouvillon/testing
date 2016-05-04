@@ -932,10 +932,18 @@ function ws_get_country($postid){
 function get_current_page(){
     global $wp_query, $search_currentpage;
     //$currentpage = $_POST['pager']; // $wp_query->query_vars['paged']; //$currentpage = $_GET['paged']; 
-    $currentpage = $wp_query->query_vars['pager'];
+    
+    //if ($currentpage == '') { 
+    //    $currentpage = 1;
+    //}
 
-    if ($currentpage == '') { 
-        $currentpage = 1;
+    if (!empty($wp_query->query_vars['pager']))
+    {
+      $currentpage = $wp_query->query_vars['pager'];
+    }
+    else
+    {
+      $currentpage = 1;
     }
 
     //message_box($currentpage);
