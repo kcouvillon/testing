@@ -49,6 +49,11 @@
 			marginTop: ( $('.quick-access').css('display') == 'block' ) ? $('.quick-access').outerHeight() : 0
 		});
 
+		$('#btnRequestInfo').on('click', function () {
+		    $('#collapseForm').slideToggle('slow');
+		    $('#btnRequestInfo .toggleLabel').toggle();
+		});
+
 		setTimeout(function() {
 			$( '.resource-nav ul > li:first-child > a').trigger("click");
 		}, 1);
