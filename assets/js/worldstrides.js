@@ -1,6 +1,17 @@
-/*! WorldStrides - v0.1.0 - 2016-04-08
+/*! WorldStrides - v0.1.0 - 2016-05-02
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
+( function( $, window, undefined ) {
+
+    'use strict';
+
+    //Remove <br> tags from in between images and captions
+    $(document).ready(function(){
+       jQuery('figure > br').remove(); 
+    });
+    
+
+})(jQuery, window);
 ( function( $, window, undefined ) {
 
 	'use strict';
@@ -1085,7 +1096,7 @@
 		layer,
 		init_coords,
 		marker_data,
-		$slideshow, 
+		$slideshow,
 		$slideshow_images,
 		sizeInvalidated = false;
 
@@ -1129,10 +1140,10 @@
 
 				// Assign variables
 				init_coords = $('.tour-highlights').data('location'),
-				marker_data = $('#tour-highlights-data').data('highlights'),
-				$slideshow  = $('.tour-highlights-slider').cycle().on('cycle-before', cycleBefore ),
-				$slideshow_images = $slideshow.find('img').toArray();
-				
+					marker_data = $('#tour-highlights-data').data('highlights'),
+					$slideshow  = $('.tour-highlights-slider').cycle().on('cycle-before', cycleBefore ),
+					$slideshow_images = $slideshow.find('img').toArray();
+
 				if ( marker_data ) {
 
 					// Format marker data into geoJSON
@@ -1158,13 +1169,13 @@
 					// Layer Events
 					layer
 						.on('layeradd', function(e) {
-						    var marker = e.layer,
-						        feature = marker.feature;
+							var marker = e.layer,
+								feature = marker.feature;
 
 							if ( feature.properties.id == 0 ) {
 								marker.setIcon(L.icon(feature.properties.iconHover));
 							} else {
-								marker.setIcon(L.icon(feature.properties.icon));	
+								marker.setIcon(L.icon(feature.properties.icon));
 							}
 						})
 						.on('click', function(e){
@@ -1179,116 +1190,116 @@
 
 	if ($('body').hasClass('search-results') || $('body').hasClass('search-no-results')) {
 
-	    L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
+		L.mapbox.accessToken = 'pk.eyJ1Ijoid29ybGRzdHJpZGVzIiwiYSI6ImNjZTg3YjM3OTI3MDUzMzlmZmE4NDkxM2FjNjE4YTc1In0.dReWwNs7CEqdpK5AkHkJwg';
 
-	    $(document).ready(function () {
+		$(document).ready(function () {
 
-	        $(document).on('click', '#lnkShowMap', function () {
-	            return showMap($(this).data('showmap'), $(this).data('imagemap'));
-	        });
-	    });
-
-	    function showMap(mapSectionName, mapImageName) {
-
-	        // remove map in case it already exists
-	        if (map != undefined) { map.remove(); map = undefined; }
-	        // remove image in case it already exists
-	        $('#tour-highlights-map').attr('style', 'background-image: none; background-repeat:no-repeat;');
-
-            // check if custom map image exists and display it if so, otherwise fallback to the old mapbox api call
-	        $.get('./maps/maps_' + mapImageName + '.gif').done(function () {
-
-	            // load image into background
-                $('#tour-highlights-map').attr('style', 'background-image: url("./maps/maps_' + mapImageName + '.gif"); background-repeat:no-repeat;');
-
-            }).fail(function () {
-
-                if ($('#tour-highlights-map').length > 0) {
-                    // Assign variables
-                    init_coords = $('#result-map-' + mapSectionName).data('location'),
-                    marker_data = $('#result-map-' + mapSectionName).data('highlights');
-
-                    if (marker_data) {
-
-                        // Format marker data into geoJSON
-                        var collection = returnGeoJSON(marker_data);
-
-                        // remove map in case it already exists
-                        if (map != undefined) { map.remove(); }
-
-                        // Setup Map and Layer
-                        map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
-                            scrollWheelZoom: false,
-                            dragging: false,
-                            zoomControl: false,
-                            center: [parseFloat(init_coords.latitude), parseFloat(init_coords.longitude)],
-                            zoom: 13
-                        });
-                        layer = L.mapbox.featureLayer(collection).addTo(map);
-
-                        // Map Events
-                        map
-                            .on('ready resize', function () {
-                                map.invalidateSize();
-                                map.fitBounds(layer.getBounds(), { padding: [30, 30], maxZoom: 16 });
-                            });
-
-                        // Layer Events
-                        layer
-                            .on('layeradd', function (e) {
-                                var marker = e.layer,
-                                    feature = marker.feature;
-
-                                if (feature.properties.id == 0) {
-                                    marker.setIcon(L.icon(feature.properties.iconHover));
-                                } else {
-                                    marker.setIcon(L.icon(feature.properties.icon));
-                                }
-                            });
-                    }
-                }
-            })
-
-	        $('#feature-modal').modal('show');
-
-	        return false;
-	    }
+			$(document).on('click', '#lnkShowMap', function () {
+				return showMap($(this).data('showmap'), $(this).data('imagemap'));
+			});
+		});
 	}
 
-	function returnGeoJSON( array ) {
+	function showMap(mapSectionName, mapImageName) {
+
+		// remove map in case it already exists
+		if (map != undefined) { map.remove(); map = undefined; }
+		// remove image in case it already exists
+		$('#tour-highlights-map').attr('style', 'background-image: none; background-repeat:no-repeat;');
+
+		// check if custom map image exists and display it if so, otherwise fallback to the old mapbox api call
+		$.get('./maps/maps_' + mapImageName + '.gif').done(function () {
+
+			// load image into background
+			$('#tour-highlights-map').attr('style', 'background-image: url("./maps/maps_' + mapImageName + '.gif"); background-repeat:no-repeat;');
+
+		}).fail(function () {
+
+			if ($('#tour-highlights-map').length > 0) {
+				// Assign variables
+				init_coords = $('#result-map-' + mapSectionName).data('location'),
+					marker_data = $('#result-map-' + mapSectionName).data('highlights');
+
+				if (marker_data) {
+
+					// Format marker data into geoJSON
+					var collection = returnGeoJSON(marker_data);
+
+					// remove map in case it already exists
+					if (map != undefined) { map.remove(); }
+
+					// Setup Map and Layer
+					map = L.mapbox.map('tour-highlights-map', 'worldstrides.b898407f', {
+						scrollWheelZoom: false,
+						dragging: false,
+						zoomControl: false,
+						center: [parseFloat(init_coords.latitude), parseFloat(init_coords.longitude)],
+						zoom: 13
+					});
+					layer = L.mapbox.featureLayer(collection).addTo(map);
+
+					// Map Events
+					map
+						.on('ready resize', function () {
+							map.invalidateSize();
+							map.fitBounds(layer.getBounds(), { padding: [30, 30], maxZoom: 16 });
+						});
+
+					// Layer Events
+					layer
+						.on('layeradd', function (e) {
+							var marker = e.layer,
+								feature = marker.feature;
+
+							if (feature.properties.id == 0) {
+								marker.setIcon(L.icon(feature.properties.iconHover));
+							} else {
+								marker.setIcon(L.icon(feature.properties.icon));
+							}
+						});
+				}
+			}
+		})
+
+		$('#feature-modal').modal('show');
+
+		return false;
+	}
+
+	function returnGeoJSON(array) {
 		var collection = {
-				"type": "FeatureCollection",
-				"features": []
-			};
+			"type": "FeatureCollection",
+			"features": []
+		};
 
 		$( array ).each( function( index ){
 			var	point = {
-				  "type": "Feature",
-				  "geometry": {
-				    "type": "Point",
-				    "coordinates": [
-				      parseFloat(this.itinerary_highlights_location.longitude),
-				      parseFloat(this.itinerary_highlights_location.latitude)
-				    ]
-				  },
-				  "properties": {
-				  	"id": index,
-				    "icon": {
-			            "iconUrl": wsData.themeDir + "/assets/images/pin@2x.png",
-			            "iconSize": [20, 60], // size of the icon
-			            "iconAnchor": [10, 30], // point of the icon which will correspond to marker's location
-			            "popupAnchor": [0, -30], // point from which the popup should open relative to the iconAnchor
-			            "className": "dot"
-			        },
-			        "iconHover": {
-			            "iconUrl": wsData.themeDir + "/assets/images/pin-orange@2x.png",
-			            "iconSize": [20, 60], // size of the icon
-			            "iconAnchor": [10, 30], // point of the icon which will correspond to marker's location
-			            "popupAnchor": [0, -30], // point from which the popup should open relative to the iconAnchor
-			            "className": "dot"
-			        }
-				  }
-				};
+				"type": "Feature",
+				"geometry": {
+					"type": "Point",
+					"coordinates": [
+						parseFloat(this.itinerary_highlights_location.longitude),
+						parseFloat(this.itinerary_highlights_location.latitude)
+					]
+				},
+				"properties": {
+					"id": index,
+					"icon": {
+						"iconUrl": wsData.themeDir + "/assets/images/pin@2x.png",
+						"iconSize": [20, 60], // size of the icon
+						"iconAnchor": [10, 30], // point of the icon which will correspond to marker's location
+						"popupAnchor": [0, -30], // point from which the popup should open relative to the iconAnchor
+						"className": "dot"
+					},
+					"iconHover": {
+						"iconUrl": wsData.themeDir + "/assets/images/pin-orange@2x.png",
+						"iconSize": [20, 60], // size of the icon
+						"iconAnchor": [10, 30], // point of the icon which will correspond to marker's location
+						"popupAnchor": [0, -30], // point from which the popup should open relative to the iconAnchor
+						"className": "dot"
+					}
+				}
+			};
 
 			collection.features.push( point );
 		});
@@ -1298,7 +1309,7 @@
 
 	function cycleBefore( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
 		var marker_id = $slideshow_images.indexOf(incomingSlideEl);
-		
+
 		layer.eachLayer(function (layer) {
 
 			if ( layer.feature.properties.id == marker_id ) {
@@ -1317,7 +1328,7 @@
 		}
 	}
 
- } )( jQuery );
+} )( jQuery );
 ( function( $, window, undefined ) {
 	'use strict';
 
