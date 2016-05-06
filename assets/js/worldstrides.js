@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-02
+/*! WorldStrides - v0.1.0 - 2016-05-06
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1432,14 +1432,14 @@
 			  "properties": {
 			    "title": this.name,
 			    "icon": {
-		            "iconUrl": "http://wsbeta.co/wp-content/themes/worldstrides/assets/images/pin@2x.png",
+		            "iconUrl": "https://worldstrides.com/wp-content/themes/worldstrides/assets/images/pin@2x.png",
 		            "iconSize": [20, 60], // size of the icon
 		            "iconAnchor": [10, 30], // point of the icon which will correspond to marker's location
 		            "popupAnchor": [0, -30], // point from which the popup should open relative to the iconAnchor
 		            "className": "dot"
 		        },
 		        "iconHover": {
-		            "iconUrl": "http://wsbeta.co/wp-content/themes/worldstrides/assets/images/pin-orange@2x.png",
+		            "iconUrl": "https://worldstrides.com/wp-content/themes/worldstrides/assets/images/pin-orange@2x.png",
 		            "iconSize": [20, 60], // size of the icon
 		            "iconAnchor": [10, 30], // point of the icon which will correspond to marker's location
 		            "popupAnchor": [0, -30], // point from which the popup should open relative to the iconAnchor
