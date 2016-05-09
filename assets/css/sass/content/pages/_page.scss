@@ -238,15 +238,33 @@ section {
 	}
 
 	.subnav-cta {
-		display: none;
+		display: block;
 		float: right;
 		font-size: em(14);
 		margin-top: 8px;
 
-		@include susy-media($screen-sm) {
-			display: block;
+        @media screen and (max-width: $screen-sm - 1) {
+			font-size: em(10);
+            margin-top:12px;
 		}
 	}
+}
+
+.subnavFormFixed {
+    position:fixed; 
+    top:85px;
+    z-index:9999;
+    overflow-y:auto;
+    height:100%;
+
+    @media screen and (max-width: $screen-sm - 1) {
+        top:55px;
+	}
+}
+
+.subnavForm {
+    display: none;
+    padding-bottom:60px;
 }
 
 .section-menu {

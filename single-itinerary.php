@@ -127,11 +127,7 @@ get_header(); ?>
 
 					<a data-toggle="collapse" id="btnRequestInfo" href="#collapseForm" class="btn btn-primary subnav-cta hide-print"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide Request Info <i class="icon-close" style="margin-left:20px"></i></span></a>
 				</div>
-                <div style="display:none" id="collapseForm">
-		            <section class="clearfix ws-container learn-more hide-print">
-				            <?php get_template_part('partials/form','universal'); ?>
-		            </section>
-                </div>
+
 			</nav>
 
 			<?php if ( has_post_thumbnail() ) : ?>
@@ -145,7 +141,13 @@ get_header(); ?>
 
 		</section>
 
-
+        <div class="subnavFormFixed">
+            <div class="subnavForm" id="collapseForm">
+		        <section class="clearfix ws-container learn-more hide-print">
+				        <?php get_template_part('partials/form','universal'); ?>
+		        </section>
+            </div>
+        </div>
 
 		<?php $section_num = 1; // set first section number ?>
 
