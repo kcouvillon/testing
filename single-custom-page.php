@@ -198,6 +198,7 @@ get_header(); ?>
 								<?php echo apply_filters( 'the_content', $info_session ); ?>
 							</div>
 
+							<div class="btn btn-primary">Sign Up for Info Session!</div>
 						</div>
 					<?php endif; ?>
 				</div>
