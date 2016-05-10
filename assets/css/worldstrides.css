@@ -112,6 +112,9 @@
   border-width: 5px !important;
   border-style: solid !important; }
 
+.info-session-size {
+  width: 500px !important; }
+
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -8557,6 +8560,9 @@ blockquote {
   float: right;
   margin-right: 0;
   float: left; }
+
+.info-item {
+  padding-left: 1em; }
 
 /* _page.scss
  * ----------------------------------------- */

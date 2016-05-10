@@ -158,6 +158,18 @@ class WS_Metaboxes_Custom_Pages {
 		) );
 
 		$cmb->add_field( array(
+			'name' => 'Info Session Date',
+			'id' => $prefix . 'info_session_date',
+			'type' => 'text_date'
+		) );
+
+		$cmb->add_field( array(
+			'name' => 'Info Session Location',
+			'id' => $prefix . 'info_session_location',
+			'type' => 'wysiwyg'
+		) );
+
+		$cmb->add_field( array(
 			'name' => __( 'Gift of Education', 'cmb2' ),
 			'id'   => $prefix . 'gift_of_ed',
 			'type' => 'radio_inline',

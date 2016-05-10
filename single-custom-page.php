@@ -187,6 +187,8 @@ get_header(); ?>
 					<?php
 					$info_session = get_post_meta( $post->ID, 'itinerary_details_info_session', true );
 					$info_session_title = get_post_meta( $post->ID, 'itinerary_details_info_session_title', true );
+					$info_session_location = get_post_meta( $post->ID, 'itinerary_details_info_session_location', true );
+					$info_session_date = get_post_meta( $post->ID, 'itinerary_details_info_session_date', true );
 					if ( ! empty( $info_session ) ) : ?>
 						<div class="tour-info-session">
 
@@ -195,10 +197,14 @@ get_header(); ?>
 							<span class="h3"><?php echo apply_filters( 'the_title ', $info_session_title ); ?></span>
 
 							<div class="info-session-content">
+								<strong>Where:</strong><br>
+								<p class="info-item"><?php echo $info_session_location; ?></p>
+								<strong>When:</strong><br>
+								<p class="info-item"><?php echo $info_session_date; ?></p>
 								<?php echo apply_filters( 'the_content', $info_session ); ?>
 							</div>
 
-							<div class="btn btn-primary">Sign Up for Info Session!</div>
+							<div class="btn btn-primary" data-toggle="modal" data-target="#info-modal">Sign Up for Info Session!</div>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -374,5 +380,5 @@ get_header(); ?>
 		<?php endif; ?>
 	</main>
 </div>
-
+<?php require_once( WS_PATH . 'partials/modal-info-session.php'); ?>
 <?php get_footer(); ?>
