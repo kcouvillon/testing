@@ -253,9 +253,10 @@ section {
 .subnavFormFixed {
     position:fixed; 
     top:85px;
-    z-index:9999;
+    z-index:900;
     overflow-y:auto;
     height:100%;
+	width: 100%;
 
     @media screen and (max-width: $screen-sm - 1) {
         top:55px;
