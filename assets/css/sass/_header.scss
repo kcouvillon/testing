@@ -1,7 +1,7 @@
 .site-header {
 	// @include container();
 	background-color: $gray_base;
-	position: relative;
+	position: absolute;
 	color: #fff;
 	padding-top: em(16);
 	padding-bottom: em(16);
@@ -14,7 +14,7 @@
 
 	@media only print {
 		padding: 0;
-		position: relative !important;
+		position: absolute !important;
 	}
 
 	a {
@@ -186,7 +186,7 @@
 
 	@include susy-media($screen-sm) {
 		display: block;
-		position: absolute;
+		position: fixed;
 		width: 100%;
 		top: 0;
 		z-index: 1100;
@@ -244,7 +244,7 @@
 		display: none;
 		margin-top: 0.5em;
 		margin-bottom: 0;
-		position: absolute;
+		position: relative;
 		&.visible {
 			input.search-field,
 			.icon-search,
@@ -312,7 +312,7 @@
 
 		input.search-submit {
 			display: none;
-			position: relative;
+			position: absolute;
 		}
 
 	}
