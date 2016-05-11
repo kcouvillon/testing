@@ -1,7 +1,7 @@
 .site-header {
 	// @include container();
 	background-color: $gray_base;
-	position: relative;
+	position: absolute;
 	color: #fff;
 	padding-top: em(16);
 	padding-bottom: em(16);
@@ -14,7 +14,7 @@
 
 	@media only print {
 		padding: 0;
-		position: relative !important;
+		position: absolute !important;
 	}
 
 	a {
@@ -312,7 +312,7 @@
 
 		input.search-submit {
 			display: none;
-			position: relative;
+			position: absolute;
 		}
 
 	}

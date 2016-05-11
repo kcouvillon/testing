@@ -6938,7 +6938,7 @@ a.text-color-link {
 
 .site-header {
   background-color: #323c53;
-  position: relative;
+  position: absolute;
   color: #fff;
   padding-top: 1em;
   padding-bottom: 1em;
@@ -6951,7 +6951,7 @@ a.text-color-link {
   @media only print {
     .site-header {
       padding: 0;
-      position: relative !important; } }
+      position: absolute !important; } }
   .site-header a {
     color: #fff; }
     .site-header a:hover {
@@ -7181,7 +7181,7 @@ a.text-color-link {
         color: #b3b7bf; }
     .quick-access .search-form input.search-submit {
       display: none;
-      position: relative; }
+      position: absolute; }
 
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
