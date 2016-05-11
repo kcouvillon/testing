@@ -258,7 +258,7 @@ jQuery('#btnRequestInfo').on('click', function(){
 		clicked_button = true;
 		jQuery('html, body').animate({
 			scrollTop: 774
-		}, 100);
+		}, 500);
 	}
 	setTimeout(after_button, 500);
 });
