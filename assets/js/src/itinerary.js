@@ -248,3 +248,38 @@
 	}
 
 } )( jQuery );
+
+//Request info logic
+var clicked_button = false;
+var too_small = false;
+
+jQuery('#btnRequestInfo').on('click', function(){
+	if (jQuery(window).scrollTop() < 747 && jQuery('#btnRequestInfo').hasClass('collapsed')){
+		clicked_button = true;
+		jQuery('html, body').animate({
+			scrollTop: 774
+		}, 100);
+	}
+	setTimeout(after_button, 500);
+});
+
+function after_button() {
+	clicked_button = false;
+}
+
+jQuery(document).ready(function(){
+
+	jQuery(window).scroll(function(){
+		if (jQuery(window).scrollTop() < 774){
+			too_small = true;
+			console.log(clicked_button);
+		}
+
+		if ( (jQuery('#btnRequestInfo').attr('aria-expanded') == 'true') && (jQuery(window).scrollTop() < 774) && too_small && !clicked_button){
+			//Collapse Form
+			jQuery('#btnRequestInfo').click();
+			too_small = false;
+			clicked_button = false;
+		}
+	});
+});

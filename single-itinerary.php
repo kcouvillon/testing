@@ -125,7 +125,7 @@ get_header(); ?>
 
 						</ul>
 
-					<a data-toggle="collapse" id="btnRequestInfo" href="#collapseForm" class="btn btn-primary subnav-cta hide-print"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide Request Info <i class="icon-close" style="margin-left:20px"></i></span></a>
+					<a data-toggle="collapse" id="btnRequestInfo" href="#collapseForm" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide Request Info <i class="icon-close" style="margin-left:20px"></i></span></a>
 				</div>
 
 			</nav>
