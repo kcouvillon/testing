@@ -834,7 +834,7 @@ function ws_custom_search_query($qry_type){
 
 
                 //Advanced Tiered Search Query (Search Sort: 1 - Direct Match (=), 2 - Contains direct match (regex), 3 - contains any match (like))
-//TODO - Get Union Select     
+   
 	            $qry_select = "
 				SELECT *,
                 1 as SearchSort,
