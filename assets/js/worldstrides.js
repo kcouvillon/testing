@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-11
+/*! WorldStrides - v0.1.0 - 2016-05-12
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1333,13 +1333,14 @@
 //Request info logic
 var clicked_button = false;
 var too_small = false;
-
+/*
 jQuery('#btnRequestInfo').on('click', function(){
 	if (jQuery(window).scrollTop() < 747 && jQuery('#btnRequestInfo').hasClass('collapsed')){
+		console.log("other: " + jQuery(window).scrollTop());
 		clicked_button = true;
-		jQuery('html, body').animate({
-			scrollTop: 774
-		}, 500);
+		//jQuery('html, body').animate({
+		//	scrollTop: 774
+		//}, 500);
 	}
 	setTimeout(after_button, 500);
 });
@@ -1358,12 +1359,15 @@ jQuery(document).ready(function(){
 
 		if ( (jQuery('#btnRequestInfo').attr('aria-expanded') == 'true') && (jQuery(window).scrollTop() < 774) && too_small && !clicked_button){
 			//Collapse Form
-			jQuery('#btnRequestInfo').click();
+	//		jQuery('#btnRequestInfo').click();
 			too_small = false;
 			clicked_button = false;
 		}
 	});
 });
+*/
+
+
 ( function( $, window, undefined ) {
 	'use strict';
 
@@ -1635,10 +1639,7 @@ jQuery(document).ready(function(){
 			marginTop: ( $('.quick-access').css('display') == 'block' ) ? $('.quick-access').outerHeight() : 0
 		});
 
-		$('#btnRequestInfo').on('click', function () {
-		    $('#collapseForm').slideToggle('slow');
-		    $('#btnRequestInfo .toggleLabel').toggle();
-		});
+
 
 		setTimeout(function() {
 			$( '.resource-nav ul > li:first-child > a').trigger("click");
@@ -1660,6 +1661,30 @@ jQuery(document).ready(function(){
 	});
 
  } )( jQuery );
+
+jQuery('#btnRequestInfo').on('click', function () {
+
+	console.log(jQuery(window).scrollTop());
+	if (jQuery(window).scrollTop() < 774 && jQuery('#btnRequestInfo').hasClass('collapsed')){
+		console.log(jQuery(window).scrollTop() + " and " + jQuery('#btnRequestInfo').hasClass('collapsed'));
+		jQuery('html, body').animate({
+			scrollTop: 774
+		}, 500).promise().done(function(){
+			jQuery('#collapseForm').slideToggle('slow');
+			jQuery('#btnRequestInfo .toggleLabel').toggle();
+		});
+	}
+	else {
+		toggle_button();
+	}
+
+});
+
+function toggle_button(){
+	jQuery('#collapseForm').slideToggle('slow');
+	jQuery('#btnRequestInfo .toggleLabel').toggle();
+}
+
 ( function( $, window, undefined ) {
 	'use strict';
 
