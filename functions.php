@@ -673,13 +673,20 @@ function ws_custom_search_query($qry_type){
     $dyn_sql_post_excerpt = "";
     $dyn_sql_post_meta_value = "";
     $dyn_sql_term_name = "";
-	//regex variables
+	//dynamic regex variables
 	$dyn_sql_regex_three_code = "";
     $dyn_sql_regex_post_title = "";
     $dyn_sql_regex_post_content = "";
     $dyn_sql_regex_post_excerpt = "";
     $dyn_sql_regex_post_meta_value = "";
     $dyn_sql_regex_term_name = "";
+	//dynamic like variabes
+	$dyn_sql_like_three_code = "";
+    $dyn_sql_like_post_title = "";
+    $dyn_sql_like_post_content = "";
+    $dyn_sql_like_post_excerpt = "";
+    $dyn_sql_like_post_meta_value = "";
+    $dyn_sql_like_term_name = "";
 
     //explode search string into separate search elements
     $search_elements = explode(" ", $search_string);   
@@ -688,45 +695,52 @@ function ws_custom_search_query($qry_type){
     foreach ($search_elements as $search_element)
     {
         if (!in_array($search_element,$stop_words))
-        //{
-        //    $dyn_sql_three_code = $dyn_sql_three_code . " OR b.meta_value = '$search_element'";
-        //    $dyn_sql_post_title = $dyn_sql_post_title . " OR p.post_title like '%$search_element%'";
-        //    $dyn_sql_post_content = $dyn_sql_post_content . " OR p.post_content like '%$search_element%'";
-        //    $dyn_sql_post_excerpt = $dyn_sql_post_excerpt . " OR p.post_excerpt like '%$search_element%'";
-        //    $dyn_sql_post_meta_value = $dyn_sql_post_meta_value . " OR b.meta_value like '%$search_element%'";
-        //    $dyn_sql_term_name = $dyn_sql_term_name . " OR term.name like '%$search_element%'";
-        //}
-		//TEMP TEST CODE
         {
-            $dyn_sql_three_code = $dyn_sql_three_code . " OR b.meta_value = '$search_element'";
-            $dyn_sql_post_title = $dyn_sql_post_title . " OR p.post_title REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
+			//Dynamic SQL Search
+			//    $dyn_sql_three_code = $dyn_sql_three_code . " OR b.meta_value = '$search_element'";
+			//    $dyn_sql_post_title = $dyn_sql_post_title . " OR p.post_title like '%$search_element%'";
+			//    $dyn_sql_post_content = $dyn_sql_post_content . " OR p.post_content like '%$search_element%'";
+			//    $dyn_sql_post_excerpt = $dyn_sql_post_excerpt . " OR p.post_excerpt like '%$search_element%'";
+			//    $dyn_sql_post_meta_value = $dyn_sql_post_meta_value . " OR b.meta_value like '%$search_element%'";
+			//    $dyn_sql_term_name = $dyn_sql_term_name . " OR term.name like '%$search_element%'";
+
+			//Dynamic Regex Variables	
+			$dyn_sql_regex_three_code = $dyn_sql_regex_three_code . " OR b.meta_value = '$search_element'";
+			$dyn_sql_regex_post_title = $dyn_sql_regex_post_title . " OR p.post_title REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
+			$dyn_sql_regex_post_content = $dyn_sql_regex_post_content . " OR p.post_content REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
+			$dyn_sql_regex_post_excerpt = $dyn_sql_regex_post_excerpt . " OR p.post_excerpt REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
+			$dyn_sql_regex_post_meta_value = $dyn_sql_regex_post_meta_value . " OR b.meta_value REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
+			$dyn_sql_regex_term_name = $dyn_sql_regex_term_name . " OR term.name REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
+		
+			//Dynamic Like Variables
+			$dyn_sql_like_three_code = $dyn_sql_like_three_code . " OR b.meta_value = '$search_element'";
+			$dyn_sql_like_post_title = $dyn_sql_like_post_title . " OR p.post_title like '%$search_element%'";
+			$dyn_sql_like_post_content = $dyn_sql_like_post_content . " OR p.post_content like '%$search_element%'";
+			$dyn_sql_like_post_excerpt = $dyn_sql_like_post_excerpt . " OR p.post_excerpt like '%$search_element%'";
+			$dyn_sql_like_post_meta_value = $dyn_sql_like_post_meta_value . " OR b.meta_value like '%$search_element%'";
+			$dyn_sql_like_term_name = $dyn_sql_like_term_name . " OR term.name like '%$search_element%'";
+
+			//REGEX TEST CODE      
+			$dyn_sql_three_code = $dyn_sql_three_code . " OR b.meta_value = '$search_element'";
+			$dyn_sql_post_title = $dyn_sql_post_title . " OR p.post_title REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
 			$dyn_sql_post_content = $dyn_sql_post_content . " OR p.post_content REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
 			$dyn_sql_post_excerpt = $dyn_sql_post_excerpt . " OR p.post_excerpt REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
 			$dyn_sql_post_meta_value = $dyn_sql_post_meta_value . " OR b.meta_value REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
 			$dyn_sql_term_name = $dyn_sql_term_name . " OR term.name REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]')";
         }
-
-		//NEW Dynamic Regex Variable Code
-		{
-			$dyn_sql_regex_three_code = $dyn_sql_regex_three_code . " OR b.meta_value = '$search_element'";
-            $dyn_sql_regex_post_title = $dyn_sql_regex_post_title . " p.post_title REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]') OR";
-			$dyn_sql_regex_post_content = $dyn_sql_regex_post_content . " p.post_content REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]') OR";
-			$dyn_sql_regex_post_excerpt = $dyn_sql_regex_post_excerpt . " p.post_excerpt REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]') OR";
-			$dyn_sql_regex_post_meta_value = $dyn_sql_regex_post_meta_value . " b.meta_value REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]') OR";
-			$dyn_sql_regex_term_name = $dyn_sql_regex_term_name . " term.name REGEXP('\\[\\[:<:\\]\\]$search_element\\[\\[:>:\\]\\]') OR";
-		}
     }
 
     //Trim regex variables
-	$dyn_sql_regex_three_code = substr($dyn_sql_regex_three_code, 0, strlen($dyn_sql_regex_three_code)-2);
-	$dyn_sql_regex_post_title = substr($dyn_sql_regex_post_title, 0, strlen($dyn_sql_regex_post_title)-2);
-	$dyn_sql_regex_post_content = substr($dyn_sql_regex_post_content, 0, strlen($dyn_sql_regex_post_content)-2);
-	$dyn_sql_regex_post_excerpt = substr($dyn_sql_regex_post_excerpt, 0, strlen($dyn_sql_regex_post_excerpt)-2);
-	$dyn_sql_regex_post_meta_value = substr($dyn_sql_regex_post_meta_value, 0, strlen($dyn_sql_regex_post_meta_value)-2);
-	$dyn_sql_regex_term_name = substr($dyn_sql_regex_term_name, 0, strlen($dyn_sql_regex_term_name)-2);
+	//$dyn_sql_regex_three_code = substr($dyn_sql_regex_three_code, 0, strlen($dyn_sql_regex_three_code)-2);
+	//$dyn_sql_regex_post_title = substr($dyn_sql_regex_post_title, 0, strlen($dyn_sql_regex_post_title)-2);
+	//$dyn_sql_regex_post_content = substr($dyn_sql_regex_post_content, 0, strlen($dyn_sql_regex_post_content)-2);
+	//$dyn_sql_regex_post_excerpt = substr($dyn_sql_regex_post_excerpt, 0, strlen($dyn_sql_regex_post_excerpt)-2);
+	//$dyn_sql_regex_post_meta_value = substr($dyn_sql_regex_post_meta_value, 0, strlen($dyn_sql_regex_post_meta_value)-2);
+	//$dyn_sql_regex_term_name = substr($dyn_sql_regex_term_name, 0, strlen($dyn_sql_regex_term_name)-2);
 
-        //select query
-        $qry_select = "SELECT *,
+
+        //select query (original dyn)
+        $qry_selectx = "SELECT *,
                 CASE 
                     WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '$search_string' $dyn_sql_three_code)) THEN 1
                     WHEN p.post_type = 'itinerary' THEN 2
@@ -819,8 +833,10 @@ function ws_custom_search_query($qry_type){
                 LIMIT $offset,$fetch";
 
 
-                //Advanced Tiered Search Query (Search Sort: 1 - Direct Match, 2 - Contains direct match, 3 - contains any match)
-                $qry_select2 = "SELECT *,
+                //Advanced Tiered Search Query (Search Sort: 1 - Direct Match (=), 2 - Contains direct match (regex), 3 - contains any match (like))
+//TODO - Get Union Select     
+	            $qry_select = "
+				SELECT *,
                 1 as SearchSort,
                 CASE 
                     WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '$search_string')) THEN 1
@@ -910,11 +926,12 @@ function ws_custom_search_query($qry_type){
         	                                ON tax2.parent = term2.term_id
 			                                AND term2.name = 'traveler')
                 )
+                
                 UNION
                 SELECT *,
                 2 as SearchSort,
                 CASE 
-                    WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value $dyn_sql_regex_three_code)) THEN 1
+                    WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '' $dyn_sql_regex_three_code)) THEN 1
                     WHEN p.post_type = 'itinerary' THEN 2
                     WHEN p.post_type = 'resource' THEN 3
                     WHEN p.post_type = 'post' THEN 4
@@ -929,13 +946,13 @@ function ws_custom_search_query($qry_type){
                 WHERE p.post_status='publish' 
                 AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
                 AND (
-                    (p.post_title $dyn_sql_regex_post_title)
-                    OR (p.post_content $dyn_sql_regex_post_content)
-                    OR (p.post_excerpt $dyn_sql_regex_post_excerpt)
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND (b.meta_value $dyn_sql_regex_post_meta_value))
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND (b.meta_value $dyn_sql_regex_post_meta_value))
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND (b.meta_value $dyn_sql_regex_post_meta_value))
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value $dyn_sql_regex_three_code))
+                    (p.post_title = '' $dyn_sql_regex_post_title)
+                    OR (p.post_content = '' $dyn_sql_regex_post_content)
+                    OR (p.post_excerpt = '' $dyn_sql_regex_post_excerpt)
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND (b.meta_value = '' $dyn_sql_regex_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND (b.meta_value = '' $dyn_sql_regex_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND (b.meta_value = '' $dyn_sql_regex_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '' $dyn_sql_regex_three_code))
                     OR p.Id IN (SELECT p.ID
                                 FROM $wpdb->posts p
 		                                JOIN wp_term_relationships rel
@@ -944,7 +961,7 @@ function ws_custom_search_query($qry_type){
         	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
                                         JOIN wp_terms term
         	                                ON tax.term_id = term.term_id
-                                            AND (term.name $dyn_sql_regex_term_name)
+                                            AND (term.name = '' $dyn_sql_regex_term_name)
                                         JOIN wp_term_taxonomy tax2
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
@@ -966,7 +983,7 @@ function ws_custom_search_query($qry_type){
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
         	                                ON tax2.parent = term2.term_id
-                                            AND (term.name $dyn_sql_regex_term_name)
+                                            AND (term.name = '' $dyn_sql_regex_term_name)
                                         JOIN wp_term_taxonomy tax3
         	                                ON term2.term_id = tax3.term_id
                                         JOIN wp_terms term3
@@ -985,7 +1002,7 @@ function ws_custom_search_query($qry_type){
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
         	                                ON tax2.parent = term2.term_id
-			                                AND (term2.name $dyn_sql_regex_term_name))
+			                                AND (term2.name = '' $dyn_sql_regex_term_name))
                     OR p.ID IN (SELECT p.ID
                                 FROM $wpdb->posts p
 		                                JOIN wp_term_relationships rel
@@ -994,7 +1011,7 @@ function ws_custom_search_query($qry_type){
         	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
 		                                JOIN wp_terms term
         	                                ON tax.term_id = term.term_id
-			                                AND (term.name $dyn_sql_regex_term_name)
+			                                AND (term.name = '' $dyn_sql_regex_term_name)
                                         JOIN wp_term_taxonomy tax2
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
@@ -1005,7 +1022,7 @@ function ws_custom_search_query($qry_type){
                 SELECT *,
                 3 as SearchSort,
                 CASE 
-                    WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value $dyn_sql_three_code)) THEN 1
+                    WHEN p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '' $dyn_sql_like_three_code)) THEN 1
                     WHEN p.post_type = 'itinerary' THEN 2
                     WHEN p.post_type = 'resource' THEN 3
                     WHEN p.post_type = 'post' THEN 4
@@ -1020,13 +1037,13 @@ function ws_custom_search_query($qry_type){
                 WHERE p.post_status='publish' 
                 AND CASE WHEN ('$post_type' = 'any' OR '$post_type' = 'all') THEN 1=1 ELSE p.post_type = '$post_type' END
                 AND (
-                    (p.post_title $dyn_sql_post_title)
-                    OR (p.post_content $dyn_sql_post_content)
-                    OR (p.post_excerpt $dyn_sql_post_excerpt)
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND (b.meta_value $dyn_sql_post_meta_value))
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND (b.meta_value $dyn_sql_post_meta_value))
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND (b.meta_value $dyn_sql_post_meta_value))
-                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value $dyn_sql_three_code))
+                    (p.post_title = '' $dyn_sql_like_post_title)
+                    OR (p.post_content = '' $dyn_sql_like_post_content)
+                    OR (p.post_excerpt = '' $dyn_sql_like_post_excerpt)
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_subtitle' AND (b.meta_value = '' $dyn_sql_like_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_highlights_list' AND (b.meta_value = '' $dyn_sql_like_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_duration' AND (b.meta_value = '' $dyn_sql_like_post_meta_value))
+                    OR p.Id IN (SELECT a.ID FROM $wpdb->posts a JOIN $wpdb->postmeta b ON a.Id = b.post_id WHERE b.meta_key = 'itinerary_details_trip_id' AND (b.meta_value = '' $dyn_sql_like_three_code))
                     OR p.Id IN (SELECT p.ID
                                 FROM $wpdb->posts p
 		                                JOIN wp_term_relationships rel
@@ -1035,7 +1052,7 @@ function ws_custom_search_query($qry_type){
         	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
                                         JOIN wp_terms term
         	                                ON tax.term_id = term.term_id
-                                            AND (term.name $dyn_sql_term_name)
+                                            AND (term.name = '' $dyn_sql_like_term_name)
                                         JOIN wp_term_taxonomy tax2
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
@@ -1057,7 +1074,7 @@ function ws_custom_search_query($qry_type){
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
         	                                ON tax2.parent = term2.term_id
-                                            AND (term.name $dyn_sql_term_name)
+                                            AND (term.name = '' $dyn_sql_like_term_name)
                                         JOIN wp_term_taxonomy tax3
         	                                ON term2.term_id = tax3.term_id
                                         JOIN wp_terms term3
@@ -1076,7 +1093,7 @@ function ws_custom_search_query($qry_type){
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
         	                                ON tax2.parent = term2.term_id
-			                                AND (term2.name $dyn_sql_term_name))
+			                                AND (term2.name = '' $dyn_sql_like_term_name))
                     OR p.ID IN (SELECT p.ID
                                 FROM $wpdb->posts p
 		                                JOIN wp_term_relationships rel
@@ -1085,7 +1102,7 @@ function ws_custom_search_query($qry_type){
         	                                ON rel.term_taxonomy_id = tax.term_taxonomy_id
 		                                JOIN wp_terms term
         	                                ON tax.term_id = term.term_id
-			                                AND (term.name $dyn_sql_term_name)
+			                                AND (term.name = '' $dyn_sql_like_term_name)
                                         JOIN wp_term_taxonomy tax2
         	                                ON term.term_id = tax2.term_id
                                         JOIN wp_terms term2
