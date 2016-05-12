@@ -7092,7 +7092,7 @@ a.text-color-link {
   @media (min-width: 768px) {
     .quick-access {
       display: block;
-      position: fixed;
+      position: absolute;
       width: 100%;
       top: 0;
       z-index: 1100;
@@ -7131,7 +7131,7 @@ a.text-color-link {
     display: none;
     margin-top: 0.5em;
     margin-bottom: 0;
-    position: relative; }
+    position: absolute; }
     .quick-access .search-form.visible input.search-field,
     .quick-access .search-form.visible .icon-search,
     .quick-access .search-form.visible .close-search {
