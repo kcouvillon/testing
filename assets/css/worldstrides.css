@@ -6938,7 +6938,7 @@ a.text-color-link {
 
 .site-header {
   background-color: #323c53;
-  position: absolute;
+  position: relative;
   color: #fff;
   padding-top: 1em;
   padding-bottom: 1em;
@@ -6951,7 +6951,7 @@ a.text-color-link {
   @media only print {
     .site-header {
       padding: 0;
-      position: absolute !important; } }
+      position: relative !important; } }
   .site-header a {
     color: #fff; }
     .site-header a:hover {
