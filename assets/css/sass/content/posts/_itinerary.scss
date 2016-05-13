@@ -552,3 +552,9 @@
 		}
 	}
 }
+
+#btnRequestInfo {
+	@media screen and (max-width: 360px) {
+		margin-bottom: 12px;
+	}
+}

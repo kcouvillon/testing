@@ -251,21 +251,21 @@ section {
 }
 
 .subnavFormFixed {
-    position:fixed; 
-    top:85px;
-    z-index:900;
-    overflow-y:auto;
-    height:100%;
-	width: 100%;
-
-    @media screen and (max-width: $screen-sm - 1) {
-        top:55px;
-	}
 }
 
 .subnavForm {
     display: none;
     padding-bottom:60px;
+	position:fixed;
+	top:85px;
+	z-index:900;
+	overflow-y:auto;
+	height:100%;
+	width: 100%;
+
+	@media screen and (max-width: $screen-sm - 1) {
+		top:55px;
+	}
 }
 
 .section-menu {

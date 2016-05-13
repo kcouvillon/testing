@@ -72,6 +72,8 @@
 
  } )( jQuery );
 
+
+
 jQuery('#btnRequestInfo').on('click', function () {
 
 	console.log(jQuery(window).scrollTop());
@@ -80,8 +82,7 @@ jQuery('#btnRequestInfo').on('click', function () {
 		jQuery('html, body').animate({
 			scrollTop: 774
 		}, 500).promise().done(function(){
-			jQuery('#collapseForm').slideToggle('slow');
-			jQuery('#btnRequestInfo .toggleLabel').toggle();
+			toggle_button();
 		});
 	}
 	else {
@@ -94,3 +95,20 @@ function toggle_button(){
 	jQuery('#collapseForm').slideToggle('slow');
 	jQuery('#btnRequestInfo .toggleLabel').toggle();
 }
+
+jQuery(document).ready(function(){
+	var above_nav = false;
+	jQuery(window).scroll(function(){
+		if (jQuery(window).scrollTop() >= 774){
+			above_nav = false;
+			console.log(above_nav);
+		}
+
+		if (jQuery(window).scrollTop() < 774 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
+			jQuery('#collapseForm').hide();
+			jQuery('#btnRequestInfo .toggleLabel').toggle();
+			above_nav = true;
+		}
+
+	});
+});

@@ -141,13 +141,13 @@ get_header(); ?>
 
 		</section>
 
-        <div class="subnavFormFixed">
-            <div class="subnavForm" id="collapseForm">
+       <!-- <div class="subnavFormFixed"> -->
+            <div class="subnavForm" id="collapseForm" style="position: fixed">
 		        <section class="clearfix ws-container learn-more hide-print">
 				        <?php get_template_part('partials/form','universal'); ?>
 		        </section>
             </div>
-        </div>
+        <!-- </div> -->
 
 		<?php $section_num = 1; // set first section number ?>
 

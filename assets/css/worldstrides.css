@@ -8241,6 +8241,10 @@ blockquote {
   .tour-day .tour-related-posts .btn {
     margin: 0 2vw; }
 
+@media screen and (max-width: 360px) {
+  #btnRequestInfo {
+    margin-bottom: 12px; } }
+
 .collection .programs-header {
   position: relative;
   overflow: visible;
@@ -8761,7 +8765,9 @@ section:after {
         font-size: 0.625em;
         margin-top: 12px; } }
 
-.subnavFormFixed {
+.subnavForm {
+  display: none;
+  padding-bottom: 60px;
   position: fixed;
   top: 85px;
   z-index: 900;
@@ -8769,12 +8775,8 @@ section:after {
   height: 100%;
   width: 100%; }
   @media screen and (max-width: 767px) {
-    .subnavFormFixed {
+    .subnavForm {
       top: 55px; } }
-
-.subnavForm {
-  display: none;
-  padding-bottom: 60px; }
 
 .section-menu {
   list-style: none;

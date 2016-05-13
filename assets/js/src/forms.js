@@ -98,6 +98,7 @@
 				var output = jQuery.parseJSON(data);
 				var numstates = output.length;
 				var statefield = jQuery('#get-info-state');
+				//var statefield = jQuery('[name=mkto_companyState]');
 				for(var i=0; i<numstates; i++){
 					statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
 				}

@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-12
+/*! WorldStrides - v0.1.0 - 2016-05-13
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -421,6 +421,7 @@
 				var output = jQuery.parseJSON(data);
 				var numstates = output.length;
 				var statefield = jQuery('#get-info-state');
+				//var statefield = jQuery('[name=mkto_companyState]');
 				for(var i=0; i<numstates; i++){
 					statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
 				}
@@ -1662,6 +1663,8 @@ jQuery(document).ready(function(){
 
  } )( jQuery );
 
+
+
 jQuery('#btnRequestInfo').on('click', function () {
 
 	console.log(jQuery(window).scrollTop());
@@ -1670,8 +1673,7 @@ jQuery('#btnRequestInfo').on('click', function () {
 		jQuery('html, body').animate({
 			scrollTop: 774
 		}, 500).promise().done(function(){
-			jQuery('#collapseForm').slideToggle('slow');
-			jQuery('#btnRequestInfo .toggleLabel').toggle();
+			toggle_button();
 		});
 	}
 	else {
@@ -1684,6 +1686,23 @@ function toggle_button(){
 	jQuery('#collapseForm').slideToggle('slow');
 	jQuery('#btnRequestInfo .toggleLabel').toggle();
 }
+
+jQuery(document).ready(function(){
+	var above_nav = false;
+	jQuery(window).scroll(function(){
+		if (jQuery(window).scrollTop() >= 774){
+			above_nav = false;
+			console.log(above_nav);
+		}
+
+		if (jQuery(window).scrollTop() < 774 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
+			jQuery('#collapseForm').hide();
+			jQuery('#btnRequestInfo .toggleLabel').toggle();
+			above_nav = true;
+		}
+
+	});
+});
 
 ( function( $, window, undefined ) {
 	'use strict';
