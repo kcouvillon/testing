@@ -1667,9 +1667,7 @@ jQuery(document).ready(function(){
 
 jQuery('#btnRequestInfo').on('click', function () {
 
-	console.log(jQuery(window).scrollTop());
 	if (jQuery(window).scrollTop() < 774 && jQuery('#btnRequestInfo').hasClass('collapsed')){
-		console.log(jQuery(window).scrollTop() + " and " + jQuery('#btnRequestInfo').hasClass('collapsed'));
 		jQuery('html, body').animate({
 			scrollTop: 774
 		}, 500).promise().done(function(){
@@ -1689,6 +1687,8 @@ function toggle_button(){
 
 jQuery(document).ready(function(){
 	var above_nav = false;
+	var old_form_location = false;
+
 	jQuery(window).scroll(function(){
 		if (jQuery(window).scrollTop() >= 774){
 			above_nav = false;
@@ -1699,6 +1699,19 @@ jQuery(document).ready(function(){
 			jQuery('#collapseForm').hide();
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
 			above_nav = true;
+		}
+
+		if (jQuery(window).scrollTop() < 11550 && jQuery('#collapseForm').css('display') == 'block'){
+			jQuery('#collapseForm').hide();
+			jQuery('#btnRequestInfo .toggleLabel').toggle();
+			old_form_location = false;
+		}
+
+		if (jQuery(window).scrollTop() >= 11550 && !old_form_location && jQuery('#collapseForm').css('display') == 'none'){
+			//Display form
+			old_form_location = true;
+			toggle_button();
+			console.log('pop down form');
 		}
 
 	});
