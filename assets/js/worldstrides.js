@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-13
+/*! WorldStrides - v0.1.0 - 2016-05-16
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1700,7 +1700,7 @@ jQuery(document).ready(function(){
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
 			above_nav = true;
 		}
-
+/*
 		if (jQuery(window).scrollTop() < 11550 && jQuery('#collapseForm').css('display') == 'block'){
 			jQuery('#collapseForm').hide();
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
@@ -1713,6 +1713,7 @@ jQuery(document).ready(function(){
 			toggle_button();
 			console.log('pop down form');
 		}
+		*/
 
 	});
 });

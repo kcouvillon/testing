@@ -109,7 +109,7 @@ jQuery(document).ready(function(){
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
 			above_nav = true;
 		}
-
+/*
 		if (jQuery(window).scrollTop() < 11550 && jQuery('#collapseForm').css('display') == 'block'){
 			jQuery('#collapseForm').hide();
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
@@ -122,6 +122,7 @@ jQuery(document).ready(function(){
 			toggle_button();
 			console.log('pop down form');
 		}
+		*/
 
 	});
 });
