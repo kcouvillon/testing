@@ -688,14 +688,14 @@ get_header(); ?>
 				</section>
 			<?php endif; ?>
 		<?php endif; ?>
-
+		<!--
 		<section class="clearfix ws-container learn-more hide-print">
 			<section class="clearfix ws-container learn-more">
 				<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 
-				<?php get_template_part('partials/form','universal'); ?>
+				<?php //get_template_part('partials/form','universal'); ?>
 			</section>
-		</section>
+		</section> -->
 
 	</main>
 </div>

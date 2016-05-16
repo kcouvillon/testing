@@ -72,7 +72,9 @@
 
  } )( jQuery );
 
-
+var old_form_location = false;
+var above_nav = false;
+var bottom_button_clicked = false;
 
 jQuery('#btnRequestInfo').on('click', function () {
 
@@ -87,6 +89,11 @@ jQuery('#btnRequestInfo').on('click', function () {
 		toggle_button();
 	}
 
+	if (old_form_location){
+		//old_form_location = false;
+		console.log("Here: " + old_form_location);
+	}
+
 });
 
 function toggle_button(){
@@ -95,9 +102,6 @@ function toggle_button(){
 }
 
 jQuery(document).ready(function(){
-	var above_nav = false;
-	var old_form_location = false;
-
 	jQuery(window).scroll(function(){
 		if (jQuery(window).scrollTop() >= 774){
 			above_nav = false;
@@ -109,20 +113,27 @@ jQuery(document).ready(function(){
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
 			above_nav = true;
 		}
-/*
-		if (jQuery(window).scrollTop() < 11550 && jQuery('#collapseForm').css('display') == 'block'){
-			jQuery('#collapseForm').hide();
-			jQuery('#btnRequestInfo .toggleLabel').toggle();
+
+		if (jQuery(window).scrollTop() <= 10560){
+			bottom_button_clicked = false;
 			old_form_location = false;
 		}
+		else {
+			bottom_button_clicked = true;
+		}
 
-		if (jQuery(window).scrollTop() >= 11550 && !old_form_location && jQuery('#collapseForm').css('display') == 'none'){
+		if (jQuery(window).scrollTop() < 10660 && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
+			console.log("Other: " + old_form_location);
+			jQuery('#collapseForm').hide();
+			jQuery('#btnRequestInfo .toggleLabel').toggle();
+
+		}
+
+		if (jQuery(window).scrollTop() >= 10660 && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
 			//Display form
 			old_form_location = true;
 			toggle_button();
 			console.log('pop down form');
 		}
-		*/
-
 	});
 });
