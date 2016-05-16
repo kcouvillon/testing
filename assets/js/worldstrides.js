@@ -1628,18 +1628,21 @@ var old_form_location = false;
 var above_nav = false;
 var bottom_button_clicked = false;
 
-jQuery('#btnRequestInfo').on('click', function () {
-
-	if (jQuery(window).scrollTop() < 774 && jQuery('#btnRequestInfo').hasClass('collapsed')){
-		jQuery('html, body').animate({
-			scrollTop: 774
-		}, 500).promise().done(function(){
+jQuery(document).ready(function(){
+	//Get dynamic height of section nav id
+	var nav_location = jQuery('#section-nav').offset().top;
+	jQuery('#btnRequestInfo').on('click', function () {
+		if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')){
+			jQuery('html, body').animate({
+				scrollTop: nav_location
+			}, 500).promise().done(function(){
+				toggle_button();
+			});
+		}
+		else {
 			toggle_button();
-		});
-	}
-	else {
-		toggle_button();
-	}
+		}
+	});
 });
 
 function toggle_button(){
