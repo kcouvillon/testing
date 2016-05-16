@@ -89,11 +89,6 @@ jQuery('#btnRequestInfo').on('click', function () {
 		toggle_button();
 	}
 
-	if (old_form_location){
-		//old_form_location = false;
-		console.log("Here: " + old_form_location);
-	}
-
 });
 
 function toggle_button(){
@@ -105,7 +100,6 @@ jQuery(document).ready(function(){
 	jQuery(window).scroll(function(){
 		if (jQuery(window).scrollTop() >= 774){
 			above_nav = false;
-			console.log(above_nav);
 		}
 
 		if (jQuery(window).scrollTop() < 774 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
@@ -113,6 +107,7 @@ jQuery(document).ready(function(){
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
 			above_nav = true;
 		}
+
 
 		if (jQuery(window).scrollTop() <= 10560){
 			bottom_button_clicked = false;
@@ -133,7 +128,6 @@ jQuery(document).ready(function(){
 			//Display form
 			old_form_location = true;
 			toggle_button();
-			console.log('pop down form');
 		}
 	});
 });

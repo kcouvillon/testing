@@ -1330,45 +1330,6 @@
 	}
 
 } )( jQuery );
-
-//Request info logic
-var clicked_button = false;
-var too_small = false;
-/*
-jQuery('#btnRequestInfo').on('click', function(){
-	if (jQuery(window).scrollTop() < 747 && jQuery('#btnRequestInfo').hasClass('collapsed')){
-		console.log("other: " + jQuery(window).scrollTop());
-		clicked_button = true;
-		//jQuery('html, body').animate({
-		//	scrollTop: 774
-		//}, 500);
-	}
-	setTimeout(after_button, 500);
-});
-
-function after_button() {
-	clicked_button = false;
-}
-
-jQuery(document).ready(function(){
-
-	jQuery(window).scroll(function(){
-		if (jQuery(window).scrollTop() < 774){
-			too_small = true;
-			console.log(clicked_button);
-		}
-
-		if ( (jQuery('#btnRequestInfo').attr('aria-expanded') == 'true') && (jQuery(window).scrollTop() < 774) && too_small && !clicked_button){
-			//Collapse Form
-	//		jQuery('#btnRequestInfo').click();
-			too_small = false;
-			clicked_button = false;
-		}
-	});
-});
-*/
-
-
 ( function( $, window, undefined ) {
 	'use strict';
 
@@ -1680,18 +1641,6 @@ jQuery('#btnRequestInfo').on('click', function () {
 		toggle_button();
 	}
 
-	if (jQuery(window).scrollTop() >= 10660){
-	//	bottom_button_clicked = true;
-	}
-	else {
-	//	bottom_button_clicked = false;
-	}
-
-	if (old_form_location){
-		//old_form_location = false;
-		console.log("Here: " + old_form_location);
-	}
-
 });
 
 function toggle_button(){
@@ -1703,7 +1652,6 @@ jQuery(document).ready(function(){
 	jQuery(window).scroll(function(){
 		if (jQuery(window).scrollTop() >= 774){
 			above_nav = false;
-			console.log(above_nav);
 		}
 
 		if (jQuery(window).scrollTop() < 774 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
@@ -1712,34 +1660,27 @@ jQuery(document).ready(function(){
 			above_nav = true;
 		}
 
+
 		if (jQuery(window).scrollTop() <= 10560){
 			bottom_button_clicked = false;
 			old_form_location = false;
 		}
 		else {
 			bottom_button_clicked = true;
-			//old_form_location = true;
 		}
 
 		if (jQuery(window).scrollTop() < 10660 && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
 			console.log("Other: " + old_form_location);
 			jQuery('#collapseForm').hide();
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
-			//old_form_location = false;
-			//bottom_button_clicked = false;
+
 		}
 
 		if (jQuery(window).scrollTop() >= 10660 && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
 			//Display form
 			old_form_location = true;
-			//bottom_button_clicked = true;
 			toggle_button();
-			console.log('pop down form');
 		}
-
-
-
-
 	});
 });
 
