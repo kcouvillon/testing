@@ -78,7 +78,7 @@ var bottom_button_clicked = false;
 
 jQuery(document).ready(function(){
 	//Get dynamic height of section nav id
-	var nav_location = jQuery('#section-nav').offset().top;
+	var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
 	jQuery('#btnRequestInfo').on('click', function () {
 		if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')){
 			jQuery('html, body').animate({
