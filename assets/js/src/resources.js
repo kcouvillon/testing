@@ -88,7 +88,6 @@ jQuery('#btnRequestInfo').on('click', function () {
 	else {
 		toggle_button();
 	}
-
 });
 
 function toggle_button(){
@@ -97,6 +96,9 @@ function toggle_button(){
 }
 
 jQuery(document).ready(function(){
+	//get position of bottom of tour itinerary element
+	var bottom_day = jQuery('.tour-itinerary').offset().top + jQuery('.tour-itinerary').outerHeight();
+
 	jQuery(window).scroll(function(){
 		if (jQuery(window).scrollTop() >= 774){
 			above_nav = false;
@@ -108,8 +110,7 @@ jQuery(document).ready(function(){
 			above_nav = true;
 		}
 
-
-		if (jQuery(window).scrollTop() <= 10560){
+		if (jQuery(window).scrollTop() <= (bottom_day - 100)){
 			bottom_button_clicked = false;
 			old_form_location = false;
 		}
@@ -117,14 +118,14 @@ jQuery(document).ready(function(){
 			bottom_button_clicked = true;
 		}
 
-		if (jQuery(window).scrollTop() < 10660 && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
+		if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
 			console.log("Other: " + old_form_location);
 			jQuery('#collapseForm').hide();
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
 
 		}
 
-		if (jQuery(window).scrollTop() >= 10660 && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
+		if (jQuery(window).scrollTop() >= bottom_day && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
 			//Display form
 			old_form_location = true;
 			toggle_button();
