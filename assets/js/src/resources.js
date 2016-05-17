@@ -75,6 +75,12 @@
 var old_form_location = false;
 var above_nav = false;
 var bottom_button_clicked = false;
+var bottom_day = 0;
+
+jQuery(window).load(function(){
+	bottom_day = jQuery(document).height() - jQuery(window).height();
+	console.log(bottom_day);
+});
 
 jQuery(document).ready(function(){
 	//Get dynamic height of section nav id
@@ -98,10 +104,14 @@ function toggle_button(){
 	jQuery('#btnRequestInfo .toggleLabel').toggle();
 }
 
+
+
 jQuery(document).ready(function(){
 	//get position of bottom of tour itinerary element
-	var bottom_day = jQuery('.tour-itinerary').offset().top + jQuery('.tour-itinerary').outerHeight();
-
+	//var bottom_day = jQuery('.tour-itinerary').offset().top + jQuery('.tour-itinerary').outerHeight();
+	//var bottom_day = document.body.scrollHeight;
+	//console.log(bottom_day);
+	
 	jQuery(window).scroll(function(){
 		if (jQuery(window).scrollTop() >= 774){
 			above_nav = false;
@@ -120,18 +130,27 @@ jQuery(document).ready(function(){
 		else {
 			bottom_button_clicked = true;
 		}
-
+		
+		console.log(bottom_day);
+		if (jQuery(window).scrollTop() == bottom_day && jQuery('#collapseForm').css('display') == 'none'){
+			old_form_location = true;
+			toggle_button();
+		}
+		
+		
 		if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
 			console.log("Other: " + old_form_location);
 			jQuery('#collapseForm').hide();
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
-
 		}
 
+		/*
 		if (jQuery(window).scrollTop() >= bottom_day && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
 			//Display form
 			old_form_location = true;
 			toggle_button();
 		}
+		
+		*/
 	});
 });
