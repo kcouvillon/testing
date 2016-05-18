@@ -72,6 +72,8 @@
 
  } )( jQuery );
 
+var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+alert("iOS: " + iOS);
 var old_form_location = false;
 var above_nav = false;
 var bottom_button_clicked = false;
