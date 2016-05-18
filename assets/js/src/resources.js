@@ -73,86 +73,89 @@
  } )( jQuery );
 
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-alert("iOS: " + iOS);
-var old_form_location = false;
-var above_nav = false;
-var bottom_button_clicked = false;
-var bottom_day = 0;
 
-jQuery(window).load(function(){
-	bottom_day = jQuery(document).height() - jQuery(window).height();
-	console.log(bottom_day);
-});
+if (!iOS){
 
-jQuery(document).ready(function(){
-	//Get dynamic height of section nav id
-	var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
-	jQuery('#btnRequestInfo').on('click', function () {
-		if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')){
-			jQuery('html, body').animate({
-				scrollTop: nav_location
-			}, 500).promise().done(function(){
-				toggle_button();
-			});
-		}
-		else {
-			toggle_button();
-		}
-	});
-});
+	var old_form_location = false;
+	var above_nav = false;
+	var bottom_button_clicked = false;
+	var bottom_day = 0;
 
-function toggle_button(){
-	jQuery('#collapseForm').slideToggle('slow');
-	jQuery('#btnRequestInfo .toggleLabel').toggle();
-}
-
-
-
-jQuery(document).ready(function(){
-	//get position of bottom of tour itinerary element
-	//var bottom_day = jQuery('.tour-itinerary').offset().top + jQuery('.tour-itinerary').outerHeight();
-	//var bottom_day = document.body.scrollHeight;
-	//console.log(bottom_day);
-	
-	jQuery(window).scroll(function(){
-		if (jQuery(window).scrollTop() >= 774){
-			above_nav = false;
-		}
-
-		if (jQuery(window).scrollTop() < 774 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
-			jQuery('#collapseForm').hide();
-			jQuery('#btnRequestInfo .toggleLabel').toggle();
-			above_nav = true;
-		}
-
-		if (jQuery(window).scrollTop() <= (bottom_day - 100)){
-			bottom_button_clicked = false;
-			old_form_location = false;
-		}
-		else {
-			bottom_button_clicked = true;
-		}
-		
+	jQuery(window).load(function(){
+		bottom_day = jQuery(document).height() - jQuery(window).height();
 		console.log(bottom_day);
-		if (jQuery(window).scrollTop() == bottom_day && jQuery('#collapseForm').css('display') == 'none'){
-			old_form_location = true;
-			toggle_button();
-		}
-		
-		
-		if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
-			console.log("Other: " + old_form_location);
-			jQuery('#collapseForm').hide();
-			jQuery('#btnRequestInfo .toggleLabel').toggle();
-		}
-
-		/*
-		if (jQuery(window).scrollTop() >= bottom_day && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
-			//Display form
-			old_form_location = true;
-			toggle_button();
-		}
-		
-		*/
 	});
-});
+
+	jQuery(document).ready(function(){
+		//Get dynamic height of section nav id
+		var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
+		jQuery('#btnRequestInfo').on('click', function () {
+			if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')){
+				jQuery('html, body').animate({
+					scrollTop: nav_location
+				}, 500).promise().done(function(){
+					toggle_button();
+				});
+			}
+			else {
+				toggle_button();
+			}
+		});
+	});
+
+	function toggle_button(){
+		jQuery('#collapseForm').slideToggle('slow');
+		jQuery('#btnRequestInfo .toggleLabel').toggle();
+	}
+
+
+
+	jQuery(document).ready(function(){
+		//get position of bottom of tour itinerary element
+		//var bottom_day = jQuery('.tour-itinerary').offset().top + jQuery('.tour-itinerary').outerHeight();
+		//var bottom_day = document.body.scrollHeight;
+		//console.log(bottom_day);
+
+		jQuery(window).scroll(function(){
+			if (jQuery(window).scrollTop() >= 774){
+				above_nav = false;
+			}
+
+			if (jQuery(window).scrollTop() < 774 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
+				jQuery('#collapseForm').hide();
+				jQuery('#btnRequestInfo .toggleLabel').toggle();
+				above_nav = true;
+			}
+
+			if (jQuery(window).scrollTop() <= (bottom_day - 100)){
+				bottom_button_clicked = false;
+				old_form_location = false;
+			}
+			else {
+				bottom_button_clicked = true;
+			}
+
+			console.log(bottom_day);
+			if (jQuery(window).scrollTop() == bottom_day && jQuery('#collapseForm').css('display') == 'none'){
+				old_form_location = true;
+				toggle_button();
+			}
+
+
+			if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
+				console.log("Other: " + old_form_location);
+				jQuery('#collapseForm').hide();
+				jQuery('#btnRequestInfo .toggleLabel').toggle();
+			}
+
+			/*
+			 if (jQuery(window).scrollTop() >= bottom_day && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
+			 //Display form
+			 old_form_location = true;
+			 toggle_button();
+			 }
+
+			 */
+		});
+	});
+}

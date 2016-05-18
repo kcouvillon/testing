@@ -13,12 +13,12 @@ get_header(); ?>
 		<?php
 		//iOS Detection
 		if (stripos($_SERVER['HTTP_USER_AGENT'], "iPod") || stripos($_SERVER['HTTP_USER_AGENT'], "iPhone") || stripos($_SERVER['HTTP_USER_AGENT'], "iPad") ) {
-			$iOS = 'true';
+			$iOS = true;
 		}
 		else {
-			$iOS = 'false';
+			$iOS = false;
 		}
-		echo "OS: " . $iOS;
+		//echo "OS: " . $iOS;
 		?>
 
 		<?php
@@ -712,8 +712,7 @@ get_header(); ?>
 				</section>
 			</section>
 		<?php } ?>
-
-
+		
 	</main>
 </div>
 
