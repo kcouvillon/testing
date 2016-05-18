@@ -11,6 +11,16 @@ get_header(); ?>
 		<?php the_post(); ?>
 
 		<?php
+		//iOS Detection
+		if (stripos($_SERVER['HTTP_USER_AGENT'], "iPod") || stripos($_SERVER['HTTP_USER_AGENT'], "iPhone") || stripos($_SERVER['HTTP_USER_AGENT'], "iPad") ) {
+			$iOS = true;
+		}
+		else {
+			$iOS = false;
+		}
+		?>
+
+		<?php
 		$terms = get_the_terms( $post->ID, '_collection' );
 		$term  = $terms[0];
 		$phone = get_post_meta( $post->ID, 'itinerary_phone', true );
@@ -124,8 +134,11 @@ get_header(); ?>
 						<?php endif; ?>
 
 						</ul>
-
+						<?php if ($iOS){ ?>
+							<a data-toggle="collapse" id="btnRequestInfo" href="lead-form" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
+						<?php } else { ?>
 					<a data-toggle="collapse" id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
+					<?php } ?>
 				</div>
 
 			</nav>
@@ -688,14 +701,17 @@ get_header(); ?>
 				</section>
 			<?php endif; ?>
 		<?php endif; ?>
-		<!--
-		<section class="clearfix ws-container learn-more hide-print">
-			<section class="clearfix ws-container learn-more">
-				<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
-
-				<?php //get_template_part('partials/form','universal'); ?>
+		<?php
+			if ( $iOS ) {
+			?>
+			<section class="clearfix ws-container learn-more hide-print">
+				<section class="clearfix ws-container learn-more">
+					<h2 class="form-title" name="lead-form">Ready to Learn More About Traveling with WorldStrides?</h2>
+					<?php get_template_part('partials/form','universal'); ?>
+				</section>
 			</section>
-		</section> -->
+		<?php } ?>
+
 
 	</main>
 </div>
