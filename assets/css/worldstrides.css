@@ -6225,7 +6225,6 @@ label {
   margin-right: 5px; }
 
 .ws-form {
-  position: absolute;
   /* A hack to fix the br tags that get inserted 
 	 * from the [worldstrides-form] shortcode.
 	 * TO-DO: Delete if shortcode can be fixed */
