@@ -420,8 +420,8 @@
 			success:function(data){
 				var output = jQuery.parseJSON(data);
 				var numstates = output.length;
-				var statefield = jQuery('#get-info-state');
-				//var statefield = jQuery('[name=mkto_companyState]');
+				//var statefield = jQuery('#get-info-state');
+				var statefield = jQuery('[name=mkto_companyState]');
 				for(var i=0; i<numstates; i++){
 					statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
 				}
@@ -1626,7 +1626,7 @@
 //jQuery(window).ready(function(){
 	var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 //});
-
+iOS = true;
 if (!iOS){
 console.log("IN HERE");
 	var old_form_location = false;

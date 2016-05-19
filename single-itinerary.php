@@ -19,7 +19,7 @@ get_header(); ?>
 			$iOS = false;
 		}
 		//echo "OS: " . $iOS;
-		//$iOS = true;
+		$iOS = true;
 		?>
 
 		<?php
