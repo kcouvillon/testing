@@ -71,12 +71,9 @@
 	});
 
  } )( jQuery );
-//jQuery(window).ready(function(){
-	var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-//});
 
+var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 if (!iOS){
-console.log("IN HERE");
 	var old_form_location = false;
 	var above_nav = false;
 	var bottom_button_clicked = false;
@@ -84,7 +81,6 @@ console.log("IN HERE");
 
 	jQuery(window).load(function(){
 		bottom_day = jQuery(document).height() - jQuery(window).height();
-		console.log(bottom_day);
 	});
 
 	jQuery(document).ready(function(){
@@ -112,10 +108,6 @@ console.log("IN HERE");
 
 
 	jQuery(document).ready(function(){
-		//get position of bottom of tour itinerary element
-		//var bottom_day = jQuery('.tour-itinerary').offset().top + jQuery('.tour-itinerary').outerHeight();
-		//var bottom_day = document.body.scrollHeight;
-		//console.log(bottom_day);
 
 		jQuery(window).scroll(function(){
 			if (jQuery(window).scrollTop() >= 774){
@@ -135,8 +127,7 @@ console.log("IN HERE");
 			else {
 				bottom_button_clicked = true;
 			}
-
-			console.log(bottom_day);
+			
 			if (jQuery(window).scrollTop() == bottom_day && jQuery('#collapseForm').css('display') == 'none'){
 				old_form_location = true;
 				toggle_button();
@@ -144,19 +135,10 @@ console.log("IN HERE");
 
 
 			if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
-				console.log("Other: " + old_form_location);
 				jQuery('#collapseForm').hide();
 				jQuery('#btnRequestInfo .toggleLabel').toggle();
 			}
-
-			/*
-			 if (jQuery(window).scrollTop() >= bottom_day && !old_form_location && bottom_button_clicked && jQuery('#collapseForm').css('display') == 'none'){
-			 //Display form
-			 old_form_location = true;
-			 toggle_button();
-			 }
-
-			 */
+			
 		});
 	});
 }
@@ -165,7 +147,6 @@ else {
 	//If Request Info button was clicked animate down to bottom form
 	jQuery(window).ready(function(){
 		jQuery('#btnRequestInfo').on('click', function() {
-			console.log('clicked-button');
 			jQuery('html, body').animate({
 				scrollTop: jQuery('#lead-form').offset().top
 			}, 1500);

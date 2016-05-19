@@ -18,8 +18,6 @@ get_header(); ?>
 		else {
 			$iOS = false;
 		}
-		//echo "OS: " . $iOS;
-		//$iOS = true;
 		?>
 
 		<?php
