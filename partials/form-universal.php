@@ -27,7 +27,7 @@
 	<div class="left">
 		<?php $phone = get_post_meta( $post->ID, 'itinerary_phone', true ); 
 			if (!empty($phone)) : ?>
-				<p>Rather call us on the phone? Reach us at: <?php echo $phone; ?></p>
+				<p>Rather call us on the phone? Reach us at: <a href="tel:<?php echo $phone; ?>"><?php echo $phone; ?></a></p>
 			<?php endif; ?>
 		<ul class="form-fields list-unstyled">
 			<li class="field">
