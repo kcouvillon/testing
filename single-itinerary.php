@@ -19,6 +19,7 @@ get_header(); ?>
 			$iOS = false;
 		}
 		//echo "OS: " . $iOS;
+		//$iOS = true;
 		?>
 
 		<?php
@@ -136,7 +137,7 @@ get_header(); ?>
 
 						</ul>
 						<?php if ($iOS){ ?>
-							<a data-toggle="collapse" id="btnRequestInfo" href="lead-form" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
+							<a id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
 						<?php } else { ?>
 					<a data-toggle="collapse" id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
 					<?php } ?>
@@ -705,14 +706,14 @@ get_header(); ?>
 		<?php
 			if ( $iOS ) {
 			?>
-			<section class="clearfix ws-container learn-more hide-print">
+			<section class="clearfix ws-container learn-more hide-print" id="lead-form">
 				<section class="clearfix ws-container learn-more">
-					<h2 class="form-title" name="lead-form">Ready to Learn More About Traveling with WorldStrides?</h2>
+					<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
 					<?php get_template_part('partials/form','universal'); ?>
 				</section>
 			</section>
 		<?php } ?>
-		
+
 	</main>
 </div>
 
