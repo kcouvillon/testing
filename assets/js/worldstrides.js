@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-19
+/*! WorldStrides - v0.1.0 - 2016-05-13
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -420,8 +420,7 @@
 			success:function(data){
 				var output = jQuery.parseJSON(data);
 				var numstates = output.length;
-				//var statefield = jQuery('#get-info-state');
-				var statefield = jQuery('[name=mkto_companyState]');
+				var statefield = jQuery('#get-info-state');
 				for(var i=0; i<numstates; i++){
 					statefield.append('<option value="'+output[i][1]+'">'+output[i][0]+'</option>');
 				}
