@@ -74,7 +74,7 @@
 //jQuery(window).ready(function(){
 	var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 //});
-iOS = true;
+
 if (!iOS){
 console.log("IN HERE");
 	var old_form_location = false;
