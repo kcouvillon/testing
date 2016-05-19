@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-18
+/*! WorldStrides - v0.1.0 - 2016-05-19
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -10,6 +10,7 @@
         jQuery('#organization-bios').hide();
         jQuery('#programs-regions-bios').hide();
         jQuery('#support-bios').hide();
+
     });
 
     jQuery('#group1').click(function(){
@@ -19,9 +20,14 @@
         jQuery('#organization-bios').show(1000);
         
         //Change button to "Selected" state
-        jQuery(this).toggleClass('select-state');
-        jQuery('#group2').removeClass('select-state');
-        jQuery('#group3').removeClass('select-state');
+        jQuery(this).addClass('selected-state').removeClass('unselected-state');
+        jQuery('#group2').addClass('unselected-state').removeClass('select-state');
+        jQuery('#group3').addClass('unselected-state').removeClass('select-state');
+
+        //Toggle top nav items
+        jQuery('#org-img').attr('src','http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_exec_on.png');
+        jQuery('#reg-img').attr('src', 'http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_geo_off.png');
+        jQuery('#sup-img').attr('src', 'http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_support_off.png');
     });
 
     jQuery('#group2').click(function(){
@@ -31,9 +37,14 @@
         jQuery('#programs-regions-bios').show(1000);
 
         //Change button to "Selected" state
-        jQuery('#group1').removeClass('select-state');
-        jQuery(this).toggleClass('select-state');
-        jQuery('#group3').removeClass('select-state');
+        jQuery('#group1').addClass('unselected-state').removeClass('select-state');
+        jQuery(this).addClass('select-state').removeClass('unselected-state');
+        jQuery('#group3').addClass('unselected-state').removeClass('select-state');
+        
+        //Toggle top nav items
+        jQuery('#org-img').attr('src','http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_exec_off.png');
+        jQuery('#reg-img').attr('src', 'http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_geo_on.png');
+        jQuery('#sup-img').attr('src', 'http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_support_off.png');
     });
 
     jQuery('#group3').click(function(){
@@ -43,9 +54,14 @@
         jQuery('#support-bios').show(1000);
 
         //Change button to "Selected" state
-        jQuery('#group1').removeClass('select-state');
-        jQuery('#group2').removeClass('select-state');
-        jQuery(this).toggleClass('select-state');
+        jQuery('#group1').addClass('unselected-state').removeClass('select-state');
+        jQuery('#group2').addClass('unselected-state').removeClass('select-state');
+        jQuery(this).addClass('select-state').removeClass('unselected-state');
+        
+        //Toggle top nav items
+        jQuery('#org-img').attr('src', 'http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_exec_off.png');
+        jQuery('#reg-img').attr('src', 'http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_geo_off.png');
+        jQuery('#sup-img').attr('src', 'http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_support_on.png');
     });
 
 })(jQuery,window);

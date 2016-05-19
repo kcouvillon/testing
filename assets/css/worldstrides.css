@@ -9058,7 +9058,7 @@ section:after {
   font-size: .95em; }
 
 .btn-leadership {
-  width: 85%;
+  width: 70%;
   min-height: 50px;
   line-height: 35px;
   margin-top: .5em;
@@ -9067,6 +9067,10 @@ section:after {
 .select-state {
   background-color: #E17604;
   border-color: #E17604; }
+
+.unselected-state {
+  background-color: #777877;
+  border-color: #777877; }
 
 .more-link {
   font-size: .95em; }
