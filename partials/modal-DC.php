@@ -15,12 +15,12 @@ if( !isset( $_COOKIE['ws_dc'] ) ) : ?>
                 <h3 style="color: white; margin-top: 40%;">Win a trip to Washington DC for you and 10 of your students!</h3>
             </div>
             <div class="modal-body" style="text-align: center">
-                <p>We're giving away a trip for you and 10 of your students to Washington D.C. Sign up below to enter for a chance to win the trip of a lifetime!</p>
+                <p style="margin-bottom:0;">We're giving away a trip for you and 10 of your students to Washington D.C. Sign up below to enter for a chance to win the trip of a lifetime!</p>
+                <p style="font-weight: bold; font-size:16px;">Sorry, parents and students are not eligible to win.</p>
                 <script src="//app-sjg.marketo.com/js/forms2/js/forms2.min.js"></script>
                 <form id="mktoForm_2104" style="width:100% !important"></form>
                 <script>MktoForms2.loadForm("//app-sjg.marketo.com", "593-ASZ-675", 2104);</script>
             </div>
-
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
