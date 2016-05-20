@@ -25,7 +25,7 @@ get_header(); ?>
                 </div>
                 <div class="col-md-4" style="text-align: center">
                     <img id="reg-img" style="width: 25%" src="http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_geo_on.png" />
-                    <div id="group2" class="btn btn-primary btn-leadership">Programs and Regions</div>
+                    <div id="group2" class="btn btn-primary btn-leadership">Programs & Regions</div>
                 </div>
                 <div class="col-md-4" style="text-align: center">
                     <img id="sup-img" style="width: 25%" src="http://local.wordpress.dev/wp-content/uploads/2016/05/icon_lead_support_on.png" />
