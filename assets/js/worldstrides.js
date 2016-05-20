@@ -25,9 +25,9 @@
         jQuery('#group3').addClass('unselected-state').removeClass('select-state');
 
         //Toggle top nav items
-        jQuery('#org-img').attr('src','https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_exec_on.png');
-        jQuery('#reg-img').attr('src', 'https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_geo_off.png');
-        jQuery('#sup-img').attr('src', 'https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_support_off.png');
+        jQuery('#org-img').attr('src','https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_exec_on.png');
+        jQuery('#reg-img').attr('src', 'https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_geo_off.png');
+        jQuery('#sup-img').attr('src', 'https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_support_off.png');
     });
 
     jQuery('#group2').click(function(){
@@ -42,9 +42,9 @@
         jQuery('#group3').addClass('unselected-state').removeClass('select-state');
         
         //Toggle top nav items
-        jQuery('#org-img').attr('src','https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_exec_off.png');
-        jQuery('#reg-img').attr('src', 'https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_geo_on.png');
-        jQuery('#sup-img').attr('src', 'https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_support_off.png');
+        jQuery('#org-img').attr('src','https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_exec_off.png');
+        jQuery('#reg-img').attr('src', 'https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_geo_on.png');
+        jQuery('#sup-img').attr('src', 'https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_support_off.png');
     });
 
     jQuery('#group3').click(function(){
@@ -59,9 +59,9 @@
         jQuery(this).addClass('select-state').removeClass('unselected-state');
         
         //Toggle top nav items
-        jQuery('#org-img').attr('src', 'https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_exec_off.png');
-        jQuery('#reg-img').attr('src', 'https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_geo_off.png');
-        jQuery('#sup-img').attr('src', 'https://dev.worldstrides.com/wp-content/uploads/2016/05/icon_lead_support_on.png');
+        jQuery('#org-img').attr('src', 'https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_exec_off.png');
+        jQuery('#reg-img').attr('src', 'https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_geo_off.png');
+        jQuery('#sup-img').attr('src', 'https://worldstrides.com/wp-content/uploads/2016/05/icon_lead_support_on.png');
     });
 
 })(jQuery,window);
