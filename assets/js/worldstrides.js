@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-19
+/*! WorldStrides - v0.1.0 - 2016-05-20
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1701,7 +1701,7 @@ else {
 		jQuery('#btnRequestInfo').on('click', function() {
 			jQuery('html, body').animate({
 				scrollTop: jQuery('#lead-form').offset().top
-			}, 1500);
+			});
 		});
 	});
 }

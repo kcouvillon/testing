@@ -149,7 +149,7 @@ else {
 		jQuery('#btnRequestInfo').on('click', function() {
 			jQuery('html, body').animate({
 				scrollTop: jQuery('#lead-form').offset().top
-			}, 1500);
+			});
 		});
 	});
 }
