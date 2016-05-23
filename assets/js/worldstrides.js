@@ -1709,7 +1709,9 @@ if (!iOS){
 					scrollTop: nav_location
 				}, 500).promise().done(function(){
 					console.log('toggle1');
-					toggle_button();
+					jQuery('#collapseForm').slideToggle('slow');
+					jQuery('#btnRequestInfo .toggleLabel').toggle();
+					//toggle_button();
 				});
 			}
 			else {
