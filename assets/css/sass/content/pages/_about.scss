@@ -4,10 +4,6 @@
 		margin-bottom: 35px;
 	}
 
-	.entry-content {
-		// max-width: 670px;
-	}
-
 	&.section-content {
 		
 		@include susy-media($screen-sm) {
@@ -146,11 +142,16 @@
 .entry-position {
 	margin-bottom: 1em;
 	display: block;
+	font-size: .95em;
+}
+
+.leader-name {
+	font-size: 1.675em !important;
 }
 
 
 .leadership-content p {
-	max-width: 670px;
+	//max-width: 670px;
 }
 
 .headshot-pattern {
@@ -247,4 +248,43 @@
 			left: -38px;
 		}
 	}
+}
+
+.leadership-padding {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+
+
+.bio-content {
+	padding-right: 2em;
+	font-size: .95em;
+}
+
+.btn-leadership {
+	width: 70%;
+	min-height: 50px;
+	line-height: 35px;
+	margin-top: .5em;
+	margin-bottom: .5em;
+	font-size: .9em !important;
+
+	@media (min-width:780px) and (max-width: 1060px){
+		font-size: .7em !important;
+	}
+}
+
+.select-state {
+	background-color: #fb901d;
+	border-color: #fb901d;
+}
+
+.unselected-state {
+	background-color: #777877;
+	border-color: #777877;
+}
+
+.more-link {
+	font-size: .95em;
 }
