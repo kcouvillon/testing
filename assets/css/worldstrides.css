@@ -6352,7 +6352,8 @@ label {
   background: #323c53;
   color: #FFF; }
   .learn-more .ws-form {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    margin-top: .5em; }
     .learn-more .ws-form .form-title {
       font-size: 1.3em; }
   .single-itinerary .learn-more {
