@@ -1691,81 +1691,91 @@
 
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 var ff = /firefox/i.test(navigator.userAgent);
+	if (!iOS) {
+		var old_form_location = false;
+		var above_nav = false;
+		var bottom_button_clicked = false;
+		var bottom_day = 0;
 
-	var old_form_location = false;
-	var above_nav = false;
-	var bottom_button_clicked = false;
-	var bottom_day = 0;
+		jQuery(window).load(function () {
+			bottom_day = jQuery(document).height() - jQuery(window).height();
+		});
 
-	jQuery(window).load(function(){
-		bottom_day = jQuery(document).height() - jQuery(window).height();
-	});
+		jQuery(document).ready(function () {
+			//Get dynamic height of section nav id
+			var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
+			console.log("NAV: " + nav_location);
+			jQuery('#btnRequestInfo').on('click', function () {
+				if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')) {
+					jQuery('html, body').animate({
+						scrollTop: nav_location
+					}, 500).promise().then(function () {
+						jQuery('#collapseForm').slideToggle('slow');
+						jQuery('#btnRequestInfo .toggleLabel').toggle();
+						//toggle_button();
 
-	jQuery(document).ready(function(){
-		//Get dynamic height of section nav id
-		var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
-		console.log("NAV: " + nav_location);
-		jQuery('#btnRequestInfo').on('click', function () {
-			if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')) {
-				jQuery('html, body').animate({
-					scrollTop: nav_location
-				}, 500).promise().then(function () {
-					jQuery('#collapseForm').slideToggle('slow');
+					});
+				}
+				else {
+					toggle_button();
+				}
+			});
+
+
+		});
+
+		function toggle_button() {
+			console.log('toggle2');
+			jQuery('#collapseForm').slideToggle('slow');
+			jQuery('#btnRequestInfo .toggleLabel').toggle();
+		}
+
+
+		jQuery(document).ready(function () {
+
+			jQuery(window).scroll(function () {
+				if (jQuery(window).scrollTop() >= 774) {
+					above_nav = false;
+				}
+
+				if (jQuery(window).scrollTop() < 744 && jQuery('#collapseForm').css('display') == 'block') {
+					jQuery('#collapseForm').hide();
 					jQuery('#btnRequestInfo .toggleLabel').toggle();
-					//toggle_button();
-					
-				});
-			}
-			else {
-				toggle_button();
-			}
+					above_nav = true;
+				}
+
+				if (jQuery(window).scrollTop() <= (bottom_day - 100)) {
+					bottom_button_clicked = false;
+					old_form_location = false;
+				}
+				else {
+					bottom_button_clicked = true;
+				}
+
+				if (jQuery(window).scrollTop() == bottom_day && jQuery('#collapseForm').css('display') == 'none') {
+					old_form_location = true;
+					toggle_button();
+				}
+
+
+				if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked) {
+					jQuery('#collapseForm').hide();
+					jQuery('#btnRequestInfo .toggleLabel').toggle();
+				}
+
+			});
 		});
-		
-
-	});
-
-	function toggle_button(){
-		console.log('toggle2');
-		jQuery('#collapseForm').slideToggle('slow');
-		jQuery('#btnRequestInfo .toggleLabel').toggle();
 	}
-	
-
-	jQuery(document).ready(function(){
-
-		jQuery(window).scroll(function(){
-			if (jQuery(window).scrollTop() >= 774){
-				above_nav = false;
-			}
-
-			if (jQuery(window).scrollTop() < 744 && jQuery('#collapseForm').css('display') == 'block') {
-				jQuery('#collapseForm').hide();
-				jQuery('#btnRequestInfo .toggleLabel').toggle();
-				above_nav = true;
-			}
-
-			if (jQuery(window).scrollTop() <= (bottom_day - 100)){
-				bottom_button_clicked = false;
-				old_form_location = false;
-			}
-			else {
-				bottom_button_clicked = true;
-			}
-			
-			if (jQuery(window).scrollTop() == bottom_day && jQuery('#collapseForm').css('display') == 'none'){
-				old_form_location = true;
-				toggle_button();
-			}
-
-
-			if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked){
-				jQuery('#collapseForm').hide();
-				jQuery('#btnRequestInfo .toggleLabel').toggle();
-			}
-			
+	else {
+		//If Request Info button was clicked animate down to bottom form
+		jQuery(window).ready(function(){
+			jQuery('#btnRequestInfo').on('click', function() {
+				jQuery('html, body').animate({
+					scrollTop: jQuery('#lead-form').offset().top
+				});
+			});
 		});
-	});
-
+	}
 
 ( function( $, window, undefined ) {
 	'use strict';
