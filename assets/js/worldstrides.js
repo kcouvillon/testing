@@ -1708,6 +1708,7 @@ if (!iOS){
 				jQuery('html, body').animate({
 					scrollTop: nav_location
 				}, 500).promise().done(function(){
+					console.log('toggle1');
 					toggle_button();
 				});
 			}
@@ -1718,6 +1719,7 @@ if (!iOS){
 	});
 
 	function toggle_button(){
+		console.log('toggle2');
 		jQuery('#collapseForm').slideToggle('slow');
 		jQuery('#btnRequestInfo .toggleLabel').toggle();
 	}
