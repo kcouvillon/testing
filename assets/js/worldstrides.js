@@ -1733,7 +1733,7 @@ if (!iOS){
 				above_nav = false;
 			}
 
-			if (jQuery(window).scrollTop() < 804 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
+			if (jQuery(window).scrollTop() < 804 && jQuery('#collapseForm').css('display') == 'block') {
 				jQuery('#collapseForm').hide();
 				jQuery('#btnRequestInfo .toggleLabel').toggle();
 				above_nav = true;
