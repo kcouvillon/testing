@@ -8763,7 +8763,8 @@ section:after {
     @media screen and (max-width: 767px) {
       .section-nav .subnav-cta {
         font-size: 0.625em;
-        margin-top: 12px; } }
+        margin-top: 12px;
+        margin-bottom: 12px; } }
 
 .subnavForm {
   display: none;
