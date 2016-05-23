@@ -74,7 +74,7 @@
 
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 var ff = /firefox/i.test(navigator.userAgent);
-if (!iOS || !ff){
+
 	var old_form_location = false;
 	var above_nav = false;
 	var bottom_button_clicked = false;
@@ -93,9 +93,9 @@ if (!iOS || !ff){
 				jQuery('html, body').animate({
 					scrollTop: nav_location
 				}, 500).promise().then(function () {
-					//jQuery('#collapseForm').slideToggle('slow');
-					//jQuery('#btnRequestInfo .toggleLabel').toggle();
-					toggle_button();
+					jQuery('#collapseForm').slideToggle('slow');
+					jQuery('#btnRequestInfo .toggleLabel').toggle();
+					//toggle_button();
 					
 				});
 			}
@@ -103,38 +103,16 @@ if (!iOS || !ff){
 				toggle_button();
 			}
 		});
-
-		if (ff) {
-			var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
-			console.log("NAV: " + nav_location);
-			jQuery('#btnRequestInfo').on('click', function (e) {
-				if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')) {
-					jQuery('body').animate({
-						scrollTop: nav_location
-					}, 500, function () {
-						e.preventDefault();
-						toggle_button();
-
-					});
-				}
-				else {
-					toggle_button();
-				}
-			});
-
-		}
+		
 
 	});
-
-
 
 	function toggle_button(){
 		console.log('toggle2');
 		jQuery('#collapseForm').slideToggle('slow');
 		jQuery('#btnRequestInfo .toggleLabel').toggle();
 	}
-
-//774
+	
 
 	jQuery(document).ready(function(){
 
@@ -170,15 +148,4 @@ if (!iOS || !ff){
 			
 		});
 	});
-}
 
-else {
-	//If Request Info button was clicked animate down to bottom form
-	jQuery(window).ready(function(){
-		jQuery('#btnRequestInfo').on('click', function() {
-			jQuery('html, body').animate({
-				scrollTop: jQuery('#lead-form').offset().top
-			});
-		});
-	});
-}
