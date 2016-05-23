@@ -1690,7 +1690,8 @@
  } )( jQuery );
 
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-if (!iOS){
+var ff = /firefox/i.test(navigator.userAgent);
+if (!iOS || !ff){
 	var old_form_location = false;
 	var above_nav = false;
 	var bottom_button_clicked = false;
@@ -1703,22 +1704,46 @@ if (!iOS){
 	jQuery(document).ready(function(){
 		//Get dynamic height of section nav id
 		var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
+		console.log("NAV: " + nav_location);
 		jQuery('#btnRequestInfo').on('click', function () {
-			if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')){
+			if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')) {
 				jQuery('html, body').animate({
 					scrollTop: nav_location
-				}, 500).promise().done(function(){
-					console.log('toggle1');
-					jQuery('#collapseForm').slideToggle('slow');
-					jQuery('#btnRequestInfo .toggleLabel').toggle();
-					//toggle_button();
+				}, 500).promise().then(function () {
+					//jQuery('#collapseForm').slideToggle('slow');
+					//jQuery('#btnRequestInfo .toggleLabel').toggle();
+					toggle_button();
+					
 				});
 			}
 			else {
 				toggle_button();
 			}
 		});
+
+		if (ff) {
+			var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
+			console.log("NAV: " + nav_location);
+			jQuery('#btnRequestInfo').on('click', function (e) {
+				if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')) {
+					jQuery('body').animate({
+						scrollTop: nav_location
+					}, 500, function () {
+						e.preventDefault();
+						toggle_button();
+
+					});
+				}
+				else {
+					toggle_button();
+				}
+			});
+
+		}
+
 	});
+
+
 
 	function toggle_button(){
 		console.log('toggle2');
