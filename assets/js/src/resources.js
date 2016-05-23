@@ -107,16 +107,16 @@ if (!iOS){
 		jQuery('#btnRequestInfo .toggleLabel').toggle();
 	}
 
-
+//774
 
 	jQuery(document).ready(function(){
 
 		jQuery(window).scroll(function(){
-			if (jQuery(window).scrollTop() >= 774){
+			if (jQuery(window).scrollTop() >= 804){
 				above_nav = false;
 			}
 
-			if (jQuery(window).scrollTop() < 774 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
+			if (jQuery(window).scrollTop() < 804 && !above_nav && jQuery('#collapseForm').css('display') == 'block') {
 				jQuery('#collapseForm').hide();
 				jQuery('#btnRequestInfo .toggleLabel').toggle();
 				above_nav = true;
