@@ -83,7 +83,7 @@ get_header(); ?>
 				<?php get_template_part( 'partials/content', 'tooltips' ); ?>
 
 			</header>
-<?php /*
+
 			<nav id="section-nav" class="section-nav hide-print">
 				<div class="ws-container">
 					<ul class="section-menu">
@@ -91,18 +91,16 @@ get_header(); ?>
 						$section_link = 1;
 
 						// Get highlights
-*/
+
 						$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
-/*?>
 						if ( ! empty( $highlights[1]['image'] ) && 'no-destination' != $itinerary_type ) : ?>
 							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
 						<?php endif; ?>
 
 						<?php
 						// Get Before Blocks
-*/
 						$before_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
-<?php /*
+
 						<?php if ( ! empty( $before_block_sections ) ) : ?>
 							<?php foreach ( $before_block_sections as $section ) : ?>
 								<?php if ( ! empty ( $section['title'] ) ) : ?>
@@ -113,18 +111,16 @@ get_header(); ?>
 
 						<?php
 						// Get Itinerary
- */
 						$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true ); ?>
-<?php /*
+
 						<?php if ( ! empty( $itinerary ) ) : ?>
 							<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
 						<?php endif; ?>
 
 						<?php
 						// Get After Blocks
- */
 						$after_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
-<?php /*
+
 						<?php if ( ! empty( $after_block_sections ) ) : ?>
 							<?php foreach ( $after_block_sections as $section ) : ?>
 								<?php if ( ! empty ( $section['title'] ) ) : ?>
@@ -132,15 +128,13 @@ get_header(); ?>
 								<?php endif; ?>
 							<?php endforeach; ?>
 						<?php endif; ?>
-*/?>
+
 						<?php $associated_resources = get_post_meta( $post->ID, 'attached_resources', true); ?>
-<?php /*
 						<?php if ( ! empty( $associated_resources ) ) : ?>
 							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
 						<?php endif; ?>
-*/?>
+
 						</ul>
-<?php /*
 						<?php if ($iOS){ ?>
 							<a id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
 						<?php } else { ?>
@@ -149,7 +143,6 @@ get_header(); ?>
 				</div>
 
 			</nav>
- <?php */ ?>
 
 			<?php if ( has_post_thumbnail() ) : ?>
 			<a href="#section-nav" class="content-cta">
