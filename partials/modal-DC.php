@@ -12,7 +12,7 @@ if( !isset( $_COOKIE['ws_dc'] ) ) : ?>
         <div class="modal-content dc-modal-content" style="border: black !important; border-style: solid !important; border-width: 5px !important;">
             <div class="modal-header" style="background: url('https://worldstrides.com/wp-content/uploads/2016/05/dcpic_notext.jpg'); background-repeat: no-repeat; background-size: 100% 100%; width:100%;">
                 <button type="button" class="close" data-keyboard="true" data-dismiss="modal" aria-label="Close"><span id="x-button" aria-hidden="true">&times;</span></button>
-                <h3 style="color: white; margin-top: 40%;">Win a trip to Washington DC for you and 10 of your students!</h3>
+                <h3 style="color: white; margin-top: 40%;">Teachers: Win a trip to Washington DC for you and 10 of your students!</h3>
             </div>
             <div class="modal-body" style="text-align: center">
                 <p style="margin-bottom:0;">We're giving away a trip for you and 10 of your students to Washington D.C. Sign up below to enter for a chance to win the trip of a lifetime!</p>
