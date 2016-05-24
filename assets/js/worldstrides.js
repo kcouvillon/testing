@@ -1744,7 +1744,7 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 					above_nav = true;
 				}
 
-				if (jQuery(window).scrollTop() <= (bottom_day - 100)) {
+				if (jQuery(window).scrollTop() < (bottom_day)) {
 					bottom_button_clicked = false;
 					old_form_location = false;
 				}
