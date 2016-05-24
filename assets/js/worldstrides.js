@@ -1690,7 +1690,6 @@
  } )( jQuery );
 
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-var ff = /firefox/i.test(navigator.userAgent);
 	if (!iOS) {
 		var old_form_location = false;
 		var above_nav = false;
@@ -1698,7 +1697,7 @@ var ff = /firefox/i.test(navigator.userAgent);
 		var bottom_day = 0;
 
 		jQuery(window).load(function () {
-			bottom_day = jQuery(document).height() - jQuery(window).height();
+			// bottom_day = jQuery(document).height() - jQuery(window).height();
 		});
 
 		jQuery(document).ready(function () {
@@ -1732,8 +1731,9 @@ var ff = /firefox/i.test(navigator.userAgent);
 
 
 		jQuery(document).ready(function () {
-//774
+
 			jQuery(window).scroll(function () {
+				bottom_day = jQuery(document).height() - jQuery(window).height();
 				if (jQuery(window).scrollTop() >= 669) {
 					above_nav = false;
 				}
