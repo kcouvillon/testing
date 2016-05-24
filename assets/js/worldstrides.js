@@ -1689,6 +1689,7 @@
 
  } )( jQuery );
 
+/*
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 	if (!iOS) {
 		var old_form_location = false;
@@ -1774,7 +1775,7 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			});
 		});
 	}
-
+*/
 ( function( $, window, undefined ) {
 	'use strict';
 
