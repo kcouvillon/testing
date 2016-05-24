@@ -6354,6 +6354,9 @@ label {
   .learn-more .ws-form {
     margin-bottom: 0;
     margin-top: .5em; }
+    @media (max-width: 445px) {
+      .learn-more .ws-form {
+        margin-top: 3.5em; } }
     .learn-more .ws-form .form-title {
       font-size: 1.3em; }
   .single-itinerary .learn-more {

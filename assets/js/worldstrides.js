@@ -1726,12 +1726,13 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 		jQuery(document).ready(function () {
 
 			jQuery(window).scroll(function () {
+				nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
 				bottom_day = jQuery(document).height() - jQuery(window).height();
-				if (jQuery(window).scrollTop() >= 669) {
+				if (jQuery(window).scrollTop() >= nav_location) {
 					above_nav = false;
 				}
 
-				if (jQuery(window).scrollTop() < 669 && jQuery('#collapseForm').css('display') == 'block') {
+				if (jQuery(window).scrollTop() < nav_location && jQuery('#collapseForm').css('display') == 'block') {
 					jQuery('#collapseForm').hide();
 					jQuery('#btnRequestInfo .toggleLabel').toggle();
 					above_nav = true;
