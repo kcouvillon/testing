@@ -6,18 +6,8 @@
 get_header(); ?>
 
 <style>
-  html,
-  body {
-    height: 100%;
-  }
-
-  html {
-    overflow: hidden;
-  }
-
-  body {
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+  .tour-day .tour-hero {
+        transition: height 999999s;
   }
 </style>
 
