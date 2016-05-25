@@ -20,7 +20,7 @@ get_header(); ?>
 	    });
 
 	    function update() {
-	        jumbotron.css('height', viewportHeight + 'px');
+	        jumbotron.css('height', viewportHeight + 'vh');
 	    }
 
 	    update();
