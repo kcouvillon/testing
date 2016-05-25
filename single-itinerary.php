@@ -5,32 +5,7 @@
 
 get_header(); ?>
 
-<script>
-	function greedyJumbotron() {
-	    var HEIGHT_CHANGE_TOLERANCE = 100; // Approximately URL bar height in Chrome on tablet
 
-	    var jumbotron = jQuery(this);
-	    var viewportHeight = jQuery(window).height()*.20;
-
-	    jQuery(window).resize(function () {
-	        if (Math.abs(viewportHeight - jQuery(window).height()) > HEIGHT_CHANGE_TOLERANCE) {
-	            viewportHeight = jQuery(window).height()*.20;
-	            update();
-	        }
-	    });
-
-	    function update() {
-	        jumbotron.css('height', viewportHeight + 'px');
-	    }
-
-	    update();
-	}
-
-    jQuery(document).ready(function(){
-        jQuery('.tour-day, .tour-hero, .tour-day header, .tour-hero header').each(greedyJumbotron);
-    });
-	
-</script>
 
 <style>
   .tour-day, .tour-hero, .tour-day header, .tour-hero header {
