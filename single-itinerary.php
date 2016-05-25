@@ -12,12 +12,6 @@ get_header(); ?>
 	    var jumbotron = jQuery(this);
 	    var viewportHeight = jQuery(window).height()*.20;
 
-	    jQuery(window).resize(function () {
-	        if (Math.abs(viewportHeight - jQuery(window).height()) > HEIGHT_CHANGE_TOLERANCE) {
-	            viewportHeight = jQuery(window).height()*.20;
-	            update();
-	        }
-	    });
 
 	    function update() {
 	        jumbotron.css('height', viewportHeight + 'px');
