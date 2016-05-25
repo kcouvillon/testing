@@ -5,21 +5,31 @@
 
 get_header(); ?>
 
-<div id="primary" class="content-area">
+<?php
+    //iOS Detection
+    if (stripos($_SERVER['HTTP_USER_AGENT'], "iPod") || stripos($_SERVER['HTTP_USER_AGENT'], "iPhone") || stripos($_SERVER['HTTP_USER_AGENT'], "iPad") ) {
+	    $iOS = true;
+    }
+    else {
+	    $iOS = false;
+    }
+		
+?>
+
+<?php if ($iOS){ ?>
+<style>
+    html, body {
+        overflow: hidden;
+    }
+</style>
+<?php } ?>
+
+<div id="primary" class="content-area" style="overflow:auto;">
 	<main id="main" class="site-main itinerary" role="main">
 
 		<?php the_post(); ?>
 
-		<?php
-		//iOS Detection
-		if (stripos($_SERVER['HTTP_USER_AGENT'], "iPod") || stripos($_SERVER['HTTP_USER_AGENT'], "iPhone") || stripos($_SERVER['HTTP_USER_AGENT'], "iPad") ) {
-			$iOS = true;
-		}
-		else {
-			$iOS = false;
-		}
-		
-		?>
+
 
 		<?php
 		$terms = get_the_terms( $post->ID, '_collection' );
