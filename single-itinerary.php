@@ -6,7 +6,7 @@
 get_header(); ?>
 
 <style>
-  .tour-day {
+  .tour-day, .tour-hero {
         transition: height 999999s;
   }
 </style>
