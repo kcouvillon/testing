@@ -26,7 +26,10 @@ get_header(); ?>
 	    update();
 	}
 
-	jQuery('.tour-day, .tour-hero, .tour-day header, .tour-hero header').each(greedyJumbotron);
+    jQuery(document).ready(function(){
+        jQuery('.tour-day, .tour-hero, .tour-day header, .tour-hero header').each(greedyJumbotron);
+    });
+	
 </script>
 
 
