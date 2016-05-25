@@ -5,11 +5,31 @@
 
 get_header(); ?>
 
-<style>
-  body, html, div, .tour-day, .tour-hero, .tour-day header, .tour-hero header {
-        transition: height 999999s;
-  }
-</style>
+<script>
+	function greedyJumbotron() {
+	    var HEIGHT_CHANGE_TOLERANCE = 100; // Approximately URL bar height in Chrome on tablet
+
+	    var jumbotron = jQuery(this);
+	    var viewportHeight = jQuery(window).height();
+
+	    jQuery(window).resize(function () {
+	        if (Math.abs(viewportHeight - jQuery(window).height()) > HEIGHT_CHANGE_TOLERANCE) {
+	            viewportHeight = jQuery(window).height();
+	            update();
+	        }
+	    });
+
+	    function update() {
+	        jumbotron.css('height', viewportHeight + 'px');
+	    }
+
+	    update();
+	}
+
+	jQuery('.tour-day, .tour-hero, .tour-day header, .tour-hero header').each(greedyJumbotron);
+</script>
+
+
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main itinerary" role="main">
