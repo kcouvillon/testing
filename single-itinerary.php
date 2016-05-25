@@ -16,13 +16,13 @@ get_header(); ?>
 		
 ?>
 
-<?php if ($iOS){ ?>
+
 <style>
     html, body {
         overflow: hidden;
     }
 </style>
-<?php } ?>
+
 
 <div id="primary" class="content-area" style="overflow:auto;">
 	<main id="main" class="site-main itinerary" role="main">
