@@ -4,7 +4,11 @@
  */
 
 get_header(); ?>
-
+<script>
+    jQuery("html, body, #primary").css({
+        height: jQuery(window).height()
+    });
+</script>
 <style>
   .tour-day, .tour-hero, .tour-day header, .tour-hero header {
         transition: height 999999s;
