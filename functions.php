@@ -545,7 +545,7 @@ add_action('wp_footer','dc_modal_triggers', 10);
  */
 add_filter( 'srm_max_redirects', 'dbx_srm_max_redirects' );
 function dbx_srm_max_redirects() {
-    return 300;
+    return 400;
 }
 
 /**
