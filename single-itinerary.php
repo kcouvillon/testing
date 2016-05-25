@@ -5,31 +5,26 @@
 
 get_header(); ?>
 
-<?php
-    //iOS Detection
-    if (stripos($_SERVER['HTTP_USER_AGENT'], "iPod") || stripos($_SERVER['HTTP_USER_AGENT'], "iPhone") || stripos($_SERVER['HTTP_USER_AGENT'], "iPad") ) {
-	    $iOS = true;
-    }
-    else {
-	    $iOS = false;
-    }
-		
-?>
-
-
 <style>
-    html, body {
-        overflow: hidden;
-    }
+  html,
+  body {
+    height: 100%;
+  }
+
+  html {
+    overflow: hidden;
+  }
+
+  body {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
 </style>
 
-
-<div id="primary" class="content-area" style="overflow:auto;">
+<div id="primary" class="content-area">
 	<main id="main" class="site-main itinerary" role="main">
 
 		<?php the_post(); ?>
-
-
 
 		<?php
 		$terms = get_the_terms( $post->ID, '_collection' );
@@ -145,11 +140,8 @@ get_header(); ?>
 						<?php endif; ?>
 
 						</ul>
-						<?php if ($iOS){ ?>
-							<a id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
-						<?php } else { ?>
-					<a data-toggle="collapse" id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
-					<?php } ?>
+
+					<a data-toggle="collapse" id="btnRequestInfo" href="#collapseForm" class="btn btn-primary subnav-cta hide-print"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide Request Info <i class="icon-close" style="margin-left:20px"></i></span></a>
 				</div>
 
 			</nav>
@@ -164,14 +156,14 @@ get_header(); ?>
 
 
 		</section>
-		
-		<?php 	if ( !$iOS ) { ?>
-            <div class="subnavForm" id="collapseForm" style="position: fixed">
+
+        <div class="subnavFormFixed">
+            <div class="subnavForm" id="collapseForm">
 		        <section class="clearfix ws-container learn-more hide-print">
 				        <?php get_template_part('partials/form','universal'); ?>
 		        </section>
             </div>
-		<?php } ?>
+        </div>
 
 		<?php $section_num = 1; // set first section number ?>
 
@@ -712,16 +704,14 @@ get_header(); ?>
 				</section>
 			<?php endif; ?>
 		<?php endif; ?>
-		<?php
-			if ( $iOS ) {
-			?>
-			<section class="clearfix ws-container learn-more hide-print" id="lead-form">
-				<section class="clearfix ws-container learn-more">
-					<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
-					<?php get_template_part('partials/form','universal'); ?>
-				</section>
+
+		<section class="clearfix ws-container learn-more hide-print">
+			<section class="clearfix ws-container learn-more">
+				<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
+
+				<?php get_template_part('partials/form','universal'); ?>
 			</section>
-		<?php } ?>
+		</section>
 
 	</main>
 </div>
