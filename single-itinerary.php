@@ -689,4 +689,26 @@ get_header(); ?>
 	</main>
 </div>
 
+<style>
+
+path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: dash 10s linear alternate;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 500;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+</style>
+
+
 <?php get_footer();
+
+

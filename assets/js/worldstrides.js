@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-26
+/*! WorldStrides - v0.1.0 - 2016-05-27
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1166,6 +1166,7 @@
 		marker_data,
 		$slideshow,
 		$slideshow_images,
+        lastLine,
 		sizeInvalidated = false;
 
 	if ($('body').hasClass('single-itinerary') || $('body').hasClass('single-custom-page')) {
@@ -1240,7 +1241,7 @@
 							var marker = e.layer,
 								feature = marker.feature;
 
-							if ( feature.properties.id == 0 ) {
+							if (feature.properties.id == 0) {
 							    marker.setIcon(L.icon(feature.properties.iconHover));
 							    
 							} else {
@@ -1251,13 +1252,17 @@
 							$slideshow.cycle( 'goto', e.layer.feature.properties.id );
 						});
 
-					
+					    // create a new empty polyline array
 					    polyline = L.polyline([]).addTo(map);
 
+                        // look through each layer, find the first one and save its coordinates for use later
 					    layer.eachLayer(function (layer) {
 
 					        if (layer.feature.properties.id == 0) {
-					            polyline.addLatLng(layer.getLatLng());
+					            lastLine = layer.getLatLng();
+					            layer.setIcon(L.icon(layer.feature.properties.iconHover));
+					        } else {
+					            layer.setIcon(L.icon(layer.feature.properties.icon));
 					        }
 					    });
 
@@ -1347,15 +1352,6 @@
 		return false;
 	}
 
-
-	function add(latlong) {
-
-	    // `addLatLng` takes a new latLng coordinate and puts it at the end of the
-	    // line. You optionally pull points from your data or generate them. Here
-	    // we make a sine wave with some math.
-	    polyline.addLatLng(latlong);
-	}
-
 	function returnGeoJSON(array) {
 		var collection = {
 			"type": "FeatureCollection",
@@ -1397,19 +1393,34 @@
 		return collection;
 	}
 
+
 	function cycleBefore( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
 
 	    var marker_id = $slideshow_images.indexOf(incomingSlideEl);
-
+	    
 		layer.eachLayer(function (layer) {
-
 			if ( layer.feature.properties.id == marker_id ) {
+                // draws the yellow (active) marker icon on the map
 			    layer.setIcon(L.icon(layer.feature.properties.iconHover));
 
-			    // draw line to here
-			    add(layer.getLatLng());
+                // remove any previously drawn lines on the canvas
+			    if (polyline instanceof L.Polyline) {
+			        map.removeLayer(polyline);
+			    }
+
+                // create a new empty line holder
+			    polyline = L.polyline([]).addTo(map);
+			    
+			    // add the new line to the map (it will be hidden at first due to css animation properties)
+                // lastLine is the coordinates of the last visited spot on map (from) and layer.getLatLng gets coordinates to the new spot (to)
+			    polyline.addLatLng(lastLine);
+			    polyline.addLatLng(layer.getLatLng());
+
+                // save the to coordinates for use next time as the from coordinates
+			    lastLine = layer.getLatLng();
 
 			} else {
+                // these are the non active (blue) markers on the map
 				layer.setIcon( L.icon( layer.feature.properties.icon ));
 			}
 
