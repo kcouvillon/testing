@@ -1210,7 +1210,7 @@
 				// Assign variables
 				init_coords = $('.tour-highlights').data('location'),
 					marker_data = $('#tour-highlights-data').data('highlights'),
-					$slideshow = $('.tour-highlights-slider').cycle({ timeout: 10000 }).on('cycle-before', cycleBefore)
+					$slideshow = $('.tour-highlights-slider').cycle({ delay: 5000, timeout: 10000 }).on('cycle-before', cycleBefore)
 					$slideshow_images = $slideshow.find('img').toArray();
 
 				if ( marker_data ) {
@@ -1260,7 +1260,7 @@
 
 					        if (layer.feature.properties.id == 0) {
 					            //set USA as starting point
-					            polyline.addLatLng([38.893596444352134, -77.0381498336792]);
+					            polyline.addLatLng([39.0997265, -94.57856670000001]);
 
                                 // add the first destination in and save it for use later
 					            polyline.addLatLng(layer.getLatLng());
