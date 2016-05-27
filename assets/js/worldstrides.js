@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-20
+/*! WorldStrides - v0.1.0 - 2016-05-26
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1159,6 +1159,9 @@
 
 	var map,
 		layer,
+        style,
+        pointsAdded,
+        polyline,
 		init_coords,
 		marker_data,
 		$slideshow,
@@ -1206,7 +1209,7 @@
 				// Assign variables
 				init_coords = $('.tour-highlights').data('location'),
 					marker_data = $('#tour-highlights-data').data('highlights'),
-					$slideshow  = $('.tour-highlights-slider').cycle().on('cycle-before', cycleBefore ),
+					$slideshow = $('.tour-highlights-slider').cycle({ timeout: 10000 }).on('cycle-before', cycleBefore)
 					$slideshow_images = $slideshow.find('img').toArray();
 
 				if ( marker_data ) {
@@ -1223,7 +1226,7 @@
 						zoom: 13
 					});
 					layer = L.mapbox.featureLayer(collection).addTo(map);
-
+					style = L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v9').addTo(map);
 					// Map Events
 					map
 						.on('ready resize', function(){
@@ -1238,7 +1241,8 @@
 								feature = marker.feature;
 
 							if ( feature.properties.id == 0 ) {
-								marker.setIcon(L.icon(feature.properties.iconHover));
+							    marker.setIcon(L.icon(feature.properties.iconHover));
+							    
 							} else {
 								marker.setIcon(L.icon(feature.properties.icon));
 							}
@@ -1246,6 +1250,18 @@
 						.on('click', function(e){
 							$slideshow.cycle( 'goto', e.layer.feature.properties.id );
 						});
+
+					
+					    polyline = L.polyline([]).addTo(map);
+
+					    layer.eachLayer(function (layer) {
+
+					        if (layer.feature.properties.id == 0) {
+					            polyline.addLatLng(layer.getLatLng());
+					        }
+					    });
+
+
 				}
 			}
 
@@ -1331,6 +1347,15 @@
 		return false;
 	}
 
+
+	function add(latlong) {
+
+	    // `addLatLng` takes a new latLng coordinate and puts it at the end of the
+	    // line. You optionally pull points from your data or generate them. Here
+	    // we make a sine wave with some math.
+	    polyline.addLatLng(latlong);
+	}
+
 	function returnGeoJSON(array) {
 		var collection = {
 			"type": "FeatureCollection",
@@ -1373,12 +1398,17 @@
 	}
 
 	function cycleBefore( event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag ){
-		var marker_id = $slideshow_images.indexOf(incomingSlideEl);
+
+	    var marker_id = $slideshow_images.indexOf(incomingSlideEl);
 
 		layer.eachLayer(function (layer) {
 
 			if ( layer.feature.properties.id == marker_id ) {
-				layer.setIcon( L.icon( layer.feature.properties.iconHover ));
+			    layer.setIcon(L.icon(layer.feature.properties.iconHover));
+
+			    // draw line to here
+			    add(layer.getLatLng());
+
 			} else {
 				layer.setIcon( L.icon( layer.feature.properties.icon ));
 			}
