@@ -1259,8 +1259,16 @@
 					    layer.eachLayer(function (layer) {
 
 					        if (layer.feature.properties.id == 0) {
+					            //set USA as starting point
+					            polyline.addLatLng([38.893596444352134, -77.0381498336792]);
+
+                                // add the first destination in and save it for use later
+					            polyline.addLatLng(layer.getLatLng());
 					            lastLine = layer.getLatLng();
+
+                                // set the first destination icon to active
 					            layer.setIcon(L.icon(layer.feature.properties.iconHover));
+
 					        } else {
 					            layer.setIcon(L.icon(layer.feature.properties.icon));
 					        }
