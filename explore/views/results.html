@@ -264,8 +264,8 @@
 				<h2 ng-show="ctrl.isFeatured">Featured Itineraries</h2>
 			</header>
 			<div class="results clearfix">
-
-				<article data-priority="{{ itinerary.priority }}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['priority', 'title'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
+                <!-- orderBy below is used to order the featured itineraries original - "orderBy : ['priority','title'] , 'order' uses default ordering as used on the page edit screen -->
+				<article data-priority="{{ itinerary.priority}}" ng-repeat="itinerary in ctrl.itineraries | orderBy : ['order'] | limitTo : ctrl.itinerariesLimit" class="tile tile-third has-tile-image" style="background-image:url( {{ itinerary.featured_image }} );" >
 					<a href="{{ itinerary.link }}" ng-show="itinerary.featured_image">
 						<img src="{{ itinerary.featured_image }}" alt="{{ itinerary.title }}" class="hide-sm itinerary-image" />
 					</a>
