@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-24
+/*! WorldStrides - v0.1.0 - 2016-05-26
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1685,9 +1685,28 @@
 			.fadeIn('fast').siblings('.resource-question:not(.resource-type-' + filter + ')').fadeOut('fast');
 
 		});
+		
+		var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
+
+		
+		$('#btnRequestInfo-mobile').on('click', function(){
+			var scrollTop = $(window).scrollTop();
+			if (scrollTop < nav_location && jQuery('#btnRequestInfo-mobile').hasClass('collapsed')) {
+				jQuery('html, body').animate({
+					scrollTop: nav_location
+				}, 500).promise().then(function () {
+					toggle_button();
+
+				});
+			}
+			else {
+				toggle_button();
+			}
+		});
+		
 	});
 
- } )( jQuery );
+ } )( jQuery, window );
 
 
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -1702,6 +1721,7 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			//Get dynamic height of section nav id
 			var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
 			jQuery('#btnRequestInfo').on('click', function () {
+				alert('clicked');
 				if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')) {
 					jQuery('html, body').animate({
 						scrollTop: nav_location
@@ -1721,6 +1741,7 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 		function toggle_button() {
 			jQuery('#collapseForm').slideToggle('slow');
 			jQuery('#btnRequestInfo .toggleLabel').toggle();
+			jQuery('#btnRequestInfo-mobile .toggleLabel').toggle();
 		}
 
 
@@ -1736,6 +1757,7 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 				if (jQuery(window).scrollTop() < nav_location && jQuery('#collapseForm').css('display') == 'block') {
 					jQuery('#collapseForm').hide();
 					jQuery('#btnRequestInfo .toggleLabel').toggle();
+					jQuery('#btnRequestInfo-mobile .toggleLabel').toggle();
 					above_nav = true;
 				}
 
@@ -1756,8 +1778,7 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 
 					if (jQuery(window).scrollTop() < bottom_day && jQuery('#collapseForm').css('display') == 'block' && old_form_location && bottom_button_clicked) {
-						jQuery('#collapseForm').hide();
-						jQuery('#btnRequestInfo .toggleLabel').toggle();
+						toggle_button();
 						bottom_triggered++;
 					}
 				}

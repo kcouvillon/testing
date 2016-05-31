@@ -5352,15 +5352,15 @@ button.close {
   .hidden-xs {
     display: none !important; } }
 
-@media (min-width: 600px) and (max-width: 779) {
+@media (min-width: 600px) and (max-width: 779px) {
   .hidden-sm {
     display: none !important; } }
 
-@media (min-width: 780) and (max-width: 959) {
+@media (min-width: 780px) and (max-width: 959px) {
   .hidden-md {
     display: none !important; } }
 
-@media (min-width: 960) {
+@media (min-width: 960px) {
   .hidden-lg {
     display: none !important; } }
 
@@ -5402,6 +5402,9 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.navbar-toggle:focus {
+  background-color: transparent; }
 
 *,
 *:before,

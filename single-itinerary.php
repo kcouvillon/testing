@@ -19,6 +19,20 @@ get_header(); ?>
 		<?php the_post(); ?>
 
 		<?php
+		//iOS Detection
+		if (stripos($_SERVER['HTTP_USER_AGENT'], "iPod") ||
+			stripos($_SERVER['HTTP_USER_AGENT'], "iPhone") ||
+			stripos($_SERVER['HTTP_USER_AGENT'], "iPad") ) {
+			$iOS = true;
+		}
+		else {
+			$iOS = false;
+		}
+
+		?>
+
+
+		<?php
 		$terms = get_the_terms( $post->ID, '_collection' );
 		$term  = $terms[0];
 		$phone = get_post_meta( $post->ID, 'itinerary_phone', true );
@@ -81,62 +95,132 @@ get_header(); ?>
 
 			</header>
 
-			<nav id="section-nav" class="section-nav hide-print">
-				<div class="ws-container">
-					<ul class="section-menu">
-						<?php
-						$section_link = 1;
+			<?php
+				//Get itinerary details
+				$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
+				$before_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true );
+				$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true );
+				$after_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true );
+				$associated_resources = get_post_meta( $post->ID, 'attached_resources', true);
+			?>
 
-						// Get highlights
+			<div class="hidden-xs hidden-sm">
+				<nav id="section-nav" class="section-nav hide-print">
+					<div class="ws-container">
+						<ul class="section-menu">
+							<?php
+							$section_link = 1;
 
-						$highlights = get_post_meta( $post->ID, 'itinerary_highlights_list', true );
-						if ( ! empty( $highlights[1]['image'] ) && 'no-destination' != $itinerary_type ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
-						<?php endif; ?>
+							// Display highlights
+							if ( ! empty( $highlights[1]['image'] ) && 'no-destination' != $itinerary_type ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
+							<?php endif; ?>
 
-						<?php
-						// Get Before Blocks
-						$before_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_before_list', true ); ?>
+							<?php // Display Before Blocks ?>
+							<?php if ( ! empty( $before_block_sections ) ) : ?>
 
-						<?php if ( ! empty( $before_block_sections ) ) : ?>
-							<?php foreach ( $before_block_sections as $section ) : ?>
-								<?php if ( ! empty ( $section['title'] ) ) : ?>
-									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						<?php endif; ?>
+								<?php foreach ( $before_block_sections as $section ) : ?>
+									<?php if ( ! empty ( $section['title'] ) ) : ?>
+										<?php echo "NOT EMPTY"; ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-						<?php
-						// Get Itinerary
-						$itinerary = get_post_meta( $post->ID, 'itinerary_days_list', true ); ?>
+							<?php // Display Itinerary ?>
 
-						<?php if ( ! empty( $itinerary ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
-						<?php endif; ?>
+							<?php if ( ! empty( $itinerary ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
+							<?php endif; ?>
 
-						<?php
-						// Get After Blocks
-						$after_block_sections = get_post_meta( $post->ID, 'itinerary_blocks_after_list', true ); ?>
+							<?php // Display After Blocks ?>
 
-						<?php if ( ! empty( $after_block_sections ) ) : ?>
-							<?php foreach ( $after_block_sections as $section ) : ?>
-								<?php if ( ! empty ( $section['title'] ) ) : ?>
-									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-								<?php endif; ?>
-							<?php endforeach; ?>
-						<?php endif; ?>
+							<?php if ( ! empty( $after_block_sections ) ) : ?>
+								<?php foreach ( $after_block_sections as $section ) : ?>
+									<?php if ( ! empty ( $section['title'] ) ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-						<?php $associated_resources = get_post_meta( $post->ID, 'attached_resources', true); ?>
-						<?php if ( ! empty( $associated_resources ) ) : ?>
-							<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-						<?php endif; ?>
+							<?php if ( ! empty( $associated_resources ) ) : ?>
+								<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+							<?php endif; ?>
 
+							</ul>
+
+						<?php if ($iOS){ ?>
+							<a id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
+						<?php } else { ?>
+							<a data-toggle="collapse" id="btnRequestInfo" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
+						<?php } ?>
+					</div>
+
+				</nav>
+			</div>
+
+			<div class="hidden-md hidden-lg">
+				<?php //Mobile navbar ?>
+				<nav class="section-nav navbar navbar-default hide-print">
+					<div class="ws-container" style="background-color:#323C53;">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" id="new-nav" style="float:left;">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar" style="background-color:white;"></span>
+								<span class="icon-bar" style="background-color:white;"></span>
+								<span class="icon-bar" style="background-color:white;"></span>
+							</button>
+							<div style="float:right">
+								<a data-toggle="collapse" id="btnRequestInfo-mobile" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
+							</div>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li class="active section-menu"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+									<?php
+									$section_link = 1;
+
+									// Display highlights
+									if ( ! empty( $highlights[1]['image'] ) && 'no-destination' != $itinerary_type ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
+									<?php endif; ?>
+
+									<?php // Display Before Blocks ?>
+									<?php if ( ! empty( $before_block_sections ) ) : ?>
+										<?php foreach ( $before_block_sections as $section ) : ?>
+											<?php if ( ! empty ( $section['title'] ) ) : ?>
+												<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+											<?php endif; ?>
+										<?php endforeach; ?>
+									<?php endif; ?>
+
+									<?php // Display Itinerary ?>
+
+									<?php if ( ! empty( $itinerary ) ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
+									<?php endif; ?>
+
+									<?php // Display After Blocks ?>
+
+									<?php if ( ! empty( $after_block_sections ) ) : ?>
+										<?php foreach ( $after_block_sections as $section ) : ?>
+											<?php if ( ! empty ( $section['title'] ) ) : ?>
+												<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+											<?php endif; ?>
+										<?php endforeach; ?>
+									<?php endif; ?>
+
+									<?php if ( ! empty( $associated_resources ) ) : ?>
+										<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+									<?php endif; ?>
 						</ul>
-
-					<a data-toggle="collapse" id="btnRequestInfo" href="#collapseForm" class="btn btn-primary subnav-cta hide-print"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide Request Info <i class="icon-close" style="margin-left:20px"></i></span></a>
-				</div>
-
-			</nav>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</nav>
+			</div>
 
 			<?php if ( has_post_thumbnail() ) : ?>
 			<a href="#section-nav" class="content-cta">
@@ -303,6 +387,7 @@ get_header(); ?>
 			$location = get_post_meta( $post->ID, 'itinerary_details_weather_location', true );
 			?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+				<?php echo "Section Num: " . ($section_num - 1); ?>
 			<section class="tour-highlights hide-print" data-location='<?php echo json_encode( $location ); ?>'>
 
 				<h3 class="slideshow-header">Highlights</h3>
@@ -389,6 +474,8 @@ get_header(); ?>
 			<?php foreach ( $before_block_sections as $section ) : ?>
 
 					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+				<?php echo "Section Num: " . ($section_num - 1); ?>
+				<?php echo "Count " . count($before_block_sections);?>
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
@@ -409,6 +496,7 @@ get_header(); ?>
 
 		<?php if ( ! empty ( $itinerary ) ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+			<?php echo "Section Num: " . ($section_num - 1); ?>
 			<section class="tour-itinerary">
 
 				<?php
@@ -575,6 +663,7 @@ get_header(); ?>
 		<?php if ( ! empty( $after_block_sections ) ) : ?>
 			<?php foreach ( $after_block_sections as $section ) : ?>
 				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+				<?php echo "Section Num: " . ($section_num - 1); ?>
 				<section class="ws-container ws-blocks tour-blocks-after">
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
@@ -597,6 +686,7 @@ get_header(); ?>
 
 		<?php if ( $associated_resources ) : ?>
 			<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
+			<?php echo "Section Num: " . ($section_num - 1); ?>
 			<section class="section-content resources">
 				<h2 class="section-title">Have Questions? We Have Answers.</h2>
 
@@ -696,14 +786,14 @@ get_header(); ?>
 				</section>
 			<?php endif; ?>
 		<?php endif; ?>
-
-		<section class="clearfix ws-container learn-more hide-print">
-			<section class="clearfix ws-container learn-more">
-				<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
-
-				<?php get_template_part('partials/form','universal'); ?>
+		<?php if ( $iOS ) { ?>
+			<section class="clearfix ws-container learn-more hide-print" id="lead-form">
+				<section class="clearfix ws-container learn-more">
+					<h2 class="form-title">Ready to Learn More About Traveling with WorldStrides?</h2>
+					<?php get_template_part('partials/form','universal'); ?>
+				</section>
 			</section>
-		</section>
+		<?php } ?>
 
 	</main>
 </div>
