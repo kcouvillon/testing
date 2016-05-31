@@ -1,4 +1,4 @@
-/*! WorldStrides - v0.1.0 - 2016-05-27
+/*! WorldStrides - v0.1.0 - 2016-05-30
  * http://www.worldstrides.com
  * Copyright (c) 2016; * Licensed GPLv2+ */
 ( function( $, window, undefined ) {
@@ -1227,7 +1227,7 @@
 						zoom: 13
 					});
 					layer = L.mapbox.featureLayer(collection).addTo(map);
-					style = L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v9').addTo(map);
+					style = L.mapbox.styleLayer('mapbox://styles/worldstrides/cim6du4a000m39jm0ohknvp13').addTo(map);
 					// Map Events
 					map
 						.on('ready resize', function(){
