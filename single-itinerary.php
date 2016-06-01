@@ -147,6 +147,7 @@ get_header(); ?>
 				<?php
 				$number_days = get_post_meta( $post->ID, 'itinerary_details_duration', true );
 				$date_list = get_post_meta( $post->ID, 'itinerary_details_date_list', true );
+				$adjudicator_list = get_post_meta( $post->ID, 'itinerary_details_adjudicator_list', true );
 				if ( $date_list && count($date_list) >= 4 ) {
 					$column_count = 2;
 				} else {
@@ -176,8 +177,19 @@ get_header(); ?>
 								?>
 
 								<li class="<?php echo $date_class; ?>"><strong>
-									<?php echo $start; ?> <em class="small gray-light">to</em><br/>
-									<?php echo $end; ?>
+									<div class="date_list_wrapper">
+										<div class="date_list_wrapper_left">
+											<?php echo $start; ?> <em class="small gray-light">to</em><br/>
+											<?php echo $end; ?>
+									</div>
+										<div class="date_list_wrapper_right">
+											<?php
+												foreach ( $adjudicator_list as $adjList ) : 
+													echo the_title() . '<br>';
+												endforeach; 
+											?>
+										</div>
+									</div>
 								</strong></li>
 
 							<?php $count++; endforeach; ?>
