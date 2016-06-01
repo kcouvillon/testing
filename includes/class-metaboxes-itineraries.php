@@ -70,9 +70,17 @@ class WS_Metaboxes_Itineraries {
 	 * Itinerary Details box
 	 */
 	function itinerary_details() {
-
+		
 		$prefix = 'itinerary_details_';
-
+		$bio_array = [];
+		$associated_bios = get_posts('post_type'='bio', true);
+			if ($associated_bios):
+			while ($associated_bios -> have_posts() ) {
+				$array_to_add = the_title() . ' => ' . the_title();
+				array_push ($bio_array, $array_to_add);
+			}
+					
+		
 		$cmb = new_cmb2_box( array(
 			'id'           => $prefix . 'metabox',
 			'title'        => __( 'Itinerary Details', 'cmb2' ),
@@ -154,6 +162,25 @@ class WS_Metaboxes_Itineraries {
 			'name' => 'End Date',
 			'id' => $prefix . 'date_end',
 			'type' => 'text_date'
+		) );
+		
+		// Add Adjudicators to dates
+		$cmb->add_group_field( $group_field_id, array(
+			'id'      => $prefix . 'adjudicator_list',
+			'type'    => 'group',
+			'options' => array(
+				'group_title'   => __( 'Adjudicators {#}', 'cmb2' ), // {#} gets replaced by row number
+				'add_button'    => __( 'Add Another Adjudicator', 'cmb2' ),
+				'remove_button' => __( 'Remove Adjudicator', 'cmb2' ),
+				'sortable'      => true, // beta
+		) );
+		
+		// Adjudicators
+		$cmb->add_group_field( $group_field_id, array(
+			'name' => 'Attached Adjudicator',
+			'id' => $prefix . 'attached_adjudicator',
+			'type' => 'select',
+			'options' => $bio_array
 		) );
 
 		// Destinations / Activities
