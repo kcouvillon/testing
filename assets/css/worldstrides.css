@@ -112,6 +112,30 @@
   border-width: 5px !important;
   border-style: solid !important; }
 
+/*Custom CSS for navbar (Need to have Request Info button float right on all screens) Having trouble with sm due to small number of collapsible items*/
+@media (min-width: 600px) and (max-width: 780px) {
+  .custom-header {
+    width: inherit !important; } }
+
+/*
+@media (min-width:750px){
+  .navbar-toggle-mobile{
+    display: none !important;
+  }
+}
+
+@media (min-width: 600px){
+  .navbar-toggle-mobile{
+    display: block !important;
+  }
+}
+/*
+@media (max-width: 768px){
+  #navbar-collapse {
+    display:none !important;
+  }
+}
+*/
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -2697,7 +2721,7 @@ tbody.collapse.in {
   bottom: 100%;
   margin-bottom: 2px; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-right .dropdown-menu {
     left: auto;
     right: 0; }
@@ -3111,7 +3135,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   top: auto;
   left: auto; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .nav-tabs.nav-justified > li {
     display: table-cell;
     width: 1%; }
@@ -3127,7 +3151,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs.nav-justified > .active > a:focus {
   border: 1px solid #dddddd; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .nav-tabs.nav-justified > li > a {
     border-bottom: 1px solid #dddddd;
     border-radius: 0 0 0 0; }
@@ -3172,7 +3196,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   top: auto;
   left: auto; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .nav-justified > li {
     display: table-cell;
     width: 1%; }
@@ -3191,7 +3215,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs-justified > .active > a:focus {
   border: 1px solid #dddddd; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .nav-tabs-justified > li > a {
     border-bottom: 1px solid #dddddd;
     border-radius: 0 0 0 0; }
@@ -3217,11 +3241,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 27px;
   border: 1px solid transparent; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar {
     border-radius: 0; } }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-header {
     float: left; } }
 
@@ -3237,7 +3261,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-collapse.in {
   overflow-y: auto; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-collapse {
     width: auto;
     border-top: 0;
@@ -3272,7 +3296,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: -15px;
   margin-left: -15px; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .container > .navbar-header,
   .container-fluid > .navbar-header,
   .container > .navbar-collapse,
@@ -3284,7 +3308,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   z-index: 1000;
   border-width: 0 0 1px; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-static-top {
     border-radius: 0; } }
 
@@ -3295,7 +3319,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   left: 0;
   z-index: 1030; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-fixed-top,
   .navbar-fixed-bottom {
     border-radius: 0; } }
@@ -3323,7 +3347,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand > img {
   display: block; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: -15px; } }
@@ -3352,7 +3376,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-toggle {
     display: none; } }
 
@@ -3383,7 +3407,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav .open .dropdown-menu > li > a:focus {
     background-image: none; } }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-nav {
     float: left;
     margin: 0; }
@@ -3449,7 +3473,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-form .form-group:last-child {
     margin-bottom: 0; } }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-form {
     width: auto;
     border: 0;
@@ -3488,13 +3512,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-top: 11.5px;
   margin-bottom: 11.5px; }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-text {
     float: left;
     margin-left: 15px;
     margin-right: 15px; } }
 
-@media (min-width: 600px) {
+@media (min-width: 768px) {
   .navbar-left {
     float: left !important; }
   .navbar-right {
@@ -5402,11 +5426,6 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
-
-/*Custom CSS for navbar (Need to have Request Info button float right on all screens) Having trouble with sm due to small number of collapsible items*/
-@media (min-width: 600px) and (max-width: 780px) {
-  .custom-header {
-    width: inherit !important; } }
 
 *,
 *:before,

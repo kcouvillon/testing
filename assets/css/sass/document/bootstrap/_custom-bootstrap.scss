@@ -3,3 +3,29 @@
   border-width: 5px !important;
   border-style: solid !important;
 }
+
+/*Custom CSS for navbar (Need to have Request Info button float right on all screens) Having trouble with sm due to small number of collapsible items*/
+@media (min-width:600px) and (max-width:780px){
+  .custom-header{
+    width: inherit !important;
+  }
+}
+/*
+@media (min-width:750px){
+  .navbar-toggle-mobile{
+    display: none !important;
+  }
+}
+
+@media (min-width: 600px){
+  .navbar-toggle-mobile{
+    display: block !important;
+  }
+}
+/*
+@media (max-width: 768px){
+  #navbar-collapse {
+    display:none !important;
+  }
+}
+*/
