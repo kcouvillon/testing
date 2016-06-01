@@ -5608,3 +5608,9 @@ button.close {
   }
 }
 
+/*Custom CSS for navbar (Need to have Request Info button float right on all screens) Having trouble with sm due to small number of collapsible items*/
+@media (min-width:600px) and (max-width:780px){
+  .custom-header{
+    width: inherit !important;
+  }
+}

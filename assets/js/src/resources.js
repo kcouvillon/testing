@@ -86,7 +86,11 @@
 				toggle_button();
 			}
 		});
-		
+
+		//Slow slide animation for mobile navbar
+		$('#new-nav').on('click', function(){
+			$('.navbar-collapse').slideToggle('slow');
+		});
 	});
 
  } )( jQuery, window );
@@ -104,7 +108,6 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			//Get dynamic height of section nav id
 			var nav_location = jQuery('.section-header').offset().top + jQuery('.section-header').outerHeight();
 			jQuery('#btnRequestInfo').on('click', function () {
-				alert('clicked');
 				if (jQuery(window).scrollTop() < nav_location && jQuery('#btnRequestInfo').hasClass('collapsed')) {
 					jQuery('html, body').animate({
 						scrollTop: nav_location
@@ -179,3 +182,4 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			});
 		});
 	}
+

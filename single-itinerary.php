@@ -164,7 +164,7 @@ get_header(); ?>
 				<nav class="section-nav navbar navbar-default hide-print">
 					<div class="ws-container" style="background-color:#323C53;">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
+						<div class="navbar-header custom-header" style="float:right; width:100%;">
 							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" id="new-nav" style="float:left;">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar" style="background-color:white;"></span>
@@ -175,48 +175,46 @@ get_header(); ?>
 								<a data-toggle="collapse" id="btnRequestInfo-mobile" href="#" class="btn btn-primary subnav-cta hide-print collapsed"><span class="toggleLabel">Request Info</span><span class="toggleLabel" style="display:none">Hide<i class="icon-close" style="margin-left:20px"></i></span></a>
 							</div>
 						</div>
-
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="navbar-collapse">
 							<ul class="nav navbar-nav">
-								<li class="active section-menu"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-									<?php
-									$section_link = 1;
+								<?php
+								$section_link = 1;
 
-									// Display highlights
-									if ( ! empty( $highlights[1]['image'] ) && 'no-destination' != $itinerary_type ) : ?>
-										<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
-									<?php endif; ?>
+								// Display highlights
+								if ( ! empty( $highlights[1]['image'] ) && 'no-destination' != $itinerary_type ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Highlights</a></li>
+								<?php endif; ?>
 
-									<?php // Display Before Blocks ?>
-									<?php if ( ! empty( $before_block_sections ) ) : ?>
-										<?php foreach ( $before_block_sections as $section ) : ?>
-											<?php if ( ! empty ( $section['title'] ) ) : ?>
-												<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									<?php endif; ?>
+								<?php // Display Before Blocks ?>
+								<?php if ( ! empty( $before_block_sections ) ) : ?>
+									<?php foreach ( $before_block_sections as $section ) : ?>
+										<?php if ( ! empty ( $section['title'] ) ) : ?>
+											<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+										<?php endif; ?>
+									<?php endforeach; ?>
+								<?php endif; ?>
 
-									<?php // Display Itinerary ?>
+								<?php // Display Itinerary ?>
 
-									<?php if ( ! empty( $itinerary ) ) : ?>
-										<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
-									<?php endif; ?>
+								<?php if ( ! empty( $itinerary ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $itinerary_title; ?></a></li>
+								<?php endif; ?>
 
-									<?php // Display After Blocks ?>
+								<?php // Display After Blocks ?>
 
-									<?php if ( ! empty( $after_block_sections ) ) : ?>
-										<?php foreach ( $after_block_sections as $section ) : ?>
-											<?php if ( ! empty ( $section['title'] ) ) : ?>
-												<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									<?php endif; ?>
+								<?php if ( ! empty( $after_block_sections ) ) : ?>
+									<?php foreach ( $after_block_sections as $section ) : ?>
+										<?php if ( ! empty ( $section['title'] ) ) : ?>
+											<li><a href="#section-<?php echo $section_link; $section_link++; ?>"><?php echo $section['title']; ?></a></li>
+										<?php endif; ?>
+									<?php endforeach; ?>
+								<?php endif; ?>
 
-									<?php if ( ! empty( $associated_resources ) ) : ?>
-										<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
-									<?php endif; ?>
-						</ul>
+								<?php if ( ! empty( $associated_resources ) ) : ?>
+									<li><a href="#section-<?php echo $section_link; $section_link++; ?>">Resources</a></li>
+								<?php endif; ?>
+							</ul>
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 				</nav>
@@ -228,8 +226,6 @@ get_header(); ?>
 				<i class="icon-arrow-down"></i>
 			</a>
 			<?php endif; ?>
-
-
 
 		</section>
 
@@ -473,9 +469,9 @@ get_header(); ?>
 
 			<?php foreach ( $before_block_sections as $section ) : ?>
 
-					<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-				<?php echo "Section Num: " . ($section_num - 1); ?>
-				<?php echo "Count " . count($before_block_sections);?>
+				<!--	<a name="section-<?php //echo $section_num; $section_num++; ?>"></a> -->
+				<?php// echo "Section Num: " . ($section_num - 1); ?>
+				<?php// echo "Count " . count($before_block_sections);?>
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2 class="section-content"><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
 					<?php endif; ?>
@@ -662,8 +658,8 @@ get_header(); ?>
 
 		<?php if ( ! empty( $after_block_sections ) ) : ?>
 			<?php foreach ( $after_block_sections as $section ) : ?>
-				<a name="section-<?php echo $section_num; $section_num++; ?>"></a>
-				<?php echo "Section Num: " . ($section_num - 1); ?>
+				<!--<a name="section-<?php //echo $section_num; $section_num++; ?>"></a> -->
+				<?php //echo "Section Num: " . ($section_num - 1); ?>
 				<section class="ws-container ws-blocks tour-blocks-after">
 					<?php if ( ! empty( $section['title'] ) ) : ?>
 						<h2><?php echo apply_filters( 'the_title', $section['title'] ); ?></h2>
