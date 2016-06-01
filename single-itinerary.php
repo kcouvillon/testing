@@ -206,18 +206,7 @@ get_header(); ?>
 				<?php
 				$features = get_post_meta( $post->ID, 'itinerary_details_features', true );
 				if ( ! empty( $features ) ) : ?>
-
-					<div class="tour-features">
-						<span class="h3"><i class="icon icon-pin"></i> <?php echo get_post_meta( $post->ID, 'itinerary_details_features_title', true ); ?></span>
-						<div class="tour-feature-list">
-						<?php
-							foreach ( $features as $feature ) {
-								echo '<span class="tour-feature">' . $feature . '</span>';
-							}
-						?>
-						</div>
-					</div>
-
+				
 				<?php endif; ?>
 
 				<div class="tour-weather hide-print">
